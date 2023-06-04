@@ -103,9 +103,9 @@
 		D41F627E2A2C921C00780814 /* Shopify-ITI */ = {
 			isa = PBXGroup;
 			children = (
+				D4DBCBCB2A2D3F38004EE325 /* Resources */,
 				D4DBCB8D2A2D3D81004EE325 /* Core */,
 				D4DBCBA52A2D3D81004EE325 /* Features */,
-				D41F62832A2C921D00780814 /* Assets.xcassets */,
 				D41F62852A2C921D00780814 /* Preview Content */,
 			);
 			path = "Shopify-ITI";
@@ -248,7 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				D4DBCBA72A2D3D81004EE325 /* ViewModels */,
-				D4DBCBA92A2D3D81004EE325 /* Entity */,
+				D4DBCBA92A2D3D81004EE325 /* Entities */,
 				D4DBCBAB2A2D3D81004EE325 /* Models */,
 				D4DBCBAD2A2D3D81004EE325 /* Helpers */,
 				D4DBCBAF2A2D3D81004EE325 /* Services */,
@@ -265,12 +265,12 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		D4DBCBA92A2D3D81004EE325 /* Entity */ = {
+		D4DBCBA92A2D3D81004EE325 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				D4DBCBAA2A2D3D81004EE325 /* index */,
 			);
-			path = Entity;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		D4DBCBAB2A2D3D81004EE325 /* Models */ = {
@@ -311,6 +311,14 @@
 				D41F62812A2C921C00780814 /* ContentView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D4DBCBCB2A2D3F38004EE325 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D41F62832A2C921D00780814 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		F7B4E07DB0B124A6BC44E75B /* Frameworks */ = {
