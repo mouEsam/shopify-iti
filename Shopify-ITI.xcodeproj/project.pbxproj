@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,14 +11,54 @@
 		D41F62822A2C921C00780814 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41F62812A2C921C00780814 /* ContentView.swift */; };
 		D41F62842A2C921D00780814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D41F62832A2C921D00780814 /* Assets.xcassets */; };
 		D41F62872A2C921D00780814 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D41F62862A2C921D00780814 /* Preview Assets.xcassets */; };
+		D4DBCBB12A2D3D81004EE325 /* AnyRemoteFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBCB902A2D3D81004EE325 /* AnyRemoteFetchStrategy.swift */; };
+		D4DBCBB22A2D3D81004EE325 /* AnyDataFetchCacheStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBCB922A2D3D81004EE325 /* AnyDataFetchCacheStrategy.swift */; };
+		D4DBCBB42A2D3D81004EE325 /* index in Resources */ = {isa = PBXBuildFile; fileRef = D4DBCB972A2D3D81004EE325 /* index */; };
+		D4DBCBB52A2D3D81004EE325 /* AnyConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBCB992A2D3D81004EE325 /* AnyConnectivity.swift */; };
+		D4DBCBB62A2D3D81004EE325 /* AnyImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBCB9B2A2D3D81004EE325 /* AnyImageLoader.swift */; };
+		D4DBCBB72A2D3D81004EE325 /* AnyDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBCB9D2A2D3D81004EE325 /* AnyDecoder.swift */; };
+		D4DBCBB82A2D3D81004EE325 /* RemoteClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBCB9F2A2D3D81004EE325 /* RemoteClient.swift */; };
+		D4DBCBB92A2D3D81004EE325 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBCBA12A2D3D81004EE325 /* NotificationCenter.swift */; };
+		D4DBCBBA2A2D3D81004EE325 /* AnyNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBCBA22A2D3D81004EE325 /* AnyNotificationCenter.swift */; };
+		D4DBCBBB2A2D3D81004EE325 /* AnyEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBCBA42A2D3D81004EE325 /* AnyEnvironment.swift */; };
+		D4DBCBBC2A2D3D81004EE325 /* index in Resources */ = {isa = PBXBuildFile; fileRef = D4DBCBA82A2D3D81004EE325 /* index */; };
+		D4DBCBBD2A2D3D81004EE325 /* index in Resources */ = {isa = PBXBuildFile; fileRef = D4DBCBAA2A2D3D81004EE325 /* index */; };
+		D4DBCBBE2A2D3D81004EE325 /* index in Resources */ = {isa = PBXBuildFile; fileRef = D4DBCBAC2A2D3D81004EE325 /* index */; };
+		D4DBCBBF2A2D3D81004EE325 /* UIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBCBAE2A2D3D81004EE325 /* UIState.swift */; };
+		D4DBCBC02A2D3D81004EE325 /* index in Resources */ = {isa = PBXBuildFile; fileRef = D4DBCBB02A2D3D81004EE325 /* index */; };
+		D4DBCBC62A2D3DE0004EE325 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBCBC52A2D3DE0004EE325 /* Notifications.swift */; };
+		D4DBCBC82A2D3E27004EE325 /* DataFetchCacheStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBCBC72A2D3E27004EE325 /* DataFetchCacheStrategy.swift */; };
+		D4DBCBCA2A2D3E42004EE325 /* RemoteFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBCBC92A2D3E42004EE325 /* RemoteFetchStrategy.swift */; };
+		F5A717C26EA6ECAA6C73CF88 /* Pods_Shopify_ITI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F17366EB933EE0E3FD74203 /* Pods_Shopify_ITI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B9D58BFB7AB7F645B43815D /* Pods-Shopify-ITI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.release.xcconfig"; sourceTree = "<group>"; };
+		4F17366EB933EE0E3FD74203 /* Pods_Shopify_ITI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D41F627C2A2C921C00780814 /* Shopify-ITI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopify-ITI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D41F627F2A2C921C00780814 /* Shopify_ITIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopify_ITIApp.swift; sourceTree = "<group>"; };
 		D41F62812A2C921C00780814 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D41F62832A2C921D00780814 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D41F62862A2C921D00780814 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D4DBCB902A2D3D81004EE325 /* AnyRemoteFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyRemoteFetchStrategy.swift; sourceTree = "<group>"; };
+		D4DBCB922A2D3D81004EE325 /* AnyDataFetchCacheStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyDataFetchCacheStrategy.swift; sourceTree = "<group>"; };
+		D4DBCB972A2D3D81004EE325 /* index */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = index; sourceTree = "<group>"; };
+		D4DBCB992A2D3D81004EE325 /* AnyConnectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyConnectivity.swift; sourceTree = "<group>"; };
+		D4DBCB9B2A2D3D81004EE325 /* AnyImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyImageLoader.swift; sourceTree = "<group>"; };
+		D4DBCB9D2A2D3D81004EE325 /* AnyDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyDecoder.swift; sourceTree = "<group>"; };
+		D4DBCB9F2A2D3D81004EE325 /* RemoteClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteClient.swift; sourceTree = "<group>"; };
+		D4DBCBA12A2D3D81004EE325 /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
+		D4DBCBA22A2D3D81004EE325 /* AnyNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyNotificationCenter.swift; sourceTree = "<group>"; };
+		D4DBCBA42A2D3D81004EE325 /* AnyEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyEnvironment.swift; sourceTree = "<group>"; };
+		D4DBCBA82A2D3D81004EE325 /* index */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = index; sourceTree = "<group>"; };
+		D4DBCBAA2A2D3D81004EE325 /* index */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = index; sourceTree = "<group>"; };
+		D4DBCBAC2A2D3D81004EE325 /* index */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = index; sourceTree = "<group>"; };
+		D4DBCBAE2A2D3D81004EE325 /* UIState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIState.swift; sourceTree = "<group>"; };
+		D4DBCBB02A2D3D81004EE325 /* index */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = index; sourceTree = "<group>"; };
+		D4DBCBC52A2D3DE0004EE325 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		D4DBCBC72A2D3E27004EE325 /* DataFetchCacheStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetchCacheStrategy.swift; sourceTree = "<group>"; };
+		D4DBCBC92A2D3E42004EE325 /* RemoteFetchStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFetchStrategy.swift; sourceTree = "<group>"; };
+		D804FF0853FC1FD46FB622EF /* Pods-Shopify-ITI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.debug.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,17 +66,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5A717C26EA6ECAA6C73CF88 /* Pods_Shopify_ITI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		256F5C045EEB8210E1E43E03 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D804FF0853FC1FD46FB622EF /* Pods-Shopify-ITI.debug.xcconfig */,
+				2B9D58BFB7AB7F645B43815D /* Pods-Shopify-ITI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D41F62732A2C921C00780814 = {
 			isa = PBXGroup;
 			children = (
 				D41F627E2A2C921C00780814 /* Shopify-ITI */,
 				D41F627D2A2C921C00780814 /* Products */,
+				256F5C045EEB8210E1E43E03 /* Pods */,
+				F7B4E07DB0B124A6BC44E75B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,9 +103,9 @@
 		D41F627E2A2C921C00780814 /* Shopify-ITI */ = {
 			isa = PBXGroup;
 			children = (
-				D41F627F2A2C921C00780814 /* Shopify_ITIApp.swift */,
-				D41F62812A2C921C00780814 /* ContentView.swift */,
-				D41F62832A2C921D00780814 /* Assets.xcassets */,
+				D4DBCBCB2A2D3F38004EE325 /* Resources */,
+				D4DBCB8D2A2D3D81004EE325 /* Core */,
+				D4DBCBA52A2D3D81004EE325 /* Features */,
 				D41F62852A2C921D00780814 /* Preview Content */,
 			);
 			path = "Shopify-ITI";
@@ -67,6 +119,216 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		D4DBCB8D2A2D3D81004EE325 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCB8E2A2D3D81004EE325 /* Strategies */,
+				D4DBCB932A2D3D81004EE325 /* Helpers */,
+				D4DBCB952A2D3D81004EE325 /* Services */,
+				D4DBCBC12A2D3D8D004EE325 /* Delegates */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		D4DBCB8E2A2D3D81004EE325 /* Strategies */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCB8F2A2D3D81004EE325 /* RemoteFetch */,
+				D4DBCB912A2D3D81004EE325 /* DataFetch */,
+			);
+			path = Strategies;
+			sourceTree = "<group>";
+		};
+		D4DBCB8F2A2D3D81004EE325 /* RemoteFetch */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCB902A2D3D81004EE325 /* AnyRemoteFetchStrategy.swift */,
+				D4DBCBC92A2D3E42004EE325 /* RemoteFetchStrategy.swift */,
+			);
+			path = RemoteFetch;
+			sourceTree = "<group>";
+		};
+		D4DBCB912A2D3D81004EE325 /* DataFetch */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCB922A2D3D81004EE325 /* AnyDataFetchCacheStrategy.swift */,
+				D4DBCBC72A2D3E27004EE325 /* DataFetchCacheStrategy.swift */,
+			);
+			path = DataFetch;
+			sourceTree = "<group>";
+		};
+		D4DBCB932A2D3D81004EE325 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCBC52A2D3DE0004EE325 /* Notifications.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D4DBCB952A2D3D81004EE325 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCB962A2D3D81004EE325 /* Database */,
+				D4DBCB982A2D3D81004EE325 /* Connectivity */,
+				D4DBCB9A2A2D3D81004EE325 /* Images */,
+				D4DBCB9C2A2D3D81004EE325 /* Decoder */,
+				D4DBCB9E2A2D3D81004EE325 /* RemoteClient */,
+				D4DBCBA02A2D3D81004EE325 /* NotificationCenter */,
+				D4DBCBA32A2D3D81004EE325 /* Environment */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D4DBCB962A2D3D81004EE325 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCB972A2D3D81004EE325 /* index */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		D4DBCB982A2D3D81004EE325 /* Connectivity */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCB992A2D3D81004EE325 /* AnyConnectivity.swift */,
+			);
+			path = Connectivity;
+			sourceTree = "<group>";
+		};
+		D4DBCB9A2A2D3D81004EE325 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCB9B2A2D3D81004EE325 /* AnyImageLoader.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		D4DBCB9C2A2D3D81004EE325 /* Decoder */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCB9D2A2D3D81004EE325 /* AnyDecoder.swift */,
+			);
+			path = Decoder;
+			sourceTree = "<group>";
+		};
+		D4DBCB9E2A2D3D81004EE325 /* RemoteClient */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCB9F2A2D3D81004EE325 /* RemoteClient.swift */,
+			);
+			path = RemoteClient;
+			sourceTree = "<group>";
+		};
+		D4DBCBA02A2D3D81004EE325 /* NotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCBA12A2D3D81004EE325 /* NotificationCenter.swift */,
+				D4DBCBA22A2D3D81004EE325 /* AnyNotificationCenter.swift */,
+			);
+			path = NotificationCenter;
+			sourceTree = "<group>";
+		};
+		D4DBCBA32A2D3D81004EE325 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCBA42A2D3D81004EE325 /* AnyEnvironment.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
+		D4DBCBA52A2D3D81004EE325 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCBA62A2D3D81004EE325 /* Common */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		D4DBCBA62A2D3D81004EE325 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCBA72A2D3D81004EE325 /* ViewModels */,
+				D4DBCBA92A2D3D81004EE325 /* Entities */,
+				D4DBCBAB2A2D3D81004EE325 /* Models */,
+				D4DBCBAD2A2D3D81004EE325 /* Helpers */,
+				D4DBCBAF2A2D3D81004EE325 /* Services */,
+				D4DBCBC42A2D3DB0004EE325 /* Views */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D4DBCBA72A2D3D81004EE325 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCBA82A2D3D81004EE325 /* index */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D4DBCBA92A2D3D81004EE325 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCBAA2A2D3D81004EE325 /* index */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		D4DBCBAB2A2D3D81004EE325 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCBAC2A2D3D81004EE325 /* index */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D4DBCBAD2A2D3D81004EE325 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCBAE2A2D3D81004EE325 /* UIState.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D4DBCBAF2A2D3D81004EE325 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D4DBCBB02A2D3D81004EE325 /* index */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D4DBCBC12A2D3D8D004EE325 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				D41F627F2A2C921C00780814 /* Shopify_ITIApp.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		D4DBCBC42A2D3DB0004EE325 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D41F62812A2C921C00780814 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D4DBCBCB2A2D3F38004EE325 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D41F62832A2C921D00780814 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F7B4E07DB0B124A6BC44E75B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F17366EB933EE0E3FD74203 /* Pods_Shopify_ITI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +336,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D41F628A2A2C921D00780814 /* Build configuration list for PBXNativeTarget "Shopify-ITI" */;
 			buildPhases = (
+				FFEB2C0F5CB68E6CBA7882CB /* [CP] Check Pods Manifest.lock */,
 				D41F62782A2C921C00780814 /* Sources */,
 				D41F62792A2C921C00780814 /* Frameworks */,
 				D41F627A2A2C921C00780814 /* Resources */,
@@ -103,7 +366,7 @@
 				};
 			};
 			buildConfigurationList = D41F62772A2C921C00780814 /* Build configuration list for PBXProject "Shopify-ITI" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -125,20 +388,63 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4DBCBBC2A2D3D81004EE325 /* index in Resources */,
+				D4DBCBB42A2D3D81004EE325 /* index in Resources */,
+				D4DBCBBD2A2D3D81004EE325 /* index in Resources */,
 				D41F62872A2C921D00780814 /* Preview Assets.xcassets in Resources */,
+				D4DBCBC02A2D3D81004EE325 /* index in Resources */,
 				D41F62842A2C921D00780814 /* Assets.xcassets in Resources */,
+				D4DBCBBE2A2D3D81004EE325 /* index in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FFEB2C0F5CB68E6CBA7882CB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Shopify-ITI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D41F62782A2C921C00780814 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4DBCBB82A2D3D81004EE325 /* RemoteClient.swift in Sources */,
 				D41F62822A2C921C00780814 /* ContentView.swift in Sources */,
+				D4DBCBB22A2D3D81004EE325 /* AnyDataFetchCacheStrategy.swift in Sources */,
+				D4DBCBB12A2D3D81004EE325 /* AnyRemoteFetchStrategy.swift in Sources */,
+				D4DBCBC82A2D3E27004EE325 /* DataFetchCacheStrategy.swift in Sources */,
 				D41F62802A2C921C00780814 /* Shopify_ITIApp.swift in Sources */,
+				D4DBCBC62A2D3DE0004EE325 /* Notifications.swift in Sources */,
+				D4DBCBB72A2D3D81004EE325 /* AnyDecoder.swift in Sources */,
+				D4DBCBBB2A2D3D81004EE325 /* AnyEnvironment.swift in Sources */,
+				D4DBCBB52A2D3D81004EE325 /* AnyConnectivity.swift in Sources */,
+				D4DBCBB92A2D3D81004EE325 /* NotificationCenter.swift in Sources */,
+				D4DBCBBA2A2D3D81004EE325 /* AnyNotificationCenter.swift in Sources */,
+				D4DBCBB62A2D3D81004EE325 /* AnyImageLoader.swift in Sources */,
+				D4DBCBCA2A2D3E42004EE325 /* RemoteFetchStrategy.swift in Sources */,
+				D4DBCBBF2A2D3D81004EE325 /* UIState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +501,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -249,7 +555,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -261,6 +567,7 @@
 		};
 		D41F628B2A2C921D00780814 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D804FF0853FC1FD46FB622EF /* Pods-Shopify-ITI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -275,6 +582,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -290,6 +598,7 @@
 		};
 		D41F628C2A2C921D00780814 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B9D58BFB7AB7F645B43815D /* Pods-Shopify-ITI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -304,6 +613,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -7,21 +7,21 @@
 
 import Foundation
 
-protocol AnyRemoteListFetchStrategy {
+protocol AnyRemoteFetchStrategy {
     func fetch<T: Decodable>(_ type: T.Type,
                              url: String,
                              query: [String: Any?],
                              userInfo: [CodingUserInfoKey: Any],
                              dateFormatter: DateFormatter?,
-                             completion: @escaping (Result<[T], Error>) -> Void) -> any Cancellable
+                             completion: @escaping (Result<T, Error>) -> Void) -> any Cancellable
 }
 
-extension AnyRemoteListFetchStrategy {
+extension AnyRemoteFetchStrategy {
     func fetch<T: Decodable>(_ type: T.Type,
                              url: String,
                              query: [String: Any?],
                              userInfo: [CodingUserInfoKey: Any],
-                             completion: @escaping (Result<[T], Error>) -> Void) -> any Cancellable {
+                             completion: @escaping (Result<T, Error>) -> Void) -> any Cancellable {
         fetch(type,
               url: url,
               query: query,
