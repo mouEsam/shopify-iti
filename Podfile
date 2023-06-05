@@ -22,7 +22,7 @@ post_install do |installer|
       old_target = config.build_settings['IPHONEOS_DEPLOYMENT_TARGET']
       new_target = project_deployment_target
       next if old_target == new_target || old_target == nil || new_target == nil
-      puts "    #{config.name}: #{old_target.yellow} -> #{new_target.green}"
+      puts "#{target.name} > #{config.name}: #{old_target.yellow} -> #{new_target.green}"
       #config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = new_target
     end
