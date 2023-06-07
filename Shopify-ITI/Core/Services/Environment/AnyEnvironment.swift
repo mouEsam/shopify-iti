@@ -8,5 +8,5 @@
 import Foundation
 
 protocol AnyEnvironmentProvider {
-    var sportsApiKey: String { get }
+    var shopifyBaseUrl: String { get }
 }

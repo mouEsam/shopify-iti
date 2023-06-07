@@ -1,14 +1,20 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
 workspace 'Shopify-ITI.xcworkspace'
 
 # Uncomment the next line to define a global platform for your project
- platform :ios, '9.0'
+# platform :ios, '9.0'
 
 project 'Shopify-ITI.xcodeproj'
 
 target 'Shopify-ITI' do
   project 'Shopify-ITI'
-  # Comment the next line if you don't want to use dynamic frameworks
+
   use_frameworks!
+  
+  pod 'Apollo'
+  
+#  pod 'Apollo', :podspec => 'https://raw.githubusercontent.com/apollographql/apollo-ios/main/Apollo.podspec'
 end
 
 post_install do |installer|
@@ -23,7 +29,6 @@ post_install do |installer|
       new_target = project_deployment_target
       next if old_target == new_target || old_target == nil || new_target == nil
       puts "#{target.name} > #{config.name}: #{old_target.yellow} -> #{new_target.green}"
-      #config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = new_target
     end
   end

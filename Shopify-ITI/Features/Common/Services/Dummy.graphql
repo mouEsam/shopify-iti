@@ -1,0 +1,9 @@
+query Dummy {
+  products(first: 1) {
+    edges {
+      node {
+        title
+      }
+    }
+  }
+}
