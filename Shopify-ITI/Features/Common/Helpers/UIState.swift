@@ -126,7 +126,8 @@ extension Array where Element: AnyUIState {
             return .loaded(data: SourcedData.misc(combineData(compactMap { $0.data })))
         }
     }
-    
+
+    @available(iOS 16.0.0, *)
     func combineSources<S>(with combineData: ([any AnySourcedData<Element.T>]) -> any AnySourcedData<S>) -> UIState<S> {
         if let _ = first(where: { $0.isInitial }) {
             return .initial
@@ -136,6 +137,19 @@ extension Array where Element: AnyUIState {
             return .error(error: error)
         } else {
             return .loaded(data: combineData(compactMap { $0.sourcedData }))
+        }
+    }
+    
+    @available(iOS, obsoleted: 16.0)
+    func combineSources<S>(with combineData: ([any AnySourcedData]) -> any AnySourcedData<S>) -> UIState<S> {
+        if let _ = first(where: { $0.isInitial }) {
+            return .initial
+        } else if let _ = first(where: { $0.isLoading }) {
+            return .loading
+        } else if let error = compactMap({ $0.isError }).first {
+            return .error(error: error)
+        } else {
+            return .loaded(data: combineData(compactMap { $0.sourcedData as? any AnySourcedData }))
         }
     }
 }
