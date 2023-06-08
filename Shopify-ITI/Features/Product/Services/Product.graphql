@@ -1,0 +1,52 @@
+query getProductById($id: ID!, 
+                     $collectionsCount: Int!, 
+                     $imagesCount: Int!, 
+                     $variantsCount: Int!, 
+                     $metaFieldsIdentifiers: [HasMetafieldsIdentifier!]!, 
+                     $country: CountryCode, 
+                     $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+  product(id: $id) {
+    id
+    handle
+    title
+    description
+    featuredImage {
+      ...imageInfo
+    }
+    availableForSale
+    compareAtPriceRange {
+      ...priceRangeInfo
+    }
+    metafields(identifiers: $metaFieldsIdentifiers) {
+      ...metafieldInfo
+    }
+    priceRange {
+      ...priceRangeInfo
+    }
+    tags
+    totalInventory
+    vendor
+    options {
+        id
+        name
+        values
+    }
+    collections(first: $collectionsCount) {
+      nodes {
+        ...collectionInfo
+      }
+    }
+    images(first: $imagesCount) {
+      nodes {
+        ...imageInfo
+      } 
+    }
+    variants(first: $variantsCount) {
+      nodes {
+        ...productVariantInfo
+      }
+    }
+  }
+}
+
+

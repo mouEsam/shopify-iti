@@ -8,5 +8,7 @@
 import Foundation
 
 protocol AnyEnvironmentProvider {
+    var shopifyAccessToken: String { get }
+    var shopifyAccessTokenHeader: String { get }
     var shopifyBaseUrl: String { get }
 }

@@ -32,8 +32,6 @@ extension ShopifyAPI {
     static func objectType(forTypename typename: String) -> Object? {
       switch typename {
       case "QueryRoot": return ShopifyAPI.Objects.QueryRoot
-      case "ProductConnection": return ShopifyAPI.Objects.ProductConnection
-      case "ProductEdge": return ShopifyAPI.Objects.ProductEdge
       case "Product": return ShopifyAPI.Objects.Product
       case "Article": return ShopifyAPI.Objects.Article
       case "Metafield": return ShopifyAPI.Objects.Metafield
@@ -66,6 +64,12 @@ extension ShopifyAPI {
       case "Payment": return ShopifyAPI.Objects.Payment
       case "CartLine": return ShopifyAPI.Objects.CartLine
       case "Customer": return ShopifyAPI.Objects.Customer
+      case "Image": return ShopifyAPI.Objects.Image
+      case "ProductPriceRange": return ShopifyAPI.Objects.ProductPriceRange
+      case "MoneyV2": return ShopifyAPI.Objects.MoneyV2
+      case "CollectionConnection": return ShopifyAPI.Objects.CollectionConnection
+      case "ImageConnection": return ShopifyAPI.Objects.ImageConnection
+      case "ProductVariantConnection": return ShopifyAPI.Objects.ProductVariantConnection
       default: return nil
       }
     }

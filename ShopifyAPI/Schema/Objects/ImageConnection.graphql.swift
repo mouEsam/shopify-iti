@@ -4,10 +4,10 @@
 import Apollo
 
 extension ShopifyAPI.Objects {
-  /// An auto-generated type which holds one Product and a cursor during pagination.
+  /// An auto-generated type for paginating through multiple Images.
   ///
-  static let ProductEdge = Object(
-    typename: "ProductEdge",
+  static let ImageConnection = Object(
+    typename: "ImageConnection",
     implementedInterfaces: []
   )
 }

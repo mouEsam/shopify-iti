@@ -4,10 +4,10 @@
 import Apollo
 
 extension ShopifyAPI.Objects {
-  /// An auto-generated type for paginating through multiple Products.
+  /// An auto-generated type for paginating through multiple ProductVariants.
   ///
-  static let ProductConnection = Object(
-    typename: "ProductConnection",
+  static let ProductVariantConnection = Object(
+    typename: "ProductVariantConnection",
     implementedInterfaces: []
   )
 }
