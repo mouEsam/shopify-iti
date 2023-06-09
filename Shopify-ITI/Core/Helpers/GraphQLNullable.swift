@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Shopify_ITI_SDK
 
 extension GraphQLNullable {
   public init(nullable: Optional<Wrapped>) {

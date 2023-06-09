@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Shopify_ITI_SDK
 
 // Id eg.: gid://shopify/Product/8341864055063
 
@@ -31,7 +32,6 @@ struct ProductRemoteService {
                                                    country: .init(nullable: localeProvider.shopifyCountry),
                                                    lang: .init(nullable: localeProvider.shopifyLanguage))
         let result = await remoteClient.fetch(query: query)
-        dump(result)
         return result.map { result in
             result.data.flatMap { data in
                 data.product.map { product in

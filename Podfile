@@ -6,15 +6,26 @@ workspace 'Shopify-ITI.xcworkspace'
 # platform :ios, '9.0'
 
 project 'Shopify-ITI.xcodeproj'
+project 'Shopify-ITI-SDK/Shopify-ITI-SDK.xcodeproj'
+
+def shared_pods
+  pod 'Apollo'
+end
 
 target 'Shopify-ITI' do
   project 'Shopify-ITI'
 
   use_frameworks!
   
-  pod 'Apollo'
+  shared_pods
+end
+
+target 'Shopify-ITI-SDK' do
+  project 'Shopify-ITI-SDK/Shopify-ITI-SDK'
+
+  use_frameworks!
   
-#  pod 'Apollo', :podspec => 'https://raw.githubusercontent.com/apollographql/apollo-ios/main/Apollo.podspec'
+  shared_pods
 end
 
 post_install do |installer|

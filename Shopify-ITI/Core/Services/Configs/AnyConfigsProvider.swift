@@ -11,4 +11,5 @@ protocol AnyConfigsProvider {
     var collectionsCountInProductInfoPage: Int { get }
     var variantsCountInProductInfoPage: Int { get }
     var imagesCountInProductInfoPage: Int { get }
+    var productsCountPerPage: Int { get }
 }

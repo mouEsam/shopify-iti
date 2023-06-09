@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Shopify-ITI-SDK/Shopify-ITI-SDK.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Shopify-ITI.xcodeproj">
    </FileRef>
    <FileRef

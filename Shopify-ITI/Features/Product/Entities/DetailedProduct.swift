@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Shopify_ITI_SDK
 
 struct DetailedProduct: Identifiable {
     let id: String
@@ -24,24 +25,26 @@ struct DetailedProduct: Identifiable {
     let collections: [ProductCollection]
     let images: [RemoteImage]
     let variants: [ProductVariant]
-    
+}
+
+extension DetailedProduct {
     init(from product: ShopifyAPI.GetProductByIdQuery.Data.Product) {
-        self.id = product.id
-        self.handle = product.id
-        self.title = product.id
-        self.description = product.id
-        self.featuredImage = product.featuredImage.map { RemoteImage(from: $0) }
-        self.availableForSale = product.availableForSale
-        self.compareAtPriceRange = PriceRange(from: product.compareAtPriceRange)
-        self.metafields = product.metafields.compactMap{$0}.map{ MetaField(from: $0) }
-        self.priceRange = PriceRange(from: product.priceRange)
-        self.tags = product.tags
-        self.totalInventory = product.totalInventory
-        self.vendor = product.vendor
-        self.options = product.options.map { ProductOption(from: $0) }
-        self.collections = product.collections.nodes.map { ProductCollection(from: $0) }
-        self.images = product.images.nodes.map { RemoteImage(from: $0) }
-        self.variants = product.variants.nodes.map { ProductVariant(from: $0) }
+        self.init(id : product.id,
+                  handle : product.id,
+                  title : product.id,
+                  description : product.id,
+                  featuredImage : product.featuredImage.map { RemoteImage(from: $0) },
+                  availableForSale : product.availableForSale,
+                  compareAtPriceRange : PriceRange(from: product.compareAtPriceRange),
+                  metafields : product.metafields.compactMap{$0}.map{ MetaField(from: $0) },
+                  priceRange : PriceRange(from: product.priceRange),
+                  tags : product.tags,
+                  totalInventory : product.totalInventory,
+                  vendor : product.vendor,
+                  options : product.options.map { ProductOption(from: $0) },
+                  collections : product.collections.nodes.map { ProductCollection(from: $0) },
+                  images: product.images.nodes.map { RemoteImage(from: $0) },
+                  variants : product.variants.nodes.map { ProductVariant(from: $0) })
     }
 }
 

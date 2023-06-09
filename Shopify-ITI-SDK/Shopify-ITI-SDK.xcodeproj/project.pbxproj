@@ -1,0 +1,735 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D4596CF82A33580200BD9E26 /* Shopify_ITI_SDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D4596CF72A33580200BD9E26 /* Shopify_ITI_SDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4596DDA2A335F9B00BD9E26 /* MetafieldInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596D922A335F9A00BD9E26 /* MetafieldInfo.graphql.swift */; };
+		D4596DDB2A335F9B00BD9E26 /* CollectionInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596D932A335F9A00BD9E26 /* CollectionInfo.graphql.swift */; };
+		D4596DDC2A335F9B00BD9E26 /* ImageInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596D942A335F9A00BD9E26 /* ImageInfo.graphql.swift */; };
+		D4596DDD2A335F9B00BD9E26 /* MoneyInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596D952A335F9A00BD9E26 /* MoneyInfo.graphql.swift */; };
+		D4596DDE2A335F9B00BD9E26 /* ProductVariantInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596D962A335F9A00BD9E26 /* ProductVariantInfo.graphql.swift */; };
+		D4596DDF2A335F9B00BD9E26 /* PriceRangeInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596D972A335F9A00BD9E26 /* PriceRangeInfo.graphql.swift */; };
+		D4596DE02A335F9B00BD9E26 /* Test.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596D982A335F9A00BD9E26 /* Test.graphql.swift */; };
+		D4596DE12A335F9B00BD9E26 /* ShopifyAPI.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596D992A335F9A00BD9E26 /* ShopifyAPI.graphql.swift */; };
+		D4596DE22A335F9B00BD9E26 /* GetProductByIdQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596D9C2A335F9B00BD9E26 /* GetProductByIdQuery.graphql.swift */; };
+		D4596DE32A335F9B00BD9E26 /* GetProductsByQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596D9D2A335F9B00BD9E26 /* GetProductsByQuery.graphql.swift */; };
+		D4596DE42A335F9B00BD9E26 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DA02A335F9B00BD9E26 /* Decimal.swift */; };
+		D4596DE52A335F9B00BD9E26 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DA12A335F9B00BD9E26 /* URL.swift */; };
+		D4596DE62A335F9B00BD9E26 /* CountryCode.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DA32A335F9B00BD9E26 /* CountryCode.graphql.swift */; };
+		D4596DE72A335F9B00BD9E26 /* CurrencyCode.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DA42A335F9B00BD9E26 /* CurrencyCode.graphql.swift */; };
+		D4596DE82A335F9B00BD9E26 /* LanguageCode.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DA52A335F9B00BD9E26 /* LanguageCode.graphql.swift */; };
+		D4596DE92A335F9B00BD9E26 /* Image.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DA72A335F9B00BD9E26 /* Image.graphql.swift */; };
+		D4596DEA2A335F9B00BD9E26 /* ProductPriceRange.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DA82A335F9B00BD9E26 /* ProductPriceRange.graphql.swift */; };
+		D4596DEB2A335F9B00BD9E26 /* ProductVariant.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DA92A335F9B00BD9E26 /* ProductVariant.graphql.swift */; };
+		D4596DEC2A335F9B00BD9E26 /* Blog.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DAA2A335F9B00BD9E26 /* Blog.graphql.swift */; };
+		D4596DED2A335F9B00BD9E26 /* Model3d.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DAB2A335F9B00BD9E26 /* Model3d.graphql.swift */; };
+		D4596DEE2A335F9B00BD9E26 /* MenuItem.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DAC2A335F9B00BD9E26 /* MenuItem.graphql.swift */; };
+		D4596DEF2A335F9B00BD9E26 /* Order.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DAD2A335F9B00BD9E26 /* Order.graphql.swift */; };
+		D4596DF02A335F9B00BD9E26 /* Comment.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DAE2A335F9B00BD9E26 /* Comment.graphql.swift */; };
+		D4596DF12A335F9B00BD9E26 /* UrlRedirect.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DAF2A335F9B00BD9E26 /* UrlRedirect.graphql.swift */; };
+		D4596DF22A335F9B00BD9E26 /* Shop.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DB02A335F9B00BD9E26 /* Shop.graphql.swift */; };
+		D4596DF32A335F9B00BD9E26 /* ImageConnection.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DB12A335F9B00BD9E26 /* ImageConnection.graphql.swift */; };
+		D4596DF42A335F9B00BD9E26 /* GenericFile.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DB22A335F9B00BD9E26 /* GenericFile.graphql.swift */; };
+		D4596DF52A335F9B00BD9E26 /* ProductOption.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DB32A335F9B00BD9E26 /* ProductOption.graphql.swift */; };
+		D4596DF62A335F9B00BD9E26 /* Collection.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DB42A335F9B00BD9E26 /* Collection.graphql.swift */; };
+		D4596DF72A335F9B00BD9E26 /* ExternalVideo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DB52A335F9B00BD9E26 /* ExternalVideo.graphql.swift */; };
+		D4596DF82A335F9B00BD9E26 /* ProductConnection.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DB62A335F9B00BD9E26 /* ProductConnection.graphql.swift */; };
+		D4596DF92A335F9B00BD9E26 /* Menu.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DB72A335F9B00BD9E26 /* Menu.graphql.swift */; };
+		D4596DFA2A335F9B00BD9E26 /* CheckoutLineItem.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DB82A335F9B00BD9E26 /* CheckoutLineItem.graphql.swift */; };
+		D4596DFB2A335F9B00BD9E26 /* Location.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DB92A335F9B00BD9E26 /* Location.graphql.swift */; };
+		D4596DFC2A335F9B00BD9E26 /* Checkout.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DBA2A335F9B00BD9E26 /* Checkout.graphql.swift */; };
+		D4596DFD2A335F9B00BD9E26 /* Metaobject.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DBB2A335F9B00BD9E26 /* Metaobject.graphql.swift */; };
+		D4596DFE2A335F9B00BD9E26 /* QueryRoot.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DBC2A335F9B00BD9E26 /* QueryRoot.graphql.swift */; };
+		D4596DFF2A335F9B00BD9E26 /* Cart.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DBD2A335F9B00BD9E26 /* Cart.graphql.swift */; };
+		D4596E002A335F9B00BD9E26 /* MoneyV2.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DBE2A335F9B00BD9E26 /* MoneyV2.graphql.swift */; };
+		D4596E012A335F9B00BD9E26 /* Payment.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DBF2A335F9B00BD9E26 /* Payment.graphql.swift */; };
+		D4596E022A335F9B00BD9E26 /* Customer.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DC02A335F9B00BD9E26 /* Customer.graphql.swift */; };
+		D4596E032A335F9B00BD9E26 /* CartLine.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DC12A335F9B00BD9E26 /* CartLine.graphql.swift */; };
+		D4596E042A335F9B00BD9E26 /* ProductEdge.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DC22A335F9B00BD9E26 /* ProductEdge.graphql.swift */; };
+		D4596E052A335F9B00BD9E26 /* MailingAddress.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DC32A335F9B00BD9E26 /* MailingAddress.graphql.swift */; };
+		D4596E062A335F9B00BD9E26 /* Page.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DC42A335F9B00BD9E26 /* Page.graphql.swift */; };
+		D4596E072A335F9B00BD9E26 /* CollectionConnection.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DC52A335F9B00BD9E26 /* CollectionConnection.graphql.swift */; };
+		D4596E082A335F9B00BD9E26 /* ProductVariantConnection.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DC62A335F9B00BD9E26 /* ProductVariantConnection.graphql.swift */; };
+		D4596E092A335F9B00BD9E26 /* Market.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DC72A335F9B00BD9E26 /* Market.graphql.swift */; };
+		D4596E0A2A335F9B00BD9E26 /* Metafield.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DC82A335F9B00BD9E26 /* Metafield.graphql.swift */; };
+		D4596E0B2A335F9B00BD9E26 /* Article.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DC92A335F9B00BD9E26 /* Article.graphql.swift */; };
+		D4596E0C2A335F9B00BD9E26 /* AppliedGiftCard.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DCA2A335F9B00BD9E26 /* AppliedGiftCard.graphql.swift */; };
+		D4596E0D2A335F9B00BD9E26 /* MediaImage.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DCB2A335F9B00BD9E26 /* MediaImage.graphql.swift */; };
+		D4596E0E2A335F9B00BD9E26 /* Video.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DCC2A335F9B00BD9E26 /* Video.graphql.swift */; };
+		D4596E0F2A335F9B00BD9E26 /* Product.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DCD2A335F9B00BD9E26 /* Product.graphql.swift */; };
+		D4596E102A335F9B00BD9E26 /* ShopPolicy.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DCE2A335F9B00BD9E26 /* ShopPolicy.graphql.swift */; };
+		D4596E112A335F9B00BD9E26 /* MediaPresentation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DCF2A335F9B00BD9E26 /* MediaPresentation.graphql.swift */; };
+		D4596E122A335F9B00BD9E26 /* SchemaConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DD02A335F9B00BD9E26 /* SchemaConfiguration.swift */; };
+		D4596E132A335F9B00BD9E26 /* HasMetafieldsIdentifier.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DD22A335F9B00BD9E26 /* HasMetafieldsIdentifier.graphql.swift */; };
+		D4596E142A335F9B00BD9E26 /* SchemaMetadata.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DD32A335F9B00BD9E26 /* SchemaMetadata.graphql.swift */; };
+		D4596E152A335F9B00BD9E26 /* Media.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DD52A335F9B00BD9E26 /* Media.graphql.swift */; };
+		D4596E162A335F9B00BD9E26 /* HasMetafields.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DD62A335F9B00BD9E26 /* HasMetafields.graphql.swift */; };
+		D4596E172A335F9B00BD9E26 /* BaseCartLine.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DD72A335F9B00BD9E26 /* BaseCartLine.graphql.swift */; };
+		D4596E182A335F9B00BD9E26 /* OnlineStorePublishable.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DD82A335F9B00BD9E26 /* OnlineStorePublishable.graphql.swift */; };
+		D4596E192A335F9B00BD9E26 /* Node.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4596DD92A335F9B00BD9E26 /* Node.graphql.swift */; };
+		E1BAC0CD2AB1CB39CAE723F9 /* Pods_Shopify_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC18845B81CEB227625DD8A /* Pods_Shopify_ITI_SDK.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		05421D1BA1B3B124CBAD976D /* Pods-Shopify-ITI-SDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI-SDK.debug.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI-SDK/Pods-Shopify-ITI-SDK.debug.xcconfig"; sourceTree = "<group>"; };
+		12D2F547552771B8B19D7463 /* Pods-Shopify-ITI-SDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI-SDK.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI-SDK/Pods-Shopify-ITI-SDK.release.xcconfig"; sourceTree = "<group>"; };
+		D4596CF42A33580200BD9E26 /* Shopify_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shopify_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4596CF72A33580200BD9E26 /* Shopify_ITI_SDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shopify_ITI_SDK.h; sourceTree = "<group>"; };
+		D4596D922A335F9A00BD9E26 /* MetafieldInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetafieldInfo.graphql.swift; sourceTree = "<group>"; };
+		D4596D932A335F9A00BD9E26 /* CollectionInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionInfo.graphql.swift; sourceTree = "<group>"; };
+		D4596D942A335F9A00BD9E26 /* ImageInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfo.graphql.swift; sourceTree = "<group>"; };
+		D4596D952A335F9A00BD9E26 /* MoneyInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyInfo.graphql.swift; sourceTree = "<group>"; };
+		D4596D962A335F9A00BD9E26 /* ProductVariantInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductVariantInfo.graphql.swift; sourceTree = "<group>"; };
+		D4596D972A335F9A00BD9E26 /* PriceRangeInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceRangeInfo.graphql.swift; sourceTree = "<group>"; };
+		D4596D982A335F9A00BD9E26 /* Test.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.graphql.swift; sourceTree = "<group>"; };
+		D4596D992A335F9A00BD9E26 /* ShopifyAPI.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopifyAPI.graphql.swift; sourceTree = "<group>"; };
+		D4596D9C2A335F9B00BD9E26 /* GetProductByIdQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetProductByIdQuery.graphql.swift; sourceTree = "<group>"; };
+		D4596D9D2A335F9B00BD9E26 /* GetProductsByQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetProductsByQuery.graphql.swift; sourceTree = "<group>"; };
+		D4596DA02A335F9B00BD9E26 /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
+		D4596DA12A335F9B00BD9E26 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		D4596DA32A335F9B00BD9E26 /* CountryCode.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCode.graphql.swift; sourceTree = "<group>"; };
+		D4596DA42A335F9B00BD9E26 /* CurrencyCode.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyCode.graphql.swift; sourceTree = "<group>"; };
+		D4596DA52A335F9B00BD9E26 /* LanguageCode.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageCode.graphql.swift; sourceTree = "<group>"; };
+		D4596DA72A335F9B00BD9E26 /* Image.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.graphql.swift; sourceTree = "<group>"; };
+		D4596DA82A335F9B00BD9E26 /* ProductPriceRange.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductPriceRange.graphql.swift; sourceTree = "<group>"; };
+		D4596DA92A335F9B00BD9E26 /* ProductVariant.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductVariant.graphql.swift; sourceTree = "<group>"; };
+		D4596DAA2A335F9B00BD9E26 /* Blog.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blog.graphql.swift; sourceTree = "<group>"; };
+		D4596DAB2A335F9B00BD9E26 /* Model3d.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model3d.graphql.swift; sourceTree = "<group>"; };
+		D4596DAC2A335F9B00BD9E26 /* MenuItem.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.graphql.swift; sourceTree = "<group>"; };
+		D4596DAD2A335F9B00BD9E26 /* Order.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.graphql.swift; sourceTree = "<group>"; };
+		D4596DAE2A335F9B00BD9E26 /* Comment.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.graphql.swift; sourceTree = "<group>"; };
+		D4596DAF2A335F9B00BD9E26 /* UrlRedirect.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlRedirect.graphql.swift; sourceTree = "<group>"; };
+		D4596DB02A335F9B00BD9E26 /* Shop.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shop.graphql.swift; sourceTree = "<group>"; };
+		D4596DB12A335F9B00BD9E26 /* ImageConnection.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageConnection.graphql.swift; sourceTree = "<group>"; };
+		D4596DB22A335F9B00BD9E26 /* GenericFile.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericFile.graphql.swift; sourceTree = "<group>"; };
+		D4596DB32A335F9B00BD9E26 /* ProductOption.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOption.graphql.swift; sourceTree = "<group>"; };
+		D4596DB42A335F9B00BD9E26 /* Collection.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.graphql.swift; sourceTree = "<group>"; };
+		D4596DB52A335F9B00BD9E26 /* ExternalVideo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalVideo.graphql.swift; sourceTree = "<group>"; };
+		D4596DB62A335F9B00BD9E26 /* ProductConnection.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductConnection.graphql.swift; sourceTree = "<group>"; };
+		D4596DB72A335F9B00BD9E26 /* Menu.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.graphql.swift; sourceTree = "<group>"; };
+		D4596DB82A335F9B00BD9E26 /* CheckoutLineItem.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutLineItem.graphql.swift; sourceTree = "<group>"; };
+		D4596DB92A335F9B00BD9E26 /* Location.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.graphql.swift; sourceTree = "<group>"; };
+		D4596DBA2A335F9B00BD9E26 /* Checkout.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkout.graphql.swift; sourceTree = "<group>"; };
+		D4596DBB2A335F9B00BD9E26 /* Metaobject.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metaobject.graphql.swift; sourceTree = "<group>"; };
+		D4596DBC2A335F9B00BD9E26 /* QueryRoot.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryRoot.graphql.swift; sourceTree = "<group>"; };
+		D4596DBD2A335F9B00BD9E26 /* Cart.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.graphql.swift; sourceTree = "<group>"; };
+		D4596DBE2A335F9B00BD9E26 /* MoneyV2.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyV2.graphql.swift; sourceTree = "<group>"; };
+		D4596DBF2A335F9B00BD9E26 /* Payment.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.graphql.swift; sourceTree = "<group>"; };
+		D4596DC02A335F9B00BD9E26 /* Customer.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.graphql.swift; sourceTree = "<group>"; };
+		D4596DC12A335F9B00BD9E26 /* CartLine.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartLine.graphql.swift; sourceTree = "<group>"; };
+		D4596DC22A335F9B00BD9E26 /* ProductEdge.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductEdge.graphql.swift; sourceTree = "<group>"; };
+		D4596DC32A335F9B00BD9E26 /* MailingAddress.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailingAddress.graphql.swift; sourceTree = "<group>"; };
+		D4596DC42A335F9B00BD9E26 /* Page.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.graphql.swift; sourceTree = "<group>"; };
+		D4596DC52A335F9B00BD9E26 /* CollectionConnection.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionConnection.graphql.swift; sourceTree = "<group>"; };
+		D4596DC62A335F9B00BD9E26 /* ProductVariantConnection.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductVariantConnection.graphql.swift; sourceTree = "<group>"; };
+		D4596DC72A335F9B00BD9E26 /* Market.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Market.graphql.swift; sourceTree = "<group>"; };
+		D4596DC82A335F9B00BD9E26 /* Metafield.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metafield.graphql.swift; sourceTree = "<group>"; };
+		D4596DC92A335F9B00BD9E26 /* Article.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.graphql.swift; sourceTree = "<group>"; };
+		D4596DCA2A335F9B00BD9E26 /* AppliedGiftCard.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppliedGiftCard.graphql.swift; sourceTree = "<group>"; };
+		D4596DCB2A335F9B00BD9E26 /* MediaImage.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaImage.graphql.swift; sourceTree = "<group>"; };
+		D4596DCC2A335F9B00BD9E26 /* Video.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.graphql.swift; sourceTree = "<group>"; };
+		D4596DCD2A335F9B00BD9E26 /* Product.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.graphql.swift; sourceTree = "<group>"; };
+		D4596DCE2A335F9B00BD9E26 /* ShopPolicy.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopPolicy.graphql.swift; sourceTree = "<group>"; };
+		D4596DCF2A335F9B00BD9E26 /* MediaPresentation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPresentation.graphql.swift; sourceTree = "<group>"; };
+		D4596DD02A335F9B00BD9E26 /* SchemaConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaConfiguration.swift; sourceTree = "<group>"; };
+		D4596DD22A335F9B00BD9E26 /* HasMetafieldsIdentifier.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasMetafieldsIdentifier.graphql.swift; sourceTree = "<group>"; };
+		D4596DD32A335F9B00BD9E26 /* SchemaMetadata.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaMetadata.graphql.swift; sourceTree = "<group>"; };
+		D4596DD52A335F9B00BD9E26 /* Media.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.graphql.swift; sourceTree = "<group>"; };
+		D4596DD62A335F9B00BD9E26 /* HasMetafields.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasMetafields.graphql.swift; sourceTree = "<group>"; };
+		D4596DD72A335F9B00BD9E26 /* BaseCartLine.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCartLine.graphql.swift; sourceTree = "<group>"; };
+		D4596DD82A335F9B00BD9E26 /* OnlineStorePublishable.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineStorePublishable.graphql.swift; sourceTree = "<group>"; };
+		D4596DD92A335F9B00BD9E26 /* Node.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.graphql.swift; sourceTree = "<group>"; };
+		DEC18845B81CEB227625DD8A /* Pods_Shopify_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D4596CF12A33580200BD9E26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1BAC0CD2AB1CB39CAE723F9 /* Pods_Shopify_ITI_SDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		48668165B74554C6FC4A8DAA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05421D1BA1B3B124CBAD976D /* Pods-Shopify-ITI-SDK.debug.xcconfig */,
+				12D2F547552771B8B19D7463 /* Pods-Shopify-ITI-SDK.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		BE9E2CC227114EFB7747453F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DEC18845B81CEB227625DD8A /* Pods_Shopify_ITI_SDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D4596CEA2A33580200BD9E26 = {
+			isa = PBXGroup;
+			children = (
+				D4596D902A335F9A00BD9E26 /* ShopifyAPI */,
+				D4596CF62A33580200BD9E26 /* Shopify-ITI-SDK */,
+				D4596CF52A33580200BD9E26 /* Products */,
+				48668165B74554C6FC4A8DAA /* Pods */,
+				BE9E2CC227114EFB7747453F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D4596CF52A33580200BD9E26 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D4596CF42A33580200BD9E26 /* Shopify_ITI_SDK.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D4596CF62A33580200BD9E26 /* Shopify-ITI-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				D4596CF72A33580200BD9E26 /* Shopify_ITI_SDK.h */,
+			);
+			path = "Shopify-ITI-SDK";
+			sourceTree = "<group>";
+		};
+		D4596D902A335F9A00BD9E26 /* ShopifyAPI */ = {
+			isa = PBXGroup;
+			children = (
+				D4596D912A335F9A00BD9E26 /* Fragments */,
+				D4596D992A335F9A00BD9E26 /* ShopifyAPI.graphql.swift */,
+				D4596D9A2A335F9B00BD9E26 /* Operations */,
+				D4596D9E2A335F9B00BD9E26 /* Schema */,
+			);
+			path = ShopifyAPI;
+			sourceTree = "<group>";
+		};
+		D4596D912A335F9A00BD9E26 /* Fragments */ = {
+			isa = PBXGroup;
+			children = (
+				D4596D922A335F9A00BD9E26 /* MetafieldInfo.graphql.swift */,
+				D4596D932A335F9A00BD9E26 /* CollectionInfo.graphql.swift */,
+				D4596D942A335F9A00BD9E26 /* ImageInfo.graphql.swift */,
+				D4596D952A335F9A00BD9E26 /* MoneyInfo.graphql.swift */,
+				D4596D962A335F9A00BD9E26 /* ProductVariantInfo.graphql.swift */,
+				D4596D972A335F9A00BD9E26 /* PriceRangeInfo.graphql.swift */,
+				D4596D982A335F9A00BD9E26 /* Test.graphql.swift */,
+			);
+			path = Fragments;
+			sourceTree = "<group>";
+		};
+		D4596D9A2A335F9B00BD9E26 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				D4596D9B2A335F9B00BD9E26 /* Queries */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		D4596D9B2A335F9B00BD9E26 /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				D4596D9C2A335F9B00BD9E26 /* GetProductByIdQuery.graphql.swift */,
+				D4596D9D2A335F9B00BD9E26 /* GetProductsByQuery.graphql.swift */,
+			);
+			path = Queries;
+			sourceTree = "<group>";
+		};
+		D4596D9E2A335F9B00BD9E26 /* Schema */ = {
+			isa = PBXGroup;
+			children = (
+				D4596D9F2A335F9B00BD9E26 /* CustomScalars */,
+				D4596DA22A335F9B00BD9E26 /* Enums */,
+				D4596DA62A335F9B00BD9E26 /* Objects */,
+				D4596DD02A335F9B00BD9E26 /* SchemaConfiguration.swift */,
+				D4596DD12A335F9B00BD9E26 /* InputObjects */,
+				D4596DD32A335F9B00BD9E26 /* SchemaMetadata.graphql.swift */,
+				D4596DD42A335F9B00BD9E26 /* Interfaces */,
+			);
+			path = Schema;
+			sourceTree = "<group>";
+		};
+		D4596D9F2A335F9B00BD9E26 /* CustomScalars */ = {
+			isa = PBXGroup;
+			children = (
+				D4596DA02A335F9B00BD9E26 /* Decimal.swift */,
+				D4596DA12A335F9B00BD9E26 /* URL.swift */,
+			);
+			path = CustomScalars;
+			sourceTree = "<group>";
+		};
+		D4596DA22A335F9B00BD9E26 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				D4596DA32A335F9B00BD9E26 /* CountryCode.graphql.swift */,
+				D4596DA42A335F9B00BD9E26 /* CurrencyCode.graphql.swift */,
+				D4596DA52A335F9B00BD9E26 /* LanguageCode.graphql.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		D4596DA62A335F9B00BD9E26 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				D4596DA72A335F9B00BD9E26 /* Image.graphql.swift */,
+				D4596DA82A335F9B00BD9E26 /* ProductPriceRange.graphql.swift */,
+				D4596DA92A335F9B00BD9E26 /* ProductVariant.graphql.swift */,
+				D4596DAA2A335F9B00BD9E26 /* Blog.graphql.swift */,
+				D4596DAB2A335F9B00BD9E26 /* Model3d.graphql.swift */,
+				D4596DAC2A335F9B00BD9E26 /* MenuItem.graphql.swift */,
+				D4596DAD2A335F9B00BD9E26 /* Order.graphql.swift */,
+				D4596DAE2A335F9B00BD9E26 /* Comment.graphql.swift */,
+				D4596DAF2A335F9B00BD9E26 /* UrlRedirect.graphql.swift */,
+				D4596DB02A335F9B00BD9E26 /* Shop.graphql.swift */,
+				D4596DB12A335F9B00BD9E26 /* ImageConnection.graphql.swift */,
+				D4596DB22A335F9B00BD9E26 /* GenericFile.graphql.swift */,
+				D4596DB32A335F9B00BD9E26 /* ProductOption.graphql.swift */,
+				D4596DB42A335F9B00BD9E26 /* Collection.graphql.swift */,
+				D4596DB52A335F9B00BD9E26 /* ExternalVideo.graphql.swift */,
+				D4596DB62A335F9B00BD9E26 /* ProductConnection.graphql.swift */,
+				D4596DB72A335F9B00BD9E26 /* Menu.graphql.swift */,
+				D4596DB82A335F9B00BD9E26 /* CheckoutLineItem.graphql.swift */,
+				D4596DB92A335F9B00BD9E26 /* Location.graphql.swift */,
+				D4596DBA2A335F9B00BD9E26 /* Checkout.graphql.swift */,
+				D4596DBB2A335F9B00BD9E26 /* Metaobject.graphql.swift */,
+				D4596DBC2A335F9B00BD9E26 /* QueryRoot.graphql.swift */,
+				D4596DBD2A335F9B00BD9E26 /* Cart.graphql.swift */,
+				D4596DBE2A335F9B00BD9E26 /* MoneyV2.graphql.swift */,
+				D4596DBF2A335F9B00BD9E26 /* Payment.graphql.swift */,
+				D4596DC02A335F9B00BD9E26 /* Customer.graphql.swift */,
+				D4596DC12A335F9B00BD9E26 /* CartLine.graphql.swift */,
+				D4596DC22A335F9B00BD9E26 /* ProductEdge.graphql.swift */,
+				D4596DC32A335F9B00BD9E26 /* MailingAddress.graphql.swift */,
+				D4596DC42A335F9B00BD9E26 /* Page.graphql.swift */,
+				D4596DC52A335F9B00BD9E26 /* CollectionConnection.graphql.swift */,
+				D4596DC62A335F9B00BD9E26 /* ProductVariantConnection.graphql.swift */,
+				D4596DC72A335F9B00BD9E26 /* Market.graphql.swift */,
+				D4596DC82A335F9B00BD9E26 /* Metafield.graphql.swift */,
+				D4596DC92A335F9B00BD9E26 /* Article.graphql.swift */,
+				D4596DCA2A335F9B00BD9E26 /* AppliedGiftCard.graphql.swift */,
+				D4596DCB2A335F9B00BD9E26 /* MediaImage.graphql.swift */,
+				D4596DCC2A335F9B00BD9E26 /* Video.graphql.swift */,
+				D4596DCD2A335F9B00BD9E26 /* Product.graphql.swift */,
+				D4596DCE2A335F9B00BD9E26 /* ShopPolicy.graphql.swift */,
+				D4596DCF2A335F9B00BD9E26 /* MediaPresentation.graphql.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		D4596DD12A335F9B00BD9E26 /* InputObjects */ = {
+			isa = PBXGroup;
+			children = (
+				D4596DD22A335F9B00BD9E26 /* HasMetafieldsIdentifier.graphql.swift */,
+			);
+			path = InputObjects;
+			sourceTree = "<group>";
+		};
+		D4596DD42A335F9B00BD9E26 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				D4596DD52A335F9B00BD9E26 /* Media.graphql.swift */,
+				D4596DD62A335F9B00BD9E26 /* HasMetafields.graphql.swift */,
+				D4596DD72A335F9B00BD9E26 /* BaseCartLine.graphql.swift */,
+				D4596DD82A335F9B00BD9E26 /* OnlineStorePublishable.graphql.swift */,
+				D4596DD92A335F9B00BD9E26 /* Node.graphql.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D4596CEF2A33580200BD9E26 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4596CF82A33580200BD9E26 /* Shopify_ITI_SDK.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D4596CF32A33580200BD9E26 /* Shopify-ITI-SDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4596CFB2A33580200BD9E26 /* Build configuration list for PBXNativeTarget "Shopify-ITI-SDK" */;
+			buildPhases = (
+				FE3156E6F127C7666D3260C1 /* [CP] Check Pods Manifest.lock */,
+				D4596CEF2A33580200BD9E26 /* Headers */,
+				D4596CF02A33580200BD9E26 /* Sources */,
+				D4596CF12A33580200BD9E26 /* Frameworks */,
+				D4596CF22A33580200BD9E26 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Shopify-ITI-SDK";
+			productName = "Shopify-ITI-SDK";
+			productReference = D4596CF42A33580200BD9E26 /* Shopify_ITI_SDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D4596CEB2A33580200BD9E26 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					D4596CF32A33580200BD9E26 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+				};
+			};
+			buildConfigurationList = D4596CEE2A33580200BD9E26 /* Build configuration list for PBXProject "Shopify-ITI-SDK" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D4596CEA2A33580200BD9E26;
+			productRefGroup = D4596CF52A33580200BD9E26 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D4596CF32A33580200BD9E26 /* Shopify-ITI-SDK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D4596CF22A33580200BD9E26 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FE3156E6F127C7666D3260C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Shopify-ITI-SDK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D4596CF02A33580200BD9E26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4596E092A335F9B00BD9E26 /* Market.graphql.swift in Sources */,
+				D4596DDB2A335F9B00BD9E26 /* CollectionInfo.graphql.swift in Sources */,
+				D4596E0F2A335F9B00BD9E26 /* Product.graphql.swift in Sources */,
+				D4596DDC2A335F9B00BD9E26 /* ImageInfo.graphql.swift in Sources */,
+				D4596DEC2A335F9B00BD9E26 /* Blog.graphql.swift in Sources */,
+				D4596E142A335F9B00BD9E26 /* SchemaMetadata.graphql.swift in Sources */,
+				D4596DE82A335F9B00BD9E26 /* LanguageCode.graphql.swift in Sources */,
+				D4596E072A335F9B00BD9E26 /* CollectionConnection.graphql.swift in Sources */,
+				D4596DE22A335F9B00BD9E26 /* GetProductByIdQuery.graphql.swift in Sources */,
+				D4596DFB2A335F9B00BD9E26 /* Location.graphql.swift in Sources */,
+				D4596DEE2A335F9B00BD9E26 /* MenuItem.graphql.swift in Sources */,
+				D4596DF62A335F9B00BD9E26 /* Collection.graphql.swift in Sources */,
+				D4596DFF2A335F9B00BD9E26 /* Cart.graphql.swift in Sources */,
+				D4596E0D2A335F9B00BD9E26 /* MediaImage.graphql.swift in Sources */,
+				D4596E0A2A335F9B00BD9E26 /* Metafield.graphql.swift in Sources */,
+				D4596DDF2A335F9B00BD9E26 /* PriceRangeInfo.graphql.swift in Sources */,
+				D4596E192A335F9B00BD9E26 /* Node.graphql.swift in Sources */,
+				D4596E062A335F9B00BD9E26 /* Page.graphql.swift in Sources */,
+				D4596DE62A335F9B00BD9E26 /* CountryCode.graphql.swift in Sources */,
+				D4596E012A335F9B00BD9E26 /* Payment.graphql.swift in Sources */,
+				D4596DF72A335F9B00BD9E26 /* ExternalVideo.graphql.swift in Sources */,
+				D4596E112A335F9B00BD9E26 /* MediaPresentation.graphql.swift in Sources */,
+				D4596DE32A335F9B00BD9E26 /* GetProductsByQuery.graphql.swift in Sources */,
+				D4596E042A335F9B00BD9E26 /* ProductEdge.graphql.swift in Sources */,
+				D4596E0E2A335F9B00BD9E26 /* Video.graphql.swift in Sources */,
+				D4596E052A335F9B00BD9E26 /* MailingAddress.graphql.swift in Sources */,
+				D4596DE42A335F9B00BD9E26 /* Decimal.swift in Sources */,
+				D4596E082A335F9B00BD9E26 /* ProductVariantConnection.graphql.swift in Sources */,
+				D4596DF32A335F9B00BD9E26 /* ImageConnection.graphql.swift in Sources */,
+				D4596DDA2A335F9B00BD9E26 /* MetafieldInfo.graphql.swift in Sources */,
+				D4596DFC2A335F9B00BD9E26 /* Checkout.graphql.swift in Sources */,
+				D4596DE72A335F9B00BD9E26 /* CurrencyCode.graphql.swift in Sources */,
+				D4596E152A335F9B00BD9E26 /* Media.graphql.swift in Sources */,
+				D4596E132A335F9B00BD9E26 /* HasMetafieldsIdentifier.graphql.swift in Sources */,
+				D4596DF82A335F9B00BD9E26 /* ProductConnection.graphql.swift in Sources */,
+				D4596DEB2A335F9B00BD9E26 /* ProductVariant.graphql.swift in Sources */,
+				D4596DF02A335F9B00BD9E26 /* Comment.graphql.swift in Sources */,
+				D4596DFE2A335F9B00BD9E26 /* QueryRoot.graphql.swift in Sources */,
+				D4596DEF2A335F9B00BD9E26 /* Order.graphql.swift in Sources */,
+				D4596E122A335F9B00BD9E26 /* SchemaConfiguration.swift in Sources */,
+				D4596E172A335F9B00BD9E26 /* BaseCartLine.graphql.swift in Sources */,
+				D4596DFA2A335F9B00BD9E26 /* CheckoutLineItem.graphql.swift in Sources */,
+				D4596DFD2A335F9B00BD9E26 /* Metaobject.graphql.swift in Sources */,
+				D4596DEA2A335F9B00BD9E26 /* ProductPriceRange.graphql.swift in Sources */,
+				D4596E022A335F9B00BD9E26 /* Customer.graphql.swift in Sources */,
+				D4596DED2A335F9B00BD9E26 /* Model3d.graphql.swift in Sources */,
+				D4596DE12A335F9B00BD9E26 /* ShopifyAPI.graphql.swift in Sources */,
+				D4596DDD2A335F9B00BD9E26 /* MoneyInfo.graphql.swift in Sources */,
+				D4596DF22A335F9B00BD9E26 /* Shop.graphql.swift in Sources */,
+				D4596E162A335F9B00BD9E26 /* HasMetafields.graphql.swift in Sources */,
+				D4596E0C2A335F9B00BD9E26 /* AppliedGiftCard.graphql.swift in Sources */,
+				D4596DF52A335F9B00BD9E26 /* ProductOption.graphql.swift in Sources */,
+				D4596DF42A335F9B00BD9E26 /* GenericFile.graphql.swift in Sources */,
+				D4596DDE2A335F9B00BD9E26 /* ProductVariantInfo.graphql.swift in Sources */,
+				D4596DE02A335F9B00BD9E26 /* Test.graphql.swift in Sources */,
+				D4596DE92A335F9B00BD9E26 /* Image.graphql.swift in Sources */,
+				D4596E102A335F9B00BD9E26 /* ShopPolicy.graphql.swift in Sources */,
+				D4596DF12A335F9B00BD9E26 /* UrlRedirect.graphql.swift in Sources */,
+				D4596E032A335F9B00BD9E26 /* CartLine.graphql.swift in Sources */,
+				D4596E182A335F9B00BD9E26 /* OnlineStorePublishable.graphql.swift in Sources */,
+				D4596E002A335F9B00BD9E26 /* MoneyV2.graphql.swift in Sources */,
+				D4596DE52A335F9B00BD9E26 /* URL.swift in Sources */,
+				D4596DF92A335F9B00BD9E26 /* Menu.graphql.swift in Sources */,
+				D4596E0B2A335F9B00BD9E26 /* Article.graphql.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D4596CF92A33580200BD9E26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D4596CFA2A33580200BD9E26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D4596CFC2A33580200BD9E26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05421D1BA1B3B124CBAD976D /* Pods-Shopify-ITI-SDK.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 49YMMDXGST;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iti.Shopify-ITI-SDK";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D4596CFD2A33580200BD9E26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12D2F547552771B8B19D7463 /* Pods-Shopify-ITI-SDK.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 49YMMDXGST;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iti.Shopify-ITI-SDK";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D4596CEE2A33580200BD9E26 /* Build configuration list for PBXProject "Shopify-ITI-SDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4596CF92A33580200BD9E26 /* Debug */,
+				D4596CFA2A33580200BD9E26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4596CFB2A33580200BD9E26 /* Build configuration list for PBXNativeTarget "Shopify-ITI-SDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4596CFC2A33580200BD9E26 /* Debug */,
+				D4596CFD2A33580200BD9E26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D4596CEB2A33580200BD9E26 /* Project object */;
+}

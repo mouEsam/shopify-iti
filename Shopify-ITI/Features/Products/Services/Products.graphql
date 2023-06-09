@@ -1,0 +1,23 @@
+query getProductsByQuery($after: String,
+                         $first: Int!,
+                         $query: String!,
+                         $country: CountryCode, 
+                         $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+    products(first: $first, after: $after, query: $query) {
+        edges {
+            cursor
+            node {
+                id
+                handle
+                title
+                description
+                featuredImage {
+                    ...imageInfo
+                }
+                priceRange {
+                    ...priceRangeInfo
+                }
+            }
+        }
+    }
+}

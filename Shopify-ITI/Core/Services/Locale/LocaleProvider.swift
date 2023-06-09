@@ -9,6 +9,6 @@ import Foundation
 
 // TODO: refactor to use runtime dynamic values
 struct LocaleProvider: AnyLocaleProvider {
-    var country: String { "EG" }
+    var country: String { "US" }
     var language: String { "EN" }
 }

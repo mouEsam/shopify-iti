@@ -18,10 +18,11 @@
       }
     },
     "schemaTypes" : {
-      "path" : "./ShopifyAPI",
+      "path" : "./Shopify-ITI-SDK/ShopifyAPI",
       "moduleType" : {
         "embeddedInTarget" : {
-          "name" : "Shopify-ITI"
+          "name" : "Shopify-ITI-SDK",
+          "accessModifier": "public"
         }
       }
     },
