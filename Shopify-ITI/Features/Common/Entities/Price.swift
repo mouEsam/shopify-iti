@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Shopify_ITI_SDK
 
 struct PriceRange {
     let minPrice: Price
@@ -15,6 +16,7 @@ struct PriceRange {
 protocol PriceRangeConvertible {
     associatedtype MinVariantPrice: PriceConvertible
     associatedtype MaxVariantPrice: PriceConvertible
+    
     var minVariantPrice: MinVariantPrice { get }
     var maxVariantPrice: MaxVariantPrice { get }
 }

@@ -32,6 +32,8 @@ extension ShopifyAPI {
     static func objectType(forTypename typename: String) -> Object? {
       switch typename {
       case "QueryRoot": return ShopifyAPI.Objects.QueryRoot
+      case "ProductConnection": return ShopifyAPI.Objects.ProductConnection
+      case "ProductEdge": return ShopifyAPI.Objects.ProductEdge
       case "Product": return ShopifyAPI.Objects.Product
       case "Article": return ShopifyAPI.Objects.Article
       case "Metafield": return ShopifyAPI.Objects.Metafield

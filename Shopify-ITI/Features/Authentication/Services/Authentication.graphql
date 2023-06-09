@@ -1,0 +1,4 @@
+fragment test on MoneyV2 {
+  amount
+  currencyCode
+}

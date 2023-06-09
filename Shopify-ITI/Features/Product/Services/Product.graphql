@@ -48,5 +48,3 @@ query getProductById($id: ID!,
     }
   }
 }
-
-

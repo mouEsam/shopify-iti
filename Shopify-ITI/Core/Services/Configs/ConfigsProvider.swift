@@ -11,4 +11,5 @@ struct ConfigsProvider: AnyConfigsProvider {
     let collectionsCountInProductInfoPage: Int = 10
     let variantsCountInProductInfoPage: Int = 10
     let imagesCountInProductInfoPage: Int = 10
+    let productsCountPerPage: Int = 10
 }

@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Apollo
+import Shopify_ITI_SDK
 
 protocol AnyLocaleProvider {
     var country: String { get }
