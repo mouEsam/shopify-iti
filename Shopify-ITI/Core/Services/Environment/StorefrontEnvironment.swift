@@ -10,6 +10,12 @@ import Foundation
 // https://18c640d114bd302801f792ba0f7432aa:74fc3fc4ffb7889a033a7ab71b34499d@mad43-alex-ios-team1.myshopify.com/api/2022-01/graphql.json
 
 struct StorefronEnvironmentProvider: AnyEnvironmentProvider {
+    static func register(_ container: AppContainer) {
+        container.register(type: (any AnyEnvironmentProvider).self) { resolver in
+            StorefronEnvironmentProvider()
+        }
+    }
+    
     let shopifyAccessTokenHeader: String = "X-Shopify-Storefront-Access-Token"
 
     let shopifyAccessToken: String = "74fc3fc4ffb7889a033a7ab71b34499d"

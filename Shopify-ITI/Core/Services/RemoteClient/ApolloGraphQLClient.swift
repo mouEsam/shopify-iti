@@ -17,6 +17,12 @@ import Apollo
  */
 
 struct ApolloGraphQLClient: GraphQLClient {
+    static func register(_ container: AppContainer) {
+        container.register(type: (any GraphQLClient).self) { resolver in
+            ApolloGraphQLClient(environment: resolver.require((any AnyEnvironmentProvider).self))
+        }
+    }
+    
     private let environment: any AnyEnvironmentProvider
     private let client: ApolloClient
     private let queue: DispatchQueue

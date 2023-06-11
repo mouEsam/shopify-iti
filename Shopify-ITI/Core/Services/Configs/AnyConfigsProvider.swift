@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AnyConfigsProvider {
+protocol AnyConfigsProvider: AnyInjectable {
     var collectionsCountInProductInfoPage: Int { get }
     var variantsCountInProductInfoPage: Int { get }
     var imagesCountInProductInfoPage: Int { get }
