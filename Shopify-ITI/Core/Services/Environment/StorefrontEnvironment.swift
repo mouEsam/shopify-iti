@@ -7,7 +7,7 @@
 
 import Foundation
 
-// https://18c640d114bd302801f792ba0f7432aa:74fc3fc4ffb7889a033a7ab71b34499d@mad43-alex-ios-team1.myshopify.com/api/2022-01/graphql.json
+// https://18c640d114bd302801f792ba0f7432aa:74fc3fc4ffb7889a033a7ab71b34499d@mad43-alex-ios-team1.myshopify.com/api/2023-04/graphql.json
 
 struct StorefronEnvironmentProvider: AnyEnvironmentProvider {
     static func register(_ container: AppContainer) {
