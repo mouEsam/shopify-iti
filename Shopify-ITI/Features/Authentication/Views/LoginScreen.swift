@@ -22,22 +22,28 @@ struct LoginScreen: View {
     
     var body: some View {
         VStack {
-            TextField("Enter Email", text: $viewModel.email)
-                .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            if let error = viewModel.emailError {
-                Text(error)
-                    .foregroundColor(.red)
+            Group {
+                TextField("Enter Email", text: $viewModel.email)
                     .padding()
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .textCase(.lowercase)
+                    .textInputAutocapitalization(.never)
+                if let error = viewModel.emailError {
+                    Text(error)
+                        .foregroundColor(.red)
+                        .padding()
+                }
             }
             
-            TextField("Enter Password", text: $viewModel.password)
-                .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            if let error = viewModel.passwordError {
-                Text(error)
-                    .foregroundColor(.red)
+            Group {
+                TextField("Enter Password", text: $viewModel.password)
                     .padding()
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                if let error = viewModel.passwordError {
+                    Text(error)
+                        .foregroundColor(.red)
+                        .padding()
+                }
             }
             
             Button("Submit") {

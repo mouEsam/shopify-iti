@@ -56,6 +56,7 @@ class LoginViewModel: ObservableObject {
         await MainActor.run {
             switch result {
                 case .success(let session):
+                    dump(session)
                     operationState = .loaded(data: SourcedData.remote(session))
                     break
                 case .failure(let error):

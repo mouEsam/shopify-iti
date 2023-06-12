@@ -13,11 +13,11 @@ import SwiftUI
 class Injected<T>: DynamicProperty {
     @EnvironmentObject private var container: AppContainer
     
-    private let serviceType: ServiceType
+    private let name: String?
     private var wrapped: T?
     
-    init(serviceType: ServiceType = .automatic) {
-        self.serviceType = serviceType
+    init(name: String? = nil) {
+        self.name = name
     }
     
     var wrappedValue: T {
@@ -28,7 +28,7 @@ class Injected<T>: DynamicProperty {
             if let value = wrapped {
                 return value
             }
-            let value = container.require(T.self, serviceType)
+            let value = container.require(T.self, name: name)
             wrapped = value
             return value
         }

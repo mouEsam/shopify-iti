@@ -20,13 +20,16 @@ class UserManager: AnyUserManager {
         container.register(type: AnyUserManager.self) { resolver in
             UserManager(store: resolver.require((any AnyUserLocalStore).self),
                         notificationCenter: resolver.require((any AnyNotificationCenter).self),
-                        authService: resolver.require(AuthenticationRemoteService.self))
+                        authService: resolver.require(AuthenticationRemoteService.self),
+                        userProvider: resolver.require((any AnyUserHolder).self))
         }
     }
     
     private let store: any AnyUserLocalStore
     private let notificationCenter: any AnyNotificationCenter
     private let authService: AuthenticationRemoteService
+    
+    private let userProvider: any AnyUserHolder
     
     private var cancellable: AnyCancellable? = nil
     private var task: Task<Any, Error>? = nil
@@ -36,10 +39,12 @@ class UserManager: AnyUserManager {
     
     init(store: some AnyUserLocalStore,
          notificationCenter: some AnyNotificationCenter,
-         authService: AuthenticationRemoteService) {
+         authService: AuthenticationRemoteService,
+         userProvider: some AnyUserHolder) {
         self.store = store
         self.notificationCenter = notificationCenter
         self.authService = authService
+        self.userProvider = userProvider
         self.initialize()
     }
     
@@ -79,10 +84,12 @@ class UserManager: AnyUserManager {
     }
     
     private func handleUser(_ user: User) {
+        userProvider.user = user
         state = .some(user: user)
     }
     
     private func handleNoUser() {
+        userProvider.user = nil
         state = .none
     }
 }

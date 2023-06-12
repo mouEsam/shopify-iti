@@ -9,6 +9,7 @@ import Foundation
 import Swinject
 
 class AppContainer: ObservableObject {
+    typealias Resolver = Swinject.Resolver
     private let container: Container
     
     private init(resolver: Container) {
@@ -32,5 +33,15 @@ class AppContainer: ObservableObject {
     
     func resolve<Service>( _ type: Service.Type, name: String? = nil) -> Service? {
         return container.resolve(type, name: name)
+    }
+    
+    func require<Service>( _ type: Service.Type, name: String? = nil) -> Service {
+        return resolve(type, name: name)!
+    }
+}
+
+extension Resolver {
+    func require<Service>( _ type: Service.Type, name: String? = nil) -> Service {
+        return resolve(type, name: name)!
     }
 }
