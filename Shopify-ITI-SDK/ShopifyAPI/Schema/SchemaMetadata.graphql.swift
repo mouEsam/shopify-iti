@@ -72,6 +72,20 @@ public extension ShopifyAPI {
       case "CollectionConnection": return ShopifyAPI.Objects.CollectionConnection
       case "ImageConnection": return ShopifyAPI.Objects.ImageConnection
       case "ProductVariantConnection": return ShopifyAPI.Objects.ProductVariantConnection
+      case "Mutation": return ShopifyAPI.Objects.Mutation
+      case "CustomerUpdatePayload": return ShopifyAPI.Objects.CustomerUpdatePayload
+      case "CustomerAccessToken": return ShopifyAPI.Objects.CustomerAccessToken
+      case "CustomerUserError": return ShopifyAPI.Objects.CustomerUserError
+      case "CartUserError": return ShopifyAPI.Objects.CartUserError
+      case "MetafieldDeleteUserError": return ShopifyAPI.Objects.MetafieldDeleteUserError
+      case "MetafieldsSetUserError": return ShopifyAPI.Objects.MetafieldsSetUserError
+      case "CheckoutUserError": return ShopifyAPI.Objects.CheckoutUserError
+      case "UserError": return ShopifyAPI.Objects.UserError
+      case "CustomerCreatePayload": return ShopifyAPI.Objects.CustomerCreatePayload
+      case "CustomerAccessTokenCreatePayload": return ShopifyAPI.Objects.CustomerAccessTokenCreatePayload
+      case "CustomerRecoverPayload": return ShopifyAPI.Objects.CustomerRecoverPayload
+      case "CustomerAccessTokenRenewPayload": return ShopifyAPI.Objects.CustomerAccessTokenRenewPayload
+      case "CustomerAccessTokenDeletePayload": return ShopifyAPI.Objects.CustomerAccessTokenDeletePayload
       default: return nil
       }
     }

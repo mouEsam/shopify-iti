@@ -1,0 +1,36 @@
+mutation updateCustomer($customerAccessToken: String!, 
+                        $customer: CustomerUpdateInput!,
+                        $country: CountryCode, 
+                        $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+  customerUpdate(customerAccessToken: $customerAccessToken, customer: $customer) {
+    customer {
+      id
+      email
+      firstName
+      lastName
+      phone
+    }
+    customerAccessToken {
+      accessToken
+      expiresAt
+    }
+    customerUserErrors {
+      code
+      field
+      message
+    }
+  }
+}
+
+query getCustomerWithAccessToken($customerAccessToken: String!, 
+                                 $country: CountryCode, 
+                                 $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+  customer(customerAccessToken: $customerAccessToken) {
+    id
+    firstName
+    lastName
+    acceptsMarketing
+    email
+    phone
+  }
+}

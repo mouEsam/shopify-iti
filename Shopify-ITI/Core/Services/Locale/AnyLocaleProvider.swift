@@ -9,7 +9,7 @@ import Foundation
 import Apollo
 import Shopify_ITI_SDK
 
-protocol AnyLocaleProvider {
+protocol AnyLocaleProvider: AnyInjectable {
     var country: String { get }
     var language: String { get }
 }

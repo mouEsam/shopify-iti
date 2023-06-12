@@ -2,17 +2,21 @@ PODS:
   - Apollo (1.2.1):
     - Apollo/Core (= 1.2.1)
   - Apollo/Core (1.2.1)
+  - Swinject (2.8.3)
 
 DEPENDENCIES:
   - Apollo
+  - Swinject (~> 2.8)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Apollo
+    - Swinject
 
 SPEC CHECKSUMS:
   Apollo: fe380f40e55e501a2499dd5885fab0cdf082b2bb
+  Swinject: 893c9a543000ac2f10ee4cbaf0933c6992c935d5
 
-PODFILE CHECKSUM: ef75b787aa1e96bfd41066312d39eb41ef29e2e7
+PODFILE CHECKSUM: 82a5243d5648b342349de0943f25043bd384b25e
 
 COCOAPODS: 1.12.1

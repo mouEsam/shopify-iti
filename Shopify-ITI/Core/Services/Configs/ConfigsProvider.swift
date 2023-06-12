@@ -8,6 +8,12 @@
 import Foundation
 
 struct ConfigsProvider: AnyConfigsProvider {
+    static func register(_ container: AppContainer) {
+        container.register(type: (any AnyConfigsProvider).self) { resolver in
+            ConfigsProvider()
+        }
+    }
+    
     let collectionsCountInProductInfoPage: Int = 10
     let variantsCountInProductInfoPage: Int = 10
     let imagesCountInProductInfoPage: Int = 10

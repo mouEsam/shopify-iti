@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-protocol AnyNotificationCenter {
+protocol AnyNotificationCenter: AnyInjectable {
     func post(_ notification: Notification)
     func publisher(for name: Notification.Name, object: AnyObject?) -> NotificationCenter.Publisher
 }

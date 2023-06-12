@@ -18,6 +18,7 @@ target 'Shopify-ITI' do
   use_frameworks!
   
   shared_pods
+  pod 'Swinject', '~> 2.8'
 end
 
 target 'Shopify-ITI-SDK' do
