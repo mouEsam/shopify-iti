@@ -7,4 +7,10 @@
 
 import Foundation
 
-extension NotificationCenter: AnyNotificationCenter {}
+extension NotificationCenter: AnyNotificationCenter {
+    static func register(_ container: AppContainer) {
+        container.register(type: (any AnyNotificationCenter).self) { resolver in
+            NotificationCenter.default
+        }
+    }
+}

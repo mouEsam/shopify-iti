@@ -10,7 +10,7 @@ import Apollo
 
 typealias GraphQLCancellable = Apollo.Cancellable
 
-protocol GraphQLClient {
+protocol GraphQLClient: AnyInjectable {
     func fetch<Query: GraphQLQuery>(query: Query,
                                     operation: inout GraphQLCancellable?) async -> Result<GraphQLResult<Query.Data>, Error>
     func execute<Query: GraphQLMutation>(query: Query,

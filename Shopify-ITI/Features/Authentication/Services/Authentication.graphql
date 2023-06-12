@@ -1,4 +1,75 @@
-fragment test on MoneyV2 {
-  amount
-  currencyCode
+mutation createCustomerAccount($input: CustomerCreateInput!,
+                               $country: CountryCode, 
+                               $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+  customerCreate(input: $input) {
+    customer {
+      id
+      email
+      firstName
+      lastName
+      phone
+    }
+    customerUserErrors {
+      code
+      field
+      message
+    }
+  }
+}
+
+mutation createCustomerAccessToken($input: CustomerAccessTokenCreateInput!,
+                                   $country: CountryCode, 
+                                   $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+  customerAccessTokenCreate(input: $input) {
+    customerAccessToken {
+      accessToken
+      expiresAt
+    }
+    customerUserErrors {
+      code
+      field
+      message
+    }
+  }
+}
+
+mutation recoverCustomerAccount($email: String!,
+                                $country: CountryCode, 
+                                $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+  customerRecover(email: $email) {
+    customerUserErrors {
+      code
+      field
+      message
+    }
+  }
+}
+
+
+mutation renewCustomerAccessToken($customerAccessToken: String!, 
+                                  $country: CountryCode, 
+                                  $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+  customerAccessTokenRenew(customerAccessToken: $customerAccessToken) {
+    customerAccessToken {
+      accessToken
+      expiresAt
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}
+
+mutation deleteCustomerAccessToken($customerAccessToken: String!, 
+                                   $country: CountryCode, 
+                                   $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+  customerAccessTokenDelete(customerAccessToken: $customerAccessToken) {
+    deletedAccessToken
+    deletedCustomerAccessTokenId
+    userErrors {
+      field
+      message
+    }
+  }
 }
