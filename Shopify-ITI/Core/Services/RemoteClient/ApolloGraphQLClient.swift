@@ -8,18 +8,15 @@
 import Foundation
 import Apollo
 
-/*
- curl -X POST \
- https://18c640d114bd302801f792ba0f7432aa:74fc3fc4ffb7889a033a7ab71b34499d@mad43-alex-ios-team1.myshopify.com/api/2022-01/graphql.json \
- -H 'Content-Type: application/graphql' \
- -H 'X-Shopify-Storefront-Access-Token: 74fc3fc4ffb7889a033a7ab71b34499d' \
- -d 'query { products(first: 10) { edges { cursor node { title } } } }'
- */
-
 struct ApolloGraphQLClient: GraphQLClient {
     static func register(_ container: AppContainer) {
         container.register(type: (any GraphQLClient).self) { resolver in
             ApolloGraphQLClient(environment: resolver.require((any AnyEnvironmentProvider).self))
+        }
+        container.register(type: (any GraphQLClient).self,
+                           name: AdminEnvironmentProvider.diName) { resolver in
+            ApolloGraphQLClient(environment: resolver.require((any AnyEnvironmentProvider).self,
+                                                              name: AdminEnvironmentProvider.diName))
         }
     }
     

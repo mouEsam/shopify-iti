@@ -88,6 +88,7 @@
 		D4791BFF2A37358500831D1F /* AnyKeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4791BFE2A37358500831D1F /* AnyKeyChain.swift */; };
 		D4791C022A373E8800831D1F /* AnyUserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4791C012A373E8800831D1F /* AnyUserProvider.swift */; };
 		D4791C042A373EA200831D1F /* UserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4791C032A373EA200831D1F /* UserProvider.swift */; };
+		D4A714342A37CC2400391FDE /* AdminEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A714332A37CC2400391FDE /* AdminEnvironment.swift */; };
 		D4DBCBB12A2D3D81004EE325 /* AnyRemoteFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBCB902A2D3D81004EE325 /* AnyRemoteFetchStrategy.swift */; };
 		D4DBCBB22A2D3D81004EE325 /* AnyDataFetchCacheStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBCB922A2D3D81004EE325 /* AnyDataFetchCacheStrategy.swift */; };
 		D4DBCBB52A2D3D81004EE325 /* AnyConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBCB992A2D3D81004EE325 /* AnyConnectivity.swift */; };
@@ -207,6 +208,7 @@
 		D4791BFE2A37358500831D1F /* AnyKeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyKeyChain.swift; sourceTree = "<group>"; };
 		D4791C012A373E8800831D1F /* AnyUserProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyUserProvider.swift; sourceTree = "<group>"; };
 		D4791C032A373EA200831D1F /* UserProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProvider.swift; sourceTree = "<group>"; };
+		D4A714332A37CC2400391FDE /* AdminEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminEnvironment.swift; sourceTree = "<group>"; };
 		D4DBCB902A2D3D81004EE325 /* AnyRemoteFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyRemoteFetchStrategy.swift; sourceTree = "<group>"; };
 		D4DBCB922A2D3D81004EE325 /* AnyDataFetchCacheStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyDataFetchCacheStrategy.swift; sourceTree = "<group>"; };
 		D4DBCB972A2D3D81004EE325 /* index */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = index; sourceTree = "<group>"; };
@@ -808,6 +810,7 @@
 			children = (
 				D4DBCBA42A2D3D81004EE325 /* AnyEnvironment.swift */,
 				D4E854022A30F3BB00515FCD /* StorefrontEnvironment.swift */,
+				D4A714332A37CC2400391FDE /* AdminEnvironment.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -1112,6 +1115,7 @@
 				D464A7A22A3642C100C37A9A /* AuthenticationManager.swift in Sources */,
 				D464A5132A35CC7000C37A9A /* Errors.swift in Sources */,
 				D452D7C02A326A47003B485B /* ProductRemoteService.swift in Sources */,
+				D4A714342A37CC2400391FDE /* AdminEnvironment.swift in Sources */,
 				D4791C022A373E8800831D1F /* AnyUserProvider.swift in Sources */,
 				D464A7BC2A36647400C37A9A /* LoginScreen.swift in Sources */,
 				D452D7C22A326EAB003B485B /* Price.swift in Sources */,
