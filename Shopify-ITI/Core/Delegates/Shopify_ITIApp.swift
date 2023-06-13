@@ -14,6 +14,7 @@ struct Shopify_ITIApp: App {
         WindowGroup {
             
             RootView()
+
         }
     }
 }

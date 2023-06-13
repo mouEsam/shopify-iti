@@ -1,0 +1,57 @@
+query getCartQuery($cartId: ID!,
+                $country: CountryCode,
+                $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+  cart(id: $cartId) {
+    id
+    createdAt
+    updatedAt
+    checkoutUrl
+    lines(first: 10) {
+      edges {
+        node {
+          id
+          quantity
+          cost{
+                amountPerQuantity{
+                    amount
+                }
+                totalAmount{
+                    amount
+                }
+            }
+          merchandise {
+            ... productVariantInfo
+          }
+          
+        }
+      }
+    }
+    
+    cost {
+      totalAmount {
+        amount
+        currencyCode
+      }
+      subtotalAmount {
+        amount
+        currencyCode
+      }
+      totalTaxAmount {
+        amount
+        currencyCode
+      }
+      totalDutyAmount {
+        amount
+        currencyCode
+      }
+    }
+    buyerIdentity {
+      email
+      phone
+      customer {
+        id
+      }
+      countryCode
+    }
+  }
+}
