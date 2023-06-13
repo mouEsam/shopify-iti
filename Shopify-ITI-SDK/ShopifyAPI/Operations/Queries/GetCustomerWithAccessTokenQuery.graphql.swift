@@ -13,6 +13,7 @@ public extension ShopifyAPI {
           customer(customerAccessToken: $customerAccessToken) {
             __typename
             id
+            displayName
             firstName
             lastName
             acceptsMarketing
@@ -68,6 +69,7 @@ public extension ShopifyAPI {
         public static var __selections: [Apollo.Selection] { [
           .field("__typename", String.self),
           .field("id", ShopifyAPI.ID.self),
+          .field("displayName", String.self),
           .field("firstName", String?.self),
           .field("lastName", String?.self),
           .field("acceptsMarketing", Bool.self),
@@ -77,6 +79,8 @@ public extension ShopifyAPI {
 
         /// A unique ID for the customer.
         public var id: ShopifyAPI.ID { __data["id"] }
+        /// The customer’s name, email or phone number.
+        public var displayName: String { __data["displayName"] }
         /// The customer’s first name.
         public var firstName: String? { __data["firstName"] }
         /// The customer’s last name.

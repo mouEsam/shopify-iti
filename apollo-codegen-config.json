@@ -1,34 +1,50 @@
 {
-  "schemaNamespace" : "ShopifyAPI",
-  "options" : {
-    "cocoapodsCompatibleImportStatements" : true
+  "schemaNamespace": "ShopifyAPI",
+  "options": {
+    "cocoapodsCompatibleImportStatements": true
   },
-  "input" : {
-    "operationSearchPaths" : [
-      "**/*.graphql"
+  "input": {
+    "operationSearchPaths": [
+      "**/*.graphql",
+      "**/*.common.graphql",
+      "!**/*.admin.graphql"
     ],
-    "schemaSearchPaths" : [
-      "**/*.graphqls",
-      "**/schema.json",
+    "schemaSearchPaths": [
+      "**/schema.json"
     ]
   },
-  "output" : {
-    "testMocks" : {
-      "none" : {
-      }
+  "output": {
+    "testMocks": {
+      "none": {}
     },
-    "schemaTypes" : {
-      "path" : "./Shopify-ITI-SDK/ShopifyAPI",
-      "moduleType" : {
-        "embeddedInTarget" : {
-          "name" : "Shopify-ITI-SDK",
+    "schemaTypes": {
+      "path": "./Shopify-ITI-SDK/ShopifyAPI",
+      "moduleType": {
+        "embeddedInTarget": {
+          "name": "Shopify-ITI-SDK",
           "accessModifier": "public"
         }
       }
     },
-    "operations" : {
-      "inSchemaModule" : {
-      }
+    "operations": {
+      "inSchemaModule": {}
     }
+  },
+  "schemaDownloadConfiguration": {
+    "downloadMethod": {
+      "introspection": {
+        "endpointURL": "https://18c640d114bd302801f792ba0f7432aa:74fc3fc4ffb7889a033a7ab71b34499d@mad43-alex-ios-team1.myshopify.com/api/2023-04/graphql.json",
+        "httpMethod": {
+          "POST": {}
+        },
+        "includeDeprecatedInputValues": false,
+        "outputFormat": "SDL"
+      }
+    },
+    "downloadTimeout": 60,
+    "headers": [
+      "X-Shopify-Storefront-Access-Token: 74fc3fc4ffb7889a033a7ab71b34499d"
+    ],
+    "outputPath": "./GraphqlSchemas/"
   }
 }

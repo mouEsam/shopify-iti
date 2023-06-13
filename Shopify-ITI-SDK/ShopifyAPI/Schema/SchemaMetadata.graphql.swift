@@ -36,39 +36,40 @@ public extension ShopifyAPI {
       case "ProductEdge": return ShopifyAPI.Objects.ProductEdge
       case "Product": return ShopifyAPI.Objects.Product
       case "Article": return ShopifyAPI.Objects.Article
-      case "Metafield": return ShopifyAPI.Objects.Metafield
+      case "AppliedGiftCard": return ShopifyAPI.Objects.AppliedGiftCard
       case "Blog": return ShopifyAPI.Objects.Blog
       case "Collection": return ShopifyAPI.Objects.Collection
       case "Page": return ShopifyAPI.Objects.Page
       case "Cart": return ShopifyAPI.Objects.Cart
-      case "MailingAddress": return ShopifyAPI.Objects.MailingAddress
+      case "CartLine": return ShopifyAPI.Objects.CartLine
       case "Checkout": return ShopifyAPI.Objects.Checkout
-      case "AppliedGiftCard": return ShopifyAPI.Objects.AppliedGiftCard
       case "CheckoutLineItem": return ShopifyAPI.Objects.CheckoutLineItem
-      case "ProductVariant": return ShopifyAPI.Objects.ProductVariant
-      case "MediaPresentation": return ShopifyAPI.Objects.MediaPresentation
-      case "ProductOption": return ShopifyAPI.Objects.ProductOption
-      case "Location": return ShopifyAPI.Objects.Location
-      case "Order": return ShopifyAPI.Objects.Order
-      case "Market": return ShopifyAPI.Objects.Market
-      case "Shop": return ShopifyAPI.Objects.Shop
-      case "MediaImage": return ShopifyAPI.Objects.MediaImage
-      case "Video": return ShopifyAPI.Objects.Video
-      case "ExternalVideo": return ShopifyAPI.Objects.ExternalVideo
-      case "Model3d": return ShopifyAPI.Objects.Model3d
-      case "ShopPolicy": return ShopifyAPI.Objects.ShopPolicy
-      case "GenericFile": return ShopifyAPI.Objects.GenericFile
-      case "Metaobject": return ShopifyAPI.Objects.Metaobject
       case "Comment": return ShopifyAPI.Objects.Comment
+      case "ExternalVideo": return ShopifyAPI.Objects.ExternalVideo
+      case "MediaImage": return ShopifyAPI.Objects.MediaImage
+      case "Model3d": return ShopifyAPI.Objects.Model3d
+      case "Video": return ShopifyAPI.Objects.Video
+      case "GenericFile": return ShopifyAPI.Objects.GenericFile
+      case "Location": return ShopifyAPI.Objects.Location
+      case "MailingAddress": return ShopifyAPI.Objects.MailingAddress
+      case "Market": return ShopifyAPI.Objects.Market
+      case "MediaPresentation": return ShopifyAPI.Objects.MediaPresentation
       case "Menu": return ShopifyAPI.Objects.Menu
       case "MenuItem": return ShopifyAPI.Objects.MenuItem
-      case "UrlRedirect": return ShopifyAPI.Objects.UrlRedirect
+      case "Metafield": return ShopifyAPI.Objects.Metafield
+      case "Metaobject": return ShopifyAPI.Objects.Metaobject
+      case "Order": return ShopifyAPI.Objects.Order
       case "Payment": return ShopifyAPI.Objects.Payment
-      case "CartLine": return ShopifyAPI.Objects.CartLine
+      case "ProductOption": return ShopifyAPI.Objects.ProductOption
+      case "ProductVariant": return ShopifyAPI.Objects.ProductVariant
+      case "Shop": return ShopifyAPI.Objects.Shop
+      case "ShopPolicy": return ShopifyAPI.Objects.ShopPolicy
+      case "UrlRedirect": return ShopifyAPI.Objects.UrlRedirect
       case "Customer": return ShopifyAPI.Objects.Customer
       case "Image": return ShopifyAPI.Objects.Image
       case "ProductPriceRange": return ShopifyAPI.Objects.ProductPriceRange
       case "MoneyV2": return ShopifyAPI.Objects.MoneyV2
+      case "PageInfo": return ShopifyAPI.Objects.PageInfo
       case "CollectionConnection": return ShopifyAPI.Objects.CollectionConnection
       case "ImageConnection": return ShopifyAPI.Objects.ImageConnection
       case "ProductVariantConnection": return ShopifyAPI.Objects.ProductVariantConnection
@@ -77,9 +78,9 @@ public extension ShopifyAPI {
       case "CustomerAccessToken": return ShopifyAPI.Objects.CustomerAccessToken
       case "CustomerUserError": return ShopifyAPI.Objects.CustomerUserError
       case "CartUserError": return ShopifyAPI.Objects.CartUserError
+      case "CheckoutUserError": return ShopifyAPI.Objects.CheckoutUserError
       case "MetafieldDeleteUserError": return ShopifyAPI.Objects.MetafieldDeleteUserError
       case "MetafieldsSetUserError": return ShopifyAPI.Objects.MetafieldsSetUserError
-      case "CheckoutUserError": return ShopifyAPI.Objects.CheckoutUserError
       case "UserError": return ShopifyAPI.Objects.UserError
       case "CustomerCreatePayload": return ShopifyAPI.Objects.CustomerCreatePayload
       case "CustomerAccessTokenCreatePayload": return ShopifyAPI.Objects.CustomerAccessTokenCreatePayload

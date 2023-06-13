@@ -29,6 +29,14 @@ target 'Shopify-ITI-SDK' do
   shared_pods
 end
 
+target 'Shopify-Admin-ITI-SDK' do
+  project 'Shopify-ITI-SDK/Shopify-ITI-SDK'
+
+  use_frameworks!
+  
+  shared_pods
+end
+
 post_install do |installer|
   return if !installer
   project = installer.pods_project

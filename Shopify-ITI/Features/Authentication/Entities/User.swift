@@ -10,6 +10,7 @@ import Shopify_ITI_SDK
 
 struct User: Identifiable {
     let id: String
+    let displayName: String
     let firstName: String
     let lastName: String
     let email: String
@@ -18,6 +19,7 @@ struct User: Identifiable {
 
 protocol UserConvertible {
     var id: String { get }
+    var displayName: String { get }
     var firstName: String? { get }
     var lastName: String? { get }
     var email: String? { get }
@@ -29,6 +31,7 @@ extension User: Codable {}
 extension User {
     init(from user: some UserConvertible) {
         self.init(id: user.id,
+                  displayName: user.displayName,
                   firstName: user.firstName!,
                   lastName: user.lastName!,
                   email: user.email!,

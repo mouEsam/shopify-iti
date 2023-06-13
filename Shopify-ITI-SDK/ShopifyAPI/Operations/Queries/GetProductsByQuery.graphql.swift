@@ -17,24 +17,17 @@ public extension ShopifyAPI {
               cursor
               node {
                 __typename
-                id
-                handle
-                title
-                description
-                featuredImage {
-                  __typename
-                  ...imageInfo
-                }
-                priceRange {
-                  __typename
-                  ...priceRangeInfo
-                }
+                ...productInfo
               }
+            }
+            pageInfo {
+              __typename
+              ...paginationInfo
             }
           }
         }
         """#,
-        fragments: [ImageInfo.self, PriceRangeInfo.self, MoneyInfo.self]
+        fragments: [ProductInfo.self, ImageInfo.self, PriceRangeInfo.self, MoneyInfo.self, PaginationInfo.self]
       ))
 
     public var after: GraphQLNullable<String>
@@ -92,10 +85,13 @@ public extension ShopifyAPI {
         public static var __selections: [Apollo.Selection] { [
           .field("__typename", String.self),
           .field("edges", [Edge].self),
+          .field("pageInfo", PageInfo.self),
         ] }
 
         /// A list of edges.
         public var edges: [Edge] { __data["edges"] }
+        /// Information to aid in pagination.
+        public var pageInfo: PageInfo { __data["pageInfo"] }
 
         /// Products.Edge
         ///
@@ -126,12 +122,7 @@ public extension ShopifyAPI {
             public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.Product }
             public static var __selections: [Apollo.Selection] { [
               .field("__typename", String.self),
-              .field("id", ShopifyAPI.ID.self),
-              .field("handle", String.self),
-              .field("title", String.self),
-              .field("description", String.self),
-              .field("featuredImage", FeaturedImage?.self),
-              .field("priceRange", PriceRange.self),
+              .fragment(ProductInfo.self),
             ] }
 
             /// A globally-unique ID.
@@ -152,6 +143,13 @@ public extension ShopifyAPI {
             /// The price range.
             public var priceRange: PriceRange { __data["priceRange"] }
 
+            public struct Fragments: FragmentContainer {
+              public let __data: DataDict
+              public init(_dataDict: DataDict) { __data = _dataDict }
+
+              public var productInfo: ProductInfo { _toFragment() }
+            }
+
             /// Products.Edge.Node.FeaturedImage
             ///
             /// Parent Type: `Image`
@@ -160,10 +158,6 @@ public extension ShopifyAPI {
               public init(_dataDict: DataDict) { __data = _dataDict }
 
               public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.Image }
-              public static var __selections: [Apollo.Selection] { [
-                .field("__typename", String.self),
-                .fragment(ImageInfo.self),
-              ] }
 
               /// A unique ID for the image.
               public var id: ShopifyAPI.ID? { __data["id"] }
@@ -199,10 +193,6 @@ public extension ShopifyAPI {
               public init(_dataDict: DataDict) { __data = _dataDict }
 
               public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.ProductPriceRange }
-              public static var __selections: [Apollo.Selection] { [
-                .field("__typename", String.self),
-                .fragment(PriceRangeInfo.self),
-              ] }
 
               /// The highest variant's price.
               public var maxVariantPrice: MaxVariantPrice { __data["maxVariantPrice"] }
@@ -260,6 +250,36 @@ public extension ShopifyAPI {
                 }
               }
             }
+          }
+        }
+
+        /// Products.PageInfo
+        ///
+        /// Parent Type: `PageInfo`
+        public struct PageInfo: ShopifyAPI.SelectionSet {
+          public let __data: DataDict
+          public init(_dataDict: DataDict) { __data = _dataDict }
+
+          public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.PageInfo }
+          public static var __selections: [Apollo.Selection] { [
+            .field("__typename", String.self),
+            .fragment(PaginationInfo.self),
+          ] }
+
+          /// The cursor corresponding to the first node in edges.
+          public var startCursor: String? { __data["startCursor"] }
+          /// The cursor corresponding to the last node in edges.
+          public var endCursor: String? { __data["endCursor"] }
+          /// Whether there are more pages to fetch following the current page.
+          public var hasNextPage: Bool { __data["hasNextPage"] }
+          /// Whether there are any pages prior to the current page.
+          public var hasPreviousPage: Bool { __data["hasPreviousPage"] }
+
+          public struct Fragments: FragmentContainer {
+            public let __data: DataDict
+            public init(_dataDict: DataDict) { __data = _dataDict }
+
+            public var paginationInfo: PaginationInfo { _toFragment() }
           }
         }
       }

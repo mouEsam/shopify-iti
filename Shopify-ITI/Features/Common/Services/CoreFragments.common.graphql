@@ -1,0 +1,36 @@
+fragment moneyInfo on MoneyV2 {
+  amount
+  currencyCode
+}
+
+fragment priceRangeInfo on ProductPriceRange {
+  maxVariantPrice {
+    ...moneyInfo
+  }
+  minVariantPrice {
+    ...moneyInfo
+  }
+}
+
+fragment imageInfo on Image {
+  id
+  url
+  altText
+  width
+  height
+}
+
+fragment metafieldInfo on Metafield {
+  id
+  key
+  description
+  type
+  value
+}
+
+fragment paginationInfo on PageInfo {
+  startCursor
+  endCursor
+  hasNextPage
+  hasPreviousPage
+}

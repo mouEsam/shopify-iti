@@ -16,6 +16,7 @@ public extension ShopifyAPI {
               __typename
               id
               email
+              displayName
               firstName
               lastName
               phone
@@ -94,6 +95,7 @@ public extension ShopifyAPI {
             .field("__typename", String.self),
             .field("id", ShopifyAPI.ID.self),
             .field("email", String?.self),
+            .field("displayName", String.self),
             .field("firstName", String?.self),
             .field("lastName", String?.self),
             .field("phone", String?.self),
@@ -103,6 +105,8 @@ public extension ShopifyAPI {
           public var id: ShopifyAPI.ID { __data["id"] }
           /// The customer’s email address.
           public var email: String? { __data["email"] }
+          /// The customer’s name, email or phone number.
+          public var displayName: String { __data["displayName"] }
           /// The customer’s first name.
           public var firstName: String? { __data["firstName"] }
           /// The customer’s last name.

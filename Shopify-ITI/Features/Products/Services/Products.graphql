@@ -7,17 +7,11 @@ query getProductsByQuery($after: String,
         edges {
             cursor
             node {
-                id
-                handle
-                title
-                description
-                featuredImage {
-                    ...imageInfo
-                }
-                priceRange {
-                    ...priceRangeInfo
-                }
+                ...productInfo
             }
+        }
+        pageInfo {
+            ...paginationInfo
         }
     }
 }

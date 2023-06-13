@@ -5,6 +5,7 @@ mutation createCustomerAccount($input: CustomerCreateInput!,
     customer {
       id
       email
+      displayName
       firstName
       lastName
       phone

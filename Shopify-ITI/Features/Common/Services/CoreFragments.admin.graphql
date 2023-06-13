@@ -1,0 +1,25 @@
+fragment productInfo on Product {
+  id
+  handle
+  title
+  description
+  featuredImage {
+      ...imageInfo
+  }
+  priceRange {
+      ...priceRangeInfo
+  }
+}
+
+fragment productVariantInfo on ProductVariant {
+  id
+  title
+  image {
+    ...imageInfo
+  }
+  barcode
+  sku
+  availableForSale
+  inventoryQuantity
+  price
+}
