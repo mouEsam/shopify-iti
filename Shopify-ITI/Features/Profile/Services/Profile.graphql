@@ -6,6 +6,7 @@ mutation updateCustomer($customerAccessToken: String!,
     customer {
       id
       email
+      displayName
       firstName
       lastName
       phone
@@ -27,6 +28,7 @@ query getCustomerWithAccessToken($customerAccessToken: String!,
                                  $lang: LanguageCode) @inContext(country: $country, language: $lang) {
   customer(customerAccessToken: $customerAccessToken) {
     id
+    displayName
     firstName
     lastName
     acceptsMarketing

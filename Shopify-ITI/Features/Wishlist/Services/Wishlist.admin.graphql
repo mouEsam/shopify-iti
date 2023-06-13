@@ -1,0 +1,75 @@
+mutation createWishlistItem($input: DraftOrderInput!) {
+    draftOrderCreate(input: $input) {
+        draftOrder {
+            id
+        }
+        userErrors {
+            field
+            message
+        }
+    }
+}
+
+mutation deleteWishlistItem($input: DraftOrderDeleteInput!) {
+    draftOrderDelete(input: $input) {
+        deletedId
+        userErrors {
+            field
+            message
+        }
+    }
+}
+
+query getWishlistItems($cursor: String, 
+                       $count: Int!,
+                       $query: String!) {
+    draftOrders(after: $cursor, first: $count, query: $query, ) {
+        edges {
+            cursor
+            node {
+                ...wishListItemInfo
+            }
+        }
+        pageInfo {
+            ...paginationInfo
+        }
+    }
+}
+
+fragment wishListItemInfo on DraftOrder {
+    id
+    createdAt
+    currencyCode
+    subtotalPriceSet {
+        presentmentMoney {
+            ...moneyInfo
+        }
+    }
+    totalPriceSet {
+        presentmentMoney {
+            ...moneyInfo
+        }
+    }
+    tags
+    lineItems(first: 1) {
+        nodes {
+            id
+            name
+            vendor
+            image {
+                ...imageInfo
+            }
+            originalTotalSet {
+                presentmentMoney {
+                    ...moneyInfo
+                }
+            }
+            product {
+                ...productInfo
+            }
+            variant {
+                ...productVariantInfo
+            }
+        }
+    }
+}

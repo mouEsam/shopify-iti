@@ -1,39 +1,22 @@
-fragment moneyInfo on MoneyV2 {
-  amount
-  currencyCode
-}
-
-fragment imageInfo on Image {
-  id
-  url
-  altText
-  width
-  height
-}
-
-fragment metafieldInfo on Metafield {
-  id
-  key
-  description
-  type
-  value
-}
-
-fragment priceRangeInfo on ProductPriceRange {
-  maxVariantPrice {
-    ...moneyInfo
-  }
-  minVariantPrice {
-    ...moneyInfo
-  }
-}
-
 fragment collectionInfo on Collection {
   id
   handle
   title
   image {
     ...imageInfo
+  }
+}
+
+fragment productInfo on Product {
+  id
+  handle
+  title
+  description
+  featuredImage {
+      ...imageInfo
+  }
+  priceRange {
+      ...priceRangeInfo
   }
 }
 
