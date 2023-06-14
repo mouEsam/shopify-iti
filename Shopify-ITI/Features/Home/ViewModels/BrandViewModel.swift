@@ -23,16 +23,15 @@ class BrandViewModel : ObservableObject{
     
     func loadBrand(numberOfItem count : Int) async{
             // Your code to be executed on the main thread
-        DispatchQueue.main.async {
+        await MainActor.run(){
             self.operationState = .loading
-            
         }
-        let res = await model.fatch(numberOfItem: count).toRemote()
-        DispatchQueue.main.async {
+        let res =  await model.fetch(numberOfItem: count).toRemote()
+        
+        await MainActor.run(){
             self.operationState = res
-            
         }
-       
+
     }
    
     

@@ -13,7 +13,7 @@ class BrandModel{
     init(remoteService: any AnyBrandRemoteService) {
         self.remoteService = remoteService
     }
-    func fatch(numberOfItem count:Int) async ->Result<[ProductCollection], Error> {
+    func fetch(numberOfItem count:Int) async ->Result<[ProductCollection], Error> {
        
         let x = await remoteService.fetch(count: count)
         switch(x) {

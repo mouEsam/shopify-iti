@@ -50,7 +50,8 @@ struct RootView: View {
     
     var body: some View {
         NavigationView {
-            WishlistScreen(container: container)
+//            WishlistScreen(container: container)
+            MainScreen()
         }
         .environmentObject(container)
     }

@@ -9,9 +9,7 @@ import SwiftUI
 
 struct HomePage: View {
     
-//    @EnvironmentObject private var container: AppContainer
     @StateObject private var viewModel:  BrandViewModel
-//    init(container: AppContainer) {
     init() {
         let client = ApolloGraphQLClient(environment: StorefronEnvironmentProvider())
         let localeProvider = LocaleProvider()
@@ -26,20 +24,13 @@ struct HomePage: View {
         NavigationView {
             ScrollView{
                 VStack {
-                    AdsView()
-                        .padding()
+                    
+                    ADSView().aspectRatio(1,contentMode: .fit)
                     Text("Brands").font(.largeTitle).fontWeight(.bold) // TODO : nameriztion
                     
                         switch viewModel.operationState {
-                        case .initial:
-                            Text("Initial state")
-                            
-                        case .loading:
-                            ProgressView()
-                                .progressViewStyle(CircularProgressViewStyle())
-                                .foregroundColor(.black)
-                                .padding()
-                            
+
+
                         case .loaded(data: let productCollections):
                             LazyVGrid(columns: createGridColumns(), spacing: 16) {
                                 ForEach(productCollections.data,id: \.id) { item in
@@ -51,6 +42,12 @@ struct HomePage: View {
                         
                         case .error(let error):
                             Text("Error: \(error.localizedDescription)")
+                            
+                        default :
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .foregroundColor(.black)
+                                .padding()
                         }
                         
                         
@@ -70,7 +67,8 @@ struct HomePage: View {
                     }
             ).onReceive(viewModel.$operationState){ state in
                 print(state)
-            }.task {
+            }
+            .onFirstTask {
                 await viewModel.loadBrand(numberOfItem: 11)
             }
             
