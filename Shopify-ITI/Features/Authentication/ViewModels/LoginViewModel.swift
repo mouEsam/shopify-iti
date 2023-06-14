@@ -16,7 +16,7 @@ class LoginViewModel: ObservableObject {
     private let emailValidator = EmailValidator() // TODO: inject
     private let requiredValidator = RequiredValidator<String>() // TODO: inject
     
-    @Published private(set) var operationState: UIState<Session> = .initial
+    @Published private(set) var operationState: UIState<Session> = .initial 
     
     @Published var email: String = ""
     @Published var password: String = ""

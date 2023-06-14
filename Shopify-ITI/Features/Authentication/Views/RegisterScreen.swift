@@ -90,6 +90,7 @@ struct RegisterScreen: View {
             .disabled(viewModel.emailError == nil &&
                       viewModel.passwordError != nil)
             
+            
         }
         .onAppear {}
         .padding()

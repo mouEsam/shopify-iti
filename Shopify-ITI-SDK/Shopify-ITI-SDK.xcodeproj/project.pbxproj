@@ -7,6 +7,101 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		046B62352A3A619F00DAF517 /* MetafieldInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61CD2A3A619F00DAF517 /* MetafieldInfo.graphql.swift */; };
+		046B62362A3A619F00DAF517 /* CollectionInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61CE2A3A619F00DAF517 /* CollectionInfo.graphql.swift */; };
+		046B62372A3A619F00DAF517 /* ImageInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61CF2A3A619F00DAF517 /* ImageInfo.graphql.swift */; };
+		046B62382A3A619F00DAF517 /* MoneyInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61D02A3A619F00DAF517 /* MoneyInfo.graphql.swift */; };
+		046B62392A3A619F00DAF517 /* PaginationInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61D12A3A619F00DAF517 /* PaginationInfo.graphql.swift */; };
+		046B623A2A3A619F00DAF517 /* ProductVariantInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61D22A3A619F00DAF517 /* ProductVariantInfo.graphql.swift */; };
+		046B623B2A3A619F00DAF517 /* PriceRangeInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61D32A3A619F00DAF517 /* PriceRangeInfo.graphql.swift */; };
+		046B623C2A3A619F00DAF517 /* ProductInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61D42A3A619F00DAF517 /* ProductInfo.graphql.swift */; };
+		046B623D2A3A619F00DAF517 /* ShopifyAPI.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61D52A3A619F00DAF517 /* ShopifyAPI.graphql.swift */; };
+		046B623E2A3A619F00DAF517 /* UpdateCustomerMutation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61D82A3A619F00DAF517 /* UpdateCustomerMutation.graphql.swift */; };
+		046B623F2A3A619F00DAF517 /* RecoverCustomerAccountMutation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61D92A3A619F00DAF517 /* RecoverCustomerAccountMutation.graphql.swift */; };
+		046B62402A3A619F00DAF517 /* CreateCustomerAccountMutation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61DA2A3A619F00DAF517 /* CreateCustomerAccountMutation.graphql.swift */; };
+		046B62412A3A619F00DAF517 /* CreateCustomerAccessTokenMutation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61DB2A3A619F00DAF517 /* CreateCustomerAccessTokenMutation.graphql.swift */; };
+		046B62422A3A619F00DAF517 /* RenewCustomerAccessTokenMutation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61DC2A3A619F00DAF517 /* RenewCustomerAccessTokenMutation.graphql.swift */; };
+		046B62432A3A619F00DAF517 /* DeleteCustomerAccessTokenMutation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61DD2A3A619F00DAF517 /* DeleteCustomerAccessTokenMutation.graphql.swift */; };
+		046B62442A3A619F00DAF517 /* GetBrandsQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61DF2A3A619F00DAF517 /* GetBrandsQuery.graphql.swift */; };
+		046B62452A3A619F00DAF517 /* GetProductByIdQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61E02A3A619F00DAF517 /* GetProductByIdQuery.graphql.swift */; };
+		046B62462A3A619F00DAF517 /* GetProductsByQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61E12A3A619F00DAF517 /* GetProductsByQuery.graphql.swift */; };
+		046B62472A3A619F00DAF517 /* GetCustomerWithAccessTokenQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61E22A3A619F00DAF517 /* GetCustomerWithAccessTokenQuery.graphql.swift */; };
+		046B62482A3A619F00DAF517 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61E52A3A619F00DAF517 /* Decimal.swift */; };
+		046B62492A3A619F00DAF517 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61E62A3A619F00DAF517 /* URL.swift */; };
+		046B624A2A3A619F00DAF517 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61E72A3A619F00DAF517 /* DateTime.swift */; };
+		046B624B2A3A619F00DAF517 /* CountryCode.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61E92A3A619F00DAF517 /* CountryCode.graphql.swift */; };
+		046B624C2A3A619F00DAF517 /* CurrencyCode.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61EA2A3A619F00DAF517 /* CurrencyCode.graphql.swift */; };
+		046B624D2A3A619F00DAF517 /* LanguageCode.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61EB2A3A619F00DAF517 /* LanguageCode.graphql.swift */; };
+		046B624E2A3A619F00DAF517 /* CustomerErrorCode.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61EC2A3A619F00DAF517 /* CustomerErrorCode.graphql.swift */; };
+		046B624F2A3A619F00DAF517 /* Image.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61EE2A3A619F00DAF517 /* Image.graphql.swift */; };
+		046B62502A3A619F00DAF517 /* ProductPriceRange.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61EF2A3A619F00DAF517 /* ProductPriceRange.graphql.swift */; };
+		046B62512A3A619F00DAF517 /* ProductVariant.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61F02A3A619F00DAF517 /* ProductVariant.graphql.swift */; };
+		046B62522A3A619F00DAF517 /* Blog.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61F12A3A619F00DAF517 /* Blog.graphql.swift */; };
+		046B62532A3A619F00DAF517 /* Model3d.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61F22A3A619F00DAF517 /* Model3d.graphql.swift */; };
+		046B62542A3A619F00DAF517 /* MenuItem.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61F32A3A619F00DAF517 /* MenuItem.graphql.swift */; };
+		046B62552A3A619F00DAF517 /* CollectionEdge.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61F42A3A619F00DAF517 /* CollectionEdge.graphql.swift */; };
+		046B62562A3A619F00DAF517 /* Order.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61F52A3A619F00DAF517 /* Order.graphql.swift */; };
+		046B62572A3A619F00DAF517 /* Comment.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61F62A3A619F00DAF517 /* Comment.graphql.swift */; };
+		046B62582A3A619F00DAF517 /* UrlRedirect.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61F72A3A619F00DAF517 /* UrlRedirect.graphql.swift */; };
+		046B62592A3A619F00DAF517 /* Shop.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61F82A3A619F00DAF517 /* Shop.graphql.swift */; };
+		046B625A2A3A619F00DAF517 /* ImageConnection.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61F92A3A619F00DAF517 /* ImageConnection.graphql.swift */; };
+		046B625B2A3A619F00DAF517 /* GenericFile.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61FA2A3A619F00DAF517 /* GenericFile.graphql.swift */; };
+		046B625C2A3A619F00DAF517 /* ProductOption.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61FB2A3A619F00DAF517 /* ProductOption.graphql.swift */; };
+		046B625D2A3A619F00DAF517 /* Collection.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61FC2A3A619F00DAF517 /* Collection.graphql.swift */; };
+		046B625E2A3A619F00DAF517 /* CustomerRecoverPayload.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61FD2A3A619F00DAF517 /* CustomerRecoverPayload.graphql.swift */; };
+		046B625F2A3A619F00DAF517 /* ExternalVideo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61FE2A3A619F00DAF517 /* ExternalVideo.graphql.swift */; };
+		046B62602A3A619F00DAF517 /* ProductConnection.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B61FF2A3A619F00DAF517 /* ProductConnection.graphql.swift */; };
+		046B62612A3A619F00DAF517 /* CustomerCreatePayload.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62002A3A619F00DAF517 /* CustomerCreatePayload.graphql.swift */; };
+		046B62622A3A619F00DAF517 /* Menu.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62012A3A619F00DAF517 /* Menu.graphql.swift */; };
+		046B62632A3A619F00DAF517 /* CustomerUpdatePayload.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62022A3A619F00DAF517 /* CustomerUpdatePayload.graphql.swift */; };
+		046B62642A3A619F00DAF517 /* Mutation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62032A3A619F00DAF517 /* Mutation.graphql.swift */; };
+		046B62652A3A619F00DAF517 /* CheckoutLineItem.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62042A3A619F00DAF517 /* CheckoutLineItem.graphql.swift */; };
+		046B62662A3A619F00DAF517 /* Location.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62052A3A619F00DAF517 /* Location.graphql.swift */; };
+		046B62672A3A619F00DAF517 /* Checkout.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62062A3A619F00DAF517 /* Checkout.graphql.swift */; };
+		046B62682A3A619F00DAF517 /* Metaobject.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62072A3A619F00DAF517 /* Metaobject.graphql.swift */; };
+		046B62692A3A619F00DAF517 /* PageInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62082A3A619F00DAF517 /* PageInfo.graphql.swift */; };
+		046B626A2A3A619F00DAF517 /* QueryRoot.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62092A3A619F00DAF517 /* QueryRoot.graphql.swift */; };
+		046B626B2A3A619F00DAF517 /* CheckoutUserError.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B620A2A3A619F00DAF517 /* CheckoutUserError.graphql.swift */; };
+		046B626C2A3A619F00DAF517 /* Cart.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B620B2A3A619F00DAF517 /* Cart.graphql.swift */; };
+		046B626D2A3A619F00DAF517 /* CustomerAccessTokenDeletePayload.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B620C2A3A619F00DAF517 /* CustomerAccessTokenDeletePayload.graphql.swift */; };
+		046B626E2A3A619F00DAF517 /* MoneyV2.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B620D2A3A619F00DAF517 /* MoneyV2.graphql.swift */; };
+		046B626F2A3A619F00DAF517 /* Payment.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B620E2A3A619F00DAF517 /* Payment.graphql.swift */; };
+		046B62702A3A619F00DAF517 /* Customer.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B620F2A3A619F00DAF517 /* Customer.graphql.swift */; };
+		046B62712A3A619F00DAF517 /* UserError.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62102A3A619F00DAF517 /* UserError.graphql.swift */; };
+		046B62722A3A619F00DAF517 /* CartLine.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62112A3A619F00DAF517 /* CartLine.graphql.swift */; };
+		046B62732A3A619F00DAF517 /* ProductEdge.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62122A3A619F00DAF517 /* ProductEdge.graphql.swift */; };
+		046B62742A3A619F00DAF517 /* MailingAddress.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62132A3A619F00DAF517 /* MailingAddress.graphql.swift */; };
+		046B62752A3A619F00DAF517 /* CustomerUserError.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62142A3A619F00DAF517 /* CustomerUserError.graphql.swift */; };
+		046B62762A3A619F00DAF517 /* Page.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62152A3A619F00DAF517 /* Page.graphql.swift */; };
+		046B62772A3A619F00DAF517 /* MetafieldDeleteUserError.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62162A3A619F00DAF517 /* MetafieldDeleteUserError.graphql.swift */; };
+		046B62782A3A619F00DAF517 /* CollectionConnection.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62172A3A619F00DAF517 /* CollectionConnection.graphql.swift */; };
+		046B62792A3A619F00DAF517 /* ProductVariantConnection.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62182A3A619F00DAF517 /* ProductVariantConnection.graphql.swift */; };
+		046B627A2A3A619F00DAF517 /* Market.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62192A3A619F00DAF517 /* Market.graphql.swift */; };
+		046B627B2A3A619F00DAF517 /* Metafield.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B621A2A3A619F00DAF517 /* Metafield.graphql.swift */; };
+		046B627C2A3A619F00DAF517 /* Article.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B621B2A3A619F00DAF517 /* Article.graphql.swift */; };
+		046B627D2A3A619F00DAF517 /* AppliedGiftCard.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B621C2A3A619F00DAF517 /* AppliedGiftCard.graphql.swift */; };
+		046B627E2A3A619F00DAF517 /* CartUserError.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B621D2A3A619F00DAF517 /* CartUserError.graphql.swift */; };
+		046B627F2A3A619F00DAF517 /* CustomerAccessTokenCreatePayload.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B621E2A3A619F00DAF517 /* CustomerAccessTokenCreatePayload.graphql.swift */; };
+		046B62802A3A619F00DAF517 /* CustomerAccessToken.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B621F2A3A619F00DAF517 /* CustomerAccessToken.graphql.swift */; };
+		046B62812A3A619F00DAF517 /* MediaImage.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62202A3A619F00DAF517 /* MediaImage.graphql.swift */; };
+		046B62822A3A619F00DAF517 /* Video.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62212A3A619F00DAF517 /* Video.graphql.swift */; };
+		046B62832A3A619F00DAF517 /* CustomerAccessTokenRenewPayload.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62222A3A619F00DAF517 /* CustomerAccessTokenRenewPayload.graphql.swift */; };
+		046B62842A3A619F00DAF517 /* Product.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62232A3A619F00DAF517 /* Product.graphql.swift */; };
+		046B62852A3A619F00DAF517 /* ShopPolicy.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62242A3A619F00DAF517 /* ShopPolicy.graphql.swift */; };
+		046B62862A3A619F00DAF517 /* MediaPresentation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62252A3A619F00DAF517 /* MediaPresentation.graphql.swift */; };
+		046B62872A3A619F00DAF517 /* MetafieldsSetUserError.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62262A3A619F00DAF517 /* MetafieldsSetUserError.graphql.swift */; };
+		046B62882A3A619F00DAF517 /* SchemaConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62272A3A619F00DAF517 /* SchemaConfiguration.swift */; };
+		046B62892A3A619F00DAF517 /* CustomerCreateInput.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62292A3A619F00DAF517 /* CustomerCreateInput.graphql.swift */; };
+		046B628A2A3A619F00DAF517 /* CustomerAccessTokenCreateInput.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B622A2A3A619F00DAF517 /* CustomerAccessTokenCreateInput.graphql.swift */; };
+		046B628B2A3A619F00DAF517 /* HasMetafieldsIdentifier.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B622B2A3A619F00DAF517 /* HasMetafieldsIdentifier.graphql.swift */; };
+		046B628C2A3A619F00DAF517 /* CustomerUpdateInput.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B622C2A3A619F00DAF517 /* CustomerUpdateInput.graphql.swift */; };
+		046B628D2A3A619F00DAF517 /* SchemaMetadata.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B622D2A3A619F00DAF517 /* SchemaMetadata.graphql.swift */; };
+		046B628E2A3A619F00DAF517 /* Media.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B622F2A3A619F00DAF517 /* Media.graphql.swift */; };
+		046B628F2A3A619F00DAF517 /* HasMetafields.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62302A3A619F00DAF517 /* HasMetafields.graphql.swift */; };
+		046B62902A3A619F00DAF517 /* BaseCartLine.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62312A3A619F00DAF517 /* BaseCartLine.graphql.swift */; };
+		046B62912A3A619F00DAF517 /* DisplayableError.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62322A3A619F00DAF517 /* DisplayableError.graphql.swift */; };
+		046B62922A3A619F00DAF517 /* OnlineStorePublishable.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62332A3A619F00DAF517 /* OnlineStorePublishable.graphql.swift */; };
+		046B62932A3A619F00DAF517 /* Node.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B62342A3A619F00DAF517 /* Node.graphql.swift */; };
 		27192F3DAF3B277E7F7BE27F /* Pods_Shopify_Admin_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ADC739232CCEA49BE2FC1CF /* Pods_Shopify_Admin_ITI_SDK.framework */; };
 		D4596CF82A33580200BD9E26 /* Shopify_ITI_SDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D4596CF72A33580200BD9E26 /* Shopify_ITI_SDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4AA0CFE2A397EF200A56FAB /* WishListInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AA0BBA2A397EF100A56FAB /* WishListInfo.graphql.swift */; };
@@ -324,104 +419,106 @@
 		D4AA0E362A397EF200A56FAB /* HasLocalizationExtensions.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AA0CFB2A397EF200A56FAB /* HasLocalizationExtensions.graphql.swift */; };
 		D4AA0E372A397EF200A56FAB /* CustomerMoment.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AA0CFC2A397EF200A56FAB /* CustomerMoment.graphql.swift */; };
 		D4AA0E382A397EF200A56FAB /* ShopifyAdminAPI.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AA0CFD2A397EF200A56FAB /* ShopifyAdminAPI.graphql.swift */; };
-		D4AAF9CF2A38DEE200A56FAB /* MetafieldInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8362A38DEE100A56FAB /* MetafieldInfo.graphql.swift */; };
-		D4AAF9D02A38DEE200A56FAB /* CollectionInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8372A38DEE100A56FAB /* CollectionInfo.graphql.swift */; };
-		D4AAF9D12A38DEE200A56FAB /* ImageInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8382A38DEE100A56FAB /* ImageInfo.graphql.swift */; };
-		D4AAF9D22A38DEE200A56FAB /* MoneyInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8392A38DEE100A56FAB /* MoneyInfo.graphql.swift */; };
-		D4AAF9D32A38DEE200A56FAB /* PaginationInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF83A2A38DEE100A56FAB /* PaginationInfo.graphql.swift */; };
-		D4AAF9D42A38DEE200A56FAB /* ProductVariantInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF83B2A38DEE100A56FAB /* ProductVariantInfo.graphql.swift */; };
-		D4AAF9D52A38DEE200A56FAB /* PriceRangeInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF83C2A38DEE100A56FAB /* PriceRangeInfo.graphql.swift */; };
-		D4AAF9D62A38DEE200A56FAB /* ProductInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF83D2A38DEE100A56FAB /* ProductInfo.graphql.swift */; };
-		D4AAF9D72A38DEE200A56FAB /* ShopifyAPI.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF83E2A38DEE100A56FAB /* ShopifyAPI.graphql.swift */; };
-		D4AAF9D82A38DEE200A56FAB /* UpdateCustomerMutation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8412A38DEE100A56FAB /* UpdateCustomerMutation.graphql.swift */; };
-		D4AAF9D92A38DEE200A56FAB /* RecoverCustomerAccountMutation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8422A38DEE100A56FAB /* RecoverCustomerAccountMutation.graphql.swift */; };
-		D4AAF9DA2A38DEE200A56FAB /* CreateCustomerAccountMutation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8432A38DEE100A56FAB /* CreateCustomerAccountMutation.graphql.swift */; };
-		D4AAF9DB2A38DEE200A56FAB /* CreateCustomerAccessTokenMutation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8442A38DEE100A56FAB /* CreateCustomerAccessTokenMutation.graphql.swift */; };
-		D4AAF9DC2A38DEE200A56FAB /* RenewCustomerAccessTokenMutation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8452A38DEE100A56FAB /* RenewCustomerAccessTokenMutation.graphql.swift */; };
-		D4AAF9DD2A38DEE200A56FAB /* DeleteCustomerAccessTokenMutation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8462A38DEE100A56FAB /* DeleteCustomerAccessTokenMutation.graphql.swift */; };
-		D4AAF9DE2A38DEE200A56FAB /* GetProductByIdQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8482A38DEE100A56FAB /* GetProductByIdQuery.graphql.swift */; };
-		D4AAF9DF2A38DEE200A56FAB /* GetProductsByQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8492A38DEE100A56FAB /* GetProductsByQuery.graphql.swift */; };
-		D4AAF9E02A38DEE200A56FAB /* GetCustomerWithAccessTokenQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF84A2A38DEE100A56FAB /* GetCustomerWithAccessTokenQuery.graphql.swift */; };
-		D4AAF9E12A38DEE200A56FAB /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF84D2A38DEE100A56FAB /* Decimal.swift */; };
-		D4AAF9E22A38DEE200A56FAB /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF84E2A38DEE100A56FAB /* URL.swift */; };
-		D4AAF9E32A38DEE200A56FAB /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF84F2A38DEE100A56FAB /* DateTime.swift */; };
-		D4AAF9E42A38DEE200A56FAB /* CountryCode.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8512A38DEE100A56FAB /* CountryCode.graphql.swift */; };
-		D4AAF9E52A38DEE200A56FAB /* CurrencyCode.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8522A38DEE100A56FAB /* CurrencyCode.graphql.swift */; };
-		D4AAF9E62A38DEE200A56FAB /* LanguageCode.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8532A38DEE100A56FAB /* LanguageCode.graphql.swift */; };
-		D4AAF9E72A38DEE200A56FAB /* CustomerErrorCode.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8542A38DEE100A56FAB /* CustomerErrorCode.graphql.swift */; };
-		D4AAF9E82A38DEE200A56FAB /* Image.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8562A38DEE100A56FAB /* Image.graphql.swift */; };
-		D4AAF9E92A38DEE200A56FAB /* ProductPriceRange.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8572A38DEE100A56FAB /* ProductPriceRange.graphql.swift */; };
-		D4AAF9EA2A38DEE200A56FAB /* ProductVariant.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8582A38DEE100A56FAB /* ProductVariant.graphql.swift */; };
-		D4AAF9EB2A38DEE200A56FAB /* Blog.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8592A38DEE100A56FAB /* Blog.graphql.swift */; };
-		D4AAF9EC2A38DEE200A56FAB /* Model3d.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF85A2A38DEE100A56FAB /* Model3d.graphql.swift */; };
-		D4AAF9ED2A38DEE200A56FAB /* MenuItem.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF85B2A38DEE100A56FAB /* MenuItem.graphql.swift */; };
-		D4AAF9EE2A38DEE200A56FAB /* Order.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF85C2A38DEE100A56FAB /* Order.graphql.swift */; };
-		D4AAF9EF2A38DEE200A56FAB /* Comment.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF85D2A38DEE100A56FAB /* Comment.graphql.swift */; };
-		D4AAF9F02A38DEE200A56FAB /* UrlRedirect.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF85E2A38DEE100A56FAB /* UrlRedirect.graphql.swift */; };
-		D4AAF9F12A38DEE200A56FAB /* Shop.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF85F2A38DEE100A56FAB /* Shop.graphql.swift */; };
-		D4AAF9F22A38DEE200A56FAB /* ImageConnection.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8602A38DEE100A56FAB /* ImageConnection.graphql.swift */; };
-		D4AAF9F32A38DEE200A56FAB /* GenericFile.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8612A38DEE100A56FAB /* GenericFile.graphql.swift */; };
-		D4AAF9F42A38DEE200A56FAB /* ProductOption.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8622A38DEE100A56FAB /* ProductOption.graphql.swift */; };
-		D4AAF9F52A38DEE200A56FAB /* Collection.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8632A38DEE100A56FAB /* Collection.graphql.swift */; };
-		D4AAF9F62A38DEE200A56FAB /* CustomerRecoverPayload.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8642A38DEE100A56FAB /* CustomerRecoverPayload.graphql.swift */; };
-		D4AAF9F72A38DEE200A56FAB /* ExternalVideo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8652A38DEE100A56FAB /* ExternalVideo.graphql.swift */; };
-		D4AAF9F82A38DEE200A56FAB /* ProductConnection.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8662A38DEE100A56FAB /* ProductConnection.graphql.swift */; };
-		D4AAF9F92A38DEE200A56FAB /* CustomerCreatePayload.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8672A38DEE100A56FAB /* CustomerCreatePayload.graphql.swift */; };
-		D4AAF9FA2A38DEE200A56FAB /* Menu.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8682A38DEE100A56FAB /* Menu.graphql.swift */; };
-		D4AAF9FB2A38DEE200A56FAB /* CustomerUpdatePayload.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8692A38DEE100A56FAB /* CustomerUpdatePayload.graphql.swift */; };
-		D4AAF9FC2A38DEE200A56FAB /* Mutation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF86A2A38DEE100A56FAB /* Mutation.graphql.swift */; };
-		D4AAF9FD2A38DEE200A56FAB /* CheckoutLineItem.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF86B2A38DEE100A56FAB /* CheckoutLineItem.graphql.swift */; };
-		D4AAF9FE2A38DEE200A56FAB /* Location.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF86C2A38DEE100A56FAB /* Location.graphql.swift */; };
-		D4AAF9FF2A38DEE200A56FAB /* Checkout.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF86D2A38DEE100A56FAB /* Checkout.graphql.swift */; };
-		D4AAFA002A38DEE200A56FAB /* Metaobject.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF86E2A38DEE100A56FAB /* Metaobject.graphql.swift */; };
-		D4AAFA012A38DEE200A56FAB /* PageInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF86F2A38DEE100A56FAB /* PageInfo.graphql.swift */; };
-		D4AAFA022A38DEE200A56FAB /* QueryRoot.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8702A38DEE100A56FAB /* QueryRoot.graphql.swift */; };
-		D4AAFA032A38DEE200A56FAB /* CheckoutUserError.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8712A38DEE100A56FAB /* CheckoutUserError.graphql.swift */; };
-		D4AAFA042A38DEE200A56FAB /* Cart.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8722A38DEE100A56FAB /* Cart.graphql.swift */; };
-		D4AAFA052A38DEE200A56FAB /* CustomerAccessTokenDeletePayload.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8732A38DEE100A56FAB /* CustomerAccessTokenDeletePayload.graphql.swift */; };
-		D4AAFA062A38DEE200A56FAB /* MoneyV2.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8742A38DEE100A56FAB /* MoneyV2.graphql.swift */; };
-		D4AAFA072A38DEE200A56FAB /* Payment.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8752A38DEE100A56FAB /* Payment.graphql.swift */; };
-		D4AAFA082A38DEE200A56FAB /* Customer.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8762A38DEE100A56FAB /* Customer.graphql.swift */; };
-		D4AAFA092A38DEE200A56FAB /* UserError.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8772A38DEE100A56FAB /* UserError.graphql.swift */; };
-		D4AAFA0A2A38DEE200A56FAB /* CartLine.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8782A38DEE100A56FAB /* CartLine.graphql.swift */; };
-		D4AAFA0B2A38DEE200A56FAB /* ProductEdge.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8792A38DEE100A56FAB /* ProductEdge.graphql.swift */; };
-		D4AAFA0C2A38DEE200A56FAB /* MailingAddress.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF87A2A38DEE100A56FAB /* MailingAddress.graphql.swift */; };
-		D4AAFA0D2A38DEE200A56FAB /* CustomerUserError.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF87B2A38DEE100A56FAB /* CustomerUserError.graphql.swift */; };
-		D4AAFA0E2A38DEE200A56FAB /* Page.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF87C2A38DEE100A56FAB /* Page.graphql.swift */; };
-		D4AAFA0F2A38DEE200A56FAB /* MetafieldDeleteUserError.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF87D2A38DEE100A56FAB /* MetafieldDeleteUserError.graphql.swift */; };
-		D4AAFA102A38DEE200A56FAB /* CollectionConnection.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF87E2A38DEE100A56FAB /* CollectionConnection.graphql.swift */; };
-		D4AAFA112A38DEE200A56FAB /* ProductVariantConnection.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF87F2A38DEE100A56FAB /* ProductVariantConnection.graphql.swift */; };
-		D4AAFA122A38DEE200A56FAB /* Market.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8802A38DEE100A56FAB /* Market.graphql.swift */; };
-		D4AAFA132A38DEE200A56FAB /* Metafield.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8812A38DEE100A56FAB /* Metafield.graphql.swift */; };
-		D4AAFA142A38DEE200A56FAB /* Article.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8822A38DEE100A56FAB /* Article.graphql.swift */; };
-		D4AAFA152A38DEE200A56FAB /* AppliedGiftCard.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8832A38DEE100A56FAB /* AppliedGiftCard.graphql.swift */; };
-		D4AAFA162A38DEE200A56FAB /* CartUserError.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8842A38DEE100A56FAB /* CartUserError.graphql.swift */; };
-		D4AAFA172A38DEE200A56FAB /* CustomerAccessTokenCreatePayload.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8852A38DEE100A56FAB /* CustomerAccessTokenCreatePayload.graphql.swift */; };
-		D4AAFA182A38DEE200A56FAB /* CustomerAccessToken.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8862A38DEE100A56FAB /* CustomerAccessToken.graphql.swift */; };
-		D4AAFA192A38DEE200A56FAB /* MediaImage.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8872A38DEE100A56FAB /* MediaImage.graphql.swift */; };
-		D4AAFA1A2A38DEE200A56FAB /* Video.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8882A38DEE100A56FAB /* Video.graphql.swift */; };
-		D4AAFA1B2A38DEE200A56FAB /* CustomerAccessTokenRenewPayload.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8892A38DEE100A56FAB /* CustomerAccessTokenRenewPayload.graphql.swift */; };
-		D4AAFA1C2A38DEE200A56FAB /* Product.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF88A2A38DEE100A56FAB /* Product.graphql.swift */; };
-		D4AAFA1D2A38DEE200A56FAB /* ShopPolicy.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF88B2A38DEE100A56FAB /* ShopPolicy.graphql.swift */; };
-		D4AAFA1E2A38DEE200A56FAB /* MediaPresentation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF88C2A38DEE100A56FAB /* MediaPresentation.graphql.swift */; };
-		D4AAFA1F2A38DEE200A56FAB /* MetafieldsSetUserError.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF88D2A38DEE100A56FAB /* MetafieldsSetUserError.graphql.swift */; };
-		D4AAFA202A38DEE200A56FAB /* SchemaConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF88E2A38DEE100A56FAB /* SchemaConfiguration.swift */; };
-		D4AAFA212A38DEE200A56FAB /* CustomerCreateInput.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8902A38DEE100A56FAB /* CustomerCreateInput.graphql.swift */; };
-		D4AAFA222A38DEE200A56FAB /* CustomerAccessTokenCreateInput.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8912A38DEE100A56FAB /* CustomerAccessTokenCreateInput.graphql.swift */; };
-		D4AAFA232A38DEE200A56FAB /* HasMetafieldsIdentifier.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8922A38DEE100A56FAB /* HasMetafieldsIdentifier.graphql.swift */; };
-		D4AAFA242A38DEE200A56FAB /* CustomerUpdateInput.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8932A38DEE100A56FAB /* CustomerUpdateInput.graphql.swift */; };
-		D4AAFA252A38DEE200A56FAB /* SchemaMetadata.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8942A38DEE100A56FAB /* SchemaMetadata.graphql.swift */; };
-		D4AAFA262A38DEE200A56FAB /* Media.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8962A38DEE100A56FAB /* Media.graphql.swift */; };
-		D4AAFA272A38DEE200A56FAB /* HasMetafields.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8972A38DEE100A56FAB /* HasMetafields.graphql.swift */; };
-		D4AAFA282A38DEE200A56FAB /* BaseCartLine.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8982A38DEE100A56FAB /* BaseCartLine.graphql.swift */; };
-		D4AAFA292A38DEE200A56FAB /* DisplayableError.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF8992A38DEE100A56FAB /* DisplayableError.graphql.swift */; };
-		D4AAFA2A2A38DEE200A56FAB /* OnlineStorePublishable.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF89A2A38DEE100A56FAB /* OnlineStorePublishable.graphql.swift */; };
-		D4AAFA2B2A38DEE200A56FAB /* Node.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AAF89B2A38DEE100A56FAB /* Node.graphql.swift */; };
 		D4AAFA342A38E0A600A56FAB /* Shopify_Admin_ITI_SDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D4AAFA332A38E0A600A56FAB /* Shopify_Admin_ITI_SDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E1BAC0CD2AB1CB39CAE723F9 /* Pods_Shopify_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC18845B81CEB227625DD8A /* Pods_Shopify_ITI_SDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		046B61CD2A3A619F00DAF517 /* MetafieldInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetafieldInfo.graphql.swift; sourceTree = "<group>"; };
+		046B61CE2A3A619F00DAF517 /* CollectionInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionInfo.graphql.swift; sourceTree = "<group>"; };
+		046B61CF2A3A619F00DAF517 /* ImageInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfo.graphql.swift; sourceTree = "<group>"; };
+		046B61D02A3A619F00DAF517 /* MoneyInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyInfo.graphql.swift; sourceTree = "<group>"; };
+		046B61D12A3A619F00DAF517 /* PaginationInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationInfo.graphql.swift; sourceTree = "<group>"; };
+		046B61D22A3A619F00DAF517 /* ProductVariantInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductVariantInfo.graphql.swift; sourceTree = "<group>"; };
+		046B61D32A3A619F00DAF517 /* PriceRangeInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceRangeInfo.graphql.swift; sourceTree = "<group>"; };
+		046B61D42A3A619F00DAF517 /* ProductInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductInfo.graphql.swift; sourceTree = "<group>"; };
+		046B61D52A3A619F00DAF517 /* ShopifyAPI.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopifyAPI.graphql.swift; sourceTree = "<group>"; };
+		046B61D82A3A619F00DAF517 /* UpdateCustomerMutation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCustomerMutation.graphql.swift; sourceTree = "<group>"; };
+		046B61D92A3A619F00DAF517 /* RecoverCustomerAccountMutation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoverCustomerAccountMutation.graphql.swift; sourceTree = "<group>"; };
+		046B61DA2A3A619F00DAF517 /* CreateCustomerAccountMutation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCustomerAccountMutation.graphql.swift; sourceTree = "<group>"; };
+		046B61DB2A3A619F00DAF517 /* CreateCustomerAccessTokenMutation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCustomerAccessTokenMutation.graphql.swift; sourceTree = "<group>"; };
+		046B61DC2A3A619F00DAF517 /* RenewCustomerAccessTokenMutation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenewCustomerAccessTokenMutation.graphql.swift; sourceTree = "<group>"; };
+		046B61DD2A3A619F00DAF517 /* DeleteCustomerAccessTokenMutation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteCustomerAccessTokenMutation.graphql.swift; sourceTree = "<group>"; };
+		046B61DF2A3A619F00DAF517 /* GetBrandsQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBrandsQuery.graphql.swift; sourceTree = "<group>"; };
+		046B61E02A3A619F00DAF517 /* GetProductByIdQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetProductByIdQuery.graphql.swift; sourceTree = "<group>"; };
+		046B61E12A3A619F00DAF517 /* GetProductsByQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetProductsByQuery.graphql.swift; sourceTree = "<group>"; };
+		046B61E22A3A619F00DAF517 /* GetCustomerWithAccessTokenQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCustomerWithAccessTokenQuery.graphql.swift; sourceTree = "<group>"; };
+		046B61E52A3A619F00DAF517 /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
+		046B61E62A3A619F00DAF517 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		046B61E72A3A619F00DAF517 /* DateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
+		046B61E92A3A619F00DAF517 /* CountryCode.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCode.graphql.swift; sourceTree = "<group>"; };
+		046B61EA2A3A619F00DAF517 /* CurrencyCode.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyCode.graphql.swift; sourceTree = "<group>"; };
+		046B61EB2A3A619F00DAF517 /* LanguageCode.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageCode.graphql.swift; sourceTree = "<group>"; };
+		046B61EC2A3A619F00DAF517 /* CustomerErrorCode.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerErrorCode.graphql.swift; sourceTree = "<group>"; };
+		046B61EE2A3A619F00DAF517 /* Image.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.graphql.swift; sourceTree = "<group>"; };
+		046B61EF2A3A619F00DAF517 /* ProductPriceRange.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductPriceRange.graphql.swift; sourceTree = "<group>"; };
+		046B61F02A3A619F00DAF517 /* ProductVariant.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductVariant.graphql.swift; sourceTree = "<group>"; };
+		046B61F12A3A619F00DAF517 /* Blog.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blog.graphql.swift; sourceTree = "<group>"; };
+		046B61F22A3A619F00DAF517 /* Model3d.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model3d.graphql.swift; sourceTree = "<group>"; };
+		046B61F32A3A619F00DAF517 /* MenuItem.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.graphql.swift; sourceTree = "<group>"; };
+		046B61F42A3A619F00DAF517 /* CollectionEdge.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionEdge.graphql.swift; sourceTree = "<group>"; };
+		046B61F52A3A619F00DAF517 /* Order.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.graphql.swift; sourceTree = "<group>"; };
+		046B61F62A3A619F00DAF517 /* Comment.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.graphql.swift; sourceTree = "<group>"; };
+		046B61F72A3A619F00DAF517 /* UrlRedirect.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlRedirect.graphql.swift; sourceTree = "<group>"; };
+		046B61F82A3A619F00DAF517 /* Shop.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shop.graphql.swift; sourceTree = "<group>"; };
+		046B61F92A3A619F00DAF517 /* ImageConnection.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageConnection.graphql.swift; sourceTree = "<group>"; };
+		046B61FA2A3A619F00DAF517 /* GenericFile.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericFile.graphql.swift; sourceTree = "<group>"; };
+		046B61FB2A3A619F00DAF517 /* ProductOption.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOption.graphql.swift; sourceTree = "<group>"; };
+		046B61FC2A3A619F00DAF517 /* Collection.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.graphql.swift; sourceTree = "<group>"; };
+		046B61FD2A3A619F00DAF517 /* CustomerRecoverPayload.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerRecoverPayload.graphql.swift; sourceTree = "<group>"; };
+		046B61FE2A3A619F00DAF517 /* ExternalVideo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalVideo.graphql.swift; sourceTree = "<group>"; };
+		046B61FF2A3A619F00DAF517 /* ProductConnection.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductConnection.graphql.swift; sourceTree = "<group>"; };
+		046B62002A3A619F00DAF517 /* CustomerCreatePayload.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCreatePayload.graphql.swift; sourceTree = "<group>"; };
+		046B62012A3A619F00DAF517 /* Menu.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.graphql.swift; sourceTree = "<group>"; };
+		046B62022A3A619F00DAF517 /* CustomerUpdatePayload.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerUpdatePayload.graphql.swift; sourceTree = "<group>"; };
+		046B62032A3A619F00DAF517 /* Mutation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mutation.graphql.swift; sourceTree = "<group>"; };
+		046B62042A3A619F00DAF517 /* CheckoutLineItem.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutLineItem.graphql.swift; sourceTree = "<group>"; };
+		046B62052A3A619F00DAF517 /* Location.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.graphql.swift; sourceTree = "<group>"; };
+		046B62062A3A619F00DAF517 /* Checkout.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkout.graphql.swift; sourceTree = "<group>"; };
+		046B62072A3A619F00DAF517 /* Metaobject.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metaobject.graphql.swift; sourceTree = "<group>"; };
+		046B62082A3A619F00DAF517 /* PageInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageInfo.graphql.swift; sourceTree = "<group>"; };
+		046B62092A3A619F00DAF517 /* QueryRoot.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryRoot.graphql.swift; sourceTree = "<group>"; };
+		046B620A2A3A619F00DAF517 /* CheckoutUserError.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutUserError.graphql.swift; sourceTree = "<group>"; };
+		046B620B2A3A619F00DAF517 /* Cart.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.graphql.swift; sourceTree = "<group>"; };
+		046B620C2A3A619F00DAF517 /* CustomerAccessTokenDeletePayload.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerAccessTokenDeletePayload.graphql.swift; sourceTree = "<group>"; };
+		046B620D2A3A619F00DAF517 /* MoneyV2.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyV2.graphql.swift; sourceTree = "<group>"; };
+		046B620E2A3A619F00DAF517 /* Payment.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.graphql.swift; sourceTree = "<group>"; };
+		046B620F2A3A619F00DAF517 /* Customer.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.graphql.swift; sourceTree = "<group>"; };
+		046B62102A3A619F00DAF517 /* UserError.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserError.graphql.swift; sourceTree = "<group>"; };
+		046B62112A3A619F00DAF517 /* CartLine.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartLine.graphql.swift; sourceTree = "<group>"; };
+		046B62122A3A619F00DAF517 /* ProductEdge.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductEdge.graphql.swift; sourceTree = "<group>"; };
+		046B62132A3A619F00DAF517 /* MailingAddress.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailingAddress.graphql.swift; sourceTree = "<group>"; };
+		046B62142A3A619F00DAF517 /* CustomerUserError.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerUserError.graphql.swift; sourceTree = "<group>"; };
+		046B62152A3A619F00DAF517 /* Page.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.graphql.swift; sourceTree = "<group>"; };
+		046B62162A3A619F00DAF517 /* MetafieldDeleteUserError.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetafieldDeleteUserError.graphql.swift; sourceTree = "<group>"; };
+		046B62172A3A619F00DAF517 /* CollectionConnection.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionConnection.graphql.swift; sourceTree = "<group>"; };
+		046B62182A3A619F00DAF517 /* ProductVariantConnection.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductVariantConnection.graphql.swift; sourceTree = "<group>"; };
+		046B62192A3A619F00DAF517 /* Market.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Market.graphql.swift; sourceTree = "<group>"; };
+		046B621A2A3A619F00DAF517 /* Metafield.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metafield.graphql.swift; sourceTree = "<group>"; };
+		046B621B2A3A619F00DAF517 /* Article.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.graphql.swift; sourceTree = "<group>"; };
+		046B621C2A3A619F00DAF517 /* AppliedGiftCard.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppliedGiftCard.graphql.swift; sourceTree = "<group>"; };
+		046B621D2A3A619F00DAF517 /* CartUserError.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartUserError.graphql.swift; sourceTree = "<group>"; };
+		046B621E2A3A619F00DAF517 /* CustomerAccessTokenCreatePayload.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerAccessTokenCreatePayload.graphql.swift; sourceTree = "<group>"; };
+		046B621F2A3A619F00DAF517 /* CustomerAccessToken.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerAccessToken.graphql.swift; sourceTree = "<group>"; };
+		046B62202A3A619F00DAF517 /* MediaImage.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaImage.graphql.swift; sourceTree = "<group>"; };
+		046B62212A3A619F00DAF517 /* Video.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.graphql.swift; sourceTree = "<group>"; };
+		046B62222A3A619F00DAF517 /* CustomerAccessTokenRenewPayload.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerAccessTokenRenewPayload.graphql.swift; sourceTree = "<group>"; };
+		046B62232A3A619F00DAF517 /* Product.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.graphql.swift; sourceTree = "<group>"; };
+		046B62242A3A619F00DAF517 /* ShopPolicy.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopPolicy.graphql.swift; sourceTree = "<group>"; };
+		046B62252A3A619F00DAF517 /* MediaPresentation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPresentation.graphql.swift; sourceTree = "<group>"; };
+		046B62262A3A619F00DAF517 /* MetafieldsSetUserError.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetafieldsSetUserError.graphql.swift; sourceTree = "<group>"; };
+		046B62272A3A619F00DAF517 /* SchemaConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaConfiguration.swift; sourceTree = "<group>"; };
+		046B62292A3A619F00DAF517 /* CustomerCreateInput.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCreateInput.graphql.swift; sourceTree = "<group>"; };
+		046B622A2A3A619F00DAF517 /* CustomerAccessTokenCreateInput.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerAccessTokenCreateInput.graphql.swift; sourceTree = "<group>"; };
+		046B622B2A3A619F00DAF517 /* HasMetafieldsIdentifier.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasMetafieldsIdentifier.graphql.swift; sourceTree = "<group>"; };
+		046B622C2A3A619F00DAF517 /* CustomerUpdateInput.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerUpdateInput.graphql.swift; sourceTree = "<group>"; };
+		046B622D2A3A619F00DAF517 /* SchemaMetadata.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaMetadata.graphql.swift; sourceTree = "<group>"; };
+		046B622F2A3A619F00DAF517 /* Media.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.graphql.swift; sourceTree = "<group>"; };
+		046B62302A3A619F00DAF517 /* HasMetafields.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasMetafields.graphql.swift; sourceTree = "<group>"; };
+		046B62312A3A619F00DAF517 /* BaseCartLine.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCartLine.graphql.swift; sourceTree = "<group>"; };
+		046B62322A3A619F00DAF517 /* DisplayableError.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayableError.graphql.swift; sourceTree = "<group>"; };
+		046B62332A3A619F00DAF517 /* OnlineStorePublishable.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineStorePublishable.graphql.swift; sourceTree = "<group>"; };
+		046B62342A3A619F00DAF517 /* Node.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.graphql.swift; sourceTree = "<group>"; };
 		05421D1BA1B3B124CBAD976D /* Pods-Shopify-ITI-SDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI-SDK.debug.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI-SDK/Pods-Shopify-ITI-SDK.debug.xcconfig"; sourceTree = "<group>"; };
 		12D2F547552771B8B19D7463 /* Pods-Shopify-ITI-SDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI-SDK.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI-SDK/Pods-Shopify-ITI-SDK.release.xcconfig"; sourceTree = "<group>"; };
 		45288161084BA42CFE9AD76A /* Pods-Shopify-Admin-ITI-SDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-Admin-ITI-SDK.release.xcconfig"; path = "Target Support Files/Pods-Shopify-Admin-ITI-SDK/Pods-Shopify-Admin-ITI-SDK.release.xcconfig"; sourceTree = "<group>"; };
@@ -743,99 +840,6 @@
 		D4AA0CFB2A397EF200A56FAB /* HasLocalizationExtensions.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasLocalizationExtensions.graphql.swift; sourceTree = "<group>"; };
 		D4AA0CFC2A397EF200A56FAB /* CustomerMoment.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerMoment.graphql.swift; sourceTree = "<group>"; };
 		D4AA0CFD2A397EF200A56FAB /* ShopifyAdminAPI.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopifyAdminAPI.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8362A38DEE100A56FAB /* MetafieldInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetafieldInfo.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8372A38DEE100A56FAB /* CollectionInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionInfo.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8382A38DEE100A56FAB /* ImageInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfo.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8392A38DEE100A56FAB /* MoneyInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyInfo.graphql.swift; sourceTree = "<group>"; };
-		D4AAF83A2A38DEE100A56FAB /* PaginationInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationInfo.graphql.swift; sourceTree = "<group>"; };
-		D4AAF83B2A38DEE100A56FAB /* ProductVariantInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductVariantInfo.graphql.swift; sourceTree = "<group>"; };
-		D4AAF83C2A38DEE100A56FAB /* PriceRangeInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceRangeInfo.graphql.swift; sourceTree = "<group>"; };
-		D4AAF83D2A38DEE100A56FAB /* ProductInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductInfo.graphql.swift; sourceTree = "<group>"; };
-		D4AAF83E2A38DEE100A56FAB /* ShopifyAPI.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopifyAPI.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8412A38DEE100A56FAB /* UpdateCustomerMutation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCustomerMutation.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8422A38DEE100A56FAB /* RecoverCustomerAccountMutation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoverCustomerAccountMutation.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8432A38DEE100A56FAB /* CreateCustomerAccountMutation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCustomerAccountMutation.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8442A38DEE100A56FAB /* CreateCustomerAccessTokenMutation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCustomerAccessTokenMutation.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8452A38DEE100A56FAB /* RenewCustomerAccessTokenMutation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenewCustomerAccessTokenMutation.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8462A38DEE100A56FAB /* DeleteCustomerAccessTokenMutation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteCustomerAccessTokenMutation.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8482A38DEE100A56FAB /* GetProductByIdQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetProductByIdQuery.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8492A38DEE100A56FAB /* GetProductsByQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetProductsByQuery.graphql.swift; sourceTree = "<group>"; };
-		D4AAF84A2A38DEE100A56FAB /* GetCustomerWithAccessTokenQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCustomerWithAccessTokenQuery.graphql.swift; sourceTree = "<group>"; };
-		D4AAF84D2A38DEE100A56FAB /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
-		D4AAF84E2A38DEE100A56FAB /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
-		D4AAF84F2A38DEE100A56FAB /* DateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
-		D4AAF8512A38DEE100A56FAB /* CountryCode.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCode.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8522A38DEE100A56FAB /* CurrencyCode.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyCode.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8532A38DEE100A56FAB /* LanguageCode.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageCode.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8542A38DEE100A56FAB /* CustomerErrorCode.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerErrorCode.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8562A38DEE100A56FAB /* Image.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8572A38DEE100A56FAB /* ProductPriceRange.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductPriceRange.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8582A38DEE100A56FAB /* ProductVariant.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductVariant.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8592A38DEE100A56FAB /* Blog.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blog.graphql.swift; sourceTree = "<group>"; };
-		D4AAF85A2A38DEE100A56FAB /* Model3d.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model3d.graphql.swift; sourceTree = "<group>"; };
-		D4AAF85B2A38DEE100A56FAB /* MenuItem.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.graphql.swift; sourceTree = "<group>"; };
-		D4AAF85C2A38DEE100A56FAB /* Order.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.graphql.swift; sourceTree = "<group>"; };
-		D4AAF85D2A38DEE100A56FAB /* Comment.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.graphql.swift; sourceTree = "<group>"; };
-		D4AAF85E2A38DEE100A56FAB /* UrlRedirect.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlRedirect.graphql.swift; sourceTree = "<group>"; };
-		D4AAF85F2A38DEE100A56FAB /* Shop.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shop.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8602A38DEE100A56FAB /* ImageConnection.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageConnection.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8612A38DEE100A56FAB /* GenericFile.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericFile.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8622A38DEE100A56FAB /* ProductOption.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOption.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8632A38DEE100A56FAB /* Collection.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8642A38DEE100A56FAB /* CustomerRecoverPayload.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerRecoverPayload.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8652A38DEE100A56FAB /* ExternalVideo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalVideo.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8662A38DEE100A56FAB /* ProductConnection.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductConnection.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8672A38DEE100A56FAB /* CustomerCreatePayload.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCreatePayload.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8682A38DEE100A56FAB /* Menu.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8692A38DEE100A56FAB /* CustomerUpdatePayload.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerUpdatePayload.graphql.swift; sourceTree = "<group>"; };
-		D4AAF86A2A38DEE100A56FAB /* Mutation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mutation.graphql.swift; sourceTree = "<group>"; };
-		D4AAF86B2A38DEE100A56FAB /* CheckoutLineItem.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutLineItem.graphql.swift; sourceTree = "<group>"; };
-		D4AAF86C2A38DEE100A56FAB /* Location.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.graphql.swift; sourceTree = "<group>"; };
-		D4AAF86D2A38DEE100A56FAB /* Checkout.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkout.graphql.swift; sourceTree = "<group>"; };
-		D4AAF86E2A38DEE100A56FAB /* Metaobject.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metaobject.graphql.swift; sourceTree = "<group>"; };
-		D4AAF86F2A38DEE100A56FAB /* PageInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageInfo.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8702A38DEE100A56FAB /* QueryRoot.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryRoot.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8712A38DEE100A56FAB /* CheckoutUserError.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutUserError.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8722A38DEE100A56FAB /* Cart.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8732A38DEE100A56FAB /* CustomerAccessTokenDeletePayload.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerAccessTokenDeletePayload.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8742A38DEE100A56FAB /* MoneyV2.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyV2.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8752A38DEE100A56FAB /* Payment.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8762A38DEE100A56FAB /* Customer.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8772A38DEE100A56FAB /* UserError.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserError.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8782A38DEE100A56FAB /* CartLine.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartLine.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8792A38DEE100A56FAB /* ProductEdge.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductEdge.graphql.swift; sourceTree = "<group>"; };
-		D4AAF87A2A38DEE100A56FAB /* MailingAddress.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailingAddress.graphql.swift; sourceTree = "<group>"; };
-		D4AAF87B2A38DEE100A56FAB /* CustomerUserError.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerUserError.graphql.swift; sourceTree = "<group>"; };
-		D4AAF87C2A38DEE100A56FAB /* Page.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.graphql.swift; sourceTree = "<group>"; };
-		D4AAF87D2A38DEE100A56FAB /* MetafieldDeleteUserError.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetafieldDeleteUserError.graphql.swift; sourceTree = "<group>"; };
-		D4AAF87E2A38DEE100A56FAB /* CollectionConnection.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionConnection.graphql.swift; sourceTree = "<group>"; };
-		D4AAF87F2A38DEE100A56FAB /* ProductVariantConnection.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductVariantConnection.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8802A38DEE100A56FAB /* Market.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Market.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8812A38DEE100A56FAB /* Metafield.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metafield.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8822A38DEE100A56FAB /* Article.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8832A38DEE100A56FAB /* AppliedGiftCard.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppliedGiftCard.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8842A38DEE100A56FAB /* CartUserError.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartUserError.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8852A38DEE100A56FAB /* CustomerAccessTokenCreatePayload.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerAccessTokenCreatePayload.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8862A38DEE100A56FAB /* CustomerAccessToken.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerAccessToken.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8872A38DEE100A56FAB /* MediaImage.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaImage.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8882A38DEE100A56FAB /* Video.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8892A38DEE100A56FAB /* CustomerAccessTokenRenewPayload.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerAccessTokenRenewPayload.graphql.swift; sourceTree = "<group>"; };
-		D4AAF88A2A38DEE100A56FAB /* Product.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.graphql.swift; sourceTree = "<group>"; };
-		D4AAF88B2A38DEE100A56FAB /* ShopPolicy.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopPolicy.graphql.swift; sourceTree = "<group>"; };
-		D4AAF88C2A38DEE100A56FAB /* MediaPresentation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPresentation.graphql.swift; sourceTree = "<group>"; };
-		D4AAF88D2A38DEE100A56FAB /* MetafieldsSetUserError.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetafieldsSetUserError.graphql.swift; sourceTree = "<group>"; };
-		D4AAF88E2A38DEE100A56FAB /* SchemaConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaConfiguration.swift; sourceTree = "<group>"; };
-		D4AAF8902A38DEE100A56FAB /* CustomerCreateInput.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCreateInput.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8912A38DEE100A56FAB /* CustomerAccessTokenCreateInput.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerAccessTokenCreateInput.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8922A38DEE100A56FAB /* HasMetafieldsIdentifier.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasMetafieldsIdentifier.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8932A38DEE100A56FAB /* CustomerUpdateInput.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerUpdateInput.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8942A38DEE100A56FAB /* SchemaMetadata.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaMetadata.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8962A38DEE100A56FAB /* Media.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8972A38DEE100A56FAB /* HasMetafields.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasMetafields.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8982A38DEE100A56FAB /* BaseCartLine.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCartLine.graphql.swift; sourceTree = "<group>"; };
-		D4AAF8992A38DEE100A56FAB /* DisplayableError.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayableError.graphql.swift; sourceTree = "<group>"; };
-		D4AAF89A2A38DEE100A56FAB /* OnlineStorePublishable.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineStorePublishable.graphql.swift; sourceTree = "<group>"; };
-		D4AAF89B2A38DEE100A56FAB /* Node.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.graphql.swift; sourceTree = "<group>"; };
 		D4AAFA312A38E0A600A56FAB /* Shopify_Admin_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shopify_Admin_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AAFA332A38E0A600A56FAB /* Shopify_Admin_ITI_SDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shopify_Admin_ITI_SDK.h; sourceTree = "<group>"; };
 		DEC18845B81CEB227625DD8A /* Pods_Shopify_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -862,6 +866,188 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		046B61CB2A3A619F00DAF517 /* ShopifyAPI */ = {
+			isa = PBXGroup;
+			children = (
+				046B61CC2A3A619F00DAF517 /* Fragments */,
+				046B61D52A3A619F00DAF517 /* ShopifyAPI.graphql.swift */,
+				046B61D62A3A619F00DAF517 /* Operations */,
+				046B61E32A3A619F00DAF517 /* Schema */,
+			);
+			path = ShopifyAPI;
+			sourceTree = "<group>";
+		};
+		046B61CC2A3A619F00DAF517 /* Fragments */ = {
+			isa = PBXGroup;
+			children = (
+				046B61CD2A3A619F00DAF517 /* MetafieldInfo.graphql.swift */,
+				046B61CE2A3A619F00DAF517 /* CollectionInfo.graphql.swift */,
+				046B61CF2A3A619F00DAF517 /* ImageInfo.graphql.swift */,
+				046B61D02A3A619F00DAF517 /* MoneyInfo.graphql.swift */,
+				046B61D12A3A619F00DAF517 /* PaginationInfo.graphql.swift */,
+				046B61D22A3A619F00DAF517 /* ProductVariantInfo.graphql.swift */,
+				046B61D32A3A619F00DAF517 /* PriceRangeInfo.graphql.swift */,
+				046B61D42A3A619F00DAF517 /* ProductInfo.graphql.swift */,
+			);
+			path = Fragments;
+			sourceTree = "<group>";
+		};
+		046B61D62A3A619F00DAF517 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				046B61D72A3A619F00DAF517 /* Mutations */,
+				046B61DE2A3A619F00DAF517 /* Queries */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		046B61D72A3A619F00DAF517 /* Mutations */ = {
+			isa = PBXGroup;
+			children = (
+				046B61D82A3A619F00DAF517 /* UpdateCustomerMutation.graphql.swift */,
+				046B61D92A3A619F00DAF517 /* RecoverCustomerAccountMutation.graphql.swift */,
+				046B61DA2A3A619F00DAF517 /* CreateCustomerAccountMutation.graphql.swift */,
+				046B61DB2A3A619F00DAF517 /* CreateCustomerAccessTokenMutation.graphql.swift */,
+				046B61DC2A3A619F00DAF517 /* RenewCustomerAccessTokenMutation.graphql.swift */,
+				046B61DD2A3A619F00DAF517 /* DeleteCustomerAccessTokenMutation.graphql.swift */,
+			);
+			path = Mutations;
+			sourceTree = "<group>";
+		};
+		046B61DE2A3A619F00DAF517 /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				046B61DF2A3A619F00DAF517 /* GetBrandsQuery.graphql.swift */,
+				046B61E02A3A619F00DAF517 /* GetProductByIdQuery.graphql.swift */,
+				046B61E12A3A619F00DAF517 /* GetProductsByQuery.graphql.swift */,
+				046B61E22A3A619F00DAF517 /* GetCustomerWithAccessTokenQuery.graphql.swift */,
+			);
+			path = Queries;
+			sourceTree = "<group>";
+		};
+		046B61E32A3A619F00DAF517 /* Schema */ = {
+			isa = PBXGroup;
+			children = (
+				046B61E42A3A619F00DAF517 /* CustomScalars */,
+				046B61E82A3A619F00DAF517 /* Enums */,
+				046B61ED2A3A619F00DAF517 /* Objects */,
+				046B62272A3A619F00DAF517 /* SchemaConfiguration.swift */,
+				046B62282A3A619F00DAF517 /* InputObjects */,
+				046B622D2A3A619F00DAF517 /* SchemaMetadata.graphql.swift */,
+				046B622E2A3A619F00DAF517 /* Interfaces */,
+			);
+			path = Schema;
+			sourceTree = "<group>";
+		};
+		046B61E42A3A619F00DAF517 /* CustomScalars */ = {
+			isa = PBXGroup;
+			children = (
+				046B61E52A3A619F00DAF517 /* Decimal.swift */,
+				046B61E62A3A619F00DAF517 /* URL.swift */,
+				046B61E72A3A619F00DAF517 /* DateTime.swift */,
+			);
+			path = CustomScalars;
+			sourceTree = "<group>";
+		};
+		046B61E82A3A619F00DAF517 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				046B61E92A3A619F00DAF517 /* CountryCode.graphql.swift */,
+				046B61EA2A3A619F00DAF517 /* CurrencyCode.graphql.swift */,
+				046B61EB2A3A619F00DAF517 /* LanguageCode.graphql.swift */,
+				046B61EC2A3A619F00DAF517 /* CustomerErrorCode.graphql.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		046B61ED2A3A619F00DAF517 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				046B61EE2A3A619F00DAF517 /* Image.graphql.swift */,
+				046B61EF2A3A619F00DAF517 /* ProductPriceRange.graphql.swift */,
+				046B61F02A3A619F00DAF517 /* ProductVariant.graphql.swift */,
+				046B61F12A3A619F00DAF517 /* Blog.graphql.swift */,
+				046B61F22A3A619F00DAF517 /* Model3d.graphql.swift */,
+				046B61F32A3A619F00DAF517 /* MenuItem.graphql.swift */,
+				046B61F42A3A619F00DAF517 /* CollectionEdge.graphql.swift */,
+				046B61F52A3A619F00DAF517 /* Order.graphql.swift */,
+				046B61F62A3A619F00DAF517 /* Comment.graphql.swift */,
+				046B61F72A3A619F00DAF517 /* UrlRedirect.graphql.swift */,
+				046B61F82A3A619F00DAF517 /* Shop.graphql.swift */,
+				046B61F92A3A619F00DAF517 /* ImageConnection.graphql.swift */,
+				046B61FA2A3A619F00DAF517 /* GenericFile.graphql.swift */,
+				046B61FB2A3A619F00DAF517 /* ProductOption.graphql.swift */,
+				046B61FC2A3A619F00DAF517 /* Collection.graphql.swift */,
+				046B61FD2A3A619F00DAF517 /* CustomerRecoverPayload.graphql.swift */,
+				046B61FE2A3A619F00DAF517 /* ExternalVideo.graphql.swift */,
+				046B61FF2A3A619F00DAF517 /* ProductConnection.graphql.swift */,
+				046B62002A3A619F00DAF517 /* CustomerCreatePayload.graphql.swift */,
+				046B62012A3A619F00DAF517 /* Menu.graphql.swift */,
+				046B62022A3A619F00DAF517 /* CustomerUpdatePayload.graphql.swift */,
+				046B62032A3A619F00DAF517 /* Mutation.graphql.swift */,
+				046B62042A3A619F00DAF517 /* CheckoutLineItem.graphql.swift */,
+				046B62052A3A619F00DAF517 /* Location.graphql.swift */,
+				046B62062A3A619F00DAF517 /* Checkout.graphql.swift */,
+				046B62072A3A619F00DAF517 /* Metaobject.graphql.swift */,
+				046B62082A3A619F00DAF517 /* PageInfo.graphql.swift */,
+				046B62092A3A619F00DAF517 /* QueryRoot.graphql.swift */,
+				046B620A2A3A619F00DAF517 /* CheckoutUserError.graphql.swift */,
+				046B620B2A3A619F00DAF517 /* Cart.graphql.swift */,
+				046B620C2A3A619F00DAF517 /* CustomerAccessTokenDeletePayload.graphql.swift */,
+				046B620D2A3A619F00DAF517 /* MoneyV2.graphql.swift */,
+				046B620E2A3A619F00DAF517 /* Payment.graphql.swift */,
+				046B620F2A3A619F00DAF517 /* Customer.graphql.swift */,
+				046B62102A3A619F00DAF517 /* UserError.graphql.swift */,
+				046B62112A3A619F00DAF517 /* CartLine.graphql.swift */,
+				046B62122A3A619F00DAF517 /* ProductEdge.graphql.swift */,
+				046B62132A3A619F00DAF517 /* MailingAddress.graphql.swift */,
+				046B62142A3A619F00DAF517 /* CustomerUserError.graphql.swift */,
+				046B62152A3A619F00DAF517 /* Page.graphql.swift */,
+				046B62162A3A619F00DAF517 /* MetafieldDeleteUserError.graphql.swift */,
+				046B62172A3A619F00DAF517 /* CollectionConnection.graphql.swift */,
+				046B62182A3A619F00DAF517 /* ProductVariantConnection.graphql.swift */,
+				046B62192A3A619F00DAF517 /* Market.graphql.swift */,
+				046B621A2A3A619F00DAF517 /* Metafield.graphql.swift */,
+				046B621B2A3A619F00DAF517 /* Article.graphql.swift */,
+				046B621C2A3A619F00DAF517 /* AppliedGiftCard.graphql.swift */,
+				046B621D2A3A619F00DAF517 /* CartUserError.graphql.swift */,
+				046B621E2A3A619F00DAF517 /* CustomerAccessTokenCreatePayload.graphql.swift */,
+				046B621F2A3A619F00DAF517 /* CustomerAccessToken.graphql.swift */,
+				046B62202A3A619F00DAF517 /* MediaImage.graphql.swift */,
+				046B62212A3A619F00DAF517 /* Video.graphql.swift */,
+				046B62222A3A619F00DAF517 /* CustomerAccessTokenRenewPayload.graphql.swift */,
+				046B62232A3A619F00DAF517 /* Product.graphql.swift */,
+				046B62242A3A619F00DAF517 /* ShopPolicy.graphql.swift */,
+				046B62252A3A619F00DAF517 /* MediaPresentation.graphql.swift */,
+				046B62262A3A619F00DAF517 /* MetafieldsSetUserError.graphql.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		046B62282A3A619F00DAF517 /* InputObjects */ = {
+			isa = PBXGroup;
+			children = (
+				046B62292A3A619F00DAF517 /* CustomerCreateInput.graphql.swift */,
+				046B622A2A3A619F00DAF517 /* CustomerAccessTokenCreateInput.graphql.swift */,
+				046B622B2A3A619F00DAF517 /* HasMetafieldsIdentifier.graphql.swift */,
+				046B622C2A3A619F00DAF517 /* CustomerUpdateInput.graphql.swift */,
+			);
+			path = InputObjects;
+			sourceTree = "<group>";
+		};
+		046B622E2A3A619F00DAF517 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				046B622F2A3A619F00DAF517 /* Media.graphql.swift */,
+				046B62302A3A619F00DAF517 /* HasMetafields.graphql.swift */,
+				046B62312A3A619F00DAF517 /* BaseCartLine.graphql.swift */,
+				046B62322A3A619F00DAF517 /* DisplayableError.graphql.swift */,
+				046B62332A3A619F00DAF517 /* OnlineStorePublishable.graphql.swift */,
+				046B62342A3A619F00DAF517 /* Node.graphql.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
 		48668165B74554C6FC4A8DAA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -886,8 +1072,8 @@
 		D4596CEA2A33580200BD9E26 = {
 			isa = PBXGroup;
 			children = (
+				046B61CB2A3A619F00DAF517 /* ShopifyAPI */,
 				D4AA0BB82A397EF100A56FAB /* ShopifyAdminAPI */,
-				D4AAF8342A38DEE100A56FAB /* ShopifyAPI */,
 				D4596CF62A33580200BD9E26 /* Shopify-ITI-SDK */,
 				D4AAFA322A38E0A600A56FAB /* Shopify-Admin-ITI-SDK */,
 				D4596CF52A33580200BD9E26 /* Products */,
@@ -1315,186 +1501,6 @@
 			path = Interfaces;
 			sourceTree = "<group>";
 		};
-		D4AAF8342A38DEE100A56FAB /* ShopifyAPI */ = {
-			isa = PBXGroup;
-			children = (
-				D4AAF8352A38DEE100A56FAB /* Fragments */,
-				D4AAF83E2A38DEE100A56FAB /* ShopifyAPI.graphql.swift */,
-				D4AAF83F2A38DEE100A56FAB /* Operations */,
-				D4AAF84B2A38DEE100A56FAB /* Schema */,
-			);
-			path = ShopifyAPI;
-			sourceTree = "<group>";
-		};
-		D4AAF8352A38DEE100A56FAB /* Fragments */ = {
-			isa = PBXGroup;
-			children = (
-				D4AAF8362A38DEE100A56FAB /* MetafieldInfo.graphql.swift */,
-				D4AAF8372A38DEE100A56FAB /* CollectionInfo.graphql.swift */,
-				D4AAF8382A38DEE100A56FAB /* ImageInfo.graphql.swift */,
-				D4AAF8392A38DEE100A56FAB /* MoneyInfo.graphql.swift */,
-				D4AAF83A2A38DEE100A56FAB /* PaginationInfo.graphql.swift */,
-				D4AAF83B2A38DEE100A56FAB /* ProductVariantInfo.graphql.swift */,
-				D4AAF83C2A38DEE100A56FAB /* PriceRangeInfo.graphql.swift */,
-				D4AAF83D2A38DEE100A56FAB /* ProductInfo.graphql.swift */,
-			);
-			path = Fragments;
-			sourceTree = "<group>";
-		};
-		D4AAF83F2A38DEE100A56FAB /* Operations */ = {
-			isa = PBXGroup;
-			children = (
-				D4AAF8402A38DEE100A56FAB /* Mutations */,
-				D4AAF8472A38DEE100A56FAB /* Queries */,
-			);
-			path = Operations;
-			sourceTree = "<group>";
-		};
-		D4AAF8402A38DEE100A56FAB /* Mutations */ = {
-			isa = PBXGroup;
-			children = (
-				D4AAF8412A38DEE100A56FAB /* UpdateCustomerMutation.graphql.swift */,
-				D4AAF8422A38DEE100A56FAB /* RecoverCustomerAccountMutation.graphql.swift */,
-				D4AAF8432A38DEE100A56FAB /* CreateCustomerAccountMutation.graphql.swift */,
-				D4AAF8442A38DEE100A56FAB /* CreateCustomerAccessTokenMutation.graphql.swift */,
-				D4AAF8452A38DEE100A56FAB /* RenewCustomerAccessTokenMutation.graphql.swift */,
-				D4AAF8462A38DEE100A56FAB /* DeleteCustomerAccessTokenMutation.graphql.swift */,
-			);
-			path = Mutations;
-			sourceTree = "<group>";
-		};
-		D4AAF8472A38DEE100A56FAB /* Queries */ = {
-			isa = PBXGroup;
-			children = (
-				D4AAF8482A38DEE100A56FAB /* GetProductByIdQuery.graphql.swift */,
-				D4AAF8492A38DEE100A56FAB /* GetProductsByQuery.graphql.swift */,
-				D4AAF84A2A38DEE100A56FAB /* GetCustomerWithAccessTokenQuery.graphql.swift */,
-			);
-			path = Queries;
-			sourceTree = "<group>";
-		};
-		D4AAF84B2A38DEE100A56FAB /* Schema */ = {
-			isa = PBXGroup;
-			children = (
-				D4AAF84C2A38DEE100A56FAB /* CustomScalars */,
-				D4AAF8502A38DEE100A56FAB /* Enums */,
-				D4AAF8552A38DEE100A56FAB /* Objects */,
-				D4AAF88E2A38DEE100A56FAB /* SchemaConfiguration.swift */,
-				D4AAF88F2A38DEE100A56FAB /* InputObjects */,
-				D4AAF8942A38DEE100A56FAB /* SchemaMetadata.graphql.swift */,
-				D4AAF8952A38DEE100A56FAB /* Interfaces */,
-			);
-			path = Schema;
-			sourceTree = "<group>";
-		};
-		D4AAF84C2A38DEE100A56FAB /* CustomScalars */ = {
-			isa = PBXGroup;
-			children = (
-				D4AAF84D2A38DEE100A56FAB /* Decimal.swift */,
-				D4AAF84E2A38DEE100A56FAB /* URL.swift */,
-				D4AAF84F2A38DEE100A56FAB /* DateTime.swift */,
-			);
-			path = CustomScalars;
-			sourceTree = "<group>";
-		};
-		D4AAF8502A38DEE100A56FAB /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-				D4AAF8512A38DEE100A56FAB /* CountryCode.graphql.swift */,
-				D4AAF8522A38DEE100A56FAB /* CurrencyCode.graphql.swift */,
-				D4AAF8532A38DEE100A56FAB /* LanguageCode.graphql.swift */,
-				D4AAF8542A38DEE100A56FAB /* CustomerErrorCode.graphql.swift */,
-			);
-			path = Enums;
-			sourceTree = "<group>";
-		};
-		D4AAF8552A38DEE100A56FAB /* Objects */ = {
-			isa = PBXGroup;
-			children = (
-				D4AAF8562A38DEE100A56FAB /* Image.graphql.swift */,
-				D4AAF8572A38DEE100A56FAB /* ProductPriceRange.graphql.swift */,
-				D4AAF8582A38DEE100A56FAB /* ProductVariant.graphql.swift */,
-				D4AAF8592A38DEE100A56FAB /* Blog.graphql.swift */,
-				D4AAF85A2A38DEE100A56FAB /* Model3d.graphql.swift */,
-				D4AAF85B2A38DEE100A56FAB /* MenuItem.graphql.swift */,
-				D4AAF85C2A38DEE100A56FAB /* Order.graphql.swift */,
-				D4AAF85D2A38DEE100A56FAB /* Comment.graphql.swift */,
-				D4AAF85E2A38DEE100A56FAB /* UrlRedirect.graphql.swift */,
-				D4AAF85F2A38DEE100A56FAB /* Shop.graphql.swift */,
-				D4AAF8602A38DEE100A56FAB /* ImageConnection.graphql.swift */,
-				D4AAF8612A38DEE100A56FAB /* GenericFile.graphql.swift */,
-				D4AAF8622A38DEE100A56FAB /* ProductOption.graphql.swift */,
-				D4AAF8632A38DEE100A56FAB /* Collection.graphql.swift */,
-				D4AAF8642A38DEE100A56FAB /* CustomerRecoverPayload.graphql.swift */,
-				D4AAF8652A38DEE100A56FAB /* ExternalVideo.graphql.swift */,
-				D4AAF8662A38DEE100A56FAB /* ProductConnection.graphql.swift */,
-				D4AAF8672A38DEE100A56FAB /* CustomerCreatePayload.graphql.swift */,
-				D4AAF8682A38DEE100A56FAB /* Menu.graphql.swift */,
-				D4AAF8692A38DEE100A56FAB /* CustomerUpdatePayload.graphql.swift */,
-				D4AAF86A2A38DEE100A56FAB /* Mutation.graphql.swift */,
-				D4AAF86B2A38DEE100A56FAB /* CheckoutLineItem.graphql.swift */,
-				D4AAF86C2A38DEE100A56FAB /* Location.graphql.swift */,
-				D4AAF86D2A38DEE100A56FAB /* Checkout.graphql.swift */,
-				D4AAF86E2A38DEE100A56FAB /* Metaobject.graphql.swift */,
-				D4AAF86F2A38DEE100A56FAB /* PageInfo.graphql.swift */,
-				D4AAF8702A38DEE100A56FAB /* QueryRoot.graphql.swift */,
-				D4AAF8712A38DEE100A56FAB /* CheckoutUserError.graphql.swift */,
-				D4AAF8722A38DEE100A56FAB /* Cart.graphql.swift */,
-				D4AAF8732A38DEE100A56FAB /* CustomerAccessTokenDeletePayload.graphql.swift */,
-				D4AAF8742A38DEE100A56FAB /* MoneyV2.graphql.swift */,
-				D4AAF8752A38DEE100A56FAB /* Payment.graphql.swift */,
-				D4AAF8762A38DEE100A56FAB /* Customer.graphql.swift */,
-				D4AAF8772A38DEE100A56FAB /* UserError.graphql.swift */,
-				D4AAF8782A38DEE100A56FAB /* CartLine.graphql.swift */,
-				D4AAF8792A38DEE100A56FAB /* ProductEdge.graphql.swift */,
-				D4AAF87A2A38DEE100A56FAB /* MailingAddress.graphql.swift */,
-				D4AAF87B2A38DEE100A56FAB /* CustomerUserError.graphql.swift */,
-				D4AAF87C2A38DEE100A56FAB /* Page.graphql.swift */,
-				D4AAF87D2A38DEE100A56FAB /* MetafieldDeleteUserError.graphql.swift */,
-				D4AAF87E2A38DEE100A56FAB /* CollectionConnection.graphql.swift */,
-				D4AAF87F2A38DEE100A56FAB /* ProductVariantConnection.graphql.swift */,
-				D4AAF8802A38DEE100A56FAB /* Market.graphql.swift */,
-				D4AAF8812A38DEE100A56FAB /* Metafield.graphql.swift */,
-				D4AAF8822A38DEE100A56FAB /* Article.graphql.swift */,
-				D4AAF8832A38DEE100A56FAB /* AppliedGiftCard.graphql.swift */,
-				D4AAF8842A38DEE100A56FAB /* CartUserError.graphql.swift */,
-				D4AAF8852A38DEE100A56FAB /* CustomerAccessTokenCreatePayload.graphql.swift */,
-				D4AAF8862A38DEE100A56FAB /* CustomerAccessToken.graphql.swift */,
-				D4AAF8872A38DEE100A56FAB /* MediaImage.graphql.swift */,
-				D4AAF8882A38DEE100A56FAB /* Video.graphql.swift */,
-				D4AAF8892A38DEE100A56FAB /* CustomerAccessTokenRenewPayload.graphql.swift */,
-				D4AAF88A2A38DEE100A56FAB /* Product.graphql.swift */,
-				D4AAF88B2A38DEE100A56FAB /* ShopPolicy.graphql.swift */,
-				D4AAF88C2A38DEE100A56FAB /* MediaPresentation.graphql.swift */,
-				D4AAF88D2A38DEE100A56FAB /* MetafieldsSetUserError.graphql.swift */,
-			);
-			path = Objects;
-			sourceTree = "<group>";
-		};
-		D4AAF88F2A38DEE100A56FAB /* InputObjects */ = {
-			isa = PBXGroup;
-			children = (
-				D4AAF8902A38DEE100A56FAB /* CustomerCreateInput.graphql.swift */,
-				D4AAF8912A38DEE100A56FAB /* CustomerAccessTokenCreateInput.graphql.swift */,
-				D4AAF8922A38DEE100A56FAB /* HasMetafieldsIdentifier.graphql.swift */,
-				D4AAF8932A38DEE100A56FAB /* CustomerUpdateInput.graphql.swift */,
-			);
-			path = InputObjects;
-			sourceTree = "<group>";
-		};
-		D4AAF8952A38DEE100A56FAB /* Interfaces */ = {
-			isa = PBXGroup;
-			children = (
-				D4AAF8962A38DEE100A56FAB /* Media.graphql.swift */,
-				D4AAF8972A38DEE100A56FAB /* HasMetafields.graphql.swift */,
-				D4AAF8982A38DEE100A56FAB /* BaseCartLine.graphql.swift */,
-				D4AAF8992A38DEE100A56FAB /* DisplayableError.graphql.swift */,
-				D4AAF89A2A38DEE100A56FAB /* OnlineStorePublishable.graphql.swift */,
-				D4AAF89B2A38DEE100A56FAB /* Node.graphql.swift */,
-			);
-			path = Interfaces;
-			sourceTree = "<group>";
-		};
 		D4AAFA322A38E0A600A56FAB /* Shopify-Admin-ITI-SDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1668,99 +1674,101 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4AAF9D52A38DEE200A56FAB /* PriceRangeInfo.graphql.swift in Sources */,
-				D4AAFA222A38DEE200A56FAB /* CustomerAccessTokenCreateInput.graphql.swift in Sources */,
-				D4AAF9E42A38DEE200A56FAB /* CountryCode.graphql.swift in Sources */,
-				D4AAFA1B2A38DEE200A56FAB /* CustomerAccessTokenRenewPayload.graphql.swift in Sources */,
-				D4AAFA162A38DEE200A56FAB /* CartUserError.graphql.swift in Sources */,
-				D4AAF9F22A38DEE200A56FAB /* ImageConnection.graphql.swift in Sources */,
-				D4AAFA152A38DEE200A56FAB /* AppliedGiftCard.graphql.swift in Sources */,
-				D4AAF9F02A38DEE200A56FAB /* UrlRedirect.graphql.swift in Sources */,
-				D4AAF9FC2A38DEE200A56FAB /* Mutation.graphql.swift in Sources */,
-				D4AAFA1F2A38DEE200A56FAB /* MetafieldsSetUserError.graphql.swift in Sources */,
-				D4AAF9D42A38DEE200A56FAB /* ProductVariantInfo.graphql.swift in Sources */,
-				D4AAFA232A38DEE200A56FAB /* HasMetafieldsIdentifier.graphql.swift in Sources */,
-				D4AAF9F52A38DEE200A56FAB /* Collection.graphql.swift in Sources */,
-				D4AAF9EE2A38DEE200A56FAB /* Order.graphql.swift in Sources */,
-				D4AAF9D72A38DEE200A56FAB /* ShopifyAPI.graphql.swift in Sources */,
-				D4AAF9EB2A38DEE200A56FAB /* Blog.graphql.swift in Sources */,
-				D4AAFA282A38DEE200A56FAB /* BaseCartLine.graphql.swift in Sources */,
-				D4AAF9F12A38DEE200A56FAB /* Shop.graphql.swift in Sources */,
-				D4AAFA022A38DEE200A56FAB /* QueryRoot.graphql.swift in Sources */,
-				D4AAF9F82A38DEE200A56FAB /* ProductConnection.graphql.swift in Sources */,
-				D4AAF9D02A38DEE200A56FAB /* CollectionInfo.graphql.swift in Sources */,
-				D4AAF9FA2A38DEE200A56FAB /* Menu.graphql.swift in Sources */,
-				D4AAF9E22A38DEE200A56FAB /* URL.swift in Sources */,
-				D4AAF9E72A38DEE200A56FAB /* CustomerErrorCode.graphql.swift in Sources */,
-				D4AAF9DC2A38DEE200A56FAB /* RenewCustomerAccessTokenMutation.graphql.swift in Sources */,
-				D4AAFA0B2A38DEE200A56FAB /* ProductEdge.graphql.swift in Sources */,
-				D4AAF9F72A38DEE200A56FAB /* ExternalVideo.graphql.swift in Sources */,
-				D4AAFA182A38DEE200A56FAB /* CustomerAccessToken.graphql.swift in Sources */,
-				D4AAFA122A38DEE200A56FAB /* Market.graphql.swift in Sources */,
-				D4AAF9FE2A38DEE200A56FAB /* Location.graphql.swift in Sources */,
-				D4AAFA172A38DEE200A56FAB /* CustomerAccessTokenCreatePayload.graphql.swift in Sources */,
-				D4AAF9DE2A38DEE200A56FAB /* GetProductByIdQuery.graphql.swift in Sources */,
-				D4AAF9E12A38DEE200A56FAB /* Decimal.swift in Sources */,
-				D4AAFA1C2A38DEE200A56FAB /* Product.graphql.swift in Sources */,
-				D4AAF9F62A38DEE200A56FAB /* CustomerRecoverPayload.graphql.swift in Sources */,
-				D4AAFA0F2A38DEE200A56FAB /* MetafieldDeleteUserError.graphql.swift in Sources */,
-				D4AAF9FB2A38DEE200A56FAB /* CustomerUpdatePayload.graphql.swift in Sources */,
-				D4AAFA202A38DEE200A56FAB /* SchemaConfiguration.swift in Sources */,
-				D4AAF9D62A38DEE200A56FAB /* ProductInfo.graphql.swift in Sources */,
-				D4AAFA042A38DEE200A56FAB /* Cart.graphql.swift in Sources */,
-				D4AAFA062A38DEE200A56FAB /* MoneyV2.graphql.swift in Sources */,
-				D4AAF9DA2A38DEE200A56FAB /* CreateCustomerAccountMutation.graphql.swift in Sources */,
-				D4AAF9DD2A38DEE200A56FAB /* DeleteCustomerAccessTokenMutation.graphql.swift in Sources */,
-				D4AAFA052A38DEE200A56FAB /* CustomerAccessTokenDeletePayload.graphql.swift in Sources */,
-				D4AAFA132A38DEE200A56FAB /* Metafield.graphql.swift in Sources */,
-				D4AAFA002A38DEE200A56FAB /* Metaobject.graphql.swift in Sources */,
-				D4AAF9F32A38DEE200A56FAB /* GenericFile.graphql.swift in Sources */,
-				D4AAFA272A38DEE200A56FAB /* HasMetafields.graphql.swift in Sources */,
-				D4AAF9EC2A38DEE200A56FAB /* Model3d.graphql.swift in Sources */,
-				D4AAFA292A38DEE200A56FAB /* DisplayableError.graphql.swift in Sources */,
-				D4AAF9F92A38DEE200A56FAB /* CustomerCreatePayload.graphql.swift in Sources */,
-				D4AAF9EF2A38DEE200A56FAB /* Comment.graphql.swift in Sources */,
-				D4AAF9E92A38DEE200A56FAB /* ProductPriceRange.graphql.swift in Sources */,
-				D4AAFA262A38DEE200A56FAB /* Media.graphql.swift in Sources */,
-				D4AAFA0A2A38DEE200A56FAB /* CartLine.graphql.swift in Sources */,
-				D4AAFA0C2A38DEE200A56FAB /* MailingAddress.graphql.swift in Sources */,
-				D4AAF9CF2A38DEE200A56FAB /* MetafieldInfo.graphql.swift in Sources */,
-				D4AAF9ED2A38DEE200A56FAB /* MenuItem.graphql.swift in Sources */,
-				D4AAFA1D2A38DEE200A56FAB /* ShopPolicy.graphql.swift in Sources */,
-				D4AAF9E52A38DEE200A56FAB /* CurrencyCode.graphql.swift in Sources */,
-				D4AAFA242A38DEE200A56FAB /* CustomerUpdateInput.graphql.swift in Sources */,
-				D4AAFA2B2A38DEE200A56FAB /* Node.graphql.swift in Sources */,
-				D4AAFA102A38DEE200A56FAB /* CollectionConnection.graphql.swift in Sources */,
-				D4AAFA032A38DEE200A56FAB /* CheckoutUserError.graphql.swift in Sources */,
-				D4AAF9DB2A38DEE200A56FAB /* CreateCustomerAccessTokenMutation.graphql.swift in Sources */,
-				D4AAF9E82A38DEE200A56FAB /* Image.graphql.swift in Sources */,
-				D4AAFA012A38DEE200A56FAB /* PageInfo.graphql.swift in Sources */,
-				D4AAF9D12A38DEE200A56FAB /* ImageInfo.graphql.swift in Sources */,
-				D4AAFA1E2A38DEE200A56FAB /* MediaPresentation.graphql.swift in Sources */,
-				D4AAFA082A38DEE200A56FAB /* Customer.graphql.swift in Sources */,
-				D4AAFA092A38DEE200A56FAB /* UserError.graphql.swift in Sources */,
-				D4AAF9D32A38DEE200A56FAB /* PaginationInfo.graphql.swift in Sources */,
-				D4AAF9DF2A38DEE200A56FAB /* GetProductsByQuery.graphql.swift in Sources */,
-				D4AAF9D92A38DEE200A56FAB /* RecoverCustomerAccountMutation.graphql.swift in Sources */,
-				D4AAFA0E2A38DEE200A56FAB /* Page.graphql.swift in Sources */,
-				D4AAF9E32A38DEE200A56FAB /* DateTime.swift in Sources */,
-				D4AAFA212A38DEE200A56FAB /* CustomerCreateInput.graphql.swift in Sources */,
-				D4AAFA112A38DEE200A56FAB /* ProductVariantConnection.graphql.swift in Sources */,
-				D4AAF9F42A38DEE200A56FAB /* ProductOption.graphql.swift in Sources */,
-				D4AAF9FF2A38DEE200A56FAB /* Checkout.graphql.swift in Sources */,
-				D4AAF9FD2A38DEE200A56FAB /* CheckoutLineItem.graphql.swift in Sources */,
-				D4AAFA0D2A38DEE200A56FAB /* CustomerUserError.graphql.swift in Sources */,
-				D4AAF9E62A38DEE200A56FAB /* LanguageCode.graphql.swift in Sources */,
-				D4AAF9E02A38DEE200A56FAB /* GetCustomerWithAccessTokenQuery.graphql.swift in Sources */,
-				D4AAF9D22A38DEE200A56FAB /* MoneyInfo.graphql.swift in Sources */,
-				D4AAFA192A38DEE200A56FAB /* MediaImage.graphql.swift in Sources */,
-				D4AAFA252A38DEE200A56FAB /* SchemaMetadata.graphql.swift in Sources */,
-				D4AAF9D82A38DEE200A56FAB /* UpdateCustomerMutation.graphql.swift in Sources */,
-				D4AAFA2A2A38DEE200A56FAB /* OnlineStorePublishable.graphql.swift in Sources */,
-				D4AAFA1A2A38DEE200A56FAB /* Video.graphql.swift in Sources */,
-				D4AAF9EA2A38DEE200A56FAB /* ProductVariant.graphql.swift in Sources */,
-				D4AAFA072A38DEE200A56FAB /* Payment.graphql.swift in Sources */,
-				D4AAFA142A38DEE200A56FAB /* Article.graphql.swift in Sources */,
+				046B62522A3A619F00DAF517 /* Blog.graphql.swift in Sources */,
+				046B627C2A3A619F00DAF517 /* Article.graphql.swift in Sources */,
+				046B62512A3A619F00DAF517 /* ProductVariant.graphql.swift in Sources */,
+				046B62832A3A619F00DAF517 /* CustomerAccessTokenRenewPayload.graphql.swift in Sources */,
+				046B62552A3A619F00DAF517 /* CollectionEdge.graphql.swift in Sources */,
+				046B624C2A3A619F00DAF517 /* CurrencyCode.graphql.swift in Sources */,
+				046B62462A3A619F00DAF517 /* GetProductsByQuery.graphql.swift in Sources */,
+				046B623E2A3A619F00DAF517 /* UpdateCustomerMutation.graphql.swift in Sources */,
+				046B623A2A3A619F00DAF517 /* ProductVariantInfo.graphql.swift in Sources */,
+				046B62502A3A619F00DAF517 /* ProductPriceRange.graphql.swift in Sources */,
+				046B623B2A3A619F00DAF517 /* PriceRangeInfo.graphql.swift in Sources */,
+				046B626D2A3A619F00DAF517 /* CustomerAccessTokenDeletePayload.graphql.swift in Sources */,
+				046B625F2A3A619F00DAF517 /* ExternalVideo.graphql.swift in Sources */,
+				046B62792A3A619F00DAF517 /* ProductVariantConnection.graphql.swift in Sources */,
+				046B62612A3A619F00DAF517 /* CustomerCreatePayload.graphql.swift in Sources */,
+				046B627B2A3A619F00DAF517 /* Metafield.graphql.swift in Sources */,
+				046B62912A3A619F00DAF517 /* DisplayableError.graphql.swift in Sources */,
+				046B62402A3A619F00DAF517 /* CreateCustomerAccountMutation.graphql.swift in Sources */,
+				046B62762A3A619F00DAF517 /* Page.graphql.swift in Sources */,
+				046B62442A3A619F00DAF517 /* GetBrandsQuery.graphql.swift in Sources */,
+				046B624F2A3A619F00DAF517 /* Image.graphql.swift in Sources */,
+				046B62362A3A619F00DAF517 /* CollectionInfo.graphql.swift in Sources */,
+				046B62812A3A619F00DAF517 /* MediaImage.graphql.swift in Sources */,
+				046B625C2A3A619F00DAF517 /* ProductOption.graphql.swift in Sources */,
+				046B62532A3A619F00DAF517 /* Model3d.graphql.swift in Sources */,
+				046B624E2A3A619F00DAF517 /* CustomerErrorCode.graphql.swift in Sources */,
+				046B625E2A3A619F00DAF517 /* CustomerRecoverPayload.graphql.swift in Sources */,
+				046B62652A3A619F00DAF517 /* CheckoutLineItem.graphql.swift in Sources */,
+				046B62592A3A619F00DAF517 /* Shop.graphql.swift in Sources */,
+				046B62372A3A619F00DAF517 /* ImageInfo.graphql.swift in Sources */,
+				046B62682A3A619F00DAF517 /* Metaobject.graphql.swift in Sources */,
+				046B628B2A3A619F00DAF517 /* HasMetafieldsIdentifier.graphql.swift in Sources */,
+				046B628E2A3A619F00DAF517 /* Media.graphql.swift in Sources */,
+				046B627A2A3A619F00DAF517 /* Market.graphql.swift in Sources */,
+				046B62472A3A619F00DAF517 /* GetCustomerWithAccessTokenQuery.graphql.swift in Sources */,
+				046B627E2A3A619F00DAF517 /* CartUserError.graphql.swift in Sources */,
+				046B62902A3A619F00DAF517 /* BaseCartLine.graphql.swift in Sources */,
+				046B625B2A3A619F00DAF517 /* GenericFile.graphql.swift in Sources */,
+				046B62892A3A619F00DAF517 /* CustomerCreateInput.graphql.swift in Sources */,
+				046B62452A3A619F00DAF517 /* GetProductByIdQuery.graphql.swift in Sources */,
+				046B62742A3A619F00DAF517 /* MailingAddress.graphql.swift in Sources */,
+				046B624A2A3A619F00DAF517 /* DateTime.swift in Sources */,
+				046B62692A3A619F00DAF517 /* PageInfo.graphql.swift in Sources */,
+				046B62542A3A619F00DAF517 /* MenuItem.graphql.swift in Sources */,
+				046B62852A3A619F00DAF517 /* ShopPolicy.graphql.swift in Sources */,
+				046B628A2A3A619F00DAF517 /* CustomerAccessTokenCreateInput.graphql.swift in Sources */,
+				046B626F2A3A619F00DAF517 /* Payment.graphql.swift in Sources */,
+				046B62352A3A619F00DAF517 /* MetafieldInfo.graphql.swift in Sources */,
+				046B62932A3A619F00DAF517 /* Node.graphql.swift in Sources */,
+				046B626B2A3A619F00DAF517 /* CheckoutUserError.graphql.swift in Sources */,
+				046B62732A3A619F00DAF517 /* ProductEdge.graphql.swift in Sources */,
+				046B623F2A3A619F00DAF517 /* RecoverCustomerAccountMutation.graphql.swift in Sources */,
+				046B62582A3A619F00DAF517 /* UrlRedirect.graphql.swift in Sources */,
+				046B624B2A3A619F00DAF517 /* CountryCode.graphql.swift in Sources */,
+				046B628D2A3A619F00DAF517 /* SchemaMetadata.graphql.swift in Sources */,
+				046B62842A3A619F00DAF517 /* Product.graphql.swift in Sources */,
+				046B62702A3A619F00DAF517 /* Customer.graphql.swift in Sources */,
+				046B626E2A3A619F00DAF517 /* MoneyV2.graphql.swift in Sources */,
+				046B62802A3A619F00DAF517 /* CustomerAccessToken.graphql.swift in Sources */,
+				046B62392A3A619F00DAF517 /* PaginationInfo.graphql.swift in Sources */,
+				046B627D2A3A619F00DAF517 /* AppliedGiftCard.graphql.swift in Sources */,
+				046B62882A3A619F00DAF517 /* SchemaConfiguration.swift in Sources */,
+				046B62862A3A619F00DAF517 /* MediaPresentation.graphql.swift in Sources */,
+				046B62422A3A619F00DAF517 /* RenewCustomerAccessTokenMutation.graphql.swift in Sources */,
+				046B62722A3A619F00DAF517 /* CartLine.graphql.swift in Sources */,
+				046B626C2A3A619F00DAF517 /* Cart.graphql.swift in Sources */,
+				046B62672A3A619F00DAF517 /* Checkout.graphql.swift in Sources */,
+				046B624D2A3A619F00DAF517 /* LanguageCode.graphql.swift in Sources */,
+				046B62602A3A619F00DAF517 /* ProductConnection.graphql.swift in Sources */,
+				046B625D2A3A619F00DAF517 /* Collection.graphql.swift in Sources */,
+				046B623C2A3A619F00DAF517 /* ProductInfo.graphql.swift in Sources */,
+				046B62752A3A619F00DAF517 /* CustomerUserError.graphql.swift in Sources */,
+				046B62382A3A619F00DAF517 /* MoneyInfo.graphql.swift in Sources */,
+				046B62632A3A619F00DAF517 /* CustomerUpdatePayload.graphql.swift in Sources */,
+				046B62412A3A619F00DAF517 /* CreateCustomerAccessTokenMutation.graphql.swift in Sources */,
+				046B626A2A3A619F00DAF517 /* QueryRoot.graphql.swift in Sources */,
+				046B62492A3A619F00DAF517 /* URL.swift in Sources */,
+				046B62622A3A619F00DAF517 /* Menu.graphql.swift in Sources */,
+				046B62922A3A619F00DAF517 /* OnlineStorePublishable.graphql.swift in Sources */,
+				046B628F2A3A619F00DAF517 /* HasMetafields.graphql.swift in Sources */,
+				046B623D2A3A619F00DAF517 /* ShopifyAPI.graphql.swift in Sources */,
+				046B62562A3A619F00DAF517 /* Order.graphql.swift in Sources */,
+				046B62432A3A619F00DAF517 /* DeleteCustomerAccessTokenMutation.graphql.swift in Sources */,
+				046B62822A3A619F00DAF517 /* Video.graphql.swift in Sources */,
+				046B62572A3A619F00DAF517 /* Comment.graphql.swift in Sources */,
+				046B62712A3A619F00DAF517 /* UserError.graphql.swift in Sources */,
+				046B62782A3A619F00DAF517 /* CollectionConnection.graphql.swift in Sources */,
+				046B625A2A3A619F00DAF517 /* ImageConnection.graphql.swift in Sources */,
+				046B62662A3A619F00DAF517 /* Location.graphql.swift in Sources */,
+				046B628C2A3A619F00DAF517 /* CustomerUpdateInput.graphql.swift in Sources */,
+				046B62482A3A619F00DAF517 /* Decimal.swift in Sources */,
+				046B62872A3A619F00DAF517 /* MetafieldsSetUserError.graphql.swift in Sources */,
+				046B62772A3A619F00DAF517 /* MetafieldDeleteUserError.graphql.swift in Sources */,
+				046B627F2A3A619F00DAF517 /* CustomerAccessTokenCreatePayload.graphql.swift in Sources */,
+				046B62642A3A619F00DAF517 /* Mutation.graphql.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

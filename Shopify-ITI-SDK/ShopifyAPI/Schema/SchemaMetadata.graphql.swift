@@ -32,14 +32,14 @@ public extension ShopifyAPI {
     public static func objectType(forTypename typename: String) -> Object? {
       switch typename {
       case "QueryRoot": return ShopifyAPI.Objects.QueryRoot
-      case "ProductConnection": return ShopifyAPI.Objects.ProductConnection
-      case "ProductEdge": return ShopifyAPI.Objects.ProductEdge
-      case "Product": return ShopifyAPI.Objects.Product
+      case "CollectionConnection": return ShopifyAPI.Objects.CollectionConnection
+      case "CollectionEdge": return ShopifyAPI.Objects.CollectionEdge
+      case "Collection": return ShopifyAPI.Objects.Collection
       case "Article": return ShopifyAPI.Objects.Article
       case "AppliedGiftCard": return ShopifyAPI.Objects.AppliedGiftCard
       case "Blog": return ShopifyAPI.Objects.Blog
-      case "Collection": return ShopifyAPI.Objects.Collection
       case "Page": return ShopifyAPI.Objects.Page
+      case "Product": return ShopifyAPI.Objects.Product
       case "Cart": return ShopifyAPI.Objects.Cart
       case "CartLine": return ShopifyAPI.Objects.CartLine
       case "Checkout": return ShopifyAPI.Objects.Checkout
@@ -67,10 +67,11 @@ public extension ShopifyAPI {
       case "UrlRedirect": return ShopifyAPI.Objects.UrlRedirect
       case "Customer": return ShopifyAPI.Objects.Customer
       case "Image": return ShopifyAPI.Objects.Image
+      case "ProductConnection": return ShopifyAPI.Objects.ProductConnection
+      case "ProductEdge": return ShopifyAPI.Objects.ProductEdge
       case "ProductPriceRange": return ShopifyAPI.Objects.ProductPriceRange
       case "MoneyV2": return ShopifyAPI.Objects.MoneyV2
       case "PageInfo": return ShopifyAPI.Objects.PageInfo
-      case "CollectionConnection": return ShopifyAPI.Objects.CollectionConnection
       case "ImageConnection": return ShopifyAPI.Objects.ImageConnection
       case "ProductVariantConnection": return ShopifyAPI.Objects.ProductVariantConnection
       case "Mutation": return ShopifyAPI.Objects.Mutation
