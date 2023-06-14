@@ -6,25 +6,21 @@
 //
 
 import SwiftUI
-struct Item: Identifiable {
-    let id = UUID()
-    let name: String
-    let price: Double
-    let quantity: Int
-}
+
 struct CartView: View {
-    var cartItems: [Item] = [
-        Item(name: "Item 1", price: 9.99, quantity: 2),
-        Item(name: "Item 2", price: 14.99, quantity: 1),
-        Item(name: "Item 3", price: 19.99, quantity: 3)
-    ]
+    @StateObject private var viewModel: CartViewModel
+    init(container: AppContainer) {
+        let model = container.require((any AnyCartModel).self)
+        _viewModel = .init(wrappedValue: CartViewModel(model: model ))
+    }
     
+
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 16) {
-                ForEach(cartItems) { item in
-                    CardItemView(item: item)
-                }
+//                ForEach($viewModel.cart.cartLine ?? <#default value#>) { item in
+//                    CardItemView(cartLine: item)
+//                }
             }
             .padding()
         }.task {
@@ -35,18 +31,17 @@ struct CartView: View {
 // let result = await service.fetch(byId: "gid://shopify/Cart/c1-8abc7310f95b047f1dc83898369d5e18")
 //print(result)
 struct CardItemView: View {
-    var item: Item
+    @Binding var cartLine: CartLine
     
     var body: some View {
         HStack(alignment: .top) {
-            Image("Test")
-                .resizable()
+            AsyncImage(url: URL(string: cartLine.productVariant.image?.url ?? ""))
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 100, height: 100)
             VStack(alignment: .leading, spacing: 8) {
-                Text(item.name)
+                Text(cartLine.productVariant.title)
                     .font(.headline)
-                Text("Price: $\(item.price, specifier: "%.2f")")
+                Text("Price: $\(cartLine.totalAmount, specifier: "%.2f")") //TODO: local
                 Spacer()
 
                 HStack(spacing: 16) {
@@ -56,7 +51,7 @@ struct CardItemView: View {
                         Image("plus")
                             .font(.title)
                     }
-                    Text("\(item.quantity)")
+                    Text("\(cartLine.quantity)")
                         .foregroundColor(.black)
                     
                     Button(action: {
@@ -83,8 +78,4 @@ struct CardItemView: View {
     }
 }
 
-struct CartView_Previews: PreviewProvider {
-    static var previews: some View {
-        CartView()
-    }
-}
+

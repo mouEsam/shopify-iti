@@ -13,7 +13,7 @@ struct Shopify_ITIApp: App {
     var body: some Scene {
         WindowGroup {
 
-            CartView()
+            RootView()
         }
     }
 }
