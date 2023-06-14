@@ -13,9 +13,6 @@ public extension ShopifyAPI {
           cart(id: $cartId) {
             __typename
             id
-            createdAt
-            updatedAt
-            checkoutUrl
             lines(first: 10) {
               __typename
               edges {
@@ -49,31 +46,6 @@ public extension ShopifyAPI {
                 amount
                 currencyCode
               }
-              subtotalAmount {
-                __typename
-                amount
-                currencyCode
-              }
-              totalTaxAmount {
-                __typename
-                amount
-                currencyCode
-              }
-              totalDutyAmount {
-                __typename
-                amount
-                currencyCode
-              }
-            }
-            buyerIdentity {
-              __typename
-              email
-              phone
-              customer {
-                __typename
-                id
-              }
-              countryCode
             }
           }
         }
@@ -126,28 +98,16 @@ public extension ShopifyAPI {
         public static var __selections: [Apollo.Selection] { [
           .field("__typename", String.self),
           .field("id", ShopifyAPI.ID.self),
-          .field("createdAt", ShopifyAPI.DateTime.self),
-          .field("updatedAt", ShopifyAPI.DateTime.self),
-          .field("checkoutUrl", ShopifyAPI.URL.self),
           .field("lines", Lines.self, arguments: ["first": 10]),
           .field("cost", Cost.self),
-          .field("buyerIdentity", BuyerIdentity.self),
         ] }
 
         /// A globally-unique ID.
         public var id: ShopifyAPI.ID { __data["id"] }
-        /// The date and time when the cart was created.
-        public var createdAt: ShopifyAPI.DateTime { __data["createdAt"] }
-        /// The date and time when the cart was updated.
-        public var updatedAt: ShopifyAPI.DateTime { __data["updatedAt"] }
-        /// The URL of the checkout for the cart.
-        public var checkoutUrl: ShopifyAPI.URL { __data["checkoutUrl"] }
         /// A list of lines containing information about the items the customer intends to purchase.
         public var lines: Lines { __data["lines"] }
         /// The estimated costs that the buyer will pay at checkout. The costs are subject to change and changes will be reflected at checkout. The `cost` field uses the `buyerIdentity` field to determine [international pricing](https://shopify.dev/custom-storefronts/internationalization/international-pricing).
         public var cost: Cost { __data["cost"] }
-        /// Information about the buyer that is interacting with the cart.
-        public var buyerIdentity: BuyerIdentity { __data["buyerIdentity"] }
 
         /// Cart.Lines
         ///
@@ -386,19 +346,10 @@ public extension ShopifyAPI {
           public static var __selections: [Apollo.Selection] { [
             .field("__typename", String.self),
             .field("totalAmount", TotalAmount.self),
-            .field("subtotalAmount", SubtotalAmount.self),
-            .field("totalTaxAmount", TotalTaxAmount?.self),
-            .field("totalDutyAmount", TotalDutyAmount?.self),
           ] }
 
           /// The total amount for the customer to pay.
           public var totalAmount: TotalAmount { __data["totalAmount"] }
-          /// The amount, before taxes and cart-level discounts, for the customer to pay.
-          public var subtotalAmount: SubtotalAmount { __data["subtotalAmount"] }
-          /// The tax amount for the customer to pay at checkout.
-          public var totalTaxAmount: TotalTaxAmount? { __data["totalTaxAmount"] }
-          /// The duty amount for the customer to pay at checkout.
-          public var totalDutyAmount: TotalDutyAmount? { __data["totalDutyAmount"] }
 
           /// Cart.Cost.TotalAmount
           ///
@@ -418,109 +369,6 @@ public extension ShopifyAPI {
             public var amount: ShopifyAPI.Decimal { __data["amount"] }
             /// Currency of the money.
             public var currencyCode: GraphQLEnum<ShopifyAPI.CurrencyCode> { __data["currencyCode"] }
-          }
-
-          /// Cart.Cost.SubtotalAmount
-          ///
-          /// Parent Type: `MoneyV2`
-          public struct SubtotalAmount: ShopifyAPI.SelectionSet {
-            public let __data: DataDict
-            public init(_dataDict: DataDict) { __data = _dataDict }
-
-            public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.MoneyV2 }
-            public static var __selections: [Apollo.Selection] { [
-              .field("__typename", String.self),
-              .field("amount", ShopifyAPI.Decimal.self),
-              .field("currencyCode", GraphQLEnum<ShopifyAPI.CurrencyCode>.self),
-            ] }
-
-            /// Decimal money amount.
-            public var amount: ShopifyAPI.Decimal { __data["amount"] }
-            /// Currency of the money.
-            public var currencyCode: GraphQLEnum<ShopifyAPI.CurrencyCode> { __data["currencyCode"] }
-          }
-
-          /// Cart.Cost.TotalTaxAmount
-          ///
-          /// Parent Type: `MoneyV2`
-          public struct TotalTaxAmount: ShopifyAPI.SelectionSet {
-            public let __data: DataDict
-            public init(_dataDict: DataDict) { __data = _dataDict }
-
-            public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.MoneyV2 }
-            public static var __selections: [Apollo.Selection] { [
-              .field("__typename", String.self),
-              .field("amount", ShopifyAPI.Decimal.self),
-              .field("currencyCode", GraphQLEnum<ShopifyAPI.CurrencyCode>.self),
-            ] }
-
-            /// Decimal money amount.
-            public var amount: ShopifyAPI.Decimal { __data["amount"] }
-            /// Currency of the money.
-            public var currencyCode: GraphQLEnum<ShopifyAPI.CurrencyCode> { __data["currencyCode"] }
-          }
-
-          /// Cart.Cost.TotalDutyAmount
-          ///
-          /// Parent Type: `MoneyV2`
-          public struct TotalDutyAmount: ShopifyAPI.SelectionSet {
-            public let __data: DataDict
-            public init(_dataDict: DataDict) { __data = _dataDict }
-
-            public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.MoneyV2 }
-            public static var __selections: [Apollo.Selection] { [
-              .field("__typename", String.self),
-              .field("amount", ShopifyAPI.Decimal.self),
-              .field("currencyCode", GraphQLEnum<ShopifyAPI.CurrencyCode>.self),
-            ] }
-
-            /// Decimal money amount.
-            public var amount: ShopifyAPI.Decimal { __data["amount"] }
-            /// Currency of the money.
-            public var currencyCode: GraphQLEnum<ShopifyAPI.CurrencyCode> { __data["currencyCode"] }
-          }
-        }
-
-        /// Cart.BuyerIdentity
-        ///
-        /// Parent Type: `CartBuyerIdentity`
-        public struct BuyerIdentity: ShopifyAPI.SelectionSet {
-          public let __data: DataDict
-          public init(_dataDict: DataDict) { __data = _dataDict }
-
-          public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.CartBuyerIdentity }
-          public static var __selections: [Apollo.Selection] { [
-            .field("__typename", String.self),
-            .field("email", String?.self),
-            .field("phone", String?.self),
-            .field("customer", Customer?.self),
-            .field("countryCode", GraphQLEnum<ShopifyAPI.CountryCode>?.self),
-          ] }
-
-          /// The email address of the buyer that is interacting with the cart.
-          public var email: String? { __data["email"] }
-          /// The phone number of the buyer that is interacting with the cart.
-          public var phone: String? { __data["phone"] }
-          /// The customer account associated with the cart.
-          public var customer: Customer? { __data["customer"] }
-          /// The country where the buyer is located.
-          public var countryCode: GraphQLEnum<ShopifyAPI.CountryCode>? { __data["countryCode"] }
-
-          /// Cart.BuyerIdentity.Customer
-          ///
-          /// Parent Type: `Customer`
-          public struct Customer: ShopifyAPI.SelectionSet {
-            public let __data: DataDict
-            public init(_dataDict: DataDict) { __data = _dataDict }
-
-            public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.Customer }
-            public static var __selections: [Apollo.Selection] { [
-              .field("__typename", String.self),
-              .field("id", ShopifyAPI.ID.self),
-            ] }
-
-            /// A unique ID for the customer.
-            public var id: ShopifyAPI.ID { __data["id"] }
           }
         }
       }

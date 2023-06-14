@@ -4,9 +4,9 @@
 import Apollo
 
 public extension ShopifyAPI.Objects {
-  /// Represents information about the buyer that is interacting with the cart.
-  static let CartBuyerIdentity = Object(
-    typename: "CartBuyerIdentity",
+  /// Return type for `cartLinesAdd` mutation.
+  static let CartLinesAddPayload = Object(
+    typename: "CartLinesAddPayload",
     implementedInterfaces: []
   )
 }

@@ -56,6 +56,10 @@ struct RootView: View {
         BrandModelFactory.self,
         CategoriesModelFactory.self,
         ProfileRepository.self,
+        CartModel.self,
+        CartRemoteService.self,
+        CartManager.self,
+        CartChecker.self
     ])
     
     var body: some View {

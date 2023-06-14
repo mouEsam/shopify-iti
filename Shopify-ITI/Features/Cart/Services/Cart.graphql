@@ -3,9 +3,6 @@ query getCartQuery($cartId: ID!,
                 $lang: LanguageCode) @inContext(country: $country, language: $lang) {
   cart(id: $cartId) {
     id
-    createdAt
-    updatedAt
-    checkoutUrl
     lines(first: 10) {
       edges {
         node {
@@ -26,32 +23,173 @@ query getCartQuery($cartId: ID!,
         }
       }
     }
-    
     cost {
-      totalAmount {
-        amount
-        currencyCode
+        totalAmount {
+          amount
+          currencyCode
+        }
+    }
+  }
+}
+mutation createCart($cartInput: CartInput,
+                $country: CountryCode,
+                $lang: LanguageCode) @inContext(country: $country, language: $lang)  {
+  cartCreate(input: $cartInput) {
+    cart {
+      id
+      lines(first: 10) {
+        edges {
+          node {
+            id
+            quantity
+            cost{
+                amountPerQuantity{
+                    amount
+                }
+                totalAmount{
+                    amount
+                }
+            }
+            merchandise {
+                ... productVariantInfo
+
+            }
+          }
+        }
       }
-      subtotalAmount {
-        amount
-        currencyCode
+      attributes {
+        key
+        value
       }
-      totalTaxAmount {
-        amount
-        currencyCode
-      }
-      totalDutyAmount {
-        amount
-        currencyCode
+      cost {
+        totalAmount {
+          amount
+          currencyCode
+        }
+        
       }
     }
-    buyerIdentity {
-      email
-      phone
-      customer {
-        id
+  }
+}
+mutation addCartLines($cartId: ID!,
+                $lines: [CartLineInput!]!,
+                $country: CountryCode,
+                $lang: LanguageCode) @inContext(country: $country, language: $lang)  {
+  cartLinesAdd(cartId: $cartId, lines: $lines)  {
+    cart {
+      id
+      lines(first: 10) {
+        edges {
+          node {
+            id
+            quantity
+            cost{
+                amountPerQuantity{
+                    amount
+                }
+                totalAmount{
+                    amount
+                }
+            }
+            merchandise {
+                ... productVariantInfo
+
+            }
+          }
+        }
       }
-      countryCode
+      attributes {
+        key
+        value
+      }
+      cost {
+        totalAmount {
+          amount
+          currencyCode
+        }
+        
+      }
+    }
+  }
+}
+mutation updateCartLines($cartId: ID!,
+                         $lines: [CartLineUpdateInput!]!,
+                        $country: CountryCode,
+                        $lang: LanguageCode) @inContext(country: $country, language: $lang)  {
+  cartLinesUpdate(cartId: $cartId, lines: $lines) {
+    cart {
+      id
+      lines(first: 10) {
+        edges {
+          node {
+            id
+            quantity
+            cost{
+                amountPerQuantity{
+                    amount
+                }
+                totalAmount{
+                    amount
+                }
+            }
+            merchandise {
+                ... productVariantInfo
+
+            }
+          }
+        }
+      }
+      attributes {
+        key
+        value
+      }
+      cost {
+        totalAmount {
+          amount
+          currencyCode
+        }
+        
+      }
+    }
+  }
+}
+mutation removeCartLines($cartId: ID!,
+                        $lineIds: [ID!]!,
+                        $country: CountryCode,
+                        $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+  cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+    cart {
+      id
+      lines(first: 10) {
+        edges {
+          node {
+            id
+            quantity
+            cost{
+                amountPerQuantity{
+                    amount
+                }
+                totalAmount{
+                    amount
+                }
+            }
+            merchandise {
+                ... productVariantInfo
+
+            }
+          }
+        }
+      }
+      attributes {
+        key
+        value
+      }
+      cost {
+        totalAmount {
+          amount
+          currencyCode
+        }
+      }
     }
   }
 }
