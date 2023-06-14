@@ -46,6 +46,24 @@ query getWishlistById($id: ID!) {
     }
 }
 
+query getWishlistEntries($id: ID!, $cursor: String) {
+    draftOrder(id: $id) {
+        lineItems(first: 250, after: $cursor) {
+            nodes {
+                product {
+                    id
+                }
+                variant {
+                    id
+                }
+            }
+            pageInfo {
+                ...paginationInfo
+            }
+        }
+    }
+}
+
 query getWishlistItems($cursor: String, 
                        $count: Int!,
                        $wishlistId: ID!,
@@ -91,6 +109,9 @@ fragment wishListInfo on DraftOrder {
         }
     }
     tags
+    itemsCount: metafield(key: "lines_count", namespace: "customer_namespace") {
+        value
+    }
     lineItems(first: 250) {
         nodes {
             product {

@@ -117,6 +117,8 @@ public extension ShopifyAdminAPI {
           /// mutation.
           ///
           public var tags: [String] { __data["tags"] }
+          /// Returns a metafield by namespace and key that belongs to the resource.
+          public var itemsCount: WishListInfo.ItemsCount? { __data["itemsCount"] }
           /// The list of the line items in the draft order.
           public var lineItems: WishListInfo.LineItems { __data["lineItems"] }
 
