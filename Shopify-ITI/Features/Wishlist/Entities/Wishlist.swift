@@ -13,6 +13,7 @@ struct Wishlist: Identifiable, Changeable {
     let id: String
     let customerId: String?
     let tags: [String]
+    let totalCount: Int
     let entries: [String: String]
     
     func copy(customerId: String? = nil,
@@ -20,6 +21,7 @@ struct Wishlist: Identifiable, Changeable {
         return .init(id: id,
                      customerId: customerId ?? self.customerId,
                      tags: tags,
+                     totalCount: totalCount,
                      entries: entries ?? self.entries)
     }
 }
@@ -30,16 +32,19 @@ protocol WishlistConvertible {
     var id: String { get }
     var customerId: String? { get }
     var tags: [String] { get }
+    var totalCount: Int? { get }
     var entries: [Entry] { get }
 }
 
 extension Wishlist {
     init(from list: some WishlistConvertible) {
+        let entries = [String: String](list.entries.map { ($0.productId, $0.variantId) },
+                                            uniquingKeysWith: { first, second in first })
         self.init(id: list.id,
                   customerId: list.customerId,
                   tags: list.tags,
-                  entries: .init(list.entries.map { ($0.productId, $0.variantId) },
-                                 uniquingKeysWith: { first, second in first }))
+                  totalCount: list.totalCount ?? entries.count,
+                  entries: entries)
     }
 }
 
@@ -56,16 +61,19 @@ struct WishListEntry {
 extension ShopifyAdminAPI.GetWishlistQuery.Data.DraftOrders.Node: WishlistConvertible {
     var customerId: String? { customer?.id }
     var entries: [some WishListEntryConvertible] { lineItems.nodes }
+    var totalCount: Int? { Int(itemsCount?.value ?? "") }
 }
 
 extension ShopifyAdminAPI.CreateWishlistMutation.Data.DraftOrderCreate.DraftOrder: WishlistConvertible {
     var customerId: String? { customer?.id }
     var entries: [some WishListEntryConvertible] { lineItems.nodes }
+    var totalCount: Int? { Int(itemsCount?.value ?? "") }
 }
 
 extension ShopifyAdminAPI.GetWishlistByIdQuery.Data.DraftOrder: WishlistConvertible {
     var customerId: String? { customer?.id }
     var entries: [some WishListEntryConvertible] { lineItems.nodes }
+    var totalCount: Int? { Int(itemsCount?.value ?? "") }
 }
 
 extension ShopifyAdminAPI.WishListInfo.LineItems.Node: WishListEntryConvertible {

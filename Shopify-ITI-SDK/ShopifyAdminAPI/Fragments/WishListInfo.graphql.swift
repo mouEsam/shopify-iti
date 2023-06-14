@@ -30,6 +30,10 @@ public extension ShopifyAdminAPI {
           }
         }
         tags
+        itemsCount: metafield(key: "lines_count", namespace: "customer_namespace") {
+          __typename
+          value
+        }
         lineItems(first: 250) {
           __typename
           nodes {
@@ -64,6 +68,10 @@ public extension ShopifyAdminAPI {
       .field("subtotalPriceSet", SubtotalPriceSet.self),
       .field("totalPriceSet", TotalPriceSet.self),
       .field("tags", [String].self),
+      .field("metafield", alias: "itemsCount", ItemsCount?.self, arguments: [
+        "key": "lines_count",
+        "namespace": "customer_namespace"
+      ]),
       .field("lineItems", LineItems.self, arguments: ["first": 250]),
     ] }
 
@@ -86,6 +94,8 @@ public extension ShopifyAdminAPI {
     /// mutation.
     ///
     public var tags: [String] { __data["tags"] }
+    /// Returns a metafield by namespace and key that belongs to the resource.
+    public var itemsCount: ItemsCount? { __data["itemsCount"] }
     /// The list of the line items in the draft order.
     public var lineItems: LineItems { __data["lineItems"] }
 
@@ -190,6 +200,24 @@ public extension ShopifyAdminAPI {
           public var moneyInfo: MoneyInfo { _toFragment() }
         }
       }
+    }
+
+    /// ItemsCount
+    ///
+    /// Parent Type: `Metafield`
+    public struct ItemsCount: ShopifyAdminAPI.SelectionSet {
+      public let __data: DataDict
+      public init(_dataDict: DataDict) { __data = _dataDict }
+
+      public static var __parentType: Apollo.ParentType { ShopifyAdminAPI.Objects.Metafield }
+      public static var __selections: [Apollo.Selection] { [
+        .field("__typename", String.self),
+        .field("value", String.self),
+      ] }
+
+      /// The data stored in the metafield. Always stored as a string, regardless of the metafield's type.
+      ///
+      public var value: String { __data["value"] }
     }
 
     /// LineItems

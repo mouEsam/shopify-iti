@@ -66,12 +66,15 @@ struct WishlistRemoteService: AnyInjectable {
             }
         }
     }
-    
+
     func create(with entry: WishListEntry) async -> Result<Wishlist, WishlistError> {
         let customerId = userProvider.user?.id
         
         let input = ShopifyAdminAPI.DraftOrderInput(lineItems: .init(arrayLiteral: .init(quantity: 1,
                                                                                          variantId: .some(entry.variantId))),
+                                                    metafields: .init(arrayLiteral: .init(namespace: .some("customer_namespace"),
+                                                                                          key: .some("lines_count"),
+                                                                                          value: .some("1"))),
                                                     purchasingEntity: .init(nullable: customerId.map { .init(customerId: .some($0)) }))
         let mutation = ShopifyAdminAPI.CreateWishlistMutation(input: input)
         let result = await remoteClient.execute(query: mutation)
@@ -93,6 +96,9 @@ struct WishlistRemoteService: AnyInjectable {
         let customerId = wishList.customerId
         let items = wishList.entries.map { ShopifyAdminAPI.DraftOrderLineItemInput(quantity: 1, variantId: .some($0.value)) }
         let input = ShopifyAdminAPI.DraftOrderInput(lineItems: .some(items),
+                                                    metafields: .init(arrayLiteral: .init(namespace: .some("customer_namespace"),
+                                                                                          key: .some("lines_count"),
+                                                                                          value: .some("\(wishList.entries.count)"))),
                                                     tags: .some(wishList.tags),
                                                     purchasingEntity: .init(nullable: customerId.map { .init(customerId: .some($0)) }))
         let mutation = ShopifyAdminAPI.CreateWishlistMutation(input: input)
