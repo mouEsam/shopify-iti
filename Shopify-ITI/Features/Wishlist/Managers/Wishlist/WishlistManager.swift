@@ -62,30 +62,35 @@ class WishlistManager : AnyInjectable {
         await MainActor.run {
             self.state = .loading
         }
-        let user = authState.user
         
-        // no list, no user
-        if wishlist == nil, user == nil {
-            await removeList()
-            // another user  owned list
-        } else if let ownerId = wishlist?.customerId {
-            if ownerId != user?.id {
-                await removeList()
+        if let user = authState.user {
+            if let wishlist = wishlist {
+                if wishlist.customerId == nil {
+                    await updateOwnership(wishlist, user)
+                } else if wishlist.customerId != user.id {
+                    await removeAndFetchList()
+                } else {
+                    await setList(wishlist)
+                }
+            } else {
+                await fetchList()
             }
-            // guest owned list
-        } else if let wishlist = wishlist,
-                  let user = user {
-            await updateOwnership(wishlist, user)
-        } else if let wishlist = wishlist {
-            await MainActor.run {
-                self.state = .data(data: wishlist)
+        } else {
+            if let wishlist = wishlist {
+                if let _ = wishlist.customerId {
+                    await removeList()
+                } else {
+                    await setList(wishlist)
+                }
+            } else {
+                await fetchList()
             }
-        } else if let _ = user {
-            await fetchList()
-        } else  {
-            await MainActor.run {
-                self.state = .none
-            }
+        }
+    }
+    
+    private func setList(_ wishlist: Wishlist) async {
+        await MainActor.run {
+            self.state = .data(data: wishlist)
         }
     }
     
@@ -96,6 +101,11 @@ class WishlistManager : AnyInjectable {
         }
     }
     
+    private func removeAndFetchList() async {
+        wishlistIdStore.delete()
+        await fetchList()
+    }
+    
     private func fetchList() async {
         if case .success(let savedListId) = wishlistIdStore.read() {
             let result = await wishlistService.fetch(by: savedListId)
@@ -104,7 +114,6 @@ class WishlistManager : AnyInjectable {
             let result = await wishlistService.fetch()
             await handleWishlistResult(result)
         }
-        
     }
     
     private func updateOwnership(_ wishlist: Wishlist, _ user: User) async {
@@ -124,6 +133,8 @@ class WishlistManager : AnyInjectable {
                         _ = wishlistIdStore.write(id: newWishlist.id)
                     }
                     break
+                case .failure(ShopifyErrors.Unautherized):
+                    fallthrough
                 case .failure(ShopifyErrors.NotFound):
                     self.state = .none
                     break
@@ -197,6 +208,8 @@ class WishlistManager : AnyInjectable {
                 }
                 if userId == nil {
                     _ = wishlistIdStore.write(id: list.id)
+                } else {
+                    _ = wishlistIdStore.delete()
                 }
             }
         }
