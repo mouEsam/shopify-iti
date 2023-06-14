@@ -1,0 +1,13 @@
+query getBrands (  $first: Int!,
+                         $country: CountryCode, 
+                         $lang: LanguageCode) 
+                         @inContext(country: $country, language: $lang)
+                         {
+  collections(first: $first) {
+    edges {
+      node {
+          ...collectionInfo
+      }
+    }
+  }
+}

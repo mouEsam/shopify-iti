@@ -8,43 +8,74 @@
 import SwiftUI
 
 struct HomePage: View {
-    let items = Array(1...2) // Sample data
+    
+//    @EnvironmentObject private var container: AppContainer
+    @StateObject private var viewModel:  BrandViewModel
+//    init(container: AppContainer) {
+    init() {
+        let client = ApolloGraphQLClient(environment: StorefronEnvironmentProvider())
+        let localeProvider = LocaleProvider()
+        
+        _viewModel = .init(wrappedValue:BrandViewModel(model:  BrandModel(remoteService: BrandRemoteService(remoteClient: client, localeProvider: localeProvider))))
+        
+       
+        
+    }
     
     var body: some View {
         NavigationView {
             ScrollView{
                 VStack {
-                    CardView()
+                    AdsView()
                         .padding()
                     Text("Brands").font(.largeTitle).fontWeight(.bold) // TODO : nameriztion
-                    ZStack{
-                        LazyVGrid(columns: createGridColumns(), spacing: 16) {
-                            ForEach(items, id: \.self) { item in
-                                CardHome(imageName: "beats.fit.pro.chargingcase", title: item.description)
+                    
+                        switch viewModel.operationState {
+                        case .initial:
+                            Text("Initial state")
+                            
+                        case .loading:
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .foregroundColor(.black)
+                                .padding()
+                            
+                        case .loaded(data: let productCollections):
+                            LazyVGrid(columns: createGridColumns(), spacing: 16) {
+                                ForEach(productCollections.data,id: \.id) { item in
+                                    
+                                    CardBrand(imageName: item.image?.url ?? "", title: item.title)
+                                }
                             }
-                        }
-                        .padding()
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle())
-                        
-                            .foregroundColor(.black)
                             .padding()
                         
+                        case .error(let error):
+                            Text("Error: \(error.localizedDescription)")
+                        }
                         
+                        
+                     
                     }
-                }
+                
                 
             }.navigationBarItems(
-                    leading: NavigationLink(destination: SearchView()) {
-                        Image(systemName: "magnifyingglass")
-                    }, trailing:
-                        HStack {
-                           
-                            NavigationLink(destination: FavouriteView()) {
-                                Image(systemName: "heart")
-                            }
+                leading: NavigationLink(destination: SearchView()) {
+                    Image(systemName: "magnifyingglass")
+                }, trailing:
+                    HStack {
+                        
+                        NavigationLink(destination: FavouriteView()) {
+                            Image(systemName: "heart")
                         }
-                )
+                    }
+            ).onReceive(viewModel.$operationState){ state in
+                print(state)
+            }.task {
+                await viewModel.loadBrand(numberOfItem: 11)
+            }
+            
+            
+            
             
             
         }
@@ -55,12 +86,9 @@ struct HomePage: View {
         let gridItem = GridItem(.flexible(), spacing: 16)
         return [gridItem, gridItem]
     }
+  
     
     
-}
-func createGridColumns() -> [GridItem] {
-    let gridItem = GridItem(.flexible(), spacing: 16)
-    return [gridItem, gridItem]
 }
 
 
@@ -71,45 +99,3 @@ struct HomePage_Previews: PreviewProvider {
     }
 }
 
-struct CardView: View {
-    var body: some View {
-        VStack {
-            Spacer()
-            Text("Ad")
-                .padding()
-            
-            Spacer()
-        }
-        .frame(maxWidth:.infinity)
-        .frame(height: 300)
-        .background(Color.gray)
-        .cornerRadius(10)
-        .shadow(radius: 5)
-    }
-}
-struct CardHome : View {
-    let imageName: String
-    let title: String
-    
-    var body: some View {
-        NavigationLink(destination: SearchView()){
-            VStack {
-                Image(systemName:imageName)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 100)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                
-                Text("brand \(title)")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .foregroundColor(.black)
-                    .padding()
-                
-            }.background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 2)
-        }
-    }
-}
