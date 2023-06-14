@@ -60,7 +60,9 @@ struct RootView: View {
         CartModel.self,
         CartRemoteService.self,
         CartManager.self,
-        CartChecker.self
+
+        CartChecker.self,
+        WishlistModelFactory.self,
     ])
     
     var body: some View {
