@@ -10,7 +10,15 @@ import Shopify_ITI_SDK
 
 // Id eg.: gid://shopify/Product/8341864055063
 
-struct ProductRemoteService {
+struct ProductRemoteService: AnyInjectable {
+    static func register(_ container: AppContainer) {
+        container.register(type: ProductRemoteService.self) { resolver in
+            ProductRemoteService(remoteClient: resolver.require((any GraphQLClient).self),
+                                localeProvider: resolver.require((any AnyLocaleProvider).self),
+                                 configsProvider: resolver.require((any AnyConfigsProvider).self))
+        }
+    }
+    
     private let remoteClient: any GraphQLClient
     private let localeProvider: any AnyLocaleProvider
     private let configsProvider: any AnyConfigsProvider

@@ -1,16 +1,3 @@
-fragment productInfo on Product {
-  id
-  handle
-  title
-  description
-  featuredImage {
-      ...imageInfo
-  }
-  priceRange {
-      ...priceRangeInfo
-  }
-}
-
 fragment productVariantInfo on ProductVariant {
   id
   title
@@ -20,6 +7,5 @@ fragment productVariantInfo on ProductVariant {
   barcode
   sku
   availableForSale
-  inventoryQuantity
-  price
+  quantityAvailable: inventoryQuantity
 }

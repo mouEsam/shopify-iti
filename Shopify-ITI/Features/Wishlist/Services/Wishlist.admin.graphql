@@ -1,7 +1,7 @@
-mutation createWishlistItem($input: DraftOrderInput!) {
+mutation createWishlist($input: DraftOrderInput!) {
     draftOrderCreate(input: $input) {
         draftOrder {
-            id
+            ...wishListInfo
         }
         userErrors {
             field
@@ -10,7 +10,7 @@ mutation createWishlistItem($input: DraftOrderInput!) {
     }
 }
 
-mutation deleteWishlistItem($input: DraftOrderDeleteInput!) {
+mutation deleteWishlist($input: DraftOrderDeleteInput!) {
     draftOrderDelete(input: $input) {
         deletedId
         userErrors {
@@ -20,26 +20,66 @@ mutation deleteWishlistItem($input: DraftOrderDeleteInput!) {
     }
 }
 
-query getWishlistItems($cursor: String, 
-                       $count: Int!,
-                       $query: String!) {
-    draftOrders(after: $cursor, first: $count, query: $query, ) {
-        edges {
-            cursor
-            node {
-                ...wishListItemInfo
-            }
+mutation updateWishlist($id: ID!, $input: DraftOrderInput!) {
+    draftOrderUpdate(id: $id, input: $input) {
+        draftOrder {
+            ...wishListInfo
         }
-        pageInfo {
-            ...paginationInfo
+        userErrors {
+            field
+            message
         }
     }
 }
 
-fragment wishListItemInfo on DraftOrder {
+query getWishlist($query: String!) {
+    draftOrders(first: 1, query: $query) {
+        nodes {
+            ...wishListInfo
+        }
+    }
+}
+
+query getWishlistById($id: ID!) {
+    draftOrder(id: $id) {
+        ...wishListInfo
+    }
+}
+
+query getWishlistItems($cursor: String, 
+                       $count: Int!,
+                       $wishlistId: ID!,
+                       $context: ContextualPricingContext!) {
+    draftOrder(id: $wishlistId) {
+        lineItems(first: $count, after: $cursor) {
+            edges {
+                cursor
+                node {
+                    ...wishListItemInfo
+                    variant {
+                        ...productVariantInfo
+                        contextualPricing(context: $context) {
+                            price {
+                                ...moneyInfo
+                            }
+                        }
+                    }
+                }
+            }
+            pageInfo {
+                ...paginationInfo
+            }
+        }
+    }
+}
+
+fragment wishListInfo on DraftOrder {
     id
     createdAt
     currencyCode
+    customer {
+        id
+    }
     subtotalPriceSet {
         presentmentMoney {
             ...moneyInfo
@@ -51,25 +91,34 @@ fragment wishListItemInfo on DraftOrder {
         }
     }
     tags
-    lineItems(first: 1) {
+    lineItems(first: 250) {
         nodes {
-            id
-            name
-            vendor
-            image {
-                ...imageInfo
-            }
-            originalTotalSet {
-                presentmentMoney {
-                    ...moneyInfo
-                }
-            }
             product {
-                ...productInfo
+                id
             }
             variant {
-                ...productVariantInfo
+                id
             }
         }
+        pageInfo {
+            ...paginationInfo
+        }
+    }
+}
+
+fragment wishListItemInfo on DraftOrderLineItem {
+    id
+    name
+    vendor
+    image {
+        ...imageInfo
+    }
+    originalTotalSet {
+        presentmentMoney {
+            ...moneyInfo
+        }
+    }
+    product {
+        ...productInfo
     }
 }

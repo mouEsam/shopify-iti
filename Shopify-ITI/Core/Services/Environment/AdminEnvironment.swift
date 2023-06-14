@@ -14,7 +14,7 @@ struct AdminEnvironmentProvider: AnyEnvironmentProvider {
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyEnvironmentProvider).self,
                            name: diName) { resolver in
-            StorefronEnvironmentProvider()
+            AdminEnvironmentProvider()
         }
     }
     

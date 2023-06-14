@@ -116,7 +116,7 @@ struct AuthenticationRemoteService: AnyInjectable {
                     let user = AccessToken(from: accessToken)
                     return .success(user)
                 } else {
-                    let errors = data.userErrors.map { AuthError.GenericError(from: $0) }
+                    let errors = data.userErrors.map { GenericError(from: $0) }
                     return .failure(AuthError.Generic(genericErrors: errors))
                 }
             } else {
@@ -137,7 +137,7 @@ struct AuthenticationRemoteService: AnyInjectable {
                 if let _ = data.deletedAccessToken {
                     return .success(Void())
                 } else {
-                    let errors = data.userErrors.map { AuthError.GenericError(from: $0) }
+                    let errors = data.userErrors.map { GenericError(from: $0) }
                     return .failure(AuthError.Generic(genericErrors: errors))
                 }
             } else {

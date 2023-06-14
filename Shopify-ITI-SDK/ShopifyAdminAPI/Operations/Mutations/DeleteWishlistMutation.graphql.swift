@@ -4,12 +4,12 @@
 @_exported import Apollo
 
 public extension ShopifyAdminAPI {
-  class DeleteWishlistItemMutation: GraphQLMutation {
-    public static let operationName: String = "deleteWishlistItem"
+  class DeleteWishlistMutation: GraphQLMutation {
+    public static let operationName: String = "deleteWishlist"
     public static let document: Apollo.DocumentType = .notPersisted(
       definition: .init(
         #"""
-        mutation deleteWishlistItem($input: DraftOrderDeleteInput!) {
+        mutation deleteWishlist($input: DraftOrderDeleteInput!) {
           draftOrderDelete(input: $input) {
             __typename
             deletedId
