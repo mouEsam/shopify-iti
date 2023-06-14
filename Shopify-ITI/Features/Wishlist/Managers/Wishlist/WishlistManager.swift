@@ -50,6 +50,10 @@ class WishlistManager : AnyInjectable {
             }.store(in: &cancellables)
     }
     
+    private func evaluateState() {
+        handleAuthState(authManager.state)
+    }
+    
     private func handleAuthState(_ authState: AuthenticationState) {
         task?.cancel()
         task = Task {
@@ -128,10 +132,7 @@ class WishlistManager : AnyInjectable {
         await MainActor.run {
             switch result {
                 case .success(let newWishlist):
-                    self.state = .data(data: newWishlist)
-                    if newWishlist.customerId == nil {
-                        _ = wishlistIdStore.write(id: newWishlist.id)
-                    }
+                    self.handleWishlist(newWishlist)
                     break
                 case .failure(ShopifyErrors.Unautherized):
                     fallthrough
@@ -201,18 +202,35 @@ class WishlistManager : AnyInjectable {
         
         await MainActor.run {
             if case .success(let list) = listResult {
-                let ownerId = list.customerId
-                let userId = authManager.state.user?.id
-                if userId == ownerId {
-                    state = .data(data: list)
-                }
-                if userId == nil {
-                    _ = wishlistIdStore.write(id: list.id)
-                } else {
-                    _ = wishlistIdStore.delete()
-                }
+                self.handleWishlist(list)
             }
         }
         return listResult.map { _ in }
+    }
+    
+    private func handleWishlist(_ wishlist: Wishlist) {
+        let user = authManager.state.user
+        if let ownerId = wishlist.customerId {
+            _ = wishlistIdStore.delete()
+            if let user = user {
+                if user.id == ownerId {
+                    self.setList(wishlist)
+                } else {
+                    evaluateState()
+                }
+            } else {
+                evaluateState()
+            }
+        } else if user == nil {
+            _ = wishlistIdStore.write(id: wishlist.id)
+            self.setList(wishlist)
+        } else {
+            self.setList(wishlist)
+            evaluateState()
+        }
+    }
+    
+    private func setList(_ wishlist: Wishlist) {
+        self.state = .data(data: wishlist)
     }
 }
