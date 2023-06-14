@@ -11,4 +11,5 @@ protocol AnyKeysProvider: AnyInjectable {
     var userLocalKey: String { get }
     var guestLocalKey: String { get }
     var accessTokenLocalKey: String { get }
+    var wishlistRemoteKey: String { get }
 }

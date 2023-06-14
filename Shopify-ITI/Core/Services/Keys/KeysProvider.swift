@@ -17,4 +17,5 @@ struct KeysProvider: AnyKeysProvider {
     let userLocalKey: String = "user_local"
     let guestLocalKey: String = "guest_local"
     let accessTokenLocalKey: String = "access_token_local"
+    let wishlistRemoteKey: String = "wishlist_remote"
 }

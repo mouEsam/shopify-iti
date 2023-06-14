@@ -17,8 +17,7 @@ public extension ShopifyAdminAPI {
         barcode
         sku
         availableForSale
-        inventoryQuantity
-        price
+        quantityAvailable: inventoryQuantity
       }
       """ }
 
@@ -34,8 +33,7 @@ public extension ShopifyAdminAPI {
       .field("barcode", String?.self),
       .field("sku", String?.self),
       .field("availableForSale", Bool.self),
-      .field("inventoryQuantity", Int?.self),
-      .field("price", ShopifyAdminAPI.Money.self),
+      .field("inventoryQuantity", alias: "quantityAvailable", Int?.self),
     ] }
 
     /// A globally-unique ID.
@@ -53,9 +51,7 @@ public extension ShopifyAdminAPI {
     /// Whether the product variant is available for sale.
     public var availableForSale: Bool { __data["availableForSale"] }
     /// The total sellable quantity of the variant.
-    public var inventoryQuantity: Int? { __data["inventoryQuantity"] }
-    /// The price of the product variant in the default shop currency.
-    public var price: ShopifyAdminAPI.Money { __data["price"] }
+    public var quantityAvailable: Int? { __data["quantityAvailable"] }
 
     /// Image
     ///

@@ -7,6 +7,7 @@
 
 import Foundation
 import Shopify_ITI_SDK
+import Shopify_Admin_ITI_SDK
 
 struct PriceRange {
     let minPrice: Price
@@ -34,13 +35,22 @@ struct Price {
 }
 
 protocol PriceConvertible {
+    associatedtype CurrencyCode: AnyCurrencyCode
+    
     var amount: String { get }
-    var currencyCode: GraphQLEnum<ShopifyAPI.CurrencyCode> { get }
+    var currencyCode: GraphQLEnum<CurrencyCode> { get }
 }
 
 extension Price {
     init(from price: some PriceConvertible) {
+        let currencyRawValue = price.currencyCode.value?.rawValue
+        let currency = ShopifyAPI.CurrencyCode(rawValue: currencyRawValue!)
         self.init(amount: .init(price.amount)!,
-                  currencyCode: price.currencyCode.value!)
+                  currencyCode: currency!)
     }
 }
+
+protocol AnyCurrencyCode: EnumType {}
+
+extension ShopifyAPI.CurrencyCode: AnyCurrencyCode {}
+extension ShopifyAdminAPI.CurrencyCode: AnyCurrencyCode {}

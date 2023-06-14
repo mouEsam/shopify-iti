@@ -182,6 +182,10 @@ public extension ShopifyAdminAPI {
       case "UrlRedirectImport": return ShopifyAdminAPI.Objects.UrlRedirectImport
       case "WebPixel": return ShopifyAdminAPI.Objects.WebPixel
       case "Image": return ShopifyAdminAPI.Objects.Image
+      case "MoneyBag": return ShopifyAdminAPI.Objects.MoneyBag
+      case "MoneyV2": return ShopifyAdminAPI.Objects.MoneyV2
+      case "DraftOrderLineItemConnection": return ShopifyAdminAPI.Objects.DraftOrderLineItemConnection
+      case "PageInfo": return ShopifyAdminAPI.Objects.PageInfo
       case "UserError": return ShopifyAdminAPI.Objects.UserError
       case "AbandonmentEmailStateUpdateUserError": return ShopifyAdminAPI.Objects.AbandonmentEmailStateUpdateUserError
       case "AppRevenueAttributionRecordCreateUserError": return ShopifyAdminAPI.Objects.AppRevenueAttributionRecordCreateUserError
@@ -271,14 +275,12 @@ public extension ShopifyAdminAPI {
       case "UrlRedirectImportUserError": return ShopifyAdminAPI.Objects.UrlRedirectImportUserError
       case "UrlRedirectUserError": return ShopifyAdminAPI.Objects.UrlRedirectUserError
       case "DraftOrderDeletePayload": return ShopifyAdminAPI.Objects.DraftOrderDeletePayload
+      case "DraftOrderUpdatePayload": return ShopifyAdminAPI.Objects.DraftOrderUpdatePayload
       case "QueryRoot": return ShopifyAdminAPI.Objects.QueryRoot
       case "DraftOrderConnection": return ShopifyAdminAPI.Objects.DraftOrderConnection
-      case "DraftOrderEdge": return ShopifyAdminAPI.Objects.DraftOrderEdge
-      case "MoneyBag": return ShopifyAdminAPI.Objects.MoneyBag
-      case "MoneyV2": return ShopifyAdminAPI.Objects.MoneyV2
-      case "DraftOrderLineItemConnection": return ShopifyAdminAPI.Objects.DraftOrderLineItemConnection
+      case "DraftOrderLineItemEdge": return ShopifyAdminAPI.Objects.DraftOrderLineItemEdge
       case "ProductPriceRange": return ShopifyAdminAPI.Objects.ProductPriceRange
-      case "PageInfo": return ShopifyAdminAPI.Objects.PageInfo
+      case "ProductVariantContextualPricing": return ShopifyAdminAPI.Objects.ProductVariantContextualPricing
       default: return nil
       }
     }

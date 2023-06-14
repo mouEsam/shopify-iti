@@ -12,4 +12,5 @@ protocol AnyConfigsProvider: AnyInjectable {
     var variantsCountInProductInfoPage: Int { get }
     var imagesCountInProductInfoPage: Int { get }
     var productsCountPerPage: Int { get }
+    var wishlistItemsCountPerPage: Int { get }
 }

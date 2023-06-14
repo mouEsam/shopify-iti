@@ -34,3 +34,16 @@ fragment paginationInfo on PageInfo {
   hasNextPage
   hasPreviousPage
 }
+
+fragment productInfo on Product {
+  id
+  handle
+  title
+  description
+  featuredImage {
+      ...imageInfo
+  }
+  priceRange {
+      ...priceRangeInfo
+  }
+}

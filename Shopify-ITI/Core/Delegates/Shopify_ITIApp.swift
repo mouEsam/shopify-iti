@@ -29,23 +29,28 @@ struct RootView: View {
         JsonCoder.self,
         ApolloGraphQLClient.self,
         StorefronEnvironmentProvider.self,
+        AdminEnvironmentProvider.self,
         UserLocalStore.self,
         GuestLocalStore.self,
         TokenLocalStore.self,
+        WishlistIdStore.self,
         UserManager.self,
         GuestManager.self,
         TokenManager.self,
         AccessTokenHolder.self,
         UserHolder.self,
         AuthenticationManager.self,
+        WishlistManager.self,
         AuthenticationRemoteService.self,
         ProfileRemoteService.self,
+        WishlistRemoteService.self,
         AuthenticationRepository.self,
+        WishlistModelFactory.self,
     ])
     
     var body: some View {
         NavigationView {
-            LoginScreen(container: container)
+            WishlistScreen(container: container)
         }
         .environmentObject(container)
     }

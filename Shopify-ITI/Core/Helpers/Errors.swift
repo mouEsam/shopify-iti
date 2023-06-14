@@ -34,11 +34,11 @@ extension ShopifyErrors {
         let fields: [String]
         let message: String
     }
-    
-    struct GenericError: ShopifyError {
-        let fields: [String]
-        let message: String
-    }
+}
+
+struct GenericError: ShopifyError {
+    let fields: [String]
+    let message: String
 }
 
 protocol ValidationErrorConvertible {
@@ -62,9 +62,15 @@ protocol GenericErrorConvertible {
     var message: String { get }
 }
 
-extension ShopifyErrors.GenericError {
+extension GenericError {
     init(from error: some GenericErrorConvertible) {
         self.init(fields: error.field ?? [],
                   message: error.message)
+    }
+}
+
+extension Sequence where Element: GenericErrorConvertible {
+    func toShopifyErrors() -> [GenericError] {
+        map { GenericError(from: $0) }
     }
 }

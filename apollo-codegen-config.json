@@ -1,7 +1,8 @@
 {
   "schemaNamespace": "ShopifyAPI",
   "options": {
-    "cocoapodsCompatibleImportStatements": true
+    "cocoapodsCompatibleImportStatements": true,
+    "pruneGeneratedFiles": true
   },
   "input": {
     "operationSearchPaths": [

@@ -4,10 +4,9 @@
 import Apollo
 
 public extension ShopifyAdminAPI.Objects {
-  /// An auto-generated type which holds one DraftOrder and a cursor during pagination.
-  ///
-  static let DraftOrderEdge = Object(
-    typename: "DraftOrderEdge",
+  /// Return type for `draftOrderUpdate` mutation.
+  static let DraftOrderUpdatePayload = Object(
+    typename: "DraftOrderUpdatePayload",
     implementedInterfaces: []
   )
 }
