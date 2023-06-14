@@ -41,6 +41,10 @@ struct RootView: View {
         AuthenticationRemoteService.self,
         ProfileRemoteService.self,
         AuthenticationRepository.self,
+        CartModel.self,
+        CartRemoteService.self,
+        CartManager.self,
+        CartChecker.self
     ])
     
     var body: some View {

@@ -12,11 +12,18 @@
 		04534DBB2A387E3C00F8F86B /* CartRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04534DBA2A387E3C00F8F86B /* CartRemoteService.swift */; };
 		04534E8C2A38815500F8F86B /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04534E8B2A38815500F8F86B /* Cart.swift */; };
 		04534E8E2A38829C00F8F86B /* CartLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04534E8D2A38829C00F8F86B /* CartLine.swift */; };
+		0497042A2A3902F600AFDAAA /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049704292A3902F600AFDAAA /* CartModel.swift */; };
+		0497042C2A39035500AFDAAA /* AnyCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497042B2A39035500AFDAAA /* AnyCartModel.swift */; };
 		04992B6C2A360A2100A0523A /* ADTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04992B6B2A360A2100A0523A /* ADTapView.swift */; };
 		04992B6E2A360AA500A0523A /* ADCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04992B6D2A360AA500A0523A /* ADCard.swift */; };
 		04B28DA82A34DF2200CFC1FA /* AD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B28DA72A34DF2200CFC1FA /* AD.swift */; };
 		04B28DAB2A34E61D00CFC1FA /* ADModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B28DAA2A34E61D00CFC1FA /* ADModel.swift */; };
 		04B28DAD2A34E6D600CFC1FA /* ADViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B28DAC2A34E6D600CFC1FA /* ADViewModel.swift */; };
+		04C517B52A39FE13004620FD /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C517B42A39FE13004620FD /* CartManager.swift */; };
+		04C517B82A39FE6B004620FD /* AnyCartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C517B72A39FE6B004620FD /* AnyCartManager.swift */; };
+		04C517BA2A3A1026004620FD /* CartChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C517B92A3A1026004620FD /* CartChecker.swift */; };
+		04C517BC2A3A1695004620FD /* AnyCartChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C517BB2A3A1695004620FD /* AnyCartChecker.swift */; };
+		04C519962A3A5068004620FD /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C519952A3A5068004620FD /* CartViewModel.swift */; };
 		04F033742A34C32500F96F75 /* ADSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F033732A34C32500F96F75 /* ADSView.swift */; };
 		D41F62802A2C921C00780814 /* Shopify_ITIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41F627F2A2C921C00780814 /* Shopify_ITIApp.swift */; };
 		D41F62822A2C921C00780814 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41F62812A2C921C00780814 /* ContentView.swift */; };
@@ -133,11 +140,18 @@
 		04534DBA2A387E3C00F8F86B /* CartRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRemoteService.swift; sourceTree = "<group>"; };
 		04534E8B2A38815500F8F86B /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		04534E8D2A38829C00F8F86B /* CartLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartLine.swift; sourceTree = "<group>"; };
+		049704292A3902F600AFDAAA /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
+		0497042B2A39035500AFDAAA /* AnyCartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCartModel.swift; sourceTree = "<group>"; };
 		04992B6B2A360A2100A0523A /* ADTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADTapView.swift; sourceTree = "<group>"; };
 		04992B6D2A360AA500A0523A /* ADCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADCard.swift; sourceTree = "<group>"; };
 		04B28DA72A34DF2200CFC1FA /* AD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AD.swift; sourceTree = "<group>"; };
 		04B28DAA2A34E61D00CFC1FA /* ADModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADModel.swift; sourceTree = "<group>"; };
 		04B28DAC2A34E6D600CFC1FA /* ADViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADViewModel.swift; sourceTree = "<group>"; };
+		04C517B42A39FE13004620FD /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
+		04C517B72A39FE6B004620FD /* AnyCartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCartManager.swift; sourceTree = "<group>"; };
+		04C517B92A3A1026004620FD /* CartChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartChecker.swift; sourceTree = "<group>"; };
+		04C517BB2A3A1695004620FD /* AnyCartChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCartChecker.swift; sourceTree = "<group>"; };
+		04C519952A3A5068004620FD /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		04F033732A34C32500F96F75 /* ADSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADSView.swift; sourceTree = "<group>"; };
 		2B9D58BFB7AB7F645B43815D /* Pods-Shopify-ITI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.release.xcconfig"; sourceTree = "<group>"; };
 		4F17366EB933EE0E3FD74203 /* Pods_Shopify_ITI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,6 +270,9 @@
 		04534DB12A387AE600F8F86B /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				04C517B62A39FE41004620FD /* Manager */,
+				049704282A38FA3500AFDAAA /* Model */,
+				049704272A38FA0300AFDAAA /* ViewModel */,
 				04534E8A2A38810500F8F86B /* Entities */,
 				04534DB32A387AFA00F8F86B /* Services */,
 				04534DB22A387AF300F8F86B /* View */,
@@ -289,12 +306,40 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		049704272A38FA0300AFDAAA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				04C519952A3A5068004620FD /* CartViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		049704282A38FA3500AFDAAA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				049704292A3902F600AFDAAA /* CartModel.swift */,
+				0497042B2A39035500AFDAAA /* AnyCartModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		04B28DA92A34E4A600CFC1FA /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				04B28DAA2A34E61D00CFC1FA /* ADModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		04C517B62A39FE41004620FD /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				04C517B42A39FE13004620FD /* CartManager.swift */,
+				04C517B72A39FE6B004620FD /* AnyCartManager.swift */,
+				04C517B92A3A1026004620FD /* CartChecker.swift */,
+				04C517BB2A3A1695004620FD /* AnyCartChecker.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		04D056ED2A34899800D0B047 /* Discont */ = {
@@ -1084,6 +1129,7 @@
 			files = (
 				D4DBCBB82A2D3D81004EE325 /* RemoteClient.swift in Sources */,
 				D452D73A2A326067003B485B /* DetailedProduct.swift in Sources */,
+				04C517BC2A3A1695004620FD /* AnyCartChecker.swift in Sources */,
 				D452D85A2A32815E003B485B /* ProductOption.swift in Sources */,
 				D4596E1B2A33646700BD9E26 /* ProductsRemoteService.swift in Sources */,
 				04B28DAB2A34E61D00CFC1FA /* ADModel.swift in Sources */,
@@ -1100,6 +1146,7 @@
 				04534DB72A387B2900F8F86B /* CartView.swift in Sources */,
 				D464A7712A35FAEA00C37A9A /* KeysProvider.swift in Sources */,
 				D4E854032A30F3BB00515FCD /* StorefrontEnvironment.swift in Sources */,
+				04C517BA2A3A1026004620FD /* CartChecker.swift in Sources */,
 				D452D7CB2A327178003B485B /* GraphQLNullable.swift in Sources */,
 				D464A7C52A366D7900C37A9A /* Injected.swift in Sources */,
 				D464A7BF2A36680200C37A9A /* AppContainer.swift in Sources */,
@@ -1111,6 +1158,7 @@
 				D464A5112A35C9A900C37A9A /* Credentials.swift in Sources */,
 				D452D7C92A326FAD003B485B /* LocaleProvider.swift in Sources */,
 				D464A78B2A362CA000C37A9A /* TokenManager.swift in Sources */,
+				04C519962A3A5068004620FD /* CartViewModel.swift in Sources */,
 				D464A7AC2A36571100C37A9A /* LoginViewModel.swift in Sources */,
 				D464A7B52A365C5300C37A9A /* EmailValidator.swift in Sources */,
 				D464A7862A362C6E00C37A9A /* UserManager.swift in Sources */,
@@ -1140,6 +1188,7 @@
 				D4DBCBB72A2D3D81004EE325 /* AnyDecoder.swift in Sources */,
 				D464A77A2A3624E900C37A9A /* GuestLocalStore.swift in Sources */,
 				D464A7C72A368B9900C37A9A /* UserDefaults.swift in Sources */,
+				04C517B82A39FE6B004620FD /* AnyCartManager.swift in Sources */,
 				D464A7B72A365EE100C37A9A /* Validators.swift in Sources */,
 				D4DBCBBB2A2D3D81004EE325 /* AnyEnvironment.swift in Sources */,
 				D4DBCBB52A2D3D81004EE325 /* AnyConnectivity.swift in Sources */,
@@ -1162,11 +1211,14 @@
 				D464A7822A362C4500C37A9A /* GuestState.swift in Sources */,
 				D464A7A22A3642C100C37A9A /* AuthenticationManager.swift in Sources */,
 				D464A5132A35CC7000C37A9A /* Errors.swift in Sources */,
+				04C517B52A39FE13004620FD /* CartManager.swift in Sources */,
+				0497042C2A39035500AFDAAA /* AnyCartModel.swift in Sources */,
 				D452D7C02A326A47003B485B /* ProductRemoteService.swift in Sources */,
 				D4791C022A373E8800831D1F /* AnyUserProvider.swift in Sources */,
 				D464A7BC2A36647400C37A9A /* LoginScreen.swift in Sources */,
 				04534DBB2A387E3C00F8F86B /* CartRemoteService.swift in Sources */,
 				D452D7C22A326EAB003B485B /* Price.swift in Sources */,
+				0497042A2A3902F600AFDAAA /* CartModel.swift in Sources */,
 				D452D7C42A326ED0003B485B /* RemoteImage.swift in Sources */,
 				D464A7762A35FC9600C37A9A /* JsonCoder.swift in Sources */,
 				D4DBCBB62A2D3D81004EE325 /* AnyImageLoader.swift in Sources */,
