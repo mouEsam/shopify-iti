@@ -40,7 +40,7 @@ struct WishlistRemoteService: AnyInjectable {
         guard let user = userProvider.user,
               let userId = URL(string: user.id) else { return .failure(WishlistError.Unautherized) }
         let id = userId.lastPathComponent
-        let query = ShopifyAdminAPI.GetWishlistQuery(query: "customerId:\(id)")
+        let query = ShopifyAdminAPI.GetWishlistQuery(query: "customer_id:\(id)")
         let result = await remoteClient.fetch(query: query)
         return result.mapError { .Client(error: $0) }.flatMap { result in
             if let data = result.data?.draftOrders {

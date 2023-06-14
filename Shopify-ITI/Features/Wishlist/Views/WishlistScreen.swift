@@ -44,6 +44,7 @@ struct WishlistScreen: View {
         }
         .padding()
         .onReceive(viewModel.$uiState) { state in
+            print(state)
             print(state.data)
         }
         .onReceive(viewModel.$operationState) { state in
