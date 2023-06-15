@@ -50,9 +50,119 @@ struct RootView: View {
     
     var body: some View {
         NavigationView {
-//            WishlistScreen(container: container)
-            MainScreen()
+            RouterView(router: AppRouter()) {
+                // Root
+                AppView()
+            }
         }
         .environmentObject(container)
+    }
+}
+
+struct AppView: View {
+    
+    @EnvironmentRouter private var router: AppRouter
+    
+    var body: some View {
+        List {
+            ForEach(Range(0...2)) { index in
+                Button(action: {
+                    router.push(AppRoute(identifier: index, content: {
+                        AnotherAppView(index: index)
+                    }))
+                }) {
+                    Text("Simple \(index)").foregroundColor(.white).padding().background(RoundedRectangle(cornerRadius: 8))
+                }
+            }
+            ForEach(Range(0...2)) { index in
+                Button(action: {
+                    router.push(AppRoute(identifier: index, content: {
+                        AppView()
+                    }))
+                }) {
+                    Text("Nav \(index)").foregroundColor(.white).padding().background(RoundedRectangle(cornerRadius: 8))
+                }
+            }
+            ForEach(Range(0...2)) { index in
+                Button(action: {
+                    router.push(CustomRoute(identifier: index, content: {
+                        CustomAppView(index: index)
+                    }))
+                }) {
+                    Text("Custom \(index)").foregroundColor(.white).padding().background(RoundedRectangle(cornerRadius: 8))
+                }
+            }
+            ForEach([Overlay.fullscreen, Overlay.popover, Overlay.sheet]) { overlay in
+                Button(action: {
+                    router.present(overlay) {
+                        AppOverlayView(index: overlay)
+                    }
+                }) {
+                    Text("Overlay \(overlay.rawValue)").foregroundColor(.white).padding().background(RoundedRectangle(cornerRadius: 8))
+                }
+            }
+        }
+    }
+}
+
+// Routes
+struct AnotherAppView: View {
+    
+    @EnvironmentRoute private var route: AppRoute
+    @EnvironmentRouter private var router: AppRouter
+    
+    private let index: Int
+    
+    init(index: Int) {
+        self.index = index
+    }
+    
+    var body: some View {
+        Text("\(index) \(route.hashValue)")
+    }
+}
+
+// Custom routs
+class CustomRoute: AppRoute {
+    
+}
+
+struct CustomAppView: View {
+    
+    @EnvironmentRoute private var route: CustomRoute
+    @EnvironmentRouter private var router: AppRouter
+    
+    private let index: Int
+    
+    init(index: Int) {
+        self.index = index
+    }
+    
+    var body: some View {
+        Text("\(index) \(route.hashValue)")
+    }
+}
+
+// Overlays
+struct AppOverlayView: View {
+    
+    @EnvironmentOverlayRoute private var route: AppOverlayRoute
+    @EnvironmentRouter private var router: AppRouter
+    
+    private let index: Overlay
+    
+    init(index: Overlay) {
+        self.index = index
+    }
+    
+    var body: some View {
+        VStack {
+            Text("\(index.rawValue) \(route.hashValue)")
+            Button(action: {
+                router.dismiss()
+            }) {
+                Text("Back").foregroundColor(.white).padding().background(RoundedRectangle(cornerRadius: 8))
+            }
+        }
     }
 }

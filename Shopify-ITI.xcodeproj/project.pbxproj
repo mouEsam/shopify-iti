@@ -139,10 +139,13 @@
 		04CDB1142A3A55C30064508B /* Wishlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB08E2A3A55C30064508B /* Wishlist.swift */; };
 		04CDB1152A3A55C30064508B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB0902A3A55C30064508B /* Preview Assets.xcassets */; };
 		334029F07C9A89D6CEF9AB9D /* Pods_Shopify_ITI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */; };
+		D4513AC12A3A7DEF00C1B845 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4513AC02A3A7DEF00C1B845 /* Router.swift */; };
 		D4596D892A33595100BD9E26 /* Shopify_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */; };
 		D4596D8A2A33595100BD9E26 /* Shopify_ITI_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4AAFA392A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */; };
 		D4AAFA3A2A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D4B45F162A3ACB6D008F462D /* RouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B45F152A3ACB6D008F462D /* RouteView.swift */; };
+		D4B45F182A3ACB94008F462D /* AnyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B45F172A3ACB94008F462D /* AnyRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -297,8 +300,11 @@
 		04CDB0902A3A55C30064508B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9286320BBD2664520DE1BD34 /* Pods-Shopify-ITI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.debug.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.debug.xcconfig"; sourceTree = "<group>"; };
 		D41F627C2A2C921C00780814 /* Shopify-ITI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopify-ITI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4513AC02A3A7DEF00C1B845 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_Admin_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4B45F152A3ACB6D008F462D /* RouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteView.swift; sourceTree = "<group>"; };
+		D4B45F172A3ACB94008F462D /* AnyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyRouter.swift; sourceTree = "<group>"; };
 		E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0A81DAC848D79B6DAFA2A4 /* Pods-Shopify-ITI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -701,6 +707,7 @@
 		04CDB0162A3A55C30064508B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D4513ABF2A3A7DDF00C1B845 /* Router */,
 				04CDB0172A3A55C30064508B /* ViewModels */,
 				04CDB0192A3A55C30064508B /* Models */,
 				04CDB01B2A3A55C30064508B /* Views */,
@@ -1213,6 +1220,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D4513ABF2A3A7DDF00C1B845 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				D4B45F172A3ACB94008F462D /* AnyRouter.swift */,
+				D4513AC02A3A7DEF00C1B845 /* Router.swift */,
+				D4B45F152A3ACB6D008F462D /* RouteView.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		F7B4E07DB0B124A6BC44E75B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1359,6 +1376,7 @@
 				04CDB0B72A3A55C30064508B /* AnyKeysProvider.swift in Sources */,
 				046B62952A3A66E700DAF517 /* OnFirstAppear.swift in Sources */,
 				04CDB1062A3A55C30064508B /* ADTapView.swift in Sources */,
+				D4513AC12A3A7DEF00C1B845 /* Router.swift in Sources */,
 				04CDB0AC2A3A55C30064508B /* ApolloGraphQLClient.swift in Sources */,
 				04CDB0B32A3A55C30064508B /* ConfigsProvider.swift in Sources */,
 				04CDB0CC2A3A55C30064508B /* DetailedProduct.swift in Sources */,
@@ -1424,7 +1442,9 @@
 				04CDB0E52A3A55C30064508B /* RegisterViewModel.swift in Sources */,
 				04CDB0CA2A3A55C30064508B /* ProductRemoteService.swift in Sources */,
 				04CDB09B2A3A55C30064508B /* Errors.swift in Sources */,
+				D4B45F162A3ACB6D008F462D /* RouteView.swift in Sources */,
 				04CDB0D42A3A55C30064508B /* UIState.swift in Sources */,
+				D4B45F182A3ACB94008F462D /* AnyRouter.swift in Sources */,
 				04CDB0BE2A3A55C30064508B /* BrandModel.swift in Sources */,
 				04CDB0BF2A3A55C30064508B /* HomePage.swift in Sources */,
 				04CDB1042A3A55C30064508B /* ADModel.swift in Sources */,
@@ -1523,7 +1543,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1577,7 +1597,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1604,7 +1624,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1635,7 +1655,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
