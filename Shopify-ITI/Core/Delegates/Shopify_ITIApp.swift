@@ -124,7 +124,6 @@ struct AnotherAppView: View {
 
 // Custom routs
 class CustomRoute: AppRoute {
-    
 }
 
 struct CustomAppView: View {

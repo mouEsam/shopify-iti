@@ -64,7 +64,8 @@ class AppRoute: AnyRoute {
     private let identifier: any Hashable
     private let content: () -> AnyView
     
-    init<Content: View>(identifier: any Hashable, content: @escaping () -> Content) {
+    required init<Content: View>(identifier: any Hashable,
+                                 content: @escaping () -> Content) {
         self.identifier = identifier
         self.content = { AnyView(erasing: content()) }
     }
@@ -86,7 +87,8 @@ class AppOverlayRoute: AnyOverlayRoute {
     let overlayType: Overlay
     let body: () -> Content
     
-    init<Content: View>(_ overlayType: Overlay, content: @escaping () -> Content) {
+    required init<Content: View>(_ overlayType: Overlay,
+                                 content: @escaping () -> Content) {
         self.overlayType = overlayType
         self.body = { AnyView(erasing: content()) }
     }
