@@ -8,6 +8,21 @@
 import Foundation
 import Apollo
 
+extension GraphQLFetchPolicy {
+    fileprivate func mapToApollo() -> CachePolicy {
+        switch self {
+            case .prioritizeCache:
+                return .returnCacheDataElseFetch
+            case .prioritizeFetch:
+                return .fetchIgnoringCacheData
+            case .noCaching:
+                return .fetchIgnoringCacheCompletely
+            case .noFetch:
+                return .returnCacheDataDontFetch
+        }
+    }
+}
+
 struct ApolloGraphQLClient: GraphQLClient {
     static func register(_ container: AppContainer) {
         container.register(type: (any GraphQLClient).self) { resolver in
@@ -23,13 +38,16 @@ struct ApolloGraphQLClient: GraphQLClient {
     private let environment: any AnyEnvironmentProvider
     private let client: ApolloClient
     private let queue: DispatchQueue
+    private let defaultCachePolicy: GraphQLFetchPolicy
     
     init(environment: some AnyEnvironmentProvider,
          client: ApolloClient,
-         queue: DispatchQueue) {
+         queue: DispatchQueue,
+         defaultCachePolicy: GraphQLFetchPolicy) {
         self.environment = environment
         self.client = client
         self.queue = queue
+        self.defaultCachePolicy = defaultCachePolicy
     }
     
     init(environment: some AnyEnvironmentProvider) {
@@ -37,26 +55,34 @@ struct ApolloGraphQLClient: GraphQLClient {
         
         let url = URL(string: environment.shopifyBaseUrl)!
         let store = ApolloStore(cache: InMemoryNormalizedCache())
-        let headersInterceptor = ApolloHeaderInterceptor(headers: [environment.shopifyAccessTokenHeader: environment.shopifyAccessToken])
         let provider = ApolloInterceptorsProvider(innerProvider: DefaultInterceptorProvider(store: store),
-                                                  additionalInterceptors: [headersInterceptor])
+                                                  additionalInterceptors: [])
         let transport = RequestChainNetworkTransport(interceptorProvider: provider,
-                                                     endpointURL: url)
+                                                     endpointURL: url,
+                                                     additionalHeaders: [environment.shopifyAccessTokenHeader: environment.shopifyAccessToken])
         self.client = ApolloClient(networkTransport: transport, store: store)
         self.queue = DispatchQueue(label: "ApolloGraphQLClient", qos: .userInitiated, attributes: .concurrent)
+        self.defaultCachePolicy = .prioritizeFetch
     }
     
-    func fetch<Query: GraphQLQuery>(query: Query, operation: inout GraphQLCancellable?) async -> Result<GraphQLResult<Query.Data>, Error> {
+    func fetch<Query: GraphQLQuery>(query: Query,
+                                    cachePolicy: GraphQLFetchPolicy?,
+                                    operation: inout GraphQLCancellable?) async -> Result<GraphQLResult<Query.Data>, Error> {
+        let cachePolicy = cachePolicy ?? self.defaultCachePolicy
         return await withCheckedContinuation { continuation in
-            operation = self.client.fetch(query: query, queue: self.queue) { result in
+            operation = self.client.fetch(query: query,
+                                          cachePolicy: cachePolicy.mapToApollo(),
+                                          queue: self.queue) { result in
                 continuation.resume(returning: result)
             }
         }
     }
     
-    func execute<Query: GraphQLMutation>(query: Query, operation: inout GraphQLCancellable?) async -> Result<GraphQLResult<Query.Data>, Error> {
+    func execute<Query: GraphQLMutation>(query: Query,
+                                         operation: inout GraphQLCancellable?) async -> Result<GraphQLResult<Query.Data>, Error> {
         return await withCheckedContinuation { continuation in
-            operation = self.client.perform(mutation: query, queue: self.queue) { result in
+            operation = self.client.perform(mutation: query,
+                                            queue: self.queue) { result in
                 continuation.resume(returning: result)
             }
         }
