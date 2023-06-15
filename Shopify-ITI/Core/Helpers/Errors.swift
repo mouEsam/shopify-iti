@@ -11,6 +11,7 @@ import Apollo
 enum LocalErrors: Error {
     case NotFound
     case Invalid
+    case NotAvailable
     case Unknown
 }
 
