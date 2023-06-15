@@ -1,9 +1,9 @@
-query getProductsByQuery($after: String,
-                         $first: Int!,
+query getProductsByQuery($cursor: String,
+                         $count: Int!,
                          $query: String!,
                          $country: CountryCode, 
                          $lang: LanguageCode) @inContext(country: $country, language: $lang) {
-    products(first: $first, after: $after, query: $query) {
+    products(first: $count, after: $cursor, query: $query) {
         edges {
             cursor
             node {
@@ -12,6 +12,34 @@ query getProductsByQuery($after: String,
         }
         pageInfo {
             ...paginationInfo
+        }
+    }
+}
+
+query getProductsByCollection($cursor: String,
+                              $count: Int!,
+                              $collectionId: ID!,
+                              $productType: String,
+                              $productVendor: String,
+                              $productTag: String,
+                              $country: CountryCode, 
+                              $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+    collection(id: $collectionId) {
+        products(first: $count, 
+                 after: $cursor, 
+                 filters: [{ productType: $productType },
+                           { productVendor: $productVendor },
+                           { available: true },
+                           { tag: $productTag }]) {
+            edges {
+                cursor
+                node {
+                    ...productInfo
+                }
+            }
+            pageInfo {
+                ...paginationInfo
+            }
         }
     }
 }

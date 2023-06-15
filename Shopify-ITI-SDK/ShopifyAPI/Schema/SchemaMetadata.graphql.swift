@@ -71,9 +71,9 @@ public extension ShopifyAPI {
       case "ProductEdge": return ShopifyAPI.Objects.ProductEdge
       case "ProductPriceRange": return ShopifyAPI.Objects.ProductPriceRange
       case "MoneyV2": return ShopifyAPI.Objects.MoneyV2
+      case "ProductVariantConnection": return ShopifyAPI.Objects.ProductVariantConnection
       case "PageInfo": return ShopifyAPI.Objects.PageInfo
       case "ImageConnection": return ShopifyAPI.Objects.ImageConnection
-      case "ProductVariantConnection": return ShopifyAPI.Objects.ProductVariantConnection
       case "Mutation": return ShopifyAPI.Objects.Mutation
       case "CustomerUpdatePayload": return ShopifyAPI.Objects.CustomerUpdatePayload
       case "CustomerAccessToken": return ShopifyAPI.Objects.CustomerAccessToken

@@ -53,7 +53,9 @@ extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.N
 extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Image: RemoteImageConvertible {}
 extension ShopifyAdminAPI.WishListItemInfo.OriginalTotalSet.PresentmentMoney: PriceConvertible {}
 
-extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Product: ProductConvertible {}
+extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Product: ProductConvertible {
+    var variantId: String { variants.nodes.first!.id }
+}
 extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Product.FeaturedImage: RemoteImageConvertible {}
 extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Product.PriceRange: PriceRangeConvertible {}
 extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Product.PriceRange.MaxVariantPrice: PriceConvertible {}

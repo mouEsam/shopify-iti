@@ -92,6 +92,26 @@ struct WishlistRemoteService: AnyInjectable {
         }
     }
     
+    func delete(wishlist: Wishlist) async -> Result<Void, WishlistError> {
+        let customerId = userProvider.user?.id
+        
+        let input = ShopifyAdminAPI.DraftOrderDeleteInput(id: wishlist.id)
+        let mutation = ShopifyAdminAPI.DeleteWishlistMutation(input: input)
+        let result = await remoteClient.execute(query: mutation)
+        return result.mapError { .Client(error: $0) }.flatMap { result in
+            if let data = result.data?.draftOrderDelete {
+                if let _ = data.deletedId {
+                    return .success(Void())
+                } else {
+                    let errors = data.userErrors.toShopifyErrors()
+                    return .failure(WishlistError.Generic(genericErrors: errors))
+                }
+            } else {
+                return .failure(WishlistError.Unknown)
+            }
+        }
+    }
+    
     func update(list wishList: Wishlist) async -> Result<Wishlist, WishlistError> {
         let customerId = wishList.customerId
         let items = wishList.entries.map { ShopifyAdminAPI.DraftOrderLineItemInput(quantity: 1, variantId: .some($0.value)) }

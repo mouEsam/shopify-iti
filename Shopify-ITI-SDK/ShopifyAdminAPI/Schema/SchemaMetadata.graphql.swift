@@ -280,6 +280,7 @@ public extension ShopifyAdminAPI {
       case "DraftOrderConnection": return ShopifyAdminAPI.Objects.DraftOrderConnection
       case "DraftOrderLineItemEdge": return ShopifyAdminAPI.Objects.DraftOrderLineItemEdge
       case "ProductPriceRange": return ShopifyAdminAPI.Objects.ProductPriceRange
+      case "ProductVariantConnection": return ShopifyAdminAPI.Objects.ProductVariantConnection
       case "ProductVariantContextualPricing": return ShopifyAdminAPI.Objects.ProductVariantContextualPricing
       default: return nil
       }

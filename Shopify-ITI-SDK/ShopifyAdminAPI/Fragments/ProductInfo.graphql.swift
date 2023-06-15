@@ -20,6 +20,13 @@ public extension ShopifyAdminAPI {
           __typename
           ...priceRangeInfo
         }
+        variants(first: 1) {
+          __typename
+          nodes {
+            __typename
+            id
+          }
+        }
       }
       """ }
 
@@ -35,6 +42,7 @@ public extension ShopifyAdminAPI {
       .field("description", String.self),
       .field("featuredImage", FeaturedImage?.self),
       .field("priceRange", PriceRange.self),
+      .field("variants", Variants.self, arguments: ["first": 1]),
     ] }
 
     /// A globally-unique ID.
@@ -50,6 +58,8 @@ public extension ShopifyAdminAPI {
     /// The price range of the product.
     @available(*, deprecated, message: "Deprecated in API version 2020-10. Use `priceRangeV2` instead.")
     public var priceRange: PriceRange { __data["priceRange"] }
+    /// A list of variants associated with the product.
+    public var variants: Variants { __data["variants"] }
 
     /// FeaturedImage
     ///
@@ -157,6 +167,40 @@ public extension ShopifyAdminAPI {
 
           public var moneyInfo: MoneyInfo { _toFragment() }
         }
+      }
+    }
+
+    /// Variants
+    ///
+    /// Parent Type: `ProductVariantConnection`
+    public struct Variants: ShopifyAdminAPI.SelectionSet {
+      public let __data: DataDict
+      public init(_dataDict: DataDict) { __data = _dataDict }
+
+      public static var __parentType: Apollo.ParentType { ShopifyAdminAPI.Objects.ProductVariantConnection }
+      public static var __selections: [Apollo.Selection] { [
+        .field("__typename", String.self),
+        .field("nodes", [Node].self),
+      ] }
+
+      /// A list of the nodes contained in ProductVariantEdge.
+      public var nodes: [Node] { __data["nodes"] }
+
+      /// Variants.Node
+      ///
+      /// Parent Type: `ProductVariant`
+      public struct Node: ShopifyAdminAPI.SelectionSet {
+        public let __data: DataDict
+        public init(_dataDict: DataDict) { __data = _dataDict }
+
+        public static var __parentType: Apollo.ParentType { ShopifyAdminAPI.Objects.ProductVariant }
+        public static var __selections: [Apollo.Selection] { [
+          .field("__typename", String.self),
+          .field("id", ShopifyAdminAPI.ID.self),
+        ] }
+
+        /// A globally-unique ID.
+        public var id: ShopifyAdminAPI.ID { __data["id"] }
       }
     }
   }

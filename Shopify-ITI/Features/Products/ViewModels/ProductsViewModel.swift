@@ -1,29 +1,33 @@
 //
-//  WishlistViewModel.swift
+//  ProductsViewModel.swift
 //  Shopify-ITI
 //
-//  Created by Mostafa Ibrahim on 14/06/2023.
+//  Created by Mostafa Ibrahim on 16/06/2023.
 //
 
 import Foundation
 import Combine
 
-class WishlistViewModel: ObservableObject {
+class ProductsViewModel: ObservableObject {
+    typealias Criterion = [ProductSearchCriteria : String]
     
-    private let model: any AnyWishlistModel
+    private let model: any AnyProductsModel
     private let wishlistManager: WishlistManager
     private let notificationCenter: any AnyNotificationCenter
     
-    @Published private(set) var uiState: UIState<[WishlistItem]> = .initial
+    @Published private(set) var uiState: UIState<[ListableProduct]> = .initial
     @Published private(set) var operationState: UIState<Void> = .initial
+    @Published private(set) var criterion: Criterion
     
     private var cancellables: Set<AnyCancellable> = []
     private var pageInfo: PageInfo? = nil
     private var fetchTask: Task<Any, Error>? = nil
     
-    init(model: some AnyWishlistModel,
+    init(criterion: Criterion,
+         model: some AnyProductsModel,
          wishlistManager: WishlistManager,
          notificationCenter: some AnyNotificationCenter) {
+        self.criterion = criterion
         self.model = model
         self.wishlistManager = wishlistManager
         self.notificationCenter = notificationCenter
@@ -33,35 +37,38 @@ class WishlistViewModel: ObservableObject {
     
     private func initialize() {
         wishlistManager.$state
-            .prepend(wishlistManager.state)
-            .map(\.data?.id)
-            .removeDuplicates()
-            .sink { wishlistId in
-                if wishlistId == nil {
-                    self.clear()
-                } else {
-                    self.refetch()
+            .compactMap(\.data)
+            .first()
+            .subscribe(on: DispatchQueue.global())
+            .compactMap { wishlist in
+                if let list = self.uiState.data {
+                    return self.applyWishlist(list)
                 }
+                return nil
+            }.receive(on: DispatchQueue.main)
+            .sink { list in
+                self.uiState = .loaded(data: SourcedData.remote(list))
             }.store(in: &cancellables)
         
         notificationCenter.publisher(for: WishlistRemovedEntryNotification.name)
             .compactMap { $0.object as? WishlistRemovedEntryNotification }
             .sink { event in
-                if case .loaded(let data) = self.uiState,
-                   let index = data.data.firstIndex(where: {
-                       $0.product.id == event.entry.productId
-                   }){
-                    var newList = data.data
-                    newList.remove(at: index)
-                    self.uiState = .loaded(data: SourcedData.remote(newList))
-                }
+                self.setRemovedFromWishlist(event.entry)
             }.store(in: &cancellables)
         
         notificationCenter.publisher(for: WishlistAddedEntryNotification.name)
             .compactMap { $0.object as? WishlistAddedEntryNotification }
             .sink { event in
-                self.refetch()
+                self.setAddedToWishlist(event.entry)
             }.store(in: &cancellables)
+    }
+    
+    func setCriteria(_ criteria: ProductSearchCriteria, _ value: String?) {
+        self.criterion[criteria] = value
+    }
+    
+    func getCriteria(_ criteria: ProductSearchCriteria) -> String? {
+        return self.criterion[criteria]
     }
     
     func fetch() {
@@ -87,29 +94,60 @@ class WishlistViewModel: ObservableObject {
         }
     }
     
-    func remove(item: WishlistItem) async -> Result<Void, ShopifyErrors<Any>> {
-        return await wishlistManager.removeItem(.init(productId: item.product.id,
-                                                      variantId: item.variant.id))
+    func toggleWishlist(item: Product) async -> Result<Void, ShopifyErrors<Any>> {
+        return await wishlistManager.toggleItem(.init(productId: item.id,
+                                                      variantId: item.variantId))
     }
     
     private func fetchImpl() async {
-        guard let wishlistId = wishlistManager.state.data?.id else { return }
         await updateState(.loading, .loading)
-        let result = await model.fetch(for: wishlistId, with: pageInfo)
+        let result = await model.fetch(withCriteria: criterion, with: pageInfo)
         
         guard !Task.isCancelled else { return }
         
         switch result {
             case .success(let page):
-                let page = page.data
+                let page =  page.data
                 var existingList = uiState.data ?? []
-                existingList.append(contentsOf: page.list)
+                existingList.append(contentsOf: applyWishlist(page.list))
                 await setLoaded(existingList)
                 pageInfo = page.pageInfo
                 return
             case .failure(let error):
                 await setError(error)
                 return
+        }
+    }
+    
+    private func applyWishlist(_ list: [Product]) -> [ListableProduct] {
+        if let wishlist = wishlistManager.state.data {
+            return list.map { .init(product: $0,
+                                    isWishlisted: wishlist.entries[$0.id] != nil) }
+        }
+        return list.map { .init(product: $0) }
+    }
+    
+    private func applyWishlist(_ list: [ListableProduct]) -> [ListableProduct] {
+        if let wishlist = wishlistManager.state.data {
+            return list.map { $0.copyWith(isWishlisted: wishlist.entries[$0.id] != nil) }
+        }
+        return list
+    }
+    
+    private func setRemovedFromWishlist(_ entry: WishListEntry) {
+        setWishlisted(entry, false)
+    }
+    
+    private func setAddedToWishlist(_ entry: WishListEntry) {
+        setWishlisted(entry, true)
+    }
+    
+    private func setWishlisted(_ entry: WishListEntry, _ wishlisted: Bool) {
+        if var list = uiState.data,
+           let index = list.firstIndex(where: { $0.id == entry.productId }){
+            var item = list[index].copyWith(isWishlisted: wishlisted)
+            list[index] = item
+            uiState = .loaded(data: SourcedData.remote(list))
         }
     }
     
@@ -121,7 +159,7 @@ class WishlistViewModel: ObservableObject {
         await updateState(.loaded(data: SourcedData.local([])), .initial)
     }
     
-    private func setLoaded(_ list: [WishlistItem]) async {
+    private func setLoaded(_ list: [ListableProduct]) async {
         await updateState(.loaded(data: SourcedData.remote(list)), .initial)
     }
     
@@ -133,7 +171,7 @@ class WishlistViewModel: ObservableObject {
         await updateState(.error(error: error), .error(error: error))
     }
     
-    private func updateState(_ uiState: UIState<[WishlistItem]>,
+    private func updateState(_ uiState: UIState<[ListableProduct]>,
                              _ opState: UIState<Void>) async {
         await MainActor.run {
             if self.pageInfo == nil {
