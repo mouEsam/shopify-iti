@@ -20,6 +20,13 @@ public extension ShopifyAPI {
           __typename
           ...priceRangeInfo
         }
+        variants(first: 1) {
+          __typename
+          nodes {
+            __typename
+            id
+          }
+        }
       }
       """ }
 
@@ -35,6 +42,7 @@ public extension ShopifyAPI {
       .field("description", String.self),
       .field("featuredImage", FeaturedImage?.self),
       .field("priceRange", PriceRange.self),
+      .field("variants", Variants.self, arguments: ["first": 1]),
     ] }
 
     /// A globally-unique ID.
@@ -54,6 +62,8 @@ public extension ShopifyAPI {
     public var featuredImage: FeaturedImage? { __data["featuredImage"] }
     /// The price range.
     public var priceRange: PriceRange { __data["priceRange"] }
+    /// List of the product’s variants.
+    public var variants: Variants { __data["variants"] }
 
     /// FeaturedImage
     ///
@@ -161,6 +171,40 @@ public extension ShopifyAPI {
 
           public var moneyInfo: MoneyInfo { _toFragment() }
         }
+      }
+    }
+
+    /// Variants
+    ///
+    /// Parent Type: `ProductVariantConnection`
+    public struct Variants: ShopifyAPI.SelectionSet {
+      public let __data: DataDict
+      public init(_dataDict: DataDict) { __data = _dataDict }
+
+      public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.ProductVariantConnection }
+      public static var __selections: [Apollo.Selection] { [
+        .field("__typename", String.self),
+        .field("nodes", [Node].self),
+      ] }
+
+      /// A list of the nodes contained in ProductVariantEdge.
+      public var nodes: [Node] { __data["nodes"] }
+
+      /// Variants.Node
+      ///
+      /// Parent Type: `ProductVariant`
+      public struct Node: ShopifyAPI.SelectionSet {
+        public let __data: DataDict
+        public init(_dataDict: DataDict) { __data = _dataDict }
+
+        public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.ProductVariant }
+        public static var __selections: [Apollo.Selection] { [
+          .field("__typename", String.self),
+          .field("id", ShopifyAPI.ID.self),
+        ] }
+
+        /// A globally-unique ID.
+        public var id: ShopifyAPI.ID { __data["id"] }
       }
     }
   }

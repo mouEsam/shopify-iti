@@ -9,8 +9,8 @@ public extension ShopifyAPI {
     public static let document: Apollo.DocumentType = .notPersisted(
       definition: .init(
         #"""
-        query getProductsByQuery($after: String, $first: Int!, $query: String!, $country: CountryCode, $lang: LanguageCode) @inContext(country: $country, language: $lang) {
-          products(first: $first, after: $after, query: $query) {
+        query getProductsByQuery($cursor: String, $count: Int!, $query: String!, $country: CountryCode, $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+          products(first: $count, after: $cursor, query: $query) {
             __typename
             edges {
               __typename
@@ -30,29 +30,29 @@ public extension ShopifyAPI {
         fragments: [ProductInfo.self, ImageInfo.self, PriceRangeInfo.self, MoneyInfo.self, PaginationInfo.self]
       ))
 
-    public var after: GraphQLNullable<String>
-    public var first: Int
+    public var cursor: GraphQLNullable<String>
+    public var count: Int
     public var query: String
     public var country: GraphQLNullable<GraphQLEnum<CountryCode>>
     public var lang: GraphQLNullable<GraphQLEnum<LanguageCode>>
 
     public init(
-      after: GraphQLNullable<String>,
-      first: Int,
+      cursor: GraphQLNullable<String>,
+      count: Int,
       query: String,
       country: GraphQLNullable<GraphQLEnum<CountryCode>>,
       lang: GraphQLNullable<GraphQLEnum<LanguageCode>>
     ) {
-      self.after = after
-      self.first = first
+      self.cursor = cursor
+      self.count = count
       self.query = query
       self.country = country
       self.lang = lang
     }
 
     public var __variables: Variables? { [
-      "after": after,
-      "first": first,
+      "cursor": cursor,
+      "count": count,
       "query": query,
       "country": country,
       "lang": lang
@@ -65,8 +65,8 @@ public extension ShopifyAPI {
       public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.QueryRoot }
       public static var __selections: [Apollo.Selection] { [
         .field("products", Products.self, arguments: [
-          "first": .variable("first"),
-          "after": .variable("after"),
+          "first": .variable("count"),
+          "after": .variable("cursor"),
           "query": .variable("query")
         ]),
       ] }
@@ -142,6 +142,8 @@ public extension ShopifyAPI {
             public var featuredImage: FeaturedImage? { __data["featuredImage"] }
             /// The price range.
             public var priceRange: PriceRange { __data["priceRange"] }
+            /// List of the product’s variants.
+            public var variants: ProductInfo.Variants { __data["variants"] }
 
             public struct Fragments: FragmentContainer {
               public let __data: DataDict

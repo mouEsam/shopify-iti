@@ -349,6 +349,8 @@ public extension ShopifyAdminAPI {
                 /// The price range of the product.
                 @available(*, deprecated, message: "Deprecated in API version 2020-10. Use `priceRangeV2` instead.")
                 public var priceRange: PriceRange { __data["priceRange"] }
+                /// A list of variants associated with the product.
+                public var variants: ProductInfo.Variants { __data["variants"] }
 
                 public struct Fragments: FragmentContainer {
                   public let __data: DataDict

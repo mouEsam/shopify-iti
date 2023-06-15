@@ -137,13 +137,27 @@ class WishlistManager : AnyInjectable {
                 case .failure(ShopifyErrors.Unautherized):
                     fallthrough
                 case .failure(ShopifyErrors.NotFound):
-                    self.state = .none
+                    self.handleWishlist(nil)
                     break
                 case .failure(let error):
                     self.state = .error(error: error)
                     break
             }
         }
+    }
+    
+    func toggleItem(_ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>> {
+        if case .loading = state {
+            _ = await task?.result
+        }
+        if case .data(let data) = state {
+            if let _ = data.entries[item.productId] {
+                return await removeItem(item)
+            } else {
+                return await addItem(item)
+            }
+        }
+        return .failure(.Unknown)
     }
     
     func addItem(_ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>> {
@@ -180,8 +194,24 @@ class WishlistManager : AnyInjectable {
         var items = list.entries
         items.removeValue(forKey: item.productId)
         let updatedList = list.copy(entries: items)
-        let listResult = await wishlistService.update(list: updatedList)
-        return await handleUpdatedListResult(listResult)
+        if updatedList.entries.isEmpty {
+            let listResult = await wishlistService.delete(wishlist: updatedList)
+            return await handleDeletedListResult(listResult)
+        } else {
+            let listResult = await wishlistService.update(list: updatedList)
+            return await handleUpdatedListResult(listResult)
+        }
+    }
+    
+    private func handleDeletedListResult(_ listResult: Result<Void, ShopifyErrors<Any>>) async -> Result<Void, ShopifyErrors<Any>> {
+        guard !Task.isCancelled else { return .failure(.Unknown) }
+        
+        await MainActor.run {
+            if case .success(_) = listResult {
+                self.setList(nil)
+            }
+        }
+        return listResult.map { _ in }
     }
     
     private func addToList(_ list: Wishlist, _ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>> {
@@ -208,7 +238,12 @@ class WishlistManager : AnyInjectable {
         return listResult.map { _ in }
     }
     
-    private func handleWishlist(_ wishlist: Wishlist) {
+    private func handleWishlist(_ wishlist: Wishlist?) {
+        guard let wishlist = wishlist else {
+            self.setList(nil)
+            return
+        }
+        
         let user = authManager.state.user
         if let ownerId = wishlist.customerId {
             _ = wishlistIdStore.delete()
@@ -230,7 +265,11 @@ class WishlistManager : AnyInjectable {
         }
     }
     
-    private func setList(_ wishlist: Wishlist) {
-        self.state = .data(data: wishlist)
+    private func setList(_ wishlist: Wishlist?) {
+        if let wishlist = wishlist {
+            self.state = .data(data: wishlist)
+        } else {
+            self.state = .none
+        }
     }
 }

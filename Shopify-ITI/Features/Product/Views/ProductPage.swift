@@ -8,6 +8,19 @@
 import SwiftUI
 
 struct ProductPage: View {
+    
+    @EnvironmentObject private var container: AppContainer
+
+    @StateObject private var viewModel: ProductViewModel
+    
+    init(container: AppContainer, productId: String) {
+        let model = container.require((any AnyProductModelFactory).self).create()
+        let manager = container.require(WishlistManager.self)
+        _viewModel = .init(wrappedValue: ProductViewModel(productId:productId,
+                                                          model: model,
+                                                          wishlistManager: manager))
+    }
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -16,21 +29,8 @@ struct ProductPage: View {
             Text("Hello, world!")
         }
         .padding()
-        .task {
-            let client = ApolloGraphQLClient(environment: StorefronEnvironmentProvider())
-            let localeProvider = LocaleProvider()
-            let configsProvider = ConfigsProvider()
-            let service = ProductRemoteService(remoteClient: client,
-                                               localeProvider: localeProvider,
-                                               configsProvider: configsProvider)
-            let result = await service.fetch(byId: "gid://shopify/Product/8341864055063")
-            dump(result)
+        .onFirstTask {
+            await viewModel.fetch()
         }
-    }
-}
-
-struct ProductPage_Previews: PreviewProvider {
-    static var previews: some View {
-        ProductPage()
     }
 }

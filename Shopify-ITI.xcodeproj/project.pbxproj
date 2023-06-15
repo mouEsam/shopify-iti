@@ -146,6 +146,13 @@
 		D4AAFA3A2A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4B45F162A3ACB6D008F462D /* RouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B45F152A3ACB6D008F462D /* RouteView.swift */; };
 		D4B45F182A3ACB94008F462D /* AnyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B45F172A3ACB94008F462D /* AnyRouter.swift */; };
+		D4EB9A5C2A3BB89100518339 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EB9A5B2A3BB89100518339 /* ProductModel.swift */; };
+		D4EB9A5E2A3BB97F00518339 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EB9A5D2A3BB97F00518339 /* ProductViewModel.swift */; };
+		D4EB9A602A3BC8F900518339 /* ProductsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EB9A5F2A3BC8F900518339 /* ProductsModel.swift */; };
+		D4EB9A632A3BC9D200518339 /* ProductsSearchCriteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EB9A622A3BC9D200518339 /* ProductsSearchCriteria.swift */; };
+		D4EB9A662A3BCBDD00518339 /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EB9A652A3BCBDD00518339 /* ProductsViewModel.swift */; };
+		D4EB9DB62A3BD60200518339 /* ListableProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EB9DB52A3BD60200518339 /* ListableProduct.swift */; };
+		D4EB9DB92A3BD93600518339 /* ProductsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EB9DB82A3BD93600518339 /* ProductsScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -305,6 +312,13 @@
 		D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_Admin_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4B45F152A3ACB6D008F462D /* RouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteView.swift; sourceTree = "<group>"; };
 		D4B45F172A3ACB94008F462D /* AnyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyRouter.swift; sourceTree = "<group>"; };
+		D4EB9A5B2A3BB89100518339 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		D4EB9A5D2A3BB97F00518339 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
+		D4EB9A5F2A3BC8F900518339 /* ProductsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsModel.swift; sourceTree = "<group>"; };
+		D4EB9A622A3BC9D200518339 /* ProductsSearchCriteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsSearchCriteria.swift; sourceTree = "<group>"; };
+		D4EB9A652A3BCBDD00518339 /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
+		D4EB9DB52A3BD60200518339 /* ListableProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListableProduct.swift; sourceTree = "<group>"; };
+		D4EB9DB82A3BD93600518339 /* ProductsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsScreen.swift; sourceTree = "<group>"; };
 		E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0A81DAC848D79B6DAFA2A4 /* Pods-Shopify-ITI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -643,8 +657,12 @@
 		04CDB0052A3A55C30064508B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				04CDB0062A3A55C30064508B /* Services */,
+				D4EB9A612A3BC96400518339 /* Helpers */,
 				04CDB0092A3A55C30064508B /* Entities */,
+				04CDB0062A3A55C30064508B /* Services */,
+				D4EB9A572A3BB6B900518339 /* Models */,
+				D4EB9A642A3BCA9A00518339 /* ViewModels */,
+				D4EB9DB72A3BD91900518339 /* Views */,
 			);
 			path = Products;
 			sourceTree = "<group>";
@@ -662,6 +680,7 @@
 			isa = PBXGroup;
 			children = (
 				04CDB00A2A3A55C30064508B /* Product.swift */,
+				D4EB9DB52A3BD60200518339 /* ListableProduct.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -669,9 +688,12 @@
 		04CDB00B2A3A55C30064508B /* Product */ = {
 			isa = PBXGroup;
 			children = (
-				04CDB00C2A3A55C30064508B /* Views */,
+				D4EB9A5A2A3BB6F000518339 /* Helpers */,
 				04CDB00E2A3A55C30064508B /* Services */,
 				04CDB0112A3A55C30064508B /* Entities */,
+				D4EB9A582A3BB6F000518339 /* Models */,
+				D4EB9A592A3BB6F000518339 /* ViewModels */,
+				04CDB00C2A3A55C30064508B /* Views */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -1230,6 +1252,61 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		D4EB9A572A3BB6B900518339 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D4EB9A5F2A3BC8F900518339 /* ProductsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D4EB9A582A3BB6F000518339 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D4EB9A5B2A3BB89100518339 /* ProductModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D4EB9A592A3BB6F000518339 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D4EB9A5D2A3BB97F00518339 /* ProductViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D4EB9A5A2A3BB6F000518339 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D4EB9A612A3BC96400518339 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D4EB9A622A3BC9D200518339 /* ProductsSearchCriteria.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D4EB9A642A3BCA9A00518339 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D4EB9A652A3BCBDD00518339 /* ProductsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D4EB9DB72A3BD91900518339 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D4EB9DB82A3BD93600518339 /* ProductsScreen.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F7B4E07DB0B124A6BC44E75B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1368,6 +1445,7 @@
 			files = (
 				04CDB0982A3A55C30064508B /* Notifications.swift in Sources */,
 				04CDB0D32A3A55C30064508B /* Pagination.swift in Sources */,
+				D4EB9A5E2A3BB97F00518339 /* ProductViewModel.swift in Sources */,
 				04CDB0DE2A3A55C30064508B /* ProfileUpdate.swift in Sources */,
 				04CDB0932A3A55C30064508B /* DataFetchCacheStrategy.swift in Sources */,
 				04CDB1082A3A55C30064508B /* AD.swift in Sources */,
@@ -1384,6 +1462,7 @@
 				04CDB0E02A3A55C30064508B /* ProfileRemoteService.swift in Sources */,
 				04CDB0B82A3A55C30064508B /* KeysProvider.swift in Sources */,
 				04CDB0F52A3A55C30064508B /* AnyGuestLocalStore.swift in Sources */,
+				D4EB9A602A3BC8F900518339 /* ProductsModel.swift in Sources */,
 				04CDB1142A3A55C30064508B /* Wishlist.swift in Sources */,
 				04CDB0E72A3A55C30064508B /* TokenState.swift in Sources */,
 				04CDB0EC2A3A55C30064508B /* UserProvider.swift in Sources */,
@@ -1399,6 +1478,7 @@
 				04CDB0E12A3A55C30064508B /* Profile.swift in Sources */,
 				04CDB10F2A3A55C30064508B /* WishlistNotifications.swift in Sources */,
 				04CDB0952A3A55C30064508B /* Shopify_ITIApp.swift in Sources */,
+				D4EB9DB92A3BD93600518339 /* ProductsScreen.swift in Sources */,
 				04CDB0CE2A3A55C30064508B /* ProductCollection.swift in Sources */,
 				04CDB1032A3A55C30064508B /* ADViewModel.swift in Sources */,
 				04CDB0BD2A3A55C30064508B /* BrandViewModel.swift in Sources */,
@@ -1413,6 +1493,7 @@
 				04CDB0FC2A3A55C30064508B /* Credentials.swift in Sources */,
 				04CDB0F42A3A55C30064508B /* GuestLocalStore.swift in Sources */,
 				04CDB0F12A3A55C30064508B /* TokenLocalStore.swift in Sources */,
+				D4EB9A5C2A3BB89100518339 /* ProductModel.swift in Sources */,
 				04CDB0B22A3A55C30064508B /* AnyConfigsProvider.swift in Sources */,
 				04CDB0A82A3A55C30064508B /* AnyUserProvider.swift in Sources */,
 				04CDB09C2A3A55C30064508B /* AnyAccessTokenProvider.swift in Sources */,
@@ -1434,7 +1515,9 @@
 				04CDB0BA2A3A55C30064508B /* JsonCoder.swift in Sources */,
 				04CDB0FA2A3A55C30064508B /* Session.swift in Sources */,
 				04CDB0B42A3A55C30064508B /* AnyEnvironment.swift in Sources */,
+				D4EB9DB62A3BD60200518339 /* ListableProduct.swift in Sources */,
 				04CDB0EB2A3A55C30064508B /* UserManager.swift in Sources */,
+				D4EB9A662A3BCBDD00518339 /* ProductsViewModel.swift in Sources */,
 				04CDB0E62A3A55C30064508B /* TokenManager.swift in Sources */,
 				04CDB0AF2A3A55C30064508B /* AnyNotificationCenter.swift in Sources */,
 				04CDB0CF2A3A55C30064508B /* ProductOption.swift in Sources */,
@@ -1477,6 +1560,7 @@
 				04CDB0DB2A3A55C30064508B /* MetaField.swift in Sources */,
 				04CDB0A22A3A55C30064508B /* AnyLocaleProvider.swift in Sources */,
 				04CDB10D2A3A55C30064508B /* WishlistModel.swift in Sources */,
+				D4EB9A632A3BC9D200518339 /* ProductsSearchCriteria.swift in Sources */,
 				04CDB0DC2A3A55C30064508B /* ProfilePage.swift in Sources */,
 				04CDB0E82A3A55C30064508B /* TokenProvider.swift in Sources */,
 				04CDB0CD2A3A55C30064508B /* ProductVariant.swift in Sources */,

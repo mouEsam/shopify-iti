@@ -15,6 +15,7 @@ struct Product: Identifiable {
     let description: String
     let featuredImage: RemoteImage?
     let priceRange: PriceRange
+    let variantId: String
 }
 
 protocol ProductConvertible: Identifiable {
@@ -27,6 +28,7 @@ protocol ProductConvertible: Identifiable {
     var description: String { get }
     var featuredImage: FeaturedImage? { get }
     var priceRange: PriceRange { get }
+    var variantId: String { get }
 }
 
 extension Product {
@@ -36,13 +38,24 @@ extension Product {
                   title : product.id,
                   description : product.id,
                   featuredImage : product.featuredImage.map { RemoteImage(from: $0) },
-                  priceRange : PriceRange(from: product.priceRange))
+                  priceRange : PriceRange(from: product.priceRange),
+                  variantId: product.variantId)
     }
 }
 
-extension ShopifyAPI.GetProductsByQuery.Data.Products.Edge.Node: ProductConvertible {}
+extension ShopifyAPI.GetProductsByQuery.Data.Products.Edge.Node: ProductConvertible {
+    var variantId: String { variants.nodes.first!.id }
+}
+
 extension ShopifyAPI.GetProductsByQuery.Data.Products.Edge.Node.FeaturedImage: RemoteImageConvertible {}
 extension ShopifyAPI.GetProductsByQuery.Data.Products.Edge.Node.PriceRange: PriceRangeConvertible {}
 extension ShopifyAPI.GetProductsByQuery.Data.Products.Edge.Node.PriceRange.MaxVariantPrice: PriceConvertible {}
 extension ShopifyAPI.GetProductsByQuery.Data.Products.Edge.Node.PriceRange.MinVariantPrice: PriceConvertible {}
 
+extension ShopifyAPI.GetProductsByCollectionQuery.Data.Collection.Products.Edge.Node: ProductConvertible {
+    var variantId: String { variants.nodes.first!.id }
+}
+extension ShopifyAPI.GetProductsByCollectionQuery.Data.Collection.Products.Edge.Node.FeaturedImage: RemoteImageConvertible {}
+extension ShopifyAPI.GetProductsByCollectionQuery.Data.Collection.Products.Edge.Node.PriceRange: PriceRangeConvertible {}
+extension ShopifyAPI.GetProductsByCollectionQuery.Data.Collection.Products.Edge.Node.PriceRange.MaxVariantPrice: PriceConvertible {}
+extension ShopifyAPI.GetProductsByCollectionQuery.Data.Collection.Products.Edge.Node.PriceRange.MinVariantPrice: PriceConvertible {}

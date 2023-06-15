@@ -28,7 +28,7 @@ struct WishlistModelFactory: AnyWishlistModelFactory {
 
 protocol AnyWishlistModel {
     func fetch(for wishListId: String,
-               with paginationInfo: PageInfo?) async -> Result<PageResult<WishlistItem>, ShopifyErrors<Any>>
+               with paginationInfo: PageInfo?) async -> Result<SourcedData<PageResult<WishlistItem>>, ShopifyErrors<Any>>
 }
 
 struct WishlistModel: AnyWishlistModel {
@@ -43,9 +43,10 @@ struct WishlistModel: AnyWishlistModel {
     }
     
     func fetch(for wishListId: String,
-               with paginationInfo: PageInfo? = nil) async -> Result<PageResult<WishlistItem>, ShopifyErrors<Any>> {
-        return await wishlistService.fetchItems(for: wishListId,
+               with paginationInfo: PageInfo? = nil) async -> Result<SourcedData<PageResult<WishlistItem>>, ShopifyErrors<Any>> {
+        let result = await wishlistService.fetchItems(for: wishListId,
                                           count: configsProvider.wishlistItemsCountPerPage,
                                           with: paginationInfo)
+        return result.map { .remote($0) }
     }
 }

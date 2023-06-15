@@ -44,8 +44,12 @@ struct RootView: View {
         AuthenticationRemoteService.self,
         ProfileRemoteService.self,
         WishlistRemoteService.self,
+        ProductRemoteService.self,
+        ProductsRemoteService.self,
         AuthenticationRepository.self,
         WishlistModelFactory.self,
+        ProductModelFactory.self,
+        ProductsModelFactory.self,
     ])
     
     var body: some View {
@@ -65,13 +69,15 @@ struct AppView: View {
     
     var body: some View {
         List {
-            ForEach(Range(0...2)) { index in
-                Button(action: {
-                    router.push(AppRoute(identifier: index, content: {
-                        AnotherAppView(index: index)
-                    }))
-                }) {
-                    Text("Simple \(index)").foregroundColor(.white).padding().background(RoundedRectangle(cornerRadius: 8))
+            HStack {
+                ForEach(Range(0...2)) { index in
+                    Button(action: {
+                        router.push(AppRoute(identifier: index, content: {
+                            AnotherAppView(index: index)
+                        }))
+                    }) {
+                        Text("Simple \(index)").foregroundColor(.white).padding().background(RoundedRectangle(cornerRadius: 8))
+                    }
                 }
             }
             ForEach(Range(0...2)) { index in

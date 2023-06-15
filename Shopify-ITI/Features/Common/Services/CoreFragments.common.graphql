@@ -46,4 +46,9 @@ fragment productInfo on Product {
   priceRange {
       ...priceRangeInfo
   }
+  variants(first: 1) {
+      nodes {
+        id
+      }
+  }
 }
