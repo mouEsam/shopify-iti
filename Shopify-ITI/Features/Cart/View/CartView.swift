@@ -13,26 +13,68 @@ struct CartView: View {
         let model = container.require((any AnyCartModel).self)
         _viewModel = .init(wrappedValue: CartViewModel(model: model ))
     }
-    
-
     var body: some View {
-        ScrollView {
-            LazyVStack(spacing: 16) {
-//                ForEach($viewModel.cart.cartLine ?? <#default value#>) { item in
-//                    CardItemView(cartLine: item)
-//                }
-            }
-            .padding()
-        }.task {
-            
+        NavigationView {
+            ScrollView {
+                switch viewModel.operationState{
+                case .loaded(data: let cart):
+                    LazyVStack(spacing: 16) {
+                        
+                        ForEach(cart.data.cartLine) { item in
+                            CardItemView(cartLine: item,viewModel: viewModel)
+                        }
+                    }
+                    .padding()
+                case .initial:
+                    Text("initial")
+                    
+                case .loading:
+                    Text("loading")
+
+
+                case .error(error: let error):
+                    Text(error.localizedDescription)
+                }
+            }.task {
+                await viewModel.getCart()
+            }.navigationBarItems(
+                leading: NavigationLink(destination: SearchView()) {
+                    Image(systemName: "magnifyingglass")
+                }, trailing:
+                    HStack {
+                        
+                        NavigationLink(destination: FavouriteView()) {
+                            Image(systemName: "heart")
+                        }
+                    }
+            )
         }
     }
 }
+//struct CartView: View {
+//    var body: some View {
+//        NavigationView {
+//            Text("Cart View ")
+//                .navigationBarItems(
+//                    leading: NavigationLink(destination: SearchView()) {
+//                        Image(systemName: "magnifyingglass")
+//                    }, trailing:
+//                        HStack {
+//
+//                            NavigationLink(destination: FavouriteView()) {
+//                                Image(systemName: "heart")
+//                            }
+//                        }
+//                )
+//
+//        }
+//    }
+//}
 // let result = await service.fetch(byId: "gid://shopify/Cart/c1-8abc7310f95b047f1dc83898369d5e18")
 //print(result)
 struct CardItemView: View {
-    @Binding var cartLine: CartLine
-    
+     var cartLine: CartLine
+    let viewModel:CartViewModel
     var body: some View {
         HStack(alignment: .top) {
             AsyncImage(url: URL(string: cartLine.productVariant.image?.url ?? ""))
@@ -46,6 +88,9 @@ struct CardItemView: View {
 
                 HStack(spacing: 16) {
                     Button(action: {
+                        Task{
+                            await  viewModel.increseItem(cartline: cartLine)
+                        }
                         print("plus")
                     }) {
                         Image("plus")
@@ -55,7 +100,9 @@ struct CardItemView: View {
                         .foregroundColor(.black)
                     
                     Button(action: {
-                        print("minus")
+                        Task{
+                            await  viewModel.decreseItem(cartline: cartLine)
+                        }
 
                     }) {
                         Image("minus")
@@ -68,7 +115,11 @@ struct CardItemView: View {
             }
             Spacer()
             Button(action: {
-                
+                Task{
+                    await  viewModel.deleteItem(cartline: cartLine)
+                }
+                print("delete")
+
             }) {
                 Image( "delete")
                     .font(.title)

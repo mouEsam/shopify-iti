@@ -32,4 +32,5 @@ struct CartChecker:AnyCartChecker{
         cartDictionary[id] = cardID
         UserDefaults.standard.set(cartDictionary, forKey: "Cart")
     }
+    
 }

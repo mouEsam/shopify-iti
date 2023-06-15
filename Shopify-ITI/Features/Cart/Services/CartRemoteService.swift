@@ -82,7 +82,7 @@ struct CartRemoteService:AnyInjectable {
             }
         }
     }
-    func removeLine(with lineId: String,for cartId: String) async -> Result<Cart?, Error> {
+    func removeLine(withLineID lineId: String,forCart cartId: String) async -> Result<Cart?, Error> {
        
         let query = ShopifyAPI.RemoveCartLinesMutation(cartId: cartId,
                                                        lineIds: [lineId],

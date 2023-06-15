@@ -41,6 +41,19 @@ struct CartManager:AnyCartManager{
         }
         return result
     }
+    private func cartHandler(result:Result<Cart?, Error>)-> Result<Cart, Error>{
+        switch result{
+        case .success(let cart):
+            if let cart = cart{
+                return Result.success(cart)
+            }else{
+                return Result.failure(LocalErrors.NotFound)
+            }
+        case .failure(let error):
+            return Result.failure(error)
+
+        }
+    }
     private func updateCart(with id:String,quantity :Int,inCart cardID:String)async->Result<Cart?, Error>{
         let line = ShopifyAPI.CartLineInput(quantity:.init(nullable: quantity) ,merchandiseId: id)
         return await cartRemoteService.upDate(card: cardID, with: line)

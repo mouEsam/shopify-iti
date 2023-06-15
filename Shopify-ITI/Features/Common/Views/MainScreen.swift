@@ -12,6 +12,7 @@ struct MainScreen: View {
     @EnvironmentRouter private var router: AppRouter
 
     @State var badgeCount = 1
+    @EnvironmentObject private var container: AppContainer
     var body: some View {
         TabView {
           
@@ -26,7 +27,7 @@ struct MainScreen: View {
                 }
             
                 
-            CartView()
+            CartView(container: container)
                 .tabItem {
                     TabBarItemView(systemName: "cart")
                     
