@@ -70,6 +70,7 @@ struct RootView: View {
        RouterView(router: AppRouter()) {
             // Root
             MainScreen()
+
         }
         
         .environmentObject(container)

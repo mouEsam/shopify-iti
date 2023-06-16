@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import Combine
 struct CartChecker:AnyCartChecker{
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyCartChecker).self) { resolver in
-            CartChecker()
+            CartChecker(authenticationManager: resolver.require( AuthenticationManager.self))
         }
     }
-    
+    let authenticationManager: AuthenticationManager
     func getCartID(for id:String?)->String?{
         guard let id = id else {
             return UserDefaults.standard.string(forKey: "DefaultCart")

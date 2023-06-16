@@ -36,7 +36,6 @@ struct CartModel:AnyCartModel{
     private func cartHandler(result:Result<Cart?, Error>)-> Result<Cart, Error>{
         switch result{
         case .success(let cart):
-            print(cart?.cartLine.first?.id)
 
             if let cart = cart{
                 return Result.success(cart)
@@ -44,7 +43,6 @@ struct CartModel:AnyCartModel{
                 return Result.failure(LocalErrors.NotFound)
             }
         case .failure(let error):
-            print(error)
 
             return Result.failure(error)
 
