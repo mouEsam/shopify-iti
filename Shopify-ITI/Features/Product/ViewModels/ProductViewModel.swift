@@ -30,8 +30,8 @@ class ProductViewModel: ObservableObject {
     private func initialize() {
         wishlistManager.$state
             .subscribe(on: DispatchQueue.global())
-            .compactMap(\.data)
-            .map({ $0.entries[self.productId] != nil })
+            .map(\.data)
+            .map({ $0.map { $0.entries[self.productId] != nil } })
             .receive(on: DispatchQueue.main)
             .assign(to: &$isWishlisted)
     }

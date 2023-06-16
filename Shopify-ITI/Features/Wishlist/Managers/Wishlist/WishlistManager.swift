@@ -156,6 +156,8 @@ class WishlistManager : AnyInjectable {
             } else {
                 return await addItem(item)
             }
+        } else if case .none = state {
+            return await addItem(item)
         }
         return .failure(.Unknown)
     }
