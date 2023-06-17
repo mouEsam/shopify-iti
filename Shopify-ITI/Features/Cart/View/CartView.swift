@@ -99,7 +99,8 @@ struct CardItemView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text(cartLine.productVariant.title)
                     .font(.headline)
-                Text("Price: $\(cartLine.totalAmount, specifier: "%.2f")") //TODO: local
+                Text("Price: $"+String(cartLine.totalAmount)) //TODO: local
+
                 Spacer()
 
                 HStack(spacing: 16) {
@@ -112,7 +113,7 @@ struct CardItemView: View {
                         Image("plus")
                             .font(.title)
                     }
-                    Text("\(cartLine.quantity)")
+                    Text(String(cartLine.quantity))
                         .foregroundColor(.black)
                     
                     Button(action: {

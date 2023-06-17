@@ -61,7 +61,7 @@ struct RootView: View {
         CartRemoteService.self,
         CartManager.self,
 
-        CartChecker.self,
+        CartIdStore.self,
         WishlistModelFactory.self,
     ])
     

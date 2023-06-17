@@ -11,15 +11,15 @@ struct CartModel:AnyCartModel{
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyCartModel).self) { resolver in
             CartModel(cartRemoteService: resolver.require(CartRemoteService.self)
-                      ,checker: resolver.require ((any AnyCartChecker).self))
+                      ,cartIdStore: resolver.require ((any AnyCartIdStore).self))
         }
     }
     
     
     let cartRemoteService:CartRemoteService
-    let checker:AnyCartChecker
-    
+    let cartIdStore:AnyCartIdStore
     func getCart(with id: String) async -> Result<Cart, Error> {
+        
         return cartHandler(result:await cartRemoteService.fetch(byId: id))
     }
     

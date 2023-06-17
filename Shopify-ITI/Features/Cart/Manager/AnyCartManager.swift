@@ -7,5 +7,6 @@
 
 import Foundation
 protocol AnyCartManager:AnyInjectable{
-    func createOrUpdateCart(withVariant id:String,quantity :Int)async->Result<Cart?, Error>
+    func addItem(productVariant item: ProductVariant,quantity :Int) async -> Result<Cart, Error>
+    
 }

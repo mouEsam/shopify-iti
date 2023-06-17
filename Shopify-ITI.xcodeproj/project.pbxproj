@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		044C58E52A3A75F50050BD5B /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C58D42A3A75F50050BD5B /* CartViewModel.swift */; };
-		044C58E62A3A75F50050BD5B /* CartChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C58D62A3A75F50050BD5B /* CartChecker.swift */; };
 		044C58E72A3A75F50050BD5B /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C58D72A3A75F50050BD5B /* CartManager.swift */; };
-		044C58E82A3A75F50050BD5B /* AnyCartChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C58D82A3A75F50050BD5B /* AnyCartChecker.swift */; };
 		044C58E92A3A75F50050BD5B /* AnyCartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C58D92A3A75F50050BD5B /* AnyCartManager.swift */; };
 		044C58EA2A3A75F50050BD5B /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C58DB2A3A75F50050BD5B /* CartModel.swift */; };
 		044C58EB2A3A75F50050BD5B /* AnyCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C58DC2A3A75F50050BD5B /* AnyCartModel.swift */; };
@@ -151,6 +149,8 @@
 		04CDB1142A3A55C30064508B /* Wishlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB08E2A3A55C30064508B /* Wishlist.swift */; };
 		04CDB1152A3A55C30064508B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB0902A3A55C30064508B /* Preview Assets.xcassets */; };
 		04EA69F92A3E1387007E84D0 /* CartIdStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA69F82A3E1387007E84D0 /* CartIdStore.swift */; };
+		04EA69FC2A3E2149007E84D0 /* CartInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA69FB2A3E2149007E84D0 /* CartInfo.swift */; };
+		04EA6CFE2A3E4067007E84D0 /* AnyCartIdStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA6CFD2A3E4067007E84D0 /* AnyCartIdStore.swift */; };
 		334029F07C9A89D6CEF9AB9D /* Pods_Shopify_ITI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */; };
 		D4596D892A33595100BD9E26 /* Shopify_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */; };
 		D4596D8A2A33595100BD9E26 /* Shopify_ITI_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -175,9 +175,7 @@
 
 /* Begin PBXFileReference section */
 		044C58D42A3A75F50050BD5B /* CartViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
-		044C58D62A3A75F50050BD5B /* CartChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartChecker.swift; sourceTree = "<group>"; };
 		044C58D72A3A75F50050BD5B /* CartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
-		044C58D82A3A75F50050BD5B /* AnyCartChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCartChecker.swift; sourceTree = "<group>"; };
 		044C58D92A3A75F50050BD5B /* AnyCartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCartManager.swift; sourceTree = "<group>"; };
 		044C58DB2A3A75F50050BD5B /* CartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		044C58DC2A3A75F50050BD5B /* AnyCartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCartModel.swift; sourceTree = "<group>"; };
@@ -321,6 +319,8 @@
 		04CDB08E2A3A55C30064508B /* Wishlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wishlist.swift; sourceTree = "<group>"; };
 		04CDB0902A3A55C30064508B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		04EA69F82A3E1387007E84D0 /* CartIdStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartIdStore.swift; sourceTree = "<group>"; };
+		04EA69FB2A3E2149007E84D0 /* CartInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInfo.swift; sourceTree = "<group>"; };
+		04EA6CFD2A3E4067007E84D0 /* AnyCartIdStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCartIdStore.swift; sourceTree = "<group>"; };
 		9286320BBD2664520DE1BD34 /* Pods-Shopify-ITI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.debug.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.debug.xcconfig"; sourceTree = "<group>"; };
 		D41F627C2A2C921C00780814 /* Shopify-ITI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopify-ITI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -368,9 +368,7 @@
 		044C58D52A3A75F50050BD5B /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				044C58D62A3A75F50050BD5B /* CartChecker.swift */,
 				044C58D72A3A75F50050BD5B /* CartManager.swift */,
-				044C58D82A3A75F50050BD5B /* AnyCartChecker.swift */,
 				044C58D92A3A75F50050BD5B /* AnyCartManager.swift */,
 			);
 			path = Manager;
@@ -407,6 +405,7 @@
 			children = (
 				044C58E32A3A75F50050BD5B /* CartLine.swift */,
 				044C58E42A3A75F50050BD5B /* Cart.swift */,
+				04EA69FB2A3E2149007E84D0 /* CartInfo.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1285,6 +1284,7 @@
 			isa = PBXGroup;
 			children = (
 				04EA69F82A3E1387007E84D0 /* CartIdStore.swift */,
+				04EA6CFD2A3E4067007E84D0 /* AnyCartIdStore.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -1461,7 +1461,6 @@
 				04CDB0F72A3A55C30064508B /* AnyAuthenticationRepository.swift in Sources */,
 				04CDB0A02A3A55C30064508B /* AppContainer.swift in Sources */,
 				04CDB0B72A3A55C30064508B /* AnyKeysProvider.swift in Sources */,
-				044C58E82A3A75F50050BD5B /* AnyCartChecker.swift in Sources */,
 				046B62952A3A66E700DAF517 /* OnFirstAppear.swift in Sources */,
 				04CDB1062A3A55C30064508B /* ADTapView.swift in Sources */,
 				04CDB0AC2A3A55C30064508B /* ApolloGraphQLClient.swift in Sources */,
@@ -1498,6 +1497,7 @@
 				04CDB0ED2A3A55C30064508B /* UserState.swift in Sources */,
 				04CDB0F32A3A55C30064508B /* AnyUserLocalStore.swift in Sources */,
 				04CDB0972A3A55C30064508B /* GraphQLNullable.swift in Sources */,
+				04EA6CFE2A3E4067007E84D0 /* AnyCartIdStore.swift in Sources */,
 				04CDB0DA2A3A55C30064508B /* MetaFieldsType.swift in Sources */,
 				04CDB1052A3A55C30064508B /* ADCard.swift in Sources */,
 				04CDB1012A3A55C30064508B /* User.swift in Sources */,
@@ -1511,6 +1511,7 @@
 				04CDB0E22A3A55C30064508B /* CategoriesViewModel.swift in Sources */,
 				044C58E92A3A75F50050BD5B /* AnyCartManager.swift in Sources */,
 				04CDB0D92A3A55C30064508B /* RemoteImage.swift in Sources */,
+				04EA69FC2A3E2149007E84D0 /* CartInfo.swift in Sources */,
 				04CDB0992A3A55C30064508B /* Changeable.swift in Sources */,
 				04CDB0B62A3A55C30064508B /* AdminEnvironment.swift in Sources */,
 				04CDB0EF2A3A55C30064508B /* GuestState.swift in Sources */,
@@ -1559,7 +1560,6 @@
 				04CDB0FB2A3A55C30064508B /* AuthNotifications.swift in Sources */,
 				04CDB0C42A3A55C30064508B /* BrandRemoteService.swift in Sources */,
 				04CDB0F82A3A55C30064508B /* RegisterScreen.swift in Sources */,
-				044C58E62A3A75F50050BD5B /* CartChecker.swift in Sources */,
 				04CDB0A42A3A55C30064508B /* AnyValidator.swift in Sources */,
 				04CDB0E92A3A55C30064508B /* AuthenticationManager.swift in Sources */,
 				04CDB09F2A3A55C30064508B /* Injected.swift in Sources */,

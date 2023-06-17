@@ -54,3 +54,11 @@ extension CartLine{
         totalAmount = Double(cartLine.cost.totalAmount.amount) ?? 0
     }
 }
+extension CartLine{
+    init(from cartLine: ShopifyAPI.UpdateCartBuyerIdentityMutation.Data.CartBuyerIdentityUpdate.Cart.Lines.Edge.Node){
+        id = cartLine.id
+        quantity = cartLine.quantity
+        productVariant = .init(from:  cartLine.merchandise.asProductVariant!)
+        totalAmount = Double(cartLine.cost.totalAmount.amount) ?? 0
+    }
+}

@@ -29,6 +29,14 @@ query getCartQuery($cartId: ID!,
           currencyCode
         }
     }
+    buyerIdentity {
+      email
+      phone
+      customer {
+        id
+      }
+      countryCode
+    }
   }
 }
 mutation createCart($cartInput: CartInput,
@@ -68,6 +76,14 @@ mutation createCart($cartInput: CartInput,
         }
         
       }
+      buyerIdentity {
+      email
+      phone
+      customer {
+        id
+      }
+      countryCode
+    }
     }
   }
 }
@@ -109,6 +125,14 @@ mutation addCartLines($cartId: ID!,
         }
         
       }
+      buyerIdentity {
+      email
+      phone
+      customer {
+        id
+      }
+      countryCode
+    }
     }
   }
 }
@@ -150,6 +174,14 @@ mutation updateCartLines($cartId: ID!,
         }
         
       }
+      buyerIdentity {
+      email
+      phone
+      customer {
+        id
+      }
+      countryCode
+    }
     }
   }
 }
@@ -158,6 +190,55 @@ mutation removeCartLines($cartId: ID!,
                         $country: CountryCode,
                         $lang: LanguageCode) @inContext(country: $country, language: $lang) {
   cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+    cart {
+      id
+      
+      lines(first: 10) {
+        edges {
+          node {
+            id
+            quantity
+            cost{
+                amountPerQuantity{
+                    amount
+                }
+                totalAmount{
+                    amount
+                }
+            }
+            merchandise {
+                ... productVariantInfo
+
+            }
+          }
+        }
+      }
+      attributes {
+        key
+        value
+      }
+      cost {
+        totalAmount {
+          amount
+          currencyCode
+        }
+      }
+      buyerIdentity {
+      email
+      phone
+      customer {
+        id
+      }
+      countryCode
+    }
+    }
+  }
+}
+mutation updateCartBuyerIdentity($buyerIdentity: CartBuyerIdentityInput!,
+                                $cartId: ID!,
+                                $country: CountryCode,
+                                $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+  cartBuyerIdentityUpdate(buyerIdentity: $buyerIdentity, cartId: $cartId) {
     cart {
       id
       lines(first: 10) {
@@ -190,6 +271,26 @@ mutation removeCartLines($cartId: ID!,
           currencyCode
         }
       }
+      buyerIdentity {
+        email
+        phone
+        customer {
+          id
+        }
+        deliveryAddressPreferences {
+          ... on MailingAddress {
+            address1
+            city
+            country
+            firstName
+            lastName
+          }
+        }
+      }
+    }
+    userErrors {
+      field
+      message
     }
   }
 }

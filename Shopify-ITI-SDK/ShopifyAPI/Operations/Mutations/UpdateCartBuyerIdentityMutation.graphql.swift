@@ -4,13 +4,13 @@
 @_exported import Apollo
 
 public extension ShopifyAPI {
-  class RemoveCartLinesMutation: GraphQLMutation {
-    public static let operationName: String = "removeCartLines"
+  class UpdateCartBuyerIdentityMutation: GraphQLMutation {
+    public static let operationName: String = "updateCartBuyerIdentity"
     public static let document: Apollo.DocumentType = .notPersisted(
       definition: .init(
         #"""
-        mutation removeCartLines($cartId: ID!, $lineIds: [ID!]!, $country: CountryCode, $lang: LanguageCode) @inContext(country: $country, language: $lang) {
-          cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+        mutation updateCartBuyerIdentity($buyerIdentity: CartBuyerIdentityInput!, $cartId: ID!, $country: CountryCode, $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+          cartBuyerIdentityUpdate(buyerIdentity: $buyerIdentity, cartId: $cartId) {
             __typename
             cart {
               __typename
@@ -62,8 +62,22 @@ public extension ShopifyAPI {
                   __typename
                   id
                 }
-                countryCode
+                deliveryAddressPreferences {
+                  __typename
+                  ... on MailingAddress {
+                    address1
+                    city
+                    country
+                    firstName
+                    lastName
+                  }
+                }
               }
+            }
+            userErrors {
+              __typename
+              field
+              message
             }
           }
         }
@@ -71,26 +85,26 @@ public extension ShopifyAPI {
         fragments: [ProductVariantInfo.self, ImageInfo.self, MoneyInfo.self]
       ))
 
+    public var buyerIdentity: CartBuyerIdentityInput
     public var cartId: ID
-    public var lineIds: [ID]
     public var country: GraphQLNullable<GraphQLEnum<CountryCode>>
     public var lang: GraphQLNullable<GraphQLEnum<LanguageCode>>
 
     public init(
+      buyerIdentity: CartBuyerIdentityInput,
       cartId: ID,
-      lineIds: [ID],
       country: GraphQLNullable<GraphQLEnum<CountryCode>>,
       lang: GraphQLNullable<GraphQLEnum<LanguageCode>>
     ) {
+      self.buyerIdentity = buyerIdentity
       self.cartId = cartId
-      self.lineIds = lineIds
       self.country = country
       self.lang = lang
     }
 
     public var __variables: Variables? { [
+      "buyerIdentity": buyerIdentity,
       "cartId": cartId,
-      "lineIds": lineIds,
       "country": country,
       "lang": lang
     ] }
@@ -101,32 +115,39 @@ public extension ShopifyAPI {
 
       public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.Mutation }
       public static var __selections: [Apollo.Selection] { [
-        .field("cartLinesRemove", CartLinesRemove?.self, arguments: [
-          "cartId": .variable("cartId"),
-          "lineIds": .variable("lineIds")
+        .field("cartBuyerIdentityUpdate", CartBuyerIdentityUpdate?.self, arguments: [
+          "buyerIdentity": .variable("buyerIdentity"),
+          "cartId": .variable("cartId")
         ]),
       ] }
 
-      /// Removes one or more merchandise lines from the cart.
-      public var cartLinesRemove: CartLinesRemove? { __data["cartLinesRemove"] }
-
-      /// CartLinesRemove
+      /// Updates customer information associated with a cart.
+      /// Buyer identity is used to determine
+      /// [international pricing](https://shopify.dev/custom-storefronts/internationalization/international-pricing)
+      /// and should match the customer's shipping address.
       ///
-      /// Parent Type: `CartLinesRemovePayload`
-      public struct CartLinesRemove: ShopifyAPI.SelectionSet {
+      public var cartBuyerIdentityUpdate: CartBuyerIdentityUpdate? { __data["cartBuyerIdentityUpdate"] }
+
+      /// CartBuyerIdentityUpdate
+      ///
+      /// Parent Type: `CartBuyerIdentityUpdatePayload`
+      public struct CartBuyerIdentityUpdate: ShopifyAPI.SelectionSet {
         public let __data: DataDict
         public init(_dataDict: DataDict) { __data = _dataDict }
 
-        public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.CartLinesRemovePayload }
+        public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.CartBuyerIdentityUpdatePayload }
         public static var __selections: [Apollo.Selection] { [
           .field("__typename", String.self),
           .field("cart", Cart?.self),
+          .field("userErrors", [UserError].self),
         ] }
 
         /// The updated cart.
         public var cart: Cart? { __data["cart"] }
+        /// The list of errors that occurred from executing the mutation.
+        public var userErrors: [UserError] { __data["userErrors"] }
 
-        /// CartLinesRemove.Cart
+        /// CartBuyerIdentityUpdate.Cart
         ///
         /// Parent Type: `Cart`
         public struct Cart: ShopifyAPI.SelectionSet {
@@ -154,7 +175,7 @@ public extension ShopifyAPI {
           /// Information about the buyer that is interacting with the cart.
           public var buyerIdentity: BuyerIdentity { __data["buyerIdentity"] }
 
-          /// CartLinesRemove.Cart.Lines
+          /// CartBuyerIdentityUpdate.Cart.Lines
           ///
           /// Parent Type: `BaseCartLineConnection`
           public struct Lines: ShopifyAPI.SelectionSet {
@@ -170,7 +191,7 @@ public extension ShopifyAPI {
             /// A list of edges.
             public var edges: [Edge] { __data["edges"] }
 
-            /// CartLinesRemove.Cart.Lines.Edge
+            /// CartBuyerIdentityUpdate.Cart.Lines.Edge
             ///
             /// Parent Type: `BaseCartLineEdge`
             public struct Edge: ShopifyAPI.SelectionSet {
@@ -186,7 +207,7 @@ public extension ShopifyAPI {
               /// The item at the end of BaseCartLineEdge.
               public var node: Node { __data["node"] }
 
-              /// CartLinesRemove.Cart.Lines.Edge.Node
+              /// CartBuyerIdentityUpdate.Cart.Lines.Edge.Node
               ///
               /// Parent Type: `BaseCartLine`
               public struct Node: ShopifyAPI.SelectionSet {
@@ -211,7 +232,7 @@ public extension ShopifyAPI {
                 /// The merchandise that the buyer intends to purchase.
                 public var merchandise: Merchandise { __data["merchandise"] }
 
-                /// CartLinesRemove.Cart.Lines.Edge.Node.Cost
+                /// CartBuyerIdentityUpdate.Cart.Lines.Edge.Node.Cost
                 ///
                 /// Parent Type: `CartLineCost`
                 public struct Cost: ShopifyAPI.SelectionSet {
@@ -230,7 +251,7 @@ public extension ShopifyAPI {
                   /// The total cost of the merchandise line.
                   public var totalAmount: TotalAmount { __data["totalAmount"] }
 
-                  /// CartLinesRemove.Cart.Lines.Edge.Node.Cost.AmountPerQuantity
+                  /// CartBuyerIdentityUpdate.Cart.Lines.Edge.Node.Cost.AmountPerQuantity
                   ///
                   /// Parent Type: `MoneyV2`
                   public struct AmountPerQuantity: ShopifyAPI.SelectionSet {
@@ -247,7 +268,7 @@ public extension ShopifyAPI {
                     public var amount: ShopifyAPI.Decimal { __data["amount"] }
                   }
 
-                  /// CartLinesRemove.Cart.Lines.Edge.Node.Cost.TotalAmount
+                  /// CartBuyerIdentityUpdate.Cart.Lines.Edge.Node.Cost.TotalAmount
                   ///
                   /// Parent Type: `MoneyV2`
                   public struct TotalAmount: ShopifyAPI.SelectionSet {
@@ -265,7 +286,7 @@ public extension ShopifyAPI {
                   }
                 }
 
-                /// CartLinesRemove.Cart.Lines.Edge.Node.Merchandise
+                /// CartBuyerIdentityUpdate.Cart.Lines.Edge.Node.Merchandise
                 ///
                 /// Parent Type: `Merchandise`
                 public struct Merchandise: ShopifyAPI.SelectionSet {
@@ -280,14 +301,14 @@ public extension ShopifyAPI {
 
                   public var asProductVariant: AsProductVariant? { _asInlineFragment() }
 
-                  /// CartLinesRemove.Cart.Lines.Edge.Node.Merchandise.AsProductVariant
+                  /// CartBuyerIdentityUpdate.Cart.Lines.Edge.Node.Merchandise.AsProductVariant
                   ///
                   /// Parent Type: `ProductVariant`
                   public struct AsProductVariant: ShopifyAPI.InlineFragment {
                     public let __data: DataDict
                     public init(_dataDict: DataDict) { __data = _dataDict }
 
-                    public typealias RootEntityType = RemoveCartLinesMutation.Data.CartLinesRemove.Cart.Lines.Edge.Node.Merchandise
+                    public typealias RootEntityType = UpdateCartBuyerIdentityMutation.Data.CartBuyerIdentityUpdate.Cart.Lines.Edge.Node.Merchandise
                     public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.ProductVariant }
                     public static var __selections: [Apollo.Selection] { [
                       .fragment(ProductVariantInfo.self),
@@ -318,7 +339,7 @@ public extension ShopifyAPI {
                       public var productVariantInfo: ProductVariantInfo { _toFragment() }
                     }
 
-                    /// CartLinesRemove.Cart.Lines.Edge.Node.Merchandise.AsProductVariant.Image
+                    /// CartBuyerIdentityUpdate.Cart.Lines.Edge.Node.Merchandise.AsProductVariant.Image
                     ///
                     /// Parent Type: `Image`
                     public struct Image: ShopifyAPI.SelectionSet {
@@ -353,7 +374,7 @@ public extension ShopifyAPI {
                       }
                     }
 
-                    /// CartLinesRemove.Cart.Lines.Edge.Node.Merchandise.AsProductVariant.Price
+                    /// CartBuyerIdentityUpdate.Cart.Lines.Edge.Node.Merchandise.AsProductVariant.Price
                     ///
                     /// Parent Type: `MoneyV2`
                     public struct Price: ShopifyAPI.SelectionSet {
@@ -380,7 +401,7 @@ public extension ShopifyAPI {
             }
           }
 
-          /// CartLinesRemove.Cart.Attribute
+          /// CartBuyerIdentityUpdate.Cart.Attribute
           ///
           /// Parent Type: `Attribute`
           public struct Attribute: ShopifyAPI.SelectionSet {
@@ -400,7 +421,7 @@ public extension ShopifyAPI {
             public var value: String? { __data["value"] }
           }
 
-          /// CartLinesRemove.Cart.Cost
+          /// CartBuyerIdentityUpdate.Cart.Cost
           ///
           /// Parent Type: `CartCost`
           public struct Cost: ShopifyAPI.SelectionSet {
@@ -416,7 +437,7 @@ public extension ShopifyAPI {
             /// The total amount for the customer to pay.
             public var totalAmount: TotalAmount { __data["totalAmount"] }
 
-            /// CartLinesRemove.Cart.Cost.TotalAmount
+            /// CartBuyerIdentityUpdate.Cart.Cost.TotalAmount
             ///
             /// Parent Type: `MoneyV2`
             public struct TotalAmount: ShopifyAPI.SelectionSet {
@@ -437,7 +458,7 @@ public extension ShopifyAPI {
             }
           }
 
-          /// CartLinesRemove.Cart.BuyerIdentity
+          /// CartBuyerIdentityUpdate.Cart.BuyerIdentity
           ///
           /// Parent Type: `CartBuyerIdentity`
           public struct BuyerIdentity: ShopifyAPI.SelectionSet {
@@ -450,7 +471,7 @@ public extension ShopifyAPI {
               .field("email", String?.self),
               .field("phone", String?.self),
               .field("customer", Customer?.self),
-              .field("countryCode", GraphQLEnum<ShopifyAPI.CountryCode>?.self),
+              .field("deliveryAddressPreferences", [DeliveryAddressPreference].self),
             ] }
 
             /// The email address of the buyer that is interacting with the cart.
@@ -459,10 +480,13 @@ public extension ShopifyAPI {
             public var phone: String? { __data["phone"] }
             /// The customer account associated with the cart.
             public var customer: Customer? { __data["customer"] }
-            /// The country where the buyer is located.
-            public var countryCode: GraphQLEnum<ShopifyAPI.CountryCode>? { __data["countryCode"] }
+            /// An ordered set of delivery addresses tied to the buyer that is interacting with the cart.
+            /// The rank of the preferences is determined by the order of the addresses in the array. Preferences
+            /// can be used to populate relevant fields in the checkout flow.
+            ///
+            public var deliveryAddressPreferences: [DeliveryAddressPreference] { __data["deliveryAddressPreferences"] }
 
-            /// CartLinesRemove.Cart.BuyerIdentity.Customer
+            /// CartBuyerIdentityUpdate.Cart.BuyerIdentity.Customer
             ///
             /// Parent Type: `Customer`
             public struct Customer: ShopifyAPI.SelectionSet {
@@ -478,7 +502,74 @@ public extension ShopifyAPI {
               /// A unique ID for the customer.
               public var id: ShopifyAPI.ID { __data["id"] }
             }
+
+            /// CartBuyerIdentityUpdate.Cart.BuyerIdentity.DeliveryAddressPreference
+            ///
+            /// Parent Type: `DeliveryAddress`
+            public struct DeliveryAddressPreference: ShopifyAPI.SelectionSet {
+              public let __data: DataDict
+              public init(_dataDict: DataDict) { __data = _dataDict }
+
+              public static var __parentType: Apollo.ParentType { ShopifyAPI.Unions.DeliveryAddress }
+              public static var __selections: [Apollo.Selection] { [
+                .field("__typename", String.self),
+                .inlineFragment(AsMailingAddress.self),
+              ] }
+
+              public var asMailingAddress: AsMailingAddress? { _asInlineFragment() }
+
+              /// CartBuyerIdentityUpdate.Cart.BuyerIdentity.DeliveryAddressPreference.AsMailingAddress
+              ///
+              /// Parent Type: `MailingAddress`
+              public struct AsMailingAddress: ShopifyAPI.InlineFragment {
+                public let __data: DataDict
+                public init(_dataDict: DataDict) { __data = _dataDict }
+
+                public typealias RootEntityType = UpdateCartBuyerIdentityMutation.Data.CartBuyerIdentityUpdate.Cart.BuyerIdentity.DeliveryAddressPreference
+                public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.MailingAddress }
+                public static var __selections: [Apollo.Selection] { [
+                  .field("address1", String?.self),
+                  .field("city", String?.self),
+                  .field("country", String?.self),
+                  .field("firstName", String?.self),
+                  .field("lastName", String?.self),
+                ] }
+
+                /// The first line of the address. Typically the street address or PO Box number.
+                public var address1: String? { __data["address1"] }
+                /// The name of the city, district, village, or town.
+                ///
+                public var city: String? { __data["city"] }
+                /// The name of the country.
+                ///
+                public var country: String? { __data["country"] }
+                /// The first name of the customer.
+                public var firstName: String? { __data["firstName"] }
+                /// The last name of the customer.
+                public var lastName: String? { __data["lastName"] }
+              }
+            }
           }
+        }
+
+        /// CartBuyerIdentityUpdate.UserError
+        ///
+        /// Parent Type: `CartUserError`
+        public struct UserError: ShopifyAPI.SelectionSet {
+          public let __data: DataDict
+          public init(_dataDict: DataDict) { __data = _dataDict }
+
+          public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.CartUserError }
+          public static var __selections: [Apollo.Selection] { [
+            .field("__typename", String.self),
+            .field("field", [String]?.self),
+            .field("message", String.self),
+          ] }
+
+          /// The path to the input field that caused the error.
+          public var field: [String]? { __data["field"] }
+          /// The error message.
+          public var message: String { __data["message"] }
         }
       }
     }

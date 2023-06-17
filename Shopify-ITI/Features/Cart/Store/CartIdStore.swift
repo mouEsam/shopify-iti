@@ -6,7 +6,14 @@
 //
 
 import Foundation
-struct CartIdStore {
+struct CartIdStore:AnyCartIdStore {
+    static func register(_ container: AppContainer) {
+        container.register(type: (any AnyCartIdStore).self) { resolver in
+            CartIdStore(userDefaults: resolver.require(UserDefaults.self),
+                        keysProvider: resolver.require((any AnyKeysProvider).self))
+        }
+    }
+    
    
     
     private let userDefaults: UserDefaults

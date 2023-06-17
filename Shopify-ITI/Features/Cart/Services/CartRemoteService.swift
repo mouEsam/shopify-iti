@@ -26,6 +26,7 @@ struct CartRemoteService:AnyInjectable {
     }
     
     func fetch(byId id: String) async -> Result<Cart?, Error> {
+        
         let query = ShopifyAPI.GetCartQuery.init(cartId: id,
                                                  country:  .init(nullable: localeProvider.shopifyCountry),
                                                  lang:  .init(nullable: localeProvider.shopifyLanguage))
@@ -92,6 +93,21 @@ struct CartRemoteService:AnyInjectable {
         return result.map { result in
             result.data.flatMap { data in
                 data.cartLinesRemove?.cart.map { cart in
+                    Cart(from: cart)
+                }
+            }
+        }
+    }
+    func upDataBuyerIdentity(withUserID userId: String?,forCart cartId: String) async -> Result<Cart?, Error> {
+        let buyerIdentity = ShopifyAPI.CartBuyerIdentityInput(customerAccessToken: .init(nullable: userId))
+        let query = ShopifyAPI.UpdateCartBuyerIdentityMutation(buyerIdentity: buyerIdentity,
+                                                               cartId: cartId,
+                                                               country:  .init(nullable: localeProvider.shopifyCountry),
+                                                               lang:  .init(nullable: localeProvider.shopifyLanguage))
+        let result = await remoteClient.execute(query: query)
+        return result.map { result in
+            result.data.flatMap { data in
+                data.cartBuyerIdentityUpdate?.cart.map { cart in
                     Cart(from: cart)
                 }
             }

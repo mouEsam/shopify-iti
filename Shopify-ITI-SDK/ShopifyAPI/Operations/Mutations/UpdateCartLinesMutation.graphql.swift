@@ -54,6 +54,16 @@ public extension ShopifyAPI {
                   currencyCode
                 }
               }
+              buyerIdentity {
+                __typename
+                email
+                phone
+                customer {
+                  __typename
+                  id
+                }
+                countryCode
+              }
             }
           }
         }
@@ -130,6 +140,7 @@ public extension ShopifyAPI {
             .field("lines", Lines.self, arguments: ["first": 10]),
             .field("attributes", [Attribute].self),
             .field("cost", Cost.self),
+            .field("buyerIdentity", BuyerIdentity.self),
           ] }
 
           /// A globally-unique ID.
@@ -140,6 +151,8 @@ public extension ShopifyAPI {
           public var attributes: [Attribute] { __data["attributes"] }
           /// The estimated costs that the buyer will pay at checkout. The costs are subject to change and changes will be reflected at checkout. The `cost` field uses the `buyerIdentity` field to determine [international pricing](https://shopify.dev/custom-storefronts/internationalization/international-pricing).
           public var cost: Cost { __data["cost"] }
+          /// Information about the buyer that is interacting with the cart.
+          public var buyerIdentity: BuyerIdentity { __data["buyerIdentity"] }
 
           /// CartLinesUpdate.Cart.Lines
           ///
@@ -421,6 +434,49 @@ public extension ShopifyAPI {
               public var amount: ShopifyAPI.Decimal { __data["amount"] }
               /// Currency of the money.
               public var currencyCode: GraphQLEnum<ShopifyAPI.CurrencyCode> { __data["currencyCode"] }
+            }
+          }
+
+          /// CartLinesUpdate.Cart.BuyerIdentity
+          ///
+          /// Parent Type: `CartBuyerIdentity`
+          public struct BuyerIdentity: ShopifyAPI.SelectionSet {
+            public let __data: DataDict
+            public init(_dataDict: DataDict) { __data = _dataDict }
+
+            public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.CartBuyerIdentity }
+            public static var __selections: [Apollo.Selection] { [
+              .field("__typename", String.self),
+              .field("email", String?.self),
+              .field("phone", String?.self),
+              .field("customer", Customer?.self),
+              .field("countryCode", GraphQLEnum<ShopifyAPI.CountryCode>?.self),
+            ] }
+
+            /// The email address of the buyer that is interacting with the cart.
+            public var email: String? { __data["email"] }
+            /// The phone number of the buyer that is interacting with the cart.
+            public var phone: String? { __data["phone"] }
+            /// The customer account associated with the cart.
+            public var customer: Customer? { __data["customer"] }
+            /// The country where the buyer is located.
+            public var countryCode: GraphQLEnum<ShopifyAPI.CountryCode>? { __data["countryCode"] }
+
+            /// CartLinesUpdate.Cart.BuyerIdentity.Customer
+            ///
+            /// Parent Type: `Customer`
+            public struct Customer: ShopifyAPI.SelectionSet {
+              public let __data: DataDict
+              public init(_dataDict: DataDict) { __data = _dataDict }
+
+              public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.Customer }
+              public static var __selections: [Apollo.Selection] { [
+                .field("__typename", String.self),
+                .field("id", ShopifyAPI.ID.self),
+              ] }
+
+              /// A unique ID for the customer.
+              public var id: ShopifyAPI.ID { __data["id"] }
             }
           }
         }
