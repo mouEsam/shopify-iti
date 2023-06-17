@@ -121,12 +121,39 @@ class WishlistManager : AnyInjectable {
     }
     
     private func updateOwnership(_ wishlist: Wishlist, _ user: User) async {
+        let existingWishlistResult = await wishlistService.fetch()
+        if case .success(let existingWishlist) = existingWishlistResult {
+            var entries = existingWishlist.entries
+            entries.merge(wishlist.entries) { first, __ in first }
+            let existingWishlist = existingWishlist.copy(entries: entries)
+            let listResult = await wishlistService.update(list: existingWishlist)
+            if case .success(_) = listResult {
+                Task {
+                    await wishlistService.delete(wishlist: wishlist)
+                }
+            }
+            return await handleWishlistResult(listResult)
+        } else if case .failure(let error) = existingWishlistResult {
+            switch error {
+                case .NotFound:
+                    return await self.updateOwnershipImpl(wishlist, user)
+                default:
+                    return await handleWishlistResult(existingWishlistResult,
+                                                      withFallback: wishlist)
+            }
+        } else {
+            return await self.updateOwnershipImpl(wishlist, user)
+        }
+    }
+    
+    private func updateOwnershipImpl(_ wishlist: Wishlist, _ user: User) async {
         let updatedWishlist = wishlist.copy(customerId: user.id)
         let result = await wishlistService.update(list: updatedWishlist)
         await handleWishlistResult(result)
     }
     
-    private func handleWishlistResult(_ result: Result<Wishlist, ShopifyErrors<Any>>) async {
+    private func handleWishlistResult(_ result: Result<Wishlist, ShopifyErrors<Any>>,
+                                      withFallback: Wishlist? = nil) async {
         guard !Task.isCancelled else { return }
         
         await MainActor.run {
@@ -137,7 +164,7 @@ class WishlistManager : AnyInjectable {
                 case .failure(ShopifyErrors.Unautherized):
                     fallthrough
                 case .failure(ShopifyErrors.NotFound):
-                    self.handleWishlist(nil)
+                    self.handleWishlist(withFallback)
                     break
                 case .failure(let error):
                     self.state = .error(error: error)
