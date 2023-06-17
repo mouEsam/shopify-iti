@@ -6,39 +6,41 @@
 //
 
 import SwiftUI
-
 struct CardBrand : View {
-    let imageName: String
-    let title: String
+    @EnvironmentRouter private var router: AppRouter
+    @EnvironmentObject private var container: AppContainer
+    
+    let item : ProductCollection
     
     var body: some View {
-        NavigationLink(destination: SearchView()){
-            VStack {
-                AsyncImage(url: URL(string: imageName)) { image in
-                    image.resizable()
-                } placeholder: {
-                    ProgressView()
-                }.aspectRatio(contentMode: .fit)
-                    .frame(height: 200)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                
-                Text(title)
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .foregroundColor(.black)
-                    .padding()
-                
-            }.background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 2)
-        }
+        
+        VStack {
+            AsyncImage(url: URL(string: item.image?.url ?? "")) { image in
+                image.resizable()
+            } placeholder: {
+                ProgressView()
+            }.aspectRatio(contentMode: .fit)
+                .frame(height: 200)
+                .frame(maxWidth: .infinity)
+                .padding()
+            
+            Text(item.title)
+                .font(.title3)
+                .fontWeight(.bold)
+                .foregroundColor(.black)
+                .padding()
+            
+        }.background(Color.white)
+            .cornerRadius(10)
+            .shadow(radius: 2)
+            .onTapGesture {
+                router.push(AppRoute(identifier: item.id, content:{
+                    ProductsScreen(container: container, criterion: [.collection:item.id])
+                }))
+            }
     }
+
+    
 }
 
 
-struct CardBrand_Previews: PreviewProvider {
-    static var previews: some View {
-        CardBrand(imageName: "amar",title: "amar")
-    }
-}

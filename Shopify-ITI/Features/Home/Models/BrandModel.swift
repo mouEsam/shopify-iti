@@ -6,7 +6,31 @@
 //
 
 import Foundation
-class BrandModel{
+
+protocol AnyBrandModelFactory: AnyInjectable {
+    func create() -> any AnyBrandModel
+}
+
+struct BrandModelFactory: AnyBrandModelFactory {
+    static func register(_ container: AppContainer) {
+        container.register(type: (any AnyBrandModelFactory).self) { resolver in
+            BrandModelFactory(resolver: resolver)
+        }
+    }
+    
+    private let resolver: any AppContainer.Resolver
+    
+    func create() -> AnyBrandModel {
+        BrandModel(remoteService: resolver.require(BrandRemoteService.self))
+    }
+}
+
+protocol AnyBrandModel {
+    func fetch(numberOfItem count:Int) async ->Result<[ProductCollection], Error>
+    func removeFirstItme(items arr: inout [ProductCollection]) -> [ProductCollection]
+}
+
+struct BrandModel: AnyBrandModel{
     
     private let remoteService:  BrandRemoteService //TODO: Inject
     

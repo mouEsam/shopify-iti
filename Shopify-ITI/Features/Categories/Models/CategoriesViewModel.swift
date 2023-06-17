@@ -10,9 +10,9 @@ class CategoriesViewModel : ObservableObject {
     @Published private(set) var operationState: UIState<[ProductType]> = .initial
     
   
-    private let model: CategoriesModel
+    private let model: AnyCategoriesModel
     
-    init( model: CategoriesModel) {
+    init( model: AnyCategoriesModel) {
         self.model = model
     }
     
