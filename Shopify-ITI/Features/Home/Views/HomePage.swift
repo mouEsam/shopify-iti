@@ -26,29 +26,27 @@ struct HomePage: View {
                 VStack {
                     
                     ADSView().aspectRatio(1,contentMode: .fit)
-                    Text("Brands").font(.largeTitle).fontWeight(.bold) // TODO : nameriztion
+                    Text("Brands").font(.largeTitle).fontWeight(.bold) // TODO: nameriztion
                     
-                        switch viewModel.operationState {
-
-
-                        case .loaded(data: let productCollections):
-                            LazyVGrid(columns: createGridColumns(), spacing: 16) {
-                                ForEach(productCollections.data,id: \.id) { item in
-                                    
-                                    CardBrand(imageName: item.image?.url ?? "", title: item.title)
-                                }
-                            }
-                            .padding()
+                    switch viewModel.operationState {
                         
-                        case .error(let error):
-                            Text("Error: \(error.localizedDescription)")
-                            
-                        default :
-                            ProgressView()
-                                .progressViewStyle(CircularProgressViewStyle())
-                                .foregroundColor(.black)
-                                .padding()
+                    case .loaded(data: let productCollections):
+                        LazyVGrid(columns: createGridColumns(), spacing: 16) {
+                            ForEach(productCollections.data,id: \.id) { item in
+                                CardBrand(imageName: item.image?.url ?? "", title: item.title)
+                            }
                         }
+                        .padding()
+                        
+                    case .error(let error):
+                        Text("Error: \(error.localizedDescription)")
+                        
+                    default :
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .foregroundColor(.black)
+                            .padding()
+                    }
                         
                         
                      

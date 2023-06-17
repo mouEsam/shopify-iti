@@ -1,15 +1,15 @@
 //
-//  BrandRemoteService.swift
+//  CategoriesRemoteService.swift
 //  Shopify-ITI
 //
-//  Created by ammar on 12/06/2023.
+//  Created by ammar on 16/06/2023.
 //
 
 import Foundation
 import Shopify_ITI_SDK
 
-class BrandRemoteService {
-    typealias BrandError = ShopifyErrors<Any>
+class CategoriesRemoteService {
+    typealias CategoriesError = ShopifyErrors<Any>
     
     private let remoteClient: any GraphQLClient // TODO: inject
     private let localeProvider: any AnyLocaleProvider // TODO: inject
@@ -18,20 +18,19 @@ class BrandRemoteService {
         self.localeProvider = localeProvider
     }
     
-    func fetch(count : Int) async -> Result<[ProductCollection], Error> {
-        let query = ShopifyAPI.GetBrandsQuery(first: count, country: .init(nullable: localeProvider.shopifyCountry), lang:  .init(nullable: localeProvider.shopifyLanguage))
+    func fetch(CollectionName name : String) async -> Result<[ProductType], Error> {
+        let query = ShopifyAPI.GetCollectionQuery(name: name, country: .init(nullable: localeProvider.shopifyCountry), lang:  .init(nullable: localeProvider.shopifyLanguage))
         
         let result = await remoteClient.fetch(query: query)
         switch result {
            case .success(let res):
-            let mappedData = res.data?.collections.edges.map { edge in
-                   ProductCollection(from: edge.node)
+            let mappedData = res.data?.collection?.products.nodes.map{product in
+                ProductType(from: product)
             } ?? nil
-            
             if let data = mappedData {
                 return .success(data )
             }
-            return .failure(BrandError.NotFound)
+            return .failure(CategoriesError.NotFound)
                
            case .failure(let error):
                return .failure(error)

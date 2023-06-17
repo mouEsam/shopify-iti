@@ -56,7 +56,8 @@ struct RootView: View {
         NavigationView {
             RouterView(router: AppRouter()) {
                 // Root
-                AppView()
+//                AppView()
+                MainScreen()
             }
         }
         .environmentObject(container)
