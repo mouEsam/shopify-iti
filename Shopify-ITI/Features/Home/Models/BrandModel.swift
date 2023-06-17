@@ -8,9 +8,9 @@
 import Foundation
 class BrandModel{
     
-    private let remoteService: any AnyBrandRemoteService //TODO Inject
+    private let remoteService:  BrandRemoteService //TODO: Inject
     
-    init(remoteService: any AnyBrandRemoteService) {
+    init(remoteService: BrandRemoteService) {
         self.remoteService = remoteService
     }
     func fetch(numberOfItem count:Int) async ->Result<[ProductCollection], Error> {

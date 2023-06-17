@@ -11,7 +11,6 @@ import Combine
 class BrandViewModel : ObservableObject{
     
     @Published private(set) var operationState: UIState<[ProductCollection]> = .initial
-    private var subscribers: [AnyCancellable] = []
     
     private let model: BrandModel
     

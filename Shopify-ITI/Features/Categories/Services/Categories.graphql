@@ -1,0 +1,14 @@
+query getCollection (  $name: String!,
+                         $country: CountryCode, 
+                         $lang: LanguageCode) 
+                         @inContext(country: $country, language: $lang)
+                         {
+  collection(handle: $name) {
+    products(first: 250){
+        nodes{
+            id
+            productType
+        }
+    }
+  }
+}
