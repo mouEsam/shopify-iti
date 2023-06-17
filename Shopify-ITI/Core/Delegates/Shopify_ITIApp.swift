@@ -58,12 +58,12 @@ struct RootView: View {
     ])
     
     var body: some View {
-        NavigationView {
-            RouterView(router: AppRouter()) {
-                // Root
-                MainScreen()
-            }
+       
+       RouterView(router: AppRouter()) {
+            // Root
+            MainScreen()
         }
+        
         .environmentObject(container)
     }
 }

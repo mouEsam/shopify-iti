@@ -6,7 +6,7 @@
 //
 
 import Foundation
- 
+ //TODO: refactor
 class  ProfleViewModel : ObservableObject{
     
     private let repository: any AnyProfileRepository
@@ -28,17 +28,7 @@ class  ProfleViewModel : ObservableObject{
         }
     }
     
-    func getWishList() async {
-        await MainActor.run(){
-            self.wishListOperationState = .loading
-        }
-        let res =  await repository.getWishList().toRemote()
-        
-        await MainActor.run(){
-            self.wishListOperationState = res
-        }
-    }
-    
+   
     func getOrders() async {
         
     }

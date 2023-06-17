@@ -9,10 +9,12 @@ import SwiftUI
 
 struct MainScreen: View {
     @EnvironmentObject private var container: AppContainer
-  
+    @EnvironmentRouter private var router: AppRouter
+
     @State var badgeCount = 1
     var body: some View {
         TabView {
+          
             HomePage(container: container)
                 .tabItem {
                     TabBarItemView(systemName: "house")

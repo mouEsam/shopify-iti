@@ -31,11 +31,7 @@ struct ProfilePage: View {
                                 Image(systemName: "gearshape")
                             }
                         }
-                ).onReceive(viewModel.$wishListOperationState){state in
-                    print(state)
-                }.task {
-                    await viewModel.getWishList()
-                }
+                )
             
         }
     }

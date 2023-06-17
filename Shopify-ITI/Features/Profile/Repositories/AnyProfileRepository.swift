@@ -15,7 +15,5 @@ protocol AnyProfileRepository : AnyInjectable {
     
     func profile() async -> Result<User, ProfileError>
     
-    func getWishList() async -> Result<Wishlist, WishlistError>
-    
     func getOrders() async -> Result<Any, Error>
 }

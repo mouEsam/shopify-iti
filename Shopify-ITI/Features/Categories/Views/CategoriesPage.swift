@@ -90,6 +90,7 @@ func createGridColumns() -> [GridItem] {
 
 
 struct SearchView: View {
+    
     var body: some View {
         Text("SearchView")
             .font(.largeTitle)
