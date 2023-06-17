@@ -12,9 +12,9 @@ class BrandViewModel : ObservableObject{
     
     @Published private(set) var operationState: UIState<[ProductCollection]> = .initial
     
-    private let model: BrandModel
+    private let model: AnyBrandModel
     
-    init( model: BrandModel) {
+    init( model: AnyBrandModel) {
         self.model = model
  
         

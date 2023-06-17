@@ -9,15 +9,16 @@ import SwiftUI
 
 struct MainScreen: View {
     @EnvironmentObject private var container: AppContainer
+  
     @State var badgeCount = 1
     var body: some View {
         TabView {
-            HomePage()
+            HomePage(container: container)
                 .tabItem {
                     TabBarItemView(systemName: "house")
                 }
             
-            CategoriesPage()
+            CategoriesPage(container: container)
                 .tabItem {
                     TabBarItemView(systemName: "list.bullet")
                 }

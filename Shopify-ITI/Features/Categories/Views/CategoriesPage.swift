@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct CategoriesPage: View {
+    @EnvironmentObject private var container: AppContainer
+
     @StateObject private var viewModel:  CategoriesViewModel
     
     @State private var CollectionTypePicked = 0
     
-    init() {
+    init(container: AppContainer) {
         let client = ApolloGraphQLClient(environment: StorefronEnvironmentProvider())
         let localeProvider = LocaleProvider()
-        
-        _viewModel = .init(wrappedValue:CategoriesViewModel(model:  CategoriesModel(remoteService: CategoriesRemoteService(remoteClient: client, localeProvider: localeProvider))))
-        
+        let model = container.require((any AnyCategoriesModelFactory).self).create()
+        _viewModel = .init(wrappedValue:CategoriesViewModel(model: model))
     }
     
     let arr = [CollectionType.men,
@@ -87,11 +88,7 @@ func createGridColumns() -> [GridItem] {
 }
 
 
-struct Categories_Previews: PreviewProvider {
-    static var previews: some View {
-        CategoriesPage()
-    }
-}
+
 struct SearchView: View {
     var body: some View {
         Text("SearchView")

@@ -46,10 +46,14 @@ struct RootView: View {
         WishlistRemoteService.self,
         ProductRemoteService.self,
         ProductsRemoteService.self,
+        BrandRemoteService.self,
+        CategoriesRemoteService.self,
         AuthenticationRepository.self,
         WishlistModelFactory.self,
         ProductModelFactory.self,
         ProductsModelFactory.self,
+        BrandModelFactory.self,
+        CategoriesModelFactory.self,
         ProfileRepository.self,
     ])
     
@@ -57,7 +61,7 @@ struct RootView: View {
         NavigationView {
             RouterView(router: AppRouter()) {
                 // Root
-                AppView()
+                MainScreen()
             }
         }
         .environmentObject(container)

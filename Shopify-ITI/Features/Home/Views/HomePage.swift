@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct HomePage: View {
+    @EnvironmentRouter private var router: AppRouter
+    @EnvironmentObject private var container: AppContainer
     
     @StateObject private var viewModel:  BrandViewModel
-    init() {
-        let client = ApolloGraphQLClient(environment: StorefronEnvironmentProvider())
-        let localeProvider = LocaleProvider()
-        
-        _viewModel = .init(wrappedValue:BrandViewModel(model:  BrandModel(remoteService: BrandRemoteService(remoteClient: client, localeProvider: localeProvider))))
-        
-       
-        
+    
+    init(container: AppContainer) {
+        let model = container.require((any AnyBrandModelFactory).self).create()
+        _viewModel = .init(wrappedValue:BrandViewModel(model: model))
     }
     
     var body: some View {
@@ -89,9 +87,5 @@ struct HomePage: View {
 
 
 
-struct HomePage_Previews: PreviewProvider {
-    static var previews: some View {
-        HomePage()
-    }
-}
+
 

@@ -8,11 +8,20 @@
 import Foundation
 import Shopify_ITI_SDK
 
-class BrandRemoteService {
-    typealias BrandError = ShopifyErrors<Any>
+struct BrandRemoteService : AnyInjectable{
     
-    private let remoteClient: any GraphQLClient // TODO: inject
-    private let localeProvider: any AnyLocaleProvider // TODO: inject
+    static func register(_ container: AppContainer) {
+        container.register(type: BrandRemoteService.self) { resolver in
+            BrandRemoteService(remoteClient: resolver.require((any GraphQLClient).self),
+                                 localeProvider: resolver.require((any AnyLocaleProvider).self))
+        }
+    }
+    
+    typealias BrandError = ShopifyErrors<Any>
+
+    private let remoteClient: any GraphQLClient
+    private let localeProvider: any AnyLocaleProvider 
+    
     init(remoteClient: any GraphQLClient, localeProvider: any AnyLocaleProvider) {
         self.remoteClient = remoteClient
         self.localeProvider = localeProvider

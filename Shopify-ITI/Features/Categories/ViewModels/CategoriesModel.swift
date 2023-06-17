@@ -6,7 +6,31 @@
 //
 
 import Foundation
-class CategoriesModel {
+
+protocol AnyCategoriesModelFactory: AnyInjectable {
+    func create() -> any AnyCategoriesModel
+}
+
+struct CategoriesModelFactory: AnyCategoriesModelFactory {
+    static func register(_ container: AppContainer) {
+        container.register(type: (any AnyCategoriesModelFactory).self) { resolver in
+            CategoriesModelFactory(resolver: resolver)
+        }
+    }
+    
+    private let resolver: any AppContainer.Resolver
+    
+    func create() -> AnyCategoriesModel {
+        CategoriesModel(remoteService: resolver.require(CategoriesRemoteService.self))
+    }
+}
+
+protocol AnyCategoriesModel {
+    func fetch(CollectionName name:String) async ->Result<[ProductType], Error>
+    func getTypes(items arr: inout [ProductType]) -> [ProductType]
+}
+
+struct CategoriesModel : AnyCategoriesModel {
     
     private let remoteService:  CategoriesRemoteService //TODO: Inject
     
