@@ -74,6 +74,7 @@ struct HomePage: View {
         .onReceive(viewModel.$operationState){ state in
             print(state)
         }
+
         .onFirstTask {
             await viewModel.loadBrand(numberOfItem: 11)
         }

@@ -15,8 +15,6 @@ struct CategoriesPage: View {
     @State private var CollectionTypePicked = 0
     
     init(container: AppContainer) {
-        let client = ApolloGraphQLClient(environment: StorefronEnvironmentProvider())
-        let localeProvider = LocaleProvider()
         let model = container.require((any AnyCategoriesModelFactory).self).create()
         _viewModel = .init(wrappedValue:CategoriesViewModel(model: model))
     }
@@ -28,7 +26,6 @@ struct CategoriesPage: View {
     ]
     
     var body: some View {
-        NavigationView {
             ScrollView{
                 VStack {
                     Picker("", selection: $CollectionTypePicked) {
@@ -66,10 +63,11 @@ struct CategoriesPage: View {
                 }
                 
             }.task{
+
                 await viewModel.loadCategories(CollectionName: arr[CollectionTypePicked].apiHandle)
             }
             
-        }
+        
     }
 }
 func createGridColumns() -> [GridItem] {
@@ -97,5 +95,4 @@ struct FavouriteView: View {
         Text("Fav View ")
     }
 }
-
 
