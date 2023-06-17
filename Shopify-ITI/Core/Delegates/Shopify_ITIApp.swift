@@ -73,6 +73,7 @@ struct RootView: View {
             MainScreen()
 
         }
+
         .environmentObject(container)
     }
 }

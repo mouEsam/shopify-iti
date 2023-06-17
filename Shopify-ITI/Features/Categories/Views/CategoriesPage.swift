@@ -65,17 +65,7 @@ struct CategoriesPage: View {
                     }
                 }
                 
-            }.navigationBarItems(
-                leading: NavigationLink(destination: SearchView()) {
-                    Image(systemName: "magnifyingglass")
-                }, trailing:
-                    HStack {
-                        
-                        NavigationLink(destination: FavouriteView()) {
-                            Image(systemName: "heart")
-                        }
-                    }
-            ).task{
+            }.task{
                 await viewModel.loadCategories(CollectionName: arr[CollectionTypePicked].apiHandle)
             }
             
@@ -108,22 +98,4 @@ struct FavouriteView: View {
     }
 }
 
-//struct CartView: View {
-//    var body: some View {
-//        NavigationView {
-//            Text("Cart View ")
-//                .navigationBarItems(
-//                    leading: NavigationLink(destination: SearchView()) {
-//                        Image(systemName: "magnifyingglass")
-//                    }, trailing:
-//                        HStack {
-//                           
-//                            NavigationLink(destination: FavouriteView()) {
-//                                Image(systemName: "heart")
-//                            }
-//                        }
-//                )
-//            
-//        }
-//    }
-//}
+

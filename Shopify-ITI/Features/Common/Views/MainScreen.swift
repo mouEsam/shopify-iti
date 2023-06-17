@@ -29,10 +29,35 @@ struct MainScreen: View {
                     TabBarItemView(systemName: "cart")
                     
                 }.badge(badgeCount)
+            
             ProfilePage(container: container)
                 .tabItem {
                     TabBarItemView(systemName: "person")
                 }
+            
+        } .toolbar {
+            
+            ToolbarItem( placement: .navigationBarLeading, content: {
+                Button(action: {
+                    router.push(AppRoute(identifier:3, content: {
+                        SearchView()
+                    }))
+                }) {
+                    Image(systemName: "magnifyingglass")
+                }
+            })
+            
+            ToolbarItem( placement: .navigationBarTrailing, content: {
+                Button(action: {
+                    router.push(AppRoute(identifier:3, content: {
+                        FavouriteView()
+                    }))
+                }) {
+                    Image(systemName: "heart")
+                }
+                
+            }
+            )
         }.tint(.black)
     }
 }
