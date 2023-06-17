@@ -18,4 +18,6 @@ struct KeysProvider: AnyKeysProvider {
     let guestLocalKey: String = "guest_local"
     let accessTokenLocalKey: String = "access_token_local"
     let wishlistRemoteKey: String = "wishlist_remote"
+    let cartRemoteKey: String = "cart_remote"
+
 }

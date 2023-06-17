@@ -8,26 +8,28 @@
 import SwiftUI
 
 struct MainScreen: View {
+    @EnvironmentObject private var container: AppContainer
+    @EnvironmentRouter private var router: AppRouter
+    
     @State var badgeCount = 1
     var body: some View {
         TabView {
-            HomePage()
+            
+            HomePage(container: container)
                 .tabItem {
                     TabBarItemView(systemName: "house")
                 }
             
-            CategoriesPage()
+            CategoriesPage(container: container)
                 .tabItem {
                     TabBarItemView(systemName: "list.bullet")
                 }
-            
-                
-            CartView()
+            CartView(container: container)
                 .tabItem {
                     TabBarItemView(systemName: "cart")
                     
                 }.badge(badgeCount)
-            ProfilePage()
+            ProfilePage(container: container)
                 .tabItem {
                     TabBarItemView(systemName: "person")
                 }
