@@ -72,12 +72,10 @@ class CartManager:AnyCartManager{
                 if cart.userToken == nil {
                     await updateOwnership(cart, user)
                 } else if cart.userToken != user.id {
-                    await removeAndFetchCart()
+                    await removeCart()
                 } else {
                     await setCart(cart)
                 }
-            } else {
-                await fetchCart()
             }
         } else {
             if let cart = cart {
@@ -86,8 +84,6 @@ class CartManager:AnyCartManager{
                 } else {
                     await setCart(cart)
                 }
-            } else {
-                await fetchCart()
             }
         }
     }
@@ -105,17 +101,8 @@ class CartManager:AnyCartManager{
         }
     }
     
-    private func removeAndFetchCart() async {
-        cartIdStore.delete()
-        await fetchCart()
-    }
-    
-    private func fetchCart() async {
-        if case .success(let savedListId) = cartIdStore.read() {
-            let result = await cartRemoteService.fetch(byId: savedListId)
-            await handleCartResult(result)
-        }
-    }
+   
+  
     
     private func updateOwnership(_ cart: Cart, _ user: User) async {
         let result = await cartRemoteService.upDataBuyerIdentity(withUserID: user.id, forCart: cart.id)
@@ -144,16 +131,20 @@ class CartManager:AnyCartManager{
         if case .loading = state {
             _ = await task?.result
         }
-        if case .data(let data) = state {
-            let result = await addToCart(data, item,quantity: quantity)
-            
+        let result = cartIdStore.read()
+        switch result{
+        case .success(let cardID):
+            return await addToCart(cardID, item,quantity: quantity)
+        case .failure(_):
+            return await fetchOrCreate(item,quantity: quantity)
+
         }
-        return await fetchOrCreate(item,quantity: quantity)
+        
     }
     
-    private func addToCart(_ cart: Cart, _ item: ProductVariant,quantity:Int) async -> Result<Cart, Error> {
+    private func addToCart(_ cartid: String, _ item: ProductVariant,quantity:Int) async -> Result<Cart, Error> {
         
-        let cartResult = await cartRemoteService.upDate(card: cart.id, with: ShopifyAPI.CartLineInput(quantity: .init(nullable: quantity), merchandiseId: item.id ))
+        let cartResult = await cartRemoteService.upDate(card: cartid, with: ShopifyAPI.CartLineInput(quantity: .init(nullable: quantity), merchandiseId: item.id ))
         return await cartHandler(result: cartResult)
     }
     

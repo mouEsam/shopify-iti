@@ -12,7 +12,6 @@ struct MainScreen: View {
     @EnvironmentRouter private var router: AppRouter
 
     @State var badgeCount = 1
-    @EnvironmentObject private var container: AppContainer
     var body: some View {
         TabView {
           
