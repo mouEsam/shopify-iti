@@ -46,7 +46,7 @@ struct HomePage: View {
                 }
             }
         }
-      
+    
         .toolbar {
             
             ToolbarItem( placement: .navigationBarLeading, content: {

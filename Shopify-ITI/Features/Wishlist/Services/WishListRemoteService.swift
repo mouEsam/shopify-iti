@@ -93,8 +93,6 @@ struct WishlistRemoteService: AnyInjectable {
     }
     
     func delete(wishlist: Wishlist) async -> Result<Void, WishlistError> {
-        let customerId = userProvider.user?.id
-        
         let input = ShopifyAdminAPI.DraftOrderDeleteInput(id: wishlist.id)
         let mutation = ShopifyAdminAPI.DeleteWishlistMutation(input: input)
         let result = await remoteClient.execute(query: mutation)

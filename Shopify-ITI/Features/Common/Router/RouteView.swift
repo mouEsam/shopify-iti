@@ -67,6 +67,7 @@ struct RouterView<Router: AnyRouter, Content: View>: View {
                     let route = wrapper.route
                     let body = route.body()
                     AnyView(erasing: body)
+                        
                         .environmentObject(EnvironmentObjectWrapper(object: wrapper.route as any AnyRoute))
             }
         }.sheet(item: getOverlayBinding(for: .sheet)) { route in

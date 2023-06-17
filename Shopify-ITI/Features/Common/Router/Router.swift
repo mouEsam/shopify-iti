@@ -32,6 +32,11 @@ class AppRouter: ObservableObject, AnyRouter {
         self.path = path
     }
     
+    required init(root: RouteType) {
+        self.path = NavigationPath()
+        path.append(AppRouteWrapper(route: root))
+    }
+    
     func push(_ route: RouteType) {
         path.append(AppRouteWrapper(route: route))
     }
