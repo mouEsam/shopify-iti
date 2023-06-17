@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainScreen: View {
+    @EnvironmentObject private var container: AppContainer
     @State var badgeCount = 1
     var body: some View {
         TabView {
@@ -27,7 +28,7 @@ struct MainScreen: View {
                     TabBarItemView(systemName: "cart")
                     
                 }.badge(badgeCount)
-            ProfilePage()
+            ProfilePage(container: container)
                 .tabItem {
                     TabBarItemView(systemName: "person")
                 }

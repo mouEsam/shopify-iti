@@ -12,7 +12,7 @@ struct Shopify_ITIApp: App {
     
     var body: some Scene {
         WindowGroup {
-
+            
             RootView()
         }
     }
@@ -50,14 +50,14 @@ struct RootView: View {
         WishlistModelFactory.self,
         ProductModelFactory.self,
         ProductsModelFactory.self,
+        ProfileRepository.self,
     ])
     
     var body: some View {
         NavigationView {
             RouterView(router: AppRouter()) {
                 // Root
-//                AppView()
-                MainScreen()
+                AppView()
             }
         }
         .environmentObject(container)
