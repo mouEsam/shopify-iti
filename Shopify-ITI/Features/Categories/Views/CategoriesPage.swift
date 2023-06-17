@@ -107,21 +107,23 @@ struct FavouriteView: View {
         Text("Fav View ")
     }
 }
-struct CartView: View {
-    var body: some View {
-        NavigationView {
-            Text("Cart View ")
-                .navigationBarItems(
-                    leading: NavigationLink(destination: SearchView()) {
-                        Image(systemName: "magnifyingglass")
-                    }, trailing:
-                        HStack {
-                            NavigationLink(destination: FavouriteView()) {
-                                Image(systemName: "heart")
-                            }
-                        }
-                )
-            
-        }
-    }
-}
+
+//struct CartView: View {
+//    var body: some View {
+//        NavigationView {
+//            Text("Cart View ")
+//                .navigationBarItems(
+//                    leading: NavigationLink(destination: SearchView()) {
+//                        Image(systemName: "magnifyingglass")
+//                    }, trailing:
+//                        HStack {
+//                           
+//                            NavigationLink(destination: FavouriteView()) {
+//                                Image(systemName: "heart")
+//                            }
+//                        }
+//                )
+//            
+//        }
+//    }
+//}

@@ -45,4 +45,3 @@ extension View {
         return self.modifier(OnFirstTaskModifier(perform: perform))
     }
 }
-

@@ -26,7 +26,7 @@ struct MainScreen: View {
                 }
             
                 
-            CartView()
+            CartView(container: container)
                 .tabItem {
                     TabBarItemView(systemName: "cart")
                     
