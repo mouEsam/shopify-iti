@@ -18,7 +18,7 @@ struct ADTapView: View {
             }
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-        .onAppear {
+        .onFirstAppear {
             startTimer()
         }
     }
