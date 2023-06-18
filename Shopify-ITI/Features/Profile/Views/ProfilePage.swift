@@ -13,6 +13,7 @@ struct ProfilePage: View {
     @EnvironmentObject private var container: AppContainer
     
     @EnvironmentRouter private var router: AppRouter
+
     
     @StateObject private var profileviewModel: ProfileViewModel
     @StateObject private var wishListViewModel: WishlistViewModel
@@ -20,7 +21,7 @@ struct ProfilePage: View {
     @State private var name : String?
     
     init(container: AppContainer) {
-        
+
         let authenticationManager = container.require(AuthenticationManager.self)
         _profileviewModel = .init(wrappedValue: ProfileViewModel(authenticationManager:  authenticationManager))
         
@@ -28,6 +29,7 @@ struct ProfilePage: View {
         let manager = container.require(WishlistManager.self)
         let notificationCenter = container.require((any AnyNotificationCenter).self)
         _wishListViewModel = .init(wrappedValue: WishlistViewModel(model: model,
+
                                                                    wishlistManager: manager,
                                                                    notificationCenter: notificationCenter))
        
@@ -38,6 +40,7 @@ struct ProfilePage: View {
             if  name != nil {
                 VStack{
                     Text("Welcome " + (name ?? "") )
+
                         .font(.title)
                         .bold()
                         .padding()//TODO: nemoriztion
@@ -53,7 +56,7 @@ struct ProfilePage: View {
                             .foregroundColor(.black)
                             .font(.title2).padding()
                     }
-                    
+
                     HStack{
                         Text("WishList ")
                             .font(.title2)
@@ -62,6 +65,7 @@ struct ProfilePage: View {
                         Spacer()
                         Button("More", role: .cancel){//TODO: nemoriztion
                             router.push(AppRoute(identifier:name?.count, content: {
+
                                 WishlistScreen(container: container)
                             }
                                                 ))
@@ -84,6 +88,7 @@ struct ProfilePage: View {
                             ProgressView()
                         default:
                             Group {}
+          
                         }
                     }
                     .onAppear {
@@ -105,7 +110,6 @@ struct ProfilePage: View {
             }
     }
 }
-
 
 struct CartProfile: View{
     let product:Product
