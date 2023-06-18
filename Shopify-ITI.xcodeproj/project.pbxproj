@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04B4FBC82A3EA12800DD5017 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4FBC62A3EA12800DD5017 /* SearchView.swift */; };
 		04CDB0912A3A55C30064508B /* AnyRemoteFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAFB42A3A55C30064508B /* AnyRemoteFetchStrategy.swift */; };
 		04CDB0922A3A55C30064508B /* RemoteFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAFB52A3A55C30064508B /* RemoteFetchStrategy.swift */; };
 		04CDB0932A3A55C30064508B /* DataFetchCacheStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAFB72A3A55C30064508B /* DataFetchCacheStrategy.swift */; };
@@ -92,8 +93,6 @@
 		04EA76E12A3E6D2D007E84D0 /* RouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA76332A3E6D2C007E84D0 /* RouteView.swift */; };
 		04EA76E22A3E6D2D007E84D0 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA76342A3E6D2C007E84D0 /* Router.swift */; };
 		04EA76E32A3E6D2D007E84D0 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA76372A3E6D2C007E84D0 /* ProfileViewModel.swift */; };
-		04EA76E42A3E6D2D007E84D0 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA76392A3E6D2C007E84D0 /* ProfileRepository.swift */; };
-		04EA76E52A3E6D2D007E84D0 /* AnyProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA763A2A3E6D2C007E84D0 /* AnyProfileRepository.swift */; };
 		04EA76E62A3E6D2D007E84D0 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA763C2A3E6D2C007E84D0 /* ProfilePage.swift */; };
 		04EA76E72A3E6D2D007E84D0 /* PasswordUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA763E2A3E6D2C007E84D0 /* PasswordUpdate.swift */; };
 		04EA76E82A3E6D2D007E84D0 /* ProfileUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA763F2A3E6D2C007E84D0 /* ProfileUpdate.swift */; };
@@ -211,6 +210,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		04B4FBC62A3EA12800DD5017 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		04CDAFB42A3A55C30064508B /* AnyRemoteFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyRemoteFetchStrategy.swift; sourceTree = "<group>"; };
 		04CDAFB52A3A55C30064508B /* RemoteFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteFetchStrategy.swift; sourceTree = "<group>"; };
 		04CDAFB72A3A55C30064508B /* DataFetchCacheStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchCacheStrategy.swift; sourceTree = "<group>"; };
@@ -298,8 +298,6 @@
 		04EA76332A3E6D2C007E84D0 /* RouteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteView.swift; sourceTree = "<group>"; };
 		04EA76342A3E6D2C007E84D0 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		04EA76372A3E6D2C007E84D0 /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		04EA76392A3E6D2C007E84D0 /* ProfileRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
-		04EA763A2A3E6D2C007E84D0 /* AnyProfileRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyProfileRepository.swift; sourceTree = "<group>"; };
 		04EA763C2A3E6D2C007E84D0 /* ProfilePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
 		04EA763E2A3E6D2C007E84D0 /* PasswordUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordUpdate.swift; sourceTree = "<group>"; };
 		04EA763F2A3E6D2C007E84D0 /* ProfileUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUpdate.swift; sourceTree = "<group>"; };
@@ -416,6 +414,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04B4FBC22A3EA12800DD5017 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				04B4FBC32A3EA12800DD5017 /* ViewModel */,
+				04B4FBC42A3EA12800DD5017 /* Model */,
+				04B4FBC52A3EA12800DD5017 /* Views */,
+				04B4FBC72A3EA12800DD5017 /* Entities */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		04B4FBC32A3EA12800DD5017 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		04B4FBC42A3EA12800DD5017 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04B4FBC52A3EA12800DD5017 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				04B4FBC62A3EA12800DD5017 /* SearchView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		04B4FBC72A3EA12800DD5017 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		04CDAFB02A3A55C30064508B /* Shopify-ITI */ = {
 			isa = PBXGroup;
 			children = (
@@ -666,7 +704,8 @@
 		04EA75F02A3E6D2C007E84D0 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				04EA7BBD2A3E7B81007E84D0 /* settings */,
+				04B4FBC22A3EA12800DD5017 /* Search */,
+				04EA7BBD2A3E7B81007E84D0 /* Settings */,
 				04EA75F12A3E6D2C007E84D0 /* Home */,
 				04EA75FF2A3E6D2C007E84D0 /* Products */,
 				04EA760E2A3E6D2C007E84D0 /* Product */,
@@ -939,7 +978,6 @@
 			isa = PBXGroup;
 			children = (
 				04EA76362A3E6D2C007E84D0 /* ViewModels */,
-				04EA76382A3E6D2C007E84D0 /* Repositories */,
 				04EA763B2A3E6D2C007E84D0 /* Views */,
 				04EA763D2A3E6D2C007E84D0 /* Helpers */,
 				04EA76402A3E6D2C007E84D0 /* Services */,
@@ -954,15 +992,6 @@
 				04EA76372A3E6D2C007E84D0 /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		04EA76382A3E6D2C007E84D0 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-				04EA76392A3E6D2C007E84D0 /* ProfileRepository.swift */,
-				04EA763A2A3E6D2C007E84D0 /* AnyProfileRepository.swift */,
-			);
-			path = Repositories;
 			sourceTree = "<group>";
 		};
 		04EA763B2A3E6D2C007E84D0 /* Views */ = {
@@ -1444,7 +1473,7 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		04EA7BBD2A3E7B81007E84D0 /* settings */ = {
+		04EA7BBD2A3E7B81007E84D0 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				04EA7BD12A3E907D007E84D0 /* Helpers */,
@@ -1452,7 +1481,7 @@
 				04EA7BC02A3E7B81007E84D0 /* Model */,
 				04EA7BC32A3E7B81007E84D0 /* View */,
 			);
-			path = settings;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		04EA7BBE2A3E7B81007E84D0 /* ViewModel */ = {
@@ -1691,6 +1720,7 @@
 				04CDB0B32A3A55C30064508B /* ConfigsProvider.swift in Sources */,
 				04EA770F2A3E6D2D007E84D0 /* UserLocalStore.swift in Sources */,
 				04EA77212A3E6D2D007E84D0 /* ADModel.swift in Sources */,
+				04B4FBC82A3EA12800DD5017 /* SearchView.swift in Sources */,
 				04CDB0B82A3A55C30064508B /* KeysProvider.swift in Sources */,
 				04EA76EF2A3E6D2D007E84D0 /* CartModel.swift in Sources */,
 				04CDB0A72A3A55C30064508B /* AnyImageLoader.swift in Sources */,
@@ -1771,7 +1801,6 @@
 				04EA77072A3E6D2D007E84D0 /* AuthenticationState.swift in Sources */,
 				04EA76ED2A3E6D2D007E84D0 /* CartManager.swift in Sources */,
 				04EA76C82A3E6D2D007E84D0 /* Product.swift in Sources */,
-				04EA76E52A3E6D2D007E84D0 /* AnyProfileRepository.swift in Sources */,
 				04EA77252A3E6D2D007E84D0 /* AD.swift in Sources */,
 				04EA76D22A3E6D2D007E84D0 /* ProductOption.swift in Sources */,
 				04CDB0AF2A3A55C30064508B /* AnyNotificationCenter.swift in Sources */,
@@ -1780,7 +1809,6 @@
 				04EA77062A3E6D2D007E84D0 /* AuthenticationManager.swift in Sources */,
 				04EA770B2A3E6D2D007E84D0 /* GuestManager.swift in Sources */,
 				04EA77222A3E6D2D007E84D0 /* ADCard.swift in Sources */,
-				04EA76E42A3E6D2D007E84D0 /* ProfileRepository.swift in Sources */,
 				04CDB0A62A3A55C30064508B /* AnyConnectivity.swift in Sources */,
 				04EA77182A3E6D2D007E84D0 /* AuthNotifications.swift in Sources */,
 				04EA7BD02A3E86CA007E84D0 /* ContactUsView.swift in Sources */,

@@ -6,32 +6,22 @@
 //
 
 import Foundation
+import SwiftUI
  //TODO: refactor
-class  ProfleViewModel : ObservableObject{
-    
-    private let repository: any AnyProfileRepository
-    
-    init(repository: any AnyProfileRepository) {
-        self.repository = repository
-    }
-    @Published private(set) var userOperationState: UIState<User> = .initial
-    @Published private(set) var wishListOperationState: UIState<Wishlist> = .initial
+class ProfileViewModel : ObservableObject{
 
-    func profile() async {
-        await MainActor.run(){
-            self.userOperationState = .loading
-        }
-        let res =  await repository.profile().toRemote()
+    let authenticationManager:AuthenticationManager
+    init(authenticationManager: AuthenticationManager) {
+        self.authenticationManager = authenticationManager
         
-        await MainActor.run(){
-            self.userOperationState = res
-        }
+    }
+    func getName()->String?{
+        authenticationManager.refreshState()
+
+        return authenticationManager.state.user?.firstName
+        
     }
     
-   
-    func getOrders() async {
-        
-    }
 
     
 }
