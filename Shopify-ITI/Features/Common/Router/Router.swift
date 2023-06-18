@@ -46,7 +46,9 @@ class AppRouter: ObservableObject, AnyRouter {
     
     func replace(_ route: RouteType) {
         var path = self.path
-        path.removeLast()
+        if !path.isEmpty {
+            path.removeLast()
+        }
         path.append(AppRouteWrapper(route: route))
         self.path = path
     }

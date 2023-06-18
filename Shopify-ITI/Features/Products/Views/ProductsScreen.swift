@@ -9,6 +9,13 @@ import Foundation
 import SwiftUI
 
 struct ProductsScreen: View {
+    class Route: AppRoute {
+        convenience init(container: AppContainer, criterion: ProductsViewModel.Criterion) {
+            self.init(identifier: String(describing: Self.self)) {
+                ProductsScreen(container: container, criterion: criterion)
+            }
+        }
+    }
     
     @EnvironmentObject private var container: AppContainer
 

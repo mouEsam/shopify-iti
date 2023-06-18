@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CategoriesPage: View {
     @EnvironmentObject private var container: AppContainer
-
+    
     @StateObject private var viewModel:  CategoriesViewModel
     
     @State private var collectionTypePicked = 0
@@ -19,29 +19,29 @@ struct CategoriesPage: View {
         _viewModel = .init(wrappedValue:CategoriesViewModel(model: model))
     }
     
-    let arr = [CollectionType.men,
-               CollectionType.women,
-               CollectionType.kid,
-               CollectionType.sale
+    private let arr = [CollectionType.men,
+                       CollectionType.women,
+                       CollectionType.kid,
+                       CollectionType.sale
     ]
     
     var body: some View {
-            ScrollView{
-                VStack {
-                    Picker("", selection: $collectionTypePicked) {
-                        ForEach(arr.indices){index in
-                            Text(arr[index].rawValue).tag(index)
-                        }
+        ScrollView{
+            VStack {
+                Picker("", selection: $collectionTypePicked) {
+                    ForEach(arr.indices){index in
+                        Text(arr[index].rawValue).tag(index)
                     }
-                    .pickerStyle(.segmented)
-                    .padding()
-                    .onChange(of: collectionTypePicked){newValue in
-                        Task{
-                            await viewModel.loadCategories(CollectionName: arr[newValue].apiHandle)
-                        }
+                }
+                .pickerStyle(.segmented)
+                .padding()
+                .onChange(of: collectionTypePicked){newValue in
+                    Task{
+                        await viewModel.loadCategories(CollectionName: arr[newValue].apiHandle)
                     }
-                    
-                    switch viewModel.operationState {
+                }
+                
+                switch viewModel.operationState {
                         
                     case .loaded(data: let productCollections):
                         LazyVGrid(columns: createGridColumns(), spacing: 16) {
@@ -59,18 +59,16 @@ struct CategoriesPage: View {
                             .progressViewStyle(CircularProgressViewStyle())
                             .foregroundColor(.black)
                             .padding(50)
-                    }
                 }
-                
-            }.task{
-
-                await viewModel.loadCategories(CollectionName: arr[collectionTypePicked].apiHandle)
             }
             
-        
+        }.onFirstTask {
+            await viewModel.loadCategories(CollectionName: arr[collectionTypePicked].apiHandle)
+        }
     }
 }
-func createGridColumns() -> [GridItem] {
+
+private func createGridColumns() -> [GridItem] {
     let gridItem = GridItem(.flexible(), spacing: 16)
     return [gridItem, gridItem]
 }

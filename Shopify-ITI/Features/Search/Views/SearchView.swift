@@ -19,30 +19,21 @@ struct SearchView: View {
         List {
             ForEach(searchResults, id: \.self) { name in
                 Button(action: {
-                    router.push(AppRoute(identifier: name.count, content:{
-                        ProductsScreen(container: container, criterion: [.title:name])
-                        
-                    }))
-                }, label:{
+                    router.push(ProductsScreen.Route(container: container,
+                                                      criterion: [.title:name]))
+                }) {
                     Text(name)
-                }).foregroundColor(.black)
+                }.foregroundColor(.black)
                 
             }
         }
         .searchable(text: $searchText,placement: .navigationBarDrawer(displayMode: .always),prompt: "search for product")//TODO: nemoriztion
         .onSubmit(of: .search)  {
             if !searchText.isEmpty {
-                router.push(AppRoute(identifier: searchText.count, content:{
-                    ProductsScreen(container: container, criterion: [.title:searchText])
-                }))
-                
+                router.push(ProductsScreen.Route(container: container,
+                                                 criterion: [.title:searchText]))
             }
-            
-            
         }
-        
-        
-        
     }
     
     var searchResults: [String] {
