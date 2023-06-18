@@ -21,18 +21,8 @@ struct ProfilePage: View {
     }
     
     var body: some View {
-        NavigationView {
-            Text("Profile View ")
-                .navigationBarItems(
-                    trailing:
-                        HStack {
-                            
-                            NavigationLink(destination: SettingView()) {
-                                Image(systemName: "gearshape")
-                            }
-                        }
-                )
-            
-        }
+        Text("Profile View ")
+        
+
     }
 }

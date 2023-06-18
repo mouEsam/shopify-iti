@@ -9,9 +9,9 @@ import Foundation
 import Shopify_ITI_SDK
 import Combine
 
-class CartManager:AnyCartManager{
+class CartManager:AnyInjectable{
     static func register(_ container: AppContainer) {
-        container.register(type: (any AnyCartManager).self) { resolver in
+        container.register(type: CartManager.self) { resolver in
             CartManager(cartIdStore:  resolver.require((any AnyCartIdStore).self),
                         notificationCenter:  resolver.require((any AnyNotificationCenter).self),
                         cartRemoteService: resolver.require(CartRemoteService.self),

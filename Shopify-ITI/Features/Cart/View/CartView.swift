@@ -69,16 +69,7 @@ struct CartView: View {
                 }.padding(.all)
             }.task {
                 await viewModel.getCart()
-            }.navigationBarItems(
-                leading: NavigationLink(destination: SearchView()) {
-                    Image(systemName: "magnifyingglass")
-                }, trailing:
-                    HStack {
-                        NavigationLink(destination: FavouriteView()) {
-                            Image(systemName: "heart")
-                        }
-                    }
-            )
+            }
         }
     }
 }
