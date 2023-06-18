@@ -14,6 +14,13 @@ class RegisterViewModel: ObservableObject {
     
     private let emailValidator = EmailValidator() // TODO: inject
     private let requiredValidator = RequiredValidator<String>() // TODO: inject
+    private lazy var confirmPasswordValidator = ValueValidator(validator: { (value: String?) in
+        if let password = value,
+           password != self.password {
+            return RegisterValidationErrors.invalidConfirmPassword
+        }
+        return nil
+    })
     
     @Published private(set) var operationState: UIState<User> = .initial
     
@@ -22,12 +29,14 @@ class RegisterViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var phone: String = ""
     @Published var password: String = ""
+    @Published var confirmPassword: String = ""
     
     @Published private(set) var firstNameError: String?
     @Published private(set) var lastNameError: String?
     @Published private(set) var emailError: String?
     @Published private(set) var phoneError: String?
     @Published private(set) var passwordError: String?
+    @Published private(set) var confirmPasswordError: String?
     
     init(repository: any AnyAuthenticationRepository) {
         self.repository = repository
@@ -53,6 +62,10 @@ class RegisterViewModel: ObservableObject {
         passwordError = requiredValidator.validate(password)
             .map { "\($0)" }
             .map { NSLocalizedString($0, comment: $0) }
+        
+        confirmPasswordError = confirmPasswordValidator.validate(confirmPassword)
+            .map { "\($0)" }
+            .map { NSLocalizedString($0, comment: $0) }
     }
     
     func register() async {
@@ -64,7 +77,8 @@ class RegisterViewModel: ObservableObject {
               lastNameError == nil,
               emailError == nil,
               phoneError == nil,
-              passwordError == nil else { return }
+              passwordError == nil,
+        confirmPasswordError == nil else { return }
         
         await MainActor.run {
             operationState = .loading

@@ -9,93 +9,119 @@ import Foundation
 import SwiftUI
 
 struct RegisterScreen: View {
+    class Route: AppRoute {
+        convenience init(container: AppContainer) {
+            self.init(identifier: String(describing: Self.self)) {
+                RegisterScreen(container: container)
+            }
+        }
+    }
+    
+    private let strings: any AnyAuthenticationStrings
+    private let colors: any AnyAuthenticationColors
     
     @EnvironmentObject private var container: AppContainer
+    @EnvironmentRouter private var router: AppRouter
     
     @State private var validationError: String?
     @StateObject private var viewModel: RegisterViewModel
     
     init(container: AppContainer) {
+        strings = container.require((any AnyAuthenticationStrings).self)
+        colors = container.require((any AnyAuthenticationColors).self)
         let repo = container.require((any AnyAuthenticationRepository).self)
         _viewModel = .init(wrappedValue: RegisterViewModel(repository: repo))
     }
     
     var body: some View {
-        ScrollView {
-            Group {
-                TextField("Enter First Name", text: $viewModel.firstName)
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                if let error = viewModel.firstNameError {
-                    Text(error)
-                        .foregroundColor(.red)
-                        .padding()
+        VStack(spacing: 16) {
+            AuthTopBarDecor(barColor: colors.grey,
+                             circleColor: colors.black)
+            .alignmentGuide(.top) { dimen in dimen[.top] }
+            
+            ScrollView {
+                Spacer().frame(height: 16)
+                
+                VStack {
+                    Text(strings.signupSublabel.localized)
+                        .font(.largeTitle)
+                        .textCase(.uppercase)
+                        .fontWeight(.semibold)
                 }
+                
+                AuthCard(shadowColor: colors.dark2Grey.opacity(0.3),
+                         backgroundColor: colors.white) {
+                    HStack {
+                        AuthTextField(text: $viewModel.firstName,
+                                      label: strings.firstNameLabel,
+                                      hint: strings.firstNameHint,
+                                      error: viewModel.firstNameError,
+                                      strokeColor: colors.dark2Grey)
+                        AuthTextField(text: $viewModel.lastName,
+                                      label: strings.lastNameLabel,
+                                      hint: strings.lastNameHint,
+                                      error: viewModel.lastNameError,
+                                      strokeColor: colors.dark2Grey)
+                    }
+                    AuthTextField(text: $viewModel.email,
+                                  label: strings.emailLabel,
+                                  hint: strings.emailHint,
+                                  error: viewModel.emailError,
+                                  strokeColor: colors.dark2Grey)
+                        .autocapitalization(.none)
+                        .textCase(.lowercase)
+                        .keyboardType(.emailAddress)
+                    AuthTextField(text: $viewModel.phone,
+                                  label: strings.phoneLabel,
+                                  hint: strings.phoneHint,
+                                  error: viewModel.phoneError,
+                                  strokeColor: colors.dark2Grey).keyboardType(.phonePad)
+                    AuthTextField(text: $viewModel.password,
+                                  label: strings.passwordLabel,
+                                  hint: strings.passwordHint,
+                                  error: viewModel.passwordError,
+                                  strokeColor: colors.dark2Grey,
+                                  obsecurable: true)
+                    AuthTextField(text: $viewModel.confirmPassword,
+                                  label: strings.confirmPasswordLabel,
+                                  hint: strings.confirmPasswordHint,
+                                  error: viewModel.confirmPasswordError,
+                                  strokeColor: colors.dark2Grey,
+                                  obsecurable: true)
+                    AuthButton(label: strings.signupAction.localized,
+                               labelColor: colors.white,
+                               backgroundColor: colors.black,
+                               isLoading: viewModel.operationState.isLoading) {
+                        Task {
+                            await viewModel.register()
+                        }
+                    }
+                    Button {
+                        router.pop()
+                    } label: {
+                        Group {
+                            Text(strings.alreadyHaveAccount.localized)
+                                .foregroundColor(colors.dark2Grey)
+                            + Text(" ")
+                            + Text(strings.loginAction)
+                                .foregroundColor(colors.black)
+                                .fontWeight(.bold)
+                        }
+                    }
+
+                }.buttonStyle(.plain)
+                Spacer()
             }
-            
-            
-            Group {
-                TextField("Enter Last Name", text: $viewModel.lastName)
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                if let error = viewModel.lastNameError {
-                    Text(error)
-                        .foregroundColor(.red)
-                        .padding()
-                }
-            }
-            
-            Group {
-                TextField("Enter Email", text: $viewModel.email)
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .textCase(.lowercase)
-                    .textInputAutocapitalization(.never)
-                if let error = viewModel.emailError {
-                    Text(error)
-                        .foregroundColor(.red)
-                        .padding()
-                }
-            }
-            
-            Group {
-                TextField("Enter Phone", text: $viewModel.phone)
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .textCase(.lowercase)
-                    .textInputAutocapitalization(.never)
-                if let error = viewModel.phoneError {
-                    Text(error)
-                        .foregroundColor(.red)
-                        .padding()
-                }
-            }
-            
-            Group {
-                TextField("Enter Password", text: $viewModel.password)
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                if let error = viewModel.passwordError {
-                    Text(error)
-                        .foregroundColor(.red)
-                        .padding()
-                }
-            }
-            
-            Button("Submit") {
-                Task {
-                    await viewModel.register()
-                }
-            }
-            .disabled(viewModel.emailError == nil &&
-                      viewModel.passwordError != nil)
-            
-            
         }
-        .onAppear {}
-        .padding()
-        .onReceive(viewModel.$operationState) { state in
-            print(state)
+        .disabled(viewModel.operationState.isLoading)
+        .onReceive(viewModel.$operationState, perform: { state in
+            if state.isLoaded {
+                router.pop()
+            }
+        })
+        .toolbar(.hidden)
+        .onBackSwipe {
+            router.pop()
         }
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 
 enum ValidationErrors: String, ValidationError {
     case required = "required_field" // TODO: Localize
+    case invalid = "invalid_field" // TODO: Localize
 }
 
 struct RequiredValidator<T>: AnyValidator {
@@ -20,5 +21,18 @@ struct RequiredValidator<T>: AnyValidator {
             if list.isEmpty { return .required }
         }
         return nil
+    }
+}
+
+struct ValueValidator<T, Error: ValidationError>: AnyValidator {
+    
+    private let validator: (T?) -> Error?
+    
+    init(validator: @escaping (T?) -> Error?) {
+        self.validator = validator
+    }
+    
+    func validate(_ data: T?) -> Error? {
+        return validator(data)
     }
 }
