@@ -50,7 +50,7 @@ class WishlistManager : AnyInjectable {
             }.store(in: &cancellables)
     }
     
-    private func evaluateState() {
+    func refreshState() {
         handleAuthState(authManager.state)
     }
     
@@ -233,7 +233,7 @@ class WishlistManager : AnyInjectable {
     }
     
     private func handleDeletedListResult(_ listResult: Result<Void, ShopifyErrors<Any>>) async -> Result<Void, ShopifyErrors<Any>> {
-        guard !Task.isCancelled else { return .failure(.Unknown) }
+        guard !Task.isCancelled else { return .failure(.Cancelled) }
         
         await MainActor.run {
             if case .success(_) = listResult {
@@ -257,7 +257,7 @@ class WishlistManager : AnyInjectable {
     }
     
     private func handleUpdatedListResult(_ listResult: Result<Wishlist, ShopifyErrors<Any>>) async -> Result<Void, ShopifyErrors<Any>> {
-        guard !Task.isCancelled else { return .failure(.Unknown) }
+        guard !Task.isCancelled else { return .failure(.Cancelled) }
         
         await MainActor.run {
             if case .success(let list) = listResult {
@@ -280,17 +280,17 @@ class WishlistManager : AnyInjectable {
                 if user.id == ownerId {
                     self.setList(wishlist)
                 } else {
-                    evaluateState()
+                    refreshState()
                 }
             } else {
-                evaluateState()
+                refreshState()
             }
         } else if user == nil {
             _ = wishlistIdStore.write(id: wishlist.id)
             self.setList(wishlist)
         } else {
             self.setList(wishlist)
-            evaluateState()
+            refreshState()
         }
     }
     

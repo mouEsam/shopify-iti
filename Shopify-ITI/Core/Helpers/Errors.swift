@@ -16,9 +16,11 @@ enum LocalErrors: Error {
 }
 
 enum ShopifyErrors<ErrorCode>: Error {
+    case Cancelled
     case Unknown
     case NotFound
     case Unautherized
+    case Throttled
     case Client(error: any Error)
     case Validation(validationErrors: [ValidationError<ErrorCode>])
     case Generic(genericErrors: [GenericError])
@@ -34,6 +36,14 @@ extension ShopifyErrors {
         let errorCode: ErrorCode?
         let fields: [String]
         let message: String
+    }
+    
+    init(from errors: [GraphQLError]) {
+        if let error = errors.first(where: { $0.message == "Throttled" }) {
+            self = ShopifyErrors.Throttled
+        } else {
+            self = ShopifyErrors.Unknown
+        }
     }
 }
 

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @EnvironmentObject private var container: AppContainer
+    
     @State private var selectedLanguageIndex = 0
     @State private var selectedCurrencyIndex = 0
     
@@ -17,9 +20,11 @@ struct SettingsView: View {
     let settingViewModel:SettingViewModel
     let languages = ["English", "Arabic"]
     let contry = ["Egypt","USA"]
-    init(container:AppContainer){
+    
+    init(container: AppContainer) {
         settingViewModel = .init(settingModel: container.require(SettingModel.self))
     }
+    
     var body: some View {
         Form {
             Section(header: Text("Language")) {
@@ -71,7 +76,10 @@ struct SettingsView: View {
                         .foregroundColor(.black)
                 }
             }
-            
+            // TODO: change
+            Button("Log out") {
+                container.require(AuthenticationManager.self).logout()
+            }
         }
         
         .sheet(isPresented: $showFQA) {

@@ -60,7 +60,6 @@ struct RootView: View {
         CartRemoteService.self,
         CartManager.self,
         CartIdStore.self,
-        WishlistModelFactory.self,
         AuthenticationStrings.self,
         AuthenticationColors.self,
         SettingModel.self
@@ -70,6 +69,7 @@ struct RootView: View {
        RouterView(router: AppRouter()) {
             MainScreen(container: container)
         }
+        .tint(.black)
         .environmentObject(container)
     }
 }
