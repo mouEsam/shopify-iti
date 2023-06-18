@@ -63,6 +63,7 @@ struct RootView: View {
 
         CartIdStore.self,
         WishlistModelFactory.self,
+        SettingModel.self
     ])
     
     var body: some View {

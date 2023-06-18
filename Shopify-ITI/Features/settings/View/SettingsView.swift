@@ -9,79 +9,78 @@ import SwiftUI
 
 struct SettingsView: View {
     @State private var selectedLanguageIndex = 0
+    @State private var selectedCurrencyIndex = 0
+    
     @State private var address = ""
     @State private var showFQA = false
     @State private var showContact = false
-
-    let languages = ["English", "Spanish", "French"]
-    
+    let settingViewModel:SettingViewModel
+    let languages = ["English", "Arabic"]
+    let contry = ["Egypt","USA"]
+    init(container:AppContainer){
+        settingViewModel = .init(settingModel: container.require(SettingModel.self))
+    }
     var body: some View {
-            Form {
-                Section(header: Text("Language")) {
-                    Picker(selection: $selectedLanguageIndex, label: Text("Select a language")) {
-                        ForEach(0 ..< languages.count) { index in
-                            Text(self.languages[index])
-                        }
+        Form {
+            Section(header: Text("Language")) {
+                Picker(selection: $selectedLanguageIndex, label: Text("Select a language")) {
+                    ForEach(0 ..< languages.count) { index in
+                        Text(self.languages[index])
+                    }
+                }
+                .onChange(of: selectedLanguageIndex) { newIndex in
+                    let selectedLanguage = languages[newIndex]
+                    if(selectedLanguage == "English" ){
+                        settingViewModel.changeLanguageToEnglish()
+                    }else{
+                        settingViewModel.changeLanguageToArabic()
+                        
+                    }
+                }
+            }
+            Section(header: Text("contry")) {
+                Picker(selection:$selectedCurrencyIndex, label: Text("Select a contry")) {
+                    ForEach(0 ..< contry.count) { index in
+                        Text(self.contry[index])
+                    }
+                }.onChange(of: selectedCurrencyIndex) { newIndex in
+                    let selectedCurrency = contry[newIndex]
+                    if(selectedCurrency == "EGP" ){
+                        settingViewModel.changeContryToEgypt()
+                    }else{
+                        settingViewModel.changeContryToUSA()
+                        
+                    }
+                }
+            }
+            Section(header: Text("Help Center")) {
+                Button(action: {
+                    showFQA = true
+                }) {
+                    HStack{
+                        Text("FQA")
+                            .foregroundColor(.black)
+                        
                     }
                 }
                 
-                Section(header: Text("Address")) {
-                    TextField("Enter your address", text: $address)
+                Button(action: {
+                    showContact = true
+                }) {
+                    Text("Contact Us")
+                        .foregroundColor(.black)
                 }
-                Section(header: Text("Help Center")) {
-                    Button(action: {
-                        showFQA = true
-                    }) {
-                        HStack{
-                            Text("FQA")
-                                .foregroundColor(.black)
-                            
-                        }
-                    }
-                    
-                    Button(action: {
-                        showContact = true
-                    }) {
-                        Text("Contact Us")
-                            .foregroundColor(.black)
-                    }
-                }
-               
             }
             
+        }
+        
         .sheet(isPresented: $showFQA) {
-            HelpCenterView()
+            FAQView()
         }.sheet(isPresented:  $showContact){
-            HelpCenterView()
-
-        }
-    }
-}
-
-struct HelpCenterView: View {
-    var body: some View {
-        NavigationView {
-            List {
-                Section(header: Text("FAQ")) {
-                    Text("Frequently Asked Questions")
-                }
-                
-                Section(header: Text("Contact Us")) {
-                    Text("You can reach us at support@example.com")
-                }
-            }
-            .listStyle(InsetGroupedListStyle())
-            .navigationTitle("Help Center")
+            ContactUsView()
+            
         }
     }
 }
 
 
-
-
-
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
-    }
-}
