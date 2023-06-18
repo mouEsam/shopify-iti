@@ -58,7 +58,12 @@ class AuthenticationManager: AnyInjectable {
     }
     
     func refreshState() {
-        state = createState()
+        task?.cancel()
+        task = Task {
+            await MainActor.run {
+                state = createState()
+            }
+        }
     }
     
     private func createState() -> AuthenticationState {
