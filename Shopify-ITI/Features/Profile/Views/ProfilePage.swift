@@ -30,14 +30,14 @@ struct ProfilePage: View {
         _wishListViewModel = .init(wrappedValue: WishlistViewModel(model: model,
                                                                    wishlistManager: manager,
                                                                    notificationCenter: notificationCenter))
-        name = profileviewModel.getName()
+       
     }
     
     var body: some View {
-        if let name = name{
-            ScrollView{
+        ScrollView{
+            if  name != nil {
                 VStack{
-                    Text("Welcome \(name)")
+                    Text("Welcome " + (name ?? "") )
                         .font(.title)
                         .bold()
                         .padding()//TODO: nemoriztion
@@ -61,7 +61,7 @@ struct ProfilePage: View {
                             .padding()//TODO: nemoriztion
                         Spacer()
                         Button("More", role: .cancel){//TODO: nemoriztion
-                            router.push(AppRoute(identifier:name.count, content: {
+                            router.push(AppRoute(identifier:name?.count, content: {
                                 WishlistScreen(container: container)
                             }
                                                 ))
@@ -89,25 +89,21 @@ struct ProfilePage: View {
                     .onAppear {
                         wishListViewModel.fetch()
                     }
-                    
                 }
-            }.onAppear(){
-                self.name = profileviewModel.getName()
             }
-        }
-        else{
-            Button("Pleas login", role: .cancel){
-                router.push(AppRoute(identifier:636, content: {
-                    LoginScreen(container: container)
-                }))
-            }.buttonStyle(.bordered)
-                .foregroundColor(.black)
-                .onAppear(){
-                    name = profileviewModel.getName()
-                }
-        }
+            else{
+                Button("Pleas login"){
+                    router.push(AppRoute(identifier:636, content: {
+                        LoginScreen(container: container)
+                    }))
+                }.buttonStyle(.bordered)
+                    .foregroundColor(.black)
+            }
+        }.onAppear(){
+            name = profileviewModel.getName()
+          
+            }
     }
-    
 }
 
 

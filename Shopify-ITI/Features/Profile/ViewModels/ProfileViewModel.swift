@@ -17,6 +17,7 @@ class ProfileViewModel : ObservableObject{
     }
     func getName()->String?{
         authenticationManager.refreshState()
+        
         return authenticationManager.state.user?.firstName
         
     }
