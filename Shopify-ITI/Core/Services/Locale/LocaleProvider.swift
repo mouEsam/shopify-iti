@@ -7,14 +7,22 @@
 
 import Foundation
 
-// TODO: refactor to use runtime dynamic values
-struct LocaleProvider: AnyLocaleProvider {
+class LocaleProvider: AnyLocaleProvider {
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyLocaleProvider).self) { resolver in
             LocaleProvider()
         }
+        container.register(type: LocaleProvider.self) { resolver in
+            LocaleProvider()
+        }
     }
     
-    var country: String { "US" }
-    var language: String { "EN" }
+    var country: String = "US"
+    var language: String = "EN" 
+    func changeLanguage(language: String ){
+        self.language = language
+    }
+    func changeCountry(country: String ){
+        self.country = country
+    }
 }
