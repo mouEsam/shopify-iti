@@ -61,13 +61,14 @@ struct RootView: View {
         CartManager.self,
         CartIdStore.self,
         AuthenticationStrings.self,
-        AuthenticationColors.self,
-        SettingModel.self
+        AppColors.self,
+        SettingModel.self,
+        SplashStrings.self,
     ])
     
     var body: some View {
        RouterView(router: AppRouter()) {
-            MainScreen(container: container)
+           SplashScreen(container: container)
         }
         .tint(.black)
         .environmentObject(container)

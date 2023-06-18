@@ -14,12 +14,15 @@ struct CardCategory : View {
     let item: ProductType
     let idOfCollection : String
     var body: some View {
-        Button(action: {router.push(AppRoute(identifier: item.id, content:{
-            ProductsScreen(container: container, criterion: [.collection:idOfCollection,.type:item.productType])}))}
-               , label: {
+        Button(action: {
+            router.push(ProductsScreen.Route(container: container,
+                                             criterion: [.collection:idOfCollection,
+                                                         .type:item.productType]))
+        }) {
             VStack {
                 Image(item.productType.lowercased())
                     .resizable()
+                    .scaledToFit()
                     .frame(maxWidth: .infinity, maxHeight: 90)
                     .padding(4)
                 
@@ -33,8 +36,6 @@ struct CardCategory : View {
                 .background(Color.white)
                 .cornerRadius(10)
                 .shadow(radius: 2)
-        })
-               
-        
+        }
     }
 }

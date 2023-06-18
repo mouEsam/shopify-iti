@@ -177,13 +177,16 @@
 		04EA7BD32A3E90C4007E84D0 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA7BD22A3E90C4007E84D0 /* LocalNotification.swift */; };
 		04EA7BD52A3E95CB007E84D0 /* LocalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA7BD42A3E95CB007E84D0 /* LocalEnum.swift */; };
 		334029F07C9A89D6CEF9AB9D /* Pods_Shopify_ITI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */; };
+		D415D66A2A3FA01300F3362B /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415D6692A3FA01300F3362B /* SplashScreen.swift */; };
+		D415D66C2A3FAEA500F3362B /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415D66B2A3FAEA500F3362B /* OnboardingScreen.swift */; };
+		D415D66F2A3FB07F00F3362B /* SplashStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415D66E2A3FB07F00F3362B /* SplashStrings.swift */; };
 		D446F8D12A3E86DA00C6361C /* AuthenticationStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8D02A3E86DA00C6361C /* AuthenticationStrings.swift */; };
 		D446F8D32A3E872C00C6361C /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8D22A3E872C00C6361C /* Strings.swift */; };
-		D446F8D52A3E8E2C00C6361C /* AuthenticationColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8D42A3E8E2C00C6361C /* AuthenticationColors.swift */; };
+		D446F8D52A3E8E2C00C6361C /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8D42A3E8E2C00C6361C /* AppColors.swift */; };
 		D446F8D72A3E8FEC00C6361C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8D62A3E8FEC00C6361C /* Colors.swift */; };
 		D446F8DB2A3EA32E00C6361C /* AuthTopBarDecor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8DA2A3EA32E00C6361C /* AuthTopBarDecor.swift */; };
 		D446F8DD2A3EA34900C6361C /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8DC2A3EA34900C6361C /* AuthTextField.swift */; };
-		D446F8DF2A3EA36800C6361C /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8DE2A3EA36800C6361C /* AuthButton.swift */; };
+		D446F8DF2A3EA36800C6361C /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8DE2A3EA36800C6361C /* RoundedButton.swift */; };
 		D446F8E12A3EA64000C6361C /* AuthCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8E02A3EA64000C6361C /* AuthCard.swift */; };
 		D446F8E32A3EAA2C00C6361C /* RegisterValidationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8E22A3EAA2C00C6361C /* RegisterValidationErrors.swift */; };
 		D446F8E52A3EB26500C6361C /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8E42A3EB26500C6361C /* View.swift */; };
@@ -382,14 +385,17 @@
 		04EA7BD22A3E90C4007E84D0 /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 		04EA7BD42A3E95CB007E84D0 /* LocalEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEnum.swift; sourceTree = "<group>"; };
 		9286320BBD2664520DE1BD34 /* Pods-Shopify-ITI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.debug.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.debug.xcconfig"; sourceTree = "<group>"; };
+		D415D6692A3FA01300F3362B /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		D415D66B2A3FAEA500F3362B /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
+		D415D66E2A3FB07F00F3362B /* SplashStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashStrings.swift; sourceTree = "<group>"; };
 		D41F627C2A2C921C00780814 /* Shopify-ITI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopify-ITI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D446F8D02A3E86DA00C6361C /* AuthenticationStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationStrings.swift; sourceTree = "<group>"; };
 		D446F8D22A3E872C00C6361C /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
-		D446F8D42A3E8E2C00C6361C /* AuthenticationColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationColors.swift; sourceTree = "<group>"; };
+		D446F8D42A3E8E2C00C6361C /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		D446F8D62A3E8FEC00C6361C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D446F8DA2A3EA32E00C6361C /* AuthTopBarDecor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTopBarDecor.swift; sourceTree = "<group>"; };
 		D446F8DC2A3EA34900C6361C /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
-		D446F8DE2A3EA36800C6361C /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
+		D446F8DE2A3EA36800C6361C /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		D446F8E02A3EA64000C6361C /* AuthCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCard.swift; sourceTree = "<group>"; };
 		D446F8E22A3EAA2C00C6361C /* RegisterValidationErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterValidationErrors.swift; sourceTree = "<group>"; };
 		D446F8E42A3EB26500C6361C /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -704,6 +710,7 @@
 		04EA75F02A3E6D2C007E84D0 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D415D6672A3F9FD800F3362B /* Splash */,
 				04B4FBC22A3EA12800DD5017 /* Search */,
 				04EA7BBD2A3E7B81007E84D0 /* Settings */,
 				04EA75F12A3E6D2C007E84D0 /* Home */,
@@ -927,6 +934,7 @@
 		04EA76222A3E6D2C007E84D0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D415D66D2A3FAFBF00F3362B /* Widgets */,
 				04EA76232A3E6D2C007E84D0 /* MainScreen.swift */,
 			);
 			path = Views;
@@ -935,6 +943,7 @@
 		04EA76242A3E6D2C007E84D0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D446F8D42A3E8E2C00C6361C /* AppColors.swift */,
 				04EA76252A3E6D2C007E84D0 /* OnFirstAppear.swift */,
 				04EA76262A3E6D2C007E84D0 /* Pagination.swift */,
 				04EA76272A3E6D2C007E84D0 /* UIState.swift */,
@@ -1302,7 +1311,6 @@
 				04EA768E2A3E6D2C007E84D0 /* AuthNotifications.swift */,
 				04EA768F2A3E6D2C007E84D0 /* Credentials.swift */,
 				D446F8D02A3E86DA00C6361C /* AuthenticationStrings.swift */,
-				D446F8D42A3E8E2C00C6361C /* AuthenticationColors.swift */,
 				D446F8E22A3EAA2C00C6361C /* RegisterValidationErrors.swift */,
 			);
 			path = Helpers;
@@ -1529,6 +1537,40 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D415D6672A3F9FD800F3362B /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				D415D6702A3FB09600F3362B /* Helpers */,
+				D415D6682A3F9FE600F3362B /* Views */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		D415D6682A3F9FE600F3362B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D415D6692A3FA01300F3362B /* SplashScreen.swift */,
+				D415D66B2A3FAEA500F3362B /* OnboardingScreen.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D415D66D2A3FAFBF00F3362B /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				D446F8DE2A3EA36800C6361C /* RoundedButton.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		D415D6702A3FB09600F3362B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D415D66E2A3FB07F00F3362B /* SplashStrings.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		D41F62732A2C921C00780814 = {
 			isa = PBXGroup;
 			children = (
@@ -1552,7 +1594,6 @@
 			children = (
 				D446F8DA2A3EA32E00C6361C /* AuthTopBarDecor.swift */,
 				D446F8DC2A3EA34900C6361C /* AuthTextField.swift */,
-				D446F8DE2A3EA36800C6361C /* AuthButton.swift */,
 				D446F8E02A3EA64000C6361C /* AuthCard.swift */,
 			);
 			path = Widgets;
@@ -1705,6 +1746,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D415D66F2A3FB07F00F3362B /* SplashStrings.swift in Sources */,
 				04EA76C32A3E6D2D007E84D0 /* ProductsModel.swift in Sources */,
 				04CDB0982A3A55C30064508B /* Notifications.swift in Sources */,
 				04EA77192A3E6D2D007E84D0 /* Credentials.swift in Sources */,
@@ -1810,6 +1852,7 @@
 				04EA770B2A3E6D2D007E84D0 /* GuestManager.swift in Sources */,
 				04EA77222A3E6D2D007E84D0 /* ADCard.swift in Sources */,
 				04CDB0A62A3A55C30064508B /* AnyConnectivity.swift in Sources */,
+				D415D66A2A3FA01300F3362B /* SplashScreen.swift in Sources */,
 				04EA77182A3E6D2D007E84D0 /* AuthNotifications.swift in Sources */,
 				04EA7BD02A3E86CA007E84D0 /* ContactUsView.swift in Sources */,
 				04CDB09B2A3A55C30064508B /* Errors.swift in Sources */,
@@ -1838,12 +1881,13 @@
 				04EA77292A3E6D2D007E84D0 /* WishlistIdLocalStore.swift in Sources */,
 				04EA76CD2A3E6D2D007E84D0 /* ProductRemoteService.swift in Sources */,
 				04EA76C52A3E6D2D007E84D0 /* ProductsSearchCriteria.swift in Sources */,
-				D446F8DF2A3EA36800C6361C /* AuthButton.swift in Sources */,
+				D446F8DF2A3EA36800C6361C /* RoundedButton.swift in Sources */,
 				04CDB0AA2A3A55C30064508B /* RemoteClient.swift in Sources */,
 				04EA7BD52A3E95CB007E84D0 /* LocalEnum.swift in Sources */,
 				04EA76BD2A3E6D2D007E84D0 /* AdsView.swift in Sources */,
-				D446F8D52A3E8E2C00C6361C /* AuthenticationColors.swift in Sources */,
+				D446F8D52A3E8E2C00C6361C /* AppColors.swift in Sources */,
 				04EA76CB2A3E6D2D007E84D0 /* ProductModel.swift in Sources */,
+				D415D66C2A3FAEA500F3362B /* OnboardingScreen.swift in Sources */,
 				04EA7BD32A3E90C4007E84D0 /* LocalNotification.swift in Sources */,
 				04EA7BC62A3E7B81007E84D0 /* AnySettingModel.swift in Sources */,
 				04EA77032A3E6D2D007E84D0 /* TokenManager.swift in Sources */,

@@ -15,6 +15,14 @@ enum TabType{
 }
 
 struct MainScreen: View {
+    class Route: AppRoute {
+        convenience init(container: AppContainer) {
+            self.init(identifier: String(describing: Self.self)) {
+                MainScreen(container: container)
+            }
+        }
+    }
+    
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
     
@@ -84,12 +92,12 @@ struct MainScreen: View {
                     }
                 }
             }
-        }.tint(.black)
+        }.navigationBarBackButtonHidden(true)
     }
 }
 
 
-struct TabBarItemView: View {
+fileprivate struct TabBarItemView: View {
     let systemName: String
     
     var body: some View {
