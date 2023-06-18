@@ -56,7 +56,6 @@ struct RootView: View {
         ProductsModelFactory.self,
         BrandModelFactory.self,
         CategoriesModelFactory.self,
-        ProfileRepository.self,
         CartModel.self,
         CartRemoteService.self,
         CartManager.self,

@@ -55,8 +55,8 @@ struct MainScreen: View {
             if(selection == TabType.profile){
                 ToolbarItem( placement: .navigationBarTrailing) {
                     Button(action: {
-                        router.push(AppRoute(identifier:3, content: {
-                            SettingView()
+                        router.push(AppRoute(identifier:TabType.profile, content: {
+                            SettingsView(container: container)
                         }
                                             ))
                     }) {
@@ -66,8 +66,9 @@ struct MainScreen: View {
             } else {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        router.push(AppRoute(identifier:3, content: {
-                            Text("")
+
+                        router.push(AppRoute(identifier:TabType.cart, content: {
+                            SearchView()
                         }))
                     }) {
                         Image(systemName: "magnifyingglass")
@@ -76,7 +77,9 @@ struct MainScreen: View {
                 
                 ToolbarItem( placement: .navigationBarTrailing) {
                     Button(action: {
-                        router.push(WishlistScreen.Route(container: container))
+                        router.push(AppRoute(identifier:TabType.home, content: {
+                            WishlistScreen(container: container)
+                        }))
                     }) {
                         Image(systemName: "heart")
                     }
