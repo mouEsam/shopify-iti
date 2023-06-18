@@ -27,7 +27,6 @@ struct MainScreen: View {
     }
     
     var body: some View {
-        
         TabView(selection: $selection) {
             HomePage(container: container)
                 .tabItem {
