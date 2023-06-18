@@ -18,7 +18,7 @@ class WishlistViewModel: ObservableObject {
     @Published private(set) var operationState: UIState<Void> = .initial
     
     private var cancellables: Set<AnyCancellable> = []
-    private var pageInfo: PageInfo? = nil
+    private(set) var pageInfo: PageInfo? = nil
     private var fetchTask: Task<Any, Error>? = nil
     
     init(model: some AnyWishlistModel,
@@ -34,14 +34,10 @@ class WishlistViewModel: ObservableObject {
     private func initialize() {
         wishlistManager.$state
             .prepend(wishlistManager.state)
-            .map(\.data?.id)
+            .map(\.bare)
             .removeDuplicates()
-            .sink { wishlistId in
-                if wishlistId == nil {
-                    self.clear()
-                } else {
-                    self.refetch()
-                }
+            .sink { state in
+                self.handleWishlistState(state)
             }.store(in: &cancellables)
         
         notificationCenter.publisher(for: WishlistRemovedEntryNotification.name)
@@ -110,6 +106,28 @@ class WishlistViewModel: ObservableObject {
             case .failure(let error):
                 await setError(error)
                 return
+        }
+    }
+    
+    private func handleWishlistState(_ state: BareResource) {
+        fetchTask?.cancel()
+        fetchTask = Task {
+            switch state {
+                case .loading:
+                    self.pageInfo = nil
+                    await self.setLoading()
+                    break
+                case .error:
+                    if let error = wishlistManager.state.error {
+                        self.pageInfo = nil
+                        await self.setError(error)
+                    }
+                    break
+                case .loaded:
+                    self.pageInfo = nil
+                    await self.fetchImpl()
+            }
+            return
         }
     }
     

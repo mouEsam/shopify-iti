@@ -102,7 +102,6 @@
 		04EA76EB2A3E6D2D007E84D0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA76442A3E6D2C007E84D0 /* Profile.swift */; };
 		04EA76EC2A3E6D2D007E84D0 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA76472A3E6D2C007E84D0 /* CartViewModel.swift */; };
 		04EA76ED2A3E6D2D007E84D0 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA76492A3E6D2C007E84D0 /* CartManager.swift */; };
-		04EA76EE2A3E6D2D007E84D0 /* AnyCartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA764A2A3E6D2C007E84D0 /* AnyCartManager.swift */; };
 		04EA76EF2A3E6D2D007E84D0 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA764C2A3E6D2C007E84D0 /* CartModel.swift */; };
 		04EA76F02A3E6D2D007E84D0 /* AnyCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA764D2A3E6D2C007E84D0 /* AnyCartModel.swift */; };
 		04EA76F12A3E6D2D007E84D0 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA764F2A3E6D2C007E84D0 /* CartView.swift */; };
@@ -189,6 +188,7 @@
 		D446F8E12A3EA64000C6361C /* AuthCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8E02A3EA64000C6361C /* AuthCard.swift */; };
 		D446F8E32A3EAA2C00C6361C /* RegisterValidationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8E22A3EAA2C00C6361C /* RegisterValidationErrors.swift */; };
 		D446F8E52A3EB26500C6361C /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8E42A3EB26500C6361C /* View.swift */; };
+		D446F8E82A3EBA4900C6361C /* WishlistItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8E72A3EBA4900C6361C /* WishlistItemView.swift */; };
 		D4596D892A33595100BD9E26 /* Shopify_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */; };
 		D4596D8A2A33595100BD9E26 /* Shopify_ITI_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4AAFA392A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */; };
@@ -308,7 +308,6 @@
 		04EA76442A3E6D2C007E84D0 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		04EA76472A3E6D2C007E84D0 /* CartViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		04EA76492A3E6D2C007E84D0 /* CartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
-		04EA764A2A3E6D2C007E84D0 /* AnyCartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCartManager.swift; sourceTree = "<group>"; };
 		04EA764C2A3E6D2C007E84D0 /* CartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		04EA764D2A3E6D2C007E84D0 /* AnyCartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCartModel.swift; sourceTree = "<group>"; };
 		04EA764F2A3E6D2C007E84D0 /* CartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
@@ -396,6 +395,7 @@
 		D446F8E02A3EA64000C6361C /* AuthCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCard.swift; sourceTree = "<group>"; };
 		D446F8E22A3EAA2C00C6361C /* RegisterValidationErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterValidationErrors.swift; sourceTree = "<group>"; };
 		D446F8E42A3EB26500C6361C /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		D446F8E72A3EBA4900C6361C /* WishlistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistItemView.swift; sourceTree = "<group>"; };
 		D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_Admin_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1025,7 +1025,6 @@
 			isa = PBXGroup;
 			children = (
 				04EA76492A3E6D2C007E84D0 /* CartManager.swift */,
-				04EA764A2A3E6D2C007E84D0 /* AnyCartManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1412,6 +1411,7 @@
 		04EA76AF2A3E6D2C007E84D0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D446F8E62A3EBA3600C6361C /* Widgets */,
 				04EA76B02A3E6D2C007E84D0 /* WishlistScreen.swift */,
 			);
 			path = Views;
@@ -1525,6 +1525,14 @@
 				D446F8DC2A3EA34900C6361C /* AuthTextField.swift */,
 				D446F8DE2A3EA36800C6361C /* AuthButton.swift */,
 				D446F8E02A3EA64000C6361C /* AuthCard.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		D446F8E62A3EBA3600C6361C /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				D446F8E72A3EBA4900C6361C /* WishlistItemView.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -1810,8 +1818,8 @@
 				04EA76CB2A3E6D2D007E84D0 /* ProductModel.swift in Sources */,
 				04EA7BD32A3E90C4007E84D0 /* LocalNotification.swift in Sources */,
 				04EA7BC62A3E7B81007E84D0 /* AnySettingModel.swift in Sources */,
-				04EA76EE2A3E6D2D007E84D0 /* AnyCartManager.swift in Sources */,
 				04EA77032A3E6D2D007E84D0 /* TokenManager.swift in Sources */,
+				D446F8E82A3EBA4900C6361C /* WishlistItemView.swift in Sources */,
 				04EA77132A3E6D2D007E84D0 /* AuthenticationRepository.swift in Sources */,
 				04CDB0A42A3A55C30064508B /* AnyValidator.swift in Sources */,
 				D446F8D72A3E8FEC00C6361C /* Colors.swift in Sources */,

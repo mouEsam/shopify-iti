@@ -9,9 +9,16 @@ import Foundation
 import SwiftUI
 
 struct WishlistScreen: View {
+    class Route: AppRoute {
+        convenience init(container: AppContainer) {
+            self.init(identifier: String(describing: Self.self)) {
+                WishlistScreen(container: container)
+            }
+        }
+    }
     
+    @EnvironmentRouter private var router: AppRouter
     @EnvironmentObject private var container: AppContainer
-
     @StateObject private var viewModel: WishlistViewModel
     
     init(container: AppContainer) {
@@ -24,30 +31,36 @@ struct WishlistScreen: View {
     }
     
     var body: some View {
-        List {
+        Group {
             switch viewModel.uiState {
                 case .loaded(let data):
-                    let data = data.data
-                    ForEach(data, id: \.id) { item in
-                        Text(item.name)
+                    Group {
+                        let data = data.data
+                        if data.isEmpty {
+                            Text("Empty")
+                        } else {
+                            List(data) { item in
+                                WishlistItemView(product: item.product)
+                            }.listStyle(.plain)
+                            if let hasNextCursor = viewModel.pageInfo?.hasNextCursor,
+                               hasNextCursor {
+                                ProgressView().onReceive(viewModel.$operationState) { state in
+                                    if !state.isLoading {
+                                        viewModel.fetch()
+                                    }
+                                }
+                            }
+                        }
                     }
                 case .error(let error):
                     Text("\(error.localizedDescription)")
                 case .loading:
-                    ProgressView()
+                    ProgressView().foregroundColor(.black)
                 default:
                     Group {}
             }
         }
-        .onAppear {
-            viewModel.fetch()
-        }
-        .padding()
         .onReceive(viewModel.$uiState) { state in
-            print(state)
-            print(state.data)
-        }
-        .onReceive(viewModel.$operationState) { state in
             print(state)
         }
     }
