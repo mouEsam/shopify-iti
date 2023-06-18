@@ -112,19 +112,17 @@ class WishlistViewModel: ObservableObject {
     private func handleWishlistState(_ state: BareResource) {
         fetchTask?.cancel()
         fetchTask = Task {
+            self.pageInfo = nil
             switch state {
                 case .loading:
-                    self.pageInfo = nil
                     await self.setLoading()
                     break
                 case .error:
                     if let error = wishlistManager.state.error {
-                        self.pageInfo = nil
                         await self.setError(error)
                     }
                     break
                 case .loaded:
-                    self.pageInfo = nil
                     await self.fetchImpl()
             }
             return
