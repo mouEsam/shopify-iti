@@ -106,6 +106,13 @@ extension UIState {
         return false
     }
     
+    var isLoaded: Bool {
+        if case .loaded(_) = self {
+            return true
+        }
+        return false
+    }
+    
     var isError: (any Error)? {
         if case let .error(error: error) = self {
             return error

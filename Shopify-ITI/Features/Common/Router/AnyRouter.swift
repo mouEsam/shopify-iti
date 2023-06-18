@@ -19,6 +19,9 @@ protocol AnyRouter: AnyObject, ObservableObject {
     
     init(path: NavigationPath)
     
+    var routesCount: Int { get }
+    var canPop: Bool { get }
+    
     func push(_ route: RouteType)
     func replace(_ route: RouteType)
     func pop()

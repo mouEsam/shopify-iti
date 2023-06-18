@@ -9,55 +9,90 @@ import Foundation
 import SwiftUI
 
 struct LoginScreen: View {
+    class Route: AppRoute {
+        convenience init(container: AppContainer) {
+            self.init(identifier: String(describing: Self.self)) {
+                LoginScreen(container: container)
+            }
+        }
+    }
+    
+    private let strings: any AnyAuthenticationStrings
+    private let colors: any AnyAuthenticationColors
     
     @EnvironmentObject private var container: AppContainer
-
+    @EnvironmentRouter private var router: AppRouter
+    
     @State private var validationError: String?
     @StateObject private var viewModel: LoginViewModel
     
     init(container: AppContainer) {
+        strings = container.require((any AnyAuthenticationStrings).self)
+        colors = container.require((any AnyAuthenticationColors).self)
         let repo = container.require((any AnyAuthenticationRepository).self)
         _viewModel = .init(wrappedValue: LoginViewModel(repository: repo))
     }
     
     var body: some View {
-        VStack {
-            Group {
-                TextField("Enter Email", text: $viewModel.email)
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .textCase(.lowercase)
-                    .textInputAutocapitalization(.never)
-                if let error = viewModel.emailError {
-                    Text(error)
-                        .foregroundColor(.red)
-                        .padding()
-                }
-            }
+        VStack(spacing: 16) {
+            AuthTopBarDecor(barColor: colors.grey,
+                             circleColor: colors.black)
+            .alignmentGuide(.top) { dimen in dimen[.top] }
             
-            Group {
-                TextField("Enter Password", text: $viewModel.password)
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                if let error = viewModel.passwordError {
-                    Text(error)
-                        .foregroundColor(.red)
-                        .padding()
+            ScrollView {
+                Spacer().frame(height: 12)
+                VStack {
+                    Text(strings.loginLabel.localized)
+                        .font(.title)
+                    Text(strings.loginSublabel.localized)
+                        .font(.largeTitle)
+                        .textCase(.uppercase)
+                        .fontWeight(.semibold)
                 }
+                AuthCard(shadowColor: colors.dark2Grey.opacity(0.3),
+                         backgroundColor: colors.white) {
+                    AuthTextField(text: $viewModel.email,
+                                  label: strings.emailLabel,
+                                  hint: strings.emailHint,
+                                  error: viewModel.emailError,
+                                  strokeColor: colors.dark2Grey)
+                        .autocapitalization(.none)
+                        .textCase(.lowercase)
+                        .keyboardType(.emailAddress)
+                    
+                    AuthTextField(text: $viewModel.password,
+                                  label: strings.passwordLabel,
+                                  hint: strings.passwordHint,
+                                  error: viewModel.passwordError,
+                                  strokeColor: colors.dark2Grey,
+                                  obsecurable: true)
+                    Button(strings.forgotPassword.localized) {
+                        // TODO: implement
+                    }
+                    AuthButton(label: strings.loginAction.localized,
+                               labelColor: colors.white,
+                               backgroundColor: colors.black,
+                               isLoading: viewModel.operationState.isLoading) {
+                        Task {
+                            await viewModel.login()
+                        }
+                    }
+                    Button(strings.signupAction.localized) {
+                        router.push(RegisterScreen.Route(container: container))
+                    }
+                }.buttonStyle(.plain)
+                Spacer()
             }
-            
-            Button("Submit") {
-                Task {
-                    await viewModel.login()
-                }
-            }
-            .disabled(viewModel.emailError == nil &&
-                      viewModel.passwordError != nil)
         }
-        .onAppear {}
-        .padding()
-        .onReceive(viewModel.$operationState) { state in
-            print(state)
+        .disabled(viewModel.operationState.isLoading)
+        .onReceive(viewModel.$operationState, perform: { state in
+            if state.isLoaded {
+                router.pop()
+            }
+        })
+        .toolbar(.hidden)
+        .onBackSwipe {
+            router.pop()
         }
     }
 }

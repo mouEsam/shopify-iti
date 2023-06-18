@@ -63,17 +63,15 @@ struct RootView: View {
 
         CartIdStore.self,
         WishlistModelFactory.self,
+        AuthenticationStrings.self,
+        AuthenticationColors.self,
         SettingModel.self
     ])
     
     var body: some View {
-       
        RouterView(router: AppRouter()) {
-            // Root
             MainScreen(container: container)
-
         }
-
         .environmentObject(container)
     }
 }

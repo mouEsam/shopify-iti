@@ -37,6 +37,9 @@ class AppRouter: ObservableObject, AnyRouter {
         path.append(AppRouteWrapper(route: root))
     }
     
+    var routesCount: Int { path.count }
+    var canPop: Bool { !path.isEmpty }
+    
     func push(_ route: RouteType) {
         path.append(AppRouteWrapper(route: route))
     }
