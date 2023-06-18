@@ -6,23 +6,24 @@
 //
 
 import SwiftUI
+
 enum TabType{
     case home
     case categories
     case cart
     case profile
 }
+
 struct MainScreen: View {
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
     
     @State var selection:TabType = .home
     
-    let cartManager : CartManager
+    private let cartManager : CartManager
     
     init(container: AppContainer) {
         cartManager = container.require(CartManager.self)
-        
     }
     
     var body: some View {
@@ -41,7 +42,7 @@ struct MainScreen: View {
                 .tabItem {
                     TabBarItemView(systemName: "cart")
                     
-                }.badge(cartManager.state.data?.cartLine.count ?? 1)
+                }.badge(cartManager.state.data?.cartLine.count ?? 0)
                 .tag(TabType.cart)
             
             ProfilePage(container: container)
@@ -52,7 +53,7 @@ struct MainScreen: View {
             
         } .toolbar {
             if(selection == TabType.profile){
-                ToolbarItem( placement: .navigationBarTrailing, content: {
+                ToolbarItem( placement: .navigationBarTrailing) {
                     Button(action: {
                         router.push(AppRoute(identifier:3, content: {
                             SettingView()
@@ -62,35 +63,26 @@ struct MainScreen: View {
                         Image(systemName: "gearshape")
                     }
                 }
-                )
-            }
-            else{
-                ToolbarItem( placement: .navigationBarLeading, content: {
+            } else {
+                ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         router.push(AppRoute(identifier:3, content: {
-                            SearchView()
+                            Text("")
                         }))
                     }) {
                         Image(systemName: "magnifyingglass")
                     }
-                })
+                }
                 
-                ToolbarItem( placement: .navigationBarTrailing, content: {
+                ToolbarItem( placement: .navigationBarTrailing) {
                     Button(action: {
-                        router.push(AppRoute(identifier:3, content: {
-                            WishlistScreen(container: container)
-                        }))
+                        router.push(WishlistScreen.Route(container: container))
                     }) {
                         Image(systemName: "heart")
                     }
                 }
-                )
             }
         }.tint(.black)
-
-           
-                
-            
     }
 }
 

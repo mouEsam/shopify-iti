@@ -34,9 +34,9 @@ protocol ProductConvertible: Identifiable {
 extension Product {
     init(from product: some ProductConvertible) {
         self.init(id : product.id,
-                  handle : product.id,
-                  title : product.id,
-                  description : product.id,
+                  handle : product.handle,
+                  title : product.title,
+                  description : product.description,
                   featuredImage : product.featuredImage.map { RemoteImage(from: $0) },
                   priceRange : PriceRange(from: product.priceRange),
                   variantId: product.variantId)
