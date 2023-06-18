@@ -50,7 +50,7 @@ struct WishlistRemoteService: AnyInjectable {
                     return .failure(WishlistError.NotFound)
                 }
             } else {
-                return .failure(WishlistError.Unknown)
+                return .failure(WishlistError.init(from: result.errors ?? []))
             }
         }
     }
@@ -87,7 +87,7 @@ struct WishlistRemoteService: AnyInjectable {
                     return .failure(WishlistError.Generic(genericErrors: errors))
                 }
             } else {
-                return .failure(WishlistError.Unknown)
+                return .failure(WishlistError.init(from: result.errors ?? []))
             }
         }
     }
@@ -105,7 +105,7 @@ struct WishlistRemoteService: AnyInjectable {
                     return .failure(WishlistError.Generic(genericErrors: errors))
                 }
             } else {
-                return .failure(WishlistError.Unknown)
+                return .failure(WishlistError.init(from: result.errors ?? []))
             }
         }
     }
@@ -130,7 +130,7 @@ struct WishlistRemoteService: AnyInjectable {
                     return .failure(WishlistError.Generic(genericErrors: errors))
                 }
             } else {
-                return .failure(WishlistError.Unknown)
+                return .failure(WishlistError.init(from: result.errors ?? []))
             }
         }
     }

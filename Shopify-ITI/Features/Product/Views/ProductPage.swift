@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct ProductPage: View {
+    class Route: AppRoute {
+        convenience init(container: AppContainer, productId: String) {
+            self.init(identifier: String(describing: Self.self)) {
+                ProductPage(container: container, productId: productId)
+            }
+        }
+    }
     
     @EnvironmentObject private var container: AppContainer
 

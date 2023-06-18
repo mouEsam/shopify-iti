@@ -10,6 +10,7 @@ import SwiftUI
 
 struct WishlistItemView: View {
     
+    @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
     private let product: Product
     
@@ -18,20 +19,24 @@ struct WishlistItemView: View {
     }
     
     var body: some View {
-        HStack(alignment: .top) {
-            AsyncImage(url: URL(string:  product.featuredImage?.url ?? "")) { image in
-                image.resizable()
-            } placeholder: {
-                ProgressView()
-            }.aspectRatio(contentMode: .fit)
-                .frame(width: 100,height: 100)
-                .padding()
-            Text(product.title)
-                .font(.headline)
-                .padding()
+        Button(action: {
+            router.push(ProductPage.Route(container: container, productId: product.id))
+        }) {
+            HStack(alignment: .top) {
+                AsyncImage(url: URL(string:  product.featuredImage?.url ?? "")) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
+                }.aspectRatio(contentMode: .fit)
+                    .frame(width: 100,height: 100)
+                    .padding()
+                Text(product.title)
+                    .font(.headline)
+                    .padding()
+            }
+            .background(Color.white)
+            .cornerRadius(10)
+            .shadow(radius: 2)
         }
-        .background(Color.white)
-        .cornerRadius(10)
-        .shadow(radius: 2)
     }
 }

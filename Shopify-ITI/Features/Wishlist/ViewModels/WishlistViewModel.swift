@@ -27,11 +27,9 @@ class WishlistViewModel: ObservableObject {
         self.model = model
         self.wishlistManager = wishlistManager
         self.notificationCenter = notificationCenter
-        
-        initialize()
     }
     
-    private func initialize() {
+    func initialize() {
         wishlistManager.$state
             .prepend(wishlistManager.state)
             .map(\.bare)
@@ -89,23 +87,25 @@ class WishlistViewModel: ObservableObject {
     }
     
     private func fetchImpl() async {
-        guard let wishlistId = wishlistManager.state.data?.id else { return }
-        await updateState(.loading, .loading)
-        let result = await model.fetch(for: wishlistId, with: pageInfo)
-        
-        guard !Task.isCancelled else { return }
-        
-        switch result {
-            case .success(let page):
-                let page = page.data
-                var existingList = uiState.data ?? []
-                existingList.append(contentsOf: page.list)
-                await setLoaded(existingList)
-                pageInfo = page.pageInfo
-                return
-            case .failure(let error):
-                await setError(error)
-                return
+        if let wishlistId = wishlistManager.state.data?.id {
+            await updateState(.loading, .loading)
+            let result = await model.fetch(for: wishlistId, with: pageInfo)
+            
+            guard !Task.isCancelled else { return }
+            switch result {
+                case .success(let page):
+                    let page = page.data
+                    var existingList = uiState.data ?? []
+                    existingList.append(contentsOf: page.list)
+                    await setLoaded(existingList)
+                    pageInfo = page.pageInfo
+                    return
+                case .failure(let error):
+                    await setError(error)
+                    return
+            }
+        } else {
+            await setLoaded([])
         }
     }
     
@@ -118,6 +118,7 @@ class WishlistViewModel: ObservableObject {
                     await self.setLoading()
                     break
                 case .error:
+                    wishlistManager.refreshState()
                     if let error = wishlistManager.state.error {
                         await self.setError(error)
                     }

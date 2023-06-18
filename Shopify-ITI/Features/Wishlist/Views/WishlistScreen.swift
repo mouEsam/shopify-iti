@@ -60,8 +60,8 @@ struct WishlistScreen: View {
                     Group {}
             }
         }
-        .onReceive(viewModel.$uiState) { state in
-            print(state)
+        .onFirstAppear {
+            viewModel.initialize()
         }
     }
 }

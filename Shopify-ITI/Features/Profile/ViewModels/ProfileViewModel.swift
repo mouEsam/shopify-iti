@@ -10,18 +10,18 @@ import SwiftUI
  //TODO: refactor
 class ProfileViewModel : ObservableObject{
 
-    let authenticationManager:AuthenticationManager
+    @Published private(set) var userState: Optional<User> = .none
+    private let authenticationManager: AuthenticationManager
+    
     init(authenticationManager: AuthenticationManager) {
         self.authenticationManager = authenticationManager
-        
-    }
-    func getName()->String?{
-        authenticationManager.refreshState()
-
-        return authenticationManager.state.user?.firstName
-        
     }
     
-
+    func initialize() {
+        authenticationManager.$state
+            .prepend(authenticationManager.state)
+            .map(\.user)
+            .assign(to: &$userState)
+    }
     
 }
