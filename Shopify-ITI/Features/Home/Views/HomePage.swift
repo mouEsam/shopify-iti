@@ -46,34 +46,6 @@ struct HomePage: View {
                 }
             }
         }
-    
-        .toolbar {
-            
-            ToolbarItem( placement: .navigationBarLeading, content: {
-                Button(action: {
-                    router.push(AppRoute(identifier:3, content: {
-                        SearchView()
-                    }))
-                }) {
-                    Image(systemName: "magnifyingglass")
-                }
-            })
-            
-            ToolbarItem( placement: .navigationBarTrailing, content: {
-                Button(action: {
-                    router.push(AppRoute(identifier:3, content: {
-                        FavouriteView()
-                    }))
-                }) {
-                    Image(systemName: "heart")
-                }
-                
-            }
-            )
-        }
-        .onReceive(viewModel.$operationState){ state in
-            print(state)
-        }
         .onFirstTask {
             await viewModel.loadBrand(numberOfItem: 11)
         }

@@ -6,19 +6,32 @@
 //
 
 import SwiftUI
-
+enum TabType{
+    case home
+    case categories
+    case cart
+    case profile
+}
 struct MainScreen: View {
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
     
-    @State var badgeCount = 1
+    @State var selection:TabType = .home
+    
+    let cartManager : CartManager
+    
+    init(container: AppContainer) {
+        cartManager = container.require(CartManager.self)
+        
+    }
+    
     var body: some View {
-        TabView {
-            
+        
+        TabView(selection: $selection) {
             HomePage(container: container)
                 .tabItem {
                     TabBarItemView(systemName: "house")
-                }
+                }.tag(TabType.home)
             
             CategoriesPage(container: container)
                 .tabItem {
@@ -28,20 +41,60 @@ struct MainScreen: View {
                 .tabItem {
                     TabBarItemView(systemName: "cart")
                     
-                }.badge(badgeCount)
+                }.badge(cartManager.state.data?.cartLine.count ?? 1)
+                .tag(TabType.cart)
+            
             ProfilePage(container: container)
+                .tag(TabType.profile)
                 .tabItem {
                     TabBarItemView(systemName: "person")
                 }
+            
+        } .toolbar {
+            if(selection == TabType.profile){
+                ToolbarItem( placement: .navigationBarTrailing, content: {
+                    Button(action: {
+                        router.push(AppRoute(identifier:3, content: {
+                            SettingView()
+                        }
+                                            ))
+                    }) {
+                        Image(systemName: "gearshape")
+                    }
+                }
+                )
+            }
+            else{
+                ToolbarItem( placement: .navigationBarLeading, content: {
+                    Button(action: {
+                        router.push(AppRoute(identifier:3, content: {
+                            SearchView()
+                        }))
+                    }) {
+                        Image(systemName: "magnifyingglass")
+                    }
+                })
+                
+                ToolbarItem( placement: .navigationBarTrailing, content: {
+                    Button(action: {
+                        router.push(AppRoute(identifier:3, content: {
+                            WishlistScreen(container: container)
+                        }))
+                    }) {
+                        Image(systemName: "heart")
+                    }
+                }
+                )
+            }
         }.tint(.black)
+
+           
+                
+            
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainScreen()
-    }
-}
+
 struct TabBarItemView: View {
     let systemName: String
     

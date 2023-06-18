@@ -65,14 +65,12 @@ struct RootView: View {
         WishlistModelFactory.self,
         AuthenticationStrings.self,
         AuthenticationColors.self,
+        SettingModel.self
     ])
     
     var body: some View {
-       
        RouterView(router: AppRouter()) {
-            // Root
-           LoginScreen(container: container)
-
+            MainScreen(container: container)
         }
         .environmentObject(container)
     }
