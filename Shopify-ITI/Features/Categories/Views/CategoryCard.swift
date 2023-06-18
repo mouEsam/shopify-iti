@@ -8,25 +8,33 @@
 import Foundation
 import SwiftUI
 struct CardCategory : View {
-    let title: String
+    @EnvironmentRouter private var router: AppRouter
+    @EnvironmentObject private var container: AppContainer
+    
+    let item: ProductType
+    let idOfCollection : String
     var body: some View {
-        VStack {
-            Image(title)
-                .resizable()
-                .frame(maxWidth: .infinity, maxHeight: 90)
-                .padding(4)
-            
-            Text(String(title))
-                .font(.callout)
-                .fontWeight(.bold)
-                .foregroundColor(.black).padding(4)
-            
-            
-        }.frame(height: 150)
-            .background(Color.white)
-            .cornerRadius(10)
-            .shadow(radius: 2)
-        
+        Button(action: {router.push(AppRoute(identifier: item.id, content:{
+            ProductsScreen(container: container, criterion: [.collection:idOfCollection,.type:item.productType])}))}
+               , label: {
+            VStack {
+                Image(item.productType.lowercased())
+                    .resizable()
+                    .frame(maxWidth: .infinity, maxHeight: 90)
+                    .padding(4)
+                
+                Text(item.productType)
+                    .font(.callout)
+                    .fontWeight(.bold)
+                    .foregroundColor(.black).padding(4)
+                
+                
+            }.frame(height: 150)
+                .background(Color.white)
+                .cornerRadius(10)
+                .shadow(radius: 2)
+        })
+               
         
     }
 }

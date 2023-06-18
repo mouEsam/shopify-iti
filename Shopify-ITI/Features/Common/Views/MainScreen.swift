@@ -16,31 +16,33 @@ struct MainScreen: View {
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
     
-    @State var badgeCount = 1
     @State var selection:TabType = .home
     
+    let cartManager : CartManager
+    
+    init(container: AppContainer) {
+        cartManager = container.require(CartManager.self)
+        
+    }
+    
     var body: some View {
-
+        
         TabView(selection: $selection) {
-          
-
             HomePage(container: container)
-            
                 .tabItem {
                     TabBarItemView(systemName: "house")
                 }.tag(TabType.home)
             
             CategoriesPage(container: container)
-              
                 .tabItem {
                     TabBarItemView(systemName: "list.bullet")
                 }
             CartView(container: container)
-
                 .tabItem {
                     TabBarItemView(systemName: "cart")
                     
-                }.badge(badgeCount).tag(TabType.cart)
+                }.badge(cartManager.state.data?.cartLine.count ?? 1)
+                .tag(TabType.cart)
             
             ProfilePage(container: container)
                 .tag(TabType.profile)
@@ -52,16 +54,13 @@ struct MainScreen: View {
             if(selection == TabType.profile){
                 ToolbarItem( placement: .navigationBarTrailing, content: {
                     Button(action: {
-                        
                         router.push(AppRoute(identifier:3, content: {
-                           FavouriteView()
+                            SettingView()
                         }
                                             ))
                     }) {
-                        
                         Image(systemName: "gearshape")
                     }
-                    
                 }
                 )
             }
@@ -75,7 +74,7 @@ struct MainScreen: View {
                         Image(systemName: "magnifyingglass")
                     }
                 })
-
+                
                 ToolbarItem( placement: .navigationBarTrailing, content: {
                     Button(action: {
                         router.push(AppRoute(identifier:3, content: {
@@ -84,20 +83,18 @@ struct MainScreen: View {
                     }) {
                         Image(systemName: "heart")
                     }
-                    
                 }
                 )
             }
-           
         }.tint(.black)
+
+           
+                
+            
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainScreen()
-    }
-}
+
 struct TabBarItemView: View {
     let systemName: String
     

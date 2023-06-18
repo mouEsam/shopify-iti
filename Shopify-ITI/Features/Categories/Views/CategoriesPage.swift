@@ -12,7 +12,7 @@ struct CategoriesPage: View {
 
     @StateObject private var viewModel:  CategoriesViewModel
     
-    @State private var CollectionTypePicked = 0
+    @State private var collectionTypePicked = 0
     
     init(container: AppContainer) {
         let model = container.require((any AnyCategoriesModelFactory).self).create()
@@ -28,14 +28,14 @@ struct CategoriesPage: View {
     var body: some View {
             ScrollView{
                 VStack {
-                    Picker("", selection: $CollectionTypePicked) {
+                    Picker("", selection: $collectionTypePicked) {
                         ForEach(arr.indices){index in
                             Text(arr[index].rawValue).tag(index)
                         }
                     }
                     .pickerStyle(.segmented)
                     .padding()
-                    .onChange(of: CollectionTypePicked){newValue in
+                    .onChange(of: collectionTypePicked){newValue in
                         Task{
                             await viewModel.loadCategories(CollectionName: arr[newValue].apiHandle)
                         }
@@ -46,7 +46,7 @@ struct CategoriesPage: View {
                     case .loaded(data: let productCollections):
                         LazyVGrid(columns: createGridColumns(), spacing: 16) {
                             ForEach(productCollections.data,id: \.id) { item in
-                                CardCategory(title: item.productType.lowercased())
+                                CardCategory(item: item, idOfCollection: arr[collectionTypePicked].apiID)
                             }
                         }
                         .padding()
@@ -64,7 +64,7 @@ struct CategoriesPage: View {
                 
             }.task{
 
-                await viewModel.loadCategories(CollectionName: arr[CollectionTypePicked].apiHandle)
+                await viewModel.loadCategories(CollectionName: arr[collectionTypePicked].apiHandle)
             }
             
         
@@ -76,23 +76,11 @@ func createGridColumns() -> [GridItem] {
 }
 
 
-
-struct SearchView: View {
-    
-    var body: some View {
-        Text("SearchView")
-            .font(.largeTitle)
-    }
-}
 struct SettingView: View {
     var body: some View {
         Text("SettingView")
             .font(.largeTitle)
     }
 }
-struct FavouriteView: View {
-    var body: some View {
-        Text("Fav View ")
-    }
-}
+
 

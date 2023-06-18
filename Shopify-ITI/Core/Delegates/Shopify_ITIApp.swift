@@ -70,7 +70,7 @@ struct RootView: View {
        
        RouterView(router: AppRouter()) {
             // Root
-            MainScreen()
+            MainScreen(container: container)
 
         }
 
