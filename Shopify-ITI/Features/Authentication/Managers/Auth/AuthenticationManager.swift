@@ -19,6 +19,11 @@ class AuthenticationManager: AnyInjectable {
         }
     }
     
+    @globalActor
+    actor Actor {
+        static let shared: Actor = Actor()
+    }
+    
     private let userManager: any AnyUserManager
     private let tokenManager: any AnyTokenManager
     private let guestManager: any AnyGuestManager
@@ -88,7 +93,7 @@ class AuthenticationManager: AnyInjectable {
         }
     }
     
-    func setUser(user: User, token: AccessToken, persist: Bool = true) -> Result<Session, LocalErrors> {
+    @Actor func setUser(user: User, token: AccessToken, persist: Bool = true) -> Result<Session, LocalErrors> {
         let userResult = userManager.setUser(user: user, persist: persist)
         if case let .failure(error) = userResult {
             return .failure(error)
@@ -100,7 +105,7 @@ class AuthenticationManager: AnyInjectable {
         }
     }
     
-    func setGuest(guest: Guest, persist: Bool = true) -> Result<Guest, LocalErrors> {
+    @Actor func setGuest(guest: Guest, persist: Bool = true) -> Result<Guest, LocalErrors> {
         return guestManager.setGuest(guest: guest, persist: persist).map { _ in guest }
     }
     
@@ -111,12 +116,17 @@ class AuthenticationManager: AnyInjectable {
     
     private func logoutImpl() async {
         if case .success(_) = await authService.signout() {
-            delete()
+            await deleteImpl()
             notificationCenter.post(EndSessionNotification())
         }
     }
     
     func delete() {
+        task?.cancel()
+        task = Task { await self.deleteImpl() }
+    }
+    
+    @Actor private func deleteImpl() {
         userManager.delete()
         tokenManager.delete()
         guestManager.delete()

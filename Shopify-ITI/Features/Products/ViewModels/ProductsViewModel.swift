@@ -11,6 +11,11 @@ import Combine
 class ProductsViewModel: ObservableObject {
     typealias Criterion = [ProductSearchCriteria : String]
     
+    @globalActor
+    actor Actor {
+        static let shared: Actor = Actor()
+    }
+    
     private let model: any AnyProductsModel
     private let wishlistManager: WishlistManager
     private let notificationCenter: any AnyNotificationCenter
@@ -105,6 +110,10 @@ class ProductsViewModel: ObservableObject {
         
         guard !Task.isCancelled else { return }
         
+        await handleFetchResult(result)
+    }
+    
+    @Actor private func handleFetchResult(_ result: Result<SourcedData<PageResult<Product>>, ShopifyErrors<Any>>) async {
         switch result {
             case .success(let page):
                 let page =  page.data
@@ -143,6 +152,12 @@ class ProductsViewModel: ObservableObject {
     }
     
     private func setWishlisted(_ entry: WishListEntry, _ wishlisted: Bool) {
+        Task {
+            await setWishlistedImpl(entry, wishlisted)
+        }
+    }
+    
+    @Actor private func setWishlistedImpl(_ entry: WishListEntry, _ wishlisted: Bool) {
         if var list = uiState.data,
            let index = list.firstIndex(where: { $0.id == entry.productId }){
             let item = list[index].copyWith(isWishlisted: wishlisted)

@@ -18,11 +18,6 @@ class WishlistManager : AnyInjectable {
                             authManager: resolver.require(AuthenticationManager.self))
         }
     }
-    
-    @globalActor
-    fileprivate actor Actor {
-        static let shared: Actor = Actor()
-    }
 
     
     typealias State = Resource<Wishlist>
@@ -182,14 +177,13 @@ class WishlistManager : AnyInjectable {
         }
     }
     
-    @Actor func toggleItem(_ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>> {
-        if case .loading = state {
-            _ = await task?.result
+    func toggleItem(_ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>> {
+        return await doAction {
+            if case .error(let error) = self.state {
+                return .failure(.Client(error: error))
+            }
+            return await self.toggleItemImpl(item, self.state.data)
         }
-        if case .error(let error) = state {
-            return .failure(.Client(error: error))
-        }
-        return await toggleItemImpl(item, state.data)
     }
     
     private func toggleItemImpl(_ item: WishListEntry, _ wishlist: Wishlist?) async -> Result<Void, ShopifyErrors<Any>> {
@@ -204,14 +198,13 @@ class WishlistManager : AnyInjectable {
         }
     }
     
-    @Actor func addItem(_ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>> {
-        if case .loading = state {
-            _ = await task?.result
+    func addItem(_ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>> {
+        return await doAction {
+            if case .error(let error) = self.state {
+                return .failure(.Client(error: error))
+            }
+            return await self.addItemImpl(item, self.state.data)
         }
-        if case .error(let error) = state {
-            return .failure(.Client(error: error))
-        }
-        return await addItemImpl(item, state.data)
     }
     
     private func addItemImpl(_ item: WishListEntry, _ wishlist: Wishlist?) async -> Result<Void, ShopifyErrors<Any>> {
@@ -226,14 +219,23 @@ class WishlistManager : AnyInjectable {
         return await createList(item)
     }
     
-    @Actor func removeItem(_ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>> {
-        if case .loading = state {
-            _ = await task?.result
+    func removeItem(_ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>> {
+        return await doAction {
+            if case .error(let error) = self.state {
+                return .failure(.Client(error: error))
+            }
+            return await self.removeItemImpl(item, self.state.data)
         }
-        if case .error(let error) = state {
-            return .failure(.Client(error: error))
+    }
+    
+    private func doAction(_ action: @escaping () async -> Result<Void, ShopifyErrors<Any>>) async -> Result<Void, ShopifyErrors<Any>> {
+        _ = await task?.result
+        guard task?.isCancelled != true else { return .failure(.Cancelled) }
+        let task: Task<Result<Void, ShopifyErrors<Any>>, Error> = Task {
+            return await action()
         }
-        return await removeItemImpl(item, state.data)
+        self.task = Task { await task.result }
+        return try! await task.value
     }
     
     private func removeItemImpl(_ item: WishListEntry, _ wishlist: Wishlist?) async -> Result<Void, ShopifyErrors<Any>> {

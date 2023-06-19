@@ -27,6 +27,7 @@ struct OnboardingScreen: View {
     private let animationDuration: UInt64 = 2
     private let visibilityDuration: UInt64 = 3
     @State private var isVisible = false
+    @State private var task: Task<Any, Error>? = nil
     
     private var authManager: AuthenticationManager
     
@@ -41,7 +42,10 @@ struct OnboardingScreen: View {
                 .ignoresSafeArea(.all)
             VStack(alignment: .trailing) {
                 Button(strings.onboardingSkip) {
-                    _ = authManager.setGuest(guest: Guest())
+                    task?.cancel()
+                    task = Task {
+                        _ = await authManager.setGuest(guest: Guest())
+                    }
                 }
                 .buttonStyle(.bordered)
                 .padding()

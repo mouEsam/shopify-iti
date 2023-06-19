@@ -203,6 +203,7 @@
 		D49D04172A40B41D00459DC7 /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D04162A40B41D00459DC7 /* PriceView.swift */; };
 		D49D04192A40DB2800459DC7 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D04182A40DB2800459DC7 /* Object.swift */; };
 		D49D041B2A40ED0500459DC7 /* PostPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D041A2A40ED0500459DC7 /* PostPublished.swift */; };
+		D49D041D2A41149500459DC7 /* Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D041C2A41149500459DC7 /* Lock.swift */; };
 		D4AAFA392A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */; };
 		D4AAFA3A2A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -421,6 +422,7 @@
 		D49D04162A40B41D00459DC7 /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
 		D49D04182A40DB2800459DC7 /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		D49D041A2A40ED0500459DC7 /* PostPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPublished.swift; sourceTree = "<group>"; };
+		D49D041C2A41149500459DC7 /* Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lock.swift; sourceTree = "<group>"; };
 		D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_Admin_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0A81DAC848D79B6DAFA2A4 /* Pods-Shopify-ITI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.release.xcconfig"; sourceTree = "<group>"; };
@@ -550,6 +552,7 @@
 				D446F8D62A3E8FEC00C6361C /* Colors.swift */,
 				D49D04182A40DB2800459DC7 /* Object.swift */,
 				D49D041A2A40ED0500459DC7 /* PostPublished.swift */,
+				D49D041C2A41149500459DC7 /* Lock.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1814,6 +1817,7 @@
 				04CDB0AC2A3A55C30064508B /* ApolloGraphQLClient.swift in Sources */,
 				04EA76DF2A3E6D2D007E84D0 /* MetaField.swift in Sources */,
 				04CDB0B32A3A55C30064508B /* ConfigsProvider.swift in Sources */,
+				D49D041D2A41149500459DC7 /* Lock.swift in Sources */,
 				04EA770F2A3E6D2D007E84D0 /* UserLocalStore.swift in Sources */,
 				04EA77212A3E6D2D007E84D0 /* ADModel.swift in Sources */,
 				04B4FBC82A3EA12800DD5017 /* SearchView.swift in Sources */,
