@@ -18,7 +18,7 @@ struct ProductsScreen: View {
     }
     
     @EnvironmentObject private var container: AppContainer
-
+    
     @StateObject private var viewModel: ProductsViewModel
     
     init(container: AppContainer, criterion: ProductsViewModel.Criterion) {
@@ -32,31 +32,64 @@ struct ProductsScreen: View {
     }
     
     var body: some View {
-        List {
+        Group {
             switch viewModel.uiState {
                 case .loaded(let data):
                     let data = data.data
-                    ForEach(data, id: \.id) { item in
-                        Text(item.product.title)
+                    if data.isEmpty {
+                        Text("Empty") // TODO: Localize
+                    } else {
+                        GeometryReader { geometryProxy in
+                            ScrollView {
+                                LazyVGrid(columns: createGridItems(geometryProxy.size.width),
+                                          alignment: .center,
+                                          spacing: 10) {
+                                    ForEach(data) { item in
+                                        ProductItemView(product: item.product,
+                                                        isWishlisted: item.isWishlisted) {
+                                            Task {
+                                                _ = await viewModel.toggleWishlist(item: item.product)
+                                            }
+                                        }.aspectRatio(0.6, contentMode: .fit)
+                                    }
+                                }
+                                .padding(.horizontal, 10)
+                                
+                                if let hasNextCursor = viewModel.pageInfo?.hasNextCursor,
+                                   hasNextCursor {
+                                    let progressView = ProgressView()
+                                        .frame(maxWidth: .infinity,
+                                               alignment: .center)
+                                    if !viewModel.operationState.isLoading {
+                                        progressView.onFirstAppear {
+                                            viewModel.fetch()
+                                        }
+                                    } else {
+                                        progressView
+                                    }
+                                }
+                            }
+                        }
+                        
                     }
                 case .error(let error):
                     Text("\(error.localizedDescription)")
-                case .loading:
-                    ProgressView()
                 default:
-                    Group {}
+                    ProgressView().foregroundColor(.black)
             }
         }
-        .onAppear {
-            viewModel.fetch()
+        .onFirstAppear {
+            viewModel.initialize()
         }
-        .padding()
-        .onReceive(viewModel.$uiState) { state in
-            print(state)
-            print(state.data)
-        }
-        .onReceive(viewModel.$operationState) { state in
-            print(state)
-        }
+    }
+    
+    private func createGridItems(_ width: Double) -> [GridItem] {
+        let roughCount = width / 150
+        let count = Int(floor(roughCount))
+        let columns: [GridItem] = Array(repeating: .init(.adaptive(minimum: 200, maximum: 250),
+                                                         spacing: 10,
+                                                         alignment: .center),
+                                        count: count)
+        return columns
     }
 }
