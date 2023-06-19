@@ -42,7 +42,15 @@ struct WishlistScreen: View {
                             List {
                                 ForEach(data) { item in
                                     WishlistItemView(product: item.product) {
-                                        await viewModel.remove(item: item)
+                                        let result = await viewModel.remove(item: item)
+                                        await MainActor.run {
+                                            if case .failure(let error) = result {
+                                                router.alert(item: ErrorWrapper(error: error)) { wrapper in
+                                                    Alert(title: Text("Error"), // TODO: localize
+                                                          message: Text(wrapper.error.localizedDescription))
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                                 if let hasNextCursor = viewModel.pageInfo?.hasNextCursor,
