@@ -198,6 +198,9 @@
 		D446F8E82A3EBA4900C6361C /* WishlistItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D446F8E72A3EBA4900C6361C /* WishlistItemView.swift */; };
 		D4596D892A33595100BD9E26 /* Shopify_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */; };
 		D4596D8A2A33595100BD9E26 /* Shopify_ITI_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D49D04122A40AF5000459DC7 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D04112A40AF5000459DC7 /* RemoteImageView.swift */; };
+		D49D04152A40B2FF00459DC7 /* VariantItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D04142A40B2FF00459DC7 /* VariantItemView.swift */; };
+		D49D04172A40B41D00459DC7 /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D04162A40B41D00459DC7 /* PriceView.swift */; };
 		D4AAFA392A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */; };
 		D4AAFA3A2A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -411,6 +414,9 @@
 		D446F8E42A3EB26500C6361C /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		D446F8E72A3EBA4900C6361C /* WishlistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistItemView.swift; sourceTree = "<group>"; };
 		D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D49D04112A40AF5000459DC7 /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
+		D49D04142A40B2FF00459DC7 /* VariantItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariantItemView.swift; sourceTree = "<group>"; };
+		D49D04162A40B41D00459DC7 /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
 		D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_Admin_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0A81DAC848D79B6DAFA2A4 /* Pods-Shopify-ITI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.release.xcconfig"; sourceTree = "<group>"; };
@@ -887,6 +893,7 @@
 		04EA76132A3E6D2C007E84D0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D49D04132A40B2ED00459DC7 /* Widgets */,
 				04EA76142A3E6D2C007E84D0 /* ProductPage.swift */,
 			);
 			path = Views;
@@ -1574,6 +1581,8 @@
 				D446F8DE2A3EA36800C6361C /* RoundedButton.swift */,
 				D415D6792A40158700F3362B /* PriceRangeView.swift */,
 				D415D67B2A4018F200F3362B /* WishlistBag.swift */,
+				D49D04112A40AF5000459DC7 /* RemoteImageView.swift */,
+				D49D04162A40B41D00459DC7 /* PriceView.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -1634,6 +1643,14 @@
 			isa = PBXGroup;
 			children = (
 				D446F8E72A3EBA4900C6361C /* WishlistItemView.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		D49D04132A40B2ED00459DC7 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				D49D04142A40B2FF00459DC7 /* VariantItemView.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -1806,8 +1823,10 @@
 				D446F8DB2A3EA32E00C6361C /* AuthTopBarDecor.swift in Sources */,
 				04EA76E02A3E6D2D007E84D0 /* AnyRouter.swift in Sources */,
 				04EA77082A3E6D2D007E84D0 /* UserManager.swift in Sources */,
+				D49D04172A40B41D00459DC7 /* PriceView.swift in Sources */,
 				04EA77282A3E6D2D007E84D0 /* AnyWishlistIdLocalStore.swift in Sources */,
 				04CDB0BB2A3A55C30064508B /* AnyDecoder.swift in Sources */,
+				D49D04152A40B2FF00459DC7 /* VariantItemView.swift in Sources */,
 				04CDB0952A3A55C30064508B /* Shopify_ITIApp.swift in Sources */,
 				04EA76DC2A3E6D2D007E84D0 /* Price.swift in Sources */,
 				04EA77042A3E6D2D007E84D0 /* TokenState.swift in Sources */,
@@ -1924,6 +1943,7 @@
 				04EA76CB2A3E6D2D007E84D0 /* ProductModel.swift in Sources */,
 				D415D66C2A3FAEA500F3362B /* OnboardingScreen.swift in Sources */,
 				04EA7BD32A3E90C4007E84D0 /* LocalNotification.swift in Sources */,
+				D49D04122A40AF5000459DC7 /* RemoteImageView.swift in Sources */,
 				04EA7BC62A3E7B81007E84D0 /* AnySettingModel.swift in Sources */,
 				04EA77032A3E6D2D007E84D0 /* TokenManager.swift in Sources */,
 				D446F8E82A3EBA4900C6361C /* WishlistItemView.swift in Sources */,

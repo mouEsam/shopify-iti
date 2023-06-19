@@ -30,36 +30,26 @@ struct ProductItemView: View {
             router.push(ProductPage.Route(container: container, productId: product.id))
         }) {
             VStack(alignment: .leading) {
-                Group {
-                    Rectangle().fill(.clear).background {
-                        if let image = product.featuredImage {
-                            AsyncImage(url: URL(string:  image.url)) { image in
-                                image.resizable()
-                            } placeholder: {
-                                ProgressView()
-                            }
-                        } else {
-                            Image("Logo").resizable()
-                        }
-                    }
-                }
-                .frame(maxWidth: .infinity)
-                .aspectRatio(1, contentMode: .fit)
-                .overlay(alignment: .bottomTrailing) {
+                ZStack(alignment: .bottomTrailing) {
+                    RemoteImageView(image: product.featuredImage)
+                        .aspectRatio(1, contentMode: .fit)
                     WishlistBag(isWishlisted: isWishlisted, onWishlisted: onWishlisted)
                         .frame(width: 48)
                         .padding(4)
                 }
+                .frame(maxWidth: .infinity).background(.black)
                 VStack(alignment: .leading) {
                     HStack(alignment: .top) {
                         Text(product.title)
                             .font(.headline)
+                            .lineLimit(2)
+                            .frame(height: 50, alignment: .topLeading)
                         Spacer()
-                        
                     }
+                    Spacer().frame(height: 4)
+                    Text(product.vendor)
+                        .font(.caption2)
                     Spacer().frame(height: 8)
-                    Text(product.vendor).font(.caption2)
-                    Spacer().frame(height: 16)
                     PriceRangeView(priceRange: product.priceRange)
                         .font(.caption)
                 }

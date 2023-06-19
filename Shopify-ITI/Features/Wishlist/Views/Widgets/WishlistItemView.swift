@@ -27,17 +27,7 @@ struct WishlistItemView: View {
             router.push(ProductPage.Route(container: container, productId: product.id))
         }) {
             HStack(alignment: .top) {
-                Rectangle().fill(.clear).background {
-                    if let image = product.featuredImage {
-                        AsyncImage(url: URL(string:  image.url)) { image in
-                            image.resizable()
-                        } placeholder: {
-                            ProgressView()
-                        }
-                    } else {
-                        Image("Logo").resizable()
-                    }
-                }
+                RemoteImageView(image: product.featuredImage)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 80, alignment: .center)
                 .padding()

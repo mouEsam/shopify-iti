@@ -50,7 +50,8 @@ struct ProductsScreen: View {
                                             Task {
                                                 _ = await viewModel.toggleWishlist(item: item.product)
                                             }
-                                        }.aspectRatio(0.6, contentMode: .fit)
+                                        }
+                                        .aspectRatio(0.6, contentMode: .fill)
                                     }
                                 }
                                 .padding(.horizontal, 10)
@@ -90,5 +91,11 @@ struct ProductsScreen: View {
                                                          alignment: .center),
                                         count: count)
         return columns
+    }
+}
+
+struct ProductsScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        ProductsScreen(container: AppContainer.preview(), criterion: [:])
     }
 }
