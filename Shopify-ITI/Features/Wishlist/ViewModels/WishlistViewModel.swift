@@ -13,6 +13,7 @@ class WishlistViewModel: ObservableObject {
     private let model: any AnyWishlistModel
     private let wishlistManager: WishlistManager
     private let notificationCenter: any AnyNotificationCenter
+    private let queue: DispatchQueue = DispatchQueue(label: "WishlistViewModel")
     
     @Published private(set) var uiState: UIState<[WishlistItem]> = .initial
     @Published private(set) var operationState: UIState<Void> = .initial
@@ -34,12 +35,14 @@ class WishlistViewModel: ObservableObject {
             .prepend(wishlistManager.state)
             .map(\.bare)
             .removeDuplicates()
+            .receive(on: queue)
             .sink { state in
                 self.handleWishlistState(state)
             }.store(in: &cancellables)
         
         notificationCenter.publisher(for: WishlistRemovedEntryNotification.name)
             .compactMap { $0.object as? WishlistRemovedEntryNotification }
+            .receive(on: queue)
             .sink { event in
                 if case .loaded(let data) = self.uiState,
                    let index = data.data.firstIndex(where: {
@@ -53,6 +56,7 @@ class WishlistViewModel: ObservableObject {
         
         notificationCenter.publisher(for: WishlistAddedEntryNotification.name)
             .compactMap { $0.object as? WishlistAddedEntryNotification }
+            .receive(on: queue)
             .sink { event in
                 self.refetch()
             }.store(in: &cancellables)
@@ -91,6 +95,8 @@ class WishlistViewModel: ObservableObject {
         fetchTask = Task {
             await MainActor.run {
                 self.uiState = .loaded(data: SourcedData.remote(list))
+                self.operationState = .initial
+                return
             }
         }
     }

@@ -13,11 +13,12 @@ struct WishlistItemView: View {
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
     
-    private let onRemove: (() -> Void)?
+    @State private var task: Task<Any, Error>? = nil
+    private let onRemove: (() async -> Void)?
     private let product: Product
     
     init(product: Product,
-         onRemove: (() -> Void)? = nil) {
+         onRemove: (() async -> Void)? = nil) {
         self.product = product
         self.onRemove = onRemove
     }
@@ -38,7 +39,10 @@ struct WishlistItemView: View {
                             .font(.headline)
                         Spacer()
                         if let onRemove = onRemove {
-                            Button(action: onRemove) {
+                            Button(action: {
+                                task?.cancel()
+                                task = Task { await onRemove() }
+                            }) {
                                 Image( "delete")
                                     .font(.title)
                             }

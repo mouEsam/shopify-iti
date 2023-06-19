@@ -13,13 +13,13 @@ struct ProductItemView: View {
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
     
-    private let onWishlisted: (() -> Void)?
+    private let onWishlisted: (() async -> Void)?
     private let product: Product
     private let isWishlisted: Bool
     
     init(product: Product,
          isWishlisted: Bool,
-         onWishlisted: (() -> Void)? = nil) {
+         onWishlisted: (() async -> Void)? = nil) {
         self.product = product
         self.isWishlisted = isWishlisted
         self.onWishlisted = onWishlisted

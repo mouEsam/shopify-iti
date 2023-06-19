@@ -17,6 +17,7 @@ struct ProductsScreen: View {
         }
     }
     
+    @EnvironmentRouter private var router: AppRouter
     @EnvironmentObject private var container: AppContainer
     
     @StateObject private var viewModel: ProductsViewModel
@@ -47,8 +48,14 @@ struct ProductsScreen: View {
                                     ForEach(data) { item in
                                         ProductItemView(product: item.product,
                                                         isWishlisted: item.isWishlisted) {
-                                            Task {
-                                                _ = await viewModel.toggleWishlist(item: item.product)
+                                            let result = await viewModel.toggleWishlist(item: item.product)
+                                            await MainActor.run {
+                                                if case .failure(let error) = result {
+                                                    router.alert(item: ErrorWrapper(error: error)) { wrapper in
+                                                        Alert(title: Text("Error"), // TODO: localize
+                                                              message: Text(wrapper.error.localizedDescription))
+                                                    }
+                                                }
                                             }
                                         }
                                         .aspectRatio(0.6, contentMode: .fill)

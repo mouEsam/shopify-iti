@@ -45,7 +45,7 @@ class ProductsViewModel: ObservableObject {
                 return nil
             }.receive(on: DispatchQueue.main)
             .sink { list in
-                self.uiState = .loaded(data: SourcedData.remote(list))
+                self.setList(list)
             }.store(in: &cancellables)
         
         notificationCenter.publisher(for: WishlistRemovedEntryNotification.name)
@@ -156,6 +156,8 @@ class ProductsViewModel: ObservableObject {
         fetchTask = Task {
             await MainActor.run {
                 self.uiState = .loaded(data: SourcedData.remote(list))
+                self.operationState = .initial
+                return
             }
         }
     }
