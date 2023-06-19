@@ -76,6 +76,8 @@ struct RouterView<Router: AnyRouter, Content: View>: View {
             route.body().environmentObject(EnvironmentObjectWrapper(object: route as any AnyOverlayRoute))
         }.popover(item: getOverlayBinding(for: .popover)) { route in
             route.body().environmentObject(EnvironmentObjectWrapper(object: route as any AnyOverlayRoute))
+        }.alert(item: $router.alert) { item in
+            item.body()
         }.environmentObject(EnvironmentObjectWrapper(object: router as any AnyRouter))
     }
     

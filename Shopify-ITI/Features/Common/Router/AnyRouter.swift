@@ -13,9 +13,11 @@ protocol AnyRouter: AnyObject, ObservableObject {
     associatedtype RouteWrapperType: AnyRouteWrapper
     associatedtype RouteType: AnyRoute
     associatedtype OverlayRouteType: AnyOverlayRoute
+    associatedtype AlertType: AnyAlert
     
     var path: NavigationPath { get set }
     var overlay: OverlayRouteType? { get set }
+    var alert: AlertType? { get set }
     
     init(path: NavigationPath)
     
@@ -28,6 +30,9 @@ protocol AnyRouter: AnyObject, ObservableObject {
     
     func present<Content: View>(_ overlayType: Overlay, overlay: @escaping () -> Content)
     func dismiss()
+    
+    func alert<Item: Identifiable>(item: Item, alert: @escaping (Item) -> Alert)
+    func dismissAlert()
 }
 
 enum Overlay: String, Hashable, Identifiable {
@@ -88,6 +93,10 @@ protocol AnyRoute: Hashable {
 
 protocol AnyOverlayRoute: AnyRoute, Identifiable {
     var overlayType: Overlay { get }
+}
+
+protocol AnyAlert: Identifiable {
+    var body: () -> Alert { get }
 }
 
 protocol AnyRestorableRoute: AnyRoute, Codable {}

@@ -67,7 +67,7 @@ struct OnboardingScreen: View {
             }
         }
         .toolbar(.hidden)
-        .onReceive(authManager.$state) { state in
+        .onReceive(authManager.statePublisher) { state in
             if case .unauthenticated = state { return }
             router.replace(MainScreen.Route(container: container))
         }

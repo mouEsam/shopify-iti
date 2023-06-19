@@ -13,6 +13,7 @@ class AppRouter: ObservableObject, AnyRouter {
     typealias RouteWrapperType = AppRouteWrapper
     typealias RouteType = AppRoute
     typealias OverlayRouteType = AppOverlayRoute
+    typealias AlertType = AppAlert
     
     @Published var path: NavigationPath
     
@@ -24,6 +25,18 @@ class AppRouter: ObservableObject, AnyRouter {
                 overlaysHolder.append(newValue)
             } else if !overlaysHolder.isEmpty {
                 overlaysHolder.removeLast()
+            }
+        }
+    }
+    
+    @Published private var alertsHolder: [AppAlert] = []
+    var alert: AppAlert? {
+        get { alertsHolder.first }
+        set {
+            if let newValue = newValue {
+                alertsHolder.append(newValue)
+            } else if !alertsHolder.isEmpty {
+                alertsHolder.removeLast()
             }
         }
     }
@@ -68,6 +81,19 @@ class AppRouter: ObservableObject, AnyRouter {
             self.overlaysHolder.removeLast()
         }
     }
+    
+
+    
+    func alert<Item>(item: Item, alert: @escaping (Item) -> Alert) where Item : Identifiable {
+        let route = AppAlert(id: item) { alert(item) }
+        self.alertsHolder.append(route)
+    }
+    
+    func dismissAlert() {
+        if !self.alertsHolder.isEmpty {
+            self.alertsHolder.removeLast()
+        }
+    }
 }
 
 class AppRoute: AnyRoute {
@@ -109,6 +135,18 @@ class AppOverlayRoute: AnyOverlayRoute {
     
     static func == (lhs: AppOverlayRoute, rhs: AppOverlayRoute) -> Bool {
         lhs.hashValue == rhs.hashValue
+    }
+}
+
+class AppAlert: AnyAlert {
+    
+    let id: any Identifiable
+    let body: () -> Alert
+    
+    init(id: some Identifiable,
+         content: @escaping () -> Alert) {
+        self.id = id
+        self.body = content
     }
 }
 

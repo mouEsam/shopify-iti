@@ -37,12 +37,13 @@ struct ProductItemView: View {
                         .frame(width: 48)
                         .padding(4)
                 }
-                .frame(maxWidth: .infinity).background(.black)
+                .frame(maxWidth: .infinity)
                 VStack(alignment: .leading) {
                     HStack(alignment: .top) {
                         Text(product.title)
                             .font(.headline)
                             .lineLimit(2)
+                            .multilineTextAlignment(.leading)
                             .frame(height: 50, alignment: .topLeading)
                         Spacer()
                     }

@@ -27,7 +27,10 @@ class AuthenticationManager: AnyInjectable {
     
     private var task: Task<Any, Error>? = nil
     private var cancellables: Set<AnyCancellable> = []
-    @Published private(set) var state: AuthenticationState = .unauthenticated
+    
+    @PostPublished private var stateHolder: AuthenticationState = .unauthenticated
+    var statePublisher: PostPublished<AuthenticationState>.Publisher { $stateHolder }
+    var state: AuthenticationState { stateHolder }
     
     init(userManager: some AnyUserManager,
          tokenManager: some AnyTokenManager,
@@ -61,7 +64,7 @@ class AuthenticationManager: AnyInjectable {
         task?.cancel()
         task = Task {
             await MainActor.run {
-                state = createState()
+                stateHolder = createState()
             }
         }
     }
