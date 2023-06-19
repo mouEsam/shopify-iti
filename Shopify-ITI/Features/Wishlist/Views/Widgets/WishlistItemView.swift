@@ -27,7 +27,7 @@ struct WishlistItemView: View {
             router.push(ProductPage.Route(container: container, productId: product.id))
         }) {
             HStack(alignment: .top) {
-                Group {
+                Rectangle().fill(.clear).background {
                     if let image = product.featuredImage {
                         AsyncImage(url: URL(string:  image.url)) { image in
                             image.resizable()
@@ -39,7 +39,7 @@ struct WishlistItemView: View {
                     }
                 }
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 100,height: 100)
+                .frame(width: 80, alignment: .center)
                 .padding()
                 
                 VStack(alignment: .leading) {

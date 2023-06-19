@@ -19,8 +19,8 @@ class ProductsViewModel: ObservableObject {
     @Published private(set) var operationState: UIState<Void> = .initial
     @Published private(set) var criterion: Criterion
     
+    private(set) var pageInfo: PageInfo? = nil
     private var cancellables: Set<AnyCancellable> = []
-    private var pageInfo: PageInfo? = nil
     private var fetchTask: Task<Any, Error>? = nil
     
     init(criterion: Criterion,
@@ -31,11 +31,9 @@ class ProductsViewModel: ObservableObject {
         self.model = model
         self.wishlistManager = wishlistManager
         self.notificationCenter = notificationCenter
-        
-        initialize()
     }
     
-    private func initialize() {
+    func initialize() {
         wishlistManager.$state
             .compactMap(\.data)
             .first()
@@ -61,6 +59,8 @@ class ProductsViewModel: ObservableObject {
             .sink { event in
                 self.setAddedToWishlist(event.entry)
             }.store(in: &cancellables)
+        
+        fetch()
     }
     
     func setCriteria(_ criteria: ProductSearchCriteria, _ value: String?) {
@@ -147,7 +147,16 @@ class ProductsViewModel: ObservableObject {
            let index = list.firstIndex(where: { $0.id == entry.productId }){
             let item = list[index].copyWith(isWishlisted: wishlisted)
             list[index] = item
-            uiState = .loaded(data: SourcedData.remote(list))
+            self.setList(list)
+        }
+    }
+    
+    private func setList(_ list: [ListableProduct]) {
+        fetchTask?.cancel()
+        fetchTask = Task {
+            await MainActor.run {
+                self.uiState = .loaded(data: SourcedData.remote(list))
+            }
         }
     }
     

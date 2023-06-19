@@ -37,7 +37,7 @@ struct WishlistScreen: View {
                     Group {
                         let data = data.data
                         if data.isEmpty {
-                            Text("Empty")
+                            Text("Empty") // TODO: Localize
                         } else {
                             List {
                                 ForEach(data) { item in
@@ -46,20 +46,19 @@ struct WishlistScreen: View {
                                             await viewModel.remove(item: item)
                                         }
                                     }
-                                }.onAppear {
-                                    print(data.count)
                                 }
                                 if let hasNextCursor = viewModel.pageInfo?.hasNextCursor,
                                    hasNextCursor {
-                                    ProgressView()
+                                    let progressView = ProgressView()
                                         .frame(maxWidth: .infinity,
                                                alignment: .center)
-                                        .onAppear {
-                                            print("ASD")
-                                            if !viewModel.operationState.isLoading {
-                                                viewModel.fetch()
-                                            }
+                                    if !viewModel.operationState.isLoading {
+                                        progressView.onFirstAppear {
+                                            viewModel.fetch()
                                         }
+                                    } else {
+                                        progressView
+                                    }
                                 }
                             }.listStyle(.plain)
                         }
