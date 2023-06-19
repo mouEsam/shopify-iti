@@ -42,9 +42,7 @@ struct WishlistScreen: View {
                             List {
                                 ForEach(data) { item in
                                     WishlistItemView(product: item.product) {
-                                        Task {
-                                            await viewModel.remove(item: item)
-                                        }
+                                        await viewModel.remove(item: item)
                                     }
                                 }
                                 if let hasNextCursor = viewModel.pageInfo?.hasNextCursor,

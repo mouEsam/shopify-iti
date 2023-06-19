@@ -10,11 +10,12 @@ import SwiftUI
 
 struct WishlistBag: View {
     
-    private let onWishlisted: (() -> Void)?
+    @State private var task: Task<Any, Error>? = nil
+    private let onWishlisted: (() async -> Void)?
     private let isWishlisted: Bool
     
     init(isWishlisted: Bool,
-         onWishlisted: (() -> Void)? = nil) {
+         onWishlisted: (() async -> Void)? = nil) {
         self.isWishlisted = isWishlisted
         self.onWishlisted = onWishlisted
     }
@@ -31,7 +32,10 @@ struct WishlistBag: View {
                     }
                     .padding(reader.size.width * 0.08)
                 if let onWishlisted = onWishlisted {
-                    Button(action: onWishlisted) {
+                    Button(action: {
+                        task?.cancel()
+                        task = Task { await onWishlisted() }
+                    }) {
                         wishlisted
                     }
                 } else {
