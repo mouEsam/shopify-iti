@@ -18,7 +18,7 @@ class ProfileViewModel : ObservableObject{
     }
     
     func initialize() {
-        authenticationManager.$state
+        authenticationManager.statePublisher
             .prepend(authenticationManager.state)
             .map(\.user)
             .assign(to: &$userState)

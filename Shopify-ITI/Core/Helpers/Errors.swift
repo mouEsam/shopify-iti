@@ -39,7 +39,7 @@ extension ShopifyErrors {
     }
     
     init(from errors: [GraphQLError]) {
-        if let error = errors.first(where: { $0.message == "Throttled" }) {
+        if let _ = errors.first(where: { $0.message == "Throttled" }) {
             self = ShopifyErrors.Throttled
         } else {
             self = ShopifyErrors.Unknown
@@ -83,5 +83,20 @@ extension GenericError {
 extension Sequence where Element: GenericErrorConvertible {
     func toShopifyErrors() -> [GenericError] {
         map { GenericError(from: $0) }
+    }
+}
+
+struct ErrorWrapper: Identifiable {
+    var id: String { String(describing: error) }
+    let error: Error
+}
+
+extension ErrorWrapper {
+    init?(optional error: Error?) {
+        if let error = error {
+            self.init(error: error)
+        } else {
+            return nil
+        }
     }
 }

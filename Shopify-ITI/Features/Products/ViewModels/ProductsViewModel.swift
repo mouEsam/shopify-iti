@@ -34,7 +34,7 @@ class ProductsViewModel: ObservableObject {
     }
     
     func initialize() {
-        wishlistManager.$state
+        wishlistManager.statePublisher
             .compactMap(\.data)
             .first()
             .subscribe(on: DispatchQueue.global())

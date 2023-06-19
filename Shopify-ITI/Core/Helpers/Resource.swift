@@ -16,6 +16,7 @@ enum Resource<T> {
 
 enum BareResource: Equatable, Hashable {
     case loading
+    case none
     case loaded
     case error
 }
@@ -27,6 +28,8 @@ extension Resource {
                 return .loading
             case .error(_):
                 return .error
+            case .none:
+                return .none
             default:
                 return .loaded
         }

@@ -39,6 +39,8 @@ struct VariantItemView: View {
                 HStack(alignment: .top) {
                     Text(variant.title)
                         .font(.headline)
+                        .lineLimit(2)
+                        .multilineTextAlignment(.leading)
                     Spacer()
                 }
                 Spacer().frame(height: 8)

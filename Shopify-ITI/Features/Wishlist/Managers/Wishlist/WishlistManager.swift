@@ -27,7 +27,10 @@ class WishlistManager : AnyInjectable {
     
     private var task: Task<Any, Error>? = nil
     private var cancellables: Set<AnyCancellable> = []
-    @Published private(set) var state: State = .loading
+    
+    @PostPublished private var stateHolder: State = .loading
+    var statePublisher: PostPublished<State>.Publisher { $stateHolder }
+    var state: State { stateHolder }
     
     init(wishlistIdStore: some AnyWishlistIdLocalStore,
          notificationCenter: some AnyNotificationCenter,
@@ -42,7 +45,7 @@ class WishlistManager : AnyInjectable {
     }
     
     private func initialize() {
-        authManager.$state
+        authManager.statePublisher
             .prepend(authManager.state)
             .receive(on: DispatchQueue.global()).sink { authState in
                 self.handleAuthState(authState)
@@ -63,7 +66,7 @@ class WishlistManager : AnyInjectable {
     private func handleAuthStateImpl(_ authState: AuthenticationState,
                                      _ wishlist: Wishlist?) async {
         await MainActor.run {
-            self.state = .loading
+            self.stateHolder = .loading
         }
         
         if let user = authState.user {
@@ -93,14 +96,14 @@ class WishlistManager : AnyInjectable {
     
     private func setList(_ wishlist: Wishlist) async {
         await MainActor.run {
-            self.state = .data(data: wishlist)
+            self.stateHolder = .data(data: wishlist)
         }
     }
     
     private func removeList() async {
         wishlistIdStore.delete()
         await MainActor.run {
-            self.state = .none
+            self.stateHolder = .none
         }
     }
     
@@ -166,7 +169,7 @@ class WishlistManager : AnyInjectable {
                     self.handleWishlist(withFallback)
                     break
                 case .failure(let error):
-                    self.state = .error(error: error)
+                    self.stateHolder = .error(error: error)
                     break
             }
         }
@@ -295,9 +298,9 @@ class WishlistManager : AnyInjectable {
     
     private func setList(_ wishlist: Wishlist?) {
         if let wishlist = wishlist {
-            self.state = .data(data: wishlist)
+            self.stateHolder = .data(data: wishlist)
         } else {
-            self.state = .none
+            self.stateHolder = .none
         }
     }
 }

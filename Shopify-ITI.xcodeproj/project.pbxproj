@@ -201,6 +201,8 @@
 		D49D04122A40AF5000459DC7 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D04112A40AF5000459DC7 /* RemoteImageView.swift */; };
 		D49D04152A40B2FF00459DC7 /* VariantItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D04142A40B2FF00459DC7 /* VariantItemView.swift */; };
 		D49D04172A40B41D00459DC7 /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D04162A40B41D00459DC7 /* PriceView.swift */; };
+		D49D04192A40DB2800459DC7 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D04182A40DB2800459DC7 /* Object.swift */; };
+		D49D041B2A40ED0500459DC7 /* PostPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D041A2A40ED0500459DC7 /* PostPublished.swift */; };
 		D4AAFA392A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */; };
 		D4AAFA3A2A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -417,6 +419,8 @@
 		D49D04112A40AF5000459DC7 /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
 		D49D04142A40B2FF00459DC7 /* VariantItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariantItemView.swift; sourceTree = "<group>"; };
 		D49D04162A40B41D00459DC7 /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
+		D49D04182A40DB2800459DC7 /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		D49D041A2A40ED0500459DC7 /* PostPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPublished.swift; sourceTree = "<group>"; };
 		D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_Admin_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0A81DAC848D79B6DAFA2A4 /* Pods-Shopify-ITI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.release.xcconfig"; sourceTree = "<group>"; };
@@ -544,6 +548,8 @@
 				04CDAFC12A3A55C30064508B /* Errors.swift */,
 				D446F8D22A3E872C00C6361C /* Strings.swift */,
 				D446F8D62A3E8FEC00C6361C /* Colors.swift */,
+				D49D04182A40DB2800459DC7 /* Object.swift */,
+				D49D041A2A40ED0500459DC7 /* PostPublished.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1888,6 +1894,7 @@
 				04EA76DD2A3E6D2D007E84D0 /* RemoteImage.swift in Sources */,
 				04EA76BF2A3E6D2D007E84D0 /* Extensions.swift in Sources */,
 				04CDB0BA2A3A55C30064508B /* JsonCoder.swift in Sources */,
+				D49D04192A40DB2800459DC7 /* Object.swift in Sources */,
 				04EA77002A3E6D2D007E84D0 /* ProductType.swift in Sources */,
 				04EA76CF2A3E6D2D007E84D0 /* DetailedProduct.swift in Sources */,
 				04CDB0B42A3A55C30064508B /* AnyEnvironment.swift in Sources */,
@@ -1942,6 +1949,7 @@
 				D446F8D52A3E8E2C00C6361C /* AppColors.swift in Sources */,
 				04EA76CB2A3E6D2D007E84D0 /* ProductModel.swift in Sources */,
 				D415D66C2A3FAEA500F3362B /* OnboardingScreen.swift in Sources */,
+				D49D041B2A40ED0500459DC7 /* PostPublished.swift in Sources */,
 				04EA7BD32A3E90C4007E84D0 /* LocalNotification.swift in Sources */,
 				D49D04122A40AF5000459DC7 /* RemoteImageView.swift in Sources */,
 				04EA7BC62A3E7B81007E84D0 /* AnySettingModel.swift in Sources */,

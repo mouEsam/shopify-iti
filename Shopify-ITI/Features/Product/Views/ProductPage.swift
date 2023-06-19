@@ -23,14 +23,17 @@ struct ProductPage: View {
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     @State private var currentImage = 0
     
+    
     private let colors: AnyAppColors = AppColors()
     
     init(container: AppContainer, productId: String) {
         let model = container.require((any AnyProductModelFactory).self).create()
         let manager = container.require(WishlistManager.self)
+        let cartManager = container.require(CartManager.self)
         _viewModel = .init(wrappedValue: ProductViewModel(productId:productId,
                                                           model: model,
-                                                          wishlistManager: manager))
+                                                          wishlistManager: manager,
+                                                          cartManager: cartManager))
     }
     
     var body: some View {
@@ -64,7 +67,7 @@ struct ProductPage: View {
                                             Image("plus")
                                                 .font(.title)
                                         }
-                                        Text(String(01))
+                                        Text(String(viewModel.currentQuantity))
                                             .foregroundColor(.black)
                                         Button(action: viewModel.decrement) {
                                             Image("minus")
@@ -105,14 +108,15 @@ struct ProductPage: View {
                         HStack {
                             if let isWishlisted = viewModel.isWishlisted {
                                 WishlistBag(isWishlisted: isWishlisted) {
-                                    Task {
-                                        await viewModel.toggleWishlist()
-                                    }
-                                }
+                                    viewModel.toggleWishlist()
+                                }.disabled(viewModel.wishlistState.isLoading)
                             }
-                            RoundedButton(label: "Add to cart", labelColor: colors.white, backgroundColor: colors.black) {
-                                
-                            }
+                            RoundedButton(label: "Add to cart", // TODO: localize
+                                          labelColor: colors.white,
+                                          backgroundColor: colors.black,
+                                          isLoading: viewModel.cartState.isLoading) {
+                                viewModel.addToCart()
+                            }.disabled(viewModel.cartState.isLoading)
                         }
                         .frame(maxHeight: 56)
                         .padding(.leading, safeAreaInsets.leading)
@@ -155,6 +159,30 @@ struct ProductPage: View {
         .toolbar(.hidden)
         .onFirstTask {
             await viewModel.initialize()
+        }
+        .onReceive(viewModel.$cartError) { wrapper in
+            if let wrapper = wrapper {
+                router.alert(item: wrapper) { wrapper in
+                    Alert(title: Text("Error"), // TODO: localize
+                          message: Text(wrapper.error.localizedDescription))
+                }
+            }
+        }
+        .onReceive(viewModel.$cartSuccess) { wrapper in
+            if let wrapper = wrapper {
+                router.alert(item: wrapper) { _ in
+                    Alert(title: Text("Success"), // TODO: localize
+                          message: Text("Added to cart"))
+                }
+            }
+        }
+        .onReceive(viewModel.$wishlistError) { wrapper in
+            if let wrapper = wrapper {
+                router.alert(item: wrapper) { wrapper in
+                    Alert(title: Text("Error"), // TODO: localize
+                          message: Text(wrapper.error.localizedDescription))
+                }
+            }
         }
     }
 }

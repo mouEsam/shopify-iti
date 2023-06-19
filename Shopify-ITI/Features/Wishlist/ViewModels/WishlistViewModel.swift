@@ -30,7 +30,7 @@ class WishlistViewModel: ObservableObject {
     }
     
     func initialize() {
-        wishlistManager.$state
+        wishlistManager.statePublisher
             .prepend(wishlistManager.state)
             .map(\.bare)
             .removeDuplicates()
@@ -132,7 +132,7 @@ class WishlistViewModel: ObservableObject {
                         await self.setError(error)
                     }
                     break
-                case .loaded:
+                default:
                     await self.fetchImpl()
             }
             return
