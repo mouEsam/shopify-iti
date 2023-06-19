@@ -70,7 +70,6 @@ struct ProductsScreen: View {
                                 }
                             }
                         }
-                        
                     }
                 case .error(let error):
                     Text("\(error.localizedDescription)")

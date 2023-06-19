@@ -57,20 +57,8 @@ struct WishlistItemView: View {
                     Spacer().frame(height: 8)
                     Text(product.vendor).font(.caption2)
                     Spacer().frame(height: 16)
-                    Group {
-                        let min = product.priceRange.minPrice.amount
-                        let max = product.priceRange.maxPrice.amount
-                        
-                        let minS = moneyFormatter().string(from: NSNumber(value: min))
-                        if min != max,
-                            let min = minS,
-                            let max = moneyFormatter(false).string(from: NSNumber(value: max)) {
-                            Text(min) + Text(" - ") + Text(max)
-                        } else if let min = minS {
-                            Text(min)
-                        }
-                    }
-                    .font(.caption)
+                    PriceRangeView(priceRange: product.priceRange)
+                        .font(.caption)
                 }
                 .padding()
             }
@@ -78,19 +66,6 @@ struct WishlistItemView: View {
             .cornerRadius(10)
             .shadow(radius: 2)
         }
-    }
-    
-    private func moneyFormatter(_ showCurrency: Bool = true) -> NumberFormatter {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        if showCurrency {
-            formatter.currencyCode = product.priceRange.minPrice.currencyCode.rawValue
-        } else {
-            formatter.currencyCode = ""
-            formatter.currencySymbol = ""
-        }
-        formatter.locale = Locale.current // Use the current locale for currency symbol and formatting
-        return formatter
     }
 }
 
