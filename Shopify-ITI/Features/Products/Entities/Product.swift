@@ -12,6 +12,7 @@ struct Product: Identifiable {
     let id: String
     let handle: String
     let title: String
+    let vendor: String
     let description: String
     let featuredImage: RemoteImage?
     let priceRange: PriceRange
@@ -25,6 +26,7 @@ protocol ProductConvertible: Identifiable {
     var id: String { get }
     var handle: String { get }
     var title: String { get }
+    var vendor: String { get }
     var description: String { get }
     var featuredImage: FeaturedImage? { get }
     var priceRange: PriceRange { get }
@@ -36,6 +38,7 @@ extension Product {
         self.init(id : product.id,
                   handle : product.handle,
                   title : product.title,
+                  vendor : product.vendor,
                   description : product.description,
                   featuredImage : product.featuredImage.map { RemoteImage(from: $0) },
                   priceRange : PriceRange(from: product.priceRange),

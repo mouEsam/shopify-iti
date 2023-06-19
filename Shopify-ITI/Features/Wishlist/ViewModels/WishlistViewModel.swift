@@ -47,7 +47,7 @@ class WishlistViewModel: ObservableObject {
                    }){
                     var newList = data.data
                     newList.remove(at: index)
-                    self.uiState = .loaded(data: SourcedData.remote(newList))
+                    self.setList(newList)
                 }
             }.store(in: &cancellables)
         
@@ -84,6 +84,15 @@ class WishlistViewModel: ObservableObject {
     func remove(item: WishlistItem) async -> Result<Void, ShopifyErrors<Any>> {
         return await wishlistManager.removeItem(.init(productId: item.product.id,
                                                       variantId: item.variant.id))
+    }
+    
+    private func setList(_ list: [WishlistItem]) {
+        fetchTask?.cancel()
+        fetchTask = Task {
+            await MainActor.run {
+                self.uiState = .loaded(data: SourcedData.remote(list))
+            }
+        }
     }
     
     private func fetchImpl() async {
@@ -139,7 +148,10 @@ class WishlistViewModel: ObservableObject {
     }
     
     private func setLoaded(_ list: [WishlistItem]) async {
-        await updateState(.loaded(data: SourcedData.remote(list)), .initial)
+        await MainActor.run {
+            self.uiState = .loaded(data: SourcedData.remote(list))
+            self.operationState = .initial
+        }
     }
     
     private func setLoading() async {

@@ -145,7 +145,7 @@ class ProductsViewModel: ObservableObject {
     private func setWishlisted(_ entry: WishListEntry, _ wishlisted: Bool) {
         if var list = uiState.data,
            let index = list.firstIndex(where: { $0.id == entry.productId }){
-            var item = list[index].copyWith(isWishlisted: wishlisted)
+            let item = list[index].copyWith(isWishlisted: wishlisted)
             list[index] = item
             uiState = .loaded(data: SourcedData.remote(list))
         }
@@ -160,7 +160,10 @@ class ProductsViewModel: ObservableObject {
     }
     
     private func setLoaded(_ list: [ListableProduct]) async {
-        await updateState(.loaded(data: SourcedData.remote(list)), .initial)
+        await MainActor.run {
+            self.uiState = .loaded(data: SourcedData.remote(list))
+            self.operationState = .initial
+        }
     }
     
     private func setLoading() async {
