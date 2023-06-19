@@ -13,10 +13,3 @@ func synced<T>(_ lock: Any, closure: () -> T) -> T {
     objc_sync_exit(lock)
     return result
 }
-
-func synced<T>(_ lock: Any, closure: () async -> T) async -> T {
-    objc_sync_enter(lock)
-    let result = await closure()
-    objc_sync_exit(lock)
-    return result
-}

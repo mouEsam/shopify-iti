@@ -59,9 +59,11 @@ class WishlistManager : AnyInjectable {
     }
     
     private func handleAuthState(_ authState: AuthenticationState) {
-        task?.cancel()
-        task = Task {
-            await handleAuthStateImpl(authState, self.state.data)
+        synced(self) {
+            task?.cancel()
+            task = Task {
+                await handleAuthStateImpl(authState, self.state.data)
+            }
         }
     }
     
@@ -230,12 +232,21 @@ class WishlistManager : AnyInjectable {
     
     private func doAction(_ action: @escaping () async -> Result<Void, ShopifyErrors<Any>>) async -> Result<Void, ShopifyErrors<Any>> {
         _ = await task?.result
-        guard task?.isCancelled != true else { return .failure(.Cancelled) }
-        let task: Task<Result<Void, ShopifyErrors<Any>>, Error> = Task {
-            return await action()
+        let task = synced(self) {
+            guard self.task?.isCancelled != true else {
+                return Task { return self.cancellation() }
+            }
+            let task = Task {
+                return await action()
+            }
+            self.task = Task { await task.value }
+            return task
         }
-        self.task = Task { await task.result }
-        return try! await task.value
+        return await task.value
+    }
+    
+    private func cancellation() -> Result<Void, ShopifyErrors<Any>> {
+        .failure(.Cancelled)
     }
     
     private func removeItemImpl(_ item: WishListEntry, _ wishlist: Wishlist?) async -> Result<Void, ShopifyErrors<Any>> {
