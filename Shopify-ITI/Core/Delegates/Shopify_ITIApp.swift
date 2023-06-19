@@ -21,50 +21,7 @@ struct Shopify_ITIApp: App {
 }
 
 struct RootView: View {
-    @StateObject private var container: AppContainer = AppContainer(injectables: [
-        UserDefaults.self,
-        NotificationCenter.self,
-        KeysProvider.self,
-        KeyChain.self,
-        ConfigsProvider.self,
-        LocaleProvider.self,
-        JsonCoder.self,
-        ApolloGraphQLClient.self,
-        StorefronEnvironmentProvider.self,
-        AdminEnvironmentProvider.self,
-        UserLocalStore.self,
-        GuestLocalStore.self,
-        TokenLocalStore.self,
-        WishlistIdStore.self,
-        UserManager.self,
-        GuestManager.self,
-        TokenManager.self,
-        AccessTokenHolder.self,
-        UserHolder.self,
-        AuthenticationManager.self,
-        WishlistManager.self,
-        AuthenticationRemoteService.self,
-        ProfileRemoteService.self,
-        WishlistRemoteService.self,
-        ProductRemoteService.self,
-        ProductsRemoteService.self,
-        BrandRemoteService.self,
-        CategoriesRemoteService.self,
-        AuthenticationRepository.self,
-        WishlistModelFactory.self,
-        ProductModelFactory.self,
-        ProductsModelFactory.self,
-        BrandModelFactory.self,
-        CategoriesModelFactory.self,
-        CartModel.self,
-        CartRemoteService.self,
-        CartManager.self,
-        CartIdStore.self,
-        AuthenticationStrings.self,
-        AppColors.self,
-        SettingModel.self,
-        SplashStrings.self,
-    ])
+    @StateObject private var container: AppContainer = AppContainer.production()
     
     var body: some View {
        RouterView(router: AppRouter()) {

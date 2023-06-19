@@ -67,19 +67,22 @@ struct ProfilePage: View {
                             .foregroundColor(.black)
                             .font(.title2).padding()
                     }
-                    switch wishListViewModel.uiState {
-                        case .loaded(let data):
-                            let data = Array(data.data.prefix(2))
-                            ForEach(data,id:\.id){item in
-                                WishlistItemView(product: item.product)
-                            }
-                        case .error(let error):
-                            Text("\(error.localizedDescription)")
-                        case .loading:
-                            ProgressView()
-                        default:
-                            Group {}
+                    Group {
+                        switch wishListViewModel.uiState {
+                            case .loaded(let data):
+                                let data = Array(data.data.prefix(2))
+                                ForEach(data,id:\.id){item in
+                                    WishlistItemView(product: item.product)
+                                }
+                            case .error(let error):
+                                Text("\(error.localizedDescription)")
+                            case .loading:
+                                ProgressView()
+                            default:
+                                Group {}
+                        }
                     }
+                    .padding(.horizontal)
                 }
             } else {
                 Button("Please login") {

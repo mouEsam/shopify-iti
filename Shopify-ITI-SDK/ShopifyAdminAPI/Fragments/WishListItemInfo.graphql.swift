@@ -160,6 +160,8 @@ public extension ShopifyAdminAPI {
       public var title: String { __data["title"] }
       /// A stripped description of the product, single line with HTML tags removed.
       public var description: String { __data["description"] }
+      /// The name of the product's vendor.
+      public var vendor: String { __data["vendor"] }
       /// The featured image for the product.
       public var featuredImage: FeaturedImage? { __data["featuredImage"] }
       /// The price range of the product.

@@ -40,6 +40,7 @@ fragment productInfo on Product {
   handle
   title
   description
+  vendor
   featuredImage {
       ...imageInfo
   }

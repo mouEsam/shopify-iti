@@ -39,29 +39,45 @@ struct WishlistScreen: View {
                         if data.isEmpty {
                             Text("Empty")
                         } else {
-                            List(data) { item in
-                                WishlistItemView(product: item.product)
-                            }.listStyle(.plain)
-                            if let hasNextCursor = viewModel.pageInfo?.hasNextCursor,
-                               hasNextCursor {
-                                ProgressView().onReceive(viewModel.$operationState) { state in
-                                    if !state.isLoading {
-                                        viewModel.fetch()
+                            List {
+                                ForEach(data) { item in
+                                    WishlistItemView(product: item.product) {
+                                        Task {
+                                            await viewModel.remove(item: item)
+                                        }
                                     }
+                                }.onAppear {
+                                    print(data.count)
                                 }
-                            }
+                                if let hasNextCursor = viewModel.pageInfo?.hasNextCursor,
+                                   hasNextCursor {
+                                    ProgressView()
+                                        .frame(maxWidth: .infinity,
+                                               alignment: .center)
+                                        .onAppear {
+                                            print("ASD")
+                                            if !viewModel.operationState.isLoading {
+                                                viewModel.fetch()
+                                            }
+                                        }
+                                }
+                            }.listStyle(.plain)
                         }
                     }
                 case .error(let error):
                     Text("\(error.localizedDescription)")
-                case .loading:
-                    ProgressView().foregroundColor(.black)
                 default:
-                    Group {}
+                    ProgressView().foregroundColor(.black)
             }
         }
         .onFirstAppear {
             viewModel.initialize()
         }
+    }
+}
+
+struct WishlistScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        WishlistScreen(container: AppContainer.preview())
     }
 }
