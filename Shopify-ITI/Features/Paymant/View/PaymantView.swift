@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import PassKit
 
 struct PaymantView: View {
     @State private var coupon: String = ""
     @State private var paymentMethod: String = "Cash on delivery"
-    
+    @State private var showingPaymentSheet = false
+    let paymentHandler = PaymentHandler()
+
     var body: some View {
         
         NavigationView {
@@ -65,7 +68,14 @@ struct PaymantView: View {
                     }
                     
                     Section() {
-                        Button(action: {print("pay")}){
+                        Button(action: {            self.paymentHandler.startPayment { (success) in
+                            if success {
+                                print("Success")
+                            } else {
+                                print("Failed")
+                            }
+                        }
+                        }){
                             Text("Go To paymant")
                                 .foregroundColor(.white)
                                 .padding(.horizontal)
@@ -82,8 +92,7 @@ struct PaymantView: View {
 
 
                 
-            }
-            .navigationBarTitle("Checkout")
+            }.navigationBarTitle("Checkout")
         }
     }
 }

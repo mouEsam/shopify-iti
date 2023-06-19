@@ -66,11 +66,12 @@ struct RootView: View {
     ])
     
     var body: some View {
-       RouterView(router: AppRouter()) {
-            MainScreen(container: container)
-        }
-        .tint(.black)
-        .environmentObject(container)
+        PaymantView()
+//       RouterView(router: AppRouter()) {
+//            MainScreen(container: container)
+//        }
+//        .tint(.black)
+//        .environmentObject(container)
     }
 }
 

@@ -11,6 +11,8 @@
 		04BA3BC62A4080B600AE276B /* PaymantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA3BC52A4080B600AE276B /* PaymantView.swift */; };
 		04BA3BCB2A40ADAA00AE276B /* PaymantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA3BCA2A40ADAA00AE276B /* PaymantModel.swift */; };
 		04BA3BCE2A40B30C00AE276B /* DraftOrderServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA3BCD2A40B30C00AE276B /* DraftOrderServices.swift */; };
+		04BA3BD12A40D5D900AE276B /* ApplePaymentSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA3BD02A40D5D900AE276B /* ApplePaymentSheet.swift */; };
+		04BA3BD42A40E2B400AE276B /* PaymentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA3BD32A40E2B400AE276B /* PaymentHandler.swift */; };
 		04CDB0912A3A55C30064508B /* AnyRemoteFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAFB42A3A55C30064508B /* AnyRemoteFetchStrategy.swift */; };
 		04CDB0922A3A55C30064508B /* RemoteFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAFB52A3A55C30064508B /* RemoteFetchStrategy.swift */; };
 		04CDB0932A3A55C30064508B /* DataFetchCacheStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAFB72A3A55C30064508B /* DataFetchCacheStrategy.swift */; };
@@ -217,6 +219,9 @@
 		04BA3BC52A4080B600AE276B /* PaymantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymantView.swift; sourceTree = "<group>"; };
 		04BA3BCA2A40ADAA00AE276B /* PaymantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymantModel.swift; sourceTree = "<group>"; };
 		04BA3BCD2A40B30C00AE276B /* DraftOrderServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftOrderServices.swift; sourceTree = "<group>"; };
+		04BA3BCF2A40D36800AE276B /* Shopify-ITI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shopify-ITI.entitlements"; sourceTree = "<group>"; };
+		04BA3BD02A40D5D900AE276B /* ApplePaymentSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePaymentSheet.swift; sourceTree = "<group>"; };
+		04BA3BD32A40E2B400AE276B /* PaymentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHandler.swift; sourceTree = "<group>"; };
 		04CDAFB42A3A55C30064508B /* AnyRemoteFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyRemoteFetchStrategy.swift; sourceTree = "<group>"; };
 		04CDAFB52A3A55C30064508B /* RemoteFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteFetchStrategy.swift; sourceTree = "<group>"; };
 		04CDAFB72A3A55C30064508B /* DataFetchCacheStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchCacheStrategy.swift; sourceTree = "<group>"; };
@@ -463,6 +468,7 @@
 		04BA3BC42A407E9100AE276B /* Paymant */ = {
 			isa = PBXGroup;
 			children = (
+				04BA3BD22A40E27B00AE276B /* Helpers */,
 				04BA3BCC2A40B2DB00AE276B /* Services */,
 				04BA3BC82A40AD3700AE276B /* Model */,
 				04BA3BC72A40AC3A00AE276B /* View */,
@@ -474,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				04BA3BC52A4080B600AE276B /* PaymantView.swift */,
+				04BA3BD02A40D5D900AE276B /* ApplePaymentSheet.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -494,9 +501,18 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		04BA3BD22A40E27B00AE276B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				04BA3BD32A40E2B400AE276B /* PaymentHandler.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		04CDAFB02A3A55C30064508B /* Shopify-ITI */ = {
 			isa = PBXGroup;
 			children = (
+				04BA3BCF2A40D36800AE276B /* Shopify-ITI.entitlements */,
 				04EA75F02A3E6D2C007E84D0 /* Features */,
 				04CDAFB12A3A55C30064508B /* Core */,
 				04CDAFF22A3A55C30064508B /* Resources */,
@@ -1821,6 +1837,7 @@
 				04EA76FC2A3E6D2D007E84D0 /* CategoriesPage.swift in Sources */,
 				04EA76F12A3E6D2D007E84D0 /* CartView.swift in Sources */,
 				04EA770D2A3E6D2D007E84D0 /* AnyTokenLocalStore.swift in Sources */,
+				04BA3BD12A40D5D900AE276B /* ApplePaymentSheet.swift in Sources */,
 				04EA7BCE2A3E8506007E84D0 /* FAQView.swift in Sources */,
 				04CDB0B62A3A55C30064508B /* AdminEnvironment.swift in Sources */,
 				04BA3BC62A4080B600AE276B /* PaymantView.swift in Sources */,
@@ -1904,6 +1921,7 @@
 				04CDB0962A3A55C30064508B /* Resource.swift in Sources */,
 				04EA7BC82A3E7B81007E84D0 /* SettingsView.swift in Sources */,
 				04EA76FF2A3E6D2D007E84D0 /* CategoriesRemoteService.swift in Sources */,
+				04BA3BD42A40E2B400AE276B /* PaymentHandler.swift in Sources */,
 				04EA76E72A3E6D2D007E84D0 /* PasswordUpdate.swift in Sources */,
 				04EA77162A3E6D2D007E84D0 /* LoginScreen.swift in Sources */,
 				04EA76E62A3E6D2D007E84D0 /* ProfilePage.swift in Sources */,
@@ -2039,6 +2057,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Shopify-ITI/Shopify-ITI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Shopify-ITI/Preview Content\"";
@@ -2070,6 +2089,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Shopify-ITI/Shopify-ITI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Shopify-ITI/Preview Content\"";
