@@ -14,7 +14,6 @@ struct CartView: View {
         _viewModel = .init(wrappedValue: CartViewModel(model: model ))
     }
     var body: some View {
-        NavigationView {
             VStack{
                 ScrollView {
                     switch viewModel.operationState{
@@ -70,7 +69,7 @@ struct CartView: View {
             }.task {
                 await viewModel.getCart()
             }
-        }
+        
     }
 }
 

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		04B4FBC82A3EA12800DD5017 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4FBC62A3EA12800DD5017 /* SearchView.swift */; };
+		04BA3BC62A4080B600AE276B /* PaymantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA3BC52A4080B600AE276B /* PaymantView.swift */; };
+		04BA3BCB2A40ADAA00AE276B /* PaymantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA3BCA2A40ADAA00AE276B /* PaymantModel.swift */; };
+		04BA3BCE2A40B30C00AE276B /* DraftOrderServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA3BCD2A40B30C00AE276B /* DraftOrderServices.swift */; };
 		04CDB0912A3A55C30064508B /* AnyRemoteFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAFB42A3A55C30064508B /* AnyRemoteFetchStrategy.swift */; };
 		04CDB0922A3A55C30064508B /* RemoteFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAFB52A3A55C30064508B /* RemoteFetchStrategy.swift */; };
 		04CDB0932A3A55C30064508B /* DataFetchCacheStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAFB72A3A55C30064508B /* DataFetchCacheStrategy.swift */; };
@@ -211,6 +214,9 @@
 
 /* Begin PBXFileReference section */
 		04B4FBC62A3EA12800DD5017 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		04BA3BC52A4080B600AE276B /* PaymantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymantView.swift; sourceTree = "<group>"; };
+		04BA3BCA2A40ADAA00AE276B /* PaymantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymantModel.swift; sourceTree = "<group>"; };
+		04BA3BCD2A40B30C00AE276B /* DraftOrderServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftOrderServices.swift; sourceTree = "<group>"; };
 		04CDAFB42A3A55C30064508B /* AnyRemoteFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyRemoteFetchStrategy.swift; sourceTree = "<group>"; };
 		04CDAFB52A3A55C30064508B /* RemoteFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteFetchStrategy.swift; sourceTree = "<group>"; };
 		04CDAFB72A3A55C30064508B /* DataFetchCacheStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchCacheStrategy.swift; sourceTree = "<group>"; };
@@ -452,6 +458,40 @@
 			children = (
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		04BA3BC42A407E9100AE276B /* Paymant */ = {
+			isa = PBXGroup;
+			children = (
+				04BA3BCC2A40B2DB00AE276B /* Services */,
+				04BA3BC82A40AD3700AE276B /* Model */,
+				04BA3BC72A40AC3A00AE276B /* View */,
+			);
+			path = Paymant;
+			sourceTree = "<group>";
+		};
+		04BA3BC72A40AC3A00AE276B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04BA3BC52A4080B600AE276B /* PaymantView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04BA3BC82A40AD3700AE276B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04BA3BCA2A40ADAA00AE276B /* PaymantModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04BA3BCC2A40B2DB00AE276B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				04BA3BCD2A40B30C00AE276B /* DraftOrderServices.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		04CDAFB02A3A55C30064508B /* Shopify-ITI */ = {
@@ -704,6 +744,7 @@
 		04EA75F02A3E6D2C007E84D0 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				04BA3BC42A407E9100AE276B /* Paymant */,
 				04B4FBC22A3EA12800DD5017 /* Search */,
 				04EA7BBD2A3E7B81007E84D0 /* Settings */,
 				04EA75F12A3E6D2C007E84D0 /* Home */,
@@ -1725,6 +1766,7 @@
 				04EA76EF2A3E6D2D007E84D0 /* CartModel.swift in Sources */,
 				04CDB0A72A3A55C30064508B /* AnyImageLoader.swift in Sources */,
 				04EA77262A3E6D2D007E84D0 /* WishlistViewModel.swift in Sources */,
+				04BA3BCB2A40ADAA00AE276B /* PaymantModel.swift in Sources */,
 				04CDB0942A3A55C30064508B /* AnyDataFetchCacheStrategy.swift in Sources */,
 				04EA77172A3E6D2D007E84D0 /* Session.swift in Sources */,
 				04EA76E82A3E6D2D007E84D0 /* ProfileUpdate.swift in Sources */,
@@ -1751,6 +1793,7 @@
 				04EA77122A3E6D2D007E84D0 /* AnyGuestLocalStore.swift in Sources */,
 				04EA76D52A3E6D2D007E84D0 /* MainScreen.swift in Sources */,
 				04EA77302A3E6D2D007E84D0 /* WishlistItem.swift in Sources */,
+				04BA3BCE2A40B30C00AE276B /* DraftOrderServices.swift in Sources */,
 				04CDB0B12A3A55C30064508B /* AnyKeyChain.swift in Sources */,
 				04EA76EB2A3E6D2D007E84D0 /* Profile.swift in Sources */,
 				04CDB0972A3A55C30064508B /* GraphQLNullable.swift in Sources */,
@@ -1780,6 +1823,7 @@
 				04EA770D2A3E6D2D007E84D0 /* AnyTokenLocalStore.swift in Sources */,
 				04EA7BCE2A3E8506007E84D0 /* FAQView.swift in Sources */,
 				04CDB0B62A3A55C30064508B /* AdminEnvironment.swift in Sources */,
+				04BA3BC62A4080B600AE276B /* PaymantView.swift in Sources */,
 				04EA771C2A3E6D2D007E84D0 /* AuthError.swift in Sources */,
 				04EA77112A3E6D2D007E84D0 /* GuestLocalStore.swift in Sources */,
 				D446F8D32A3E872C00C6361C /* Strings.swift in Sources */,
