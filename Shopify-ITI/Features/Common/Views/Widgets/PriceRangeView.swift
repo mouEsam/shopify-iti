@@ -41,7 +41,7 @@ struct PriceRangeView: View {
             formatter.currencyCode = ""
             formatter.currencySymbol = ""
         }
-        formatter.locale = Locale.current // Use the current locale for currency symbol and formatting
+        formatter.locale = Locale.current
         return formatter
     }
 }

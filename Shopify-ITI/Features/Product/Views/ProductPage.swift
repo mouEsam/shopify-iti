@@ -21,7 +21,7 @@ struct ProductPage: View {
     @StateObject private var viewModel: ProductViewModel
     @Environment(\.layoutDirection) private var layoutDirection
     @Environment(\.safeAreaInsets) private var safeAreaInsets
-    @State private var currentPage = 0
+    @State private var currentImage = 0
     
     private let colors: AnyAppColors = AppColors()
     
@@ -34,78 +34,99 @@ struct ProductPage: View {
     }
     
     var body: some View {
-        ZStack(alignment: .topLeading) {
-            VStack {
-                ScrollView {
-                    TabView(selection: $currentPage) {
-                        ForEach(ClosedRange(uncheckedBounds: (lower: 0, upper: 9)), id: \.self) { index in
-                            Image("onboarding")
-                                .resizable()
-                                .frame(maxWidth: .infinity)
-                            
+        Group {
+            switch viewModel.uiState {
+                case .loaded(let data):
+                    let product = data.data
+                    ScrollView {
+                        TabView(selection: $currentImage) {
+                            ForEach(product.images) { image in
+                                RemoteImageView(image: image)
+                            }
                         }
-                    }
-                    .aspectRatio(1, contentMode: .fit)
-                    .cornerRadius(50, corners: layoutDirection == .leftToRight ? .bottomLeft : .bottomRight)
-                    .padding(.leading, 40)
-                    .tabViewStyle(.page(indexDisplayMode: .always))
-                    VStack(alignment: .leading) {
-                        Text("Minimal Stand")
-                            .font(.title)
-                            .fontWeight(.medium)
-                        
-                        HStack {
-                            PriceRangeView(priceRange: .init(minPrice: .init(amount: 10,
-                                                                             currencyCode: .egp),
-                                                             maxPrice: .init(amount: 40,
-                                                                             currencyCode: .egp)))
-                            .font(.title2)
-                            .fontWeight(.heavy)
-                            Spacer()
-                            HStack(spacing: 16) {
-                                Button(action: {
-                                    
-                                }) {
-                                    Image("plus")
-                                        .font(.title)
+                        .aspectRatio(1, contentMode: .fit)
+                        .cornerRadius(50, corners: layoutDirection == .leftToRight ? .bottomLeft : .bottomRight)
+                        .shadow(radius: 4)
+                        .padding(.leading, 40)
+                        .tabViewStyle(.page(indexDisplayMode: .always))
+                        VStack(alignment: .leading) {
+                            VStack(alignment: .leading) {
+                                Text(product.title)
+                                    .font(.title)
+                                    .fontWeight(.medium)
+                                HStack {
+                                    PriceRangeView(priceRange: product.priceRange)
+                                    .font(.title2)
+                                    .fontWeight(.heavy)
+                                    Spacer()
+                                    HStack(spacing: 16) {
+                                        Button(action: viewModel.increment) {
+                                            Image("plus")
+                                                .font(.title)
+                                        }
+                                        Text(String(01))
+                                            .foregroundColor(.black)
+                                        Button(action: viewModel.decrement) {
+                                            Image("minus")
+                                                .font(.title)
+                                        }
+                                    }
+                                    .foregroundColor(.blue)
                                 }
-                                Text(String(01))
-                                    .foregroundColor(.black)
-                                
-                                Button(action: {
-                                    
-                                }) {
-                                    Image("minus")
-                                        .font(.title)
+                                Text(product.description)
+                                    .font(.caption)
+                                    .foregroundColor(colors.dark2Grey)
+                            }
+                            .padding(.leading, safeAreaInsets.leading)
+                            .padding(.trailing, safeAreaInsets.trailing)
+                            .padding(.horizontal, 24)
+                            
+                            ScrollView(.horizontal) {
+                                HStack {
+                                    ForEach(product.variants) { variant in
+                                        let isSelected = viewModel.selectedVariantId == variant.id
+                                        VariantItemView(variant: variant,
+                                                        isSelected: isSelected) {
+                                            viewModel.select(variant: variant)
+                                        }
+                                        .frame(height: 250)
+                                        .aspectRatio(0.55, contentMode: .fit)
+                                    }
+                                }
+                                .padding(.leading, safeAreaInsets.leading)
+                                .padding(.trailing, safeAreaInsets.trailing)
+                                .padding(24)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                        Spacer().frame(height: 56)
+                    }
+                    .overlay(alignment: .bottom) {
+                        HStack {
+                            if let isWishlisted = viewModel.isWishlisted {
+                                WishlistBag(isWishlisted: isWishlisted) {
+                                    Task {
+                                        await viewModel.toggleWishlist()
+                                    }
                                 }
                             }
-                            .foregroundColor(.blue)
+                            RoundedButton(label: "Add to cart", labelColor: colors.white, backgroundColor: colors.black) {
+                                
+                            }
                         }
-                        
-                        Text("Long text very long")
-                            .font(.caption)
-                            .foregroundColor(colors.dark2Grey)
+                        .frame(maxHeight: 56)
+                        .padding(.leading, safeAreaInsets.leading)
+                        .padding(.trailing, safeAreaInsets.trailing)
+                        .padding(.horizontal, 24)
                     }
-                    .frame(maxWidth: .infinity)
-                    .padding(.leading, safeAreaInsets.leading)
-                    .padding(.trailing, safeAreaInsets.trailing)
-                    .padding(.horizontal, 24)
-                }
-                
-                HStack {
-                    WishlistBag(isWishlisted: true) {
-                        
-                    }
-                    
-                    RoundedButton(label: "Add to cart", labelColor: colors.white, backgroundColor: colors.black) {
-                        
-                    }
-                }
-                .frame(maxHeight: 56)
-                .padding(.leading, safeAreaInsets.leading)
-                .padding(.trailing, safeAreaInsets.trailing)
-                .padding(.horizontal, 24)
+                case .error(error: let error):
+                    Text(error.localizedDescription)
+                default:
+                    ProgressView()
             }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .overlay(alignment: .topLeading) {
             VStack {
                 Button {
                     router.pop()
@@ -129,10 +150,11 @@ struct ProductPage: View {
             }
             .padding(.top, safeAreaInsets.top)
         }
+        .frame(maxWidth: .infinity, maxHeight:.infinity)
         .edgesIgnoringSafeArea([.top, .horizontal])
         .toolbar(.hidden)
         .onFirstTask {
-            await viewModel.fetch()
+            await viewModel.initialize()
         }
     }
 }

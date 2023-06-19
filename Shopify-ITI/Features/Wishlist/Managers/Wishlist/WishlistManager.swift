@@ -39,7 +39,6 @@ class WishlistManager : AnyInjectable {
         self.authManager = authManager
         
         self.initialize()
-        print("ADSADASDASDADASD")
     }
     
     private func initialize() {
