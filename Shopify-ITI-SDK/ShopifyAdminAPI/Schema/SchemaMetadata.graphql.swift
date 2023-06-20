@@ -32,7 +32,7 @@ public extension ShopifyAdminAPI {
     public static func objectType(forTypename typename: String) -> Object? {
       switch typename {
       case "Mutation": return ShopifyAdminAPI.Objects.Mutation
-      case "DraftOrderCreatePayload": return ShopifyAdminAPI.Objects.DraftOrderCreatePayload
+      case "DraftOrderCompletePayload": return ShopifyAdminAPI.Objects.DraftOrderCompletePayload
       case "DraftOrder": return ShopifyAdminAPI.Objects.DraftOrder
       case "Company": return ShopifyAdminAPI.Objects.Company
       case "CompanyLocation": return ShopifyAdminAPI.Objects.CompanyLocation
@@ -182,10 +182,6 @@ public extension ShopifyAdminAPI {
       case "UrlRedirectImport": return ShopifyAdminAPI.Objects.UrlRedirectImport
       case "WebPixel": return ShopifyAdminAPI.Objects.WebPixel
       case "Image": return ShopifyAdminAPI.Objects.Image
-      case "MoneyBag": return ShopifyAdminAPI.Objects.MoneyBag
-      case "MoneyV2": return ShopifyAdminAPI.Objects.MoneyV2
-      case "DraftOrderLineItemConnection": return ShopifyAdminAPI.Objects.DraftOrderLineItemConnection
-      case "PageInfo": return ShopifyAdminAPI.Objects.PageInfo
       case "UserError": return ShopifyAdminAPI.Objects.UserError
       case "AbandonmentEmailStateUpdateUserError": return ShopifyAdminAPI.Objects.AbandonmentEmailStateUpdateUserError
       case "AppRevenueAttributionRecordCreateUserError": return ShopifyAdminAPI.Objects.AppRevenueAttributionRecordCreateUserError
@@ -274,8 +270,13 @@ public extension ShopifyAdminAPI {
       case "UrlRedirectBulkDeleteBySearchUserError": return ShopifyAdminAPI.Objects.UrlRedirectBulkDeleteBySearchUserError
       case "UrlRedirectImportUserError": return ShopifyAdminAPI.Objects.UrlRedirectImportUserError
       case "UrlRedirectUserError": return ShopifyAdminAPI.Objects.UrlRedirectUserError
-      case "DraftOrderDeletePayload": return ShopifyAdminAPI.Objects.DraftOrderDeletePayload
+      case "DraftOrderCreatePayload": return ShopifyAdminAPI.Objects.DraftOrderCreatePayload
       case "DraftOrderUpdatePayload": return ShopifyAdminAPI.Objects.DraftOrderUpdatePayload
+      case "MoneyBag": return ShopifyAdminAPI.Objects.MoneyBag
+      case "MoneyV2": return ShopifyAdminAPI.Objects.MoneyV2
+      case "DraftOrderLineItemConnection": return ShopifyAdminAPI.Objects.DraftOrderLineItemConnection
+      case "PageInfo": return ShopifyAdminAPI.Objects.PageInfo
+      case "DraftOrderDeletePayload": return ShopifyAdminAPI.Objects.DraftOrderDeletePayload
       case "QueryRoot": return ShopifyAdminAPI.Objects.QueryRoot
       case "DraftOrderConnection": return ShopifyAdminAPI.Objects.DraftOrderConnection
       case "DraftOrderLineItemEdge": return ShopifyAdminAPI.Objects.DraftOrderLineItemEdge

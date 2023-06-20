@@ -76,7 +76,7 @@ struct PaymantView: View {
                             }
                         }
                         }){
-                            Text("Go To paymant")
+                            Text("Proceed To Payment")
                                 .foregroundColor(.white)
                                 .padding(.horizontal)
                                 .frame(maxWidth: .infinity)

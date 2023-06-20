@@ -1,7 +1,7 @@
 PODS:
-  - Apollo (1.2.1):
-    - Apollo/Core (= 1.2.1)
-  - Apollo/Core (1.2.1)
+  - Apollo (1.2.2):
+    - Apollo/Core (= 1.2.2)
+  - Apollo/Core (1.2.2)
   - Swinject (2.8.3)
 
 DEPENDENCIES:
@@ -14,7 +14,7 @@ SPEC REPOS:
     - Swinject
 
 SPEC CHECKSUMS:
-  Apollo: fe380f40e55e501a2499dd5885fab0cdf082b2bb
+  Apollo: 2fe0281cf862ec4b22c601bf6a741b32ccdf09a7
   Swinject: 893c9a543000ac2f10ee4cbaf0933c6992c935d5
 
 PODFILE CHECKSUM: 80d37adbc99a3851ed80eb102407b643d6da994e
