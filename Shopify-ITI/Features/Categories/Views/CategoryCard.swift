@@ -20,10 +20,13 @@ struct CardCategory : View {
                                                          .type:item.productType]))
         }) {
             VStack {
-                Image(item.productType.lowercased())
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: .infinity, maxHeight: 90)
+                AsyncImage(url: URL(string: item.featuredImage?.url ?? item.productType.lowercased())) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
+                }.aspectRatio(contentMode: .fit)
+                    .frame(height: 90)
+                    .frame(maxWidth: .infinity)
                     .padding(4)
                 
                 Text(item.productType)

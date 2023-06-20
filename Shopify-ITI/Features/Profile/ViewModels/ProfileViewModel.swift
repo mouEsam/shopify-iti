@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
- //TODO: refactor
+
 class ProfileViewModel : ObservableObject{
 
     @Published private(set) var userState: Optional<User> = .none

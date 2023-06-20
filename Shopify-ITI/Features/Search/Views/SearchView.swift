@@ -13,7 +13,6 @@ struct SearchView: View {
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
     @AppStorage("suggestions") private var suggestions: [String]?
-    
     @StateObject private var viewModel: SearchViewModel
     
     init(container: AppContainer) {
@@ -35,7 +34,7 @@ struct SearchView: View {
             ForEach(searchResults, id: \.self) { name in
                 Button(action: {
                     router.push(ProductsScreen.Route(container: container,
-                                                      criterion: [.query:name]))
+                                                     criterion: [.query:name]))
                 }) {
                     Text(name)
                 }.foregroundColor(.black)

@@ -140,6 +140,9 @@ extension AppContainer {
             CountryLocalStore.self,
             SearchRemoteService.self,
             SearchModel.self,
+            HomeStrings.self,
+            ProfileStrings.self,
+            CategoriesStrings.self,
         ])
     }
 }
