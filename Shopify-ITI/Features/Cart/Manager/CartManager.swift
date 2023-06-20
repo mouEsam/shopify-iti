@@ -135,6 +135,7 @@ class CartManager:AnyInjectable{
             _ = await task?.result
         }
         let result = cartIdStore.read()
+       // if case
         switch result{
         case .success(let cardID):
             return await addToCart(cardID, item,quantity: quantity)
@@ -152,11 +153,12 @@ class CartManager:AnyInjectable{
     }
     
     private func fetchOrCreate(_ item: ProductVariant,quantity:Int) async -> Result<Cart, Error>{
-        let buyerIdentity = ShopifyAPI.CartBuyerIdentityInput(customerAccessToken: .init(nullable: "userId"))
+        let buyerIdentity = ShopifyAPI.CartBuyerIdentityInput(customerAccessToken: .init(nullable:authManager.state.user?.id))
         let cartLineInputs = [ShopifyAPI.CartLineInput(quantity: .init(nullable: quantity), merchandiseId: item.id)]
         
         let cartResult = await cartRemoteService.createCart(with: ShopifyAPI.CartInput(lines: .init(nullable: cartLineInputs),
                                                                                        buyerIdentity: .init(nullable: buyerIdentity)))
+        
         return await cartHandler(result: cartResult)
     }
     
@@ -165,6 +167,8 @@ class CartManager:AnyInjectable{
         case .success(let cart):
             
             if let cart = cart{
+                print(cart.id)
+                cartIdStore.write(id: cart.id)
                 return Result.success(cart)
             }else{
                 return Result.failure(LocalErrors.NotFound)

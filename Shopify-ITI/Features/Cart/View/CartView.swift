@@ -67,7 +67,7 @@ struct CartView: View {
                     .buttonStyle(.borderedProminent)
                     .tint(.black)
                 }.padding(.all)
-            }.onFirstTask {
+            }.task {
                 await viewModel.getCart()
             }
         }
