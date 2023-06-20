@@ -23,7 +23,7 @@ struct ProductsScreen: View {
     @StateObject private var viewModel: ProductsViewModel
     
     init(container: AppContainer, criterion: ProductsViewModel.Criterion) {
-        let model = container.require((any AnyProductsModelFactory).self).create()
+        let model = container.require((any AnyProductsModel).self)
         let manager = container.require(WishlistManager.self)
         let notificationCenter = container.require((any AnyNotificationCenter).self)
         _viewModel = .init(wrappedValue: ProductsViewModel(criterion: criterion,

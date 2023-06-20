@@ -27,7 +27,7 @@ struct ProductPage: View {
     private let colors: AnyAppColors = AppColors()
     
     init(container: AppContainer, productId: String) {
-        let model = container.require((any AnyProductModelFactory).self).create()
+        let model = container.require((any AnyProductModel).self)
         let manager = container.require(WishlistManager.self)
         let cartManager = container.require(CartManager.self)
         _viewModel = .init(wrappedValue: ProductViewModel(productId:productId,

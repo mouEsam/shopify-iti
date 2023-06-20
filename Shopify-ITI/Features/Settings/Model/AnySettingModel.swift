@@ -6,6 +6,11 @@
 //
 
 import Foundation
+
 protocol AnySettingModel : AnyInjectable{
+    
+    func fetch() async -> Result<SourcedData<Localization>, ShopifyErrors<Any>>
+    func changelanguage(language:Language)
+    func changeCurrency(currency:Country)
     
 }

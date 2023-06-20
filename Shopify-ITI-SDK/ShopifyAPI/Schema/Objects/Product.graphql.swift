@@ -11,7 +11,8 @@ public extension ShopifyAPI.Objects {
     implementedInterfaces: [
       ShopifyAPI.Interfaces.HasMetafields.self,
       ShopifyAPI.Interfaces.Node.self,
-      ShopifyAPI.Interfaces.OnlineStorePublishable.self
+      ShopifyAPI.Interfaces.OnlineStorePublishable.self,
+      ShopifyAPI.Interfaces.Trackable.self
     ]
   )
 }

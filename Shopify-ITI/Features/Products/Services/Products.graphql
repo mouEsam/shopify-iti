@@ -16,6 +16,26 @@ query getProductsByQuery($cursor: String,
     }
 }
 
+query searchProducts($cursor: String,
+                     $count: Int!,
+                     $query: String!,
+                     $country: CountryCode, 
+                     $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+    search(first: $count, after: $cursor, query: $query, types: [PRODUCT]) {
+        edges {
+            cursor
+            node {
+                ... on Product {
+                    ...productInfo
+                }
+            }
+        }
+        pageInfo {
+            ...paginationInfo
+        }
+    }
+}
+
 query getProductsByCollection($cursor: String,
                               $count: Int!,
                               $collectionId: ID!,

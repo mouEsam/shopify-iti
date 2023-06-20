@@ -1,0 +1,19 @@
+query getCountriesAndLanguages($country: CountryCode, 
+                               $lang: LanguageCode) @inContext(country: $country, language: $lang)  {
+    localization {
+        availableCountries {
+            currency {
+                isoCode
+                name
+                symbol
+            }
+            isoCode
+            name
+            unitSystem
+        }
+        availableLanguages {
+            isoCode
+            endonymName
+        }
+    }
+}

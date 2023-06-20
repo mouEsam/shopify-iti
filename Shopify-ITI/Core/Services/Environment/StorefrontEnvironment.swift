@@ -7,7 +7,7 @@
 
 import Foundation
 
-// https://18c640d114bd302801f792ba0f7432aa:74fc3fc4ffb7889a033a7ab71b34499d@mad43-alex-ios-team1.myshopify.com/api/2023-04/graphql.json
+// https://18c640d114bd302801f792ba0f7432aa:74fc3fc4ffb7889a033a7ab71b34499d@mad43-alex-ios-team1.myshopify.com/api/2023-07/graphql.json
 
 struct StorefronEnvironmentProvider: AnyEnvironmentProvider {
     static func register(_ container: AppContainer) {
@@ -23,6 +23,6 @@ struct StorefronEnvironmentProvider: AnyEnvironmentProvider {
     let shopifyAPIKey: String = "18c640d114bd302801f792ba0f7432aa"
     
     var shopifyBaseUrl: String {
-        "https://\(shopifyAPIKey):\(shopifyAccessToken)@mad43-alex-ios-team1.myshopify.com/api/2023-04/graphql.json"
+        "https://\(shopifyAPIKey):\(shopifyAccessToken)@mad43-alex-ios-team1.myshopify.com/api/2023-07/graphql.json"
     }
 }

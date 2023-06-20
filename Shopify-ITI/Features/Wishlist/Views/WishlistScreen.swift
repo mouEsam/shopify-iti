@@ -22,7 +22,7 @@ struct WishlistScreen: View {
     @StateObject private var viewModel: WishlistViewModel
     
     init(container: AppContainer) {
-        let model = container.require((any AnyWishlistModelFactory).self).create()
+        let model = container.require((any AnyWishlistModel).self)
         let manager = container.require(WishlistManager.self)
         let notificationCenter = container.require((any AnyNotificationCenter).self)
         _viewModel = .init(wrappedValue: WishlistViewModel(model: model,
