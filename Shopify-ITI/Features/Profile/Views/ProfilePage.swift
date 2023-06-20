@@ -11,7 +11,6 @@ import SwiftUI
 struct ProfilePage: View {
     
     @EnvironmentObject private var container: AppContainer
-    
     @EnvironmentRouter private var router: AppRouter
     
     
@@ -19,7 +18,13 @@ struct ProfilePage: View {
     @StateObject private var wishListViewModel: WishlistViewModel
     //    @StateObject private var ordersViewModel: OrdersViewModel
     
+    private let strings: any AnyProfileStrings
+    private let colors: any AnyCommonColors
+    
     init(container: AppContainer) {
+        
+        strings = container.require((any AnyProfileStrings).self)
+        colors = container.require((any AnyCommonColors).self)
         
         let authenticationManager = container.require(AuthenticationManager.self)
         _profileviewModel = .init(wrappedValue: ProfileViewModel(authenticationManager:  authenticationManager))
@@ -31,32 +36,35 @@ struct ProfilePage: View {
                                                                    wishlistManager: manager,
                                                                    notificationCenter: notificationCenter))
         
+        
     }
     
     var body: some View {
         let name = profileviewModel.userState?.firstName
-        ScrollView{
+        VStack{
             if  name != nil {
-                VStack{
                     Text("Welcome " + (name ?? "") )
-                    
                         .font(.title)
                         .bold()
                         .padding()//TODO: nemoriztion
+                    
                     HStack{
-                        Text("Orders ")
+                        Text("Orders")
                             .font(.title2)
                             .bold()
                             .padding()//TODO: nemoriztion
+                        
                         Spacer()
+                        
                         Button("More", role: .cancel){//TODO: nemoriztion
                             print("orders")
                         }.buttonStyle(.plain)
                             .foregroundColor(.black)
                             .font(.title2).padding()
                     }
+                    
                     HStack{
-                        Text("WishList ")
+                        Text("WishList")
                             .font(.title2)
                             .bold()
                             .padding()//TODO: nemoriztion
@@ -84,13 +92,19 @@ struct ProfilePage: View {
                     }
                     .padding(.horizontal)
                 }
+
             } else {
-                Button("Please login") {
-                    router.push(AppRoute(identifier:636, content: {
-                        LoginScreen(container: container)
-                    }))
-                }.buttonStyle(.bordered)
-                    .foregroundColor(.black)
+                AuthButton(label: strings.loginAction.localized,
+                           labelColor: colors.white,
+                           backgroundColor: colors.black
+                          ) {
+                    Task {
+                        router.push(AppRoute(identifier:colors.white.hashValue, content: {
+                            LoginScreen(container: container)
+                        }))
+                    }
+                }.padding(.all)
+              
             }
         }.onFirstAppear {
             profileviewModel.initialize()

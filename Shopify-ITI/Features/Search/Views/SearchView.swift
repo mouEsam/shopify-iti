@@ -11,8 +11,17 @@ import UniformTypeIdentifiers
 struct SearchView: View {
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
-    let names = ["Rings", "jecket", "sweater"]
+    
+    let colors : AnyCommonColors
+    
+    @StateObject private var viewModel:  SearchViewModel
     @State private var searchText = ""
+    
+    init(container: AppContainer) {
+        colors = container.require((any AnyCommonColors).self)
+        
+        _viewModel = .init(wrappedValue: SearchViewModel())
+    }
     
     var body: some View {
         
@@ -30,17 +39,25 @@ struct SearchView: View {
         .searchable(text: $searchText,placement: .navigationBarDrawer(displayMode: .always),prompt: "search for product")//TODO: nemoriztion
         .onSubmit(of: .search)  {
             if !searchText.isEmpty {
+                viewModel.addFavorite(searchText)
                 router.push(ProductsScreen.Route(container: container,
                                                  criterion: [.title:searchText]))
             }
         }
+        .onFirstAppear () {
+            viewModel.retrieveFavorites()
+            
+        }
+        
     }
     
-    var searchResults: [String] {
+    var searchResults: [String]{
         if searchText.isEmpty {
-            return names
+            return viewModel.items
         } else {
-            return names.filter { $0.contains(searchText) }
+            return viewModel.items.filter { $0.contains(searchText) }
         }
     }
+    
+ 
 }

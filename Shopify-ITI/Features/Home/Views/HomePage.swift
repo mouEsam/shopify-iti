@@ -13,9 +13,15 @@ struct HomePage: View {
     
     @StateObject private var viewModel:  BrandViewModel
     
+    private let strings : AnyHomeStrings
+    private let colors : AnyCommonColors
+    
     init(container: AppContainer) {
         let model = container.require((any AnyBrandModelFactory).self).create()
         _viewModel = .init(wrappedValue:BrandViewModel(model: model))
+
+        strings = container.require((any AnyHomeStrings).self)
+        colors = container.require((any AnyCommonColors).self)
     }
     
     
@@ -23,14 +29,14 @@ struct HomePage: View {
         ScrollView{
             VStack {
                 ADSView().aspectRatio(1,contentMode: .fit)
-                Text("Brands").font(.largeTitle).fontWeight(.bold) // TODO: nameriztion
+                Text(strings.brandsLabel.localized).font(.largeTitle).fontWeight(.bold).foregroundColor(colors.black)
                 
                 switch viewModel.operationState {
                     
                 case .loaded(data: let productCollections):
                     LazyVGrid(columns: createGridColumns(), spacing: 16) {
                         ForEach(productCollections.data,id: \.id) { item in
-                            CardBrand(item:item)
+                            CardBrand(item:item,color:colors.black)
                         }
                     }
                     .padding()

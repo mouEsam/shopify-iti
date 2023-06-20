@@ -30,8 +30,13 @@ struct MainScreen: View {
     
     private let cartManager : CartManager
     
+    private let colors: any AnyCommonColors
+    
     init(container: AppContainer) {
         cartManager = container.require(CartManager.self)
+
+        colors = container.require((any AnyCommonColors).self)
+
     }
     
     var body: some View {
@@ -61,13 +66,13 @@ struct MainScreen: View {
         } .toolbar {
             if(selection == TabType.profile){
                 ToolbarItem( placement: .navigationBarTrailing) {
-                    Button(action: {
+                    SwiftUI.Button(action: {
                         router.push(AppRoute(identifier:TabType.profile, content: {
                             SettingsView(container: container)
                         }
                                             ))
                     }) {
-                        Image(systemName: "gearshape")
+                        Image(systemName: "gearshape").tint(colors.black)
                     }
                 }
             } else {
@@ -75,10 +80,10 @@ struct MainScreen: View {
                     Button(action: {
 
                         router.push(AppRoute(identifier:TabType.cart, content: {
-                            SearchView()
+                            SearchView(container: container)
                         }))
                     }) {
-                        Image(systemName: "magnifyingglass")
+                        Image(systemName: "magnifyingglass").tint(colors.black)
                     }
                 }
                 
@@ -88,11 +93,12 @@ struct MainScreen: View {
                             WishlistScreen(container: container)
                         }))
                     }) {
-                        Image(systemName: "heart")
+                        Image(systemName: "heart").tint(colors.black)
                     }
                 }
             }
         }.navigationBarBackButtonHidden(true)
+        }.tint(colors.black)
     }
 }
 
@@ -103,7 +109,7 @@ fileprivate struct TabBarItemView: View {
     var body: some View {
         VStack {
             Image(systemName: systemName)
-                .foregroundColor(.black)
+                
             
         }
     }
