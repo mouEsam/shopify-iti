@@ -13,9 +13,11 @@ struct CardBrand : View {
     @EnvironmentObject private var container: AppContainer
     
     private let item : ProductCollection
+    private let color : Color
     
-    init(item: ProductCollection) {
+    init(item: ProductCollection, color: Color) {
         self.item = item
+        self.color = color
     }
     
     var body: some View {
@@ -36,7 +38,7 @@ struct CardBrand : View {
                 Text(item.title)
                     .font(.title3)
                     .fontWeight(.bold)
-                    .foregroundColor(.black)
+                    .foregroundColor(color)
                     .padding()
             }.background(Color.white)
                 .cornerRadius(10)

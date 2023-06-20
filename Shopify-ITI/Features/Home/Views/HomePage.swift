@@ -14,14 +14,14 @@ struct HomePage: View {
     @StateObject private var viewModel:  BrandViewModel
     
     private let strings : AnyHomeStrings
-    private let colors : AnyCommonColors
+    private let colors : AnyAppColors
     
     init(container: AppContainer) {
         let model = container.require((any AnyBrandModelFactory).self).create()
         _viewModel = .init(wrappedValue:BrandViewModel(model: model))
 
         strings = container.require((any AnyHomeStrings).self)
-        colors = container.require((any AnyCommonColors).self)
+        colors = container.require((any AnyAppColors).self)
     }
     
     

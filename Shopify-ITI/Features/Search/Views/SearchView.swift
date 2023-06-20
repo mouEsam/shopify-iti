@@ -12,13 +12,13 @@ struct SearchView: View {
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
     
-    let colors : AnyCommonColors
+    let colors : AnyAppColors
     
     @StateObject private var viewModel:  SearchViewModel
     @State private var searchText = ""
     
     init(container: AppContainer) {
-        colors = container.require((any AnyCommonColors).self)
+        colors = container.require((any AnyAppColors).self)
         
         _viewModel = .init(wrappedValue: SearchViewModel())
     }

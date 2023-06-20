@@ -134,6 +134,10 @@ extension AppContainer {
             AppColors.self,
             SettingModel.self,
             SplashStrings.self,
+            HomeStrings.self,
+            ProfileStrings.self,
+            CategoriesStrings.self,
+            
         ])
     }
 }

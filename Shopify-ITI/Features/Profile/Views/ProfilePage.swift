@@ -19,12 +19,12 @@ struct ProfilePage: View {
     //    @StateObject private var ordersViewModel: OrdersViewModel
     
     private let strings: any AnyProfileStrings
-    private let colors: any AnyCommonColors
+    private let colors: any AnyAppColors
     
     init(container: AppContainer) {
         
         strings = container.require((any AnyProfileStrings).self)
-        colors = container.require((any AnyCommonColors).self)
+        colors = container.require((any AnyAppColors).self)
         
         let authenticationManager = container.require(AuthenticationManager.self)
         _profileviewModel = .init(wrappedValue: ProfileViewModel(authenticationManager:  authenticationManager))
@@ -43,73 +43,84 @@ struct ProfilePage: View {
         let name = profileviewModel.userState?.firstName
         VStack{
             if  name != nil {
-                    Text("Welcome " + (name ?? "") )
-                        .font(.title)
+                Text("Welcome " + (name ?? "") )
+                    .font(.title)
+                    .bold()
+                    .padding()//TODO: nemoriztion
+                
+                HStack{
+                    Text("Orders")
+                        .font(.title2)
                         .bold()
                         .padding()//TODO: nemoriztion
                     
-                    HStack{
-                        Text("Orders")
-                            .font(.title2)
-                            .bold()
-                            .padding()//TODO: nemoriztion
-                        
-                        Spacer()
-                        
-                        Button("More", role: .cancel){//TODO: nemoriztion
-                            print("orders")
-                        }.buttonStyle(.plain)
-                            .foregroundColor(.black)
-                            .font(.title2).padding()
-                    }
+                    Spacer()
                     
-                    HStack{
-                        Text("WishList")
-                            .font(.title2)
-                            .bold()
-                            .padding()//TODO: nemoriztion
-                        Spacer()
-                        Button("More", role: .cancel){//TODO: nemoriztion
-                            router.push(WishlistScreen.Route(container: container))
-                        }.buttonStyle(.plain)
-                            .foregroundColor(.black)
-                            .font(.title2).padding()
-                    }
-                    Group {
-                        switch wishListViewModel.uiState {
-                            case .loaded(let data):
-                                let data = Array(data.data.prefix(2))
-                                ForEach(data,id:\.id){item in
-                                    WishlistItemView(product: item.product)
-                                }
-                            case .error(let error):
-                                Text("\(error.localizedDescription)")
-                            case .loading:
-                                ProgressView()
-                            default:
-                                Group {}
-                        }
-                    }
-                    .padding(.horizontal)
+                    Button("More", role: .cancel){//TODO: nemoriztion
+                        print("orders")
+                    }.buttonStyle(.plain)
+                        .foregroundColor(.black)
+                        .font(.title2).padding()
                 }
-
-            } else {
-                AuthButton(label: strings.loginAction.localized,
-                           labelColor: colors.white,
-                           backgroundColor: colors.black
-                          ) {
-                    Task {
-                        router.push(AppRoute(identifier:colors.white.hashValue, content: {
-                            LoginScreen(container: container)
-                        }))
+                
+                HStack{
+                    Text("WishList")
+                        .font(.title2)
+                        .bold()
+                        .padding()//TODO: nemoriztion
+                    Spacer()
+                    Button("More", role: .cancel){//TODO: nemoriztion
+                        router.push(WishlistScreen.Route(container: container))
+                    }.buttonStyle(.plain)
+                        .foregroundColor(.black)
+                        .font(.title2).padding()
+                }
+                Group {
+                    switch wishListViewModel.uiState {
+                    case .loaded(let data):
+                        let data = Array(data.data.prefix(2))
+                        ForEach(data,id:\.id){item in
+                            WishlistItemView(product: item.product)
+                        }
+                    case .error(let error):
+                        Text("\(error.localizedDescription)")
+                    case .loading:
+                        ProgressView()
+                    default:
+                        Group {}
                     }
-                }.padding(.all)
-              
+                }
+                .padding(.horizontal)
+                
             }
-        }.onFirstAppear {
-            profileviewModel.initialize()
-            wishListViewModel.initialize()
-//            ordersViewModel.initialize()
+            
+         else {
+             Spacer()
+             Text("Please login to show orders and wishlist").font(.title)
+             Spacer()
+            RoundedButton(label: strings.loginAction.localized,
+                       labelColor: colors.white,
+                       backgroundColor: colors.black
+            ) {
+                Task {
+                    router.push(AppRoute(identifier:colors.white.hashValue, content: {
+                        LoginScreen(container: container)
+                    }))
+                }
+            }.padding(.all)
+            
         }
+            
+    }.frame(
+            minWidth: 0,
+            maxWidth: .infinity,
+            minHeight: 0,
+            maxHeight: .infinity,
+            alignment: .topLeading
+          ).onFirstAppear {
+        profileviewModel.initialize()
+        wishListViewModel.initialize()
+        //            ordersViewModel.initialize()
     }
+}
 }

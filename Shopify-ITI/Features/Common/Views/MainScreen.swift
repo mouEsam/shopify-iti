@@ -30,12 +30,12 @@ struct MainScreen: View {
     
     private let cartManager : CartManager
     
-    private let colors: any AnyCommonColors
+    private let colors: any AnyAppColors
     
     init(container: AppContainer) {
         cartManager = container.require(CartManager.self)
 
-        colors = container.require((any AnyCommonColors).self)
+        colors = container.require((any AnyAppColors).self)
 
     }
     
@@ -98,7 +98,7 @@ struct MainScreen: View {
                 }
             }
         }.navigationBarBackButtonHidden(true)
-        }.tint(colors.black)
+        .tint(colors.black)
     }
 }
 
