@@ -7,31 +7,18 @@
 
 import Foundation
 
-protocol AnyWishlistModelFactory: AnyInjectable {
-    func create() -> any AnyWishlistModel
-}
-
-struct WishlistModelFactory: AnyWishlistModelFactory {
-    static func register(_ container: AppContainer) {
-        container.register(type: (any AnyWishlistModelFactory).self) { resolver in
-            WishlistModelFactory(resolver: resolver)
-        }
-    }
-    
-    private let resolver: any AppContainer.Resolver
-    
-    func create() -> AnyWishlistModel {
-        WishlistModel(wishlistService: resolver.require(WishlistRemoteService.self),
-                      configsProvider: resolver.require((any AnyConfigsProvider).self))
-    }
-}
-
 protocol AnyWishlistModel {
     func fetch(for wishListId: String,
                with paginationInfo: PageInfo?) async -> Result<SourcedData<PageResult<WishlistItem>>, ShopifyErrors<Any>>
 }
 
-struct WishlistModel: AnyWishlistModel {
+struct WishlistModel: AnyWishlistModel, AnyInjectable {
+    static func register(_ container: AppContainer) {
+        container.register(type: (any AnyWishlistModel).self, scope: .transient) { resolver in
+            WishlistModel(wishlistService: resolver.require(WishlistRemoteService.self),
+                          configsProvider: resolver.require((any AnyConfigsProvider).self))
+        }
+    }
     
     private let wishlistService: WishlistRemoteService
     private let configsProvider: any AnyConfigsProvider

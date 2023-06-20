@@ -11,6 +11,7 @@ import Shopify_ITI_SDK
 import Shopify_Admin_ITI_SDK
 
 protocol AnyLocaleProvider: AnyInjectable {
+    var locale: Locale { get }
     var country: String { get }
     var language: String { get }
 }

@@ -12,7 +12,7 @@ struct ProductsRemoteService: AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: ProductsRemoteService.self) { resolver in
             ProductsRemoteService(remoteClient: resolver.require((any GraphQLClient).self),
-                                 localeProvider: resolver.require((any AnyLocaleProvider).self))
+                                  localeProvider: resolver.require((any AnyLocaleProvider).self))
         }
     }
     
@@ -24,7 +24,7 @@ struct ProductsRemoteService: AnyInjectable {
     private let mapper = {
         var mapper: [ProductSearchCriteria: String] = [:]
         mapper[.tag] = "tag"
-        mapper[.title] = "title"
+        mapper[.query] = "title"
         mapper[.type] = "product_type"
         mapper[.vendor] = "vendor"
         return mapper
@@ -40,9 +40,15 @@ struct ProductsRemoteService: AnyInjectable {
                count: Int,
                with paginationInfo: PageInfo? = nil) async -> Result<PageResult<Product>, ProductsError> {
         let collectionId = criterion[.collection]
+        let query = criterion[.query]
         if let collectionId = collectionId {
             return await fetch(withCollection: collectionId,
                                AndCriterion: criterion,
+                               count: count,
+                               with: paginationInfo)
+        } else if let query = query,
+                  criterion.count == 1 {
+            return await fetch(withQuery: query,
                                count: count,
                                with: paginationInfo)
         } else {
@@ -72,6 +78,28 @@ struct ProductsRemoteService: AnyInjectable {
                 let products = data.edges
                 let pageInfo = data.pageInfo
                 return .success(.init(list: products.map { Product(from: $0.node) },
+                                      pageInfo: .init(nextCursor: pageInfo.endCursor,
+                                                      hasNextCursor: pageInfo.hasNextPage)))
+            } else {
+                return .failure(ProductsError.Unknown)
+            }
+        }
+    }
+    
+    func fetch(withQuery query: String,
+               count: Int,
+               with paginationInfo: PageInfo? = nil) async -> Result<PageResult<Product>, ProductsError> {
+        let query = ShopifyAPI.SearchProductsQuery(cursor: .init(nullable: paginationInfo?.nextCursor),
+                                                   count: count,
+                                                   query: query,
+                                                   country: .init(nullable: localeProvider.shopifyCountry),
+                                                   lang: .init(nullable: localeProvider.shopifyLanguage))
+        let result = await remoteClient.fetch(query: query)
+        return result.mapError { .Client(error: $0) }.flatMap { result in
+            if let data = result.data?.search {
+                let products = data.edges
+                let pageInfo = data.pageInfo
+                return .success(.init(list: products.compactMap { $0.node.asProduct.map { Product(from: $0) } },
                                       pageInfo: .init(nextCursor: pageInfo.endCursor,
                                                       hasNextCursor: pageInfo.hasNextPage)))
             } else {

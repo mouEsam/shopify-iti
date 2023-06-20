@@ -170,12 +170,12 @@
 		04EA77312A3E6D2D007E84D0 /* Wishlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA76B92A3E6D2C007E84D0 /* Wishlist.swift */; };
 		04EA7BC52A3E7B81007E84D0 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA7BBF2A3E7B81007E84D0 /* SettingViewModel.swift */; };
 		04EA7BC62A3E7B81007E84D0 /* AnySettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA7BC12A3E7B81007E84D0 /* AnySettingModel.swift */; };
-		04EA7BC72A3E7B81007E84D0 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA7BC22A3E7B81007E84D0 /* SettingModel.swift */; };
+		04EA7BC72A3E7B81007E84D0 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA7BC22A3E7B81007E84D0 /* SettingsModel.swift */; };
 		04EA7BC82A3E7B81007E84D0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA7BC42A3E7B81007E84D0 /* SettingsView.swift */; };
 		04EA7BCE2A3E8506007E84D0 /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA7BCD2A3E8506007E84D0 /* FAQView.swift */; };
 		04EA7BD02A3E86CA007E84D0 /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA7BCF2A3E86CA007E84D0 /* ContactUsView.swift */; };
-		04EA7BD32A3E90C4007E84D0 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA7BD22A3E90C4007E84D0 /* LocalNotification.swift */; };
-		04EA7BD52A3E95CB007E84D0 /* LocalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA7BD42A3E95CB007E84D0 /* LocalEnum.swift */; };
+		04EA7BD32A3E90C4007E84D0 /* LocaleNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA7BD22A3E90C4007E84D0 /* LocaleNotification.swift */; };
+		04EA7BD52A3E95CB007E84D0 /* LocaleEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA7BD42A3E95CB007E84D0 /* LocaleEnum.swift */; };
 		334029F07C9A89D6CEF9AB9D /* Pods_Shopify_ITI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */; };
 		D415D66A2A3FA01300F3362B /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415D6692A3FA01300F3362B /* SplashScreen.swift */; };
 		D415D66C2A3FAEA500F3362B /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415D66B2A3FAEA500F3362B /* OnboardingScreen.swift */; };
@@ -207,6 +207,18 @@
 		D4AAFA392A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */; };
 		D4AAFA3A2A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4AF27CE2A41B18700F74FB0 /* Semaphore in Frameworks */ = {isa = PBXBuildFile; productRef = D4AF27CD2A41B18700F74FB0 /* Semaphore */; };
+		D4AF27D12A41D71100F74FB0 /* Localizations.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D4AF27D02A41D71100F74FB0 /* Localizations.graphql */; };
+		D4AF27D42A41DCF700F74FB0 /* Search.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D4AF27D32A41DCF700F74FB0 /* Search.graphql */; };
+		D4AF28F82A41E2CB00F74FB0 /* SearchRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF28F72A41E2CB00F74FB0 /* SearchRemoteService.swift */; };
+		D4AF28FB2A41E40600F74FB0 /* LocalizationRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF28FA2A41E40600F74FB0 /* LocalizationRemoteService.swift */; };
+		D4AF28FD2A41E46900F74FB0 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF28FC2A41E46900F74FB0 /* Localization.swift */; };
+		D4AF29022A41E94600F74FB0 /* AnyCountryLocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF29012A41E94600F74FB0 /* AnyCountryLocalStore.swift */; };
+		D4AF29042A41E95000F74FB0 /* CountryLocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF29032A41E95000F74FB0 /* CountryLocalStore.swift */; };
+		D4AF29062A41EA6100F74FB0 /* AnyLanguageLocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF29052A41EA6100F74FB0 /* AnyLanguageLocalStore.swift */; };
+		D4AF29082A41EA9C00F74FB0 /* LanguageLocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF29072A41EA9C00F74FB0 /* LanguageLocalStore.swift */; };
+		D4AF290A2A41F33A00F74FB0 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF29092A41F33A00F74FB0 /* SearchModel.swift */; };
+		D4AF290C2A41F52400F74FB0 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF290B2A41F52400F74FB0 /* SearchViewModel.swift */; };
+		D4AF290F2A41F75000F74FB0 /* AppStorageArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF290E2A41F75000F74FB0 /* AppStorageArray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -390,12 +402,12 @@
 		04EA76B92A3E6D2C007E84D0 /* Wishlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wishlist.swift; sourceTree = "<group>"; };
 		04EA7BBF2A3E7B81007E84D0 /* SettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		04EA7BC12A3E7B81007E84D0 /* AnySettingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnySettingModel.swift; sourceTree = "<group>"; };
-		04EA7BC22A3E7B81007E84D0 /* SettingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
+		04EA7BC22A3E7B81007E84D0 /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		04EA7BC42A3E7B81007E84D0 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		04EA7BCD2A3E8506007E84D0 /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
 		04EA7BCF2A3E86CA007E84D0 /* ContactUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
-		04EA7BD22A3E90C4007E84D0 /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
-		04EA7BD42A3E95CB007E84D0 /* LocalEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEnum.swift; sourceTree = "<group>"; };
+		04EA7BD22A3E90C4007E84D0 /* LocaleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleNotification.swift; sourceTree = "<group>"; };
+		04EA7BD42A3E95CB007E84D0 /* LocaleEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleEnum.swift; sourceTree = "<group>"; };
 		9286320BBD2664520DE1BD34 /* Pods-Shopify-ITI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.debug.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.debug.xcconfig"; sourceTree = "<group>"; };
 		D415D6692A3FA01300F3362B /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		D415D66B2A3FAEA500F3362B /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
@@ -425,6 +437,18 @@
 		D49D041A2A40ED0500459DC7 /* PostPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPublished.swift; sourceTree = "<group>"; };
 		D49D041C2A41149500459DC7 /* Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lock.swift; sourceTree = "<group>"; };
 		D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_Admin_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4AF27D02A41D71100F74FB0 /* Localizations.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Localizations.graphql; sourceTree = "<group>"; };
+		D4AF27D32A41DCF700F74FB0 /* Search.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Search.graphql; sourceTree = "<group>"; };
+		D4AF28F72A41E2CB00F74FB0 /* SearchRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemoteService.swift; sourceTree = "<group>"; };
+		D4AF28FA2A41E40600F74FB0 /* LocalizationRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationRemoteService.swift; sourceTree = "<group>"; };
+		D4AF28FC2A41E46900F74FB0 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		D4AF29012A41E94600F74FB0 /* AnyCountryLocalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCountryLocalStore.swift; sourceTree = "<group>"; };
+		D4AF29032A41E95000F74FB0 /* CountryLocalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryLocalStore.swift; sourceTree = "<group>"; };
+		D4AF29052A41EA6100F74FB0 /* AnyLanguageLocalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyLanguageLocalStore.swift; sourceTree = "<group>"; };
+		D4AF29072A41EA9C00F74FB0 /* LanguageLocalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageLocalStore.swift; sourceTree = "<group>"; };
+		D4AF29092A41F33A00F74FB0 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		D4AF290B2A41F52400F74FB0 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		D4AF290E2A41F75000F74FB0 /* AppStorageArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageArray.swift; sourceTree = "<group>"; };
 		E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0A81DAC848D79B6DAFA2A4 /* Pods-Shopify-ITI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -447,6 +471,8 @@
 		04B4FBC22A3EA12800DD5017 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				D4AF290D2A41F74300F74FB0 /* Helpers */,
+				D4AF27D22A41DCEA00F74FB0 /* Services */,
 				04B4FBC32A3EA12800DD5017 /* ViewModel */,
 				04B4FBC42A3EA12800DD5017 /* Model */,
 				04B4FBC52A3EA12800DD5017 /* Views */,
@@ -458,6 +484,7 @@
 		04B4FBC32A3EA12800DD5017 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D4AF290B2A41F52400F74FB0 /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -465,6 +492,7 @@
 		04B4FBC42A3EA12800DD5017 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D4AF29092A41F33A00F74FB0 /* SearchModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1515,6 +1543,9 @@
 		04EA7BBD2A3E7B81007E84D0 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D4AF28FE2A41E90A00F74FB0 /* Stores */,
+				D4AF28F92A41E39700F74FB0 /* Entities */,
+				D4AF27CF2A41D6E700F74FB0 /* Services */,
 				04EA7BD12A3E907D007E84D0 /* Helpers */,
 				04EA7BBE2A3E7B81007E84D0 /* ViewModel */,
 				04EA7BC02A3E7B81007E84D0 /* Model */,
@@ -1535,7 +1566,7 @@
 			isa = PBXGroup;
 			children = (
 				04EA7BC12A3E7B81007E84D0 /* AnySettingModel.swift */,
-				04EA7BC22A3E7B81007E84D0 /* SettingModel.swift */,
+				04EA7BC22A3E7B81007E84D0 /* SettingsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1553,8 +1584,8 @@
 		04EA7BD12A3E907D007E84D0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				04EA7BD22A3E90C4007E84D0 /* LocalNotification.swift */,
-				04EA7BD42A3E95CB007E84D0 /* LocalEnum.swift */,
+				04EA7BD22A3E90C4007E84D0 /* LocaleNotification.swift */,
+				04EA7BD42A3E95CB007E84D0 /* LocaleEnum.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1666,6 +1697,67 @@
 			path = Widgets;
 			sourceTree = "<group>";
 		};
+		D4AF27CF2A41D6E700F74FB0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D4AF27D02A41D71100F74FB0 /* Localizations.graphql */,
+				D4AF28FA2A41E40600F74FB0 /* LocalizationRemoteService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D4AF27D22A41DCEA00F74FB0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D4AF27D32A41DCF700F74FB0 /* Search.graphql */,
+				D4AF28F72A41E2CB00F74FB0 /* SearchRemoteService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D4AF28F92A41E39700F74FB0 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				D4AF28FC2A41E46900F74FB0 /* Localization.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		D4AF28FE2A41E90A00F74FB0 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				D4AF29002A41E91F00F74FB0 /* Country */,
+				D4AF28FF2A41E91800F74FB0 /* Language */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		D4AF28FF2A41E91800F74FB0 /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				D4AF29052A41EA6100F74FB0 /* AnyLanguageLocalStore.swift */,
+				D4AF29072A41EA9C00F74FB0 /* LanguageLocalStore.swift */,
+			);
+			path = Language;
+			sourceTree = "<group>";
+		};
+		D4AF29002A41E91F00F74FB0 /* Country */ = {
+			isa = PBXGroup;
+			children = (
+				D4AF29012A41E94600F74FB0 /* AnyCountryLocalStore.swift */,
+				D4AF29032A41E95000F74FB0 /* CountryLocalStore.swift */,
+			);
+			path = Country;
+			sourceTree = "<group>";
+		};
+		D4AF290D2A41F74300F74FB0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D4AF290E2A41F75000F74FB0 /* AppStorageArray.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		F7B4E07DB0B124A6BC44E75B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1744,10 +1836,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				04EA76E92A3E6D2D007E84D0 /* Profile.graphql in Resources */,
+				D4AF27D42A41DCF700F74FB0 /* Search.graphql in Resources */,
 				04CDB0A92A3A55C30064508B /* admin_schema.json in Resources */,
 				04EA771B2A3E6D2D007E84D0 /* Authentication.graphql in Resources */,
 				04EA76DB2A3E6D2D007E84D0 /* CoreFragments.graphql in Resources */,
 				04EA76D92A3E6D2D007E84D0 /* CoreFragments.common.graphql in Resources */,
+				D4AF27D12A41D71100F74FB0 /* Localizations.graphql in Resources */,
 				04EA76DA2A3E6D2D007E84D0 /* CoreFragments.admin.graphql in Resources */,
 				04CDB0AD2A3A55C30064508B /* schema.json in Resources */,
 				04CDB1152A3A55C30064508B /* Preview Assets.xcassets in Resources */,
@@ -1814,6 +1908,7 @@
 				D415D66F2A3FB07F00F3362B /* SplashStrings.swift in Sources */,
 				04EA76C32A3E6D2D007E84D0 /* ProductsModel.swift in Sources */,
 				04CDB0982A3A55C30064508B /* Notifications.swift in Sources */,
+				D4AF29022A41E94600F74FB0 /* AnyCountryLocalStore.swift in Sources */,
 				04EA77192A3E6D2D007E84D0 /* Credentials.swift in Sources */,
 				04CDB0932A3A55C30064508B /* DataFetchCacheStrategy.swift in Sources */,
 				04EA76F62A3E6D2D007E84D0 /* Cart.swift in Sources */,
@@ -1826,7 +1921,9 @@
 				04EA76DF2A3E6D2D007E84D0 /* MetaField.swift in Sources */,
 				04CDB0B32A3A55C30064508B /* ConfigsProvider.swift in Sources */,
 				D49D041D2A41149500459DC7 /* Lock.swift in Sources */,
+				D4AF28F82A41E2CB00F74FB0 /* SearchRemoteService.swift in Sources */,
 				04EA770F2A3E6D2D007E84D0 /* UserLocalStore.swift in Sources */,
+				D4AF28FD2A41E46900F74FB0 /* Localization.swift in Sources */,
 				04EA77212A3E6D2D007E84D0 /* ADModel.swift in Sources */,
 				04B4FBC82A3EA12800DD5017 /* SearchView.swift in Sources */,
 				04CDB0B82A3A55C30064508B /* KeysProvider.swift in Sources */,
@@ -1834,6 +1931,7 @@
 				04CDB0A72A3A55C30064508B /* AnyImageLoader.swift in Sources */,
 				04EA77262A3E6D2D007E84D0 /* WishlistViewModel.swift in Sources */,
 				04CDB0942A3A55C30064508B /* AnyDataFetchCacheStrategy.swift in Sources */,
+				D4AF29062A41EA6100F74FB0 /* AnyLanguageLocalStore.swift in Sources */,
 				D415D67A2A40158700F3362B /* PriceRangeView.swift in Sources */,
 				04EA77172A3E6D2D007E84D0 /* Session.swift in Sources */,
 				04EA76E82A3E6D2D007E84D0 /* ProfileUpdate.swift in Sources */,
@@ -1848,6 +1946,7 @@
 				04CDB0952A3A55C30064508B /* Shopify_ITIApp.swift in Sources */,
 				04EA76DC2A3E6D2D007E84D0 /* Price.swift in Sources */,
 				04EA77042A3E6D2D007E84D0 /* TokenState.swift in Sources */,
+				D4AF290F2A41F75000F74FB0 /* AppStorageArray.swift in Sources */,
 				04EA770E2A3E6D2D007E84D0 /* TokenLocalStore.swift in Sources */,
 				D446F8E12A3EA64000C6361C /* AuthCard.swift in Sources */,
 				04EA76D72A3E6D2D007E84D0 /* Pagination.swift in Sources */,
@@ -1870,7 +1969,7 @@
 				04EA7BC52A3E7B81007E84D0 /* SettingViewModel.swift in Sources */,
 				04CDB0A82A3A55C30064508B /* AnyUserProvider.swift in Sources */,
 				04EA77152A3E6D2D007E84D0 /* RegisterScreen.swift in Sources */,
-				04EA7BC72A3E7B81007E84D0 /* SettingModel.swift in Sources */,
+				04EA7BC72A3E7B81007E84D0 /* SettingsModel.swift in Sources */,
 				04EA76D12A3E6D2D007E84D0 /* ProductCollection.swift in Sources */,
 				04CDB09C2A3A55C30064508B /* AnyAccessTokenProvider.swift in Sources */,
 				04EA76C72A3E6D2D007E84D0 /* ProductsRemoteService.swift in Sources */,
@@ -1894,6 +1993,7 @@
 				D415D67C2A4018F200F3362B /* WishlistBag.swift in Sources */,
 				04CDB0B62A3A55C30064508B /* AdminEnvironment.swift in Sources */,
 				04EA771C2A3E6D2D007E84D0 /* AuthError.swift in Sources */,
+				D4AF290A2A41F33A00F74FB0 /* SearchModel.swift in Sources */,
 				04EA77112A3E6D2D007E84D0 /* GuestLocalStore.swift in Sources */,
 				D446F8D32A3E872C00C6361C /* Strings.swift in Sources */,
 				04EA76F32A3E6D2D007E84D0 /* CartRemoteService.swift in Sources */,
@@ -1905,6 +2005,7 @@
 				04CDB09A2A3A55C30064508B /* UserDefaults.swift in Sources */,
 				04EA76DD2A3E6D2D007E84D0 /* RemoteImage.swift in Sources */,
 				04EA76BF2A3E6D2D007E84D0 /* Extensions.swift in Sources */,
+				D4AF290C2A41F52400F74FB0 /* SearchViewModel.swift in Sources */,
 				04CDB0BA2A3A55C30064508B /* JsonCoder.swift in Sources */,
 				D49D04192A40DB2800459DC7 /* Object.swift in Sources */,
 				04EA77002A3E6D2D007E84D0 /* ProductType.swift in Sources */,
@@ -1940,8 +2041,10 @@
 				04EA77092A3E6D2D007E84D0 /* UserProvider.swift in Sources */,
 				D446F8D12A3E86DA00C6361C /* AuthenticationStrings.swift in Sources */,
 				04EA76FA2A3E6D2D007E84D0 /* CategoriesModel.swift in Sources */,
+				D4AF29042A41E95000F74FB0 /* CountryLocalStore.swift in Sources */,
 				04EA772E2A3E6D2D007E84D0 /* WishListRemoteService.swift in Sources */,
 				04EA76CA2A3E6D2D007E84D0 /* ProductViewModel.swift in Sources */,
+				D4AF28FB2A41E40600F74FB0 /* LocalizationRemoteService.swift in Sources */,
 				04CDB0B02A3A55C30064508B /* KeyChain.swift in Sources */,
 				04CDB0A12A3A55C30064508B /* LocaleProvider.swift in Sources */,
 				04EA771F2A3E6D2D007E84D0 /* Guest.swift in Sources */,
@@ -1956,13 +2059,14 @@
 				04EA76C52A3E6D2D007E84D0 /* ProductsSearchCriteria.swift in Sources */,
 				D446F8DF2A3EA36800C6361C /* RoundedButton.swift in Sources */,
 				04CDB0AA2A3A55C30064508B /* RemoteClient.swift in Sources */,
-				04EA7BD52A3E95CB007E84D0 /* LocalEnum.swift in Sources */,
+				04EA7BD52A3E95CB007E84D0 /* LocaleEnum.swift in Sources */,
 				04EA76BD2A3E6D2D007E84D0 /* AdsView.swift in Sources */,
 				D446F8D52A3E8E2C00C6361C /* AppColors.swift in Sources */,
 				04EA76CB2A3E6D2D007E84D0 /* ProductModel.swift in Sources */,
+				D4AF29082A41EA9C00F74FB0 /* LanguageLocalStore.swift in Sources */,
 				D415D66C2A3FAEA500F3362B /* OnboardingScreen.swift in Sources */,
 				D49D041B2A40ED0500459DC7 /* PostPublished.swift in Sources */,
-				04EA7BD32A3E90C4007E84D0 /* LocalNotification.swift in Sources */,
+				04EA7BD32A3E90C4007E84D0 /* LocaleNotification.swift in Sources */,
 				D49D04122A40AF5000459DC7 /* RemoteImageView.swift in Sources */,
 				04EA7BC62A3E7B81007E84D0 /* AnySettingModel.swift in Sources */,
 				04EA77032A3E6D2D007E84D0 /* TokenManager.swift in Sources */,

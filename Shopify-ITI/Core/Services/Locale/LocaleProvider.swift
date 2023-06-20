@@ -17,12 +17,19 @@ class LocaleProvider: AnyLocaleProvider {
         }
     }
     
+    var locale: Locale {
+        let identifier = "\(language.lowercased())_\(country.uppercased())"
+        return Locale(identifier: identifier)
+    }
+    
     var country: String = "US"
     var language: String = "EN" 
-    func changeLanguage(language: String ){
+    
+    func changeLanguage(language: String ) {
         self.language = language
     }
-    func changeCountry(country: String ){
+    
+    func changeCountry(country: String ) {
         self.country = country
     }
 }

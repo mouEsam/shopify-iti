@@ -10,6 +10,7 @@ import SwiftUI
 
 struct PriceView: View {
     
+    @EnvironmentObject private var container: AppContainer
     private let price: Price
     
     init(price: Price) {
@@ -29,6 +30,7 @@ struct PriceView: View {
     
     private func moneyFormatter(_ showCurrency: Bool = true) -> NumberFormatter {
         let formatter = NumberFormatter()
+        formatter.locale = container.require((any AnyLocaleProvider).self).locale
         formatter.numberStyle = .currency
         formatter.currencyCode = price.currencyCode.rawValue
         formatter.locale = Locale.current

@@ -19,5 +19,6 @@ struct KeysProvider: AnyKeysProvider {
     let accessTokenLocalKey: String = "access_token_local"
     let wishlistRemoteKey: String = "wishlist_remote"
     let cartRemoteKey: String = "cart_remote"
-
+    let countryLocalKey: String = "conutry_local"
+    let languageLocalKey: String = "AppleLanguages"
 }

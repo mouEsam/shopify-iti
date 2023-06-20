@@ -7,31 +7,18 @@
 
 import Foundation
 
-protocol AnyProductsModelFactory: AnyInjectable {
-    func create() -> any AnyProductsModel
-}
-
-struct ProductsModelFactory: AnyProductsModelFactory {
-    static func register(_ container: AppContainer) {
-        container.register(type: (any AnyProductsModelFactory).self) { resolver in
-            ProductsModelFactory(resolver: resolver)
-        }
-    }
-    
-    private let resolver: any AppContainer.Resolver
-    
-    func create() -> AnyProductsModel {
-        ProductsModel(productsService: resolver.require(ProductsRemoteService.self),
-                      configsProvider: resolver.require((any AnyConfigsProvider).self))
-    }
-}
-
 protocol AnyProductsModel {
     func fetch(withCriteria criteria: [ProductSearchCriteria:String],
                with paginationInfo: PageInfo?) async -> Result<SourcedData<PageResult<Product>>, ShopifyErrors<Any>>
 }
 
-struct ProductsModel: AnyProductsModel {
+struct ProductsModel: AnyProductsModel, AnyInjectable {
+    static func register(_ container: AppContainer) {
+        container.register(type: (any AnyProductsModel).self, scope: .transient) { resolver in
+            ProductsModel(productsService: resolver.require(ProductsRemoteService.self),
+                          configsProvider: resolver.require((any AnyConfigsProvider).self))
+        }
+    }
     
     private let productsService: ProductsRemoteService
     private let configsProvider: any AnyConfigsProvider

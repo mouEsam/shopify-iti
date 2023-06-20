@@ -11,8 +11,8 @@ struct LanguageChangeNotification: AppNotification {
     
     let language: String
 }
-struct CurrencyChangeNotification: AppNotification {
-    static let rawName: String = "LanguageChangeNotification"
+struct CountryChangeNotification: AppNotification {
+    static let rawName: String = "CountryChangeNotification"
     
-    let currency: String
+    let country: String
 }

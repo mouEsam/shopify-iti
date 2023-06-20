@@ -62,3 +62,14 @@ extension ShopifyAPI.GetProductsByCollectionQuery.Data.Collection.Products.Edge.
 extension ShopifyAPI.GetProductsByCollectionQuery.Data.Collection.Products.Edge.Node.PriceRange: PriceRangeConvertible {}
 extension ShopifyAPI.GetProductsByCollectionQuery.Data.Collection.Products.Edge.Node.PriceRange.MaxVariantPrice: PriceConvertible {}
 extension ShopifyAPI.GetProductsByCollectionQuery.Data.Collection.Products.Edge.Node.PriceRange.MinVariantPrice: PriceConvertible {}
+
+
+extension ShopifyAPI.SearchProductsQuery.Data.Search.Edge.Node.AsProduct: ProductConvertible {
+    var variantId: String { variants.nodes.first!.id }
+}
+extension ShopifyAPI.SearchProductsQuery.Data.Search.Edge.Node.AsProduct.FeaturedImage: RemoteImageConvertible {}
+extension ShopifyAPI.SearchProductsQuery.Data.Search.Edge.Node.AsProduct.PriceRange: PriceRangeConvertible {}
+extension ShopifyAPI.SearchProductsQuery.Data.Search.Edge.Node.AsProduct.PriceRange.MaxVariantPrice: PriceConvertible {}
+extension ShopifyAPI.SearchProductsQuery.Data.Search.Edge.Node.AsProduct.PriceRange.MinVariantPrice: PriceConvertible {}
+
+

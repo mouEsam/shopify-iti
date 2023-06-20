@@ -73,9 +73,8 @@ struct MainScreen: View {
             } else {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-
                         router.push(AppRoute(identifier:TabType.cart, content: {
-                            SearchView()
+                            SearchView(container: container)
                         }))
                     }) {
                         Image(systemName: "magnifyingglass")

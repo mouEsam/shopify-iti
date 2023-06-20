@@ -1,0 +1,9 @@
+query getProductsSearchSuggestions($query: String!,
+                                   $country: CountryCode, 
+                                   $lang: LanguageCode) @inContext(country: $country, language: $lang) {
+    predictiveSearch(query: $query) {
+        queries {
+            text
+        }
+    }
+}

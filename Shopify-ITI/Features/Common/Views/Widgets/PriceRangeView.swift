@@ -10,6 +10,7 @@ import SwiftUI
 
 struct PriceRangeView: View {
     
+    @EnvironmentObject private var container: AppContainer
     private let priceRange: PriceRange
     
     init(priceRange: PriceRange) {
@@ -35,6 +36,7 @@ struct PriceRangeView: View {
     private func moneyFormatter(_ showCurrency: Bool = true) -> NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
+        formatter.locale = container.require((any AnyLocaleProvider).self).locale
         if showCurrency {
             formatter.currencyCode = priceRange.minPrice.currencyCode.rawValue
         } else {
