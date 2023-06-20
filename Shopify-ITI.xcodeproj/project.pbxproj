@@ -206,6 +206,7 @@
 		D49D041D2A41149500459DC7 /* Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D041C2A41149500459DC7 /* Lock.swift */; };
 		D4AAFA392A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */; };
 		D4AAFA3A2A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D4AF27CE2A41B18700F74FB0 /* Semaphore in Frameworks */ = {isa = PBXBuildFile; productRef = D4AF27CD2A41B18700F74FB0 /* Semaphore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -434,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4AAFA392A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Frameworks */,
+				D4AF27CE2A41B18700F74FB0 /* Semaphore in Frameworks */,
 				D4596D892A33595100BD9E26 /* Shopify_ITI_SDK.framework in Frameworks */,
 				334029F07C9A89D6CEF9AB9D /* Pods_Shopify_ITI.framework in Frameworks */,
 			);
@@ -1693,6 +1695,9 @@
 			dependencies = (
 			);
 			name = "Shopify-ITI";
+			packageProductDependencies = (
+				D4AF27CD2A41B18700F74FB0 /* Semaphore */,
+			);
 			productName = "Shopify-ITI";
 			productReference = D41F627C2A2C921C00780814 /* Shopify-ITI.app */;
 			productType = "com.apple.product-type.application";
@@ -1721,6 +1726,9 @@
 				Base,
 			);
 			mainGroup = D41F62732A2C921C00780814;
+			packageReferences = (
+				D4AF27CC2A41B18700F74FB0 /* XCRemoteSwiftPackageReference "Semaphore" */,
+			);
 			productRefGroup = D41F627D2A2C921C00780814 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2185,6 +2193,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D4AF27CC2A41B18700F74FB0 /* XCRemoteSwiftPackageReference "Semaphore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/Semaphore";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D4AF27CD2A41B18700F74FB0 /* Semaphore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4AF27CC2A41B18700F74FB0 /* XCRemoteSwiftPackageReference "Semaphore" */;
+			productName = Semaphore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D41F62742A2C921C00780814 /* Project object */;
 }

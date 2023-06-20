@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-
+import Semaphore
 
 class WishlistManager : AnyInjectable {
     static func register(_ container: AppContainer) {
@@ -27,6 +27,7 @@ class WishlistManager : AnyInjectable {
     private let wishlistService: WishlistRemoteService
     private let authManager: AuthenticationManager
     
+    private let semaphore = AsyncSemaphore(value: 1)
     private var task: Task<Any, Error>? = nil
     private var cancellables: Set<AnyCancellable> = []
     
@@ -59,11 +60,12 @@ class WishlistManager : AnyInjectable {
     }
     
     private func handleAuthState(_ authState: AuthenticationState) {
-        synced(self) {
-            task?.cancel()
-            task = Task {
+        task?.cancel()
+        task = Task {
+            try? await semaphore.withUnlessCancelled {
                 await handleAuthStateImpl(authState, self.state.data)
             }
+            return
         }
     }
     
@@ -232,17 +234,10 @@ class WishlistManager : AnyInjectable {
     
     private func doAction(_ action: @escaping () async -> Result<Void, ShopifyErrors<Any>>) async -> Result<Void, ShopifyErrors<Any>> {
         _ = await task?.result
-        let task = synced(self) {
-            guard self.task?.isCancelled != true else {
-                return Task { return self.cancellation() }
-            }
-            let task = Task {
-                return await action()
-            }
-            self.task = Task { await task.value }
-            return task
+        guard let result = try? await semaphore.withUnlessCancelled(criticalSection: action) else {
+            return self.cancellation()
         }
-        return await task.value
+        return result
     }
     
     private func cancellation() -> Result<Void, ShopifyErrors<Any>> {
