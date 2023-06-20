@@ -53,11 +53,11 @@ struct DraftOrderServices:AnyInjectable{
             }
         }
     }
-    func update(id: String, with address: String) async -> Result<String, DraftOrderError>{
-        let input = ShopifyAdminAPI.DraftOrderInput(billingAddress:
-                .init(nullable: ShopifyAdminAPI.MailingAddressInput(address1: .init(nullable: address),
-                                                                    city: .init(nullable: "")
-                                                                   )))
+    func update(id: String, withAddress address: String,andDiscount discount:ShopifyAdminAPI.DraftOrderAppliedDiscountInput?) async -> Result<String, DraftOrderError>{
+        let input = ShopifyAdminAPI.DraftOrderInput(
+            appliedDiscount: .init(nullable: discount),
+            shippingAddress:.init(nullable: ShopifyAdminAPI.MailingAddressInput(address1: .init(nullable: address)))
+        )
         let mutation = ShopifyAdminAPI.CreateDraftOrderMutation(input: input)
         let result = await remoteClient.execute(query: mutation)
         return result.mapError { .Client(error: $0) }.flatMap { result in

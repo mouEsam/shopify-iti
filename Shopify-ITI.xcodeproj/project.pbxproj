@@ -10,6 +10,9 @@
 		0453DB032A41E751009D6E36 /* DraftOrder.admin.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0453DB022A41E751009D6E36 /* DraftOrder.admin.graphql */; };
 		0453DD922A421548009D6E36 /* PaymantError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453DD912A421548009D6E36 /* PaymantError.swift */; };
 		0453DD942A422F96009D6E36 /* DraftOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453DD932A422F96009D6E36 /* DraftOrderModel.swift */; };
+		0453DD972A4248A8009D6E36 /* DiscontMangers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453DD962A4248A8009D6E36 /* DiscontMangers.swift */; };
+		0453DD9A2A424926009D6E36 /* DiscontConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453DD992A424926009D6E36 /* DiscontConstants.swift */; };
+		0453DD9D2A42521E009D6E36 /* PaymantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453DD9C2A42521E009D6E36 /* PaymantViewModel.swift */; };
 		04B4FBC82A3EA12800DD5017 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4FBC62A3EA12800DD5017 /* SearchView.swift */; };
 		04BA3BC62A4080B600AE276B /* PaymantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA3BC52A4080B600AE276B /* PaymantView.swift */; };
 		04BA3BCB2A40ADAA00AE276B /* PaymantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA3BCA2A40ADAA00AE276B /* PaymantModel.swift */; };
@@ -221,6 +224,9 @@
 		0453DB022A41E751009D6E36 /* DraftOrder.admin.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DraftOrder.admin.graphql; sourceTree = "<group>"; };
 		0453DD912A421548009D6E36 /* PaymantError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymantError.swift; sourceTree = "<group>"; };
 		0453DD932A422F96009D6E36 /* DraftOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftOrderModel.swift; sourceTree = "<group>"; };
+		0453DD962A4248A8009D6E36 /* DiscontMangers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscontMangers.swift; sourceTree = "<group>"; };
+		0453DD992A424926009D6E36 /* DiscontConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscontConstants.swift; sourceTree = "<group>"; };
+		0453DD9C2A42521E009D6E36 /* PaymantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymantViewModel.swift; sourceTree = "<group>"; };
 		04B4FBC62A3EA12800DD5017 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		04BA3BC52A4080B600AE276B /* PaymantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymantView.swift; sourceTree = "<group>"; };
 		04BA3BCA2A40ADAA00AE276B /* PaymantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymantModel.swift; sourceTree = "<group>"; };
@@ -439,6 +445,30 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		0453DD952A424869009D6E36 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0453DD962A4248A8009D6E36 /* DiscontMangers.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		0453DD982A4248C0009D6E36 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				0453DD992A424926009D6E36 /* DiscontConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		0453DD9B2A4251EF009D6E36 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0453DD9C2A42521E009D6E36 /* PaymantViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		04B4FBC22A3EA12800DD5017 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,6 +512,7 @@
 		04BA3BC42A407E9100AE276B /* Paymant */ = {
 			isa = PBXGroup;
 			children = (
+				0453DD9B2A4251EF009D6E36 /* ViewModel */,
 				0453DD902A421525009D6E36 /* Entities */,
 				04BA3BD22A40E27B00AE276B /* Helpers */,
 				04BA3BCC2A40B2DB00AE276B /* Services */,
@@ -1405,6 +1436,8 @@
 		04EA76982A3E6D2C007E84D0 /* Discont */ = {
 			isa = PBXGroup;
 			children = (
+				0453DD982A4248C0009D6E36 /* Constants */,
+				0453DD952A424869009D6E36 /* Manager */,
 				04EA76992A3E6D2C007E84D0 /* ViewModel */,
 				04EA769B2A3E6D2C007E84D0 /* Model */,
 				04EA769D2A3E6D2C007E84D0 /* Views */,
@@ -1784,6 +1817,7 @@
 				04CDB0982A3A55C30064508B /* Notifications.swift in Sources */,
 				04EA77192A3E6D2D007E84D0 /* Credentials.swift in Sources */,
 				04CDB0932A3A55C30064508B /* DataFetchCacheStrategy.swift in Sources */,
+				0453DD972A4248A8009D6E36 /* DiscontMangers.swift in Sources */,
 				04EA76F62A3E6D2D007E84D0 /* Cart.swift in Sources */,
 				04EA77142A3E6D2D007E84D0 /* AnyAuthenticationRepository.swift in Sources */,
 				04EA76F82A3E6D2D007E84D0 /* AnyCartIdStore.swift in Sources */,
@@ -1848,6 +1882,7 @@
 				D446F8E32A3EAA2C00C6361C /* RegisterValidationErrors.swift in Sources */,
 				04EA76C92A3E6D2D007E84D0 /* ListableProduct.swift in Sources */,
 				04EA77272A3E6D2D007E84D0 /* WishlistManager.swift in Sources */,
+				0453DD9A2A424926009D6E36 /* DiscontConstants.swift in Sources */,
 				04EA76F42A3E6D2D007E84D0 /* CartLine.swift in Sources */,
 				04EA76FD2A3E6D2D007E84D0 /* Enumeration.swift in Sources */,
 				04CDB0992A3A55C30064508B /* Changeable.swift in Sources */,
@@ -1893,6 +1928,7 @@
 				04EA77182A3E6D2D007E84D0 /* AuthNotifications.swift in Sources */,
 				04EA7BD02A3E86CA007E84D0 /* ContactUsView.swift in Sources */,
 				04CDB09B2A3A55C30064508B /* Errors.swift in Sources */,
+				0453DD9D2A42521E009D6E36 /* PaymantViewModel.swift in Sources */,
 				04EA76BB2A3E6D2D007E84D0 /* BrandModel.swift in Sources */,
 				04EA76BC2A3E6D2D007E84D0 /* HomePage.swift in Sources */,
 				04CDB0B52A3A55C30064508B /* StorefrontEnvironment.swift in Sources */,
