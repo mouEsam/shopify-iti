@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-let testCart = "gid://shopify/Cart/c1-d4bd72d94eefdef6dcfc7cbfb06ea5fa"
+//let testCart = "gid://shopify/Cart/c1-d4bd72d94eefdef6dcfc7cbfb06ea5fa"
 class CartViewModel:ObservableObject{
     private let model:AnyCartModel
     @Published private(set) var operationState: UIState<Cart> = .initial
@@ -19,7 +19,7 @@ class CartViewModel:ObservableObject{
         await MainActor.run{
             operationState = .loading
         }
-        let res = await model.getCart(with: testCart).toRemote()
+        let res = await model.getCart().toRemote()
         
         await showCart(uiStat: res)
     }
@@ -30,18 +30,18 @@ class CartViewModel:ObservableObject{
     }
     func increseItem(cartline:CartLine)async{
        
-        let res = await model.changeItemQuantity(forCart: testCart, forLine: cartline.id, with: cartline.quantity+1).toRemote()
+        let res = await model.changeItemQuantity( forLine: cartline.id, with: cartline.quantity+1).toRemote()
         
         await showCart(uiStat: res)
     }
     func decreseItem(cartline:CartLine)async{
        
-        let res = await model.changeItemQuantity(forCart: testCart, forLine: cartline.id, with: cartline.quantity-1).toRemote()
+        let res = await model.changeItemQuantity( forLine: cartline.id, with: cartline.quantity-1).toRemote()
         
         await showCart(uiStat: res)
     }
     func deleteItem(cartline:CartLine)async{
-        let res = await model.deleteCartItem(forCart: testCart, forLine: cartline.id).toRemote()
+        let res = await model.deleteCartItem(forLine: cartline.id).toRemote()
         await showCart(uiStat: res)
 
     }
