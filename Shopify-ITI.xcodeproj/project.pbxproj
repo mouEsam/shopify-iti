@@ -17,7 +17,6 @@
 		04BA3BC62A4080B600AE276B /* PaymantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA3BC52A4080B600AE276B /* PaymantView.swift */; };
 		04BA3BCB2A40ADAA00AE276B /* PaymantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA3BCA2A40ADAA00AE276B /* PaymantModel.swift */; };
 		04BA3BCE2A40B30C00AE276B /* DraftOrderServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA3BCD2A40B30C00AE276B /* DraftOrderServices.swift */; };
-		04BA3BD12A40D5D900AE276B /* ApplePaymentSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA3BD02A40D5D900AE276B /* ApplePaymentSheet.swift */; };
 		04BA3BD42A40E2B400AE276B /* PaymentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA3BD32A40E2B400AE276B /* PaymentHandler.swift */; };
 		04CDB0912A3A55C30064508B /* AnyRemoteFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAFB42A3A55C30064508B /* AnyRemoteFetchStrategy.swift */; };
 		04CDB0922A3A55C30064508B /* RemoteFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAFB52A3A55C30064508B /* RemoteFetchStrategy.swift */; };
@@ -232,7 +231,6 @@
 		04BA3BCA2A40ADAA00AE276B /* PaymantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymantModel.swift; sourceTree = "<group>"; };
 		04BA3BCD2A40B30C00AE276B /* DraftOrderServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftOrderServices.swift; sourceTree = "<group>"; };
 		04BA3BCF2A40D36800AE276B /* Shopify-ITI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shopify-ITI.entitlements"; sourceTree = "<group>"; };
-		04BA3BD02A40D5D900AE276B /* ApplePaymentSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePaymentSheet.swift; sourceTree = "<group>"; };
 		04BA3BD32A40E2B400AE276B /* PaymentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHandler.swift; sourceTree = "<group>"; };
 		04CDAFB42A3A55C30064508B /* AnyRemoteFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyRemoteFetchStrategy.swift; sourceTree = "<group>"; };
 		04CDAFB52A3A55C30064508B /* RemoteFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteFetchStrategy.swift; sourceTree = "<group>"; };
@@ -526,7 +524,6 @@
 			isa = PBXGroup;
 			children = (
 				04BA3BC52A4080B600AE276B /* PaymantView.swift */,
-				04BA3BD02A40D5D900AE276B /* ApplePaymentSheet.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1891,7 +1888,6 @@
 				04EA76FC2A3E6D2D007E84D0 /* CategoriesPage.swift in Sources */,
 				04EA76F12A3E6D2D007E84D0 /* CartView.swift in Sources */,
 				04EA770D2A3E6D2D007E84D0 /* AnyTokenLocalStore.swift in Sources */,
-				04BA3BD12A40D5D900AE276B /* ApplePaymentSheet.swift in Sources */,
 				04EA7BCE2A3E8506007E84D0 /* FAQView.swift in Sources */,
 				04CDB0B62A3A55C30064508B /* AdminEnvironment.swift in Sources */,
 				04BA3BC62A4080B600AE276B /* PaymantView.swift in Sources */,
