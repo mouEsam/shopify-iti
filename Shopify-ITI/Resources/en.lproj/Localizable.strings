@@ -18,6 +18,22 @@
 "languageCode.EN" = "English";
 "languageCode.AR" = "Arabic";
 
+// LocalErrors
+"LocalErrors.NotFound" = "Not found";
+"LocalErrors.Invalid" = "invalid data";
+"LocalErrors.NotAvailable" = "Not available";
+"LocalErrors.Unknown" = "Unknown error";
+
+// ShopifyErrors
+"ShopifyErrors.Cancelled" = "Cancelled operation";
+"ShopifyErrors.Unknown" = "Unknown error";
+"ShopifyErrors.NotFound" = "Not found";
+"ShopifyErrors.Unautherized" = "Unautherized operation";
+"ShopifyErrors.Throttled" = "Throttled operation";
+"ShopifyErrors.Client" = "Client error";
+"ShopifyErrors.Validation" = "Validation error";
+"ShopifyErrors.Generic" = "Generic error";
+
 // Validations
 "validations.invalid_email" = "This email is invalid";
 "validations.required_field" = "This field is required";
@@ -43,6 +59,7 @@
 "AuthenticationStrings.forgotPassword" = "Forgot Password";
 "AuthenticationStrings.loginAction" = "Login";
 "AuthenticationStrings.signupAction" = "Sign up";
+"AuthenticationStrings.signupError" = "Error";
 "AuthenticationStrings.resetLabel" = "Reset";
 "AuthenticationStrings.resetEmail" = "Email";
 "AuthenticationStrings.resetAction" = "Send";

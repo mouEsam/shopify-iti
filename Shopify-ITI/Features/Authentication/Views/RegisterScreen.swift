@@ -118,8 +118,8 @@ struct RegisterScreen: View {
                 router.pop()
             } else if let error = state.error {
                 router.alert(item: ErrorWrapper(error: error)) { wrapper in
-                    Alert(title: Text("Error"), // TODO: localize
-                          message: Text(wrapper.error.localizedDescription))
+                    Alert(title: Text(strings.signupError),
+                          message: wrapper.error.text)
                 }
             }
         }

@@ -18,24 +18,12 @@ struct CountryLocalStore: AnyCountryLocalStore {
     private let userDefaults: UserDefaults
     private let keysProvider: any AnyKeysProvider
     
-    func exists() -> Bool {
-        return userDefaults.data(forKey: keysProvider.countryLocalKey) != nil
+    func read() -> String? {
+        return userDefaults.string(forKey: keysProvider.countryLocalKey)
     }
     
-    func read() -> Result<String, LocalErrors> {
-        if let data = userDefaults.data(forKey: keysProvider.countryLocalKey) {
-            if let id = String(data: data, encoding: .utf8) {
-                return .success(id)
-            } else {
-                return .failure(LocalErrors.Invalid)
-            }
-        }
-        return .failure(LocalErrors.NotFound)
-    }
-    
-    func write(country: String) -> Result<Void, LocalErrors> {
-        let data = country.data(using: .utf8)
-        return .success(userDefaults.set(data, forKey: keysProvider.countryLocalKey))
+    func write(country: String) {
+        userDefaults.set(country, forKey: keysProvider.countryLocalKey)
     }
     
     func delete() {

@@ -125,7 +125,7 @@ struct ProductPage: View {
                         .padding(.horizontal, 24)
                     }
                 case .error(error: let error):
-                    ErrorMessageView(message: error.localizedDescription)
+                    ErrorMessageView(error: error)
                 default:
                     ProgressView()
             }
@@ -167,7 +167,7 @@ struct ProductPage: View {
             if let wrapper = wrapper {
                 router.alert(item: wrapper) { wrapper in
                     Alert(title: Text(strings.addToCartError.localized),
-                          message: Text(wrapper.error.localizedDescription))
+                          message: wrapper.error.text)
                 }
             }
         }
@@ -183,7 +183,7 @@ struct ProductPage: View {
             if let wrapper = wrapper {
                 router.alert(item: wrapper) { wrapper in
                     Alert(title: Text(strings.wishlistError.localized),
-                          message: Text(wrapper.error.localizedDescription))
+                          message: wrapper.error.text)
                 }
             }
         }

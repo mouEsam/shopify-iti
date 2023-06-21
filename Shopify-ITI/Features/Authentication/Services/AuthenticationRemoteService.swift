@@ -49,7 +49,7 @@ struct AuthenticationRemoteService: AnyInjectable {
                     return .success(user)
                 } else {
                     let errors = data.customerUserErrors.map { AuthError.ValidationError(from: $0) }
-                    return .failure(AuthError.Validation(validationErrors: errors))
+                    return .failure(AuthError.Validation(errors: errors))
                 }
             } else {
                 return .failure(AuthError.Unknown)
@@ -73,7 +73,7 @@ struct AuthenticationRemoteService: AnyInjectable {
                     return .success(user)
                 } else {
                     let errors = data.customerUserErrors.map { AuthError.ValidationError(from: $0) }
-                    return .failure(AuthError.Validation(validationErrors: errors))
+                    return .failure(AuthError.Validation(errors: errors))
                 }
             } else {
                 return .failure(AuthError.Unknown)
@@ -117,7 +117,7 @@ struct AuthenticationRemoteService: AnyInjectable {
                     return .success(user)
                 } else {
                     let errors = data.userErrors.map { GenericError(from: $0) }
-                    return .failure(AuthError.Generic(genericErrors: errors))
+                    return .failure(AuthError.Generic(errors: errors))
                 }
             } else {
                 return .failure(AuthError.Unknown)
@@ -137,7 +137,7 @@ struct AuthenticationRemoteService: AnyInjectable {
                     return .success(Void())
                 } else {
                     let errors = data.customerUserErrors.map { AuthError.ValidationError(from: $0) }
-                    return .failure(AuthError.Validation(validationErrors: errors))
+                    return .failure(AuthError.Validation(errors: errors))
                 }
             } else {
                 return .failure(AuthError.Unknown)
@@ -158,7 +158,7 @@ struct AuthenticationRemoteService: AnyInjectable {
                     return .success(Void())
                 } else {
                     let errors = data.userErrors.map { GenericError(from: $0) }
-                    return .failure(AuthError.Generic(genericErrors: errors))
+                    return .failure(AuthError.Generic(errors: errors))
                 }
             } else {
                 return .failure(AuthError.Unknown)

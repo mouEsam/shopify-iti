@@ -8,8 +8,7 @@
 import Foundation
 
 protocol AnyCountryLocalStore: AnyInjectable {
-    func exists() -> Bool
-    func read() -> Result<String, LocalErrors>
-    func write(country: String) -> Result<Void, LocalErrors>
+    func read() -> String?
+    func write(country: String)
     func delete()
 }
