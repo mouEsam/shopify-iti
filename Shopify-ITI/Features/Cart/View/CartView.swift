@@ -24,28 +24,23 @@ struct CartView: View {
     
     var body: some View {
         VStack{
-            ScrollView {
-                switch viewModel.operationState{
-                    case .loaded(data: let cart):
-                        LazyVStack(spacing: 16) {
-                            ForEach(cart.data.cartLine) { item in
-                                CardItemView(container: container,
-                                             cartLine: item,
-                                             viewModel: viewModel)
-                            }
-                        }
-                        .padding()
-                    case .initial:
-                        Text("initial")
-                        
-                    case .loading:
-                        Text("loading")
-                        
-                        
-                    case .error(error: let error):
-                        Text(error.localizedDescription)
-                }
+            Spacer()
+
+            switch viewModel.operationState{
+            case .loaded(data: let cart):
+                CartScrollView(viewModel: viewModel, cart: cart.data)
+            case .initial:
+                Text("initial")
+                
+            case .loading:
+               ProgressView()
+                
+                
+            case .error(error: let error):
+                Image("emptyCart").resizable().aspectRatio(1, contentMode: .fit)
+
             }
+            Spacer()
             VStack{
                 HStack{
                     Text("Total:")
@@ -80,74 +75,24 @@ struct CartView: View {
         }
     }
 }
-
-struct CardItemView: View {
-    
-    private var cartLine: CartLine
-    private let viewModel:CartViewModel
-    private var colors: AnyAppColors
-    
-    init(container: AppContainer,
-         cartLine: CartLine,
-         viewModel: CartViewModel) {
-        colors = container.require((any AnyAppColors).self)
+struct CartScrollView: View {
+    @ObservedObject private var viewModel: CartViewModel
+    @EnvironmentObject private var container: AppContainer
+    let cart: Cart
+    init(viewModel: CartViewModel,cart:Cart) {
+        
         self.viewModel = viewModel
-        self.cartLine = cartLine
+        self.cart = cart
     }
-    
     var body: some View {
-        HStack(alignment: .top) {
-            RemoteImageView(image: cartLine.productVariant.image)
-                .frame(width: 100,height: 100)
-                .clipShape(Circle())
-                .padding()
-            
-            VStack(alignment: .leading, spacing: 8) {
-                Text(cartLine.productVariant.title)
-                    .font(.headline)
-                HStack {
-                    Text("Price: ") //TODO: local
-                    PriceView(price: Price(amount: cartLine.totalAmount,
-                                           currencyCode: .egp)) // TODO: use currency
-                }
-                Spacer()
-                
-                HStack(spacing: 16) {
-                    Button(action: {
-                        Task{
-                            await  viewModel.increseItem(cartline: cartLine)
-                        }
-                        print("plus")
-                    }) {
-                        Image("plus")
-                            .font(.title)
-                    }
-                    Text(String(cartLine.quantity))
-                    Button(action: {
-                        Task{
-                            await  viewModel.decreseItem(cartline: cartLine)
-                        }
-                        
-                    }) {
-                        Image("minus")
-                            .font(.title)
-                    }
-                    
+        ScrollView {
+            LazyVStack(spacing: 16) {
+                ForEach(cart.cartLine) { item in
+                    CardItemView(container: container, cartLine: item, viewModel: viewModel)
                 }
             }
-            Spacer()
-            Button(action: {
-                Task{
-                    await  viewModel.deleteItem(cartline: cartLine)
-                }
-            }) {
-                Image("delete")
-                    .renderingMode(.template)
-                    .font(.title)
-            }
-            .foregroundColor(colors.black)
+            .padding()
         }
-        .padding(16)
     }
 }
 
