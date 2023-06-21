@@ -13,8 +13,10 @@ struct CartView: View {
     @EnvironmentRouter private var router: AppRouter
     @EnvironmentObject private var container: AppContainer
     private var authManager: AuthenticationManager
+    private var colors: AnyAppColors
     
     init(container: AppContainer) {
+        colors = container.require((any AnyAppColors).self)
         authManager = container.require(AuthenticationManager.self)
         let model = container.require((any AnyCartModel).self)
         _viewModel = .init(wrappedValue: CartViewModel(model: model ))
@@ -27,7 +29,9 @@ struct CartView: View {
                     case .loaded(data: let cart):
                         LazyVStack(spacing: 16) {
                             ForEach(cart.data.cartLine) { item in
-                                CardItemView(cartLine: item,viewModel: viewModel)
+                                CardItemView(container: container,
+                                             cartLine: item,
+                                             viewModel: viewModel)
                             }
                         }
                         .padding()
@@ -46,22 +50,14 @@ struct CartView: View {
                 HStack{
                     Text("Total:")
                     Spacer()
-                    switch viewModel.operationState{
-                        case .loading:
-                            Text("$")
-                            
-                        case .initial:
-                            Text("$")
-                            
-                        case .loaded(data: let cart):
-                            Text("$"+String(cart.data.totalAmount))
-                            
-                        case .error(error: _):
-                            Text("$")
-                            
+                    if let amount = viewModel.operationState.data?.totalAmount {
+                        PriceView(price: Price(amount: amount,
+                                               currencyCode: .egp))
                     }
                 }
-                Button(action: {
+                RoundedButton(label: "Check Out",
+                              labelColor: colors.white,
+                              backgroundColor: colors.black) {
                     if case .authenticated = authManager.state {
                         router.push(PaymantView.Route(container: container,
                                                       cart:viewModel.operationState.data!))
@@ -70,37 +66,38 @@ struct CartView: View {
                             Alert(title: Text("Login required"),
                                   message: Text("You must be logged in first to continue"),
                                   primaryButton: Alert.Button.default(Text("Login"),
-                                                                     action: { router.push(LoginScreen.Route(container: container)) }),
+                                                                      action: { router.push(LoginScreen.Route(container: container)) }),
                                   secondaryButton: Alert.Button.default(Text("OK")))
                         }
                     }
-                }){
-                    Text("Check Out")
-                        .foregroundColor(.white)
-                        .padding(.horizontal)
-                        .frame(maxWidth: .infinity)
-                    
                 }
-                .frame(maxWidth: .infinity)
-                .buttonStyle(.borderedProminent)
-                .tint(.black)
             }.padding(.all)
-        }.task {
+        }
+        .background(colors.white)
+        .foregroundColor(colors.black)
+        .task {
             await viewModel.getCart()
         }
     }
 }
 
 struct CardItemView: View {
-    var cartLine: CartLine
-    let viewModel:CartViewModel
+    
+    private var cartLine: CartLine
+    private let viewModel:CartViewModel
+    private var colors: AnyAppColors
+    
+    init(container: AppContainer,
+         cartLine: CartLine,
+         viewModel: CartViewModel) {
+        colors = container.require((any AnyAppColors).self)
+        self.viewModel = viewModel
+        self.cartLine = cartLine
+    }
+    
     var body: some View {
         HStack(alignment: .top) {
-            AsyncImage(url: URL(string: cartLine.productVariant.image?.url ?? "")){ image in
-                image.resizable()
-            } placeholder: {
-                ProgressView()
-            }.aspectRatio(contentMode: .fit)
+            RemoteImageView(image: cartLine.productVariant.image)
                 .frame(width: 100,height: 100)
                 .clipShape(Circle())
                 .padding()
@@ -108,8 +105,11 @@ struct CardItemView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text(cartLine.productVariant.title)
                     .font(.headline)
-                Text("Price: $"+String(cartLine.totalAmount)) //TODO: local
-                
+                HStack {
+                    Text("Price: ") //TODO: local
+                    PriceView(price: Price(amount: cartLine.totalAmount,
+                                           currencyCode: .egp)) // TODO: use currency
+                }
                 Spacer()
                 
                 HStack(spacing: 16) {
@@ -123,8 +123,6 @@ struct CardItemView: View {
                             .font(.title)
                     }
                     Text(String(cartLine.quantity))
-                        .foregroundColor(.black)
-                    
                     Button(action: {
                         Task{
                             await  viewModel.decreseItem(cartline: cartLine)
@@ -135,21 +133,19 @@ struct CardItemView: View {
                             .font(.title)
                     }
                     
-                    
                 }
-                .foregroundColor(.blue)
             }
             Spacer()
             Button(action: {
                 Task{
                     await  viewModel.deleteItem(cartline: cartLine)
                 }
-                print("delete")
-                
             }) {
-                Image( "delete")
+                Image("delete")
+                    .renderingMode(.template)
                     .font(.title)
             }
+            .foregroundColor(colors.black)
         }
         .padding(16)
     }

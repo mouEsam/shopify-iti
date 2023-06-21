@@ -68,17 +68,20 @@ struct PaymantView: View {
                         HStack {
                             Text("SubTotal:")
                             Spacer()
-                            Text("$\(cart.totalAmount)")
+                            PriceView(price: Price(amount: cart.totalAmount,
+                                                   currencyCode: .egp)) // TODO: use currency
                         }
                         HStack {
                             Text("Tax:")
                             Spacer()
-                            Text("$\(cart.totalAmount)")
+                            PriceView(price: Price(amount: cart.totalAmount,
+                                                   currencyCode: .egp)) // TODO: use currency
                         }
                         HStack {
                             Text("Total:")
                             Spacer()
-                            Text("$\(cart.totalAmount)")
+                            PriceView(price: Price(amount: cart.totalAmount,
+                                                   currencyCode: .egp)) // TODO: use currency
                         }
                     }
                 }
@@ -122,8 +125,8 @@ struct PaymantView: View {
                             HStack{
                                 Text("Total Amount: ")
                                 Spacer()
-                                
-                                Text("$\(cart.totalAmount)")
+                                PriceView(price: Price(amount: cart.totalAmount,
+                                                       currencyCode: .egp)) // TODO: use currency
                             }.padding(.all)
                             HStack(){
                                 Button(action: {
