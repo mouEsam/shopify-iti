@@ -48,7 +48,8 @@ struct CartRemoteService:AnyInjectable {
         return result.map { result in
             result.data.flatMap { data in
                 data.cartCreate?.cart.map { cart in
-                    Cart(from: cart)
+                    print(cart)
+                  return  Cart(from: cart)
                 }
             }
         }

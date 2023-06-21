@@ -6,9 +6,10 @@
 //
 
 import Foundation
-class PaymantViewModel{
+class PaymantViewModel:ObservableObject{
     let draftOrderModel:AnyDraftOrderModel
-    var orderID:String?
+    private var orderID:String?
+    
     let cart:Cart
     init(draftOrderModel:AnyDraftOrderModel,cart:Cart) {
         self.draftOrderModel = draftOrderModel
@@ -16,8 +17,11 @@ class PaymantViewModel{
     }
     func creatOrde()async{
         let result = await draftOrderModel.createDraftOrder(with: cart.cartLine)
-        if case .success(let orderID) = result{
-            self.orderID=orderID
+        await MainActor.run{
+            if case .success(let orderID) = result{
+                self.orderID=orderID
+                print(orderID)
+            }
         }
     }
     func updateOrde(address: String, discount: String)async{
@@ -26,8 +30,10 @@ class PaymantViewModel{
         }
     }
     func completeOrde(isPaid: Bool)async{
+        print(orderID)
         if let orderID = orderID{
             let result = await draftOrderModel.completeDraftOrder(id: orderID, isPaid: isPaid)
+            print(result)
         }
     }
 }

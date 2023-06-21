@@ -9,6 +9,15 @@ import SwiftUI
 import PassKit
 
 struct PaymantView: View {
+    class Route: AppRoute {
+        convenience init(container: AppContainer,cart: Cart) {
+            self.init(identifier: String(describing: Self.self)) {
+                PaymantView(container: container, cart: cart)
+            }
+        }
+    }
+    @EnvironmentRouter private var router: AppRouter
+
     @State private var coupon: String = ""
     @State private var paymentMethod: String = "Cash on delivery"
     @State private var showingPaymentSheet = false
@@ -17,13 +26,13 @@ struct PaymantView: View {
     @State private var editedStreet: String = ""
     @State private var editedCity: String = ""
     @State private var editedCountry: String = ""
-    let viewModel:PaymantViewModel
+    @StateObject var viewModel:PaymantViewModel
     
     let cart: Cart
     let paymentHandler = PaymentHandler()
     init(container: AppContainer,cart: Cart) {
         self.cart = cart
-        viewModel = PaymantViewModel(draftOrderModel: container.require((any AnyDraftOrderModel).self), cart: cart)
+        _viewModel = .init(wrappedValue: PaymantViewModel(draftOrderModel: container.require((any AnyDraftOrderModel).self), cart: cart))
     }
     
     var body: some View {
@@ -76,18 +85,23 @@ struct PaymantView: View {
                 
                 Section {
                     Button(action: {
-                        task{
+                        Task{
                             await viewModel.updateOrde(address: address, discount: coupon)
                         }
                         
                         if paymentMethod == "Cash on delivery" {
                             showingPaymentSheet = true
                         } else if paymentMethod == "Apple pay" {
-                            self.paymentHandler.startPayment { success in
+                            self.paymentHandler.startPayment(amont: cart.totalAmount) { success in
                                 if success {
-                                    task{
+                                    Task{
                                         await viewModel.completeOrde(isPaid: true)
                                     }
+                                    router.push(AppRoute(identifier:  String(describing: CongratsScreen.self)){
+                                        CongratsScreen()
+
+                                    })
+
                                 } else {
                                     print("Failed")
                                 }
@@ -113,9 +127,14 @@ struct PaymantView: View {
                             }.padding(.all)
                             HStack(){
                                 Button(action: {
-                                    task{
-                                        await viewModel.completeOrde(isPaid: true)
+                                    Task{
+                                        print("1")
+                                         await viewModel.completeOrde(isPaid: false)
+                                    
                                     }
+                                    router.push(AppRoute(identifier:  String(describing: CongratsScreen.self)){
+                                        CongratsScreen()
+                                    })
                                     showingPaymentSheet = false
                                 }) {
                                     Text("Pay")

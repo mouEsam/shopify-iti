@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CartView: View {
     @StateObject private var viewModel: CartViewModel
+    @EnvironmentRouter private var router: AppRouter
+    @EnvironmentObject private var container: AppContainer
+
     init(container: AppContainer) {
         let model = container.require((any AnyCartModel).self)
         _viewModel = .init(wrappedValue: CartViewModel(model: model ))
@@ -55,7 +58,9 @@ struct CartView: View {
                                 
                         }
                     }
-                    Button(action: {print("pay")}){
+                    Button(action: {
+                        router.push(PaymantView.Route(container: container, cart:viewModel.operationState.data! ))
+                    }){
                         Text("Check Out")
                             .foregroundColor(.white)
                             .padding(.horizontal)

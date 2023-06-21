@@ -11,15 +11,19 @@ struct DraftOrderModel:AnyDraftOrderModel {
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyDraftOrderModel).self){resolver in
             DraftOrderModel(draftOrderServices: resolver.require(DraftOrderServices.self),
-                            discountManager:  resolver.require(DiscountManager.self))
+                            discountManager:  resolver.require(DiscountManager.self),
+                            cartIdStore: resolver.require((any AnyCartIdStore).self))
         }
     }
     
     private let draftOrderServices: DraftOrderServices
     private let discountManager:DiscountManager
-    init(draftOrderServices: DraftOrderServices,discountManager:DiscountManager) {
+    private let cartIdStore:AnyCartIdStore
+
+    init(draftOrderServices: DraftOrderServices,discountManager:DiscountManager,cartIdStore:AnyCartIdStore) {
         self.draftOrderServices = draftOrderServices
         self.discountManager = discountManager
+        self.cartIdStore = cartIdStore
     }
     
     func createDraftOrder(with items: [CartLine]) async-> Result<String, ShopifyErrors<Any>>{
@@ -44,6 +48,8 @@ struct DraftOrderModel:AnyDraftOrderModel {
     }
     
     func completeDraftOrder(id: String, isPaid: Bool) async-> Result<String, ShopifyErrors<Any>>{
+        cartIdStore.delete()
+
         let result =  await draftOrderServices.complete(id: id, isPaied: isPaid)
         return  result
     }

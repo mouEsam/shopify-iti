@@ -22,7 +22,7 @@ var paymentController: PKPaymentAuthorizationController?
 var paymentStatus = PKPaymentAuthorizationStatus.failure
 var completionHandler: PaymentCompletionHandler?
 
-func startPayment(completion: @escaping PaymentCompletionHandler) {
+    func startPayment(amont: Double,completion: @escaping PaymentCompletionHandler) {
 
     completionHandler = completion
 
@@ -36,7 +36,7 @@ func startPayment(completion: @escaping PaymentCompletionHandler) {
     request.countryCode = "EG"
     request.currencyCode = "EGP"
     
-    request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Shopify", amount: NSDecimalNumber(value: 5.5 ))]
+    request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Shopify", amount: NSDecimalNumber(value: amont ))]
 
 
     // Display our payment request

@@ -146,6 +146,9 @@ extension AppContainer {
             ProductsStrings.self,
             ProductStrings.self,
             WishlistStrings.self,
+            DraftOrderModel.self,
+            DraftOrderServices.self,
+            DiscountManager.self
         ])
     }
 }
