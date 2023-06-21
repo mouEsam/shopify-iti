@@ -9,6 +9,7 @@ import Foundation
 
 protocol AnyAuthenticationStrings {
     var loginLabel: String { get }
+    var loginError: String { get }
     var loginSublabel: String { get }
     var signupSublabel: String { get }
     var forgotPassword: String { get }
@@ -43,6 +44,7 @@ struct AuthenticationStrings: AnyAuthenticationStrings, AnyInjectable  {
     }
     
     let loginLabel = "AuthenticationStrings.loginLabel"
+    let loginError = "AuthenticationStrings.loginError"
     let loginSublabel = "AuthenticationStrings.loginSublabel"
     let signupSublabel = "AuthenticationStrings.signupSublabel"
     let forgotPassword = "AuthenticationStrings.forgotPassword"

@@ -12,10 +12,7 @@ struct Shopify_ITIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            
             RootView()
-
-
         }
     }
 }

@@ -16,7 +16,8 @@ class LoginViewModel: ObservableObject {
     private let emailValidator = EmailValidator() // TODO: inject
     private let requiredValidator = RequiredValidator<String>() // TODO: inject
     
-    @Published private(set) var operationState: UIState<Session> = .initial 
+    @Published private(set) var operationState: UIState<Session> = .initial
+    @Published private(set) var resetState: UIState<Void> = .initial
     
     @Published var email: String = ""
     @Published var password: String = ""
@@ -24,6 +25,9 @@ class LoginViewModel: ObservableObject {
     @Published private(set) var emailError: String?
     @Published private(set) var passwordError: String?
        
+    private var loginTask: Task<Void, Error>? = nil
+    private var resetTask: Task<Void, Error>? = nil
+    
     init(repository: some AnyAuthenticationRepository) {
         self.repository = repository
         
@@ -41,27 +45,50 @@ class LoginViewModel: ObservableObject {
             .map { NSLocalizedString($0, comment: $0) }
     }
     
-    func login() async {
-        await MainActor.run {
-            self.validate()
-        }
+    func login() {
+        loginTask?.cancel()
+        loginTask = Task {
+            await MainActor.run {
+                self.validate()
+            }
 
-        guard passwordError == nil,
-              emailError == nil else { return }
-        
-        await MainActor.run {
-            operationState = .loading
+            guard passwordError == nil,
+                  emailError == nil else { return }
+            
+            await MainActor.run {
+                operationState = .loading
+            }
+            let result = await repository.login(with: SigninCredentials(email: email, password: password))
+            await MainActor.run {
+                switch result {
+                    case .success(let session):
+                        dump(session)
+                        operationState = .loaded(data: SourcedData.remote(session))
+                        break
+                    case .failure(let error):
+                        operationState = .error(error: error)
+                        break
+                }
+            }
         }
-        let result = await repository.login(with: SigninCredentials(email: email, password: password))
-        await MainActor.run {
-            switch result {
-                case .success(let session):
-                    dump(session)
-                    operationState = .loaded(data: SourcedData.remote(session))
-                    break
-                case .failure(let error):
-                    operationState = .error(error: error)
-                    break
+    }
+    
+    func reset(email: String) {
+        resetTask?.cancel()
+        resetTask = Task {
+            await MainActor.run {
+                resetState = .loading
+            }
+            let result = await repository.recover(email: email)
+            await MainActor.run {
+                switch result {
+                    case .success(_):
+                        resetState = .loaded(data: SourcedData.remote(Void()))
+                        break
+                    case .failure(let error):
+                        resetState = .error(error: error)
+                        break
+                }
             }
         }
     }

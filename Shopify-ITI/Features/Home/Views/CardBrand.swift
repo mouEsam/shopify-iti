@@ -13,11 +13,12 @@ struct CardBrand : View {
     @EnvironmentObject private var container: AppContainer
     
     private let item : ProductCollection
-    private let color : Color
+    private let colors : AnyAppColors
     
-    init(item: ProductCollection, color: Color) {
+    init(container: AppContainer,
+         item: ProductCollection) {
         self.item = item
-        self.color = color
+        self.colors = container.require((any AnyAppColors).self)
     }
     
     var body: some View {
@@ -26,25 +27,21 @@ struct CardBrand : View {
                                              criterion: [.collection:item.id]))
         }) {
             VStack {
-                AsyncImage(url: URL(string: item.image?.url ?? "")) { image in
-                    image.resizable()
-                } placeholder: {
-                    ProgressView()
-                }.aspectRatio(contentMode: .fit)
-                    .frame(height: 200)
+                RemoteImageView(image: item.image)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 150)
                     .frame(maxWidth: .infinity)
                     .padding()
-                
                 Text(item.title)
                     .font(.title3)
                     .fontWeight(.bold)
-                    .foregroundColor(color)
                     .padding()
-            }.background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 2)
+            }
         }
-
+        .foregroundColor(colors.black)
+        .background(colors.white)
+        .cornerRadius(10)
+        .shadow(radius: 2)
     }
 }
 
