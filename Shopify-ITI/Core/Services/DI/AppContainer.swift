@@ -151,7 +151,7 @@ extension AppContainer {
             DiscountManager.self,
             OrdersStrings.self,
             OrdersModelFactory.self,
-            OrdersRemoteService.self
+            OrdersRemoteService.self,
             PreviousSearchesStore.self
         ])
     }

@@ -30,7 +30,7 @@ struct SettingsView: View {
             Section(header: Text("Language")) {
                 Picker(selection: $settingViewModel.langauge, label: Text("Select a language")) {
                     ForEach(languages) { language in
-                        Text(language.rawValue) // TODO: localize
+                        Text(language.localizationKey.localized).tag(language)
                     }
                 }
                 .onChange(of: settingViewModel.langauge) { newLanguage in
@@ -41,7 +41,7 @@ struct SettingsView: View {
             Section(header: Text("Country")) {
                 Picker(selection: $settingViewModel.country, label: Text("Select a contry")) {
                     ForEach(countries) { country in
-                        Text(country.rawValue) // TODO: localize
+                        Text(country.localizationKey.localized).tag(country)
                     }
                 }
                 .onChange(of: settingViewModel.country) { newCountry in

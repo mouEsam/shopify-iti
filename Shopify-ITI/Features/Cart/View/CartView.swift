@@ -51,8 +51,7 @@ struct CartView: View {
                     Text("Total:")
                     Spacer()
                     if let amount = viewModel.operationState.data?.totalAmount {
-                        PriceView(price: Price(amount: amount,
-                                               currencyCode: .egp))
+                        PriceView(price: amount)
                     }
                 }
                 RoundedButton(label: "Check Out",
@@ -107,8 +106,7 @@ struct CardItemView: View {
                     .font(.headline)
                 HStack {
                     Text("Price: ") //TODO: local
-                    PriceView(price: Price(amount: cartLine.totalAmount,
-                                           currencyCode: .egp)) // TODO: use currency
+                    PriceView(price: cartLine.totalAmount)
                 }
                 Spacer()
                 

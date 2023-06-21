@@ -79,7 +79,7 @@ struct LoginScreen: View {
                                 ProgressView()
                             }
                         }
-                    }
+                    }.disabled(viewModel.resetState.isLoading)
                     RoundedButton(label: strings.loginAction.localized,
                                   labelColor: colors.white,
                                   backgroundColor: colors.black,

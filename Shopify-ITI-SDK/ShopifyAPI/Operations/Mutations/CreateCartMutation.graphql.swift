@@ -27,11 +27,11 @@ public extension ShopifyAPI {
                       __typename
                       amountPerQuantity {
                         __typename
-                        amount
+                        ...moneyInfo
                       }
                       totalAmount {
                         __typename
-                        amount
+                        ...moneyInfo
                       }
                     }
                     merchandise {
@@ -50,8 +50,7 @@ public extension ShopifyAPI {
                 __typename
                 totalAmount {
                   __typename
-                  amount
-                  currencyCode
+                  ...moneyInfo
                 }
               }
               buyerIdentity {
@@ -68,7 +67,7 @@ public extension ShopifyAPI {
           }
         }
         """#,
-        fragments: [ProductVariantInfo.self, ImageInfo.self, MoneyInfo.self]
+        fragments: [MoneyInfo.self, ProductVariantInfo.self, ImageInfo.self]
       ))
 
     public var cartInput: GraphQLNullable<CartInput>
@@ -233,11 +232,20 @@ public extension ShopifyAPI {
                     public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.MoneyV2 }
                     public static var __selections: [Apollo.Selection] { [
                       .field("__typename", String.self),
-                      .field("amount", ShopifyAPI.Decimal.self),
+                      .fragment(MoneyInfo.self),
                     ] }
 
                     /// Decimal money amount.
                     public var amount: ShopifyAPI.Decimal { __data["amount"] }
+                    /// Currency of the money.
+                    public var currencyCode: GraphQLEnum<ShopifyAPI.CurrencyCode> { __data["currencyCode"] }
+
+                    public struct Fragments: FragmentContainer {
+                      public let __data: DataDict
+                      public init(_dataDict: DataDict) { __data = _dataDict }
+
+                      public var moneyInfo: MoneyInfo { _toFragment() }
+                    }
                   }
 
                   /// CartCreate.Cart.Lines.Edge.Node.Cost.TotalAmount
@@ -250,11 +258,20 @@ public extension ShopifyAPI {
                     public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.MoneyV2 }
                     public static var __selections: [Apollo.Selection] { [
                       .field("__typename", String.self),
-                      .field("amount", ShopifyAPI.Decimal.self),
+                      .fragment(MoneyInfo.self),
                     ] }
 
                     /// Decimal money amount.
                     public var amount: ShopifyAPI.Decimal { __data["amount"] }
+                    /// Currency of the money.
+                    public var currencyCode: GraphQLEnum<ShopifyAPI.CurrencyCode> { __data["currencyCode"] }
+
+                    public struct Fragments: FragmentContainer {
+                      public let __data: DataDict
+                      public init(_dataDict: DataDict) { __data = _dataDict }
+
+                      public var moneyInfo: MoneyInfo { _toFragment() }
+                    }
                   }
                 }
 
@@ -419,14 +436,20 @@ public extension ShopifyAPI {
               public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.MoneyV2 }
               public static var __selections: [Apollo.Selection] { [
                 .field("__typename", String.self),
-                .field("amount", ShopifyAPI.Decimal.self),
-                .field("currencyCode", GraphQLEnum<ShopifyAPI.CurrencyCode>.self),
+                .fragment(MoneyInfo.self),
               ] }
 
               /// Decimal money amount.
               public var amount: ShopifyAPI.Decimal { __data["amount"] }
               /// Currency of the money.
               public var currencyCode: GraphQLEnum<ShopifyAPI.CurrencyCode> { __data["currencyCode"] }
+
+              public struct Fragments: FragmentContainer {
+                public let __data: DataDict
+                public init(_dataDict: DataDict) { __data = _dataDict }
+
+                public var moneyInfo: MoneyInfo { _toFragment() }
+              }
             }
           }
 

@@ -6,6 +6,18 @@
   
 */
 
+// Currencies
+"currencyISO.EGP" = "الجنيه المصري";
+"currencyISO.USD" = "الدولار الأمريكي";
+
+// Countries
+"countryCode.EG" = "مصر";
+"countryCode.US" = "الولايات المتحدة";
+
+// Languages
+"languageCode.EN" = "إنجليزي";
+"languageCode.AR" = "عربي";
+
 // Validations
 "validations.invalid_email" = "هذا البريد الإلكتروني غير صالح";
 "validations.required_field" = "هذه الخانة مطلوبه";

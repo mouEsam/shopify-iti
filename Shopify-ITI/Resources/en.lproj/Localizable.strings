@@ -6,6 +6,18 @@
   
 */
 
+// Currencies
+"currencyISO.EGP" = "Egyptian Pound";
+"currencyISO.USD" = "US Dollar";
+
+// Countries
+"countryCode.EG" = "Egypt";
+"countryCode.US" = "United states";
+
+// Languages
+"languageCode.EN" = "English";
+"languageCode.AR" = "Arabic";
+
 // Validations
 "validations.invalid_email" = "This email is invalid";
 "validations.required_field" = "This field is required";

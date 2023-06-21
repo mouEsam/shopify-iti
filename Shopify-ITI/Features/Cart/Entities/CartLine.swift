@@ -12,15 +12,22 @@ struct CartLine: Identifiable {
     let id: String
     let quantity: Int
     let productVariant:ProductVariant
-    let totalAmount:Double
+    let totalAmount: Price
 }
+
+extension ShopifyAPI.GetCartQuery.Data.Cart.Lines.Edge.Node.Cost.TotalAmount: PriceConvertible {}
+extension ShopifyAPI.CreateCartMutation.Data.CartCreate.Cart.Lines.Edge.Node.Cost.TotalAmount: PriceConvertible {}
+extension ShopifyAPI.AddCartLinesMutation.Data.CartLinesAdd.Cart.Lines.Edge.Node.Cost.TotalAmount: PriceConvertible {}
+extension ShopifyAPI.UpdateCartLinesMutation.Data.CartLinesUpdate.Cart.Lines.Edge.Node.Cost.TotalAmount: PriceConvertible {}
+extension ShopifyAPI.RemoveCartLinesMutation.Data.CartLinesRemove.Cart.Lines.Edge.Node.Cost.TotalAmount: PriceConvertible {}
+extension ShopifyAPI.UpdateCartBuyerIdentityMutation.Data.CartBuyerIdentityUpdate.Cart.Lines.Edge.Node.Cost.TotalAmount: PriceConvertible {}
 
 extension CartLine{
     init(from cartLine: ShopifyAPI.GetCartQuery.Data.Cart.Lines.Edge.Node){
         id = cartLine.id
         quantity = cartLine.quantity
         productVariant = .init(from:  cartLine.merchandise.asProductVariant!)
-        totalAmount = Double(cartLine.cost.totalAmount.amount) ?? 0
+        totalAmount = .init(from: cartLine.cost.totalAmount)
     }
 }
 
@@ -29,7 +36,7 @@ extension CartLine{
         id = cartLine.id
         quantity = cartLine.quantity
         productVariant = .init(from:  cartLine.merchandise.asProductVariant!)
-        totalAmount = Double(cartLine.cost.totalAmount.amount) ?? 0
+        totalAmount = .init(from: cartLine.cost.totalAmount)
     }
 }
 
@@ -38,9 +45,8 @@ extension CartLine{
         id = cartLine.id
         quantity = cartLine.quantity
         productVariant = .init(from:  cartLine.merchandise.asProductVariant!)
-        totalAmount = Double(cartLine.cost.totalAmount.amount) ?? 0
+        totalAmount = .init(from: cartLine.cost.totalAmount)
     }
-    
 }
 
 extension CartLine{
@@ -48,7 +54,7 @@ extension CartLine{
         id = cartLine.id
         quantity = cartLine.quantity
         productVariant = .init(from:  cartLine.merchandise.asProductVariant!)
-        totalAmount = Double(cartLine.cost.totalAmount.amount) ?? 0
+        totalAmount = .init(from: cartLine.cost.totalAmount)
     }
 }
 
@@ -57,7 +63,7 @@ extension CartLine{
         id = cartLine.id
         quantity = cartLine.quantity
         productVariant = .init(from:  cartLine.merchandise.asProductVariant!)
-        totalAmount = Double(cartLine.cost.totalAmount.amount) ?? 0
+        totalAmount = .init(from: cartLine.cost.totalAmount)
     }
 }
 
@@ -66,6 +72,6 @@ extension CartLine{
         id = cartLine.id
         quantity = cartLine.quantity
         productVariant = .init(from:  cartLine.merchandise.asProductVariant!)
-        totalAmount = Double(cartLine.cost.totalAmount.amount) ?? 0
+        totalAmount = .init(from: cartLine.cost.totalAmount)
     }
 }
