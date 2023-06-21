@@ -15,5 +15,6 @@ protocol AnyKeysProvider: AnyInjectable {
     var languageLocalKey: String { get }
     var wishlistRemoteKey: String { get }
     var cartRemoteKey: String { get }
+    var previousSearchesLocalKey: String { get }
 
 }

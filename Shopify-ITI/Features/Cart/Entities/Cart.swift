@@ -8,37 +8,37 @@
 import Foundation
 import Shopify_ITI_SDK
 struct Cart:Identifiable{
-    let id:String
-    let userToken:String?
-
-    let cartLine:[CartLine]
-    let totalAmount:Double
+    let id: String
+    let userToken: String?
+    let cartLine: [CartLine]
+    let totalAmount: Price
 }
+
+
 extension Cart{
     init(from cart: ShopifyAPI.GetCartQuery.Data.Cart){
         var tempLine:[CartLine] = []
         id = cart.id
-        for cardline in cart.lines.edges{
+        for cardline in cart.lines.edges {
             tempLine.append( .init(from: cardline.node))
         }
         userToken = cart.buyerIdentity.customer?.id
         self.cartLine = tempLine
-        totalAmount = Double(cart.cost.totalAmount.amount) ?? 0
+        totalAmount = .init(from: cart.cost.totalAmount)
     }
-   
 }
+
 extension Cart{
     init(from cart: ShopifyAPI.CreateCartMutation.Data.CartCreate.Cart){
         var tempLine:[CartLine] = []
         id = cart.id
         userToken = cart.buyerIdentity.customer?.id
-
+        
         for cardline in cart.lines.edges{
             tempLine.append( .init(from: cardline.node))
         }
         self.cartLine = tempLine
-        totalAmount = Double(cart.cost.totalAmount.amount) ?? 0
-
+        totalAmount = .init(from: cart.cost.totalAmount)
     }
 }
 extension Cart{
@@ -46,13 +46,12 @@ extension Cart{
         var tempLine:[CartLine] = []
         id = cart.id
         userToken = cart.buyerIdentity.customer?.id
-
+        
         for cardline in cart.lines.edges{
             tempLine.append( .init(from: cardline.node))
         }
         self.cartLine = tempLine
-        totalAmount = Double(cart.cost.totalAmount.amount) ?? 0
-
+        totalAmount = .init(from: cart.cost.totalAmount)
     }
 }
 extension Cart{
@@ -60,13 +59,12 @@ extension Cart{
         var tempLine:[CartLine] = []
         id = cart.id
         userToken = cart.buyerIdentity.customer?.id
-
+        
         for cardline in cart.lines.edges{
             tempLine.append( .init(from: cardline.node))
         }
         self.cartLine = tempLine
-        totalAmount = Double(cart.cost.totalAmount.amount) ?? 0
-
+        totalAmount = .init(from: cart.cost.totalAmount)
     }
 }
 extension Cart{
@@ -78,8 +76,7 @@ extension Cart{
             tempLine.append( .init(from: cardline.node))
         }
         self.cartLine = tempLine
-        totalAmount = Double(cart.cost.totalAmount.amount) ?? 0
-
+        totalAmount = .init(from: cart.cost.totalAmount)
     }
 }
 extension Cart{
@@ -91,10 +88,17 @@ extension Cart{
             tempLine.append( .init(from: cardline.node))
         }
         self.cartLine = tempLine
-        totalAmount = Double(cart.cost.totalAmount.amount) ?? 0
-
+        totalAmount = .init(from: cart.cost.totalAmount)
     }
 }
+
+
+extension ShopifyAPI.GetCartQuery.Data.Cart.Cost.TotalAmount: PriceConvertible {}
+extension ShopifyAPI.CreateCartMutation.Data.CartCreate.Cart.Cost.TotalAmount: PriceConvertible {}
+extension ShopifyAPI.AddCartLinesMutation.Data.CartLinesAdd.Cart.Cost.TotalAmount: PriceConvertible {}
+extension ShopifyAPI.UpdateCartLinesMutation.Data.CartLinesUpdate.Cart.Cost.TotalAmount: PriceConvertible {}
+extension ShopifyAPI.RemoveCartLinesMutation.Data.CartLinesRemove.Cart.Cost.TotalAmount: PriceConvertible {}
+extension ShopifyAPI.UpdateCartBuyerIdentityMutation.Data.CartBuyerIdentityUpdate.Cart.Cost.TotalAmount: PriceConvertible {}
 
 extension ShopifyAPI.GetCartQuery.Data.Cart.Lines.Edge.Node.Merchandise.AsProductVariant: ProductVariantConvertible {}
 extension ShopifyAPI.GetCartQuery.Data.Cart.Lines.Edge.Node.Merchandise.AsProductVariant.Image: RemoteImageConvertible {}

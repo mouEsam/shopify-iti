@@ -15,6 +15,17 @@ protocol AnyAuthenticationStrings {
     var forgotPassword: String { get }
     var loginAction: String { get }
     var signupAction: String { get }
+    
+    var resetSuccess: String { get }
+    var resetSuccessMessage: String { get }
+    var resetError: String { get }
+    
+    var resetLabel: String { get }
+    var resetEmail: String { get }
+    var resetAction: String { get }
+    var resetCancel: String { get }
+    var resetMessage: String { get }
+    
     var alreadyHaveAccount: String { get }
     
     var emailLabel: String { get }
@@ -50,6 +61,17 @@ struct AuthenticationStrings: AnyAuthenticationStrings, AnyInjectable  {
     let forgotPassword = "AuthenticationStrings.forgotPassword"
     let loginAction = "AuthenticationStrings.loginAction"
     let signupAction = "AuthenticationStrings.signupAction"
+    
+    let resetSuccess = "AuthenticationStrings.resetSuccess"
+    let resetSuccessMessage = "AuthenticationStrings.resetSuccessMessage"
+    let resetError = "AuthenticationStrings.resetError"
+    
+    let resetLabel = "AuthenticationStrings.resetLabel"
+    let resetEmail = "AuthenticationStrings.resetEmail"
+    let resetAction = "AuthenticationStrings.resetAction"
+    let resetCancel = "AuthenticationStrings.resetCancel"
+    let resetMessage = "AuthenticationStrings.resetMessage"
+    
     let alreadyHaveAccount = "AuthenticationStrings.alreadyHaveAccount"
     
     let firstNameLabel = "AuthenticationStrings.firstNameLabel"
