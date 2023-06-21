@@ -13,10 +13,15 @@ protocol AnyProfileStrings {
     var wishlsitLabel: String { get }
     var moreLabel: String { get }
     var loginAction: String { get }
+    var loginMessage: String { get }
+    var emptyListWishList: String { get }
+    var emptyListOrders: String { get }
    
 }
 // TODO: localize
 struct ProfileStrings: AnyProfileStrings, AnyInjectable  {
+    
+   
     
 
     
@@ -25,6 +30,11 @@ struct ProfileStrings: AnyProfileStrings, AnyInjectable  {
             ProfileStrings()
         }
     }
+    var emptyListWishList: String = "No Wishlist Added Yet"
+    
+    var emptyListOrders: String = "No Orders Added Yet"
+
+    
     var orderLabel: String = "Order"
     
     var welcomeLabel: String = "Welcome"
@@ -33,5 +43,7 @@ struct ProfileStrings: AnyProfileStrings, AnyInjectable  {
     
     var moreLabel: String = "More"
     
-    var loginAction: String = "Please Login"
+    var loginAction: String = "Login"
+    var loginMessage: String = "please login"
+
 }

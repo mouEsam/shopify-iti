@@ -148,7 +148,10 @@ extension AppContainer {
             WishlistStrings.self,
             DraftOrderModel.self,
             DraftOrderServices.self,
-            DiscountManager.self
+            DiscountManager.self,
+            OrdersStrings.self,
+            OrdersModelFactory.self,
+            OrdersRemoteService.self
         ])
     }
 }
