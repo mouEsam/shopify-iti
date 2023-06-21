@@ -58,20 +58,21 @@ struct CardItemView: View {
                             .font(.title)
                     }
                 }
-                Spacer()
-                Button(action: {
-                    Task{
-                        await  viewModel.deleteItem(cartline: cartLine)
-                    }
-                }) {
-                    Image("delete")
-                        .renderingMode(.template)
-                        .font(.title)
-                }
-                .foregroundColor(colors.black)
+                
             }
-            .padding(16)
-        }
+            Spacer()
+            Button(action: {
+                Task{
+                    await  viewModel.deleteItem(cartline: cartLine)
+                }
+            }) {
+                Image("delete")
+                    .renderingMode(.template)
+                    .font(.title)
+            }
+            .foregroundColor(colors.black)
+        }.padding(16)
+
     }
 }
 
