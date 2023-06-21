@@ -31,6 +31,14 @@
 "AuthenticationStrings.forgotPassword" = "Forgot Password";
 "AuthenticationStrings.loginAction" = "Login";
 "AuthenticationStrings.signupAction" = "Sign up";
+"AuthenticationStrings.resetLabel" = "Reset";
+"AuthenticationStrings.resetEmail" = "Email";
+"AuthenticationStrings.resetAction" = "Send";
+"AuthenticationStrings.resetCancel" = "Cancel";
+"AuthenticationStrings.resetMessage" = "Please enter your email";
+"AuthenticationStrings.resetSuccess" = "Success";
+"AuthenticationStrings.resetSuccessMessage" = "An email was sent to you";
+"AuthenticationStrings.resetError" = "Error";
 "AuthenticationStrings.alreadyHaveAccount" = "Already have account?";
 "AuthenticationStrings.firstNameLabel" = "First name";
 "AuthenticationStrings.firstNameHint" = "Your first name";

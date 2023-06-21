@@ -21,4 +21,5 @@ struct KeysProvider: AnyKeysProvider {
     let cartRemoteKey: String = "cart_remote"
     let countryLocalKey: String = "conutry_local"
     let languageLocalKey: String = "AppleLanguages"
+    let previousSearchesLocalKey: String = "previous_seaches"
 }

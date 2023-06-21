@@ -31,6 +31,14 @@
 "AuthenticationStrings.forgotPassword" = "هل نسيت كلمة السر؟";
 "AuthenticationStrings.loginAction" = "تسجيل الدخول";
 "AuthenticationStrings.signupAction" = "اشتراك";
+"AuthenticationStrings.resetLabel" = "إعادة تعيين كلمة المرور";
+"AuthenticationStrings.resetEmail" = "بريد إلكتروني";
+"AuthenticationStrings.resetAction" = "إرسال";
+"AuthenticationStrings.resetCancel" = "إلغاء";
+"AuthenticationStrings.resetMessage" = "رجاءا أدخل بريدك الإلكتروني";
+"AuthenticationStrings.resetSuccess" = "نجاح";
+"AuthenticationStrings.resetSuccessMessage" = "تم إرسال بريد إلكتروني لك";
+"AuthenticationStrings.resetError" = "خطأ";
 "AuthenticationStrings.alreadyHaveAccount" = "لديك حساب بالفعل؟";
 "AuthenticationStrings.firstNameLabel" = "الاسم الأول";
 "AuthenticationStrings.firstNameHint" = "اسمك الأول";

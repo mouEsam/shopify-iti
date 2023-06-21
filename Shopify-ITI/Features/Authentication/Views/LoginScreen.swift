@@ -68,9 +68,17 @@ struct LoginScreen: View {
                                   error: viewModel.passwordError,
                                   strokeColor: colors.dark2Grey,
                                   obsecurable: true)
-                    Button(strings.forgotPassword.localized) {
+                    Button(action: {
                         resetEmail = ""
                         resetDialog = true
+                    }) {
+                        HStack {
+                            Text(strings.forgotPassword.localized)
+                            if viewModel.resetState.isLoading {
+                                Spacer().frame(width: 8)
+                                ProgressView()
+                            }
+                        }
                     }
                     RoundedButton(label: strings.loginAction.localized,
                                   labelColor: colors.white,
@@ -96,22 +104,35 @@ struct LoginScreen: View {
                 }
             }
         })
+        .onReceive(viewModel.$resetState, perform: { state in
+            if state.isLoaded {
+                router.alert(item: IdentifiableWrapper(wrapped: state)) { wrapper in
+                    Alert(title: Text(strings.resetSuccess.localized), // TODO: localize
+                          message: Text(strings.resetSuccessMessage.localized))
+                }
+            } else if let error = state.error {
+                router.alert(item: ErrorWrapper(error: error)) { wrapper in
+                    Alert(title: Text(strings.resetError.localized), // TODO: localize
+                          message: Text(wrapper.error.localizedDescription))
+                }
+            }
+        })
         .toolbar(.hidden)
         .onBackSwipe {
             router.pop()
         }
-        .alert("Reset", isPresented: $resetDialog) {
-            TextField("Email", text: $resetEmail)
+        .alert(strings.resetLabel.localized, isPresented: $resetDialog) {
+            TextField(strings.resetEmail.localized, text: $resetEmail)
                 .textInputAutocapitalization(.never)
-            Button("Reset") {
+            Button(strings.resetAction.localized) {
                 viewModel.reset(email: resetEmail)
                 resetDialog = false
             }
-            Button("Cancel", role: .cancel) {
+            Button(strings.resetCancel.localized, role: .cancel) {
                 resetDialog = false
             }
         } message: {
-            Text("Please enter your email.")
+            Text(strings.resetMessage.localized)
         }
     }
 }

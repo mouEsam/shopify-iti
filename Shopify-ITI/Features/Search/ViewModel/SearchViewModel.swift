@@ -11,6 +11,7 @@ import Combine
 class SearchViewModel: ObservableObject {
     
     @Published private(set) var uiState: UIState<[String]> = .initial
+    @Published private(set) var suggestions: [String] = []
     @Published var input: String = ""
     
     private var fetchTask: Task<Void, Error>? = nil
@@ -35,6 +36,12 @@ class SearchViewModel: ObservableObject {
             .filter { query in !query.isEmpty }
             .sink { query in self.fetch(query: query) }
             .store(in: &cancellables)
+        
+        suggestions = model.getPreviousSearches()
+    }
+    
+    func onSearch() {
+        suggestions = model.addASearch(search: input)
     }
     
     private func clear() {

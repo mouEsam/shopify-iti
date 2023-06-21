@@ -152,6 +152,7 @@ extension AppContainer {
             OrdersStrings.self,
             OrdersModelFactory.self,
             OrdersRemoteService.self
+            PreviousSearchesStore.self
         ])
     }
 }

@@ -12,7 +12,6 @@ struct SearchView: View {
     
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
-    @AppStorage("suggestions") private var suggestions: [String]?
     @StateObject private var viewModel: SearchViewModel
     
     private var colors: AnyAppColors
@@ -24,7 +23,7 @@ struct SearchView: View {
     }
     
     private var searchResults: [String] {
-        let suggestions = suggestions ?? []
+        let suggestions = viewModel.suggestions
         var searchResults = viewModel.uiState.data ?? []
         if case .initial = viewModel.uiState {
             searchResults = suggestions
@@ -50,11 +49,9 @@ struct SearchView: View {
                     prompt: "search for product") // TODO: nemoriztion
         .onSubmit(of: .search)  {
             if !viewModel.input.isEmpty {
+                viewModel.onSearch()
                 router.push(ProductsScreen.Route(container: container,
                                                  criterion: [.query: viewModel.input]))
-                var suggestions = [viewModel.input]
-                suggestions.append(contentsOf: self.suggestions ?? [])
-                self.suggestions = suggestions
             }
         }
     }
