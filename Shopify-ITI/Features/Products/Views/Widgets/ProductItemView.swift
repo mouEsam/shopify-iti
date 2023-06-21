@@ -13,13 +13,17 @@ struct ProductItemView: View {
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
     
+    private let colors: AnyAppColors
+    
     private let onWishlisted: (() async -> Void)?
     private let product: Product
     private let isWishlisted: Bool
     
-    init(product: Product,
+    init(container: AppContainer,
+         product: Product,
          isWishlisted: Bool,
          onWishlisted: (() async -> Void)? = nil) {
+        colors = container.require((any AnyAppColors).self)
         self.product = product
         self.isWishlisted = isWishlisted
         self.onWishlisted = onWishlisted
@@ -36,6 +40,7 @@ struct ProductItemView: View {
                     WishlistBag(isWishlisted: isWishlisted, onWishlisted: onWishlisted)
                         .frame(width: 48)
                         .padding(4)
+                        .foregroundColor(colors.darkGrey)
                 }
                 .frame(maxWidth: .infinity)
                 VStack(alignment: .leading) {
@@ -56,7 +61,8 @@ struct ProductItemView: View {
                 }
                 .padding()
             }
-            .background(Color.white)
+            .background(colors.white)
+            .foregroundColor(colors.black)
             .cornerRadius(10)
             .shadow(radius: 2)
         }
@@ -65,7 +71,8 @@ struct ProductItemView: View {
 
 struct ProductItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductItemView(product: Product(id: "id",
+        ProductItemView(container: AppContainer.preview(),
+                        product: Product(id: "id",
                                          handle: "handle",
                                          title: "title",
                                          vendor: "title",

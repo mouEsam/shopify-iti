@@ -19,10 +19,14 @@ struct ProductsScreen: View {
     
     @EnvironmentRouter private var router: AppRouter
     @EnvironmentObject private var container: AppContainer
-    
     @StateObject private var viewModel: ProductsViewModel
+    private var colors: AnyAppColors
+    private var strings: AnyProductsStrings
     
-    init(container: AppContainer, criterion: ProductsViewModel.Criterion) {
+    init(container: AppContainer,
+         criterion: ProductsViewModel.Criterion) {
+        colors = container.require((any AnyAppColors).self)
+        strings = container.require((any AnyProductsStrings).self)
         let model = container.require((any AnyProductsModel).self)
         let manager = container.require(WishlistManager.self)
         let notificationCenter = container.require((any AnyNotificationCenter).self)
@@ -38,7 +42,7 @@ struct ProductsScreen: View {
                 case .loaded(let data):
                     let data = data.data
                     if data.isEmpty {
-                        Text("Empty") // TODO: Localize
+                        NoResultsView(message: strings.noProductsLabel.localized)
                     } else {
                         GeometryReader { geometryProxy in
                             ScrollView {
@@ -46,13 +50,14 @@ struct ProductsScreen: View {
                                           alignment: .center,
                                           spacing: 10) {
                                     ForEach(data) { item in
-                                        ProductItemView(product: item.product,
+                                        ProductItemView(container: container,
+                                                        product: item.product,
                                                         isWishlisted: item.isWishlisted) {
                                             let result = await viewModel.toggleWishlist(item: item.product)
                                             await MainActor.run {
                                                 if case .failure(let error) = result {
                                                     router.alert(item: ErrorWrapper(error: error)) { wrapper in
-                                                        Alert(title: Text("Error"), // TODO: localize
+                                                        Alert(title: Text(strings.wishlistErrorLabel.localized),
                                                               message: Text(wrapper.error.localizedDescription))
                                                     }
                                                 }
@@ -80,11 +85,13 @@ struct ProductsScreen: View {
                         }
                     }
                 case .error(let error):
-                    Text("\(error.localizedDescription)")
+                    ErrorMessageView(message: "\(error.localizedDescription)")
                 default:
-                    ProgressView().foregroundColor(.black)
+                    ProgressView()
             }
         }
+        .background(colors.white)
+        .foregroundColor(colors.black)
         .onFirstAppear {
             viewModel.initialize()
         }

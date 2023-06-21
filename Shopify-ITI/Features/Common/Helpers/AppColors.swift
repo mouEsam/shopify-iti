@@ -25,11 +25,11 @@ struct AppColors: AnyAppColors, AnyInjectable  {
         }
     }
     
-    let white: Color = .init(rgb: 0xFFFFFFFF)
+    let white: Color = Color("SurfaceColor")
     let offWhite: Color = .init(rgb: 0xFFFAFAFA)
     let grey: Color = .init(rgb: 0xFFDBDBDB)
     let darkGrey: Color = .init(rgb: 0xFF303030)
     let dark2Grey: Color = .init(rgb: 0xFF909090)
     let lightGrey: Color = .init(rgb: 0xFFDEDEDE)
-    let black: Color = .init(rgb: 0xFF242424)
+    let black: Color = Color("OnSurfaceColor")
 }

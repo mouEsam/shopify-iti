@@ -15,7 +15,10 @@ struct SearchView: View {
     @AppStorage("suggestions") private var suggestions: [String]?
     @StateObject private var viewModel: SearchViewModel
     
+    private var colors: AnyAppColors
+    
     init(container: AppContainer) {
+        colors = container.require((any AnyAppColors).self)
         let model = container.require((any AnySearchModel).self)
         _viewModel = .init(wrappedValue: SearchViewModel(model: model))
     }
@@ -37,10 +40,11 @@ struct SearchView: View {
                                                      criterion: [.query:name]))
                 }) {
                     Text(name)
-                }.foregroundColor(.black)
-                
+                }
             }
         }
+        .background(colors.white)
+        .foregroundColor(colors.black)
         .searchable(text: $viewModel.input,
                     placement: .navigationBarDrawer(displayMode: .always),
                     prompt: "search for product") // TODO: nemoriztion

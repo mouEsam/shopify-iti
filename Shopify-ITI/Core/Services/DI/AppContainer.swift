@@ -143,6 +143,9 @@ extension AppContainer {
             HomeStrings.self,
             ProfileStrings.self,
             CategoriesStrings.self,
+            ProductsStrings.self,
+            ProductStrings.self,
+            WishlistStrings.self,
         ])
     }
 }
