@@ -11,4 +11,5 @@ import Shopify_ITI_SDK
 protocol AnyAuthenticationRepository: AnyInjectable {
     func signup(with credentials: SignupCredentials) async -> Result<User, ShopifyErrors<ShopifyAPI.CustomerErrorCode>>
     func login(with credentials: SigninCredentials) async -> Result<Session, Error>
+    func recover(email: String) async -> Result<Void, ShopifyErrors<ShopifyAPI.CustomerErrorCode>>
 }

@@ -24,6 +24,9 @@ struct LoginScreen: View {
     @EnvironmentRouter private var router: AppRouter
     
     @State private var validationError: String?
+    @State private var resetEmail: String = ""
+    @State private var resetDialog: Bool = false
+    
     @StateObject private var viewModel: LoginViewModel
     
     init(container: AppContainer) {
@@ -36,7 +39,7 @@ struct LoginScreen: View {
     var body: some View {
         VStack(spacing: 16) {
             AuthTopBarDecor(barColor: colors.grey,
-                             circleColor: colors.black)
+                            circleColor: colors.black)
             .alignmentGuide(.top) { dimen in dimen[.top] }
             
             ScrollView {
@@ -56,8 +59,8 @@ struct LoginScreen: View {
                                   hint: strings.emailHint,
                                   error: viewModel.emailError,
                                   strokeColor: colors.dark2Grey)
-                        .autocapitalization(.none)
-                        .keyboardType(.emailAddress)
+                    .autocapitalization(.none)
+                    .keyboardType(.emailAddress)
                     
                     AuthTextField(text: $viewModel.password,
                                   label: strings.passwordLabel,
@@ -66,15 +69,14 @@ struct LoginScreen: View {
                                   strokeColor: colors.dark2Grey,
                                   obsecurable: true)
                     Button(strings.forgotPassword.localized) {
-                        // TODO: implement
+                        resetEmail = ""
+                        resetDialog = true
                     }
                     RoundedButton(label: strings.loginAction.localized,
-                               labelColor: colors.white,
-                               backgroundColor: colors.black,
-                               isLoading: viewModel.operationState.isLoading) {
-                        Task {
-                            await viewModel.login()
-                        }
+                                  labelColor: colors.white,
+                                  backgroundColor: colors.black,
+                                  isLoading: viewModel.operationState.isLoading) {
+                        viewModel.login()
                     }
                     Button(strings.signupAction.localized) {
                         router.push(RegisterScreen.Route(container: container))
@@ -89,7 +91,7 @@ struct LoginScreen: View {
                 router.pop()
             } else if let error = state.error {
                 router.alert(item: ErrorWrapper(error: error)) { wrapper in
-                    Alert(title: Text("Error"), // TODO: localize
+                    Alert(title: Text(strings.loginError.localized), // TODO: localize
                           message: Text(wrapper.error.localizedDescription))
                 }
             }
@@ -97,6 +99,19 @@ struct LoginScreen: View {
         .toolbar(.hidden)
         .onBackSwipe {
             router.pop()
+        }
+        .alert("Reset", isPresented: $resetDialog) {
+            TextField("Email", text: $resetEmail)
+                .textInputAutocapitalization(.never)
+            Button("Reset") {
+                viewModel.reset(email: resetEmail)
+                resetDialog = false
+            }
+            Button("Cancel", role: .cancel) {
+                resetDialog = false
+            }
+        } message: {
+            Text("Please enter your email.")
         }
     }
 }

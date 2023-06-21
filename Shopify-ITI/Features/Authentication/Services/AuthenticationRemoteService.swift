@@ -125,6 +125,26 @@ struct AuthenticationRemoteService: AnyInjectable {
         }
     }
     
+    func recover(email: String) async -> Result<Void, AuthError> {
+        let mutation = ShopifyAPI.RecoverCustomerAccountMutation(email: email,
+            country: .init(nullable: localeProvider.shopifyCountry),
+            lang: .init(nullable: localeProvider.shopifyLanguage))
+        let result = await client.execute(query: mutation)
+        
+        return result.mapError { .Client(error: $0) }.flatMap { result in
+            if let data = result.data?.customerRecover {
+                if data.customerUserErrors.isEmpty {
+                    return .success(Void())
+                } else {
+                    let errors = data.customerUserErrors.map { AuthError.ValidationError(from: $0) }
+                    return .failure(AuthError.Validation(validationErrors: errors))
+                }
+            } else {
+                return .failure(AuthError.Unknown)
+            }
+        }
+    }
+    
     func signout() async -> Result<Void, AuthError> {
         guard let token = tokenProvider.accessToken else { return .failure(.Unautherized) }
         let mutation = ShopifyAPI.DeleteCustomerAccessTokenMutation(

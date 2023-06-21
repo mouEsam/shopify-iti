@@ -44,4 +44,8 @@ struct AuthenticationRepository: AnyAuthenticationRepository {
         
         return await authManager.setUser(user: user, token: token).mapError { $0 as Error }
     }
+    
+    func recover(email: String) async -> Result<Void, ShopifyErrors<ShopifyAPI.CustomerErrorCode>> {
+        return await authService.recover(email: email)
+    }
 }

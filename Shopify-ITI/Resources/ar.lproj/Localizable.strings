@@ -25,6 +25,7 @@
 
 // AuthenticationStrings
 "AuthenticationStrings.loginLabel" = "مرحبًا";
+"AuthenticationStrings.loginError" = "خطأ";
 "AuthenticationStrings.loginSublabel" = "مرحبًا بعودتك";
 "AuthenticationStrings.signupSublabel" = "مرحباً";
 "AuthenticationStrings.forgotPassword" = "هل نسيت كلمة السر؟";
