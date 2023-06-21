@@ -18,15 +18,16 @@ class OrdersViewModel : ObservableObject{
         self.model = model
     }
     
-    func loadBrand(customerAccessToken token :String) async{
+    func loadBrand() async{
         await MainActor.run(){
             self.operationState = .loading
         }
         
-        let res =  await model.fetch(customerAccessToken: token).toRemote()
+        let res =  await model.fetch().toRemote()
         
         await MainActor.run(){
             self.operationState = res
+            
         }
 
     }

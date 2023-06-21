@@ -2,14 +2,14 @@ query getOrders($customerAccessToken: String!,
                 $country: CountryCode, 
                 $lang: LanguageCode) @inContext(country: $country, language: $lang) {
   customer(customerAccessToken: $customerAccessToken) {
-    orders(first:10) {
+    orders(first:200) {
       edges {
         node {
           orderNumber
           totalPrice {
             ...moneyInfo # active local currency
           }
-          lineItems(first: 10) {
+          lineItems(first: 200) {
             edges {
               node {
                 title

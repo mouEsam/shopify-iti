@@ -149,6 +149,9 @@ extension AppContainer {
             DraftOrderModel.self,
             DraftOrderServices.self,
             DiscountManager.self
+            OrdersStrings.self,
+            OrdersModelFactory.self,
+            OrdersRemoteService.self
         ])
     }
 }

@@ -21,26 +21,31 @@ struct OrdersModelFactory: AnyOrdersModelFactory {
     private let resolver: any AppContainer.Resolver
     
     func create() -> AnyOrdersModel {
-        OrdersModel(remoteService: resolver.require(OrdersRemoteService.self))
+        OrdersModel(remoteService: resolver.require(OrdersRemoteService.self), token: resolver.require((any AnyAccessTokenProvider).self))
     }
 }
 
 protocol AnyOrdersModel {
-    func fetch(customerAccessToken token : String) async ->Result<[Order], Error>
+    func fetch() async ->Result<[Order], Error>
     
 }
 
 struct OrdersModel: AnyOrdersModel{
     
     private let remoteService:  OrdersRemoteService
+    private let token :  AnyAccessTokenProvider
     
-    init(remoteService: OrdersRemoteService) {
+    init(remoteService: OrdersRemoteService,token :  AnyAccessTokenProvider) {
         self.remoteService = remoteService
+        self.token = token
+    }
+    func initialize() {
+       
     }
     
-    func fetch(customerAccessToken token : String) async ->Result<[Order], Error> {
-       
-        let x = await remoteService.fetch(customerAccessToken: token)
+    func fetch() async ->Result<[Order], Error> {
+        
+        let x = await remoteService.fetch(customerAccessToken: token.accessToken ?? "")
         return  x
       
     }

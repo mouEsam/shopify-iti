@@ -16,7 +16,7 @@ struct ProfilePage: View {
     
     @StateObject private var profileviewModel: ProfileViewModel
     @StateObject private var wishListViewModel: WishlistViewModel
-    //    @StateObject private var ordersViewModel: OrdersViewModel
+        @StateObject private var ordersViewModel: OrdersViewModel
     
     private let strings: any AnyProfileStrings
     private let colors: any AnyAppColors
@@ -29,14 +29,14 @@ struct ProfilePage: View {
         let authenticationManager = container.require(AuthenticationManager.self)
         _profileviewModel = .init(wrappedValue: ProfileViewModel(authenticationManager:  authenticationManager))
         
-        let model = container.require((any AnyWishlistModel).self)
+        let modelWishList = container.require((any AnyWishlistModel).self)
         let manager = container.require(WishlistManager.self)
         let notificationCenter = container.require((any AnyNotificationCenter).self)
-        _wishListViewModel = .init(wrappedValue: WishlistViewModel(model: model,
+        _wishListViewModel = .init(wrappedValue: WishlistViewModel(model: modelWishList,
                                                                    wishlistManager: manager,
                                                                    notificationCenter: notificationCenter))
-        
-        
+        let modelOrders = container.require((any AnyOrdersModelFactory).self).create()
+        _ordersViewModel = .init(wrappedValue: OrdersViewModel(model: modelOrders))
     }
     
     var body: some View {
@@ -57,7 +57,7 @@ struct ProfilePage: View {
                     Spacer()
                     
                     Button("More", role: .cancel){//TODO: nemoriztion
-                        print("orders")
+                        router.push(OrdersScreen.Route(container: container))
                     }.buttonStyle(.plain)
                         .foregroundColor(.black)
                         .font(.title2).padding()
