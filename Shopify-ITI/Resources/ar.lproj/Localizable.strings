@@ -1,0 +1,49 @@
+/* 
+  Localizable.strings
+  Shopify-ITI
+
+  Created by Mostafa Ibrahim on 21/06/2023.
+  
+*/
+
+// Validations
+"validations.invalid_email" = "هذا البريد الإلكتروني غير صالح";
+"validations.required_field" = "هذه الخانة مطلوبه";
+"validations.invalid_field" = "المدخلات الخاصة بك غير صالحة";
+"validations.invalid_confirm_password" = "كلمات السر الخاصة بك لا تتطابق";
+
+// ProductStrings
+"ProductsStrings.noProductsLabel" = "فارغ";
+"ProductsStrings.wishlistErrorLabel" = "خطأ";
+
+// ProductsStrings
+"ProductStrings.addToCartLabel" = "أضف إلى السلة";
+"ProductStrings.addToCartError" = "خطأ";
+"ProductStrings.addToCartSuccess" = "نجاح";
+"ProductStrings.addToCartSuccessMessage" = "تمت الإضافة إلى عربة التسوق";
+"ProductStrings.wishlistError" = "خطأ";
+
+// AuthenticationStrings
+"AuthenticationStrings.loginLabel" = "مرحبًا";
+"AuthenticationStrings.loginSublabel" = "مرحبًا بعودتك";
+"AuthenticationStrings.signupSublabel" = "مرحباً";
+"AuthenticationStrings.forgotPassword" = "هل نسيت كلمة السر؟";
+"AuthenticationStrings.loginAction" = "تسجيل الدخول";
+"AuthenticationStrings.signupAction" = "اشتراك";
+"AuthenticationStrings.alreadyHaveAccount" = "لديك حساب بالفعل؟";
+"AuthenticationStrings.firstNameLabel" = "الاسم الأول";
+"AuthenticationStrings.firstNameHint" = "اسمك الأول";
+"AuthenticationStrings.lastNameLabel" = "اسم العائلة";
+"AuthenticationStrings.lastNameHint" = "اسمك الاخير";
+"AuthenticationStrings.emailLabel" = "بريد إلكتروني";
+"AuthenticationStrings.emailHint" = "بريدك الالكتروني";
+"AuthenticationStrings.phoneLabel" = "هاتف";
+"AuthenticationStrings.phoneHint" = "هاتفك";
+"AuthenticationStrings.passwordLabel" = "كلمة المرور";
+"AuthenticationStrings.passwordHint" = "كلمة السر خاصتك";
+"AuthenticationStrings.confirmPasswordLabel" = "تأكيد كلمة المرور";
+"AuthenticationStrings.confirmPasswordHint" = "كلمة السر خاصتك";
+
+// WishlistStrings
+"WishlistStrings.noProductsLabel" = "فارغ";
+"WishlistStrings.wishlistErrorLabel" = "خطأ";

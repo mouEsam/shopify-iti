@@ -33,11 +33,11 @@ class LoginViewModel: ObservableObject {
     
     func validate() {
         emailError = emailValidationGroup.validate(email)
-            .map { "\($0)" }
+            .map { $0.message }
             .map { NSLocalizedString($0, comment: $0) }
         
         passwordError = requiredValidator.validate(password)
-            .map { "\($0)" }
+            .map { $0.message }
             .map { NSLocalizedString($0, comment: $0) }
     }
     

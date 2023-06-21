@@ -44,27 +44,27 @@ class RegisterViewModel: ObservableObject {
     
     func validate() {
         firstNameError = requiredValidator.validate(firstName)
-            .map { "\($0)" }
+            .map { $0.message }
             .map { NSLocalizedString($0, comment: $0) }
         
         lastNameError = requiredValidator.validate(lastName)
-            .map { "\($0)" }
+            .map { $0.message }
             .map { NSLocalizedString($0, comment: $0) }
         
         emailError = emailValidator.validate(email)
-            .map { "\($0)" }
+            .map { $0.message }
             .map { NSLocalizedString($0, comment: $0) }
         
         phoneError = requiredValidator.validate(phone)
-            .map { "\($0)" }
+            .map { $0.message }
             .map { NSLocalizedString($0, comment: $0) }
         
         passwordError = requiredValidator.validate(password)
-            .map { "\($0)" }
+            .map { $0.message }
             .map { NSLocalizedString($0, comment: $0) }
         
         confirmPasswordError = confirmPasswordValidator.validate(confirmPassword)
-            .map { "\($0)" }
+            .map { $0.message }
             .map { NSLocalizedString($0, comment: $0) }
     }
     

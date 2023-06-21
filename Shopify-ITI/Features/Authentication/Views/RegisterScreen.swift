@@ -69,7 +69,6 @@ struct RegisterScreen: View {
                                   error: viewModel.emailError,
                                   strokeColor: colors.dark2Grey)
                         .autocapitalization(.none)
-                        .textCase(.lowercase)
                         .keyboardType(.emailAddress)
                     AuthTextField(text: $viewModel.phone,
                                   label: strings.phoneLabel,
@@ -103,7 +102,7 @@ struct RegisterScreen: View {
                             Text(strings.alreadyHaveAccount.localized)
                                 .foregroundColor(colors.dark2Grey)
                             + Text(" ")
-                            + Text(strings.loginAction)
+                            + Text(strings.loginAction.localized)
                                 .foregroundColor(colors.black)
                                 .fontWeight(.bold)
                         }

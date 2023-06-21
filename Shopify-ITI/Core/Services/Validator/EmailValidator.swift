@@ -7,8 +7,12 @@
 
 import Foundation
 
-enum EmailValidationError: String, ValidationError {
-    case invalid = "invalid_email" // TODO: Localize
+enum EmailValidationError: String {
+    case invalid = "validations.invalid_email"
+}
+
+extension EmailValidationError: ValidationError {
+    var message: String { rawValue }
 }
 
 struct EmailValidator: AnyValidator {

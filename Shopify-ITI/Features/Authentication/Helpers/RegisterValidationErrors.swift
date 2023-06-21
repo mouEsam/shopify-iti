@@ -8,6 +8,10 @@
 import Foundation
 
 // TODO: localize
-enum RegisterValidationErrors: String, ValidationError {
-    case invalidConfirmPassword = "invalid_confirm_password"
+enum RegisterValidationErrors: String {
+    case invalidConfirmPassword = "validations.invalid_confirm_password"
+}
+
+extension RegisterValidationErrors: ValidationError{
+    var message: String { rawValue }
 }

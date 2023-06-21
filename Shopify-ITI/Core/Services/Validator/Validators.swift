@@ -7,9 +7,13 @@
 
 import Foundation
 
-enum ValidationErrors: String, ValidationError {
-    case required = "required_field" // TODO: Localize
-    case invalid = "invalid_field" // TODO: Localize
+enum ValidationErrors: String {
+    case required = "validations.required_field"
+    case invalid = "validations.invalid_field"
+}
+
+extension ValidationErrors: ValidationError {
+    var message: String { rawValue }
 }
 
 struct RequiredValidator<T>: AnyValidator {
