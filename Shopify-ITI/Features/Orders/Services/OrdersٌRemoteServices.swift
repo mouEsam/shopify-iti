@@ -27,7 +27,7 @@ struct OrdersRemoteService : AnyInjectable{
         self.localeProvider = localeProvider
     }
     
-    func fetch(customerAccessToken token : String) async -> Result<[ProductCollection], Error> {
+    func fetch(customerAccessToken token : String) async -> Result<[Order], Error> {
         let query = ShopifyAPI.GetOrdersQuery(customerAccessToken: token, country: .init(nullable: localeProvider.shopifyCountry), lang: .init(nullable: localeProvider.shopifyLanguage))
    
         
@@ -35,13 +35,11 @@ struct OrdersRemoteService : AnyInjectable{
         
         switch result {
            case .success(let res):
-            let mappedData = res.data?.customer?.orders.edges.map{edge in
-                edge.node
-            } ?? nil
-  
+            let mappedData = res.data?.customer?.orders.edges.map{edge in Order(from:edge.node) } ?? nil
             if let data = mappedData {
                 return .success(data )
             }
+            
             return .failure(OrdersError.NotFound)
                
            case .failure(let error):

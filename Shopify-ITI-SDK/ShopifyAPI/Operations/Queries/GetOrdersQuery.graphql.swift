@@ -21,8 +21,7 @@ public extension ShopifyAPI {
                   orderNumber
                   totalPrice {
                     __typename
-                    amount
-                    currencyCode
+                    ...moneyInfo
                   }
                   lineItems(first: 10) {
                     __typename
@@ -30,14 +29,15 @@ public extension ShopifyAPI {
                       __typename
                       node {
                         __typename
+                        title
                         currentQuantity
                         originalTotalPrice {
                           __typename
-                          amount
-                          currencyCode
+                          ...moneyInfo
                         }
                         variant {
                           __typename
+                          id
                           product {
                             __typename
                             title
@@ -45,12 +45,7 @@ public extension ShopifyAPI {
                           }
                           image {
                             __typename
-                            url
-                          }
-                          price {
-                            __typename
-                            amount
-                            currencyCode
+                            ...imageInfo
                           }
                         }
                       }
@@ -61,7 +56,8 @@ public extension ShopifyAPI {
             }
           }
         }
-        """#
+        """#,
+        fragments: [MoneyInfo.self, ImageInfo.self]
       ))
 
     public var customerAccessToken: String
@@ -178,14 +174,20 @@ public extension ShopifyAPI {
                 public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.MoneyV2 }
                 public static var __selections: [Apollo.Selection] { [
                   .field("__typename", String.self),
-                  .field("amount", ShopifyAPI.Decimal.self),
-                  .field("currencyCode", GraphQLEnum<ShopifyAPI.CurrencyCode>.self),
+                  .fragment(MoneyInfo.self),
                 ] }
 
                 /// Decimal money amount.
                 public var amount: ShopifyAPI.Decimal { __data["amount"] }
                 /// Currency of the money.
                 public var currencyCode: GraphQLEnum<ShopifyAPI.CurrencyCode> { __data["currencyCode"] }
+
+                public struct Fragments: FragmentContainer {
+                  public let __data: DataDict
+                  public init(_dataDict: DataDict) { __data = _dataDict }
+
+                  public var moneyInfo: MoneyInfo { _toFragment() }
+                }
               }
 
               /// Customer.Orders.Edge.Node.LineItems
@@ -230,11 +232,14 @@ public extension ShopifyAPI {
                     public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.OrderLineItem }
                     public static var __selections: [Apollo.Selection] { [
                       .field("__typename", String.self),
+                      .field("title", String.self),
                       .field("currentQuantity", Int.self),
                       .field("originalTotalPrice", OriginalTotalPrice.self),
                       .field("variant", Variant?.self),
                     ] }
 
+                    /// The title of the product combined with title of the variant.
+                    public var title: String { __data["title"] }
                     /// The number of entries associated to the line item minus the items that have been removed.
                     public var currentQuantity: Int { __data["currentQuantity"] }
                     /// The total price of the line item, not including any discounts. The total price is calculated using the original unit price multiplied by the quantity, and it is displayed in the presentment currency.
@@ -252,14 +257,20 @@ public extension ShopifyAPI {
                       public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.MoneyV2 }
                       public static var __selections: [Apollo.Selection] { [
                         .field("__typename", String.self),
-                        .field("amount", ShopifyAPI.Decimal.self),
-                        .field("currencyCode", GraphQLEnum<ShopifyAPI.CurrencyCode>.self),
+                        .fragment(MoneyInfo.self),
                       ] }
 
                       /// Decimal money amount.
                       public var amount: ShopifyAPI.Decimal { __data["amount"] }
                       /// Currency of the money.
                       public var currencyCode: GraphQLEnum<ShopifyAPI.CurrencyCode> { __data["currencyCode"] }
+
+                      public struct Fragments: FragmentContainer {
+                        public let __data: DataDict
+                        public init(_dataDict: DataDict) { __data = _dataDict }
+
+                        public var moneyInfo: MoneyInfo { _toFragment() }
+                      }
                     }
 
                     /// Customer.Orders.Edge.Node.LineItems.Edge.Node.Variant
@@ -272,18 +283,18 @@ public extension ShopifyAPI {
                       public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.ProductVariant }
                       public static var __selections: [Apollo.Selection] { [
                         .field("__typename", String.self),
+                        .field("id", ShopifyAPI.ID.self),
                         .field("product", Product.self),
                         .field("image", Image?.self),
-                        .field("price", Price.self),
                       ] }
 
+                      /// A globally-unique ID.
+                      public var id: ShopifyAPI.ID { __data["id"] }
                       /// The product object that the product variant belongs to.
                       public var product: Product { __data["product"] }
                       /// Image associated with the product variant. This field falls back to the product image if no image is available.
                       ///
                       public var image: Image? { __data["image"] }
-                      /// The product variant’s price.
-                      public var price: Price { __data["price"] }
 
                       /// Customer.Orders.Edge.Node.LineItems.Edge.Node.Variant.Product
                       ///
@@ -315,9 +326,11 @@ public extension ShopifyAPI {
                         public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.Image }
                         public static var __selections: [Apollo.Selection] { [
                           .field("__typename", String.self),
-                          .field("url", ShopifyAPI.URL.self),
+                          .fragment(ImageInfo.self),
                         ] }
 
+                        /// A unique ID for the image.
+                        public var id: ShopifyAPI.ID? { __data["id"] }
                         /// The location of the image as a URL.
                         ///
                         /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
@@ -327,26 +340,19 @@ public extension ShopifyAPI {
                         /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
                         ///
                         public var url: ShopifyAPI.URL { __data["url"] }
-                      }
+                        /// A word or phrase to share the nature or contents of an image.
+                        public var altText: String? { __data["altText"] }
+                        /// The original width of the image in pixels. Returns `null` if the image is not hosted by Shopify.
+                        public var width: Int? { __data["width"] }
+                        /// The original height of the image in pixels. Returns `null` if the image is not hosted by Shopify.
+                        public var height: Int? { __data["height"] }
 
-                      /// Customer.Orders.Edge.Node.LineItems.Edge.Node.Variant.Price
-                      ///
-                      /// Parent Type: `MoneyV2`
-                      public struct Price: ShopifyAPI.SelectionSet {
-                        public let __data: DataDict
-                        public init(_dataDict: DataDict) { __data = _dataDict }
+                        public struct Fragments: FragmentContainer {
+                          public let __data: DataDict
+                          public init(_dataDict: DataDict) { __data = _dataDict }
 
-                        public static var __parentType: Apollo.ParentType { ShopifyAPI.Objects.MoneyV2 }
-                        public static var __selections: [Apollo.Selection] { [
-                          .field("__typename", String.self),
-                          .field("amount", ShopifyAPI.Decimal.self),
-                          .field("currencyCode", GraphQLEnum<ShopifyAPI.CurrencyCode>.self),
-                        ] }
-
-                        /// Decimal money amount.
-                        public var amount: ShopifyAPI.Decimal { __data["amount"] }
-                        /// Currency of the money.
-                        public var currencyCode: GraphQLEnum<ShopifyAPI.CurrencyCode> { __data["currencyCode"] }
+                          public var imageInfo: ImageInfo { _toFragment() }
+                        }
                       }
                     }
                   }

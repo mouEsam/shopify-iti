@@ -7,31 +7,27 @@ query getOrders($customerAccessToken: String!,
         node {
             orderNumber
           totalPrice {
-            amount
-            currencyCode # store's currency
-          }
+                    ...moneyInfo # active local currency
+                  }
           lineItems(first:10) {
             edges {
               node {
               title
                   currentQuantity
-                originalTotalPrice {
-                  amount
-                  currencyCode # store's currency
-                }
+               originalTotalPrice {
+                    ...moneyInfo # active local currency
+                  }
                 variant {
                    id
                     product{
                         title
                         vendor
                     }
+                    
                     image{
-                        url
+                          ...imageInfo
                     }
-                  price {
-                    amount
-                    currencyCode # active local currency
-                  }
+                  
                 }
               }
             }

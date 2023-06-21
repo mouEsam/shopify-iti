@@ -20,44 +20,51 @@ protocol OrderConvertible {
     associatedtype LineItem: LineItemConvertible
     
     var orderNumber: Int { get }
-    var totalPrice: Price {get}
+    var totalPrice: TotalPrice {get}
     var lineItems: [LineItem] {get}
     
 }
 extension Order {
     init(from order: some OrderConvertible) {
-        self.init(id: order.orderNumber, totalPrice: order.totalPrice, lineItems: order.lineItems.map{LineItem(from: $0)})
+        self.init(id: order.orderNumber, totalPrice: Price(from: order.totalPrice), lineItems: order.lineItems.map{LineItem(from: $0)})
        
     }
 }
 
 extension ShopifyAPI.GetOrdersQuery.Data.Customer.Orders.Edge.Node : OrderConvertible {
+    
+    
 
+
+}
+extension ShopifyAPI.GetOrdersQuery.Data.Customer.Orders.Edge.Node.TotalPrice : PriceConvertible {
+}
+
+extension ShopifyAPI.GetOrdersQuery.Data.Customer.Orders.Edge.Node.LineItems.Edge.Node: LineItemConvertible {
+   
     
 }
-extension ShopifyAPI.GetOrdersQuery.Data.Customer.Orders.Edge.Node.LineItems : LineItemConvertible {
-    
-}
-extension ShopifyAPI.GetOrdersQuery.Data.Customer.Orders.Edge.Node.LineItems.Edge.Node.Variant :  OrderProductVariantConvertible{
-    
-    
-}
+
 extension ShopifyAPI.GetOrdersQuery.Data.Customer.Orders.Edge.Node.LineItems.Edge.Node.OriginalTotalPrice : PriceConvertible {
 }
-extension ShopifyAPI.GetOrdersQuery.Data.Customer.Orders.Edge.Node.LineItems.Edge.Node.Variant.image : RemoteImageConvertible{
-}
-extension ShopifyAPI.GetOrdersQuery.Data.Customer.Orders.Edge.Node.LineItems.Edge.Node.Variant.Product : ProductConvertible{
+
+
+
+extension ShopifyAPI.GetOrdersQuery.Data.Customer.Orders.Edge.Node.LineItems.Edge.Node.Variant.Product : OrderProductConvertible{
     
-    public var id: ObjectIdentifier {
-        <#code#>
-    }
+}
+
+extension ShopifyAPI.GetOrdersQuery.Data.Customer.Orders.Edge.Node.LineItems.Edge.Node.Variant :  OrderProductVariantConvertible {
+ 
     
  
-}
-extension ShopifyAPI.GetOrdersQuery.Data.Customer.Orders.Edge.Node.LineItems.Edge.Node.Variant.Product.PriceRange : PriceConvertible{
+    
     
 }
-extension ShopifyAPI.GetOrdersQuery.Data.Customer.Orders.Edge.Node.LineItems.Edge.Node.Variant.Product.FeaturedImage : RemoteImageConvertible{
+
+extension ShopifyAPI.GetOrdersQuery.Data.Customer.Orders.Edge.Node.LineItems.Edge.Node.Variant.Image :  RemoteImageConvertible{
+    
+    
     
 }
 

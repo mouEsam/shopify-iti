@@ -14,38 +14,17 @@ struct OrderProductVariant: Identifiable {
 }
 
 protocol OrderProductVariantConvertible: Identifiable {
-    associatedtype variant: ProductConvertible
-    associatedtype image: RemoteImageConvertible
+    associatedtype OrderProduct: OrderProductConvertible
+    associatedtype RemoteImage: 
     
     var id: String {get}
-    var product: Product {get}
+    var product: OrderProduct {get}
     var image: RemoteImage {get}
     
 }
 extension OrderProductVariant {
  
     init(from orderProductVariant : some OrderProductVariantConvertible){
-        self.init(id: orderProductVariant.id, image: orderProductVariant.image, product: orderProductVariant.product)
-    }
-}
-
-struct OrderProduct  {
-    var title: RemoteImage
-    let vendor: String
-}
-
-protocol OrderProductConvertible: Identifiable {
-    associatedtype variant: ProductConvertible
-    associatedtype image: RemoteImageConvertible
-    
-    var id: String {get}
-    var product: Product {get}
-    var image: RemoteImage {get}
-    
-}
-extension OrderProductVariant {
- 
-    init(from orderProductVariant : some OrderProductVariantConvertible){
-        self.init(id: orderProductVariant.id, image: orderProductVariant.image, product: orderProductVariant.product)
+        self.init(id: orderProductVariant.id, image:RemoteImage(from: orderProductVariant.image), product: OrderProduct(from: orderProductVariant.product))
     }
 }

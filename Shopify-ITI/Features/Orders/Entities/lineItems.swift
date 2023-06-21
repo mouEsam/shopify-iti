@@ -17,10 +17,9 @@ struct LineItem: Identifiable {
 
 }
 
-protocol LineItemConvertible: Identifiable {
-    associatedtype variant: OrderProductVariantConvertible
-    associatedtype image: RemoteImageConvertible
-    associatedtype originalTotalPrice: PriceConvertible
+protocol LineItemConvertible  {
+    associatedtype OrderProductVariant: OrderProductVariantConvertible
+    associatedtype Price: PriceConvertible
     
     var currentQuantity: Int {get}
     var title: String {get}
@@ -31,6 +30,6 @@ protocol LineItemConvertible: Identifiable {
 extension LineItem {
  
     init(from lineItem : some LineItemConvertible){
-        self.init(id: lineItem.title, currentQuantity: lineItem.currentQuantity, originalTotalPrice: lineItem.originalTotalPrice, variant: lineItem.variant)
+        self.init(id: lineItem.title, currentQuantity: lineItem.currentQuantity, originalTotalPrice: Price(from: lineItem.originalTotalPrice), variant: OrderProductVariant(from: lineItem.variant))
     }
 }
