@@ -98,7 +98,6 @@ public extension ShopifyAPI {
       case "CartCost": return ShopifyAPI.Objects.CartCost
       case "CartBuyerIdentity": return ShopifyAPI.Objects.CartBuyerIdentity
       case "CartCreatePayload": return ShopifyAPI.Objects.CartCreatePayload
-      case "Attribute": return ShopifyAPI.Objects.Attribute
       case "CartLinesAddPayload": return ShopifyAPI.Objects.CartLinesAddPayload
       case "CartLinesUpdatePayload": return ShopifyAPI.Objects.CartLinesUpdatePayload
       case "CartLinesRemovePayload": return ShopifyAPI.Objects.CartLinesRemovePayload

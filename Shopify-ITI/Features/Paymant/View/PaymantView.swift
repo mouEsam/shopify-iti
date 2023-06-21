@@ -72,12 +72,14 @@ struct PaymantView: View {
                         HStack {
                             Text("SubTotal:")
                             Spacer()
-                            PriceView(price: cart.totalAmount)
+                            PriceView(price: cart.subtotalAmount)
                         }
-                        HStack {
-                            Text("Tax:")
-                            Spacer()
-                            PriceView(price: cart.totalAmount)
+                        if let tax = cart.totalTaxAmount {
+                            HStack {
+                                Text("Tax:")
+                                Spacer()
+                                PriceView(price: tax)
+                            }
                         }
                         HStack {
                             Text("Total:")
