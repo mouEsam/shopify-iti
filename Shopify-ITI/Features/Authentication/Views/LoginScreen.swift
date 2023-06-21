@@ -57,7 +57,6 @@ struct LoginScreen: View {
                                   error: viewModel.emailError,
                                   strokeColor: colors.dark2Grey)
                         .autocapitalization(.none)
-                        .textCase(.lowercase)
                         .keyboardType(.emailAddress)
                     
                     AuthTextField(text: $viewModel.password,

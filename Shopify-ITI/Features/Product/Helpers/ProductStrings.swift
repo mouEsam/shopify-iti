@@ -22,10 +22,10 @@ struct ProductStrings: AnyProductStrings, AnyInjectable  {
         }
     }
     
-    let addToCartLabel = "Add to cart"
-    let addToCartError = "Error"
-    let addToCartSuccess = "Success"
-    let addToCartSuccessMessage = "Added to cart"
-    let wishlistError = "Error"
+    let addToCartLabel = "ProductStrings.addToCartLabel"
+    let addToCartError = "ProductStrings.addToCartError"
+    let addToCartSuccess = "ProductStrings.addToCartSuccess"
+    let addToCartSuccessMessage = "ProductStrings.addToCartSuccessMessage"
+    let wishlistError = "ProductStrings.wishlistError"
     
 }

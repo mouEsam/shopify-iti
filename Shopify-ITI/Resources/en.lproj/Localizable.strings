@@ -1,0 +1,49 @@
+/* 
+  Localizable.strings
+  Shopify-ITI
+
+  Created by Mostafa Ibrahim on 21/06/2023.
+  
+*/
+
+// Validations
+"validations.invalid_email" = "This email is invalid";
+"validations.required_field" = "This field is required";
+"validations.invalid_field" = "Your input is invalid";
+"validations.invalid_confirm_password" = "Your passwords don't match";
+
+// ProductStrings
+"ProductsStrings.noProductsLabel" = "Empty";
+"ProductsStrings.wishlistErrorLabel" = "Error";
+
+// ProductsStrings
+"ProductStrings.addToCartLabel" = "Add to cart";
+"ProductStrings.addToCartError" = "Error";
+"ProductStrings.addToCartSuccess" = "Success";
+"ProductStrings.addToCartSuccessMessage" = "Added to cart";
+"ProductStrings.wishlistError" = "Error";
+
+// AuthenticationStrings
+"AuthenticationStrings.loginLabel" = "Hello";
+"AuthenticationStrings.loginSublabel" = "Welcome Back";
+"AuthenticationStrings.signupSublabel" = "Welcome";
+"AuthenticationStrings.forgotPassword" = "Forgot Password";
+"AuthenticationStrings.loginAction" = "Login";
+"AuthenticationStrings.signupAction" = "Sign up";
+"AuthenticationStrings.alreadyHaveAccount" = "Already have account?";
+"AuthenticationStrings.firstNameLabel" = "First name";
+"AuthenticationStrings.firstNameHint" = "Your first name";
+"AuthenticationStrings.lastNameLabel" = "Last name";
+"AuthenticationStrings.lastNameHint" = "Your last name";
+"AuthenticationStrings.emailLabel" = "Email";
+"AuthenticationStrings.emailHint" = "Your email";
+"AuthenticationStrings.phoneLabel" = "Phone";
+"AuthenticationStrings.phoneHint" = "Your phone";
+"AuthenticationStrings.passwordLabel" = "Password";
+"AuthenticationStrings.passwordHint" = "Your password";
+"AuthenticationStrings.confirmPasswordLabel" = "Confirm Password";
+"AuthenticationStrings.confirmPasswordHint" = "Your password";
+
+// WishlistStrings
+"WishlistStrings.noProductsLabel" = "Empty";
+"WishlistStrings.wishlistErrorLabel" = "Error";

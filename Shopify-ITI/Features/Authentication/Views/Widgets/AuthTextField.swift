@@ -38,14 +38,14 @@ struct AuthTextField: View {
         VStack(alignment: .leading) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(label)
+                    Text(label.localized)
                         .font(.footnote)
                         .foregroundColor(strokeColor)
                     Group {
                         if obsecured {
-                            SecureField(hint, text: text)
+                            SecureField(hint.localized, text: text)
                         } else {
-                            TextField(hint, text: text)
+                            TextField(hint.localized, text: text)
                         }
                     }.frame(height: 25)
                     
@@ -60,7 +60,7 @@ struct AuthTextField: View {
                 }
             }
             if let error = error {
-                Text(error)
+                Text(error.localized)
                     .font(.caption)
                     .foregroundColor(.red)
             }

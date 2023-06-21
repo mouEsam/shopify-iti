@@ -15,6 +15,7 @@
 		D499B3152A42676200D5331A /* WishlistStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499B3142A42676200D5331A /* WishlistStrings.swift */; };
 		D499B3172A4268FF00D5331A /* NoResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499B3162A4268FF00D5331A /* NoResults.swift */; };
 		D499B3192A426A7D00D5331A /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499B3182A426A7D00D5331A /* ErrorMessage.swift */; };
+		D499B3222A42789000D5331A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D499B3242A42789000D5331A /* Localizable.strings */; };
 		D4AAFA392A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */; };
 		D4AAFA3A2A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4AF27CE2A41B18700F74FB0 /* Semaphore in Frameworks */ = {isa = PBXBuildFile; productRef = D4AF27CD2A41B18700F74FB0 /* Semaphore */; };
@@ -251,6 +252,8 @@
 		D499B3142A42676200D5331A /* WishlistStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistStrings.swift; sourceTree = "<group>"; };
 		D499B3162A4268FF00D5331A /* NoResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResults.swift; sourceTree = "<group>"; };
 		D499B3182A426A7D00D5331A /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		D499B3232A42789000D5331A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D499B3252A42789300D5331A /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_Admin_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AF29152A42441300F74FB0 /* AnyRemoteFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyRemoteFetchStrategy.swift; sourceTree = "<group>"; };
 		D4AF29162A42441300F74FB0 /* RemoteFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteFetchStrategy.swift; sourceTree = "<group>"; };
@@ -753,6 +756,7 @@
 			isa = PBXGroup;
 			children = (
 				D4AF29592A42441300F74FB0 /* Assets.xcassets */,
+				D499B3242A42789000D5331A /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1836,6 +1840,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = D41F62732A2C921C00780814;
 			packageReferences = (
@@ -1868,6 +1873,7 @@
 				D4AF2B3B2A42441400F74FB0 /* Preview Assets.xcassets in Resources */,
 				D4AF2ADD2A42441400F74FB0 /* CoreFragments.common.graphql in Resources */,
 				D4AF2ADF2A42441400F74FB0 /* CoreFragments.graphql in Resources */,
+				D499B3222A42789000D5331A /* Localizable.strings in Resources */,
 				D4AF2AC22A42441400F74FB0 /* Product.graphql in Resources */,
 				D4AF2AEC2A42441400F74FB0 /* Profile.graphql in Resources */,
 				D4AF2A982A42441400F74FB0 /* Assets.xcassets in Resources */,
@@ -2124,11 +2130,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		D499B3242A42789000D5331A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D499B3232A42789000D5331A /* en */,
+				D499B3252A42789300D5331A /* ar */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		D41F62882A2C921D00780814 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -2189,6 +2208,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

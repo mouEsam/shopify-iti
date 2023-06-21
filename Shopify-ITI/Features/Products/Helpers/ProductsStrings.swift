@@ -19,7 +19,7 @@ struct ProductsStrings: AnyProductsStrings, AnyInjectable  {
         }
     }
     
-    let noProductsLabel = "Empty"
-    let wishlistErrorLabel = "Error"
+    let noProductsLabel = "ProductsStrings.noProductsLabel"
+    let wishlistErrorLabel = "ProductsStrings.wishlistErrorLabel"
     
 }

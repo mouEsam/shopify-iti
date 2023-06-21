@@ -42,31 +42,31 @@ struct AuthenticationStrings: AnyAuthenticationStrings, AnyInjectable  {
         }
     }
     
-    let loginLabel = "Hello"
-    let loginSublabel = "WelcomeBack"
-    let signupSublabel = "Welcome"
-    let forgotPassword = "Forgot Password"
-    let loginAction = "Login"
-    let signupAction = "Sign up"
-    let alreadyHaveAccount = "Already have account?"
+    let loginLabel = "AuthenticationStrings.loginLabel"
+    let loginSublabel = "AuthenticationStrings.loginSublabel"
+    let signupSublabel = "AuthenticationStrings.signupSublabel"
+    let forgotPassword = "AuthenticationStrings.forgotPassword"
+    let loginAction = "AuthenticationStrings.loginAction"
+    let signupAction = "AuthenticationStrings.signupAction"
+    let alreadyHaveAccount = "AuthenticationStrings.alreadyHaveAccount"
     
-    let firstNameLabel = "First name"
-    let firstNameHint = "Your first name"
+    let firstNameLabel = "AuthenticationStrings.firstNameLabel"
+    let firstNameHint = "AuthenticationStrings.firstNameHint"
     
-    let lastNameLabel = "Last name"
-    let lastNameHint = "Your last name"
+    let lastNameLabel = "AuthenticationStrings.lastNameLabel"
+    let lastNameHint = "AuthenticationStrings.lastNameHint"
     
-    let emailLabel = "Email"
-    let emailHint = "Your email"
+    let emailLabel = "AuthenticationStrings.emailLabel"
+    let emailHint = "AuthenticationStrings.emailHint"
     
-    let phoneLabel = "Phone"
-    let phoneHint = "Your phone"
+    let phoneLabel = "AuthenticationStrings.phoneLabel"
+    let phoneHint = "AuthenticationStrings.phoneHint"
     
-    let passwordLabel = "Password"
-    let passwordHint = "Your password"
+    let passwordLabel = "AuthenticationStrings.passwordLabel"
+    let passwordHint = "AuthenticationStrings.passwordHint"
     
-    let confirmPasswordLabel = "Confirm Password"
-    let confirmPasswordHint = "Your password"
+    let confirmPasswordLabel = "AuthenticationStrings.confirmPasswordLabel"
+    let confirmPasswordHint = "AuthenticationStrings.confirmPasswordHint"
     
     
 }
