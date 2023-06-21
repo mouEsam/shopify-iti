@@ -103,6 +103,11 @@ public extension ShopifyAPI {
       case "CartLinesUpdatePayload": return ShopifyAPI.Objects.CartLinesUpdatePayload
       case "CartLinesRemovePayload": return ShopifyAPI.Objects.CartLinesRemovePayload
       case "CartBuyerIdentityUpdatePayload": return ShopifyAPI.Objects.CartBuyerIdentityUpdatePayload
+      case "OrderConnection": return ShopifyAPI.Objects.OrderConnection
+      case "OrderEdge": return ShopifyAPI.Objects.OrderEdge
+      case "OrderLineItemConnection": return ShopifyAPI.Objects.OrderLineItemConnection
+      case "OrderLineItemEdge": return ShopifyAPI.Objects.OrderLineItemEdge
+      case "OrderLineItem": return ShopifyAPI.Objects.OrderLineItem
       case "CustomerCreatePayload": return ShopifyAPI.Objects.CustomerCreatePayload
       case "CustomerAccessTokenCreatePayload": return ShopifyAPI.Objects.CustomerAccessTokenCreatePayload
       case "CustomerRecoverPayload": return ShopifyAPI.Objects.CustomerRecoverPayload
