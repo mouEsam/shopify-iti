@@ -22,7 +22,7 @@ struct ErrorMessageView: View {
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 150)
-            Text(message)
+            Text(message.localized)
                 .font(.title)
                 .multilineTextAlignment(.center)
         }

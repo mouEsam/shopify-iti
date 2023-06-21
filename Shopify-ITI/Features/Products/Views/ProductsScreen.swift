@@ -42,7 +42,7 @@ struct ProductsScreen: View {
                 case .loaded(let data):
                     let data = data.data
                     if data.isEmpty {
-                        NoResultsView(message: strings.noProductsLabel.localized)
+                        NoResultsView(message: strings.noProductsLabel)
                     } else {
                         GeometryReader { geometryProxy in
                             ScrollView {

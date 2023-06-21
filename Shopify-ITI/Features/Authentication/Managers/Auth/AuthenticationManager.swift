@@ -30,7 +30,7 @@ class AuthenticationManager: AnyInjectable {
     private let notificationCenter: any AnyNotificationCenter
     private let authService: AuthenticationRemoteService
     
-    private var task: Task<Any, Error>? = nil
+    private var task: Task<(), Never>? = nil
     private var cancellables: Set<AnyCancellable> = []
     
     @PostPublished private var stateHolder: AuthenticationState = .unauthenticated
@@ -109,9 +109,11 @@ class AuthenticationManager: AnyInjectable {
         return guestManager.setGuest(guest: guest, persist: persist).map { _ in guest }
     }
     
-    func logout() {
+    func logout() -> Task<(), Never> {
         task?.cancel()
-        task = Task { await self.logoutImpl() }
+        let task = Task { await self.logoutImpl() }
+        self.task = task
+        return task
     }
     
     private func logoutImpl() async {
