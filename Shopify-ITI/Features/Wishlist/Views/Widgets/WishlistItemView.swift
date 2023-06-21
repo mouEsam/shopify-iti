@@ -12,13 +12,15 @@ struct WishlistItemView: View {
     
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
-    
     @State private var task: Task<Any, Error>? = nil
+    private let colors: AnyAppColors
     private let onRemove: (() async -> Void)?
     private let product: Product
     
-    init(product: Product,
+    init(container: AppContainer,
+         product: Product,
          onRemove: (() async -> Void)? = nil) {
+        self.colors = container.require((any AnyAppColors).self)
         self.product = product
         self.onRemove = onRemove
     }
@@ -45,18 +47,22 @@ struct WishlistItemView: View {
                             }) {
                                 Image( "delete")
                                     .font(.title)
+                                    
                             }
+                            .tint(colors.black)
                         }
                     }
                     Spacer().frame(height: 8)
-                    Text(product.vendor).font(.caption2)
+                    Text(product.vendor)
+                        .font(.caption2)
                     Spacer().frame(height: 16)
                     PriceRangeView(priceRange: product.priceRange)
                         .font(.caption)
                 }
                 .padding()
             }
-            .background(Color.white)
+            .background(colors.white)
+            .foregroundColor(colors.black)
             .cornerRadius(10)
             .shadow(radius: 2)
         }
@@ -65,7 +71,8 @@ struct WishlistItemView: View {
 
 struct WishlistItemView_Previews: PreviewProvider {
     static var previews: some View {
-        WishlistItemView(product: Product(id: "id",
+        WishlistItemView(container: AppContainer.preview(),
+                         product: Product(id: "id",
                                           handle: "handle",
                                           title: "title",
                                           vendor: "title",

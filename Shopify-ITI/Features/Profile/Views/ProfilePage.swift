@@ -80,7 +80,8 @@ struct ProfilePage: View {
                     case .loaded(let data):
                         let data = Array(data.data.prefix(2))
                         ForEach(data,id:\.id){item in
-                            WishlistItemView(product: item.product)
+                            WishlistItemView(container: container,
+                                             product: item.product)
                         }
                     case .error(let error):
                         Text("\(error.localizedDescription)")

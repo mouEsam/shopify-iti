@@ -12,14 +12,16 @@ struct VariantItemView: View {
     
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
-    
+    private let colors: AnyAppColors
     private let onSelected: (() -> Void)?
     private let variant: ProductVariant
     private let isSelected: Bool
     
-    init(variant: ProductVariant,
+    init(container: AppContainer,
+         variant: ProductVariant,
          isSelected: Bool,
          onSelected: (() -> Void)? = nil) {
+        self.colors = container.require((any AnyAppColors).self)
         self.variant = variant
         self.isSelected = isSelected
         self.onSelected = onSelected
@@ -33,6 +35,7 @@ struct VariantItemView: View {
                     .aspectRatio(1, contentMode: .fit)
                 if isSelected {
                     Image(systemName: "checkmark.circle").padding(8)
+                        .foregroundColor(colors.white)
                 }
             }.frame(maxWidth: .infinity)
             VStack(alignment: .leading) {
@@ -53,14 +56,15 @@ struct VariantItemView: View {
             }
             .padding()
         }
-        .background(.white)
-        .overlay {
-            if isSelected {
-                RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 4)
+            .background(colors.white)
+            .foregroundColor(colors.black)
+            .overlay {
+                if isSelected {
+                    RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 4)
+                }
             }
-        }
-        .cornerRadius(10)
-        .shadow(radius: 2)
+            .cornerRadius(10)
+            .shadow(radius: 2)
         if let onSelected = onSelected {
             Button(action: onSelected) {
                 view
@@ -73,7 +77,8 @@ struct VariantItemView: View {
 
 struct VariantItemView_Previews: PreviewProvider {
     static var previews: some View {
-        VariantItemView(variant: .init(id: "id",
+        VariantItemView(container: AppContainer.preview(),
+                        variant: .init(id: "id",
                                        title: "title",
                                        image: nil,
                                        barcode: nil,

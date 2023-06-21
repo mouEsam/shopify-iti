@@ -22,11 +22,13 @@ struct ProductPage: View {
     @Environment(\.layoutDirection) private var layoutDirection
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     @State private var currentImage = 0
+    private var strings: AnyProductStrings
     
-    
-    private let colors: AnyAppColors = AppColors()
+    private let colors: AnyAppColors
     
     init(container: AppContainer, productId: String) {
+        colors = container.require((any AnyAppColors).self)
+        strings = container.require((any AnyProductStrings).self)
         let model = container.require((any AnyProductModel).self)
         let manager = container.require(WishlistManager.self)
         let cartManager = container.require(CartManager.self)
@@ -68,13 +70,11 @@ struct ProductPage: View {
                                                 .font(.title)
                                         }
                                         Text(String(viewModel.currentQuantity))
-                                            .foregroundColor(.black)
                                         Button(action: viewModel.decrement) {
                                             Image("minus")
                                                 .font(.title)
                                         }
                                     }
-                                    .foregroundColor(.blue)
                                 }
                                 Text(product.description)
                                     .font(.caption)
@@ -88,7 +88,8 @@ struct ProductPage: View {
                                 HStack {
                                     ForEach(product.variants) { variant in
                                         let isSelected = viewModel.selectedVariantId == variant.id
-                                        VariantItemView(variant: variant,
+                                        VariantItemView(container: container,
+                                                        variant: variant,
                                                         isSelected: isSelected) {
                                             viewModel.select(variant: variant)
                                         }
@@ -111,7 +112,7 @@ struct ProductPage: View {
                                     viewModel.toggleWishlist()
                                 }.disabled(viewModel.wishlistState.isLoading)
                             }
-                            RoundedButton(label: "Add to cart", // TODO: localize
+                            RoundedButton(label: strings.addToCartLabel.localized, // TODO: localize
                                           labelColor: colors.white,
                                           backgroundColor: colors.black,
                                           isLoading: viewModel.cartState.isLoading) {
@@ -124,7 +125,7 @@ struct ProductPage: View {
                         .padding(.horizontal, 24)
                     }
                 case .error(error: let error):
-                    Text(error.localizedDescription)
+                    ErrorMessageView(message: error.localizedDescription)
                 default:
                     ProgressView()
             }
@@ -157,13 +158,15 @@ struct ProductPage: View {
         .frame(maxWidth: .infinity, maxHeight:.infinity)
         .edgesIgnoringSafeArea([.top, .horizontal])
         .toolbar(.hidden)
+        .background(colors.white)
+        .foregroundColor(colors.black)
         .onFirstTask {
             await viewModel.initialize()
         }
         .onReceive(viewModel.$cartError) { wrapper in
             if let wrapper = wrapper {
                 router.alert(item: wrapper) { wrapper in
-                    Alert(title: Text("Error"), // TODO: localize
+                    Alert(title: Text(strings.addToCartError.localized),
                           message: Text(wrapper.error.localizedDescription))
                 }
             }
@@ -171,15 +174,15 @@ struct ProductPage: View {
         .onReceive(viewModel.$cartSuccess) { wrapper in
             if let wrapper = wrapper {
                 router.alert(item: wrapper) { _ in
-                    Alert(title: Text("Success"), // TODO: localize
-                          message: Text("Added to cart"))
+                    Alert(title: Text(strings.addToCartSuccess.localized),
+                          message: Text(strings.addToCartSuccessMessage.localized))
                 }
             }
         }
         .onReceive(viewModel.$wishlistError) { wrapper in
             if let wrapper = wrapper {
                 router.alert(item: wrapper) { wrapper in
-                    Alert(title: Text("Error"), // TODO: localize
+                    Alert(title: Text(strings.wishlistError.localized),
                           message: Text(wrapper.error.localizedDescription))
                 }
             }

@@ -20,8 +20,10 @@ struct WishlistScreen: View {
     @EnvironmentRouter private var router: AppRouter
     @EnvironmentObject private var container: AppContainer
     @StateObject private var viewModel: WishlistViewModel
+    private var strings: AnyWishlistStrings
     
     init(container: AppContainer) {
+        strings = container.require((any AnyWishlistStrings).self)
         let model = container.require((any AnyWishlistModel).self)
         let manager = container.require(WishlistManager.self)
         let notificationCenter = container.require((any AnyNotificationCenter).self)
@@ -37,16 +39,17 @@ struct WishlistScreen: View {
                     Group {
                         let data = data.data
                         if data.isEmpty {
-                            Text("Empty") // TODO: Localize
+                            NoResultsView(message: strings.noProductsLabel) // TODO: Localize
                         } else {
                             List {
                                 ForEach(data) { item in
-                                    WishlistItemView(product: item.product) {
+                                    WishlistItemView(container: container,
+                                                     product: item.product) {
                                         let result = await viewModel.remove(item: item)
                                         await MainActor.run {
                                             if case .failure(let error) = result {
                                                 router.alert(item: ErrorWrapper(error: error)) { wrapper in
-                                                    Alert(title: Text("Error"), // TODO: localize
+                                                    Alert(title: Text(strings.wishlistErrorLabel.localized),
                                                           message: Text(wrapper.error.localizedDescription))
                                                 }
                                             }
@@ -70,9 +73,9 @@ struct WishlistScreen: View {
                         }
                     }
                 case .error(let error):
-                    Text("\(error.localizedDescription)")
+                    ErrorMessageView(message: error.localizedDescription)
                 default:
-                    ProgressView().foregroundColor(.black)
+                    ProgressView()
             }
         }
         .onFirstAppear {

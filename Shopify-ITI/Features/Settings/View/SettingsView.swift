@@ -11,10 +11,12 @@ struct SettingsView: View {
     
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
-        
     @StateObject private var settingViewModel:SettingViewModel
     
+    private let colors: AnyAppColors
+    
     init(container: AppContainer) {
+        colors = container.require((any AnyAppColors).self)
         _settingViewModel = .init(wrappedValue: SettingViewModel(settingModel: container.require(SettingsModel.self)))
     }
     
@@ -51,7 +53,7 @@ struct SettingsView: View {
                 }) {
                     HStack{
                         Text("FQA")
-                            .foregroundColor(.black)
+                            .foregroundColor(colors.black)
                     }
                 }
                 
@@ -61,7 +63,7 @@ struct SettingsView: View {
                     }
                 }) {
                     Text("Contact Us")
-                        .foregroundColor(.black)
+                        .foregroundColor(colors.black)
                 }
             }
             // TODO: change
