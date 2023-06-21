@@ -33,8 +33,7 @@ struct CardItemView: View {
                     .font(.headline)
                 HStack {
                     Text("Price: ") //TODO: local
-                    PriceView(price: Price(amount: cartLine.totalAmount,
-                                           currencyCode: .egp)) // TODO: use currency
+                    PriceView(price: cartLine.totalAmount)
                 }
                 Spacer()
                 
@@ -43,6 +42,7 @@ struct CardItemView: View {
                         Task{
                             await  viewModel.increseItem(cartline: cartLine)
                         }
+                        print("plus")
                     }) {
                         Image("plus")
                             .font(.title)
@@ -57,22 +57,22 @@ struct CardItemView: View {
                         Image("minus")
                             .font(.title)
                     }
-                    
                 }
-            }
-            Spacer()
-            Button(action: {
-                Task{
-                    await  viewModel.deleteItem(cartline: cartLine)
+                Spacer()
+                Button(action: {
+                    Task{
+                        await  viewModel.deleteItem(cartline: cartLine)
+                    }
+                }) {
+                    Image("delete")
+                        .renderingMode(.template)
+                        .font(.title)
                 }
-            }) {
-                Image("delete")
-                    .renderingMode(.template)
-                    .font(.title)
+                .foregroundColor(colors.black)
             }
-            .foregroundColor(colors.black)
+            .padding(16)
         }
-        .padding(16)
     }
 }
+
 

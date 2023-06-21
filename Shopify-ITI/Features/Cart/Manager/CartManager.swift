@@ -71,9 +71,9 @@ class CartManager:AnyInjectable{
         
         if let user = authState.user {
             if let cart = cart {
-                if cart.userToken == nil {
+                if cart.userId == nil {
                     await updateOwnership(cart, user)
-                } else if cart.userToken != user.id {
+                } else if cart.userId != user.id {
                     await removeCart()
                 } else {
                     await setCart(cart)
@@ -83,11 +83,14 @@ class CartManager:AnyInjectable{
             }
         } else {
             if let cart = cart {
-                if let _ = cart.userToken {
+                if let _ = cart.userId {
                     await removeCart()
                 } else {
                     await setCart(cart)
                 }
+                
+            }else{
+                await getCart()
             }
         }
     }
@@ -112,7 +115,11 @@ class CartManager:AnyInjectable{
         if cartIdStore.exists(){
             switch cartIdStore.read(){
             case .success(let cartID):
-               _ =  cartHandler(result:await cartRemoteService.fetch(byId: cartID))
+                let cartResult = await cartRemoteService.fetch(byId: cartID)
+                await MainActor.run {
+                    _=cartHandler(result:cartResult)
+
+                }
             case .failure(_):
                 await MainActor.run {
                     self.stateHolder = .none
@@ -164,7 +171,9 @@ class CartManager:AnyInjectable{
     private func addToCart(_ cartid: String, _ item: ProductVariant,quantity:Int) async -> Result<Cart, Error> {
         
         let cartResult = await cartRemoteService.upDate(card: cartid, with: ShopifyAPI.CartLineInput(quantity: .init(nullable: quantity), merchandiseId: item.id ))
-        return  cartHandler(result: cartResult)
+        return await MainActor.run{
+            return  cartHandler(result: cartResult)
+        }
     }
     
     private func fetchOrCreate(_ item: ProductVariant,quantity:Int) async -> Result<Cart, Error>{
@@ -177,10 +186,11 @@ class CartManager:AnyInjectable{
         
         let cartLineInputs = [ShopifyAPI.CartLineInput(quantity: .init(nullable: quantity), merchandiseId: item.id)]
         
-        
-        
-        return  cartHandler(result: await cartRemoteService.createCart(with: ShopifyAPI.CartInput(lines: .init(nullable: cartLineInputs),
-                                                                                                  buyerIdentity: .init(nullable: buyerIdentity))))
+        let cartResult =  await cartRemoteService.createCart(with: ShopifyAPI.CartInput(lines: .init(nullable: cartLineInputs),
+                                                                                        buyerIdentity: .init(nullable: buyerIdentity)))
+        return await MainActor.run{
+            return  cartHandler(result: cartResult)
+        }
     }
     
     private func cartHandler(result:Result<Cart?, Error>) -> Result<Cart, Error>{
@@ -200,8 +210,8 @@ class CartManager:AnyInjectable{
     
     private func handleCart(_ cart: Cart) {
         let user = authManager.state.user
-        if let ownerId = cart.userToken {
-            _ = cartIdStore.delete()
+        if let ownerId = cart.userId {
+            _ = cartIdStore.write(id: cart.id)
             if let user = user {
                 if user.id == ownerId {
                     self.setCart(cart)
@@ -222,5 +232,6 @@ class CartManager:AnyInjectable{
     
     private func setCart(_ cart: Cart) {
         self.stateHolder = .data(data: cart)
+        print(cart.cartLine.count)
     }
 }
