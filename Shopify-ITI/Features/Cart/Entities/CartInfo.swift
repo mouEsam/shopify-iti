@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct CartInfo: Codable {
     var cartID: String
     var UserID: String?

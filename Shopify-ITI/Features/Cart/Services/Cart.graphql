@@ -2,39 +2,7 @@ query getCartQuery($cartId: ID!,
                    $country: CountryCode,
                    $lang: LanguageCode) @inContext(country: $country, language: $lang) {
   cart(id: $cartId) {
-    id
-    lines(first: 10) {
-      edges {
-        node {
-          id
-          quantity
-          cost {
-            amountPerQuantity {
-              ...moneyInfo
-            }
-            totalAmount {
-              ...moneyInfo
-            }
-          }
-          merchandise {
-            ... productVariantInfo
-          }
-        }
-      }
-    }
-    cost {
-      totalAmount {
-        ...moneyInfo
-      }
-    }
-    buyerIdentity {
-      email
-      phone
-      customer {
-        id
-      }
-      countryCode
-    }
+    ...cartInfo
   }
 }
 mutation createCart($cartInput: CartInput,
@@ -42,43 +10,7 @@ mutation createCart($cartInput: CartInput,
                     $lang: LanguageCode) @inContext(country: $country, language: $lang)  {
   cartCreate(input: $cartInput) {
     cart {
-      id
-      lines(first: 10) {
-        edges {
-          node {
-            id
-            quantity
-            cost {
-              amountPerQuantity{
-                ...moneyInfo
-              }
-              totalAmount{
-                ...moneyInfo
-              }
-            }
-            merchandise {
-              ... productVariantInfo
-            }
-          }
-        }
-      }
-      attributes {
-        key
-        value
-      }
-      cost {
-        totalAmount {
-          ...moneyInfo
-        }
-      }
-      buyerIdentity {
-        email
-        phone
-        customer {
-          id
-        }
-        countryCode
-      }
+      ...cartInfo
     }
   }
 }
@@ -88,43 +20,7 @@ mutation addCartLines($cartId: ID!,
                 $lang: LanguageCode) @inContext(country: $country, language: $lang)  {
   cartLinesAdd(cartId: $cartId, lines: $lines)  {
     cart {
-      id
-        lines(first: 10) {
-          edges {
-            node {
-              id
-              quantity
-              cost{
-                amountPerQuantity{
-                  ...moneyInfo
-                }
-                totalAmount{
-                  ...moneyInfo
-                }
-              }
-              merchandise {
-                ... productVariantInfo
-              }
-            }
-          }
-        }
-        attributes {
-          key
-          value
-        }
-        cost {
-          totalAmount {
-            ...moneyInfo
-          }
-        }
-        buyerIdentity {
-        email
-        phone
-        customer {
-          id
-        }
-        countryCode
-      }
+      ...cartInfo
     }
   }
 }
@@ -134,43 +30,7 @@ mutation updateCartLines($cartId: ID!,
                          $lang: LanguageCode) @inContext(country: $country, language: $lang)  {
   cartLinesUpdate(cartId: $cartId, lines: $lines) {
     cart {
-      id
-      lines(first: 10) {
-        edges {
-          node {
-            id
-            quantity
-            cost {
-              amountPerQuantity{
-                ...moneyInfo
-              }
-              totalAmount{
-                ...moneyInfo
-              }
-            }
-            merchandise {
-              ... productVariantInfo
-            }
-          }
-        }
-      }
-      attributes {
-        key
-        value
-      }
-      cost {
-        totalAmount {
-          ...moneyInfo
-        }
-      }
-      buyerIdentity {
-        email
-        phone
-        customer {
-          id
-        }
-        countryCode
-      }
+      ...cartInfo
     }
   }
 }
@@ -180,43 +40,7 @@ mutation removeCartLines($cartId: ID!,
                          $lang: LanguageCode) @inContext(country: $country, language: $lang) {
   cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
     cart {
-      id
-      lines(first: 10) {
-        edges {
-          node {
-            id
-            quantity
-            cost {
-              amountPerQuantity{
-                ...moneyInfo
-              }
-              totalAmount{
-                ...moneyInfo
-              }
-            }
-            merchandise {
-              ... productVariantInfo
-            }
-          }
-        }
-      }
-      attributes {
-        key
-        value
-      }
-      cost {
-        totalAmount {
-          ...moneyInfo
-        }
-      }
-      buyerIdentity {
-        email
-        phone
-        customer {
-          id
-        }
-        countryCode
-      }
+      ...cartInfo
     }
   }
 }
@@ -226,55 +50,53 @@ mutation updateCartBuyerIdentity($buyerIdentity: CartBuyerIdentityInput!,
                                  $lang: LanguageCode) @inContext(country: $country, language: $lang) {
   cartBuyerIdentityUpdate(buyerIdentity: $buyerIdentity, cartId: $cartId) {
     cart {
-      id
-      lines(first: 10) {
-        edges {
-          node {
-            id
-            quantity
-            cost{
-              amountPerQuantity{
-                ...moneyInfo
-              }
-              totalAmount{
-                ...moneyInfo
-              }
-            }
-            merchandise {
-              ...productVariantInfo
-            }
-          }
-        }
-      }
-      attributes {
-        key
-        value
-      }
-      cost {
-        totalAmount {
-          ...moneyInfo
-        }
-      }
-      buyerIdentity {
-        email
-        phone
-        customer {
-          id
-        }
-        deliveryAddressPreferences {
-          ... on MailingAddress {
-            address1
-            city
-            country
-            firstName
-            lastName
-          }
-        }
-      }
+      ...cartInfo
     }
     userErrors {
       field
       message
     }
+  }
+}
+
+fragment cartInfo on Cart {
+  id
+  lines(first: 50) {
+    edges {
+      node {
+        id
+        quantity
+        cost {
+          amountPerQuantity {
+            ...moneyInfo
+          }
+          totalAmount {
+            ...moneyInfo
+          }
+        }
+        merchandise {
+          ... productVariantInfo
+        }
+      }
+    }
+  }
+  cost {
+    totalAmount {
+      ...moneyInfo
+    }
+    subtotalAmount {
+      ...moneyInfo
+    }
+    totalTaxAmount {
+      ...moneyInfo
+    }
+  }
+  buyerIdentity {
+    email
+    phone
+    customer {
+      id
+    }
+    countryCode
   }
 }

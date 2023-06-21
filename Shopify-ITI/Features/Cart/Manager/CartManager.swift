@@ -48,7 +48,6 @@ class CartManager:AnyInjectable{
         authManager.statePublisher
             .prepend(authManager.state)
             .receive(on: DispatchQueue.global()).sink { authState in
-                print(authState)
                 self.handleAuthState(authState)
             }.store(in: &cancellables)
     }
