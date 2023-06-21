@@ -12,6 +12,7 @@ struct Product: Identifiable {
     let id: String
     let handle: String
     let title: String
+    let vendor: String
     let description: String
     let featuredImage: RemoteImage?
     let priceRange: PriceRange
@@ -25,6 +26,7 @@ protocol ProductConvertible: Identifiable {
     var id: String { get }
     var handle: String { get }
     var title: String { get }
+    var vendor: String { get }
     var description: String { get }
     var featuredImage: FeaturedImage? { get }
     var priceRange: PriceRange { get }
@@ -36,6 +38,7 @@ extension Product {
         self.init(id : product.id,
                   handle : product.handle,
                   title : product.title,
+                  vendor : product.vendor,
                   description : product.description,
                   featuredImage : product.featuredImage.map { RemoteImage(from: $0) },
                   priceRange : PriceRange(from: product.priceRange),
@@ -59,3 +62,14 @@ extension ShopifyAPI.GetProductsByCollectionQuery.Data.Collection.Products.Edge.
 extension ShopifyAPI.GetProductsByCollectionQuery.Data.Collection.Products.Edge.Node.PriceRange: PriceRangeConvertible {}
 extension ShopifyAPI.GetProductsByCollectionQuery.Data.Collection.Products.Edge.Node.PriceRange.MaxVariantPrice: PriceConvertible {}
 extension ShopifyAPI.GetProductsByCollectionQuery.Data.Collection.Products.Edge.Node.PriceRange.MinVariantPrice: PriceConvertible {}
+
+
+extension ShopifyAPI.SearchProductsQuery.Data.Search.Edge.Node.AsProduct: ProductConvertible {
+    var variantId: String { variants.nodes.first!.id }
+}
+extension ShopifyAPI.SearchProductsQuery.Data.Search.Edge.Node.AsProduct.FeaturedImage: RemoteImageConvertible {}
+extension ShopifyAPI.SearchProductsQuery.Data.Search.Edge.Node.AsProduct.PriceRange: PriceRangeConvertible {}
+extension ShopifyAPI.SearchProductsQuery.Data.Search.Edge.Node.AsProduct.PriceRange.MaxVariantPrice: PriceConvertible {}
+extension ShopifyAPI.SearchProductsQuery.Data.Search.Edge.Node.AsProduct.PriceRange.MinVariantPrice: PriceConvertible {}
+
+

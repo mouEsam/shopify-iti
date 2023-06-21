@@ -11,6 +11,11 @@ import Combine
 class ProductsViewModel: ObservableObject {
     typealias Criterion = [ProductSearchCriteria : String]
     
+    @globalActor
+    actor Actor {
+        static let shared: Actor = Actor()
+    }
+    
     private let model: any AnyProductsModel
     private let wishlistManager: WishlistManager
     private let notificationCenter: any AnyNotificationCenter
@@ -19,8 +24,8 @@ class ProductsViewModel: ObservableObject {
     @Published private(set) var operationState: UIState<Void> = .initial
     @Published private(set) var criterion: Criterion
     
+    private(set) var pageInfo: PageInfo? = nil
     private var cancellables: Set<AnyCancellable> = []
-    private var pageInfo: PageInfo? = nil
     private var fetchTask: Task<Any, Error>? = nil
     
     init(criterion: Criterion,
@@ -31,12 +36,10 @@ class ProductsViewModel: ObservableObject {
         self.model = model
         self.wishlistManager = wishlistManager
         self.notificationCenter = notificationCenter
-        
-        initialize()
     }
     
-    private func initialize() {
-        wishlistManager.$state
+    func initialize() {
+        wishlistManager.statePublisher
             .compactMap(\.data)
             .first()
             .subscribe(on: DispatchQueue.global())
@@ -47,7 +50,7 @@ class ProductsViewModel: ObservableObject {
                 return nil
             }.receive(on: DispatchQueue.main)
             .sink { list in
-                self.uiState = .loaded(data: SourcedData.remote(list))
+                self.setList(list)
             }.store(in: &cancellables)
         
         notificationCenter.publisher(for: WishlistRemovedEntryNotification.name)
@@ -61,6 +64,8 @@ class ProductsViewModel: ObservableObject {
             .sink { event in
                 self.setAddedToWishlist(event.entry)
             }.store(in: &cancellables)
+        
+        fetch()
     }
     
     func setCriteria(_ criteria: ProductSearchCriteria, _ value: String?) {
@@ -105,6 +110,10 @@ class ProductsViewModel: ObservableObject {
         
         guard !Task.isCancelled else { return }
         
+        await handleFetchResult(result)
+    }
+    
+    @Actor private func handleFetchResult(_ result: Result<SourcedData<PageResult<Product>>, ShopifyErrors<Any>>) async {
         switch result {
             case .success(let page):
                 let page =  page.data
@@ -143,11 +152,28 @@ class ProductsViewModel: ObservableObject {
     }
     
     private func setWishlisted(_ entry: WishListEntry, _ wishlisted: Bool) {
+        Task {
+            await setWishlistedImpl(entry, wishlisted)
+        }
+    }
+    
+    @Actor private func setWishlistedImpl(_ entry: WishListEntry, _ wishlisted: Bool) {
         if var list = uiState.data,
            let index = list.firstIndex(where: { $0.id == entry.productId }){
-            var item = list[index].copyWith(isWishlisted: wishlisted)
+            let item = list[index].copyWith(isWishlisted: wishlisted)
             list[index] = item
-            uiState = .loaded(data: SourcedData.remote(list))
+            self.setList(list)
+        }
+    }
+    
+    private func setList(_ list: [ListableProduct]) {
+        fetchTask?.cancel()
+        fetchTask = Task {
+            await MainActor.run {
+                self.uiState = .loaded(data: SourcedData.remote(list))
+                self.operationState = .initial
+                return
+            }
         }
     }
     
@@ -160,7 +186,10 @@ class ProductsViewModel: ObservableObject {
     }
     
     private func setLoaded(_ list: [ListableProduct]) async {
-        await updateState(.loaded(data: SourcedData.remote(list)), .initial)
+        await MainActor.run {
+            self.uiState = .loaded(data: SourcedData.remote(list))
+            self.operationState = .initial
+        }
     }
     
     private func setLoading() async {

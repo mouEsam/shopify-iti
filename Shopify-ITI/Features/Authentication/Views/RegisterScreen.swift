@@ -18,7 +18,7 @@ struct RegisterScreen: View {
     }
     
     private let strings: any AnyAuthenticationStrings
-    private let colors: any AnyAuthenticationColors
+    private let colors: any AnyAppColors
     
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
@@ -28,7 +28,7 @@ struct RegisterScreen: View {
     
     init(container: AppContainer) {
         strings = container.require((any AnyAuthenticationStrings).self)
-        colors = container.require((any AnyAuthenticationColors).self)
+        colors = container.require((any AnyAppColors).self)
         let repo = container.require((any AnyAuthenticationRepository).self)
         _viewModel = .init(wrappedValue: RegisterViewModel(repository: repo))
     }
@@ -88,7 +88,7 @@ struct RegisterScreen: View {
                                   error: viewModel.confirmPasswordError,
                                   strokeColor: colors.dark2Grey,
                                   obsecurable: true)
-                    AuthButton(label: strings.signupAction.localized,
+                    RoundedButton(label: strings.signupAction.localized,
                                labelColor: colors.white,
                                backgroundColor: colors.black,
                                isLoading: viewModel.operationState.isLoading) {
@@ -114,11 +114,16 @@ struct RegisterScreen: View {
             }
         }
         .disabled(viewModel.operationState.isLoading)
-        .onReceive(viewModel.$operationState, perform: { state in
+        .onReceive(viewModel.$operationState) { state in
             if state.isLoaded {
                 router.pop()
+            } else if let error = state.error {
+                router.alert(item: ErrorWrapper(error: error)) { wrapper in
+                    Alert(title: Text("Error"), // TODO: localize
+                          message: Text(wrapper.error.localizedDescription))
+                }
             }
-        })
+        }
         .toolbar(.hidden)
         .onBackSwipe {
             router.pop()

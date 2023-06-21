@@ -42,6 +42,6 @@ struct AuthenticationRepository: AnyAuthenticationRepository {
         if case .failure(let error) = userResult { return .failure(error) }
         guard case .success(let user) = userResult else { return .failure(LocalErrors.Unknown) }
         
-        return authManager.setUser(user: user, token: token).mapError { $0 as Error }
+        return await authManager.setUser(user: user, token: token).mapError { $0 as Error }
     }
 }

@@ -19,6 +19,11 @@ class AuthenticationManager: AnyInjectable {
         }
     }
     
+    @globalActor
+    actor Actor {
+        static let shared: Actor = Actor()
+    }
+    
     private let userManager: any AnyUserManager
     private let tokenManager: any AnyTokenManager
     private let guestManager: any AnyGuestManager
@@ -27,7 +32,10 @@ class AuthenticationManager: AnyInjectable {
     
     private var task: Task<Any, Error>? = nil
     private var cancellables: Set<AnyCancellable> = []
-    @Published private(set) var state: AuthenticationState = .unauthenticated
+    
+    @PostPublished private var stateHolder: AuthenticationState = .unauthenticated
+    var statePublisher: PostPublished<AuthenticationState>.Publisher { $stateHolder }
+    var state: AuthenticationState { stateHolder }
     
     init(userManager: some AnyUserManager,
          tokenManager: some AnyTokenManager,
@@ -58,7 +66,12 @@ class AuthenticationManager: AnyInjectable {
     }
     
     func refreshState() {
-        state = createState()
+        task?.cancel()
+        task = Task {
+            await MainActor.run {
+                stateHolder = createState()
+            }
+        }
     }
     
     private func createState() -> AuthenticationState {
@@ -80,7 +93,7 @@ class AuthenticationManager: AnyInjectable {
         }
     }
     
-    func setUser(user: User, token: AccessToken, persist: Bool = true) -> Result<Session, LocalErrors> {
+    @Actor func setUser(user: User, token: AccessToken, persist: Bool = true) -> Result<Session, LocalErrors> {
         let userResult = userManager.setUser(user: user, persist: persist)
         if case let .failure(error) = userResult {
             return .failure(error)
@@ -92,7 +105,7 @@ class AuthenticationManager: AnyInjectable {
         }
     }
     
-    func setGuest(guest: Guest, persist: Bool = true) -> Result<Guest, LocalErrors> {
+    @Actor func setGuest(guest: Guest, persist: Bool = true) -> Result<Guest, LocalErrors> {
         return guestManager.setGuest(guest: guest, persist: persist).map { _ in guest }
     }
     
@@ -103,12 +116,17 @@ class AuthenticationManager: AnyInjectable {
     
     private func logoutImpl() async {
         if case .success(_) = await authService.signout() {
-            delete()
+            await deleteImpl()
             notificationCenter.post(EndSessionNotification())
         }
     }
     
     func delete() {
+        task?.cancel()
+        task = Task { await self.deleteImpl() }
+    }
+    
+    @Actor private func deleteImpl() {
         userManager.delete()
         tokenManager.delete()
         guestManager.delete()

@@ -28,10 +28,19 @@ enum CollectionType: String {
             return "gid://shopify/Collection/446670176535"
         }
     }
+    func localizedString(using localizationService: AnyCategoriesStrings) -> String {
+        switch(self){
+        case .men:
+            return localizationService.menLabel
+        case .women :
+            return localizationService.womenLabel
+        case .kid :
+            return localizationService.kidLabel
+        default:
+            return localizationService.saleLabel
+        }
+          
+      }
         
 }
-//enum ProductType: String {
-//    case shoes = "SHOES"
-//    case accessories = "ACCESSORIES"
-//    case tshirts = "T-SHIRTS"
-//}
+

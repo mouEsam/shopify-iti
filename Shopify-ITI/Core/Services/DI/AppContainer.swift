@@ -53,7 +53,7 @@ class AppContainer: ObservableObject {
         self.container = Container(parent: parent.container)
     }
     
-    init(injectables: [AnyInjectable.Type] = []) {
+    required init(injectables: [AnyInjectable.Type] = []) {
         self.container = Container()
         for injectable in injectables {
             injectable.register(self)
@@ -79,5 +79,73 @@ class AppContainer: ObservableObject {
 extension Resolver {
     func require<Service>( _ type: Service.Type, name: String? = nil) -> Service {
         return resolve(type, name: name)!
+    }
+}
+
+extension AppContainer {
+    
+    // TODO: change
+    static func preview() -> Self {
+        self.production()
+    }
+    
+    
+    static func production() -> Self {
+        return Self.init(injectables: [
+            UserDefaults.self,
+            NotificationCenter.self,
+            KeysProvider.self,
+            KeyChain.self,
+            ConfigsProvider.self,
+            LocaleProvider.self,
+            JsonCoder.self,
+            ApolloGraphQLClient.self,
+            StorefronEnvironmentProvider.self,
+            AdminEnvironmentProvider.self,
+            UserLocalStore.self,
+            GuestLocalStore.self,
+            TokenLocalStore.self,
+            WishlistIdStore.self,
+            UserManager.self,
+            GuestManager.self,
+            TokenManager.self,
+            AccessTokenHolder.self,
+            UserHolder.self,
+            AuthenticationManager.self,
+            WishlistManager.self,
+            AuthenticationRemoteService.self,
+            ProfileRemoteService.self,
+            WishlistRemoteService.self,
+            ProductRemoteService.self,
+            ProductsRemoteService.self,
+            SearchRemoteService.self,
+            LocalizationRemoteService.self,
+            BrandRemoteService.self,
+            CategoriesRemoteService.self,
+            AuthenticationRepository.self,
+            WishlistModel.self,
+            ProductModel.self,
+            ProductsModel.self,
+            BrandModelFactory.self,
+            CategoriesModelFactory.self,
+            CartModel.self,
+            CartRemoteService.self,
+            CartManager.self,
+            CartIdStore.self,
+            AuthenticationStrings.self,
+            AppColors.self,
+            SettingsModel.self,
+            SplashStrings.self,
+            LanguageLocalStore.self,
+            CountryLocalStore.self,
+            SearchRemoteService.self,
+            SearchModel.self,
+            HomeStrings.self,
+            ProfileStrings.self,
+            CategoriesStrings.self,
+            ProductsStrings.self,
+            ProductStrings.self,
+            WishlistStrings.self,
+        ])
     }
 }

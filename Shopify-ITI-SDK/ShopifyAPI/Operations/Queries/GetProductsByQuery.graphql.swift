@@ -135,6 +135,8 @@ public extension ShopifyAPI {
             public var title: String { __data["title"] }
             /// Stripped description of the product, single line with HTML tags removed.
             public var description: String { __data["description"] }
+            /// The product’s vendor name.
+            public var vendor: String { __data["vendor"] }
             /// The featured image for the product.
             ///
             /// This field is functionally equivalent to `images(first: 1)`.

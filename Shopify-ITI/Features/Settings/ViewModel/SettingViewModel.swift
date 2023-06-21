@@ -6,21 +6,64 @@
 //
 
 import Foundation
-class SettingViewModel{
-    let settingModel:SettingModel
-    init(settingModel: SettingModel) {
+import Shopify_ITI_SDK
+
+class SettingViewModel: ObservableObject {
+    
+    @Published private(set) var uiState: UIState<Localization> = .initial
+    @Published var langauge: ShopifyAPI.LanguageCode
+    @Published var country: ShopifyAPI.CountryCode
+    
+    private let settingModel: SettingsModel
+    
+    init(settingModel: SettingsModel) {
         self.settingModel = settingModel
+        langauge = settingModel.getLanguage()
+        country = settingModel.getCountry()
     }
-    func changeLanguageToEnglish(){
-        settingModel.changelanguage(language: .english)
+    
+    private func update() {
+        langauge = settingModel.getLanguage()
+        country = settingModel.getCountry()
     }
-    func changeLanguageToArabic(){
-        settingModel.changelanguage(language: .arabic)
+    
+    func fetch() async {
+        await MainActor.run {
+            uiState = .loading
+        }
+        let result = await settingModel.fetch()
+        await MainActor.run {
+            switch result {
+                case .success(let data):
+                    uiState = .loaded(data: data)
+                    syncValues(data.data)
+                    return
+                case .failure(let error):
+                    uiState = .error(error: error)
+                    return
+            }
+        }
     }
-    func changeContryToUSA(){
-        settingModel.changeCurrency(currency: .usa)
+    
+    func change(language: ShopifyAPI.LanguageCode) {
+        settingModel.changelanguage(language: language)
+        self.update()
     }
-    func changeContryToEgypt(){
-        settingModel.changeCurrency(currency: .egypt)
+    
+    func change(country: ShopifyAPI.CountryCode) {
+        settingModel.changeCountry(country: country)
+        self.update()
+    }
+    
+    private func syncValues(_ localizations: Localization) {
+        if !localizations.languages.contains(where: { lang in lang == langauge }),
+           let language = localizations.languages.first {
+            settingModel.changelanguage(language: language)
+        }
+        if !localizations.countries.contains(where: { con in con == country }),
+           let country = localizations.countries.first {
+            settingModel.changeCountry(country: country)
+        }
+        self.update()
     }
 }

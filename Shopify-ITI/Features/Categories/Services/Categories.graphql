@@ -7,6 +7,9 @@ query getCollection (  $name: String!,
     products(first: 250){
         nodes{
             id
+            featuredImage {
+              ...imageInfo
+            }
             productType
         }
     }

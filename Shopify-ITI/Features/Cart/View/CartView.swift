@@ -17,23 +17,23 @@ struct CartView: View {
             VStack{
                 ScrollView {
                     switch viewModel.operationState{
-                    case .loaded(data: let cart):
-                        LazyVStack(spacing: 16) {
-                            
-                            ForEach(cart.data.cartLine) { item in
-                                CardItemView(cartLine: item,viewModel: viewModel)
+                        case .loaded(data: let cart):
+                            LazyVStack(spacing: 16) {
+                                
+                                ForEach(cart.data.cartLine) { item in
+                                    CardItemView(cartLine: item,viewModel: viewModel)
+                                }
                             }
-                        }
-                        .padding()
-                    case .initial:
-                        Text("initial")
-                        
-                    case .loading:
-                        Text("loading")
-                        
-                        
-                    case .error(error: let error):
-                        Text(error.localizedDescription)
+                            .padding()
+                        case .initial:
+                            Text("initial")
+                            
+                        case .loading:
+                            Text("loading")
+                            
+                            
+                        case .error(error: let error):
+                            Text(error.localizedDescription)
                     }
                 }
                 VStack{
@@ -41,18 +41,18 @@ struct CartView: View {
                         Text("Total:")
                         Spacer()
                         switch viewModel.operationState{
-                        case .loading:
-                            Text("$")
-                            
-                        case .initial:
-                            Text("$")
-
-                        case .loaded(data: let cart):
-                            Text("$"+String(cart.data.totalAmount))
-
-                        case .error(error: _):
-                            Text("$")
-
+                            case .loading:
+                                Text("$")
+                                
+                            case .initial:
+                                Text("$")
+                                
+                            case .loaded(data: let cart):
+                                Text("$"+String(cart.data.totalAmount))
+                                
+                            case .error(error: _):
+                                Text("$")
+                                
                         }
                     }
                     Button(action: {print("pay")}){
@@ -60,7 +60,7 @@ struct CartView: View {
                             .foregroundColor(.white)
                             .padding(.horizontal)
                             .frame(maxWidth: .infinity)
-
+                        
                     }
                     .frame(maxWidth: .infinity)
                     .buttonStyle(.borderedProminent)
@@ -74,7 +74,7 @@ struct CartView: View {
 }
 
 struct CardItemView: View {
-     var cartLine: CartLine
+    var cartLine: CartLine
     let viewModel:CartViewModel
     var body: some View {
         HStack(alignment: .top) {
@@ -91,9 +91,9 @@ struct CardItemView: View {
                 Text(cartLine.productVariant.title)
                     .font(.headline)
                 Text("Price: $"+String(cartLine.totalAmount)) //TODO: local
-
+                
                 Spacer()
-
+                
                 HStack(spacing: 16) {
                     Button(action: {
                         Task{
@@ -111,13 +111,13 @@ struct CardItemView: View {
                         Task{
                             await  viewModel.decreseItem(cartline: cartLine)
                         }
-
+                        
                     }) {
                         Image("minus")
                             .font(.title)
                     }
                     
-                   
+                    
                 }
                 .foregroundColor(.blue)
             }
@@ -127,7 +127,7 @@ struct CardItemView: View {
                     await  viewModel.deleteItem(cartline: cartLine)
                 }
                 print("delete")
-
+                
             }) {
                 Image( "delete")
                     .font(.title)

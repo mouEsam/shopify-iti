@@ -30,9 +30,9 @@ struct DetailedProduct: Identifiable {
 extension DetailedProduct {
     init(from product: ShopifyAPI.GetProductByIdQuery.Data.Product) {
         self.init(id : product.id,
-                  handle : product.id,
-                  title : product.id,
-                  description : product.id,
+                  handle : product.handle,
+                  title : product.title,
+                  description : product.description,
                   featuredImage : product.featuredImage.map { RemoteImage(from: $0) },
                   availableForSale : product.availableForSale,
                   compareAtPriceRange : PriceRange(from: product.compareAtPriceRange),

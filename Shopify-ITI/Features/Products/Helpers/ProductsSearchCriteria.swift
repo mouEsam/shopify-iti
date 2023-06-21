@@ -9,7 +9,7 @@ import Foundation
 
 enum ProductSearchCriteria: Hashable {
     case collection
-    case title
+    case query
     case tag
     case vendor
     case type

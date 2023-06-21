@@ -20,9 +20,11 @@ struct WishlistScreen: View {
     @EnvironmentRouter private var router: AppRouter
     @EnvironmentObject private var container: AppContainer
     @StateObject private var viewModel: WishlistViewModel
+    private var strings: AnyWishlistStrings
     
     init(container: AppContainer) {
-        let model = container.require((any AnyWishlistModelFactory).self).create()
+        strings = container.require((any AnyWishlistStrings).self)
+        let model = container.require((any AnyWishlistModel).self)
         let manager = container.require(WishlistManager.self)
         let notificationCenter = container.require((any AnyNotificationCenter).self)
         _viewModel = .init(wrappedValue: WishlistViewModel(model: model,
@@ -37,31 +39,53 @@ struct WishlistScreen: View {
                     Group {
                         let data = data.data
                         if data.isEmpty {
-                            Text("Empty")
+                            NoResultsView(message: strings.noProductsLabel) // TODO: Localize
                         } else {
-                            List(data) { item in
-                                WishlistItemView(product: item.product)
-                            }.listStyle(.plain)
-                            if let hasNextCursor = viewModel.pageInfo?.hasNextCursor,
-                               hasNextCursor {
-                                ProgressView().onReceive(viewModel.$operationState) { state in
-                                    if !state.isLoading {
-                                        viewModel.fetch()
+                            List {
+                                ForEach(data) { item in
+                                    WishlistItemView(container: container,
+                                                     product: item.product) {
+                                        let result = await viewModel.remove(item: item)
+                                        await MainActor.run {
+                                            if case .failure(let error) = result {
+                                                router.alert(item: ErrorWrapper(error: error)) { wrapper in
+                                                    Alert(title: Text(strings.wishlistErrorLabel.localized),
+                                                          message: Text(wrapper.error.localizedDescription))
+                                                }
+                                            }
+                                        }
                                     }
                                 }
-                            }
+                                if let hasNextCursor = viewModel.pageInfo?.hasNextCursor,
+                                   hasNextCursor {
+                                    let progressView = ProgressView()
+                                        .frame(maxWidth: .infinity,
+                                               alignment: .center)
+                                    if !viewModel.operationState.isLoading {
+                                        progressView.onFirstAppear {
+                                            viewModel.fetch()
+                                        }
+                                    } else {
+                                        progressView
+                                    }
+                                }
+                            }.listStyle(.plain)
                         }
                     }
                 case .error(let error):
-                    Text("\(error.localizedDescription)")
-                case .loading:
-                    ProgressView().foregroundColor(.black)
+                    ErrorMessageView(message: error.localizedDescription)
                 default:
-                    Group {}
+                    ProgressView()
             }
         }
         .onFirstAppear {
             viewModel.initialize()
         }
+    }
+}
+
+struct WishlistScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        WishlistScreen(container: AppContainer.preview())
     }
 }

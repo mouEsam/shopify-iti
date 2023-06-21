@@ -27,7 +27,10 @@ class CartManager:AnyInjectable{
     private let cartRemoteService:CartRemoteService
     private var task: Task<Any, Error>? = nil
     private var cancellables: Set<AnyCancellable> = []
-    @Published private(set) var state: State = .loading
+    
+    @PostPublished private var stateHolder: State = .loading
+    var statePublisher: PostPublished<State>.Publisher { $stateHolder }
+    var state: State { stateHolder }
     
     init(cartIdStore: some AnyCartIdStore,
          notificationCenter: some AnyNotificationCenter,
@@ -42,7 +45,7 @@ class CartManager:AnyInjectable{
     }
     
     private func initialize() {
-        authManager.$state
+        authManager.statePublisher
             .prepend(authManager.state)
             .receive(on: DispatchQueue.global()).sink { authState in
                 print(authState)
@@ -64,7 +67,7 @@ class CartManager:AnyInjectable{
     private func handleAuthStateImpl(_ authState: AuthenticationState,
                                      _ cart: Cart?) async {
         await MainActor.run {
-            self.state = .loading
+            self.stateHolder = .loading
         }
         
         if let user = authState.user {
@@ -90,14 +93,14 @@ class CartManager:AnyInjectable{
     
     private func setCart(_ cart: Cart) async {
         await MainActor.run {
-            self.state = .data(data: cart)
+            self.stateHolder = .data(data: cart)
         }
     }
     
     private func removeCart() async {
         cartIdStore.delete()
         await MainActor.run {
-            self.state = .none
+            self.stateHolder = .none
         }
     }
     
@@ -121,7 +124,7 @@ class CartManager:AnyInjectable{
                 }
                 
                 case .failure(let error):
-                    self.state = .error(error: error)
+                    self.stateHolder = .error(error: error)
                 break
             }
         }
@@ -132,6 +135,7 @@ class CartManager:AnyInjectable{
             _ = await task?.result
         }
         let result = cartIdStore.read()
+       // if case
         switch result{
         case .success(let cardID):
             return await addToCart(cardID, item,quantity: quantity)
@@ -149,11 +153,12 @@ class CartManager:AnyInjectable{
     }
     
     private func fetchOrCreate(_ item: ProductVariant,quantity:Int) async -> Result<Cart, Error>{
-        let buyerIdentity = ShopifyAPI.CartBuyerIdentityInput(customerAccessToken: .init(nullable: "userId"))
+        let buyerIdentity = ShopifyAPI.CartBuyerIdentityInput(customerAccessToken: .init(nullable:authManager.state.user?.id))
         let cartLineInputs = [ShopifyAPI.CartLineInput(quantity: .init(nullable: quantity), merchandiseId: item.id)]
         
         let cartResult = await cartRemoteService.createCart(with: ShopifyAPI.CartInput(lines: .init(nullable: cartLineInputs),
                                                                                        buyerIdentity: .init(nullable: buyerIdentity)))
+        
         return await cartHandler(result: cartResult)
     }
     
@@ -162,6 +167,8 @@ class CartManager:AnyInjectable{
         case .success(let cart):
             
             if let cart = cart{
+                print(cart.id)
+                cartIdStore.write(id: cart.id)
                 return Result.success(cart)
             }else{
                 return Result.failure(LocalErrors.NotFound)
@@ -195,6 +202,6 @@ class CartManager:AnyInjectable{
     }
     
     private func setList(_ cart: Cart) {
-        self.state = .data(data: cart)
+        self.stateHolder = .data(data: cart)
     }
 }

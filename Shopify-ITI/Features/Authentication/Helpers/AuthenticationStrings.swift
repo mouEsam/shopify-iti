@@ -67,4 +67,6 @@ struct AuthenticationStrings: AnyAuthenticationStrings, AnyInjectable  {
     
     let confirmPasswordLabel = "Confirm Password"
     let confirmPasswordHint = "Your password"
+    
+    
 }

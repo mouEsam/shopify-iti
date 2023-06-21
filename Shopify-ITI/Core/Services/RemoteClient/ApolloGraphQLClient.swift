@@ -105,25 +105,3 @@ class ApolloInterceptorsProvider: InterceptorProvider {
         return list
     }
 }
-
-class ApolloHeaderInterceptor: ApolloInterceptor {
-    private let headers: [String: String]
-    
-    init(headers: [String: String]) {
-        self.headers = headers
-    }
-    
-    func interceptAsync<Operation: GraphQLOperation>(
-        chain: RequestChain,
-        request: HTTPRequest<Operation>,
-        response: HTTPResponse<Operation>?,
-        completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void
-    ) {
-        for (name, value) in headers {
-            request.addHeader(name: name, value: value)
-        }
-        chain.proceedAsync(request: request,
-                           response: response,
-                           completion: completion)
-    }
-}

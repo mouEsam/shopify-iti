@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Semaphore
 
 class WishlistManager : AnyInjectable {
     static func register(_ container: AppContainer) {
@@ -17,6 +18,7 @@ class WishlistManager : AnyInjectable {
                             authManager: resolver.require(AuthenticationManager.self))
         }
     }
+
     
     typealias State = Resource<Wishlist>
     
@@ -25,9 +27,13 @@ class WishlistManager : AnyInjectable {
     private let wishlistService: WishlistRemoteService
     private let authManager: AuthenticationManager
     
+    private let semaphore = AsyncSemaphore(value: 1)
     private var task: Task<Any, Error>? = nil
     private var cancellables: Set<AnyCancellable> = []
-    @Published private(set) var state: State = .loading
+    
+    @PostPublished private var stateHolder: State = .loading
+    var statePublisher: PostPublished<State>.Publisher { $stateHolder }
+    var state: State { stateHolder }
     
     init(wishlistIdStore: some AnyWishlistIdLocalStore,
          notificationCenter: some AnyNotificationCenter,
@@ -39,11 +45,10 @@ class WishlistManager : AnyInjectable {
         self.authManager = authManager
         
         self.initialize()
-        print("ADSADASDASDADASD")
     }
     
     private func initialize() {
-        authManager.$state
+        authManager.statePublisher
             .prepend(authManager.state)
             .receive(on: DispatchQueue.global()).sink { authState in
                 self.handleAuthState(authState)
@@ -57,14 +62,17 @@ class WishlistManager : AnyInjectable {
     private func handleAuthState(_ authState: AuthenticationState) {
         task?.cancel()
         task = Task {
-            await handleAuthStateImpl(authState, self.state.data)
+            try? await semaphore.withUnlessCancelled {
+                await handleAuthStateImpl(authState, self.state.data)
+            }
+            return
         }
     }
     
     private func handleAuthStateImpl(_ authState: AuthenticationState,
                                      _ wishlist: Wishlist?) async {
         await MainActor.run {
-            self.state = .loading
+            self.stateHolder = .loading
         }
         
         if let user = authState.user {
@@ -94,14 +102,14 @@ class WishlistManager : AnyInjectable {
     
     private func setList(_ wishlist: Wishlist) async {
         await MainActor.run {
-            self.state = .data(data: wishlist)
+            self.stateHolder = .data(data: wishlist)
         }
     }
     
     private func removeList() async {
         wishlistIdStore.delete()
         await MainActor.run {
-            self.state = .none
+            self.stateHolder = .none
         }
     }
     
@@ -167,51 +175,80 @@ class WishlistManager : AnyInjectable {
                     self.handleWishlist(withFallback)
                     break
                 case .failure(let error):
-                    self.state = .error(error: error)
+                    self.stateHolder = .error(error: error)
                     break
             }
         }
     }
     
     func toggleItem(_ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>> {
-        if case .loading = state {
-            _ = await task?.result
-        }
-        if case .data(let data) = state {
-            if let _ = data.entries[item.productId] {
-                return await removeItem(item)
-            } else {
-                return await addItem(item)
+        return await doAction {
+            if case .error(let error) = self.state {
+                return .failure(.Client(error: error))
             }
-        } else if case .none = state {
-            return await addItem(item)
+            return await self.toggleItemImpl(item, self.state.data)
         }
-        return .failure(.Unknown)
+    }
+    
+    private func toggleItemImpl(_ item: WishListEntry, _ wishlist: Wishlist?) async -> Result<Void, ShopifyErrors<Any>> {
+        if let wishlist = wishlist {
+            if let _ = wishlist.entries[item.productId] {
+                return await removeItemImpl(item, wishlist)
+            } else {
+                return await addItemImpl(item, wishlist)
+            }
+        } else {
+            return await addItemImpl(item, wishlist)
+        }
     }
     
     func addItem(_ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>> {
-        if case .loading = state {
-            _ = await task?.result
+        return await doAction {
+            if case .error(let error) = self.state {
+                return .failure(.Client(error: error))
+            }
+            return await self.addItemImpl(item, self.state.data)
         }
-        if case .data(let data) = state {
-            let result = await addToList(data, item)
+    }
+    
+    private func addItemImpl(_ item: WishListEntry, _ wishlist: Wishlist?) async -> Result<Void, ShopifyErrors<Any>> {
+        if let wishlist = wishlist {
+            let result = await addToList(wishlist, item)
             if case .success(_) = result {
-                notificationCenter.post(WishlistAddedEntryNotification(wishlist: data,
+                notificationCenter.post(WishlistAddedEntryNotification(wishlist: wishlist,
                                                                        entry: item))
             }
             return result
         }
-        return await fetchOrCreate(item)
+        return await createList(item)
     }
     
     func removeItem(_ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>> {
-        if case .loading = state {
-            _ = await task?.result
+        return await doAction {
+            if case .error(let error) = self.state {
+                return .failure(.Client(error: error))
+            }
+            return await self.removeItemImpl(item, self.state.data)
         }
-        if case .data(let data) = state {
-            let result = await removeFromList(data, item)
+    }
+    
+    private func doAction(_ action: @escaping () async -> Result<Void, ShopifyErrors<Any>>) async -> Result<Void, ShopifyErrors<Any>> {
+        _ = await task?.result
+        guard let result = try? await semaphore.withUnlessCancelled(criticalSection: action) else {
+            return self.cancellation()
+        }
+        return result
+    }
+    
+    private func cancellation() -> Result<Void, ShopifyErrors<Any>> {
+        .failure(.Cancelled)
+    }
+    
+    private func removeItemImpl(_ item: WishListEntry, _ wishlist: Wishlist?) async -> Result<Void, ShopifyErrors<Any>> {
+        if let wishlist = wishlist {
+            let result = await removeFromList(wishlist, item)
             if case .success(_) = result {
-                notificationCenter.post(WishlistRemovedEntryNotification(wishlist: data,
+                notificationCenter.post(WishlistRemovedEntryNotification(wishlist: wishlist,
                                                                          entry: item))
             }
             return result
@@ -251,7 +288,7 @@ class WishlistManager : AnyInjectable {
         return await handleUpdatedListResult(listResult)
     }
     
-    private func fetchOrCreate(_ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>> {
+    private func createList(_ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>> {
         let listResult = await wishlistService.create(with: item)
         return await handleUpdatedListResult(listResult)
     }
@@ -296,9 +333,9 @@ class WishlistManager : AnyInjectable {
     
     private func setList(_ wishlist: Wishlist?) {
         if let wishlist = wishlist {
-            self.state = .data(data: wishlist)
+            self.stateHolder = .data(data: wishlist)
         } else {
-            self.state = .none
+            self.stateHolder = .none
         }
     }
 }

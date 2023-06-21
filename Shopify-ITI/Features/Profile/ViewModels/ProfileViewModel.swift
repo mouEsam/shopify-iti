@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
- //TODO: refactor
+
 class ProfileViewModel : ObservableObject{
 
     @Published private(set) var userState: Optional<User> = .none
@@ -18,7 +18,7 @@ class ProfileViewModel : ObservableObject{
     }
     
     func initialize() {
-        authenticationManager.$state
+        authenticationManager.statePublisher
             .prepend(authenticationManager.state)
             .map(\.user)
             .assign(to: &$userState)

@@ -10,70 +10,60 @@ import SwiftUI
 struct SettingsView: View {
     
     @EnvironmentObject private var container: AppContainer
+    @EnvironmentRouter private var router: AppRouter
+    @StateObject private var settingViewModel:SettingViewModel
     
-    @State private var selectedLanguageIndex = 0
-    @State private var selectedCurrencyIndex = 0
-    
-    @State private var address = ""
-    @State private var showFQA = false
-    @State private var showContact = false
-    let settingViewModel:SettingViewModel
-    let languages = ["English", "Arabic"]
-    let contry = ["Egypt","USA"]
+    private let colors: AnyAppColors
     
     init(container: AppContainer) {
-        settingViewModel = .init(settingModel: container.require(SettingModel.self))
+        colors = container.require((any AnyAppColors).self)
+        _settingViewModel = .init(wrappedValue: SettingViewModel(settingModel: container.require(SettingsModel.self)))
     }
     
     var body: some View {
         Form {
+            // TODO: localize
+            let languages = settingViewModel.uiState.data?.languages ?? [settingViewModel.langauge]
             Section(header: Text("Language")) {
-                Picker(selection: $selectedLanguageIndex, label: Text("Select a language")) {
-                    ForEach(0 ..< languages.count) { index in
-                        Text(self.languages[index])
+                Picker(selection: $settingViewModel.langauge, label: Text("Select a language")) {
+                    ForEach(languages) { language in
+                        Text(language.rawValue) // TODO: localize
                     }
                 }
-                .onChange(of: selectedLanguageIndex) { newIndex in
-                    let selectedLanguage = languages[newIndex]
-                    if(selectedLanguage == "English" ){
-                        settingViewModel.changeLanguageToEnglish()
-                    }else{
-                        settingViewModel.changeLanguageToArabic()
-                        
-                    }
+                .onChange(of: settingViewModel.langauge) { newLanguage in
+                    settingViewModel.change(language: newLanguage)
                 }
             }
-            Section(header: Text("contry")) {
-                Picker(selection:$selectedCurrencyIndex, label: Text("Select a contry")) {
-                    ForEach(0 ..< contry.count) { index in
-                        Text(self.contry[index])
+            let countries = settingViewModel.uiState.data?.countries ?? [settingViewModel.country]
+            Section(header: Text("Country")) {
+                Picker(selection: $settingViewModel.country, label: Text("Select a contry")) {
+                    ForEach(countries) { country in
+                        Text(country.rawValue) // TODO: localize
                     }
-                }.onChange(of: selectedCurrencyIndex) { newIndex in
-                    let selectedCurrency = contry[newIndex]
-                    if(selectedCurrency == "EGP" ){
-                        settingViewModel.changeContryToEgypt()
-                    }else{
-                        settingViewModel.changeContryToUSA()
-                        
-                    }
+                }
+                .onChange(of: settingViewModel.country) { newCountry in
+                    settingViewModel.change(country: newCountry)
                 }
             }
             Section(header: Text("Help Center")) {
                 Button(action: {
-                    showFQA = true
+                    router.present(.sheet) {
+                        FAQView()
+                    }
                 }) {
                     HStack{
                         Text("FQA")
-                            .foregroundColor(.black)
-                        
+                            .foregroundColor(colors.black)
                     }
                 }
                 
                 Button(action: {
-                    showContact = true
+                    router.present(.sheet) {
+                        ContactUsView()
+                    }
                 }) {
                     Text("Contact Us")
-                        .foregroundColor(.black)
+                        .foregroundColor(colors.black)
                 }
             }
             // TODO: change
@@ -81,12 +71,8 @@ struct SettingsView: View {
                 container.require(AuthenticationManager.self).logout()
             }
         }
-        
-        .sheet(isPresented: $showFQA) {
-            FAQView()
-        }.sheet(isPresented:  $showContact){
-            ContactUsView()
-            
+        .onFirstTask {
+            await settingViewModel.fetch()
         }
     }
 }

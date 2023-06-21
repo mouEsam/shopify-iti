@@ -18,20 +18,42 @@ struct CartModel:AnyCartModel{
     
     let cartRemoteService:CartRemoteService
     let cartIdStore:AnyCartIdStore
-    func getCart(with id: String) async -> Result<Cart, Error> {
+    
+    func getCart() async -> Result<Cart, Error> {
         
-        return cartHandler(result:await cartRemoteService.fetch(byId: id))
+        if cartIdStore.exists(){
+            switch cartIdStore.read(){
+            case .success(let cartID):
+                return cartHandler(result:await cartRemoteService.fetch(byId: cartID))
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+        return .failure(LocalErrors.NotFound)
     }
     
-    func changeItemQuantity(forCart id: String,forLine lineId:String,with quantity:Int ) async -> Result<Cart, Error> {
+    func changeItemQuantity( forLine lineId:String,with quantity:Int ) async -> Result<Cart, Error> {
         if(quantity > 0){
-            return cartHandler (result: await cartRemoteService.upDateLineFor(card: id,
-                                                         with: ShopifyAPI.CartLineUpdateInput(id: lineId,quantity: .init(nullable: quantity))))
+            
+            switch cartIdStore.read(){
+            case .success(let cartID):
+                return cartHandler (result: await cartRemoteService.upDateLineFor(card: cartID,
+                                                                                  with: ShopifyAPI.CartLineUpdateInput(id: lineId,quantity: .init(nullable: quantity))))
+            case .failure(let error):
+                return .failure(error)
+            }
         }
-        return   await deleteCartItem(forCart: id, forLine: lineId)
+        
+        return   await deleteCartItem(forLine: lineId)
     }
-    func deleteCartItem(forCart id: String,forLine lineId:String) async -> Result<Cart, Error> {
-        return cartHandler(result:await cartRemoteService.removeLine(withLineID: lineId, forCart: id))
+    func deleteCartItem( forLine lineId:String) async -> Result<Cart, Error> {
+        switch cartIdStore.read(){
+        case .success(let cartID):
+            return cartHandler(result:await cartRemoteService.removeLine(withLineID: lineId, forCart: cartID))
+        case .failure(let error):
+            return .failure(error)
+            
+        }
     }
     private func cartHandler(result:Result<Cart?, Error>)-> Result<Cart, Error>{
         switch result{
