@@ -11,4 +11,11 @@ struct AD:Identifiable{
     let adImage:String
     let adMessage:String
     let coupons:String
+    let type:couponsType
+    let value:Double
+
+}
+enum couponsType:String{
+    case fixedAmount = "FIXED_AMOUNT"
+    case percentage = "PERCENTAGE"
 }

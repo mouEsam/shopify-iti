@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0453E2DA2A4278BE009D6E36 /* PaymantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E2CD2A4278BE009D6E36 /* PaymantViewModel.swift */; };
+		0453E2DB2A4278BE009D6E36 /* PaymantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E2CF2A4278BE009D6E36 /* PaymantModel.swift */; };
+		0453E2DC2A4278BE009D6E36 /* DraftOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E2D02A4278BE009D6E36 /* DraftOrderModel.swift */; };
+		0453E2DD2A4278BE009D6E36 /* PaymantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E2D22A4278BE009D6E36 /* PaymantView.swift */; };
+		0453E2DE2A4278BE009D6E36 /* PaymentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E2D42A4278BE009D6E36 /* PaymentHandler.swift */; };
+		0453E2DF2A4278BE009D6E36 /* DraftOrderServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E2D62A4278BE009D6E36 /* DraftOrderServices.swift */; };
+		0453E2E02A4278BE009D6E36 /* DraftOrder.admin.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 0453E2D72A4278BE009D6E36 /* DraftOrder.admin.graphql */; };
+		0453E2E12A4278BE009D6E36 /* PaymantError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E2D92A4278BE009D6E36 /* PaymantError.swift */; };
+		0453E2F12A4278F5009D6E36 /* ADViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E2E42A4278F5009D6E36 /* ADViewModel.swift */; };
+		0453E2F22A4278F5009D6E36 /* DiscontConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E2E62A4278F5009D6E36 /* DiscontConstants.swift */; };
+		0453E2F32A4278F5009D6E36 /* DiscontMangers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E2E82A4278F5009D6E36 /* DiscontMangers.swift */; };
+		0453E2F42A4278F5009D6E36 /* ADModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E2EA2A4278F5009D6E36 /* ADModel.swift */; };
+		0453E2F52A4278F5009D6E36 /* ADCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E2EC2A4278F5009D6E36 /* ADCard.swift */; };
+		0453E2F62A4278F5009D6E36 /* ADTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E2ED2A4278F5009D6E36 /* ADTapView.swift */; };
+		0453E2F72A4278F5009D6E36 /* ADSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E2EE2A4278F5009D6E36 /* ADSView.swift */; };
+		0453E2F82A4278F5009D6E36 /* AD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E2F02A4278F5009D6E36 /* AD.swift */; };
+		0453E2FA2A427F04009D6E36 /* CongratsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E2F92A427F04009D6E36 /* CongratsScreen.swift */; };
 		334029F07C9A89D6CEF9AB9D /* Pods_Shopify_ITI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */; };
 		D4596D892A33595100BD9E26 /* Shopify_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */; };
 		D4596D8A2A33595100BD9E26 /* Shopify_ITI_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -206,12 +223,6 @@
 		D4AF2B252A42441400F74FB0 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF2A3F2A42441400F74FB0 /* AccessToken.swift */; };
 		D4AF2B262A42441400F74FB0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF2A402A42441400F74FB0 /* User.swift */; };
 		D4AF2B272A42441400F74FB0 /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF2A412A42441400F74FB0 /* Guest.swift */; };
-		D4AF2B282A42441400F74FB0 /* ADViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF2A442A42441400F74FB0 /* ADViewModel.swift */; };
-		D4AF2B292A42441400F74FB0 /* ADModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF2A462A42441400F74FB0 /* ADModel.swift */; };
-		D4AF2B2A2A42441400F74FB0 /* ADCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF2A482A42441400F74FB0 /* ADCard.swift */; };
-		D4AF2B2B2A42441400F74FB0 /* ADTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF2A492A42441400F74FB0 /* ADTapView.swift */; };
-		D4AF2B2C2A42441400F74FB0 /* ADSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF2A4A2A42441400F74FB0 /* ADSView.swift */; };
-		D4AF2B2D2A42441400F74FB0 /* AD.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF2A4C2A42441400F74FB0 /* AD.swift */; };
 		D4AF2B2E2A42441400F74FB0 /* WishlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF2A4F2A42441400F74FB0 /* WishlistViewModel.swift */; };
 		D4AF2B2F2A42441400F74FB0 /* WishlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF2A522A42441400F74FB0 /* WishlistManager.swift */; };
 		D4AF2B302A42441400F74FB0 /* AnyWishlistIdLocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF2A552A42441400F74FB0 /* AnyWishlistIdLocalStore.swift */; };
@@ -244,6 +255,23 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0453E2CD2A4278BE009D6E36 /* PaymantViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymantViewModel.swift; sourceTree = "<group>"; };
+		0453E2CF2A4278BE009D6E36 /* PaymantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymantModel.swift; sourceTree = "<group>"; };
+		0453E2D02A4278BE009D6E36 /* DraftOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftOrderModel.swift; sourceTree = "<group>"; };
+		0453E2D22A4278BE009D6E36 /* PaymantView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymantView.swift; sourceTree = "<group>"; };
+		0453E2D42A4278BE009D6E36 /* PaymentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHandler.swift; sourceTree = "<group>"; };
+		0453E2D62A4278BE009D6E36 /* DraftOrderServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftOrderServices.swift; sourceTree = "<group>"; };
+		0453E2D72A4278BE009D6E36 /* DraftOrder.admin.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DraftOrder.admin.graphql; sourceTree = "<group>"; };
+		0453E2D92A4278BE009D6E36 /* PaymantError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymantError.swift; sourceTree = "<group>"; };
+		0453E2E42A4278F5009D6E36 /* ADViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADViewModel.swift; sourceTree = "<group>"; };
+		0453E2E62A4278F5009D6E36 /* DiscontConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscontConstants.swift; sourceTree = "<group>"; };
+		0453E2E82A4278F5009D6E36 /* DiscontMangers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscontMangers.swift; sourceTree = "<group>"; };
+		0453E2EA2A4278F5009D6E36 /* ADModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADModel.swift; sourceTree = "<group>"; };
+		0453E2EC2A4278F5009D6E36 /* ADCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADCard.swift; sourceTree = "<group>"; };
+		0453E2ED2A4278F5009D6E36 /* ADTapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADTapView.swift; sourceTree = "<group>"; };
+		0453E2EE2A4278F5009D6E36 /* ADSView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADSView.swift; sourceTree = "<group>"; };
+		0453E2F02A4278F5009D6E36 /* AD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AD.swift; sourceTree = "<group>"; };
+		0453E2F92A427F04009D6E36 /* CongratsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsScreen.swift; sourceTree = "<group>"; };
 		9286320BBD2664520DE1BD34 /* Pods-Shopify-ITI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.debug.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.debug.xcconfig"; sourceTree = "<group>"; };
 		D41F627C2A2C921C00780814 /* Shopify-ITI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopify-ITI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -445,12 +473,6 @@
 		D4AF2A3F2A42441400F74FB0 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		D4AF2A402A42441400F74FB0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D4AF2A412A42441400F74FB0 /* Guest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
-		D4AF2A442A42441400F74FB0 /* ADViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADViewModel.swift; sourceTree = "<group>"; };
-		D4AF2A462A42441400F74FB0 /* ADModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADModel.swift; sourceTree = "<group>"; };
-		D4AF2A482A42441400F74FB0 /* ADCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADCard.swift; sourceTree = "<group>"; };
-		D4AF2A492A42441400F74FB0 /* ADTapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADTapView.swift; sourceTree = "<group>"; };
-		D4AF2A4A2A42441400F74FB0 /* ADSView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADSView.swift; sourceTree = "<group>"; };
-		D4AF2A4C2A42441400F74FB0 /* AD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AD.swift; sourceTree = "<group>"; };
 		D4AF2A4F2A42441400F74FB0 /* WishlistViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistViewModel.swift; sourceTree = "<group>"; };
 		D4AF2A522A42441400F74FB0 /* WishlistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistManager.swift; sourceTree = "<group>"; };
 		D4AF2A552A42441400F74FB0 /* AnyWishlistIdLocalStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyWishlistIdLocalStore.swift; sourceTree = "<group>"; };
@@ -484,6 +506,133 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0453E2CB2A4278BE009D6E36 /* Paymant */ = {
+			isa = PBXGroup;
+			children = (
+				0453E2CC2A4278BE009D6E36 /* ViewModel */,
+				0453E2CE2A4278BE009D6E36 /* Models */,
+				0453E2D12A4278BE009D6E36 /* View */,
+				0453E2D32A4278BE009D6E36 /* Helpers */,
+				0453E2D52A4278BE009D6E36 /* Services */,
+				0453E2D82A4278BE009D6E36 /* Entities */,
+			);
+			path = Paymant;
+			sourceTree = "<group>";
+		};
+		0453E2CC2A4278BE009D6E36 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0453E2CD2A4278BE009D6E36 /* PaymantViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0453E2CE2A4278BE009D6E36 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0453E2CF2A4278BE009D6E36 /* PaymantModel.swift */,
+				0453E2D02A4278BE009D6E36 /* DraftOrderModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0453E2D12A4278BE009D6E36 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0453E2D22A4278BE009D6E36 /* PaymantView.swift */,
+				0453E2F92A427F04009D6E36 /* CongratsScreen.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0453E2D32A4278BE009D6E36 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0453E2D42A4278BE009D6E36 /* PaymentHandler.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0453E2D52A4278BE009D6E36 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0453E2D62A4278BE009D6E36 /* DraftOrderServices.swift */,
+				0453E2D72A4278BE009D6E36 /* DraftOrder.admin.graphql */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0453E2D82A4278BE009D6E36 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				0453E2D92A4278BE009D6E36 /* PaymantError.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		0453E2E22A4278F5009D6E36 /* Discont */ = {
+			isa = PBXGroup;
+			children = (
+				0453E2E32A4278F5009D6E36 /* ViewModel */,
+				0453E2E52A4278F5009D6E36 /* Constants */,
+				0453E2E72A4278F5009D6E36 /* Manager */,
+				0453E2E92A4278F5009D6E36 /* Model */,
+				0453E2EB2A4278F5009D6E36 /* Views */,
+				0453E2EF2A4278F5009D6E36 /* Entities */,
+			);
+			path = Discont;
+			sourceTree = "<group>";
+		};
+		0453E2E32A4278F5009D6E36 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0453E2E42A4278F5009D6E36 /* ADViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0453E2E52A4278F5009D6E36 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				0453E2E62A4278F5009D6E36 /* DiscontConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		0453E2E72A4278F5009D6E36 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0453E2E82A4278F5009D6E36 /* DiscontMangers.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		0453E2E92A4278F5009D6E36 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0453E2EA2A4278F5009D6E36 /* ADModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0453E2EB2A4278F5009D6E36 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0453E2EC2A4278F5009D6E36 /* ADCard.swift */,
+				0453E2ED2A4278F5009D6E36 /* ADTapView.swift */,
+				0453E2EE2A4278F5009D6E36 /* ADSView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0453E2EF2A4278F5009D6E36 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				0453E2F02A4278F5009D6E36 /* AD.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		256F5C045EEB8210E1E43E03 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -764,6 +913,8 @@
 		D4AF295A2A42441300F74FB0 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				0453E2E22A4278F5009D6E36 /* Discont */,
+				0453E2CB2A4278BE009D6E36 /* Paymant */,
 				D4AF295B2A42441300F74FB0 /* Settings */,
 				D4AF29742A42441300F74FB0 /* Home */,
 				D4AF29832A42441300F74FB0 /* Splash */,
@@ -775,7 +926,6 @@
 				D4AF29E92A42441300F74FB0 /* Cart */,
 				D4AF29FD2A42441300F74FB0 /* Categories */,
 				D4AF2A0D2A42441300F74FB0 /* Authentication */,
-				D4AF2A422A42441400F74FB0 /* Discont */,
 				D4AF2A4D2A42441400F74FB0 /* Wishlist */,
 			);
 			path = Features;
@@ -1620,51 +1770,6 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		D4AF2A422A42441400F74FB0 /* Discont */ = {
-			isa = PBXGroup;
-			children = (
-				D4AF2A432A42441400F74FB0 /* ViewModel */,
-				D4AF2A452A42441400F74FB0 /* Model */,
-				D4AF2A472A42441400F74FB0 /* Views */,
-				D4AF2A4B2A42441400F74FB0 /* Entities */,
-			);
-			path = Discont;
-			sourceTree = "<group>";
-		};
-		D4AF2A432A42441400F74FB0 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				D4AF2A442A42441400F74FB0 /* ADViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		D4AF2A452A42441400F74FB0 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D4AF2A462A42441400F74FB0 /* ADModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		D4AF2A472A42441400F74FB0 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				D4AF2A482A42441400F74FB0 /* ADCard.swift */,
-				D4AF2A492A42441400F74FB0 /* ADTapView.swift */,
-				D4AF2A4A2A42441400F74FB0 /* ADSView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		D4AF2A4B2A42441400F74FB0 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				D4AF2A4C2A42441400F74FB0 /* AD.swift */,
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
 		D4AF2A4D2A42441400F74FB0 /* Wishlist */ = {
 			isa = PBXGroup;
 			children = (
@@ -1868,6 +1973,7 @@
 				D4AF2AB02A42441400F74FB0 /* Home.graphql in Resources */,
 				D4AF2ADE2A42441400F74FB0 /* CoreFragments.admin.graphql in Resources */,
 				D4AF2A892A42441400F74FB0 /* schema.json in Resources */,
+				0453E2E02A4278BE009D6E36 /* DraftOrder.admin.graphql in Resources */,
 				D4AF2AB92A42441400F74FB0 /* Products.graphql in Resources */,
 				D4AF2B362A42441400F74FB0 /* Wishlist.admin.graphql in Resources */,
 				D4AF2B3B2A42441400F74FB0 /* Preview Assets.xcassets in Resources */,
@@ -1933,9 +2039,11 @@
 				D4AF2A7D2A42441400F74FB0 /* LocaleProvider.swift in Sources */,
 				D4AF2AEE2A42441400F74FB0 /* Profile.swift in Sources */,
 				D4AF2A712A42441400F74FB0 /* Notifications.swift in Sources */,
+				0453E2F72A4278F5009D6E36 /* ADSView.swift in Sources */,
 				D4AF2B022A42441400F74FB0 /* CategoriesRemoteService.swift in Sources */,
 				D4AF2A762A42441400F74FB0 /* Colors.swift in Sources */,
 				D4AF2AC92A42441400F74FB0 /* SearchModel.swift in Sources */,
+				0453E2F42A4278F5009D6E36 /* ADModel.swift in Sources */,
 				D4AF2AC62A42441400F74FB0 /* ProductOption.swift in Sources */,
 				D4AF2ACB2A42441400F74FB0 /* AppStorageArray.swift in Sources */,
 				D499B3192A426A7D00D5331A /* ErrorMessage.swift in Sources */,
@@ -1945,8 +2053,6 @@
 				D4AF2A822A42441400F74FB0 /* AnyConnectivity.swift in Sources */,
 				D4AF2AFB2A42441400F74FB0 /* CategoriesViewModel.swift in Sources */,
 				D4AF2ADC2A42441400F74FB0 /* UIState.swift in Sources */,
-				D4AF2B292A42441400F74FB0 /* ADModel.swift in Sources */,
-				D4AF2B2C2A42441400F74FB0 /* ADSView.swift in Sources */,
 				D4AF2A802A42441400F74FB0 /* AnyValidator.swift in Sources */,
 				D4AF2B112A42441400F74FB0 /* TokenLocalStore.swift in Sources */,
 				D4AF2B242A42441400F74FB0 /* AuthError.swift in Sources */,
@@ -1963,12 +2069,15 @@
 				D4AF2AF32A42441400F74FB0 /* CartView.swift in Sources */,
 				D4AF2AAE2A42441400F74FB0 /* HomeStrings.swift in Sources */,
 				D4AF2AE62A42441400F74FB0 /* Router.swift in Sources */,
+				0453E2FA2A427F04009D6E36 /* CongratsScreen.swift in Sources */,
 				D4AF2B1B2A42441400F74FB0 /* AuthTopBarDecor.swift in Sources */,
 				D4AF2AC52A42441400F74FB0 /* ProductCollection.swift in Sources */,
 				D4AF2B0C2A42441400F74FB0 /* UserProvider.swift in Sources */,
 				D4AF2A6A2A42441400F74FB0 /* DataFetchCacheStrategy.swift in Sources */,
+				0453E2E12A4278BE009D6E36 /* PaymantError.swift in Sources */,
 				D4AF2A842A42441400F74FB0 /* AnyUserProvider.swift in Sources */,
-				D4AF2B282A42441400F74FB0 /* ADViewModel.swift in Sources */,
+				0453E2DC2A4278BE009D6E36 /* DraftOrderModel.swift in Sources */,
+				0453E2DE2A4278BE009D6E36 /* PaymentHandler.swift in Sources */,
 				D4AF2A9D2A42441400F74FB0 /* CountryLocalStore.swift in Sources */,
 				D4AF2A8C2A42441400F74FB0 /* KeyChain.swift in Sources */,
 				D4AF2B0E2A42441400F74FB0 /* GuestManager.swift in Sources */,
@@ -1981,6 +2090,7 @@
 				D4AF2B0A2A42441400F74FB0 /* AuthenticationState.swift in Sources */,
 				D4AF2B002A42441400F74FB0 /* Enumeration.swift in Sources */,
 				D499B3152A42676200D5331A /* WishlistStrings.swift in Sources */,
+				0453E2F52A4278F5009D6E36 /* ADCard.swift in Sources */,
 				D4AF2AFC2A42441400F74FB0 /* CategoriesModel.swift in Sources */,
 				D4AF2B392A42441400F74FB0 /* WishlistItem.swift in Sources */,
 				D4AF2AFE2A42441400F74FB0 /* CategoriesPage.swift in Sources */,
@@ -1997,6 +2107,7 @@
 				D4AF2A992A42441400F74FB0 /* SettingViewModel.swift in Sources */,
 				D4AF2AB12A42441400F74FB0 /* OnboardingScreen.swift in Sources */,
 				D4AF2B092A42441400F74FB0 /* AuthenticationManager.swift in Sources */,
+				0453E2DD2A4278BE009D6E36 /* PaymantView.swift in Sources */,
 				D4AF2B3A2A42441400F74FB0 /* Wishlist.swift in Sources */,
 				D4AF2B382A42441400F74FB0 /* WishlistError.swift in Sources */,
 				D4AF2AA72A42441400F74FB0 /* Localization.swift in Sources */,
@@ -2006,6 +2117,7 @@
 				D4AF2A902A42441400F74FB0 /* AnyEnvironment.swift in Sources */,
 				D4AF2AA32A42441400F74FB0 /* LocaleNotification.swift in Sources */,
 				D4AF2A9C2A42441400F74FB0 /* AnyCountryLocalStore.swift in Sources */,
+				0453E2F82A4278F5009D6E36 /* AD.swift in Sources */,
 				D4AF2A922A42441400F74FB0 /* AdminEnvironment.swift in Sources */,
 				D4AF2AF52A42441400F74FB0 /* CartRemoteService.swift in Sources */,
 				D4AF2ABB2A42441400F74FB0 /* Product.swift in Sources */,
@@ -2030,6 +2142,7 @@
 				D4AF2B152A42441400F74FB0 /* AnyGuestLocalStore.swift in Sources */,
 				D4AF2A6C2A42441400F74FB0 /* Shopify_ITIApp.swift in Sources */,
 				D4AF2AD02A42441400F74FB0 /* CornerRadiusStyle.swift in Sources */,
+				0453E2F62A4278F5009D6E36 /* ADTapView.swift in Sources */,
 				D4AF2AB62A42441400F74FB0 /* ProductsScreen.swift in Sources */,
 				D4AF2A932A42441400F74FB0 /* AnyKeysProvider.swift in Sources */,
 				D4AF2A752A42441400F74FB0 /* Errors.swift in Sources */,
@@ -2053,7 +2166,9 @@
 				D4AF2AE12A42441400F74FB0 /* RemoteImage.swift in Sources */,
 				D4AF2AE02A42441400F74FB0 /* Price.swift in Sources */,
 				D4AF2A682A42441400F74FB0 /* AnyRemoteFetchStrategy.swift in Sources */,
+				0453E2DB2A4278BE009D6E36 /* PaymantModel.swift in Sources */,
 				D4AF2AE42A42441400F74FB0 /* AnyRouter.swift in Sources */,
+				0453E2F12A4278F5009D6E36 /* ADViewModel.swift in Sources */,
 				D4AF2A7F2A42441400F74FB0 /* EmailValidator.swift in Sources */,
 				D4AF2B0F2A42441400F74FB0 /* GuestState.swift in Sources */,
 				D4AF2B102A42441400F74FB0 /* AnyTokenLocalStore.swift in Sources */,
@@ -2068,7 +2183,6 @@
 				D4AF2A862A42441400F74FB0 /* RemoteClient.swift in Sources */,
 				D499B3172A4268FF00D5331A /* NoResults.swift in Sources */,
 				D4AF2AB32A42441400F74FB0 /* SplashStrings.swift in Sources */,
-				D4AF2B2D2A42441400F74FB0 /* AD.swift in Sources */,
 				D4AF2AC02A42441400F74FB0 /* VariantItemView.swift in Sources */,
 				D4AF2A942A42441400F74FB0 /* KeysProvider.swift in Sources */,
 				D4AF2A872A42441400F74FB0 /* GraphQLClient.swift in Sources */,
@@ -2088,7 +2202,6 @@
 				D4AF2A9A2A42441400F74FB0 /* LanguageLocalStore.swift in Sources */,
 				D4AF2AD92A42441400F74FB0 /* AppColors.swift in Sources */,
 				D4AF2B302A42441400F74FB0 /* AnyWishlistIdLocalStore.swift in Sources */,
-				D4AF2B2B2A42441400F74FB0 /* ADTapView.swift in Sources */,
 				D4AF2A9B2A42441400F74FB0 /* AnyLanguageLocalStore.swift in Sources */,
 				D4AF2ADB2A42441400F74FB0 /* Pagination.swift in Sources */,
 				D4AF2AE72A42441400F74FB0 /* ProfileViewModel.swift in Sources */,
@@ -2096,14 +2209,16 @@
 				D4AF2B142A42441400F74FB0 /* GuestLocalStore.swift in Sources */,
 				D4AF2AB82A42441400F74FB0 /* ProductsSearchCriteria.swift in Sources */,
 				D4AF2AD72A42441400F74FB0 /* View.swift in Sources */,
+				0453E2DA2A4278BE009D6E36 /* PaymantViewModel.swift in Sources */,
 				D4AF2A7C2A42441400F74FB0 /* AppContainer.swift in Sources */,
 				D4AF2B1A2A42441400F74FB0 /* AuthTextField.swift in Sources */,
 				D4AF2AAF2A42441400F74FB0 /* BrandRemoteService.swift in Sources */,
 				D4AF2B312A42441400F74FB0 /* WishlistIdLocalStore.swift in Sources */,
+				0453E2DF2A4278BE009D6E36 /* DraftOrderServices.swift in Sources */,
 				D4AF2A772A42441400F74FB0 /* Object.swift in Sources */,
 				D4AF2AB22A42441400F74FB0 /* SplashScreen.swift in Sources */,
-				D4AF2B2A2A42441400F74FB0 /* ADCard.swift in Sources */,
 				D4AF2B0D2A42441400F74FB0 /* UserState.swift in Sources */,
+				0453E2F32A4278F5009D6E36 /* DiscontMangers.swift in Sources */,
 				D4AF2AAD2A42441400F74FB0 /* Extensions.swift in Sources */,
 				D4AF2AC42A42441400F74FB0 /* ProductVariant.swift in Sources */,
 				D4AF2AD32A42441400F74FB0 /* RemoteImageView.swift in Sources */,
@@ -2116,6 +2231,7 @@
 				D4AF2A972A42441400F74FB0 /* AnyDecoder.swift in Sources */,
 				D4AF2AB42A42441400F74FB0 /* ProductsViewModel.swift in Sources */,
 				D4AF2AEB2A42441400F74FB0 /* ProfileUpdate.swift in Sources */,
+				0453E2F22A4278F5009D6E36 /* DiscontConstants.swift in Sources */,
 				D4AF2ADA2A42441400F74FB0 /* SafeAreaInsets.swift in Sources */,
 				D4AF2A9F2A42441400F74FB0 /* AnySettingModel.swift in Sources */,
 				D4AF2ABE2A42441400F74FB0 /* ProductModel.swift in Sources */,

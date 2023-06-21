@@ -149,23 +149,30 @@ class CartManager:AnyInjectable{
     private func addToCart(_ cartid: String, _ item: ProductVariant,quantity:Int) async -> Result<Cart, Error> {
         
         let cartResult = await cartRemoteService.upDate(card: cartid, with: ShopifyAPI.CartLineInput(quantity: .init(nullable: quantity), merchandiseId: item.id ))
-        return await cartHandler(result: cartResult)
+        return  cartHandler(result: cartResult)
     }
     
     private func fetchOrCreate(_ item: ProductVariant,quantity:Int) async -> Result<Cart, Error>{
-        let buyerIdentity = ShopifyAPI.CartBuyerIdentityInput(customerAccessToken: .init(nullable:authManager.state.user?.id))
+        var buyerIdentity:ShopifyAPI.CartBuyerIdentityInput?
+        if case .authenticated(user: _, token: let token) = authManager.state{
+            buyerIdentity = ShopifyAPI.CartBuyerIdentityInput(customerAccessToken: .init(nullable:token.accessToken))
+        }else{
+            buyerIdentity=nil
+        }
+        
         let cartLineInputs = [ShopifyAPI.CartLineInput(quantity: .init(nullable: quantity), merchandiseId: item.id)]
         
         let cartResult = await cartRemoteService.createCart(with: ShopifyAPI.CartInput(lines: .init(nullable: cartLineInputs),
                                                                                        buyerIdentity: .init(nullable: buyerIdentity)))
         
-        return await cartHandler(result: cartResult)
+        return  cartHandler(result: await cartRemoteService.createCart(with: ShopifyAPI.CartInput(lines: .init(nullable: cartLineInputs),
+                                                                                                  buyerIdentity: .init(nullable: buyerIdentity))))
     }
     
-    private func cartHandler(result:Result<Cart?, Error>)async -> Result<Cart, Error>{
+    private func cartHandler(result:Result<Cart?, Error>) -> Result<Cart, Error>{
         switch result{
         case .success(let cart):
-            
+            print(cart)
             if let cart = cart{
                 print(cart.id)
                 cartIdStore.write(id: cart.id)

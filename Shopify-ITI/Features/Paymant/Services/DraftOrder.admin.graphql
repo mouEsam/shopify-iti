@@ -1,0 +1,35 @@
+mutation completeDraftOrder($id: ID!,$paymentPending:Boolean) {
+  draftOrderComplete(id: $id, paymentPending:$paymentPending) {
+    draftOrder {
+        id
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}
+mutation createDraftOrder($input: DraftOrderInput!) {
+  draftOrderCreate(input: $input) {
+    draftOrder {
+        id
+        
+}
+    userErrors {
+      field
+      message
+    }
+  }
+}
+mutation updateDraftOrder($id: ID!, $input: DraftOrderInput!) {
+  draftOrderUpdate(id: $id, input: $input) {
+    draftOrder {
+        id
+        
+}
+    userErrors {
+      field
+      message
+    }
+  }
+}
