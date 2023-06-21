@@ -8,73 +8,86 @@
 import SwiftUI
 
 struct CartView: View {
+    
     @StateObject private var viewModel: CartViewModel
     @EnvironmentRouter private var router: AppRouter
     @EnvironmentObject private var container: AppContainer
-
+    private var authManager: AuthenticationManager
+    
     init(container: AppContainer) {
+        authManager = container.require(AuthenticationManager.self)
         let model = container.require((any AnyCartModel).self)
         _viewModel = .init(wrappedValue: CartViewModel(model: model ))
     }
+    
     var body: some View {
-            VStack{
-                ScrollView {
-                    switch viewModel.operationState{
-                        case .loaded(data: let cart):
-                            LazyVStack(spacing: 16) {
-                                
-                                ForEach(cart.data.cartLine) { item in
-                                    CardItemView(cartLine: item,viewModel: viewModel)
-                                }
+        VStack{
+            ScrollView {
+                switch viewModel.operationState{
+                    case .loaded(data: let cart):
+                        LazyVStack(spacing: 16) {
+                            ForEach(cart.data.cartLine) { item in
+                                CardItemView(cartLine: item,viewModel: viewModel)
                             }
-                            .padding()
-                        case .initial:
-                            Text("initial")
-                            
+                        }
+                        .padding()
+                    case .initial:
+                        Text("initial")
+                        
+                    case .loading:
+                        Text("loading")
+                        
+                        
+                    case .error(error: let error):
+                        Text(error.localizedDescription)
+                }
+            }
+            VStack{
+                HStack{
+                    Text("Total:")
+                    Spacer()
+                    switch viewModel.operationState{
                         case .loading:
-                            Text("loading")
+                            Text("$")
                             
+                        case .initial:
+                            Text("$")
                             
-                        case .error(error: let error):
-                            Text(error.localizedDescription)
+                        case .loaded(data: let cart):
+                            Text("$"+String(cart.data.totalAmount))
+                            
+                        case .error(error: _):
+                            Text("$")
+                            
                     }
                 }
-                VStack{
-                    HStack{
-                        Text("Total:")
-                        Spacer()
-                        switch viewModel.operationState{
-                            case .loading:
-                                Text("$")
-                                
-                            case .initial:
-                                Text("$")
-                                
-                            case .loaded(data: let cart):
-                                Text("$"+String(cart.data.totalAmount))
-                                
-                            case .error(error: _):
-                                Text("$")
-                                
+                Button(action: {
+                    if case .authenticated = authManager.state {
+                        router.push(PaymantView.Route(container: container,
+                                                      cart:viewModel.operationState.data!))
+                    } else {
+                        router.alert(item: IdentifiableWrapper(wrapped: authManager.state)) { _ in
+                            Alert(title: Text("Login required"),
+                                  message: Text("You must be logged in first to continue"),
+                                  primaryButton: Alert.Button.default(Text("Login"),
+                                                                     action: { router.push(LoginScreen.Route(container: container)) }),
+                                  secondaryButton: Alert.Button.default(Text("OK")))
                         }
                     }
-                    Button(action: {
-                        router.push(PaymantView.Route(container: container, cart:viewModel.operationState.data! ))
-                    }){
-                        Text("Check Out")
-                            .foregroundColor(.white)
-                            .padding(.horizontal)
-                            .frame(maxWidth: .infinity)
-                        
-                    }
-                    .frame(maxWidth: .infinity)
-                    .buttonStyle(.borderedProminent)
-                    .tint(.black)
-                }.padding(.all)
-            }.task {
-                await viewModel.getCart()
-            }
-        
+                }){
+                    Text("Check Out")
+                        .foregroundColor(.white)
+                        .padding(.horizontal)
+                        .frame(maxWidth: .infinity)
+                    
+                }
+                .frame(maxWidth: .infinity)
+                .buttonStyle(.borderedProminent)
+                .tint(.black)
+            }.padding(.all)
+        }.task {
+            await viewModel.getCart()
+        }
     }
 }
 

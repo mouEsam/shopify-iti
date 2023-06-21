@@ -44,8 +44,15 @@ class ProductViewModel: ObservableObject {
         wishlistManager.statePublisher
             .prepend(wishlistManager.state)
             .subscribe(on: DispatchQueue.global())
-            .map(\.data)
-            .map({ $0.map { $0.entries[self.productId] != nil } })
+            .map { state in
+                if case .none = state {
+                    return false
+                } else if case .data(let data) = state {
+                    return data.entries[self.productId] != nil
+                } else {
+                    return nil
+                }
+            }
             .receive(on: DispatchQueue.main)
             .assign(to: &$isWishlisted)
         

@@ -17,10 +17,13 @@ struct SettingsView: View {
     
     init(container: AppContainer) {
         colors = container.require((any AnyAppColors).self)
-        _settingViewModel = .init(wrappedValue: SettingViewModel(settingModel: container.require(SettingsModel.self)))
+        let authManager = container.require(AuthenticationManager.self)
+        _settingViewModel = .init(wrappedValue: SettingViewModel(authManager: authManager,
+                                                                 settingModel: container.require(SettingsModel.self)))
     }
     
     var body: some View {
+        
         Form {
             // TODO: localize
             let languages = settingViewModel.uiState.data?.languages ?? [settingViewModel.langauge]
@@ -66,9 +69,25 @@ struct SettingsView: View {
                         .foregroundColor(colors.black)
                 }
             }
-            // TODO: change
-            Button("Log out") {
-                container.require(AuthenticationManager.self).logout()
+            if settingViewModel.isLoggedIn {
+                Button(action: {
+                    router.alert(item: IdentifiableWrapper(wrapped: settingViewModel.logoutState)) { _ in
+                        Alert(title: Text("Logout"),
+                              message: Text("Are you sure you want to logout ?"),
+                              primaryButton: Alert.Button.default(Text("No")),
+                              secondaryButton: Alert.Button.destructive(Text("Yes"), action: {
+                            settingViewModel.logout()
+                        }))
+                    }
+                }) {
+                    HStack {
+                        Text("Log out")
+                        if settingViewModel.logoutState.isLoading {
+                            Spacer().frame(width: 10)
+                            ProgressView()
+                        }
+                    }
+                }
             }
         }
         .onFirstTask {
@@ -76,5 +95,3 @@ struct SettingsView: View {
         }
     }
 }
-
-
