@@ -8,11 +8,20 @@
 import Foundation
 import SwiftUI
 struct CardCategory : View {
+    
     @EnvironmentRouter private var router: AppRouter
     @EnvironmentObject private var container: AppContainer
     
-    let item: ProductType
-    let idOfCollection : String
+    private let item: ProductType
+    private let idOfCollection : String
+    private let colors: AnyAppColors
+    
+    init(container: AppContainer, item: ProductType, idOfCollection: String) {
+        self.item = item
+        self.idOfCollection = idOfCollection
+        self.colors = container.require((any AnyAppColors).self)
+    }
+    
     var body: some View {
         Button(action: {
             router.push(ProductsScreen.Route(container: container,
@@ -20,25 +29,20 @@ struct CardCategory : View {
                                                          .type:item.productType]))
         }) {
             VStack {
-                AsyncImage(url: URL(string: item.featuredImage?.url ?? item.productType.lowercased())) { image in
-                    image.resizable()
-                } placeholder: {
-                    ProgressView()
-                }.aspectRatio(contentMode: .fit)
+                RemoteImageView(image: item.featuredImage)
+                    .aspectRatio(contentMode: .fit)
                     .frame(height: 90)
                     .frame(maxWidth: .infinity)
                     .padding(4)
-                
                 Text(item.productType)
                     .font(.callout)
                     .fontWeight(.bold)
-                    .foregroundColor(.black).padding(4)
-                
-                
+                    .padding(4)
             }.frame(height: 150)
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 2)
         }
+        .foregroundColor(colors.black)
+        .background(colors.white)
+        .cornerRadius(10)
+        .shadow(radius: 2)
     }
 }

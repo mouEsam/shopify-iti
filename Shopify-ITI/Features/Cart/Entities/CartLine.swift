@@ -8,7 +8,7 @@
 import Foundation
 import Shopify_ITI_SDK
 
-struct CartLine:Identifiable{
+struct CartLine: Identifiable {
     let id: String
     let quantity: Int
     let productVariant:ProductVariant

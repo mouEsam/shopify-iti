@@ -55,7 +55,9 @@ struct CategoriesPage: View {
             case .loaded(data: let productCollections):
                 LazyVGrid(columns: createGridColumns(), spacing: 16) {
                     ForEach(productCollections.data,id: \.id) { item in
-                        CardCategory(item: item, idOfCollection: itemOfSegmented[collectionTypePicked].apiID)
+                        CardCategory(container: container,
+                                     item: item,
+                                     idOfCollection: itemOfSegmented[collectionTypePicked].apiID)
                     }
                 }
                 .padding()

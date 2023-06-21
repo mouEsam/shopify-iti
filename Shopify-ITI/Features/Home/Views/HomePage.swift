@@ -36,18 +36,17 @@ struct HomePage: View {
                 case .loaded(data: let productCollections):
                     LazyVGrid(columns: createGridColumns(), spacing: 16) {
                         ForEach(productCollections.data,id: \.id) { item in
-                            CardBrand(item:item,color:colors.black)
+                            CardBrand(container: container,
+                                      item:item)
                         }
                     }
                     .padding()
                     
                 case .error(let error):
                     Text("Error: \(error.localizedDescription)")
-                    
                 default :
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
-                        .foregroundColor(.black)
                         .padding()
                 }
             }
@@ -55,13 +54,6 @@ struct HomePage: View {
         .onFirstTask {
             await viewModel.loadBrand(numberOfItem: 11)
         }
-        
-        
-        
-        
-        
-        
-        
     }
     
     func createGridColumns() -> [GridItem] {
