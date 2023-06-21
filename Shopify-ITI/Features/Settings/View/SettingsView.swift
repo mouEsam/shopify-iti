@@ -26,7 +26,7 @@ struct SettingsView: View {
         
         Form {
             // TODO: localize
-            let languages = settingViewModel.uiState.data?.languages ?? [settingViewModel.langauge]
+            var languages = settingViewModel.uiState.data?.languages ?? [settingViewModel.langauge]
             Section(header: Text("Language")) {
                 Picker(selection: $settingViewModel.langauge, label: Text("Select a language")) {
                     ForEach(languages) { language in
