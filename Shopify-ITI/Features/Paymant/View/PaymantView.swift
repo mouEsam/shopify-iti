@@ -16,8 +16,10 @@ struct PaymantView: View {
             }
         }
     }
+    
     @EnvironmentRouter private var router: AppRouter
-
+    private let localeProvider: AnyLocaleProvider
+    
     @State private var coupon: String = ""
     @State private var paymentMethod: String = "Cash on delivery"
     @State private var showingPaymentSheet = false
@@ -30,7 +32,9 @@ struct PaymantView: View {
     
     let cart: Cart
     let paymentHandler = PaymentHandler()
-    init(container: AppContainer,cart: Cart) {
+    
+    init(container: AppContainer, cart: Cart) {
+        self.localeProvider = container.require((any AnyLocaleProvider).self)
         self.cart = cart
         _viewModel = .init(wrappedValue: PaymantViewModel(draftOrderModel: container.require((any AnyDraftOrderModel).self), cart: cart))
     }
@@ -68,20 +72,19 @@ struct PaymantView: View {
                         HStack {
                             Text("SubTotal:")
                             Spacer()
-                            PriceView(price: Price(amount: cart.totalAmount,
-                                                   currencyCode: .egp)) // TODO: use currency
+                            PriceView(price: cart.subtotalAmount)
                         }
-                        HStack {
-                            Text("Tax:")
-                            Spacer()
-                            PriceView(price: Price(amount: cart.totalAmount,
-                                                   currencyCode: .egp)) // TODO: use currency
+                        if let tax = cart.totalTaxAmount {
+                            HStack {
+                                Text("Tax:")
+                                Spacer()
+                                PriceView(price: tax)
+                            }
                         }
                         HStack {
                             Text("Total:")
                             Spacer()
-                            PriceView(price: Price(amount: cart.totalAmount,
-                                                   currencyCode: .egp)) // TODO: use currency
+                            PriceView(price: cart.totalAmount)
                         }
                     }
                 }
@@ -94,17 +97,19 @@ struct PaymantView: View {
                         
                         if paymentMethod == "Cash on delivery" {
                             showingPaymentSheet = true
-                        } else if paymentMethod == "Apple pay" {
-                            self.paymentHandler.startPayment(amont: cart.totalAmount) { success in
+                        } else if paymentMethod == "Apple pay",
+                                  let country = localeProvider.shopifyCountry?.value {
+                            self.paymentHandler.startPayment(amount: cart.totalAmount,
+                                                             country: country) { success in
                                 if success {
                                     Task{
                                         await viewModel.completeOrde(isPaid: true)
                                     }
                                     router.push(AppRoute(identifier:  String(describing: CongratsScreen.self)){
                                         CongratsScreen()
-
+                                        
                                     })
-
+                                    
                                 } else {
                                     print("Failed")
                                 }
@@ -125,15 +130,14 @@ struct PaymantView: View {
                             HStack{
                                 Text("Total Amount: ")
                                 Spacer()
-                                PriceView(price: Price(amount: cart.totalAmount,
-                                                       currencyCode: .egp)) // TODO: use currency
+                                PriceView(price: cart.totalAmount) // TODO: use currency
                             }.padding(.all)
                             HStack(){
                                 Button(action: {
                                     Task{
                                         print("1")
-                                         await viewModel.completeOrde(isPaid: false)
-                                    
+                                        await viewModel.completeOrde(isPaid: false)
+                                        
                                     }
                                     router.push(AppRoute(identifier:  String(describing: CongratsScreen.self)){
                                         CongratsScreen()
@@ -189,8 +193,8 @@ struct PaymantView: View {
         }
     }
     func createAddressString() -> String {
-           return "Street: \(editedStreet)City: \(editedCity)Country: \(editedCountry)"
-       }
+        return "Street: \(editedStreet)City: \(editedCity)Country: \(editedCountry)"
+    }
 }
 
 

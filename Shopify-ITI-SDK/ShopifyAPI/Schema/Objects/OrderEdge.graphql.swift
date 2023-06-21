@@ -4,9 +4,10 @@
 import Apollo
 
 public extension ShopifyAPI.Objects {
-  /// Represents a generic custom attribute.
-  static let Attribute = Object(
-    typename: "Attribute",
+  /// An auto-generated type which holds one Order and a cursor during pagination.
+  ///
+  static let OrderEdge = Object(
+    typename: "OrderEdge",
     implementedInterfaces: []
   )
 }

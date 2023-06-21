@@ -26,17 +26,17 @@ struct MainScreen: View {
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
     
-    @State var selection:TabType = .home
-    
-    private let cartManager : CartManager
+    @StateObject private var viewModel: MainScreenViewModel
+    @State var selection: TabType = .home
     
     private let colors: any AnyAppColors
     
     init(container: AppContainer) {
-        cartManager = container.require(CartManager.self)
-
+        let cartManager = container.require(CartManager.self)
+        let wishlistManager = container.require(WishlistManager.self)
         colors = container.require((any AnyAppColors).self)
-
+        _viewModel = .init(wrappedValue: .init(wishlistManager: wishlistManager,
+                                               cartManager: cartManager))
     }
     
     var body: some View {
@@ -54,7 +54,7 @@ struct MainScreen: View {
                 .tabItem {
                     TabBarItemView(systemName: "cart")
                     
-                }.badge(cartManager.state.data?.cartLine.count ?? 0)
+                }.badge(viewModel.cartCount ?? 0)
                 .tag(TabType.cart)
             
             ProfilePage(container: container)
@@ -72,7 +72,7 @@ struct MainScreen: View {
                         }
                                             ))
                     }) {
-                        Image(systemName: "gearshape").tint(colors.black)
+                        Image(systemName: "gearshape")
                     }
                 }
             } else {
@@ -82,7 +82,7 @@ struct MainScreen: View {
                             SearchView(container: container)
                         }))
                     }) {
-                        Image(systemName: "magnifyingglass").tint(colors.black)
+                        Image(systemName: "magnifyingglass")
                     }
                 }
                 
@@ -92,7 +92,8 @@ struct MainScreen: View {
                             WishlistScreen(container: container)
                         }))
                     }) {
-                        Image(systemName: "heart").tint(colors.black)
+                        let wishlistCount = viewModel.wishlistCount ?? 0
+                        Image(systemName: wishlistCount > 0 ? "heart.fill" : "heart")
                     }
                 }
             }

@@ -46,8 +46,7 @@ struct CartView: View {
                     Text("Total:")
                     Spacer()
                     if let amount = viewModel.operationState.data?.totalAmount {
-                        PriceView(price: Price(amount: amount,
-                                               currencyCode: .egp))
+                        PriceView(price: amount)
                     }
                 }
                 RoundedButton(label: "Check Out",
@@ -89,6 +88,7 @@ struct CartScrollView: View {
             LazyVStack(spacing: 16) {
                 ForEach(cart.cartLine) { item in
                     CardItemView(container: container, cartLine: item, viewModel: viewModel)
+
                 }
             }
             .padding()
