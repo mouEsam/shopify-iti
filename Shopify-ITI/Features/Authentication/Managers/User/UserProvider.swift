@@ -13,12 +13,11 @@ protocol AnyUserHolder: AnyObject, AnyUserProvider {
 
 class UserHolder: AnyUserHolder {
     static func register(_ container: AppContainer) {
-        container.register(type: (any AnyUserHolder).self) { resolver in
+        container.register(type: UserHolder.self) { resolver in
             UserHolder()
         }
-        container.register(type: (any AnyUserProvider).self) { resolver in
-            resolver.require((any AnyUserHolder).self)
-        }
+        .implements((any AnyUserHolder).self)
+        .implements((any AnyUserProvider).self)
     }
     
     var user: User?
