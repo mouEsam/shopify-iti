@@ -76,7 +76,7 @@ class ProductViewModel: ObservableObject {
             switch result {
                 case .success(let data):
                     self.uiState = .loaded(data: data)
-                    if let variant = data.data.variants.first {
+                    if let variant = data.data.variants.first(where: { $0.availableForSale }) {
                         selectedVariantId = variant.id
                         currentQuantity = min(max(1, currentQuantity),
                                               variant.quantityAvailable ?? 0)
@@ -155,7 +155,7 @@ class ProductViewModel: ObservableObject {
     
     func select(variant: ProductVariant) {
         if case .loaded(let data) = uiState,
-           data.data.variants.contains(where: { $0.id == variant.id }) {
+           data.data.variants.contains(where: { $0.availableForSale && $0.id == variant.id }) {
             selectedVariantId = variant.id
             currentQuantity = min(currentQuantity, variant.quantityAvailable ?? 0)
         }
