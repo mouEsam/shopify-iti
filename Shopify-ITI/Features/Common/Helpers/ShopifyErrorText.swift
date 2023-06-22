@@ -31,18 +31,18 @@ extension ShopifyErrors {
                 if let error = errors.first {
                     return Text(error.message)
                 } else {
-                    return Text("ShopifyErrors.Validation")
+                    return Text("ShopifyErrors.Validation".localized)
                 }
             case .Generic(let errors):
                 if let error = errors.first {
                     return error.text
                 } else {
-                    return Text("ShopifyErrors.Generic")
+                    return Text("ShopifyErrors.Generic".localized)
                 }
         }
     }
     
     private static func error(error: ShopifyErrors<ErrorCode>) -> Text {
-        Text("ShopifyErrors.\(String(describing: error))")
+        Text("ShopifyErrors.\(String(describing: error))".localized)
     }
 }
