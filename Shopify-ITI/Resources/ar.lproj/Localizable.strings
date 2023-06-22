@@ -120,5 +120,12 @@
 "SettingsStrings.wishlistErrorLabel" = "خطأ";
 
 // CartStrings
-"CartStrings.noProductsLabel" = "فارغ";
-"CartStrings.wishlistErrorLabel" = "خطأ";
+"CartStrings.price" = "السعر:";
+"CartStrings.total" = "الإجمالي:";
+"CartStrings.checkOut" = "الدفع";
+"CartStrings.emptyCartTitle" = "السلة فارغة";
+"CartStrings.emptyCartMessage" = "يجب عليك إضافة عنصر إلى السلة";
+"CartStrings.ok" = "حسنًا";
+"CartStrings.loginRequiredTitle" = "مطلوب تسجيل الدخول";
+"CartStrings.loginRequiredMessage" = "يجب تسجيل الدخول أولاً للمتابعة";
+"CartStrings.login" = "تسجيل الدخول";

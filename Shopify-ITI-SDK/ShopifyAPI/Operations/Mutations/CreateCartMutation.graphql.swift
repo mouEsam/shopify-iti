@@ -19,7 +19,7 @@ public extension ShopifyAPI {
           }
         }
         """#,
-        fragments: [CartInfo.self, MoneyInfo.self, ProductVariantInfo.self, ImageInfo.self]
+        fragments: [CartInfo.self, MoneyInfo.self, ProductVariantInfo.self, ImageInfo.self, ProductInfo.self, PriceRangeInfo.self]
       ))
 
     public var cartInput: GraphQLNullable<CartInput>

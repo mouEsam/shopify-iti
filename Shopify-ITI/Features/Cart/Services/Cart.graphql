@@ -75,7 +75,12 @@ fragment cartInfo on Cart {
           }
         }
         merchandise {
-          ... productVariantInfo
+          ... on ProductVariant{
+            ...productVariantInfo
+            product{
+              ...productInfo
+            }
+          }
         }
       }
     }

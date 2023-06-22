@@ -14,13 +14,14 @@ struct CartView: View {
     @EnvironmentObject private var container: AppContainer
     private var authManager: AuthenticationManager
     private var colors: AnyAppColors
-    
+    private let string: AnyCartStrings
+
     init(container: AppContainer) {
         colors = container.require((any AnyAppColors).self)
         authManager = container.require(AuthenticationManager.self)
         let model = container.require((any AnyCartModel).self)
         let cartManager = container.require((CartManager).self)
-
+        string = container.require((any AnyCartStrings).self)
         _viewModel = .init(wrappedValue: CartViewModel(model: model ,cartManager: cartManager))
     }
     
@@ -38,20 +39,20 @@ struct CartView: View {
                ProgressView()
                 
                 
-            case .error(error: let error):
+            case .error(error: _):
                 Image("emptyCart").resizable().aspectRatio(1, contentMode: .fit)
 
             }
             Spacer()
             VStack{
                 HStack{
-                    Text("Total:")
+                    Text(string.total.localized)
                     Spacer()
                     if let amount = viewModel.operationState.data?.totalAmount {
                         PriceView(price: amount)
                     }
                 }
-                RoundedButton(label: "Check Out",
+                RoundedButton(label: string.checkout,
                               labelColor: colors.white,
                               backgroundColor: colors.black) {
                     if case .authenticated = authManager.state {
@@ -61,19 +62,19 @@ struct CartView: View {
                         }
                         else{
                             router.alert(item:  IdentifiableWrapper(wrapped: viewModel.operationState)){_ in
-                                Alert(title: Text("Cart is empty"),
-                                      message: Text("You must add item to cart"),
-                                      dismissButton: Alert.Button.default(Text("OK")))
+                                Alert(title: Text(string.emptyCartTitle.localized),
+                                      message: Text(string.emptyCartMessage.localized),
+                                      dismissButton: Alert.Button.default(Text(string.ok.localized)))
             
                             }
                         }
                     } else {
                         router.alert(item: IdentifiableWrapper(wrapped: authManager.state)) { _ in
-                            Alert(title: Text("Login required"),
-                                  message: Text("You must be logged in first to continue"),
-                                  primaryButton: Alert.Button.default(Text("Login"),
+                            Alert(title: Text(string.loginRequiredTitle.localized),
+                                  message: Text(string.loginRequiredMessage.localized),
+                                  primaryButton: Alert.Button.default(Text(string.login.localized),
                                                                       action: { router.push(LoginScreen.Route(container: container)) }),
-                                  secondaryButton: Alert.Button.default(Text("OK")))
+                                  secondaryButton: Alert.Button.default(Text(string.ok.localized)))
                         }
                     }
                 }

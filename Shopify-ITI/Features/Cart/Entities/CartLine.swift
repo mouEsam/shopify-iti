@@ -13,6 +13,7 @@ struct CartLine: Identifiable {
     let quantity: Int
     let productVariant:ProductVariant
     let totalAmount: Price
+    let product:Product
 }
 
 extension ShopifyAPI.CartInfo.Lines.Edge.Node.Cost.TotalAmount: PriceConvertible {}
@@ -23,5 +24,6 @@ extension CartLine{
         quantity = cartLine.quantity
         productVariant = .init(from:  cartLine.merchandise.asProductVariant!)
         totalAmount = .init(from: cartLine.cost.totalAmount)
+        product = .init(from: cartLine.merchandise.asProductVariant!.product)
     }
 }

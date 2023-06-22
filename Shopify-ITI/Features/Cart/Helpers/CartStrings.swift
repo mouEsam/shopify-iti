@@ -13,6 +13,10 @@ protocol AnyCartStrings:AnyInjectable {
     var checkout: String { get }
     var emptyCartTitle: String { get }
     var emptyCartMessage: String { get }
+    var ok: String { get }
+    var loginRequiredTitle: String { get }
+    var loginRequiredMessage: String { get }
+    var login: String { get }
 }
 struct CartStrings: AnyCartStrings  {
     static func register(_ container: AppContainer) {
@@ -22,7 +26,7 @@ struct CartStrings: AnyCartStrings  {
     }
     
     let price = "CartStrings.price"
-    let total = "CartStrings.total:"
+    let total = "CartStrings.total"
     let checkout = "CartStrings.checkOut"
     let emptyCartTitle = "CartStrings.emptyCartTitle"
     let emptyCartMessage = "CartStrings.emptyCartMessage"

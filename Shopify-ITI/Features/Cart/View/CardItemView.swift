@@ -12,11 +12,14 @@ struct CardItemView: View {
     private var cartLine: CartLine
     private let viewModel:CartViewModel
     private var colors: AnyAppColors
-    
+    private let string: AnyCartStrings
+
     init(container: AppContainer,
          cartLine: CartLine,
          viewModel: CartViewModel) {
         colors = container.require((any AnyAppColors).self)
+        string = container.require((any AnyCartStrings).self)
+
         self.viewModel = viewModel
         self.cartLine = cartLine
     }
@@ -29,10 +32,10 @@ struct CardItemView: View {
                 .padding()
             
             VStack(alignment: .leading, spacing: 8) {
-                Text(cartLine.productVariant.title)
+                Text(cartLine.product.title)
                     .font(.headline)
                 HStack {
-                    Text("Price: ") //TODO: local
+                    Text(string.price.localized)
                     PriceView(price: cartLine.totalAmount)
                 }
                 Spacer()
@@ -47,7 +50,7 @@ struct CardItemView: View {
                         Image("plus")
                             .font(.title)
                     }
-                    Text(String(cartLine.quantity))
+                    Text("\(cartLine.quantity)")
                     Button(action: {
                         Task{
                             await  viewModel.decreseItem(cartline: cartLine)

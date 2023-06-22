@@ -68,11 +68,11 @@ class CartManager:AnyInjectable{
         await MainActor.run {
             self.stateHolder = .loading
         }
-        
-        if let user = authState.user {
+        switch authState{
+        case .authenticated(user: let user, let token):
             if let cart = cart {
                 if cart.userId == nil {
-                    await updateOwnership(cart, user)
+                    await updateOwnership(cart, token)
                 } else if cart.userId != user.id {
                     await removeCart()
                 } else {
@@ -81,7 +81,8 @@ class CartManager:AnyInjectable{
             }else{
                 await getCart()
             }
-        } else {
+            
+        default:
             if let cart = cart {
                 if let _ = cart.userId {
                     await removeCart()
@@ -93,6 +94,7 @@ class CartManager:AnyInjectable{
                 await getCart()
             }
         }
+        
     }
     func refreshState() {
         task?.cancel()
@@ -108,7 +110,7 @@ class CartManager:AnyInjectable{
         }
     }
     
-    private func removeCart() async {
+     func removeCart() async {
         cartIdStore.delete()
         await MainActor.run {
             self.stateHolder = .none
@@ -135,8 +137,9 @@ class CartManager:AnyInjectable{
         }
         
     }
-    private func updateOwnership(_ cart: Cart, _ user: User) async {
-        let result = await cartRemoteService.upDataBuyerIdentity(withUserID: user.id, forCart: cart.id)
+    private func updateOwnership(_ cart: Cart, _ token  :AccessToken) async {
+        
+        let result = await cartRemoteService.upDataBuyerIdentity(withUserID: token.accessToken, forCart: cart.id)
         await handleCartResult(result)
     }
     

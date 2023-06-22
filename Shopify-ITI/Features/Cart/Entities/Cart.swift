@@ -89,3 +89,13 @@ extension ShopifyAPI.CartInfo.Cost.TotalTaxAmount: PriceConvertible {}
 extension ShopifyAPI.CartInfo.Lines.Edge.Node.Merchandise.AsProductVariant: ProductVariantConvertible {}
 extension ShopifyAPI.CartInfo.Lines.Edge.Node.Merchandise.AsProductVariant.Image: RemoteImageConvertible {}
 extension ShopifyAPI.CartInfo.Lines.Edge.Node.Merchandise.AsProductVariant.Price: PriceConvertible {}
+extension ShopifyAPI.CartInfo.Lines.Edge.Node.Merchandise.AsProductVariant.Product: ProductConvertible {
+    var variantId: String {variants.nodes.first!.id}
+    
+}
+extension ShopifyAPI.CartInfo.Lines.Edge.Node.Merchandise.AsProductVariant.Product.FeaturedImage: RemoteImageConvertible {}
+
+extension ShopifyAPI.CartInfo.Lines.Edge.Node.Merchandise.AsProductVariant.Product.PriceRange:PriceRangeConvertible  {}
+
+extension ShopifyAPI.CartInfo.Lines.Edge.Node.Merchandise.AsProductVariant.Product.PriceRange.MaxVariantPrice:PriceConvertible  {}
+extension ShopifyAPI.CartInfo.Lines.Edge.Node.Merchandise.AsProductVariant.Product.PriceRange.MinVariantPrice:PriceConvertible  {}
