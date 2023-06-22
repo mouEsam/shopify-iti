@@ -112,7 +112,7 @@ struct ProductPage: View {
                                     viewModel.toggleWishlist()
                                 }.disabled(viewModel.wishlistState.isLoading)
                             }
-                            RoundedButton(label: strings.addToCartLabel.localized, // TODO: localize
+                            RoundedButton(label: strings.addToCartLabel, // TODO: localize
                                           labelColor: colors.white,
                                           backgroundColor: colors.black,
                                           isLoading: viewModel.cartState.isLoading) {

@@ -6,7 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
+import LanguageManagerSwiftUI
 
 extension String {
-    var localized: String { NSLocalizedString(self, comment: self) }
+    var localized: LocalizedStringKey {
+        return self.localizedKey
+    }
 }

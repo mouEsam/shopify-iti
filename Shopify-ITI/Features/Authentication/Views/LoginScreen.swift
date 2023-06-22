@@ -80,7 +80,7 @@ struct LoginScreen: View {
                             }
                         }
                     }.disabled(viewModel.resetState.isLoading)
-                    RoundedButton(label: strings.loginAction.localized,
+                    RoundedButton(label: strings.loginAction,
                                   labelColor: colors.white,
                                   backgroundColor: colors.black,
                                   isLoading: viewModel.operationState.isLoading) {

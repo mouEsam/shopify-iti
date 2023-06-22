@@ -257,6 +257,7 @@
 		D4CB089A2A43BD3C0014231B /* LocalErrorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB08992A43BD3C0014231B /* LocalErrorText.swift */; };
 		D4CB089C2A43BD4A0014231B /* ShopifyErrorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB089B2A43BD4A0014231B /* ShopifyErrorText.swift */; };
 		D4CB089E2A43BD570014231B /* GenericErrorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB089D2A43BD570014231B /* GenericErrorText.swift */; };
+		D4CB08A12A43C8B50014231B /* LanguageManagerSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D4CB08A02A43C8B50014231B /* LanguageManagerSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -537,6 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4AAFA392A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework in Frameworks */,
+				D4CB08A12A43C8B50014231B /* LanguageManagerSwiftUI in Frameworks */,
 				D4AF27CE2A41B18700F74FB0 /* Semaphore in Frameworks */,
 				D4596D892A33595100BD9E26 /* Shopify_ITI_SDK.framework in Frameworks */,
 				334029F07C9A89D6CEF9AB9D /* Pods_Shopify_ITI.framework in Frameworks */,
@@ -2050,6 +2052,7 @@
 			name = "Shopify-ITI";
 			packageProductDependencies = (
 				D4AF27CD2A41B18700F74FB0 /* Semaphore */,
+				D4CB08A02A43C8B50014231B /* LanguageManagerSwiftUI */,
 			);
 			productName = "Shopify-ITI";
 			productReference = D41F627C2A2C921C00780814 /* Shopify-ITI.app */;
@@ -2082,6 +2085,7 @@
 			mainGroup = D41F62732A2C921C00780814;
 			packageReferences = (
 				D4AF27CC2A41B18700F74FB0 /* XCRemoteSwiftPackageReference "Semaphore" */,
+				D4CB089F2A43C8B50014231B /* XCRemoteSwiftPackageReference "LanguageManager-SwiftUI" */,
 			);
 			productRefGroup = D41F627D2A2C921C00780814 /* Products */;
 			projectDirPath = "";
@@ -2621,6 +2625,14 @@
 				minimumVersion = 0.0.8;
 			};
 		};
+		D4CB089F2A43C8B50014231B /* XCRemoteSwiftPackageReference "LanguageManager-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Abedalkareem/LanguageManager-SwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.6;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2628,6 +2640,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D4AF27CC2A41B18700F74FB0 /* XCRemoteSwiftPackageReference "Semaphore" */;
 			productName = Semaphore;
+		};
+		D4CB08A02A43C8B50014231B /* LanguageManagerSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4CB089F2A43C8B50014231B /* XCRemoteSwiftPackageReference "LanguageManager-SwiftUI" */;
+			productName = LanguageManagerSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
