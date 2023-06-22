@@ -9,11 +9,13 @@ import Foundation
 class PaymantViewModel:ObservableObject{
     let draftOrderModel:AnyDraftOrderModel
     private var orderID:String?
+    private let cartManager:CartManager
     
     let cart:Cart
-    init(draftOrderModel:AnyDraftOrderModel,cart:Cart) {
+    init(draftOrderModel:AnyDraftOrderModel,cart:Cart,cartManager:CartManager) {
         self.draftOrderModel = draftOrderModel
         self.cart=cart
+        self.cartManager = cartManager
     }
     func creatOrde()async{
         let result = await draftOrderModel.createDraftOrder(with: cart.cartLine)
@@ -30,10 +32,10 @@ class PaymantViewModel:ObservableObject{
         }
     }
     func completeOrde(isPaid: Bool)async{
-        print(orderID)
         if let orderID = orderID{
             let result = await draftOrderModel.completeDraftOrder(id: orderID, isPaid: isPaid)
-            print(result)
+            await cartManager.removeCart()
+            
         }
     }
 }

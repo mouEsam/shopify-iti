@@ -68,27 +68,41 @@ class CartManager:AnyInjectable{
         await MainActor.run {
             self.stateHolder = .loading
         }
-        
-        if let user = authState.user {
+        switch authState{
+        case .authenticated(user: let user, let token):
             if let cart = cart {
-                if cart.userToken == nil {
-                    await updateOwnership(cart, user)
-                } else if cart.userToken != user.id {
+                if cart.userId == nil {
+                    await updateOwnership(cart, token)
+                } else if cart.userId != user.id {
                     await removeCart()
                 } else {
                     await setCart(cart)
                 }
+            }else{
+                await getCart()
             }
-        } else {
+            
+        default:
             if let cart = cart {
-                if let _ = cart.userToken {
+                if let _ = cart.userId {
                     await removeCart()
                 } else {
                     await setCart(cart)
                 }
+                
+            }else{
+                await getCart()
             }
         }
+        
     }
+    func refreshState() {
+        task?.cancel()
+        task = Task {
+            await getCart()
+        }
+    }
+    
     
     private func setCart(_ cart: Cart) async {
         await MainActor.run {
@@ -96,7 +110,7 @@ class CartManager:AnyInjectable{
         }
     }
     
-    private func removeCart() async {
+     func removeCart() async {
         cartIdStore.delete()
         await MainActor.run {
             self.stateHolder = .none
@@ -105,9 +119,27 @@ class CartManager:AnyInjectable{
     
    
   
-    
-    private func updateOwnership(_ cart: Cart, _ user: User) async {
-        let result = await cartRemoteService.upDataBuyerIdentity(withUserID: user.id, forCart: cart.id)
+    func getCart() async  {
+        
+        if cartIdStore.exists(){
+            switch cartIdStore.read(){
+            case .success(let cartID):
+                let cartResult = await cartRemoteService.fetch(byId: cartID)
+                await MainActor.run {
+                    _=cartHandler(result:cartResult)
+
+                }
+            case .failure(_):
+                await MainActor.run {
+                    self.stateHolder = .none
+                }
+            }
+        }
+        
+    }
+    private func updateOwnership(_ cart: Cart, _ token  :AccessToken) async {
+        
+        let result = await cartRemoteService.upDataBuyerIdentity(withUserID: token.accessToken, forCart: cart.id)
         await handleCartResult(result)
     }
     
@@ -134,7 +166,6 @@ class CartManager:AnyInjectable{
             _ = await task?.result
         }
         let result = cartIdStore.read()
-       // if case
         switch result{
         case .success(let cardID):
             return await addToCart(cardID, item,quantity: quantity)
@@ -148,7 +179,9 @@ class CartManager:AnyInjectable{
     private func addToCart(_ cartid: String, _ item: ProductVariant,quantity:Int) async -> Result<Cart, Error> {
         
         let cartResult = await cartRemoteService.upDate(card: cartid, with: ShopifyAPI.CartLineInput(quantity: .init(nullable: quantity), merchandiseId: item.id ))
-        return  cartHandler(result: cartResult)
+        return await MainActor.run{
+            return  cartHandler(result: cartResult)
+        }
     }
     
     private func fetchOrCreate(_ item: ProductVariant,quantity:Int) async -> Result<Cart, Error>{
@@ -161,20 +194,18 @@ class CartManager:AnyInjectable{
         
         let cartLineInputs = [ShopifyAPI.CartLineInput(quantity: .init(nullable: quantity), merchandiseId: item.id)]
         
-        let cartResult = await cartRemoteService.createCart(with: ShopifyAPI.CartInput(lines: .init(nullable: cartLineInputs),
-                                                                                       buyerIdentity: .init(nullable: buyerIdentity)))
-        
-        return  cartHandler(result: await cartRemoteService.createCart(with: ShopifyAPI.CartInput(lines: .init(nullable: cartLineInputs),
-                                                                                                  buyerIdentity: .init(nullable: buyerIdentity))))
+        let cartResult =  await cartRemoteService.createCart(with: ShopifyAPI.CartInput(lines: .init(nullable: cartLineInputs),
+                                                                                        buyerIdentity: .init(nullable: buyerIdentity)))
+        return await MainActor.run{
+            return  cartHandler(result: cartResult)
+        }
     }
     
     private func cartHandler(result:Result<Cart?, Error>) -> Result<Cart, Error>{
         switch result{
         case .success(let cart):
-            print(cart)
             if let cart = cart{
-                print(cart.id)
-                cartIdStore.write(id: cart.id)
+                handleCart(cart)
                 return Result.success(cart)
             }else{
                 return Result.failure(LocalErrors.NotFound)
@@ -187,11 +218,11 @@ class CartManager:AnyInjectable{
     
     private func handleCart(_ cart: Cart) {
         let user = authManager.state.user
-        if let ownerId = cart.userToken {
-            _ = cartIdStore.delete()
+        if let ownerId = cart.userId {
+            _ = cartIdStore.write(id: cart.id)
             if let user = user {
                 if user.id == ownerId {
-                    self.setList(cart)
+                    self.setCart(cart)
                 } else {
                     evaluateState()
                 }
@@ -200,14 +231,15 @@ class CartManager:AnyInjectable{
             }
         } else if user == nil {
             _ = cartIdStore.write(id: cart.id)
-            self.setList(cart)
+            self.setCart(cart)
         } else {
-            self.setList(cart)
+            self.setCart(cart)
             evaluateState()
         }
     }
     
-    private func setList(_ cart: Cart) {
+    private func setCart(_ cart: Cart) {
         self.stateHolder = .data(data: cart)
+        print(cart.cartLine.count)
     }
 }

@@ -35,8 +35,12 @@ struct PaymantView: View {
     
     init(container: AppContainer, cart: Cart) {
         self.localeProvider = container.require((any AnyLocaleProvider).self)
+        let  cartManager = container.require((CartManager).self)
+
         self.cart = cart
-        _viewModel = .init(wrappedValue: PaymantViewModel(draftOrderModel: container.require((any AnyDraftOrderModel).self), cart: cart))
+        _viewModel = .init(wrappedValue: PaymantViewModel(draftOrderModel: container.require((any AnyDraftOrderModel).self),
+                                                          cart: cart,
+                                                          cartManager: cartManager))
     }
     
     var body: some View {

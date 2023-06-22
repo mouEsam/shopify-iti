@@ -59,7 +59,7 @@ struct CartModel:AnyCartModel{
         switch result{
         case .success(let cart):
 
-            if let cart = cart{
+            if let cart = cart,!cart.cartLine.isEmpty{
                 return Result.success(cart)
             }else{
                 return Result.failure(LocalErrors.NotFound)

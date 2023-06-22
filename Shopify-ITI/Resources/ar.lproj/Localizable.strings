@@ -89,6 +89,7 @@
 "WishlistStrings.noProductsLabel" = "فارغ";
 "WishlistStrings.wishlistErrorLabel" = "خطأ";
 
+
 // home
 "HomeStrings.brandsLabel" = "الماركات";
 
@@ -116,3 +117,17 @@
 "OrdersStrings.totalPrice" = "التكلفة الكلية";
 "OrdersStrings.quantityItem" = "عدد";
 
+// SettingsStrings
+"SettingsStrings.noProductsLabel" = "فارغ";
+"SettingsStrings.wishlistErrorLabel" = "خطأ";
+
+// CartStrings
+"CartStrings.price" = "السعر:";
+"CartStrings.total" = "الإجمالي:";
+"CartStrings.checkOut" = "الدفع";
+"CartStrings.emptyCartTitle" = "السلة فارغة";
+"CartStrings.emptyCartMessage" = "يجب عليك إضافة عنصر إلى السلة";
+"CartStrings.ok" = "حسنًا";
+"CartStrings.loginRequiredTitle" = "مطلوب تسجيل الدخول";
+"CartStrings.loginRequiredMessage" = "يجب تسجيل الدخول أولاً للمتابعة";
+"CartStrings.login" = "تسجيل الدخول";

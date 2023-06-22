@@ -14,59 +14,67 @@ struct CartView: View {
     @EnvironmentObject private var container: AppContainer
     private var authManager: AuthenticationManager
     private var colors: AnyAppColors
-    
+    private let string: AnyCartStrings
+
     init(container: AppContainer) {
         colors = container.require((any AnyAppColors).self)
         authManager = container.require(AuthenticationManager.self)
         let model = container.require((any AnyCartModel).self)
-        _viewModel = .init(wrappedValue: CartViewModel(model: model ))
+        let cartManager = container.require((CartManager).self)
+        string = container.require((any AnyCartStrings).self)
+        _viewModel = .init(wrappedValue: CartViewModel(model: model ,cartManager: cartManager))
     }
     
     var body: some View {
         VStack{
-            ScrollView {
-                switch viewModel.operationState{
-                    case .loaded(data: let cart):
-                        LazyVStack(spacing: 16) {
-                            ForEach(cart.data.cartLine) { item in
-                                CardItemView(container: container,
-                                             cartLine: item,
-                                             viewModel: viewModel)
-                            }
-                        }
-                        .padding()
-                    case .initial:
-                        Text("initial")
-                        
-                    case .loading:
-                        Text("loading")
-                        
-                        
-                    case .error(error: let error):
-                        Text(error.localizedDescription)
-                }
+            Spacer()
+
+            switch viewModel.operationState{
+            case .loaded(data: let cart):
+                CartScrollView(viewModel: viewModel, cart: cart.data)
+            case .initial:
+                Text("initial")
+                
+            case .loading:
+               ProgressView()
+                
+                
+            case .error(error: _):
+                Image("emptyCart").resizable().aspectRatio(1, contentMode: .fit)
+
             }
+            Spacer()
             VStack{
                 HStack{
-                    Text("Total:")
+                    Text(string.total.localized)
                     Spacer()
                     if let amount = viewModel.operationState.data?.totalAmount {
                         PriceView(price: amount)
                     }
                 }
-                RoundedButton(label: "Check Out",
+                RoundedButton(label: string.checkout,
                               labelColor: colors.white,
                               backgroundColor: colors.black) {
                     if case .authenticated = authManager.state {
-                        router.push(PaymantView.Route(container: container,
-                                                      cart:viewModel.operationState.data!))
+                        if let cart = viewModel.operationState.data{
+                            router.push(PaymantView.Route(container: container,
+                                                          cart:cart))
+                        }
+                        else{
+                            router.alert(item:  IdentifiableWrapper(wrapped: viewModel.operationState)){_ in
+                                Alert(title: Text(string.emptyCartTitle.localized),
+                                      message: Text(string.emptyCartMessage.localized),
+                                      dismissButton: Alert.Button.default(Text(string.ok.localized)))
+            
+                            }
+                        }
                     } else {
                         router.alert(item: IdentifiableWrapper(wrapped: authManager.state)) { _ in
-                            Alert(title: Text("Login required"),
-                                  message: Text("You must be logged in first to continue"),
-                                  primaryButton: Alert.Button.default(Text("Login"),
+                            Alert(title: Text(string.loginRequiredTitle.localized),
+                                  message: Text(string.loginRequiredMessage.localized),
+                                  primaryButton: Alert.Button.default(Text(string.login.localized),
                                                                       action: { router.push(LoginScreen.Route(container: container)) }),
-                                  secondaryButton: Alert.Button.default(Text("OK")))
+                                  secondaryButton: Alert.Button.default(Text(string.ok.localized)))
                         }
                     }
                 }
@@ -79,73 +87,25 @@ struct CartView: View {
         }
     }
 }
-
-struct CardItemView: View {
-    
-    private var cartLine: CartLine
-    private let viewModel:CartViewModel
-    private var colors: AnyAppColors
-    
-    init(container: AppContainer,
-         cartLine: CartLine,
-         viewModel: CartViewModel) {
-        colors = container.require((any AnyAppColors).self)
+struct CartScrollView: View {
+    @ObservedObject private var viewModel: CartViewModel
+    @EnvironmentObject private var container: AppContainer
+    let cart: Cart
+    init(viewModel: CartViewModel,cart:Cart) {
+        
         self.viewModel = viewModel
-        self.cartLine = cartLine
+        self.cart = cart
     }
-    
     var body: some View {
-        HStack(alignment: .top) {
-            RemoteImageView(image: cartLine.productVariant.image)
-                .frame(width: 100,height: 100)
-                .clipShape(Circle())
-                .padding()
-            
-            VStack(alignment: .leading, spacing: 8) {
-                Text(cartLine.productVariant.title)
-                    .font(.headline)
-                HStack {
-                    Text("Price: ") //TODO: local
-                    PriceView(price: cartLine.totalAmount)
-                }
-                Spacer()
-                
-                HStack(spacing: 16) {
-                    Button(action: {
-                        Task{
-                            await  viewModel.increseItem(cartline: cartLine)
-                        }
-                        print("plus")
-                    }) {
-                        Image("plus")
-                            .font(.title)
-                    }
-                    Text(String(cartLine.quantity))
-                    Button(action: {
-                        Task{
-                            await  viewModel.decreseItem(cartline: cartLine)
-                        }
-                        
-                    }) {
-                        Image("minus")
-                            .font(.title)
-                    }
-                    
+        ScrollView {
+            LazyVStack(spacing: 16) {
+                ForEach(cart.cartLine) { item in
+                    CardItemView(container: container, cartLine: item, viewModel: viewModel)
+
                 }
             }
-            Spacer()
-            Button(action: {
-                Task{
-                    await  viewModel.deleteItem(cartline: cartLine)
-                }
-            }) {
-                Image("delete")
-                    .renderingMode(.template)
-                    .font(.title)
-            }
-            .foregroundColor(colors.black)
+            .padding()
         }
-        .padding(16)
     }
 }
 

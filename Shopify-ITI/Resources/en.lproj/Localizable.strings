@@ -118,3 +118,13 @@
 "OrdersStrings.totalPrice" = "Total Price";
 "OrdersStrings.quantityItem" = "Quantity";
 
+// CartStrings
+"CartStrings.price" = "Price:";
+"CartStrings.total" = "Total:";
+"CartStrings.checkOut" = "Check Out";
+"CartStrings.emptyCartTitle" = "Cart is empty";
+"CartStrings.emptyCartMessage" = "You must add item to cart";
+"CartStrings.ok" = "OK";
+"CartStrings.loginRequiredTitle" = "Login required";
+"CartStrings.loginRequiredMessage" = "You must be logged in first to continue";
+"CartStrings.login" = "Login";
