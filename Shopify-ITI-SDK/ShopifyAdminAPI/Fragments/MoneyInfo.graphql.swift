@@ -8,7 +8,7 @@ public extension ShopifyAdminAPI {
     public static var fragmentDefinition: StaticString { """
       fragment moneyInfo on MoneyV2 {
         __typename
-        amount
+        amount100: amount
         currencyCode
       }
       """ }
@@ -19,12 +19,12 @@ public extension ShopifyAdminAPI {
     public static var __parentType: Apollo.ParentType { ShopifyAdminAPI.Objects.MoneyV2 }
     public static var __selections: [Apollo.Selection] { [
       .field("__typename", String.self),
-      .field("amount", ShopifyAdminAPI.Decimal.self),
+      .field("amount", alias: "amount100", ShopifyAdminAPI.Decimal.self),
       .field("currencyCode", GraphQLEnum<ShopifyAdminAPI.CurrencyCode>.self),
     ] }
 
     /// Decimal money amount.
-    public var amount: ShopifyAdminAPI.Decimal { __data["amount"] }
+    public var amount100: ShopifyAdminAPI.Decimal { __data["amount100"] }
     /// Currency of the money.
     public var currencyCode: GraphQLEnum<ShopifyAdminAPI.CurrencyCode> { __data["currencyCode"] }
   }

@@ -50,6 +50,7 @@
 "ProductStrings.addToCartSuccess" = "Success";
 "ProductStrings.addToCartSuccessMessage" = "Added to cart";
 "ProductStrings.wishlistError" = "Error";
+"ProductStrings.outOfStock" = "Out Of Stock";
 
 // AuthenticationStrings
 "AuthenticationStrings.loginLabel" = "Hello";

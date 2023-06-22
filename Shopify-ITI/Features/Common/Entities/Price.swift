@@ -41,6 +41,11 @@ protocol PriceConvertible {
     var currencyCode: GraphQLEnum<CurrencyCode> { get }
 }
 
+struct ConcretePriceConvertible<CurrencyCode: AnyCurrencyCode>: PriceConvertible {
+    var amount: String
+    var currencyCode: GraphQLEnum<CurrencyCode>
+}
+
 extension Price {
     init(from price: some PriceConvertible) {
         let currencyRawValue = price.currencyCode.value?.rawValue
