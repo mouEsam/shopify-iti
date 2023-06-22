@@ -9,8 +9,8 @@ import Foundation
 
 extension NotificationCenter: AnyNotificationCenter {
     static func register(_ container: AppContainer) {
-        container.register(type: (any AnyNotificationCenter).self) { resolver in
+        container.register(type: NotificationCenter.self) { resolver in
             NotificationCenter.default
-        }
+        }.implements((any AnyNotificationCenter).self)
     }
 }

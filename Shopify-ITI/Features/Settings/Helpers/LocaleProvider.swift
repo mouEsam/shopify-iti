@@ -13,10 +13,7 @@ class LocaleProvider: AnyLocaleProvider {
             LocaleProvider(languageStore: resolver.require((any AnyLanguageLocalStore).self),
                            countryStore: resolver.require((any AnyCountryLocalStore).self))
         }
-        
-        container.register(type: (any AnyLocaleProvider).self) { resolver in
-            resolver.require(LocaleProvider.self)
-        }
+        .implements((any AnyLocaleProvider).self)
     }
     
     private let languageStore: any AnyLanguageLocalStore
