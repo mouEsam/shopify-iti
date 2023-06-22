@@ -99,9 +99,9 @@ struct ProfilePage: View {
              Spacer()
              Text("Please login to show orders and wishlist").font(.title)
              Spacer()
-            RoundedButton(label: strings.loginAction.localized,
-                       labelColor: colors.white,
-                       backgroundColor: colors.black
+            RoundedButton(label: strings.loginAction,
+                          labelColor: colors.white,
+                          backgroundColor: colors.black
             ) {
                 Task {
                     router.push(AppRoute(identifier:colors.white.hashValue, content: {

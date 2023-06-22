@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LanguageManagerSwiftUI
 
 @main
 struct Shopify_ITIApp: App {
@@ -21,11 +22,13 @@ struct RootView: View {
     @StateObject private var container: AppContainer = AppContainer.production()
     
     var body: some View {
-       RouterView(router: AppRouter()) {
-           SplashScreen(container: container)
-//           OrdersScreen(container: container)
+        LanguageManagerView(.deviceLanguage) {
+            RouterView(router: AppRouter()) {
+                SplashScreen(container: container)
+            }
+            .tint(.accentColor)
+            .environmentObject(container)
+            .transition(.slide)
         }
-        .tint(.accentColor)
-        .environmentObject(container)
     }
 }

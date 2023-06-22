@@ -87,10 +87,10 @@ struct RegisterScreen: View {
                                   error: viewModel.confirmPasswordError,
                                   strokeColor: colors.dark2Grey,
                                   obsecurable: true)
-                    RoundedButton(label: strings.signupAction.localized,
-                               labelColor: colors.white,
-                               backgroundColor: colors.black,
-                               isLoading: viewModel.operationState.isLoading) {
+                    RoundedButton(label: strings.signupAction,
+                                  labelColor: colors.white,
+                                  backgroundColor: colors.black,
+                                  isLoading: viewModel.operationState.isLoading) {
                         Task {
                             await viewModel.register()
                         }

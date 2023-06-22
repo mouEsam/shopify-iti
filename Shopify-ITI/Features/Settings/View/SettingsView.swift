@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import LanguageManagerSwiftUI
 
 struct SettingsView: View {
     
+    @EnvironmentObject private var languageSettings: LanguageSettings
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
     @StateObject private var settingViewModel:SettingViewModel
@@ -35,6 +37,10 @@ struct SettingsView: View {
                 }
                 .onChange(of: settingViewModel.langauge) { newLanguage in
                     settingViewModel.change(language: newLanguage)
+                    withAnimation {
+                        let language: Languages = .init(rawValue: newLanguage.rawValue.lowercased()) ?? .deviceLanguage
+                        languageSettings.selectedLanguage = language
+                    }
                 }
             }
             let countries = settingViewModel.uiState.data?.countries ?? [settingViewModel.country]

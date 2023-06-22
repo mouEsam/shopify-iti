@@ -31,7 +31,7 @@ struct RoundedButton: View {
     var body: some View {
         Button(action: action) {
             HStack {
-                Text(label)
+                Text(label.localized)
                     .padding(10)
                 if isLoading {
                     ProgressView()

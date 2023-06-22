@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "languagemanager-swiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Abedalkareem/LanguageManager-SwiftUI",
+      "state" : {
+        "revision" : "429ce35c2f82f05d69a6042f50ff622fc0422704",
+        "version" : "0.0.6"
+      }
+    },
+    {
       "identity" : "semaphore",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/groue/Semaphore",
