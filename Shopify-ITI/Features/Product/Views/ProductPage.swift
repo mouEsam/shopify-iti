@@ -61,8 +61,8 @@ struct ProductPage: View {
                                     .fontWeight(.medium)
                                 HStack {
                                     PriceRangeView(priceRange: product.priceRange)
-                                    .font(.title2)
-                                    .fontWeight(.heavy)
+                                        .font(.title2)
+                                        .fontWeight(.heavy)
                                     Spacer()
                                     HStack(spacing: 16) {
                                         Button(action: viewModel.increment) {
@@ -84,22 +84,29 @@ struct ProductPage: View {
                             .padding(.trailing, safeAreaInsets.trailing)
                             .padding(.horizontal, 24)
                             
-                            ScrollView(.horizontal) {
-                                HStack {
-                                    ForEach(product.variants) { variant in
-                                        let isSelected = viewModel.selectedVariantId == variant.id
-                                        VariantItemView(container: container,
-                                                        variant: variant,
-                                                        isSelected: isSelected) {
-                                            viewModel.select(variant: variant)
+                            ScrollViewReader { proxy in
+                                ScrollView(.horizontal) {
+                                    HStack {
+                                        ForEach(product.variants) { variant in
+                                            let isSelected = viewModel.selectedVariantId == variant.id
+                                            VariantItemView(container: container,
+                                                            variant: variant,
+                                                            isSelected: isSelected) {
+                                                viewModel.select(variant: variant)
+                                            }
+                                                            .frame(height: 250)
+                                                            .aspectRatio(0.55, contentMode: .fit)
                                         }
-                                        .frame(height: 250)
-                                        .aspectRatio(0.55, contentMode: .fit)
+                                    }
+                                    .padding(.leading, safeAreaInsets.leading)
+                                    .padding(.trailing, safeAreaInsets.trailing)
+                                    .padding(24)
+                                    .onFirstAppear {
+                                        if let variantId = viewModel.selectedVariantId {
+                                            proxy.scrollTo(variantId)
+                                        }
                                     }
                                 }
-                                .padding(.leading, safeAreaInsets.leading)
-                                .padding(.trailing, safeAreaInsets.trailing)
-                                .padding(24)
                             }
                         }
                         .frame(maxWidth: .infinity)

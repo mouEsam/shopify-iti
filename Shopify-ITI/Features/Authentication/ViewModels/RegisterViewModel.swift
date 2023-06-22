@@ -27,6 +27,7 @@ class RegisterViewModel: ObservableObject {
     @Published var firstName: String = ""
     @Published var lastName: String = ""
     @Published var email: String = ""
+    @Published var phonePrefix: String = "+20"
     @Published var phone: String = ""
     @Published var password: String = ""
     @Published var confirmPassword: String = ""
@@ -86,7 +87,7 @@ class RegisterViewModel: ObservableObject {
         let credentials = SignupCredentials(firstName: firstName,
                                             lastName: lastName,
                                             email: email,
-                                            phone: phone,
+                                            phone: phonePrefix + phone,
                                             password: password)
         let result = await repository.signup(with: credentials)
         await MainActor.run {

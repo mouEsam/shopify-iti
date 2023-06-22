@@ -16,6 +16,8 @@ protocol AnyAuthenticationStrings {
     var loginAction: String { get }
     var signupAction: String { get }
     var signupError: String { get }
+    var signupSuccess: String { get }
+    var signupSuccessMessage: String { get }
     
     var resetSuccess: String { get }
     var resetSuccessMessage: String { get }
@@ -63,6 +65,8 @@ struct AuthenticationStrings: AnyAuthenticationStrings, AnyInjectable  {
     let loginAction = "AuthenticationStrings.loginAction"
     let signupAction = "AuthenticationStrings.signupAction"
     let signupError = "AuthenticationStrings.signupError"
+    let signupSuccess = "AuthenticationStrings.signupSuccess"
+    let signupSuccessMessage = "AuthenticationStrings.signupSuccessMessage"
     
     let resetSuccess = "AuthenticationStrings.resetSuccess"
     let resetSuccessMessage = "AuthenticationStrings.resetSuccessMessage"
