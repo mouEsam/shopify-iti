@@ -30,34 +30,35 @@ struct OrdersScreen: View {
     }
     
     var body: some View {
-        ScrollView{
+        Group{
             switch viewModel.operationState {
-                case .loaded(let data):
-                    if(data.data.isEmpty){
-                        Text(strings.emptyList.localized).frame(alignment: .center)
-                    }
-                    else{
+            case .loaded(let data):
+                if(data.data.isEmpty){
+                    NoResultsView(message: strings.emptyList)
+                }
+                else{
+                    ScrollView{
                         ForEach(data.data,id:\.id){
                             SectionOrder(strings: strings, order: $0)
                             Divider()
                         }
-                    }
+                    }.scrollIndicators(.hidden)
                     
-                case .error(let error):
-                    Text("\(error.localizedDescription)")
-                case .loading:
-                    ProgressView()
-                default:
-                    Group {}
+                }
+                
+            case .error(let error):
+                Text("\(error.localizedDescription)")
+            case .loading:
+                ProgressView()
+            default:
+                Group {}
             }
-        }.frame(alignment: .top)
-            .scrollIndicators(.hidden)
-            .padding(.horizontal)
+        }.padding(.horizontal)
             .onFirstAppear {
                 Task{
                     await viewModel.loadBrand()
                 }
-            }.onReceive(viewModel.$operationState){state in print(state)}
+            }
     }
 }
 
