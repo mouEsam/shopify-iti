@@ -85,3 +85,33 @@
 // WishlistStrings
 "WishlistStrings.noProductsLabel" = "Empty";
 "WishlistStrings.wishlistErrorLabel" = "Error";
+
+
+// home
+"HomeStrings.brandsLabel" = "Brands";
+
+//categories
+"CategoriesStrings.menLabel" = "men";
+"CategoriesStrings.womenLabel" = "women" ;
+"CategoriesStrings.kidLabel" = "kid";
+"CategoriesStrings.saleLabel" = "sale";
+
+//profile
+
+"ProfileStrings.emptyListWishList" = "No Wishlist Added Yet";
+"ProfileStrings.emptyListOrders" = "No Orders Added Yet";
+"ProfileStrings.welcomeLabel" = "Welcome";
+"ProfileStrings.wishlsitLabel" = "Wishlist";
+"ProfileStrings.orderLabel" = "Order";
+"ProfileStrings.moreLabel" = "More";
+"ProfileStrings.loginAction" = "Login";
+"ProfileStrings.loginMessage" = "Please Login";
+
+
+
+//profile
+"OrdersStrings.orderNumber" = "Order Number";
+"OrdersStrings.emptyList" = "Empty";
+"OrdersStrings.totalPrice" = "Total Price";
+"OrdersStrings.quantityItem" = "Quantity";
+
