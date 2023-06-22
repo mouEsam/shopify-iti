@@ -10,10 +10,20 @@ import SwiftUI
 
 struct ErrorMessageView: View {
     
-    private let message: String
+    private let content: () -> AnyView
     
     init(message: String) {
-        self.message = message
+        self.content = {
+            AnyView(Text(message.localized)
+                .font(.title)
+                .multilineTextAlignment(.center))
+        }
+    }
+    
+    init(error: Error) {
+        self.content = {
+            AnyView(ErrorView(error: error))
+        }
     }
     
     var body: some View {
@@ -22,9 +32,7 @@ struct ErrorMessageView: View {
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 150)
-            Text(message.localized)
-                .font(.title)
-                .multilineTextAlignment(.center)
+            content()
         }
     }
 }

@@ -46,7 +46,7 @@ struct DraftOrderServices:AnyInjectable{
                     return .success(id)
                 } else {
                     let errors = data.userErrors.toShopifyErrors()
-                    return .failure(DraftOrderError.Generic(genericErrors: errors))
+                    return .failure(DraftOrderError.Generic(errors: errors))
                 }
             } else {
                 return .failure(DraftOrderError.init(from: result.errors ?? []))
@@ -66,7 +66,7 @@ struct DraftOrderServices:AnyInjectable{
                     return .success(id)
                 } else {
                     let errors = data.userErrors.toShopifyErrors()
-                    return .failure(DraftOrderError.Generic(genericErrors: errors))
+                    return .failure(DraftOrderError.Generic(errors: errors))
                 }
             } else {
                 return .failure(DraftOrderError.init(from: result.errors ?? []))
@@ -82,7 +82,7 @@ struct DraftOrderServices:AnyInjectable{
                     return .success(id)
                 } else {
                     let errors = data.userErrors.toShopifyErrors()
-                    return .failure(DraftOrderError.Generic(genericErrors: errors))
+                    return .failure(DraftOrderError.Generic(errors: errors))
                 }
             } else {
                 return .failure(DraftOrderError.init(from: result.errors ?? []))

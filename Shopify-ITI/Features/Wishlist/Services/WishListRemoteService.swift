@@ -84,7 +84,7 @@ struct WishlistRemoteService: AnyInjectable {
                     return .success(Wishlist(from: wishlist))
                 } else {
                     let errors = data.userErrors.toShopifyErrors()
-                    return .failure(WishlistError.Generic(genericErrors: errors))
+                    return .failure(WishlistError.Generic(errors: errors))
                 }
             } else {
                 return .failure(WishlistError.init(from: result.errors ?? []))
@@ -102,7 +102,7 @@ struct WishlistRemoteService: AnyInjectable {
                     return .success(Void())
                 } else {
                     let errors = data.userErrors.toShopifyErrors()
-                    return .failure(WishlistError.Generic(genericErrors: errors))
+                    return .failure(WishlistError.Generic(errors: errors))
                 }
             } else {
                 return .failure(WishlistError.init(from: result.errors ?? []))
@@ -127,7 +127,7 @@ struct WishlistRemoteService: AnyInjectable {
                     return .success(Wishlist(from: wishlist))
                 } else {
                     let errors = data.userErrors.toShopifyErrors()
-                    return .failure(WishlistError.Generic(genericErrors: errors))
+                    return .failure(WishlistError.Generic(errors: errors))
                 }
             } else {
                 return .failure(WishlistError.init(from: result.errors ?? []))

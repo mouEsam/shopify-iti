@@ -18,12 +18,12 @@ struct LanguageLocalStore: AnyLanguageLocalStore {
     private let userDefaults: UserDefaults
     private let keysProvider: any AnyKeysProvider
     
-    func read() -> Result<String, LocalErrors> {
+    func read() -> String? {
         if let languages = userDefaults.stringArray(forKey: keysProvider.languageLocalKey),
            let language = languages.first {
-            return .success(language)
+            return language
         }
-        return .failure(LocalErrors.NotFound)
+        return nil
     }
     
     func write(language: String) {

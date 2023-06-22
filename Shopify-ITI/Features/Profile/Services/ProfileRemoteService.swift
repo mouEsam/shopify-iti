@@ -76,7 +76,7 @@ struct ProfileRemoteService: AnyInjectable {
                     return .success(Session(user: user, accessToken: token))
                 } else {
                     let errors = data.customerUserErrors.map { ProfileError.ValidationError(from: $0) }
-                    return .failure(ProfileError.Validation(validationErrors: errors))
+                    return .failure(ProfileError.Validation(errors: errors))
                 }
             } else {
                 return .failure(ProfileError.Unknown)
