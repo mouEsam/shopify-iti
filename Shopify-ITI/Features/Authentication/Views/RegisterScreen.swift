@@ -73,6 +73,7 @@ struct RegisterScreen: View {
                     AuthTextField(text: $viewModel.phone,
                                   label: strings.phoneLabel,
                                   hint: strings.phoneHint,
+                                  prefix: viewModel.phonePrefix,
                                   error: viewModel.phoneError,
                                   strokeColor: colors.dark2Grey).keyboardType(.phonePad)
                     AuthTextField(text: $viewModel.password,
@@ -116,9 +117,13 @@ struct RegisterScreen: View {
         .onReceive(viewModel.$operationState) { state in
             if state.isLoaded {
                 router.pop()
+                router.alert(item: IdentifiableWrapper(wrapped: state)) { wrapper in
+                    Alert(title: Text(strings.signupSuccess.localized),
+                          message: Text(strings.signupSuccessMessage.localized))
+                }
             } else if let error = state.error {
                 router.alert(item: ErrorWrapper(error: error)) { wrapper in
-                    Alert(title: Text(strings.signupError),
+                    Alert(title: Text(strings.signupError.localized),
                           message: wrapper.error.text)
                 }
             }
