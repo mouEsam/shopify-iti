@@ -28,7 +28,6 @@ struct RootView: View {
             }
             .tint(.accentColor)
             .environmentObject(container)
-            .transition(.slide)
         }
     }
 }
