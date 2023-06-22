@@ -76,8 +76,11 @@ class ProductViewModel: ObservableObject {
             switch result {
                 case .success(let data):
                     self.uiState = .loaded(data: data)
-                    let variant = data.data.variants.first
-                    selectedVariantId = variant?.id
+                    if let variant = data.data.variants.first {
+                        selectedVariantId = variant.id
+                        currentQuantity = min(max(1, currentQuantity),
+                                              variant.quantityAvailable ?? 0)
+                    }
                     break
                 case .failure(let error):
                     self.uiState = .error(error: error)
@@ -115,6 +118,33 @@ class ProductViewModel: ObservableObject {
         setQuantity(currentQuantity - 1)
     }
     
+    private func updateProduct(_ product: DetailedProduct) {
+        var variants = product.variants
+        if let variantId = selectedVariantId,
+           let variantIndex = variants.firstIndex(where: { $0.id == variantId }) {
+            var variant = variants[variantIndex]
+            var quantity = (variant.quantityAvailable ?? 0)
+            quantity -= currentQuantity
+            variant.quantityAvailable = quantity
+            variant.availableForSale = quantity > 0
+            variants[variantIndex] = variant
+            if !variant.availableForSale {
+                selectedVariantId = variants.first(where: \.availableForSale)?.id
+            }
+        }
+        var product = product
+        product.variants = variants
+        if let variantId = selectedVariantId,
+           let variantIndex = variants.firstIndex(where: { $0.id == variantId }) {
+            let variant = variants[variantIndex]
+            currentQuantity = min(max(1, currentQuantity),
+                                  variant.quantityAvailable ?? 0)
+        } else {
+            currentQuantity = 0
+        }
+        uiState = .loaded(data: SourcedData.local(product))
+    }
+    
     private func setQuantity(_ quantity: Int) {
         if case .loaded(let data) = uiState,
            let variantId = selectedVariantId,
@@ -134,7 +164,7 @@ class ProductViewModel: ObservableObject {
     func addToCart() {
         if let product = uiState.data,
            let variantId = selectedVariantId,
-           let variant = product.variants.first(where: { $0.id == variantId }) {
+           let variant = product.variants.first(where: { $0.availableForSale && $0.id == variantId }) {
             cartTask?.cancel()
             cartTask = Task {
                 await MainActor.run {
@@ -146,6 +176,7 @@ class ProductViewModel: ObservableObject {
                     switch result {
                         case .success(_):
                             cartState = .loaded(data: SourcedData.remote(Void()))
+                            self.updateProduct(product)
                         case .failure(let error):
                             cartState = .error(error: error)
                     }

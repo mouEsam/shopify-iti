@@ -1,8 +1,3 @@
-fragment moneyInfo on MoneyV2 {
-  amount
-  currencyCode
-}
-
 fragment priceRangeInfo on ProductPriceRange {
   maxVariantPrice {
     ...moneyInfo

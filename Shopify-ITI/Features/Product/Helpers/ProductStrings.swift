@@ -13,6 +13,7 @@ protocol AnyProductStrings {
     var addToCartSuccess: String { get }
     var addToCartSuccessMessage: String { get }
     var wishlistError: String { get }
+    var outOfStock: String { get }
 }
 // TODO: localize
 struct ProductStrings: AnyProductStrings, AnyInjectable  {
@@ -27,5 +28,6 @@ struct ProductStrings: AnyProductStrings, AnyInjectable  {
     let addToCartSuccess = "ProductStrings.addToCartSuccess"
     let addToCartSuccessMessage = "ProductStrings.addToCartSuccessMessage"
     let wishlistError = "ProductStrings.wishlistError"
+    let outOfStock = "ProductStrings.outOfStock"
     
 }

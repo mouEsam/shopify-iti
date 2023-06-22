@@ -126,7 +126,7 @@ public extension ShopifyAdminAPI {
         ] }
 
         /// Decimal money amount.
-        public var amount: ShopifyAdminAPI.Decimal { __data["amount"] }
+        public var amount100: ShopifyAdminAPI.Decimal { __data["amount100"] }
         /// Currency of the money.
         public var currencyCode: GraphQLEnum<ShopifyAdminAPI.CurrencyCode> { __data["currencyCode"] }
 
@@ -243,7 +243,7 @@ public extension ShopifyAdminAPI {
           public static var __parentType: Apollo.ParentType { ShopifyAdminAPI.Objects.MoneyV2 }
 
           /// Decimal money amount.
-          public var amount: ShopifyAdminAPI.Decimal { __data["amount"] }
+          public var amount100: ShopifyAdminAPI.Decimal { __data["amount100"] }
           /// Currency of the money.
           public var currencyCode: GraphQLEnum<ShopifyAdminAPI.CurrencyCode> { __data["currencyCode"] }
 
@@ -265,7 +265,7 @@ public extension ShopifyAdminAPI {
           public static var __parentType: Apollo.ParentType { ShopifyAdminAPI.Objects.MoneyV2 }
 
           /// Decimal money amount.
-          public var amount: ShopifyAdminAPI.Decimal { __data["amount"] }
+          public var amount100: ShopifyAdminAPI.Decimal { __data["amount100"] }
           /// Currency of the money.
           public var currencyCode: GraphQLEnum<ShopifyAdminAPI.CurrencyCode> { __data["currencyCode"] }
 

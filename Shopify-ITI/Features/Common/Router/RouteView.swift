@@ -67,9 +67,9 @@ struct RouterView<Router: AnyRouter, Content: View>: View {
                     let route = wrapper.route
                     let body = route.body()
                     AnyView(erasing: body)
-                        
                         .environmentObject(EnvironmentObjectWrapper(object: wrapper.route as any AnyRoute))
             }
+            .hiddenNavigationBarStyle()
         }.sheet(item: getOverlayBinding(for: .sheet)) { route in
             route.body().environmentObject(EnvironmentObjectWrapper(object: route as any AnyOverlayRoute))
         }.fullScreenCover(item: getOverlayBinding(for: .fullscreen)) { route in

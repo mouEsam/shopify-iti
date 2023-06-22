@@ -44,96 +44,90 @@ struct ProfilePage: View {
     var body: some View {
         let name = profileviewModel.userState?.firstName
         VStack{
-            if  name != nil {
-                HStack{
+            if let name = name {
+                Group {
                     Text(strings.welcomeLabel.localized)
-                        .font(.title)
-                        .bold()
-                    Text(name ?? "")
-                        .font(.title)
-                        .bold()
-                    
+                        
+                    + Text(", ")
+                    + Text(name)
                 }
-                ScrollView{
-                    
-                    HStack{
-                        Text(strings.orderLabel.localized)
-                            .font(.title2)
-                            .bold()
-                            .padding()
-                        Spacer()
-                        Button(strings.moreLabel.localized, role: .cancel){
-                            router.push(OrdersScreen.Route(container: container))
-                        }.buttonStyle(.plain)
-                            .foregroundColor(.black)
-                            .font(.title2).padding()
-                    }
+                .font(.title)
+                .bold()
+                ScrollView {
                     Group {
-                        switch ordersViewModel.operationState {
-                        case .loaded(let data):
-                            if(data.data.isEmpty){
-                                Text(strings.emptyListOrders.localized)
-                            }
-                            else{
-                                let items = Array(data.data.prefix(2))
-                                ForEach(items,id:\.id){
-                                    SectionOrder(strings: stringsOrders, order: $0)
-                                    Divider()
-                                }
-                            }
-                            
-                        case .error(let error):
-                            Text("\(error.localizedDescription)")
-                        case .loading:
-                            ProgressView()
-                        default:
-                            Group {}
+                        HStack {
+                            Text(strings.orderLabel.localized)
+                                .font(.title2)
+                                .bold()
+                                .padding()
+                            Spacer()
+                            Button(strings.moreLabel.localized, role: .cancel){
+                                router.push(OrdersScreen.Route(container: container))
+                            }.buttonStyle(.plain)
+                                .foregroundColor(.black)
+                                .font(.title2).padding()
                         }
-                    }
-                    HStack{
-                        Text(strings.wishlsitLabel.localized)
-                            .font(.title2)
-                            .bold()
-                            .padding()
-                        Spacer()
-                        Button(strings.moreLabel.localized, role: .cancel){
-                            router.push(WishlistScreen.Route(container: container))
-                        }.buttonStyle(.plain)
-                            .foregroundColor(.black)
-                            .font(.title2).padding()
-                    }
-                    Group {
-                        switch wishListViewModel.uiState {
-                        case .loaded(let data):
-                            if(data.data.isEmpty){
-                                Text(strings.emptyListWishList)
+                        Group {
+                            switch ordersViewModel.operationState {
+                                case .loaded(let data):
+                                    if(data.data.isEmpty){
+                                        NoResultsView(message: strings.emptyListOrders)
+                                    } else {
+                                        let items = Array(data.data.prefix(2))
+                                        ForEach(items,id:\.id){
+                                            SectionOrder(strings: stringsOrders, order: $0)
+                                            Divider()
+                                        }
+                                    }
+                                case .error(let error):
+                                    ErrorMessageView(error: error)
+                                case .loading:
+                                    ProgressView()
+                                default:
+                                    Group {}
                             }
-                            else {
-                                let data = Array(data.data.prefix(2))
-                                ForEach(data,id:\.id){item in
-                                    WishlistItemView(container: container,
-                                                     product: item.product)
-                                }
-                            }
-                        case .error(let error):
-                            Text("\(error.localizedDescription)")
-                        case .loading:
-                            ProgressView()
-                        default:
-                            Group {}
                         }
-                    }.padding(.horizontal)
-                }.onFirstAppear {
-                    wishListViewModel.initialize()
-                    Task{
-                        await ordersViewModel.loadBrand()
-                    }
+                        HStack {
+                            Text(strings.wishlsitLabel.localized)
+                                .font(.title2)
+                                .bold()
+                                .padding()
+                            Spacer()
+                            Button(strings.moreLabel.localized, role: .cancel){
+                                router.push(WishlistScreen.Route(container: container))
+                            }.buttonStyle(.plain)
+                                .foregroundColor(.black)
+                                .font(.title2).padding()
+                        }
+                        Group {
+                            switch wishListViewModel.uiState {
+                                case .loaded(let data):
+                                    if(data.data.isEmpty) {
+                                        NoResultsView(message: strings.emptyListWishList)
+                                    } else {
+                                        let data = Array(data.data.prefix(2))
+                                        ForEach(data,id:\.id){item in
+                                            WishlistItemView(container: container,
+                                                             product: item.product)
+                                        }
+                                    }
+                                case .error(let error):
+                                    ErrorMessageView(error: error)
+                                case .loading:
+                                    ProgressView()
+                                default:
+                                    Group {}
+                            }
+                        }.padding(.horizontal)
+                    }.onFirstAppear {
+                        wishListViewModel.initialize()
+                        Task{
+                            await ordersViewModel.loadBrand()
+                        }
+                    }.padding()
                 }
-                
-            }
-            
-            else {
-                VStack{
+            } else {
+                VStack {
                     Spacer()
                     Image(systemName: "person.crop.circle")
                         .resizable()
@@ -153,14 +147,11 @@ struct ProfilePage: View {
                             }))
                         }
                     }.frame(alignment: .bottom)
-                    
                 }
             }
-            
-        }.padding()
-            .onFirstAppear {
-                profileviewModel.initialize()
-                
-            }
+        }
+        .onFirstAppear {
+            profileviewModel.initialize()
+        }
     }
 }

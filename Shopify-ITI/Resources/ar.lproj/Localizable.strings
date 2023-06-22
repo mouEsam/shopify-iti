@@ -50,6 +50,7 @@
 "ProductStrings.addToCartSuccess" = "نجاح";
 "ProductStrings.addToCartSuccessMessage" = "تمت الإضافة إلى عربة التسوق";
 "ProductStrings.wishlistError" = "خطأ";
+"ProductStrings.outOfStock" = "غير متوفر";
 
 // AuthenticationStrings
 "AuthenticationStrings.loginLabel" = "مرحبًا";
