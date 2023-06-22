@@ -37,7 +37,7 @@ struct OnboardingScreen: View {
     
     var body: some View {
         ZStack(alignment: .center) {
-            Image("onboarding_2")
+            Image("onboarding")
                 .resizable()
                 .ignoresSafeArea(.all)
             VStack(alignment: .trailing) {
@@ -58,7 +58,7 @@ struct OnboardingScreen: View {
                     Text(strings.onboardingSublabel)
                         .font(.caption)
                         .textCase(.uppercase)
-                        .foregroundColor(colors.darkGrey)
+                        .foregroundColor(colors.adaptiveGrey)
                 }.frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
                     .padding(.horizontal)

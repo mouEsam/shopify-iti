@@ -14,6 +14,7 @@ protocol AnyAppColors {
     var grey: Color { get }
     var darkGrey: Color { get }
     var dark2Grey: Color { get }
+    var adaptiveGrey: Color { get }
     var lightGrey: Color { get }
     var black: Color { get }
 }
@@ -30,6 +31,7 @@ struct AppColors: AnyAppColors, AnyInjectable  {
     let grey: Color = .init(rgb: 0xFFDBDBDB)
     let darkGrey: Color = .init(rgb: 0xFF303030)
     let dark2Grey: Color = .init(rgb: 0xFF909090)
+    let adaptiveGrey: Color = Color("AdaptiveGrey")
     let lightGrey: Color = .init(rgb: 0xFFDEDEDE)
     let black: Color = Color("OnSurfaceColor")
 }

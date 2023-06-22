@@ -10,6 +10,7 @@ import SwiftUI
 
 struct AuthTextField: View {
     
+    private let prefix: String?
     private let label: String
     private let hint: String
     private let error: String?
@@ -22,12 +23,14 @@ struct AuthTextField: View {
     init(text: Binding<String>,
          label: String,
          hint: String,
+         prefix: String? = nil,
          error: String? = nil,
          strokeColor: Color,
          obsecurable: Bool = false) {
         self.text = text
         self.label = label
         self.hint = hint
+        self.prefix = prefix
         self.error = error
         self.strokeColor = strokeColor
         self.obsecurable = obsecurable
@@ -42,13 +45,17 @@ struct AuthTextField: View {
                         .font(.footnote)
                         .foregroundColor(strokeColor)
                     Group {
-                        if obsecured {
-                            SecureField(hint.localized, text: text)
-                        } else {
-                            TextField(hint.localized, text: text)
+                        HStack {
+                            if let prefix = prefix {
+                                Text(prefix)
+                            }
+                            if obsecured {
+                                SecureField(hint.localized, text: text)
+                            } else {
+                                TextField(hint.localized, text: text)
+                            }
                         }
                     }.frame(height: 25)
-                    
                 }
                 if obsecurable {
                     Button {

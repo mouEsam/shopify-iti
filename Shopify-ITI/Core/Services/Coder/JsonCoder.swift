@@ -12,12 +12,8 @@ struct JsonCoder: AnyDecoder, AnyEncoder {
         container.register(type: JsonCoder.self) { resolver in
             JsonCoder()
         }
-        container.register(type: (any AnyDecoder).self) { resolver in
-            resolver.require(JsonCoder.self)
-        }
-        container.register(type: (any AnyEncoder).self) { resolver in
-            resolver.require(JsonCoder.self)
-        }
+        .implements((any AnyDecoder).self)
+        .implements((any AnyEncoder).self)
     }
     
     func decode<T: Decodable>(target: T.Type, data: Data, userInfo: [CodingUserInfoKey: Any]? = nil, dateFormatter: DateFormatter? = nil) throws -> T {

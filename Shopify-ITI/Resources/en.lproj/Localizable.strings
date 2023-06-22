@@ -61,6 +61,8 @@
 "AuthenticationStrings.loginAction" = "Login";
 "AuthenticationStrings.signupAction" = "Sign up";
 "AuthenticationStrings.signupError" = "Error";
+"AuthenticationStrings.signupSuccess" = "Account created";
+"AuthenticationStrings.signupSuccessMessage" = "Your account was created successfully, please login to continue";
 "AuthenticationStrings.resetLabel" = "Reset";
 "AuthenticationStrings.resetEmail" = "Email";
 "AuthenticationStrings.resetAction" = "Send";

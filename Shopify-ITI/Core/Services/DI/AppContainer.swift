@@ -60,10 +60,11 @@ class AppContainer: ObservableObject {
         }
     }
     
+    @discardableResult
     func register<Service>(type: Service.Type,
                            name: String? = nil,
                            scope: InstanceScope = .container,
-                           factory: @escaping (Resolver) -> Service) {
+                           factory: @escaping (Resolver) -> Service) -> RegisterEntry {
         container.register(type, name: name, factory: factory).inObjectScope(scope.objectScope)
     }
     
@@ -81,6 +82,26 @@ extension Resolver {
         return resolve(type, name: name)!
     }
 }
+
+protocol RegisterEntry {
+    /// Adds another type which should be resolved using this ServiceEntry - i.e. using the same object scope,
+    /// arguments and `initCompleted` closures
+    ///
+    /// - Parameters:
+    ///     - type: Type resolution of which should be forwarded
+    ///     - name: A registration name, which is used to differentiate from other registrations of the same `type`
+    @discardableResult
+    func implements<T>(_ type: T.Type, name: String?) -> Self
+}
+
+extension RegisterEntry {
+    @discardableResult
+    public func implements<T>(_ type: T.Type, name: String? = nil) -> Self {
+        return implements<T>(type, name: name)
+    }
+}
+
+extension ServiceEntry: RegisterEntry {}
 
 extension AppContainer {
     

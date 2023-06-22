@@ -61,6 +61,8 @@
 "AuthenticationStrings.loginAction" = "تسجيل الدخول";
 "AuthenticationStrings.signupAction" = "اشتراك";
 "AuthenticationStrings.signupError" = "خطأ";
+"AuthenticationStrings.signupSuccess" = "تم إنشاء الحساب";
+"AuthenticationStrings.signupSuccessMessage" = "تم إنشاء حسابك بنجاح ، يرجى تسجيل الدخول للمتابعة";
 "AuthenticationStrings.resetLabel" = "إعادة تعيين كلمة المرور";
 "AuthenticationStrings.resetEmail" = "بريد إلكتروني";
 "AuthenticationStrings.resetAction" = "إرسال";
