@@ -94,6 +94,13 @@ class CartManager:AnyInjectable{
             }
         }
     }
+    func refreshState() {
+        task?.cancel()
+        task = Task {
+            await getCart()
+        }
+    }
+    
     
     private func setCart(_ cart: Cart) async {
         await MainActor.run {
@@ -126,9 +133,7 @@ class CartManager:AnyInjectable{
                 }
             }
         }
-        await MainActor.run {
-            self.stateHolder = .none
-        }
+        
     }
     private func updateOwnership(_ cart: Cart, _ user: User) async {
         let result = await cartRemoteService.upDataBuyerIdentity(withUserID: user.id, forCart: cart.id)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04284BD62A44880A004C9F96 /* CartStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04284BD52A44880A004C9F96 /* CartStrings.swift */; };
 		044D37742A4393FF00636AD7 /* AnyRemoteFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D35F62A4393FF00636AD7 /* AnyRemoteFetchStrategy.swift */; };
 		044D37752A4393FF00636AD7 /* RemoteFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D35F72A4393FF00636AD7 /* RemoteFetchStrategy.swift */; };
 		044D37762A4393FF00636AD7 /* DataFetchCacheStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D35F92A4393FF00636AD7 /* DataFetchCacheStrategy.swift */; };
@@ -268,6 +269,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		04284BD52A44880A004C9F96 /* CartStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartStrings.swift; sourceTree = "<group>"; };
 		044D35F62A4393FF00636AD7 /* AnyRemoteFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyRemoteFetchStrategy.swift; sourceTree = "<group>"; };
 		044D35F72A4393FF00636AD7 /* RemoteFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteFetchStrategy.swift; sourceTree = "<group>"; };
 		044D35F92A4393FF00636AD7 /* DataFetchCacheStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchCacheStrategy.swift; sourceTree = "<group>"; };
@@ -532,6 +534,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04284BD42A4487DB004C9F96 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				04284BD52A44880A004C9F96 /* CartStrings.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		044D35F22A4393FF00636AD7 /* Shopify-ITI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1881,6 +1891,7 @@
 		04E956052A43B3B30090E447 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				04284BD42A4487DB004C9F96 /* Helpers */,
 				04E956062A43B3B30090E447 /* ViewModel */,
 				04E956082A43B3B30090E447 /* Manager */,
 				04E9560A2A43B3B30090E447 /* Model */,
@@ -2342,6 +2353,7 @@
 				044D382D2A4393FF00636AD7 /* UserState.swift in Sources */,
 				044D38152A4393FF00636AD7 /* OrdersScreen.swift in Sources */,
 				044D37C52A4393FF00636AD7 /* ProductsSearchCriteria.swift in Sources */,
+				04284BD62A44880A004C9F96 /* CartStrings.swift in Sources */,
 				044D37AC2A4393FF00636AD7 /* ContactUsView.swift in Sources */,
 				044D37952A4393FF00636AD7 /* NotificationCenter.swift in Sources */,
 				044D37BE2A4393FF00636AD7 /* SplashScreen.swift in Sources */,

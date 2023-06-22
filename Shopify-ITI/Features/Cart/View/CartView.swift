@@ -19,7 +19,9 @@ struct CartView: View {
         colors = container.require((any AnyAppColors).self)
         authManager = container.require(AuthenticationManager.self)
         let model = container.require((any AnyCartModel).self)
-        _viewModel = .init(wrappedValue: CartViewModel(model: model ))
+        let cartManager = container.require((CartManager).self)
+
+        _viewModel = .init(wrappedValue: CartViewModel(model: model ,cartManager: cartManager))
     }
     
     var body: some View {
@@ -53,8 +55,18 @@ struct CartView: View {
                               labelColor: colors.white,
                               backgroundColor: colors.black) {
                     if case .authenticated = authManager.state {
-                        router.push(PaymantView.Route(container: container,
-                                                      cart:viewModel.operationState.data!))
+                        if let cart = viewModel.operationState.data{
+                            router.push(PaymantView.Route(container: container,
+                                                          cart:cart))
+                        }
+                        else{
+                            router.alert(item:  IdentifiableWrapper(wrapped: viewModel.operationState)){_ in
+                                Alert(title: Text("Cart is empty"),
+                                      message: Text("You must add item to cart"),
+                                      dismissButton: Alert.Button.default(Text("OK")))
+            
+                            }
+                        }
                     } else {
                         router.alert(item: IdentifiableWrapper(wrapped: authManager.state)) { _ in
                             Alert(title: Text("Login required"),

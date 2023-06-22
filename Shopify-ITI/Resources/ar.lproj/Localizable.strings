@@ -68,3 +68,11 @@
 // WishlistStrings
 "WishlistStrings.noProductsLabel" = "فارغ";
 "WishlistStrings.wishlistErrorLabel" = "خطأ";
+
+// SettingsStrings
+"SettingsStrings.noProductsLabel" = "فارغ";
+"SettingsStrings.wishlistErrorLabel" = "خطأ";
+
+// CartStrings
+"CartStrings.noProductsLabel" = "فارغ";
+"CartStrings.wishlistErrorLabel" = "خطأ";
