@@ -147,7 +147,7 @@ struct ProfilePage: View {
                             }))
                         }
                     }.frame(alignment: .bottom)
-                }
+                }.padding()
             }
         }
         .onFirstAppear {
