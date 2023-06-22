@@ -43,26 +43,25 @@ struct ProfilePage: View {
     
     var body: some View {
         let name = profileviewModel.userState?.firstName
-        Group{
+        VStack{
             if  name != nil {
+                HStack{
+                    Text(strings.welcomeLabel.localized)
+                        .font(.title)
+                        .bold()
+                    Text(name ?? "")
+                        .font(.title)
+                        .bold()
+                    
+                }
                 ScrollView{
-                    HStack{
-                        Text(strings.welcomeLabel.localized)
-                            .font(.title)
-                            .bold()
-                        Text(name ?? "")
-                            .font(.title)
-                            .bold()
-                        
-                    }
+                    
                     HStack{
                         Text(strings.orderLabel.localized)
                             .font(.title2)
                             .bold()
                             .padding()
-                        
                         Spacer()
-                        
                         Button(strings.moreLabel.localized, role: .cancel){
                             router.push(OrdersScreen.Route(container: container))
                         }.buttonStyle(.plain)
@@ -76,7 +75,8 @@ struct ProfilePage: View {
                                 Text(strings.emptyListOrders.localized)
                             }
                             else{
-                                ForEach(data.data,id:\.id){
+                                let items = Array(data.data.prefix(2))
+                                ForEach(items,id:\.id){
                                     SectionOrder(strings: stringsOrders, order: $0)
                                     Divider()
                                 }
@@ -159,8 +159,8 @@ struct ProfilePage: View {
             
         }.padding()
             .onFirstAppear {
-            profileviewModel.initialize()
-            
-        }
+                profileviewModel.initialize()
+                
+            }
     }
 }
