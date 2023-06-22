@@ -50,7 +50,7 @@ struct WishlistScreen: View {
                                             if case .failure(let error) = result {
                                                 router.alert(item: ErrorWrapper(error: error)) { wrapper in
                                                     Alert(title: Text(strings.wishlistErrorLabel.localized),
-                                                          message: Text(wrapper.error.localizedDescription))
+                                                          message: wrapper.error.text)
                                                 }
                                             }
                                         }
@@ -73,7 +73,7 @@ struct WishlistScreen: View {
                         }
                     }
                 case .error(let error):
-                    ErrorMessageView(message: error.localizedDescription)
+                    ErrorMessageView(error: error)
                 default:
                     ProgressView()
             }

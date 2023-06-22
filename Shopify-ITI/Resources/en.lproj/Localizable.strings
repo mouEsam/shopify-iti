@@ -18,6 +18,22 @@
 "languageCode.EN" = "English";
 "languageCode.AR" = "Arabic";
 
+// LocalErrors
+"LocalErrors.NotFound" = "Not found";
+"LocalErrors.Invalid" = "invalid data";
+"LocalErrors.NotAvailable" = "Not available";
+"LocalErrors.Unknown" = "Unknown error";
+
+// ShopifyErrors
+"ShopifyErrors.Cancelled" = "Cancelled operation";
+"ShopifyErrors.Unknown" = "Unknown error";
+"ShopifyErrors.NotFound" = "Not found";
+"ShopifyErrors.Unautherized" = "Unautherized operation";
+"ShopifyErrors.Throttled" = "Throttled operation";
+"ShopifyErrors.Client" = "Client error";
+"ShopifyErrors.Validation" = "Validation error";
+"ShopifyErrors.Generic" = "Generic error";
+
 // Validations
 "validations.invalid_email" = "This email is invalid";
 "validations.required_field" = "This field is required";
@@ -34,6 +50,7 @@
 "ProductStrings.addToCartSuccess" = "Success";
 "ProductStrings.addToCartSuccessMessage" = "Added to cart";
 "ProductStrings.wishlistError" = "Error";
+"ProductStrings.outOfStock" = "Out Of Stock";
 
 // AuthenticationStrings
 "AuthenticationStrings.loginLabel" = "Hello";
@@ -43,6 +60,7 @@
 "AuthenticationStrings.forgotPassword" = "Forgot Password";
 "AuthenticationStrings.loginAction" = "Login";
 "AuthenticationStrings.signupAction" = "Sign up";
+"AuthenticationStrings.signupError" = "Error";
 "AuthenticationStrings.resetLabel" = "Reset";
 "AuthenticationStrings.resetEmail" = "Email";
 "AuthenticationStrings.resetAction" = "Send";
@@ -68,3 +86,33 @@
 // WishlistStrings
 "WishlistStrings.noProductsLabel" = "Empty";
 "WishlistStrings.wishlistErrorLabel" = "Error";
+
+
+// home
+"HomeStrings.brandsLabel" = "Brands";
+
+//categories
+"CategoriesStrings.menLabel" = "men";
+"CategoriesStrings.womenLabel" = "women" ;
+"CategoriesStrings.kidLabel" = "kid";
+"CategoriesStrings.saleLabel" = "sale";
+
+//profile
+
+"ProfileStrings.emptyListWishList" = "No Wishlist Added Yet";
+"ProfileStrings.emptyListOrders" = "No Orders Added Yet";
+"ProfileStrings.welcomeLabel" = "Welcome";
+"ProfileStrings.wishlsitLabel" = "Wishlist";
+"ProfileStrings.orderLabel" = "Order";
+"ProfileStrings.moreLabel" = "More";
+"ProfileStrings.loginAction" = "Login";
+"ProfileStrings.loginMessage" = "Please Login";
+
+
+
+//profile
+"OrdersStrings.orderNumber" = "Order Number";
+"OrdersStrings.emptyList" = "Empty";
+"OrdersStrings.totalPrice" = "Total Price";
+"OrdersStrings.quantityItem" = "Quantity";
+

@@ -87,10 +87,10 @@ struct RegisterScreen: View {
                                   error: viewModel.confirmPasswordError,
                                   strokeColor: colors.dark2Grey,
                                   obsecurable: true)
-                    RoundedButton(label: strings.signupAction.localized,
-                               labelColor: colors.white,
-                               backgroundColor: colors.black,
-                               isLoading: viewModel.operationState.isLoading) {
+                    RoundedButton(label: strings.signupAction,
+                                  labelColor: colors.white,
+                                  backgroundColor: colors.black,
+                                  isLoading: viewModel.operationState.isLoading) {
                         Task {
                             await viewModel.register()
                         }
@@ -118,8 +118,8 @@ struct RegisterScreen: View {
                 router.pop()
             } else if let error = state.error {
                 router.alert(item: ErrorWrapper(error: error)) { wrapper in
-                    Alert(title: Text("Error"), // TODO: localize
-                          message: Text(wrapper.error.localizedDescription))
+                    Alert(title: Text(strings.signupError),
+                          message: wrapper.error.text)
                 }
             }
         }

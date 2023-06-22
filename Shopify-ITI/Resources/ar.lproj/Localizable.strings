@@ -18,6 +18,22 @@
 "languageCode.EN" = "إنجليزي";
 "languageCode.AR" = "عربي";
 
+// LocalErrors
+"LocalErrors.NotFound" = "لم يتم العثور عليها";
+"LocalErrors.Invalid" = "بيانات غير صالحة";
+"LocalErrors.NotAvailable" = "البيانات غير متوفرة";
+"LocalErrors.Unknown" = "خطأ غير معروف";
+
+// ShopifyErrors
+"ShopifyErrors.Cancelled" = "عملية ملغاة";
+"ShopifyErrors.Unknown" = "خطأ غير معروف";
+"ShopifyErrors.NotFound" = "لم يتم العثور عليها";
+"ShopifyErrors.Unautherized" = "عملية غير مصرح بها";
+"ShopifyErrors.Throttled" = "عملية خنق";
+"ShopifyErrors.Client" = "خطأ العميل";
+"ShopifyErrors.Validation" = "خطئ في التحقق";
+"ShopifyErrors.Generic" = "خطأ عام";
+
 // Validations
 "validations.invalid_email" = "هذا البريد الإلكتروني غير صالح";
 "validations.required_field" = "هذه الخانة مطلوبه";
@@ -34,6 +50,7 @@
 "ProductStrings.addToCartSuccess" = "نجاح";
 "ProductStrings.addToCartSuccessMessage" = "تمت الإضافة إلى عربة التسوق";
 "ProductStrings.wishlistError" = "خطأ";
+"ProductStrings.outOfStock" = "غير متوفر";
 
 // AuthenticationStrings
 "AuthenticationStrings.loginLabel" = "مرحبًا";
@@ -43,6 +60,7 @@
 "AuthenticationStrings.forgotPassword" = "هل نسيت كلمة السر؟";
 "AuthenticationStrings.loginAction" = "تسجيل الدخول";
 "AuthenticationStrings.signupAction" = "اشتراك";
+"AuthenticationStrings.signupError" = "خطأ";
 "AuthenticationStrings.resetLabel" = "إعادة تعيين كلمة المرور";
 "AuthenticationStrings.resetEmail" = "بريد إلكتروني";
 "AuthenticationStrings.resetAction" = "إرسال";
@@ -68,6 +86,34 @@
 // WishlistStrings
 "WishlistStrings.noProductsLabel" = "فارغ";
 "WishlistStrings.wishlistErrorLabel" = "خطأ";
+
+
+// home
+"HomeStrings.brandsLabel" = "الماركات";
+
+//categories
+"CategoriesStrings.menLabel" = "رجل";
+"CategoriesStrings.womenLabel" = "بنات" ;
+"CategoriesStrings.kidLabel" = "أطفال";
+"CategoriesStrings.saleLabel" = "تخفيضات";
+
+//profile
+"ProfileStrings.emptyListWishList" = "لا يوجد مفضلات مضافه";
+"ProfileStrings.emptyListOrders" = "لا يوحد طلبات مضافه";
+"ProfileStrings.welcomeLabel" = "مرحبا";
+"ProfileStrings.wishlsitLabel" = "المفضلات";
+"ProfileStrings.orderLabel" = "طلبات";
+"ProfileStrings.moreLabel" = "المزيد";
+"ProfileStrings.loginAction" = "تسجيل الدخول";
+"ProfileStrings.loginMessage" = "يرجي تسجيل الدخول";
+
+
+
+//profile
+"OrdersStrings.orderNumber" = "رقم الطلب";
+"OrdersStrings.emptyList" = "فارغ";
+"OrdersStrings.totalPrice" = "التكلفة الكلية";
+"OrdersStrings.quantityItem" = "عدد";
 
 // SettingsStrings
 "SettingsStrings.noProductsLabel" = "فارغ";

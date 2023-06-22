@@ -8,7 +8,7 @@
 import Foundation
 import Apollo
 
-enum LocalErrors: Error {
+enum LocalErrors: String, Error {
     case NotFound
     case Invalid
     case NotAvailable
@@ -22,8 +22,8 @@ enum ShopifyErrors<ErrorCode>: Error {
     case Unautherized
     case Throttled
     case Client(error: any Error)
-    case Validation(validationErrors: [ValidationError<ErrorCode>])
-    case Generic(genericErrors: [GenericError])
+    case Validation(errors: [ValidationError<ErrorCode>])
+    case Generic(errors: [GenericError])
 }
 
 protocol ShopifyError: Error {

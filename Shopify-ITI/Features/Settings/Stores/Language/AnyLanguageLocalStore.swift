@@ -8,6 +8,6 @@
 import Foundation
 
 protocol AnyLanguageLocalStore: AnyInjectable {
-    func read() -> Result<String, LocalErrors>
+    func read() -> String?
     func write(language: String)
 }

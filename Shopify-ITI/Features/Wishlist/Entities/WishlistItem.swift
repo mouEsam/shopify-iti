@@ -47,23 +47,49 @@ extension WishlistItem {
 }
 
 extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node: WishlistItemConvertible {
-    var total: some PriceConvertible { originalTotalSet.presentmentMoney }
+    var total: some PriceConvertible {
+        var price = originalTotalSet.presentmentMoney
+        var amount = (Double(price.amount100) ?? 0) / 100
+        return ConcretePriceConvertible(amount: String(amount),
+                                        currencyCode: price.currencyCode)
+    }
 }
 
 extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Image: RemoteImageConvertible {}
-extension ShopifyAdminAPI.WishListItemInfo.OriginalTotalSet.PresentmentMoney: PriceConvertible {}
+
+extension ShopifyAdminAPI.WishListItemInfo.OriginalTotalSet.PresentmentMoney: PriceConvertible {
+    var amount: String {
+        var amount = (Double(amount100) ?? 0) / 100
+        return String(amount)
+    }
+}
 
 extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Product: ProductConvertible {
     var variantId: String { variants.nodes.first!.id }
 }
 extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Product.FeaturedImage: RemoteImageConvertible {}
 extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Product.PriceRange: PriceRangeConvertible {}
-extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Product.PriceRange.MaxVariantPrice: PriceConvertible {}
-extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Product.PriceRange.MinVariantPrice: PriceConvertible {}
+extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Product.PriceRange.MaxVariantPrice: PriceConvertible {
+    var amount: String {
+        var amount = (Double(amount100) ?? 0) / 100
+        return String(amount)
+    }
+}
+extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Product.PriceRange.MinVariantPrice: PriceConvertible {
+    var amount: String {
+        var amount = (Double(amount100) ?? 0) / 100
+        return String(amount)
+    }
+}
 
 extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Variant: ProductVariantConvertible {
     var price: some PriceConvertible { contextualPricing.price }
 }
 
-extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Variant.ContextualPricing.Price: PriceConvertible {}
+extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Variant.ContextualPricing.Price: PriceConvertible {
+    var amount: String {
+        var amount = (Double(amount100) ?? 0) / 100
+        return String(amount)
+    }
+}
 extension ShopifyAdminAPI.GetWishlistItemsQuery.Data.DraftOrder.LineItems.Edge.Node.Variant.Image: RemoteImageConvertible {}

@@ -12,7 +12,8 @@ struct VariantItemView: View {
     
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
-    private let colors: AnyAppColors
+    private let colors: any AnyAppColors
+    private let strings: any AnyProductStrings
     private let onSelected: (() -> Void)?
     private let variant: ProductVariant
     private let isSelected: Bool
@@ -22,6 +23,7 @@ struct VariantItemView: View {
          isSelected: Bool,
          onSelected: (() -> Void)? = nil) {
         self.colors = container.require((any AnyAppColors).self)
+        self.strings = container.require((any AnyProductStrings).self)
         self.variant = variant
         self.isSelected = isSelected
         self.onSelected = onSelected
@@ -61,11 +63,24 @@ struct VariantItemView: View {
             .overlay {
                 if isSelected {
                     RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 4)
+                } else if !variant.availableForSale {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(lineWidth: 4)
+                        .foregroundColor(Color.red)
+                }
+                if !variant.availableForSale {
+                    Text(strings.outOfStock.localized)
+                        .foregroundColor(Color.red)
+                        .textCase(.uppercase)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .rotationEffect(.radians(.pi * 1.75))
                 }
             }
             .cornerRadius(10)
             .shadow(radius: 2)
-        if let onSelected = onSelected {
+        if let onSelected = onSelected,
+            variant.availableForSale {
             Button(action: onSelected) {
                 view
             }

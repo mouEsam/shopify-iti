@@ -80,7 +80,7 @@ struct LoginScreen: View {
                             }
                         }
                     }.disabled(viewModel.resetState.isLoading)
-                    RoundedButton(label: strings.loginAction.localized,
+                    RoundedButton(label: strings.loginAction,
                                   labelColor: colors.white,
                                   backgroundColor: colors.black,
                                   isLoading: viewModel.operationState.isLoading) {
@@ -100,20 +100,20 @@ struct LoginScreen: View {
             } else if let error = state.error {
                 router.alert(item: ErrorWrapper(error: error)) { wrapper in
                     Alert(title: Text(strings.loginError.localized), // TODO: localize
-                          message: Text(wrapper.error.localizedDescription))
+                          message: wrapper.error.text)
                 }
             }
         })
         .onReceive(viewModel.$resetState, perform: { state in
             if state.isLoaded {
                 router.alert(item: IdentifiableWrapper(wrapped: state)) { wrapper in
-                    Alert(title: Text(strings.resetSuccess.localized), // TODO: localize
+                    Alert(title: Text(strings.resetSuccess.localized),
                           message: Text(strings.resetSuccessMessage.localized))
                 }
             } else if let error = state.error {
                 router.alert(item: ErrorWrapper(error: error)) { wrapper in
-                    Alert(title: Text(strings.resetError.localized), // TODO: localize
-                          message: Text(wrapper.error.localizedDescription))
+                    Alert(title: Text(strings.resetError.localized),
+                          message: wrapper.error.text)
                 }
             }
         })

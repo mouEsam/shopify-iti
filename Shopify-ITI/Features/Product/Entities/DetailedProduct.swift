@@ -14,7 +14,7 @@ struct DetailedProduct: Identifiable {
     let title: String
     let description: String
     let featuredImage: RemoteImage?
-    let availableForSale: Bool
+    var availableForSale: Bool
     let compareAtPriceRange: PriceRange
     let metafields: [MetaField]
     let priceRange: PriceRange
@@ -24,7 +24,7 @@ struct DetailedProduct: Identifiable {
     let options: [ProductOption]
     let collections: [ProductCollection]
     let images: [RemoteImage]
-    let variants: [ProductVariant]
+    var variants: [ProductVariant]
 }
 
 extension DetailedProduct {

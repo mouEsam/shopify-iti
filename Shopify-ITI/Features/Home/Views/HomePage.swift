@@ -43,7 +43,7 @@ struct HomePage: View {
                     .padding()
                     
                 case .error(let error):
-                    Text("Error: \(error.localizedDescription)")
+                        ErrorMessageView(error: error)
                 default :
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())

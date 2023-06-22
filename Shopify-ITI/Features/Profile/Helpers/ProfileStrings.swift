@@ -20,11 +20,6 @@ protocol AnyProfileStrings {
 }
 // TODO: localize
 struct ProfileStrings: AnyProfileStrings, AnyInjectable  {
-    
-   
-    
-
-    
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyProfileStrings).self) { resolver in
             ProfileStrings()
@@ -44,6 +39,6 @@ struct ProfileStrings: AnyProfileStrings, AnyInjectable  {
     var moreLabel: String = "More"
     
     var loginAction: String = "Login"
-    var loginMessage: String = "please login"
+    var loginMessage: String = "Please Login"
 
 }

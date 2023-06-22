@@ -19,9 +19,9 @@ struct OrdersScreen: View {
     @EnvironmentObject private var container: AppContainer
     
     @StateObject private var viewModel:  OrdersViewModel
-
+    
     private let strings : AnyOrdersStrings
-
+    
     init(container: AppContainer) {
         let model = container.require((any AnyOrdersModelFactory).self).create()
         _viewModel = .init(wrappedValue:OrdersViewModel(model: model))
@@ -30,17 +30,20 @@ struct OrdersScreen: View {
     }
     
     var body: some View {
-        ScrollView{
+        Group{
             switch viewModel.operationState {
             case .loaded(let data):
                 if(data.data.isEmpty){
-                    Text(strings.emptyList.localized).frame(alignment: .center)
+                    NoResultsView(message: strings.emptyList)
                 }
                 else{
-                    ForEach(data.data,id:\.id){
-                        SectionOrder(strings: strings, order: $0)
-                        Divider()
-                    }
+                    ScrollView{
+                        ForEach(data.data,id:\.id){
+                            SectionOrder(strings: strings, order: $0)
+                            Divider()
+                        }
+                    }.scrollIndicators(.hidden)
+                    
                 }
                 
             case .error(let error):
@@ -50,43 +53,39 @@ struct OrdersScreen: View {
             default:
                 Group {}
             }
-        }.frame(alignment: .top)
-        .scrollIndicators(.hidden)
-        .padding(.horizontal)
-        .onFirstAppear {
-            Task{
-                await viewModel.loadBrand()
+        }.padding(.horizontal)
+            .onFirstAppear {
+                Task{
+                    await viewModel.loadBrand()
+                }
             }
-        }.onReceive(viewModel.$operationState){state in print(state)}
     }
 }
+
 struct SectionOrder : View {
     
     let strings : AnyOrdersStrings
     let order:Order
-
-    let totalNumber :String
-   
+    
     init(strings: AnyOrdersStrings, order: Order) {
         self.strings = strings
         self.order = order
-        let string = strings.totalPrice.localized + " : "
-        let amount = String(order.totalPrice.amount) + " " + order.totalPrice.currencyCode.rawValue
-        totalNumber = string + amount
-        
     }
+    
     var body: some View {
-        Section(header: Text(strings.orderNumber.localized+" : " + String(order.id)),
-                footer: Text(totalNumber)) {
+        Section(header: Text(strings.orderNumber.localized) + Text(" : ") + Text(String(order.id)),
+                footer: HStack {
+            Text(strings.totalPrice.localized) + Text(" : ")
+            PriceView(price: order.totalPrice)
+        }) {
             ForEach(order.lineItems,id:\.id){
                 CardOrder(lineItem: $0,strings: strings)
                 CardOrder(lineItem: $0,strings: strings)
             }.background(Color.white)
                 .cornerRadius(10)
                 .shadow(radius: 2).padding(4)
-        
+            
         } .headerProminence(.increased)
-        
     }
 }
 
@@ -95,27 +94,32 @@ struct CardOrder : View {
     let lineItem : LineItem
     let strings : AnyOrdersStrings
     var body: some View {
-     
-            HStack(alignment: .top) {
-                RemoteImageView(image: lineItem.product.featuredImage)
+        
+        HStack(alignment: .top) {
+            RemoteImageView(image: lineItem.product.featuredImage)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 80, alignment: .center)
                 .padding()
-                
-                VStack(alignment: .leading) {
-                    HStack(alignment: .top) {
-                        Text(lineItem.product.title)
-                            .font(.headline)
-                        Spacer()
-                    }
-                    Spacer().frame(height: 8)
-                    Text(strings.quantityItem.localized + " " + String(lineItem.currentQuantity)).font(.caption2)
-                    Spacer().frame(height: 16)
-                    Text(String(lineItem.originalTotalPrice.amount) + " " + lineItem.originalTotalPrice.currencyCode.rawValue)
-                }
-                .padding()
-            }
             
+            VStack(alignment: .leading) {
+                HStack(alignment: .top) {
+                    Text(lineItem.product.title)
+                        .font(.headline)
+                    Spacer()
+                }
+                Spacer().frame(height: 8)
+                Group {
+                    Text(strings.quantityItem.localized)
+                    + Text(" ")
+                    + Text(String(lineItem.currentQuantity))
+                }
+                .font(.caption2)
+                Spacer().frame(height: 16)
+                PriceView(price: lineItem.originalTotalPrice)
+            }
+            .padding()
+        }
+        
     }
 }
 

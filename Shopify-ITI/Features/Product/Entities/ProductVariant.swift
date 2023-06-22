@@ -14,8 +14,8 @@ struct ProductVariant: Identifiable {
     let image: RemoteImage?
     let barcode: String?
     let sku: String?
-    let availableForSale: Bool
-    let quantityAvailable: Int?
+    var availableForSale: Bool
+    var quantityAvailable: Int?
     let price: Price
 }
 
