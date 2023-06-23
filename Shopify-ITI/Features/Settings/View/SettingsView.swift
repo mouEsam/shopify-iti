@@ -37,10 +37,16 @@ struct SettingsView: View {
                     }
                 }
                 .onChange(of: settingViewModel.langauge) { newLanguage in
-                    settingViewModel.change(language: newLanguage)
-                    withAnimation {
-                        let language: Languages = .init(rawValue: newLanguage.rawValue.lowercased()) ?? .deviceLanguage
-                        languageSettings.selectedLanguage = language
+                    router.alert(item: newLanguage) { _ in
+                        Alert(title: Text("Language"),
+                              message: Text("Some aspects of the app might not pick up the new language right away. We recommend you restart the app for a better experience"),
+                              dismissButton: Alert.Button.default(Text("OK"), action: {
+                            settingViewModel.change(language: newLanguage)
+                            withAnimation {
+                                let language: Languages = .init(rawValue: newLanguage.rawValue.lowercased()) ?? .deviceLanguage
+                                languageSettings.selectedLanguage = language
+                            }
+                        }))
                     }
                 }
             }
