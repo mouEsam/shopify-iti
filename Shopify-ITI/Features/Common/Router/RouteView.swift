@@ -56,7 +56,7 @@ struct RouterView<Router: AnyRouter, Content: View>: View {
     private let root: () -> Content
     
     init(router: Router, @ViewBuilder root: @escaping () -> Content) {
-        self._router = StateObject(wrappedValue: router)
+        self._router = .init(wrappedValue: router)
         self.root = root
     }
     

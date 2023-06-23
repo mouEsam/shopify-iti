@@ -33,7 +33,6 @@ struct PriceView: View {
         formatter.locale = container.require((any AnyLocaleProvider).self).locale
         formatter.numberStyle = .currency
         formatter.currencyCode = price.currencyCode.rawValue
-        formatter.locale = Locale.current
         return formatter
     }
 }
