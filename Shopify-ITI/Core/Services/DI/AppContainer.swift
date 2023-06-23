@@ -174,7 +174,9 @@ extension AppContainer {
             OrdersModelFactory.self,
             OrdersRemoteService.self,
             PreviousSearchesStore.self,
-            CartStrings.self
+            CartStrings.self,
+            AddressManger.self,
+            AddressService.self
         ])
     }
 }

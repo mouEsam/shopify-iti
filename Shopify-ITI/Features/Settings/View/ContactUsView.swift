@@ -54,8 +54,7 @@ struct ContactUsView: View {
             Spacer()
             
             Button(action: {
-                // Implement your logic to open a contact method (e.g., email, phone call, map) here
-                // You can use APIs or deep linking to handle the interaction based on the user's device and your app's requirements
+               
             }) {
                 Text("Contact Us")
                     .font(.headline)

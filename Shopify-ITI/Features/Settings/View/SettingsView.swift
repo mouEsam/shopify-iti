@@ -21,7 +21,8 @@ struct SettingsView: View {
         colors = container.require((any AnyAppColors).self)
         let authManager = container.require(AuthenticationManager.self)
         _settingViewModel = .init(wrappedValue: SettingViewModel(authManager: authManager,
-                                                                 settingModel: container.require(SettingsModel.self)))
+                                                                 settingModel: container.require(SettingsModel.self),
+                                                                 addressManger: container.require(AddressManger.self)))
     }
     
     var body: some View {
@@ -76,6 +77,28 @@ struct SettingsView: View {
                 }
             }
             if settingViewModel.isLoggedIn {
+                Section(header: Text("address")){
+                    
+                    VStack(alignment: .leading) {
+                        HStack{
+                            Text(settingViewModel.address.street)
+                                .font(.headline)
+                            Spacer()
+                            Button(action: {
+                                router.push(AppRoute(identifier:  String(describing: LocationView.self)){
+                                    LocationView(container: container)
+                                    
+                                })                            }) {
+                                    Image("rightArrow").resizable().frame(width: 40,height: 40)
+                                }
+                        }
+                    
+                        
+                        Text("\(settingViewModel.address.city), \(settingViewModel.address.state) \(settingViewModel.address.postalCode)")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    }
+                }
                 Button(action: {
                     router.alert(item: IdentifiableWrapper(wrapped: settingViewModel.logoutState)) { _ in
                         Alert(title: Text("Logout"),
