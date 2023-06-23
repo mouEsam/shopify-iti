@@ -133,7 +133,7 @@
 "CartStrings.loginRequiredMessage" = "يجب تسجيل الدخول أولاً للمتابعة";
 "CartStrings.login" = "تسجيل الدخول";
 
-//
+
 //ContactStrings
 "ContactStrings.contactInformation" = "معلومات الاتصال";
 "ContactStrings.email" = "البريد الإلكتروني";
@@ -141,3 +141,17 @@
 "ContactStrings.address" = "العنوان";
 "ContactStrings.contactUs" = "اتصل بنا";
 "ContactStrings.navigationTitle" = "اتصل بنا";
+
+//settings
+"SettingsStrings.languageLabel" = "اللغة";
+"SettingsStrings.countryLabel" = "البلد";
+"SettingsStrings.helpCenterLabel" = "المساعده";
+"SettingsStrings.addressLabel" = "العنوان";
+"SettingsStrings.selectLanguageText" = "اختر اللغة";
+"SettingsStrings.selectCountryText" = "اختر البلد";
+"SettingsStrings.fQAText" = "الاسئله الشائعه";
+"SettingsStrings.contactUsText" = "تواصل معنا";
+"SettingsStrings.logoutText" = "تسجيل الخروج";
+"SettingsStrings.logoutAlertMessage" = "هل انتا متاكد انك تريد تسجيل الخروج";
+"SettingsStrings.agreeAlertMessage" = "نعم";
+"SettingsStrings.diagreeAlertMessage" = "لا";

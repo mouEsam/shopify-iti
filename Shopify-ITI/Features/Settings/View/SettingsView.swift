@@ -16,9 +16,11 @@ struct SettingsView: View {
     @StateObject private var settingViewModel:SettingViewModel
     
     private let colors: AnyAppColors
+    private let strings: AnySettingsStrings
     
     init(container: AppContainer) {
         colors = container.require((any AnyAppColors).self)
+        strings = container.require((any AnySettingsStrings).self)
         let authManager = container.require(AuthenticationManager.self)
         _settingViewModel = .init(wrappedValue: SettingViewModel(authManager: authManager,
                                                                  settingModel: container.require(SettingsModel.self),
@@ -28,10 +30,9 @@ struct SettingsView: View {
     var body: some View {
         
         Form {
-            // TODO: localize
             let languages = settingViewModel.uiState.data?.languages ?? [settingViewModel.langauge]
-            Section(header: Text("Language")) {
-                Picker(selection: $settingViewModel.langauge, label: Text("Select a language")) {
+            Section(header: Text(strings.languageLabel.localized)) {
+                Picker(selection: $settingViewModel.langauge, label: Text(strings.selectLanguageText.localized)) {
                     ForEach(languages) { language in
                         Text(language.localizationKey.localized).tag(language)
                     }
@@ -51,8 +52,8 @@ struct SettingsView: View {
                 }
             }
             let countries = settingViewModel.uiState.data?.countries ?? [settingViewModel.country]
-            Section(header: Text("Country")) {
-                Picker(selection: $settingViewModel.country, label: Text("Select a contry")) {
+            Section(header: Text(strings.countryLabel.localized)) {
+                Picker(selection: $settingViewModel.country, label: Text(strings.selectCountryText.localized)) {
                     ForEach(countries) { country in
                         Text(country.localizationKey.localized).tag(country)
                     }
@@ -61,14 +62,14 @@ struct SettingsView: View {
                     settingViewModel.change(country: newCountry)
                 }
             }
-            Section(header: Text("Help Center")) {
+            Section(header: Text(strings.helpCenterLabel.localized)) {
                 Button(action: {
                     router.present(.sheet) {
                         FAQView()
                     }
                 }) {
                     HStack{
-                        Text("FQA")
+                        Text(strings.fQAText.localized)
                             .foregroundColor(colors.black)
                     }
                 }
@@ -78,12 +79,12 @@ struct SettingsView: View {
                         ContactUsView()
                     }
                 }) {
-                    Text("Contact Us")
+                    Text(strings.contactUsText.localized)
                         .foregroundColor(colors.black)
                 }
             }
             if settingViewModel.isLoggedIn {
-                Section(header: Text("address")){
+                Section(header: Text(strings.addressLabel.localized)){
                     
                     VStack(alignment: .leading) {
                         HStack{
@@ -107,16 +108,16 @@ struct SettingsView: View {
                 }
                 Button(action: {
                     router.alert(item: IdentifiableWrapper(wrapped: settingViewModel.logoutState)) { _ in
-                        Alert(title: Text("Logout"),
-                              message: Text("Are you sure you want to logout ?"),
-                              primaryButton: Alert.Button.default(Text("No")),
-                              secondaryButton: Alert.Button.destructive(Text("Yes"), action: {
+                        Alert(title: Text(strings.logoutText.localized),
+                              message: Text(strings.logoutAlertMessage.localized),
+                              primaryButton: Alert.Button.default(Text(strings.diagreeAlertMessage.localized)),
+                              secondaryButton: Alert.Button.destructive(Text(strings.agreeAlertMessage.localized), action: {
                             settingViewModel.logout()
                         }))
                     }
                 }) {
                     HStack {
-                        Text("Log out")
+                        Text(strings.logoutText.localized)
                         if settingViewModel.logoutState.isLoading {
                             Spacer().frame(width: 10)
                             ProgressView()

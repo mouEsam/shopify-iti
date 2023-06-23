@@ -138,3 +138,17 @@
 "ContactUsView.address" = "Address";
 "ContactUsView.contactUs" = "Contact Us";
 "ContactUsView.navigationTitle" = "Contact Us";
+
+//settings
+"SettingsStrings.languageLabel" = "LANGUAGE";
+"SettingsStrings.countryLabel" = "COUNTRY";
+"SettingsStrings.helpCenterLabel" = "HELP CENTER";
+"SettingsStrings.addressLabel" = "ADDRESS";
+"SettingsStrings.selectLanguageText" = "Select a language";
+"SettingsStrings.selectCountryText" = "Select a Country";
+"SettingsStrings.fQAText" = "FQA";
+"SettingsStrings.contactUsText" = "Contact Us";
+"SettingsStrings.logoutText" = "Log out";
+"SettingsStrings.logoutAlertMessage" = "Are you sure you want to logout ?";
+"SettingsStrings.agreeAlertMessage" = "Yes";
+"SettingsStrings.diagreeAlertMessage" = "No";
