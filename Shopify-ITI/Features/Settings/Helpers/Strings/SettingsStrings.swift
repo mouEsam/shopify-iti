@@ -19,6 +19,7 @@ protocol AnySettingsStrings {
     var logoutAlertMessage : String {get}
     var agreeAlertMessage : String {get}
     var diagreeAlertMessage : String {get}
+    var languageAlertMessage : String {get}
 }
 // TODO: localize
 struct SettingsStrings: AnySettingsStrings, AnyInjectable  {
@@ -39,6 +40,7 @@ struct SettingsStrings: AnySettingsStrings, AnyInjectable  {
     let contactUsText : String = "SettingsStrings.contactUsText"
     let logoutText : String = "SettingsStrings.logoutText"
     let logoutAlertMessage : String = "SettingsStrings.logoutAlertMessage"
+    let languageAlertMessage : String = "SettingsStrings.languageAlertMessage"
     let agreeAlertMessage : String = "SettingsStrings.agreeAlertMessage"
     let diagreeAlertMessage : String = "SettingsStrings.diagreeAlertMessage"
 }

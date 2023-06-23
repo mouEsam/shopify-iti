@@ -153,5 +153,6 @@
 "SettingsStrings.contactUsText" = "تواصل معنا";
 "SettingsStrings.logoutText" = "تسجيل الخروج";
 "SettingsStrings.logoutAlertMessage" = "هل انتا متاكد انك تريد تسجيل الخروج";
+"SettingsStrings.languageAlertMessage" = "بعض الخدمات قد لا تطبق هذا التغيير تلقائيًا. لذلك نوصي باعادة تشغيل التطبيق لضمان جودة الخدمة" ;
 "SettingsStrings.agreeAlertMessage" = "نعم";
 "SettingsStrings.diagreeAlertMessage" = "لا";

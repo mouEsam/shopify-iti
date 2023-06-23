@@ -39,8 +39,8 @@ struct SettingsView: View {
                 }
                 .onChange(of: settingViewModel.langauge) { newLanguage in
                     router.alert(item: newLanguage) { _ in
-                        Alert(title: Text("Language"),
-                              message: Text("Some aspects of the app might not pick up the new language right away. We recommend you restart the app for a better experience"),
+                        Alert(title: Text(strings.languageLabel.localized),
+                              message: Text(strings.languageAlertMessage.localized),
                               dismissButton: Alert.Button.default(Text("OK"), action: {
                             settingViewModel.change(language: newLanguage)
                             withAnimation {
