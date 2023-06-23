@@ -16,20 +16,25 @@ class SettingViewModel: ObservableObject {
     @Published private(set) var logoutState: UIState<Void> = .initial
     @Published var langauge: ShopifyAPI.LanguageCode
     @Published var country: ShopifyAPI.CountryCode
-    
+    @Published var address: Address
+    private var cancellables: Set<AnyCancellable> = []
+
     private var logoutTask: Task<Void, Error>? = nil
     
     private let authManager: AuthenticationManager
     private let settingModel: SettingsModel
-    
+    private let addressManger: AddressManger
+
     init(authManager: AuthenticationManager,
-         settingModel: SettingsModel) {
+         settingModel: SettingsModel,
+         addressManger: AddressManger) {
         self.authManager = authManager
         self.settingModel = settingModel
         
         langauge = settingModel.getLanguage()
         country = settingModel.getCountry()
-        
+        address = Address(street: "", city: "", state: "", postalCode: "")
+        self.addressManger = addressManger
         self.initialize()
     }
     
@@ -39,6 +44,21 @@ class SettingViewModel: ObservableObject {
             .map(\.user)
             .map { $0 != nil }
             .assign(to: &$isLoggedIn)
+        addressManger.selectedStatePublisher.prepend(addressManger.selectedState)
+            .receive(on: DispatchQueue.global()).sink { addressState in
+                switch addressState{
+                case .data(data: let addressString):
+                    Task{
+                        await MainActor.run{
+                            self.address = Address.fromString(addressString) ?? Address(street: "", city: "", state: "", postalCode: "")
+                        }
+                    }
+                case .loading:
+                    break
+                default:
+                    break
+                }
+            }.store(in: &cancellables)
     }
     
     private func update() {

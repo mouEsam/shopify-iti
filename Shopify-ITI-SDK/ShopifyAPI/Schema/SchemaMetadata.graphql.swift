@@ -92,6 +92,9 @@ public extension ShopifyAPI {
       case "MetafieldDeleteUserError": return ShopifyAPI.Objects.MetafieldDeleteUserError
       case "MetafieldsSetUserError": return ShopifyAPI.Objects.MetafieldsSetUserError
       case "UserError": return ShopifyAPI.Objects.UserError
+      case "MailingAddressConnection": return ShopifyAPI.Objects.MailingAddressConnection
+      case "MailingAddressEdge": return ShopifyAPI.Objects.MailingAddressEdge
+      case "CustomerAddressCreatePayload": return ShopifyAPI.Objects.CustomerAddressCreatePayload
       case "BaseCartLineConnection": return ShopifyAPI.Objects.BaseCartLineConnection
       case "BaseCartLineEdge": return ShopifyAPI.Objects.BaseCartLineEdge
       case "CartLineCost": return ShopifyAPI.Objects.CartLineCost

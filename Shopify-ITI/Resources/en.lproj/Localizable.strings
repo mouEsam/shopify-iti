@@ -130,3 +130,11 @@
 "CartStrings.loginRequiredTitle" = "Login required";
 "CartStrings.loginRequiredMessage" = "You must be logged in first to continue";
 "CartStrings.login" = "Login";
+
+//ContactUsView
+"ContactUsView.contactInformation" = "Contact Information";
+"ContactUsView.email" = "Email";
+"ContactUsView.phone" = "Phone";
+"ContactUsView.address" = "Address";
+"ContactUsView.contactUs" = "Contact Us";
+"ContactUsView.navigationTitle" = "Contact Us";

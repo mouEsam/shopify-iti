@@ -132,3 +132,12 @@
 "CartStrings.loginRequiredTitle" = "مطلوب تسجيل الدخول";
 "CartStrings.loginRequiredMessage" = "يجب تسجيل الدخول أولاً للمتابعة";
 "CartStrings.login" = "تسجيل الدخول";
+
+//
+//ContactStrings
+"ContactStrings.contactInformation" = "معلومات الاتصال";
+"ContactStrings.email" = "البريد الإلكتروني";
+"ContactStrings.phone" = "الهاتف";
+"ContactStrings.address" = "العنوان";
+"ContactStrings.contactUs" = "اتصل بنا";
+"ContactStrings.navigationTitle" = "اتصل بنا";

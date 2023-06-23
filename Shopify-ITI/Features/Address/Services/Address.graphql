@@ -1,0 +1,24 @@
+query getCustomerAddresses($customerAccessToken : String!) {
+  customer(customerAccessToken: $customerAccessToken) {
+    addresses(first: 10){
+        edges{
+            node{
+                address1
+            }
+        }
+    }
+  }
+}
+mutation customerAddressCreate($customerAccessToken: String!, $address: MailingAddressInput!) {
+  customerAddressCreate(customerAccessToken: $customerAccessToken, address: $address) {
+    customerUserErrors {
+      code
+      field
+      message
+    }
+    customerAddress {
+        address1
+      id
+    }
+  }
+}
