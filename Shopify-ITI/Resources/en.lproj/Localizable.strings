@@ -91,7 +91,9 @@
 
 
 // home
-"HomeStrings.brandsLabel" = "Brands";
+"HomeStrings.Brands" = "Brands";
+"HomeStrings.emptyListBrands" = "no brands currently";
+
 
 //categories
 "CategoriesStrings.menLabel" = "men";
@@ -112,7 +114,7 @@
 
 
 
-//profile
+//order
 "OrdersStrings.orderNumber" = "Order Number";
 "OrdersStrings.emptyList" = "Empty";
 "OrdersStrings.totalPrice" = "Total Price";

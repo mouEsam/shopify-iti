@@ -24,12 +24,12 @@ struct CategoriesStrings: AnyCategoriesStrings, AnyInjectable  {
             CategoriesStrings()
         }
     }
-    var menLabel: String = "men"
+    let menLabel: String = "CategoriesStrings.menLabel"
     
-    var womenLabel: String = "women"
+    let womenLabel: String = "CategoriesStrings.womenLabel"
     
-    var kidLabel: String = "kid"
+    let kidLabel: String = "CategoriesStrings.kidLabel"
     
-    var saleLabel: String = "sale"
+    let saleLabel: String = "CategoriesStrings.saleLabel"
     
 }

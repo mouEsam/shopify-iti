@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 enum CollectionType: String {
@@ -28,16 +29,16 @@ enum CollectionType: String {
             return "gid://shopify/Collection/446670176535"
         }
     }
-    func localizedString(using localizationService: AnyCategoriesStrings) -> String {
+    func localizedString(using localizationService: AnyCategoriesStrings) -> LocalizedStringKey {
         switch(self){
         case .men:
-            return localizationService.menLabel
+            return localizationService.menLabel.localized
         case .women :
-            return localizationService.womenLabel
+            return localizationService.womenLabel.localized
         case .kid :
-            return localizationService.kidLabel
+            return localizationService.kidLabel.localized
         default:
-            return localizationService.saleLabel
+            return localizationService.saleLabel.localized
         }
           
       }

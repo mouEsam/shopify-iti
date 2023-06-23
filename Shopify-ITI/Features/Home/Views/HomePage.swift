@@ -34,14 +34,18 @@ struct HomePage: View {
                 switch viewModel.operationState {
                     
                 case .loaded(data: let productCollections):
-                    LazyVGrid(columns: createGridColumns(), spacing: 16) {
-                        ForEach(productCollections.data,id: \.id) { item in
-                            CardBrand(container: container,
-                                      item:item)
-                        }
+                    if(productCollections.data.isEmpty){
+                        NoResultsView(message: strings.emptyListBrands)
                     }
-                    .padding()
-                    
+                    else {
+                        LazyVGrid(columns: createGridColumns(), spacing: 16) {
+                            ForEach(productCollections.data,id: \.id) { item in
+                                CardBrand(container: container,
+                                          item:item)
+                            }
+                        }
+                        .padding()
+                    }
                 case .error(let error):
                         ErrorMessageView(error: error)
                 default :

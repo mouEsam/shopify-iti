@@ -91,7 +91,8 @@
 
 
 // home
-"HomeStrings.brandsLabel" = "الماركات";
+"HomeStrings.Brands" = "الماركات";
+"HomeStrings.emptyListBrands" = "لا يوجد مركات حاليه";
 
 //categories
 "CategoriesStrings.menLabel" = "رجل";
@@ -111,7 +112,7 @@
 
 
 
-//profile
+//orders
 "OrdersStrings.orderNumber" = "رقم الطلب";
 "OrdersStrings.emptyList" = "فارغ";
 "OrdersStrings.totalPrice" = "التكلفة الكلية";

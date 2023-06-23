@@ -18,27 +18,27 @@ protocol AnyProfileStrings {
     var emptyListOrders: String { get }
    
 }
-// TODO: localize
+
 struct ProfileStrings: AnyProfileStrings, AnyInjectable  {
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyProfileStrings).self) { resolver in
             ProfileStrings()
         }
     }
-    var emptyListWishList: String = "No Wishlist Added Yet"
+    let emptyListWishList: String = "ProfileStrings.emptyListWishList"
     
-    var emptyListOrders: String = "No Orders Added Yet"
+    let emptyListOrders: String = "ProfileStrings.emptyListOrders"
 
     
-    var orderLabel: String = "Order"
+    let orderLabel: String = "ProfileStrings.orderLabel"
     
-    var welcomeLabel: String = "Welcome"
+    let welcomeLabel: String = "ProfileStrings.welcomeLabel"
     
-    var wishlsitLabel: String = "Wishlist"
+    let wishlsitLabel: String = "ProfileStrings.wishlsitLabel"
     
-    var moreLabel: String = "More"
+    let moreLabel: String = "ProfileStrings.moreLabel"
     
-    var loginAction: String = "Login"
-    var loginMessage: String = "Please Login"
+    let loginAction: String = "ProfileStrings.loginAction"
+    let loginMessage: String = "ProfileStrings.loginMessage"
 
 }
