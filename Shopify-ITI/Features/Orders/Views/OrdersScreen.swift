@@ -15,8 +15,7 @@ struct OrdersScreen: View {
             }
         }
     }
-    @EnvironmentRouter private var router: AppRouter
-    @EnvironmentObject private var container: AppContainer
+
     
     @StateObject private var viewModel:  OrdersViewModel
     
@@ -63,7 +62,7 @@ struct OrdersScreen: View {
 }
 
 struct SectionOrder : View {
-    
+  
     let strings : AnyOrdersStrings
     let order:Order
     
@@ -73,51 +72,58 @@ struct SectionOrder : View {
     }
     
     var body: some View {
-        Section(header: Text(strings.orderNumber.localized) + Text(" : ") + Text(String(order.id)),
-                footer: HStack {
-            Text(strings.totalPrice.localized) + Text(" : ")
-            PriceView(price: order.totalPrice)
-        }) {
-            ForEach(order.lineItems,id:\.id){
-                CardOrder(lineItem: $0,strings: strings)
-                CardOrder(lineItem: $0,strings: strings)
-            }.background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 2).padding(4)
-            
-        } .headerProminence(.increased)
-    }
+       
+            Section(header: Text(strings.orderNumber.localized) + Text(" : ") + Text(String(order.id)),
+                    footer: HStack {
+                Text(strings.totalPrice.localized) + Text(" : ")
+                PriceView(price: order.totalPrice)
+            }) {
+                ForEach(order.lineItems,id:\.id){
+                    CardOrder(lineItem: $0,strings: strings)
+                    CardOrder(lineItem: $0,strings: strings)
+                }.background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 2).padding(4)
+                
+            } .headerProminence(.increased)
+        }
+    
 }
 
 struct CardOrder : View {
-    
+    @EnvironmentRouter private var router: AppRouter
+    @EnvironmentObject private var container: AppContainer
     let lineItem : LineItem
     let strings : AnyOrdersStrings
     var body: some View {
-        
-        HStack(alignment: .top) {
-            RemoteImageView(image: lineItem.product.featuredImage)
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 80, alignment: .center)
+        Button(action: {
+            router.push(ProductPage.Route(container: container, productId: lineItem.product.id))
+        }) {
+            HStack(alignment: .top) {
+                RemoteImageView(image: lineItem.product.featuredImage)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 80, alignment: .center)
+                    .padding()
+                
+                VStack(alignment: .leading) {
+                    HStack(alignment: .top) {
+                        Text(lineItem.product.title)
+                            .font(.headline)
+                        Spacer()
+                    }
+                    Spacer().frame(height: 8)
+                    Group {
+                        Text(strings.quantityItem.localized)
+                        + Text(" ")
+                        + Text(String(lineItem.currentQuantity))
+                    }
+                    .font(.caption2)
+                    Spacer().frame(height: 16)
+                    PriceView(price: lineItem.originalTotalPrice)
+                }
                 .padding()
-            
-            VStack(alignment: .leading) {
-                HStack(alignment: .top) {
-                    Text(lineItem.product.title)
-                        .font(.headline)
-                    Spacer()
-                }
-                Spacer().frame(height: 8)
-                Group {
-                    Text(strings.quantityItem.localized)
-                    + Text(" ")
-                    + Text(String(lineItem.currentQuantity))
-                }
-                .font(.caption2)
-                Spacer().frame(height: 16)
-                PriceView(price: lineItem.originalTotalPrice)
             }
-            .padding()
+            
         }
         
     }

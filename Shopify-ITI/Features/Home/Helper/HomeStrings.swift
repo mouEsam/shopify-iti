@@ -10,6 +10,7 @@ import Foundation
 
 protocol AnyHomeStrings {
     var brandsLabel: String { get }
+    var emptyListBrands : String {get}
   
 }
 // TODO: localize
@@ -21,6 +22,6 @@ struct HomeStrings: AnyHomeStrings, AnyInjectable  {
         }
     }
    
-    var brandsLabel: String = "Brands"
-    
+    let brandsLabel: String = "HomeStrings.Brands"
+    let emptyListBrands : String = "HomeStrings.emptyListBrands"
 }

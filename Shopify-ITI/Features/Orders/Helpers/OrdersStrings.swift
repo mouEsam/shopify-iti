@@ -26,10 +26,10 @@ struct OrdersStrings: AnyOrdersStrings, AnyInjectable  {
         }
     }
    
-    var orderNumber: String  = "Order Number"
-    var emptyList: String =  "No Orders Added"
-    var totalPrice: String = "Total Price"
-    var quantityItem: String = "Quantity"
+    let orderNumber: String  = "OrdersStrings.orderNumber"
+    let emptyList: String =  "OrdersStrings.emptyList"
+    let totalPrice: String = "OrdersStrings.totalPrice"
+    let quantityItem: String = "OrdersStrings.quantityItem"
 
     
 }
