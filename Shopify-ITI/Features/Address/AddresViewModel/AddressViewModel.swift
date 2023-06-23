@@ -31,10 +31,16 @@ class AddressViewModel: ObservableObject {
             .receive(on: DispatchQueue.global()).sink { addressState in
                 switch addressState{
                 case .data(data: let addressString):
-                    self.addresses = addressString.map{
-                        Address.fromString( $0)
+                    Task{
+                       await MainActor.run{
+                            self.addresses = addressString.map{
+                                Address.fromString( $0)
+                            }
+                            .compactMap{$0}
+                        }
+                        
                     }
-                    .compactMap{$0}
+                   
                 case .loading:
                     break
                 default:

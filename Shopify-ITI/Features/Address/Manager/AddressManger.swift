@@ -30,6 +30,7 @@ class AddressManger:AnyInjectable{
     
     init(addressService: AddressService) {
         self.addressService = addressService
+        self.initialize()
     }
     private func initialize() {
         task?.cancel()
@@ -76,7 +77,7 @@ class AddressManger:AnyInjectable{
                     self.stateHolder = .data(data: addresses)
                     switch selectedStateHolder{
                     case .loading,.none:
-                        if let addresse = addresses.first{
+                        if let addresse = addresses.last{
                             self.selectedStateHolder = .data(data: addresse)
                         }else{
                             self.selectedStateHolder = .none

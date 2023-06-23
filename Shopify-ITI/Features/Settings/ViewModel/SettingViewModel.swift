@@ -46,23 +46,19 @@ class SettingViewModel: ObservableObject {
             .assign(to: &$isLoggedIn)
         addressManger.selectedStatePublisher.prepend(addressManger.selectedState)
             .receive(on: DispatchQueue.global()).sink { addressState in
-            switch addressState{
-            case .data(data: let addressString):
-                Task{
-                   await MainActor.run{
-                   
-                       self.address = Address.fromString(addressString) ?? Address(street: "", city: "", state: "", postalCode: "")
-
+                switch addressState{
+                case .data(data: let addressString):
+                    Task{
+                        await MainActor.run{
+                            self.address = Address.fromString(addressString) ?? Address(street: "", city: "", state: "", postalCode: "")
+                        }
                     }
-
+                case .loading:
+                    break
+                default:
+                    break
                 }
-            case .loading:
-                break
-            default:
-                break
-                
-            }
-        }.store(in: &cancellables)
+            }.store(in: &cancellables)
     }
     
     private func update() {
