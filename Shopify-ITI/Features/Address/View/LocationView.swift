@@ -107,6 +107,7 @@ struct LocationView: View {
 
                     
                     Button("AddressStrings.addAddress".localized) {
+
                         viewModel.addAddress()
                         isFormVisible = false
                     }
