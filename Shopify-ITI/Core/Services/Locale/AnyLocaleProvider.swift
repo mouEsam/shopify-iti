@@ -17,8 +17,15 @@ protocol AnyLocaleProvider {
 }
 
 extension AnyLocaleProvider {
-    var shopifyCountry: GraphQLEnum<ShopifyAPI.CountryCode>? { .init(rawValue: country) }
-    var shopifyLanguage: GraphQLEnum<ShopifyAPI.LanguageCode>? { .init(rawValue: language) }
+    var shopifyCountry: GraphQLEnum<ShopifyAPI.CountryCode>? {
+        return .init(rawValue: country)
+    }
     
-    var shopifyAdminCountry: GraphQLEnum<ShopifyAdminAPI.CountryCode>? { .init(rawValue: country) }
+    var shopifyLanguage: GraphQLEnum<ShopifyAPI.LanguageCode>? {
+        return .init(rawValue: language)
+    }
+    
+    var shopifyAdminCountry: GraphQLEnum<ShopifyAdminAPI.CountryCode>? {
+        return .init(rawValue: country)
+    }
 }
