@@ -13,7 +13,6 @@ protocol AnyCartStrings:AnyInjectable {
     var checkout: String { get }
     var emptyCartTitle: String { get }
     var emptyCartMessage: String { get }
-    var ok: String { get }
     var loginRequiredTitle: String { get }
     var loginRequiredMessage: String { get }
     var login: String { get }
@@ -30,7 +29,6 @@ struct CartStrings: AnyCartStrings  {
     let checkout = "CartStrings.checkOut"
     let emptyCartTitle = "CartStrings.emptyCartTitle"
     let emptyCartMessage = "CartStrings.emptyCartMessage"
-    let ok = "CartStrings.ok"
     let loginRequiredTitle = "CartStrings.loginRequiredTitle"
     let loginRequiredMessage = "CartStrings.loginRequiredMessage"
     let login = "CartStrings.login"

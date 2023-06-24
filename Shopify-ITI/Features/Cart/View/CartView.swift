@@ -15,6 +15,7 @@ struct CartView: View {
     private var authManager: AuthenticationManager
     private var colors: AnyAppColors
     private let string: AnyCartStrings
+    private let commonString: AnyCommonStrings
 
     init(container: AppContainer) {
         colors = container.require((any AnyAppColors).self)
@@ -22,6 +23,7 @@ struct CartView: View {
         let model = container.require((any AnyCartModel).self)
         let cartManager = container.require((CartManager).self)
         string = container.require((any AnyCartStrings).self)
+        commonString = container.require((any AnyCommonStrings).self)
         _viewModel = .init(wrappedValue: CartViewModel(model: model ,cartManager: cartManager))
     }
     
@@ -64,7 +66,7 @@ struct CartView: View {
                             router.alert(item:  IdentifiableWrapper(wrapped: viewModel.operationState)){_ in
                                 Alert(title: Text(string.emptyCartTitle.localized),
                                       message: Text(string.emptyCartMessage.localized),
-                                      dismissButton: Alert.Button.default(Text(string.ok.localized)))
+                                      dismissButton: Alert.Button.default(Text(commonString.ok.localized)))
             
                             }
                         }
@@ -74,7 +76,7 @@ struct CartView: View {
                                   message: Text(string.loginRequiredMessage.localized),
                                   primaryButton: Alert.Button.default(Text(string.login.localized),
                                                                       action: { router.push(LoginScreen.Route(container: container)) }),
-                                  secondaryButton: Alert.Button.default(Text(string.ok.localized)))
+                                  secondaryButton: Alert.Button.default(Text(commonString.ok.localized)))
                         }
                     }
                 }
