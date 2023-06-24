@@ -12,6 +12,7 @@ class PaymantViewModel:ObservableObject{
     private var orderID:String?
     private let cartManager:CartManager
     private let addressManger:AddressManger
+    private let notificationCenter: any AnyNotificationCenter
     @Published var address: Address
     private var cancellables: Set<AnyCancellable> = []
     @Published var showCobonError: Bool = false
@@ -21,14 +22,21 @@ class PaymantViewModel:ObservableObject{
     @Published private(set) var operationState: UIState<DraftOrder> = .initial
     var uiStatePublisher: Published<UIState<DraftOrder>>.Publisher { $operationState }
     let cart:Cart
-    init(draftOrderModel:AnyDraftOrderModel,cart:Cart,cartManager:CartManager,addressManger:AddressManger) {
+    
+    init(draftOrderModel:AnyDraftOrderModel,
+         cart:Cart,
+         cartManager:CartManager,
+         addressManger:AddressManger,
+         notificationCenter: some AnyNotificationCenter) {
         self.draftOrderModel = draftOrderModel
         self.cart=cart
         self.cartManager = cartManager
         self.addressManger = addressManger
+        self.notificationCenter = notificationCenter
         address = Address(street: "", city: "", state: "", postalCode: "")
         self.initialize()
     }
+    
     private func initialize() {
         addressManger.selectedStatePublisher.prepend(addressManger.selectedState)
             .receive(on: DispatchQueue.global()).sink { addressState in
@@ -61,6 +69,7 @@ class PaymantViewModel:ObservableObject{
             }
         }
     }
+    
     func updateOrde(address: String, discount: String)async{
         if let orderID = orderID{
             
@@ -78,11 +87,14 @@ class PaymantViewModel:ObservableObject{
             }
         }
     }
+    
     func completeOrde(isPaid: Bool)async{
         if let orderID = orderID{
-            let result = await draftOrderModel.completeDraftOrder(id: orderID, isPaid: isPaid)
+            let _ = await draftOrderModel.completeDraftOrder(id: orderID, isPaid: isPaid)
             await cartManager.removeCart()
-            
+            await MainActor.run {
+                notificationCenter.post(PaymentNotification())
+            }
         }
     }
 }

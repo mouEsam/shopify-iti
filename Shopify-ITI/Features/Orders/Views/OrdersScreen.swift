@@ -15,7 +15,7 @@ struct OrdersScreen: View {
             }
         }
     }
-
+    
     
     @StateObject private var viewModel:  OrdersViewModel
     
@@ -23,46 +23,44 @@ struct OrdersScreen: View {
     
     init(container: AppContainer) {
         let model = container.require((any AnyOrdersModelFactory).self).create()
-        _viewModel = .init(wrappedValue:OrdersViewModel(model: model))
-        
+        let notCenter = container.require((any AnyNotificationCenter).self)
+        _viewModel = .init(wrappedValue:OrdersViewModel(model: model,
+                                                        notificationCenter: notCenter))
         strings = container.require((any AnyOrdersStrings).self)
     }
     
     var body: some View {
         Group{
             switch viewModel.operationState {
-            case .loaded(let data):
-                if(data.data.isEmpty){
-                    NoResultsView(message: strings.emptyList)
-                }
-                else{
-                    ScrollView{
-                        ForEach(data.data,id:\.id){
-                            SectionOrder(strings: strings, order: $0)
-                            Divider()
-                        }
-                    }.scrollIndicators(.hidden)
-                    
-                }
-                
-            case .error(let error):
-                Text("\(error.localizedDescription)")
-            case .loading:
-                ProgressView()
-            default:
-                Group {}
+                case .loaded(let data):
+                    if(data.data.isEmpty){
+                        NoResultsView(message: strings.emptyList)
+                    }
+                    else{
+                        ScrollView{
+                            ForEach(data.data,id:\.id){
+                                SectionOrder(strings: strings, order: $0)
+                                Divider()
+                            }
+                        }.scrollIndicators(.hidden)
+                    }
+                case .error(let error):
+                    Text("\(error.localizedDescription)")
+                case .loading:
+                    ProgressView()
+                default:
+                    Group {}
             }
-        }.padding(.horizontal)
-            .onFirstAppear {
-                Task{
-                    await viewModel.loadBrand()
-                }
-            }
+        }
+        .padding(.horizontal)
+        .onFirstAppear {
+            viewModel.loadOrders()
+        }
     }
 }
 
 struct SectionOrder : View {
-  
+    
     let strings : AnyOrdersStrings
     let order:Order
     
@@ -72,20 +70,20 @@ struct SectionOrder : View {
     }
     
     var body: some View {
-       
-            Section(header: Text(strings.orderNumber.localized) + Text(" : ") + Text(String(order.id)),
-                    footer: HStack {
-                Text(strings.totalPrice.localized) + Text(" : ")
-                PriceView(price: order.totalPrice)
-            }) {
-                ForEach(order.lineItems,id:\.id){
-                    CardOrder(lineItem: $0,strings: strings)
-                }.background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 2).padding(4)
-                
-            } .headerProminence(.increased)
-        }
+        
+        Section(header: Text(strings.orderNumber.localized) + Text(" : ") + Text(String(order.id)),
+                footer: HStack {
+            Text(strings.totalPrice.localized) + Text(" : ")
+            PriceView(price: order.totalPrice)
+        }) {
+            ForEach(order.lineItems,id:\.id){
+                CardOrder(lineItem: $0,strings: strings)
+            }.background(Color.white)
+                .cornerRadius(10)
+                .shadow(radius: 2).padding(4)
+            
+        } .headerProminence(.increased)
+    }
     
 }
 

@@ -31,6 +31,7 @@ struct PaymantView: View {
     @State private var editedStreet: String = ""
     @State private var editedCity: String = ""
     @State private var editedCountry: String = ""
+    @State private var isLoading: Bool = false
     @StateObject var viewModel:PaymantViewModel
     
     let cart: Cart
@@ -39,12 +40,15 @@ struct PaymantView: View {
     init(container: AppContainer, cart: Cart) {
         self.localeProvider = container.require((any AnyLocaleProvider).self)
         let  cartManager = container.require((CartManager).self)
+        let  notCenter = container.require((any AnyNotificationCenter).self)
          strings = container.require((PaymentStrings).self)
 
         self.cart = cart
         _viewModel = .init(wrappedValue: PaymantViewModel(draftOrderModel: container.require((any AnyDraftOrderModel).self),
                                                           cart: cart,
-                                                          cartManager: cartManager, addressManger: container.require((AddressManger).self)))
+                                                          cartManager: cartManager,
+                                                          addressManger: container.require((AddressManger).self),
+                                                          notificationCenter: notCenter))
     }
     
     var body: some View {
@@ -148,14 +152,13 @@ struct PaymantView: View {
                             self.paymentHandler.startPayment(amount: cart.totalAmount,
                                                              country: country) { success in
                                 if success {
-                                    Task{
+                                    Task {
+                                        isLoading = true
                                         await viewModel.completeOrde(isPaid: true)
+                                        router.push(AppRoute(identifier:  String(describing: CongratsScreen.self)){
+                                            CongratsScreen()
+                                        })
                                     }
-                                    router.push(AppRoute(identifier:  String(describing: CongratsScreen.self)){
-                                        CongratsScreen()
-                                        
-                                    })
-                                    
                                 } else {
                                     print("Failed")
                                 }
@@ -173,32 +176,40 @@ struct PaymantView: View {
                     .sheet(isPresented: $showingPaymentSheet) {
                         // Content of the bottom sheet for Cash on delivery
                         VStack {
-                            switch viewModel.operationState{
+                            switch viewModel.operationState {
                             case .loaded(data:let draftOrder):
                                 HStack{
                                     Text(strings.totalAmountLabel.localized)
                                     Spacer()
-                                    PriceView(price:draftOrder.data.totalAmount) // TODO: use currency
+                                    PriceView(price:draftOrder.data.totalAmount)
                                 }.padding(.all)
                             default:
                                 ProgressView()
                                 
                             }
-                            HStack(){
+                            HStack() {
                                 Button(action: {
                                     Task{
+                                        isLoading = true
                                         await viewModel.completeOrde(isPaid: false)
-                                        
+                                        await MainActor.run {
+                                            showingPaymentSheet = false
+                                            router.push(AppRoute(identifier:  String(describing: CongratsScreen.self)){
+                                                CongratsScreen()
+                                            })
+                                        }
                                     }
-                                    router.push(AppRoute(identifier:  String(describing: CongratsScreen.self)){
-                                        CongratsScreen()
-                                    })
-                                    showingPaymentSheet = false
                                 }) {
-                                    Text(strings.payButton.localized)
-                                        .foregroundColor(.white)
-                                        .padding(.horizontal)
-                                        .frame(maxWidth: .infinity)
+                                    HStack {
+                                        Text(strings.payButton.localized)
+                                            .foregroundColor(.white)
+                                            .padding(.horizontal)
+                                            .frame(maxWidth: .infinity)
+                                        if isLoading {
+                                            Spacer().frame(width: 8)
+                                            ProgressView()
+                                        }
+                                    }
                                 }.padding()
                                 Button(action: {
                                     // Handle Cash on delivery payment action here
@@ -210,12 +221,12 @@ struct PaymantView: View {
                                         .frame(maxWidth: .infinity)
                                 }.padding()
                             }
-                            
                             .frame(maxWidth: .infinity)
                             .buttonStyle(.borderedProminent)
                             .tint(.black)
-                        }.presentationDetents([.fraction(0.15)])
-                        
+                        }
+                        .presentationDetents([.fraction(0.15)])
+                        .disabled(isLoading)
                     }
                 }
             }
