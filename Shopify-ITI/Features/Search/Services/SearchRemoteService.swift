@@ -8,15 +8,19 @@
 import Foundation
 import Shopify_ITI_SDK
 
-struct SearchRemoteService: AnyInjectable {
+protocol AnySearchRemoteService {
+    typealias SearchError = ShopifyErrors<Any>
+    
+    func fetch(query: String) async -> Result<[String], SearchError>
+}
+
+struct SearchRemoteService: AnySearchRemoteService, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: SearchRemoteService.self) { resolver in
             SearchRemoteService(remoteClient: resolver.require((any GraphQLClient).self),
                                 localeProvider: resolver.require((any AnyLocaleProvider).self))
-        }
+        }.implements(AnySearchRemoteService.self)
     }
-    
-    typealias SearchError = ShopifyErrors<Any>
     
     private let remoteClient: any GraphQLClient
     private let localeProvider: any AnyLocaleProvider

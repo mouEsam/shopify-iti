@@ -15,15 +15,15 @@ protocol AnyWishlistModel {
 struct WishlistModel: AnyWishlistModel, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyWishlistModel).self, scope: .transient) { resolver in
-            WishlistModel(wishlistService: resolver.require(WishlistRemoteService.self),
+            WishlistModel(wishlistService: resolver.require((any AnyWishlistRemoteService).self),
                           configsProvider: resolver.require((any AnyConfigsProvider).self))
         }
     }
     
-    private let wishlistService: WishlistRemoteService
+    private let wishlistService: any AnyWishlistRemoteService
     private let configsProvider: any AnyConfigsProvider
     
-    init(wishlistService: WishlistRemoteService,
+    init(wishlistService: some AnyWishlistRemoteService,
          configsProvider: some AnyConfigsProvider) {
         self.wishlistService = wishlistService
         self.configsProvider = configsProvider

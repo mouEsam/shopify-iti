@@ -41,8 +41,8 @@
 "validations.invalid_confirm_password" = "كلمات السر الخاصة بك لا تتطابق";
 
 // Common
-"Common.ok" = "حسنا";
-"Common.cancel" = "الغاء";
+"CommonStrings.ok" = "حسنا";
+"CommonStrings.cancel" = "الغاء";
 
 // ProductStrings
 "ProductsStrings.noProductsLabel" = "لم يتم العثور علي نتائج";

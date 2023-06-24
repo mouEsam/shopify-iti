@@ -41,8 +41,8 @@
 "validations.invalid_confirm_password" = "Your passwords don't match";
 
 // Common
-"Common.ok" = "OK";
-"Common.cancel" = "Cancel";
+"CommonStrings.ok" = "OK";
+"CommonStrings.cancel" = "Cancel";
 
 // ProductStrings
 "ProductsStrings.noProductsLabel" = "No results found";

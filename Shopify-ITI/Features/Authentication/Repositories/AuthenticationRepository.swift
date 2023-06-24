@@ -12,17 +12,17 @@ struct AuthenticationRepository: AnyAuthenticationRepository {
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyAuthenticationRepository).self) { resolver in
             AuthenticationRepository(profileService: resolver.require(ProfileRemoteService.self),
-                                     authService: resolver.require(AuthenticationRemoteService.self),
+                                     authService: resolver.require((any AnyAuthenticationRemoteService).self),
                                      authManager: resolver.require(AuthenticationManager.self))
         }
     }
     
     private let profileService: ProfileRemoteService
-    private let authService: AuthenticationRemoteService
+    private let authService: any AnyAuthenticationRemoteService
     private let authManager: AuthenticationManager
     
     init(profileService: ProfileRemoteService,
-         authService: AuthenticationRemoteService,
+         authService: some AnyAuthenticationRemoteService,
          authManager: AuthenticationManager) {
         self.profileService = profileService
         self.authService = authService

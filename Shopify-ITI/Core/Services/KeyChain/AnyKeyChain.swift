@@ -12,7 +12,7 @@ struct KeyChainResponse {
     var value: Any?
 }
 
-protocol AnyKeyChain: AnyInjectable {
+protocol AnyKeyChain {
     
     func readAll(groupId: String?,
                  accountName: String?,

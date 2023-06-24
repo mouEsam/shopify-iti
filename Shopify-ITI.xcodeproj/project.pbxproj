@@ -273,7 +273,24 @@
 		D4CB08A12A43C8B50014231B /* LanguageManagerSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D4CB08A02A43C8B50014231B /* LanguageManagerSwiftUI */; };
 		D4FC46AF2A46D96000A87E08 /* CommonStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46AE2A46D96000A87E08 /* CommonStrings.swift */; };
 		D4FC46B12A46DFD000A87E08 /* SearchStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46B02A46DFD000A87E08 /* SearchStrings.swift */; };
+		D4FC46B92A46F9FA00A87E08 /* Shopify_ITI_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46B82A46F9FA00A87E08 /* Shopify_ITI_Tests.swift */; };
+		D4FC46C32A46FA4600A87E08 /* MockAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46C22A46FA4600A87E08 /* MockAccessTokenProvider.swift */; };
+		D4FC46C62A46FAEE00A87E08 /* MockLocaleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46C52A46FAEE00A87E08 /* MockLocaleProvider.swift */; };
+		D4FC46C92A46FB8400A87E08 /* MockUserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46C82A46FB8400A87E08 /* MockUserProvider.swift */; };
+		D4FC46CC2A46FBE700A87E08 /* MockGraphQLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46CB2A46FBE700A87E08 /* MockGraphQLClient.swift */; };
+		D4FC46CF2A46FDAD00A87E08 /* MockNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46CE2A46FDAD00A87E08 /* MockNotificationCenter.swift */; };
+		F9DAA344FDED43A0FCFB1386 /* Pods_Shopify_ITI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3320D9D9EB592C16B8F39BC9 /* Pods_Shopify_ITI_Tests.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D4FC46BA2A46F9FA00A87E08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41F62742A2C921C00780814 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D41F627B2A2C921C00780814;
+			remoteInfo = "Shopify-ITI";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		D4596D8B2A33595100BD9E26 /* Embed Frameworks */ = {
@@ -539,6 +556,9 @@
 		04E956162A43B3B30090E447 /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		04E956182A43B3B30090E447 /* CartIdStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartIdStore.swift; sourceTree = "<group>"; };
 		04E956192A43B3B30090E447 /* AnyCartIdStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCartIdStore.swift; sourceTree = "<group>"; };
+		3320D9D9EB592C16B8F39BC9 /* Pods_Shopify_ITI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38C919F57BAE861E4E8823B2 /* Pods-Shopify-ITI-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI-Tests.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI-Tests/Pods-Shopify-ITI-Tests.release.xcconfig"; sourceTree = "<group>"; };
+		7435DD34A15418A65319A2C9 /* Pods-Shopify-ITI-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI-Tests.debug.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI-Tests/Pods-Shopify-ITI-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9286320BBD2664520DE1BD34 /* Pods-Shopify-ITI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.debug.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.debug.xcconfig"; sourceTree = "<group>"; };
 		D41F627C2A2C921C00780814 /* Shopify-ITI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopify-ITI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44F05302A44748A0093956F /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
@@ -558,6 +578,13 @@
 		D4CB089D2A43BD570014231B /* GenericErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericErrorText.swift; sourceTree = "<group>"; };
 		D4FC46AE2A46D96000A87E08 /* CommonStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStrings.swift; sourceTree = "<group>"; };
 		D4FC46B02A46DFD000A87E08 /* SearchStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStrings.swift; sourceTree = "<group>"; };
+		D4FC46B62A46F9FA00A87E08 /* Shopify-ITI-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shopify-ITI-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4FC46B82A46F9FA00A87E08 /* Shopify_ITI_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopify_ITI_Tests.swift; sourceTree = "<group>"; };
+		D4FC46C22A46FA4600A87E08 /* MockAccessTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccessTokenProvider.swift; sourceTree = "<group>"; };
+		D4FC46C52A46FAEE00A87E08 /* MockLocaleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocaleProvider.swift; sourceTree = "<group>"; };
+		D4FC46C82A46FB8400A87E08 /* MockUserProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserProvider.swift; sourceTree = "<group>"; };
+		D4FC46CB2A46FBE700A87E08 /* MockGraphQLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGraphQLClient.swift; sourceTree = "<group>"; };
+		D4FC46CE2A46FDAD00A87E08 /* MockNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNotificationCenter.swift; sourceTree = "<group>"; };
 		E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0A81DAC848D79B6DAFA2A4 /* Pods-Shopify-ITI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -572,6 +599,14 @@
 				D4AF27CE2A41B18700F74FB0 /* Semaphore in Frameworks */,
 				D4596D892A33595100BD9E26 /* Shopify_ITI_SDK.framework in Frameworks */,
 				334029F07C9A89D6CEF9AB9D /* Pods_Shopify_ITI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4FC46B32A46F9FA00A87E08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9DAA344FDED43A0FCFB1386 /* Pods_Shopify_ITI_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2099,6 +2134,8 @@
 			children = (
 				9286320BBD2664520DE1BD34 /* Pods-Shopify-ITI.debug.xcconfig */,
 				ED0A81DAC848D79B6DAFA2A4 /* Pods-Shopify-ITI.release.xcconfig */,
+				7435DD34A15418A65319A2C9 /* Pods-Shopify-ITI-Tests.debug.xcconfig */,
+				38C919F57BAE861E4E8823B2 /* Pods-Shopify-ITI-Tests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2107,6 +2144,7 @@
 			isa = PBXGroup;
 			children = (
 				044D35F22A4393FF00636AD7 /* Shopify-ITI */,
+				D4FC46B72A46F9FA00A87E08 /* Shopify-ITI-Tests */,
 				D41F627D2A2C921C00780814 /* Products */,
 				256F5C045EEB8210E1E43E03 /* Pods */,
 				F7B4E07DB0B124A6BC44E75B /* Frameworks */,
@@ -2117,6 +2155,7 @@
 			isa = PBXGroup;
 			children = (
 				D41F627C2A2C921C00780814 /* Shopify-ITI.app */,
+				D4FC46B62A46F9FA00A87E08 /* Shopify-ITI-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2138,12 +2177,82 @@
 			path = PreviousSearches;
 			sourceTree = "<group>";
 		};
+		D4FC46B72A46F9FA00A87E08 /* Shopify-ITI-Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC46BF2A46FA2500A87E08 /* Core */,
+				D4FC46B82A46F9FA00A87E08 /* Shopify_ITI_Tests.swift */,
+			);
+			path = "Shopify-ITI-Tests";
+			sourceTree = "<group>";
+		};
+		D4FC46BF2A46FA2500A87E08 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC46C02A46FA2D00A87E08 /* Services */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		D4FC46C02A46FA2D00A87E08 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC46CD2A46FD9200A87E08 /* NotificationCenter */,
+				D4FC46CA2A46FBDA00A87E08 /* RemoteClient */,
+				D4FC46C72A46FB7A00A87E08 /* User */,
+				D4FC46C42A46FAE400A87E08 /* Locale */,
+				D4FC46C12A46FA3200A87E08 /* Token */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D4FC46C12A46FA3200A87E08 /* Token */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC46C22A46FA4600A87E08 /* MockAccessTokenProvider.swift */,
+			);
+			path = Token;
+			sourceTree = "<group>";
+		};
+		D4FC46C42A46FAE400A87E08 /* Locale */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC46C52A46FAEE00A87E08 /* MockLocaleProvider.swift */,
+			);
+			path = Locale;
+			sourceTree = "<group>";
+		};
+		D4FC46C72A46FB7A00A87E08 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC46C82A46FB8400A87E08 /* MockUserProvider.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		D4FC46CA2A46FBDA00A87E08 /* RemoteClient */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC46CB2A46FBE700A87E08 /* MockGraphQLClient.swift */,
+			);
+			path = RemoteClient;
+			sourceTree = "<group>";
+		};
+		D4FC46CD2A46FD9200A87E08 /* NotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC46CE2A46FDAD00A87E08 /* MockNotificationCenter.swift */,
+			);
+			path = NotificationCenter;
+			sourceTree = "<group>";
+		};
 		F7B4E07DB0B124A6BC44E75B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */,
 				D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */,
 				E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */,
+				3320D9D9EB592C16B8F39BC9 /* Pods_Shopify_ITI_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2175,6 +2284,25 @@
 			productReference = D41F627C2A2C921C00780814 /* Shopify-ITI.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D4FC46B52A46F9FA00A87E08 /* Shopify-ITI-Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4FC46BC2A46F9FA00A87E08 /* Build configuration list for PBXNativeTarget "Shopify-ITI-Tests" */;
+			buildPhases = (
+				0CC618688FD9AEFC30A191AF /* [CP] Check Pods Manifest.lock */,
+				D4FC46B22A46F9FA00A87E08 /* Sources */,
+				D4FC46B32A46F9FA00A87E08 /* Frameworks */,
+				D4FC46B42A46F9FA00A87E08 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D4FC46BB2A46F9FA00A87E08 /* PBXTargetDependency */,
+			);
+			name = "Shopify-ITI-Tests";
+			productName = "Shopify-ITI-Tests";
+			productReference = D4FC46B62A46F9FA00A87E08 /* Shopify-ITI-Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2187,6 +2315,10 @@
 				TargetAttributes = {
 					D41F627B2A2C921C00780814 = {
 						CreatedOnToolsVersion = 14.3;
+					};
+					D4FC46B52A46F9FA00A87E08 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = D41F627B2A2C921C00780814;
 					};
 				};
 			};
@@ -2209,6 +2341,7 @@
 			projectRoot = "";
 			targets = (
 				D41F627B2A2C921C00780814 /* Shopify-ITI */,
+				D4FC46B52A46F9FA00A87E08 /* Shopify-ITI-Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -2242,9 +2375,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4FC46B42A46F9FA00A87E08 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0CC618688FD9AEFC30A191AF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Shopify-ITI-Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4BCFB7A5EF1C34E7A2AAC11A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2532,7 +2694,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4FC46B22A46F9FA00A87E08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4FC46C62A46FAEE00A87E08 /* MockLocaleProvider.swift in Sources */,
+				D4FC46CF2A46FDAD00A87E08 /* MockNotificationCenter.swift in Sources */,
+				D4FC46C92A46FB8400A87E08 /* MockUserProvider.swift in Sources */,
+				D4FC46C32A46FA4600A87E08 /* MockAccessTokenProvider.swift in Sources */,
+				D4FC46CC2A46FBE700A87E08 /* MockGraphQLClient.swift in Sources */,
+				D4FC46B92A46F9FA00A87E08 /* Shopify_ITI_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D4FC46BB2A46F9FA00A87E08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D41F627B2A2C921C00780814 /* Shopify-ITI */;
+			targetProxy = D4FC46BA2A46F9FA00A87E08 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		044D36392A4393FF00636AD7 /* Localizable.strings */ = {
@@ -2725,6 +2908,46 @@
 			};
 			name = Release;
 		};
+		D4FC46BD2A46F9FA00A87E08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7435DD34A15418A65319A2C9 /* Pods-Shopify-ITI-Tests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 49YMMDXGST;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iti.Shopify-ITI-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shopify-ITI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Shopify-ITI";
+			};
+			name = Debug;
+		};
+		D4FC46BE2A46F9FA00A87E08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38C919F57BAE861E4E8823B2 /* Pods-Shopify-ITI-Tests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 49YMMDXGST;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iti.Shopify-ITI-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shopify-ITI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Shopify-ITI";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2742,6 +2965,15 @@
 			buildConfigurations = (
 				D41F628B2A2C921D00780814 /* Debug */,
 				D41F628C2A2C921D00780814 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4FC46BC2A46F9FA00A87E08 /* Build configuration list for PBXNativeTarget "Shopify-ITI-Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4FC46BD2A46F9FA00A87E08 /* Debug */,
+				D4FC46BE2A46F9FA00A87E08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
