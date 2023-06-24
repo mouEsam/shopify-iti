@@ -279,6 +279,7 @@
 		D4FC46C92A46FB8400A87E08 /* MockUserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46C82A46FB8400A87E08 /* MockUserProvider.swift */; };
 		D4FC46CC2A46FBE700A87E08 /* MockGraphQLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46CB2A46FBE700A87E08 /* MockGraphQLClient.swift */; };
 		D4FC46CF2A46FDAD00A87E08 /* MockNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46CE2A46FDAD00A87E08 /* MockNotificationCenter.swift */; };
+		D4FC46D22A47037C00A87E08 /* MockKeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46D12A47037C00A87E08 /* MockKeyChain.swift */; };
 		F9DAA344FDED43A0FCFB1386 /* Pods_Shopify_ITI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3320D9D9EB592C16B8F39BC9 /* Pods_Shopify_ITI_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -585,6 +586,7 @@
 		D4FC46C82A46FB8400A87E08 /* MockUserProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserProvider.swift; sourceTree = "<group>"; };
 		D4FC46CB2A46FBE700A87E08 /* MockGraphQLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGraphQLClient.swift; sourceTree = "<group>"; };
 		D4FC46CE2A46FDAD00A87E08 /* MockNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNotificationCenter.swift; sourceTree = "<group>"; };
+		D4FC46D12A47037C00A87E08 /* MockKeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockKeyChain.swift; sourceTree = "<group>"; };
 		E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0A81DAC848D79B6DAFA2A4 /* Pods-Shopify-ITI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2197,6 +2199,7 @@
 		D4FC46C02A46FA2D00A87E08 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D4FC46D02A47036E00A87E08 /* KeyChain */,
 				D4FC46CD2A46FD9200A87E08 /* NotificationCenter */,
 				D4FC46CA2A46FBDA00A87E08 /* RemoteClient */,
 				D4FC46C72A46FB7A00A87E08 /* User */,
@@ -2244,6 +2247,14 @@
 				D4FC46CE2A46FDAD00A87E08 /* MockNotificationCenter.swift */,
 			);
 			path = NotificationCenter;
+			sourceTree = "<group>";
+		};
+		D4FC46D02A47036E00A87E08 /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC46D12A47037C00A87E08 /* MockKeyChain.swift */,
+			);
+			path = KeyChain;
 			sourceTree = "<group>";
 		};
 		F7B4E07DB0B124A6BC44E75B /* Frameworks */ = {
@@ -2698,6 +2709,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4FC46D22A47037C00A87E08 /* MockKeyChain.swift in Sources */,
 				D4FC46C62A46FAEE00A87E08 /* MockLocaleProvider.swift in Sources */,
 				D4FC46CF2A46FDAD00A87E08 /* MockNotificationCenter.swift in Sources */,
 				D4FC46C92A46FB8400A87E08 /* MockUserProvider.swift in Sources */,

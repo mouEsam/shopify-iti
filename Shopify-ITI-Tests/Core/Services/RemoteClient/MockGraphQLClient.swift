@@ -25,7 +25,7 @@ class MockRemoteClient: GraphQLClient {
                                     cachePolicy: GraphQLFetchPolicy?,
                                     operation: inout GraphQLCancellable?) async -> Result<GraphQLResult<Query.Data>, Error> {
         if let client = client {
-            return fetch(query: query, cachePolicy: cachePolicy, operation: &operation)
+            return client.fetch(query: query, cachePolicy: cachePolicy, operation: &operation)
         } else {
             return fetchResult.get(Query.self)
         }
@@ -34,7 +34,7 @@ class MockRemoteClient: GraphQLClient {
     func execute<Query: GraphQLMutation>(query: Query,
                                          operation: inout GraphQLCancellable?) async -> Result<GraphQLResult<Query.Data>, Error> {
         if let client = client {
-            return execute(query: query, operation: &operation)
+            return client.execute(query: query, operation: &operation)
         } else {
             return executeResult.get(Query.self)
         }
