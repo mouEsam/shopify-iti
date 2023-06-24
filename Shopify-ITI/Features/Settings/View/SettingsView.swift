@@ -13,12 +13,14 @@ struct SettingsView: View {
     @EnvironmentObject private var languageSettings: LanguageSettings
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
+    
     @StateObject private var settingViewModel:SettingViewModel
     
     private let colors: AnyAppColors
     private let strings: AnySettingsStrings
     
     init(container: AppContainer) {
+        
         colors = container.require((any AnyAppColors).self)
         strings = container.require((any AnySettingsStrings).self)
         let authManager = container.require(AuthenticationManager.self)
@@ -95,8 +97,11 @@ struct SettingsView: View {
                                 router.push(AppRoute(identifier:  String(describing: LocationView.self)){
                                     LocationView(container: container)
                                     
-                                })                            }) {
-                                    Image("rightArrow").resizable().frame(width: 40,height: 40)
+                                })
+                                
+                            }) {
+                                  
+                                Image("rightArrow").resizable().frame(width: 40,height: 40).flipsForRightToLeftLayoutDirection(true)
                                 }
                         }
                     
