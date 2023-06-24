@@ -15,6 +15,8 @@ class PaymantViewModel:ObservableObject{
     @Published var address: Address
     private var cancellables: Set<AnyCancellable> = []
     @Published var showCobonError: Bool = false
+    var taxAmont:Price?
+    var supTotal:Price?
 
     @Published private(set) var operationState: UIState<DraftOrder> = .initial
     var uiStatePublisher: Published<UIState<DraftOrder>>.Publisher { $operationState }
@@ -52,7 +54,10 @@ class PaymantViewModel:ObservableObject{
         await MainActor.run{
             if case .success(let order) = result{
                 self.orderID=order.id
+                supTotal = order.subtotalAmount
+                taxAmont = order.totalTaxAmount
                 operationState = result.toLocal()
+                
             }
         }
     }
