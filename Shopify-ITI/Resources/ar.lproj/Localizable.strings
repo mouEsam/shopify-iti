@@ -40,8 +40,12 @@
 "validations.invalid_field" = "المدخلات الخاصة بك غير صالحة";
 "validations.invalid_confirm_password" = "كلمات السر الخاصة بك لا تتطابق";
 
+// Common
+"CommonStrings.ok" = "حسنا";
+"CommonStrings.cancel" = "الغاء";
+
 // ProductStrings
-"ProductsStrings.noProductsLabel" = "فارغ";
+"ProductsStrings.noProductsLabel" = "لم يتم العثور علي نتائج";
 "ProductsStrings.wishlistErrorLabel" = "خطأ";
 
 // ProductsStrings
@@ -86,7 +90,7 @@
 "AuthenticationStrings.confirmPasswordHint" = "كلمة السر خاصتك";
 
 // WishlistStrings
-"WishlistStrings.noProductsLabel" = "فارغ";
+"WishlistStrings.noProductsLabel" = "لم تقم باضافة اي عناصر الى قائمة المفضلة";
 "WishlistStrings.wishlistErrorLabel" = "خطأ";
 
 
@@ -95,7 +99,7 @@
 "HomeStrings.emptyListBrands" = "لا يوجد مركات حاليه";
 
 //categories
-"CategoriesStrings.menLabel" = "رجل";
+"CategoriesStrings.menLabel" = "رجال";
 "CategoriesStrings.womenLabel" = "بنات" ;
 "CategoriesStrings.kidLabel" = "أطفال";
 "CategoriesStrings.saleLabel" = "تخفيضات";
@@ -110,16 +114,17 @@
 "ProfileStrings.loginAction" = "تسجيل الدخول";
 "ProfileStrings.loginMessage" = "يرجي تسجيل الدخول";
 
-
+// Search
+"SearchStrings.searchHint" = "قم بالبحث عن منتجات";
 
 //orders
 "OrdersStrings.orderNumber" = "رقم الطلب";
-"OrdersStrings.emptyList" = "فارغ";
+"OrdersStrings.emptyList" = "لا يوحد طلبات مضافه";
 "OrdersStrings.totalPrice" = "التكلفة الكلية";
 "OrdersStrings.quantityItem" = "عدد";
 
 // SettingsStrings
-"SettingsStrings.noProductsLabel" = "فارغ";
+"SettingsStrings.noProductsLabel" = "لم يتم العثور علي نتائج";
 "SettingsStrings.wishlistErrorLabel" = "خطأ";
 
 // CartStrings
@@ -173,7 +178,7 @@
 "SettingsStrings.fQAText" = "الاسئله الشائعه";
 "SettingsStrings.contactUsText" = "تواصل معنا";
 "SettingsStrings.logoutText" = "تسجيل الخروج";
-"SettingsStrings.logoutAlertMessage" = "هل انتا متاكد انك تريد تسجيل الخروج";
+"SettingsStrings.logoutAlertMessage" = "هل انت متاكد انك تريد تسجيل الخروج";
 "SettingsStrings.languageAlertMessage" = "بعض الخدمات قد لا تطبق هذا التغيير تلقائيًا. لذلك نوصي باعادة تشغيل التطبيق لضمان جودة الخدمة" ;
 "SettingsStrings.agreeAlertMessage" = "نعم";
 "SettingsStrings.diagreeAlertMessage" = "لا";

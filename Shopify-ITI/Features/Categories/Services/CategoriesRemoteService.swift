@@ -8,16 +8,21 @@
 import Foundation
 import Shopify_ITI_SDK
 
-struct CategoriesRemoteService : AnyInjectable {
+protocol AnyCategoriesRemoteService{
+    typealias CategoriesError = ShopifyErrors<Any>
+    
+    func fetch(CollectionName name : String) async -> Result<[ProductType], Error>
+    
+}
+struct CategoriesRemoteService : AnyInjectable , AnyCategoriesRemoteService {
     
     static func register(_ container: AppContainer) {
         container.register(type: CategoriesRemoteService.self) { resolver in
             CategoriesRemoteService(remoteClient: resolver.require((any GraphQLClient).self),
                                  localeProvider: resolver.require((any AnyLocaleProvider).self))
-        }
+        }.implements(AnyCategoriesRemoteService.self)
     }
     
-    typealias CategoriesError = ShopifyErrors<Any>
     
     private let remoteClient: any GraphQLClient
     private let localeProvider: any AnyLocaleProvider

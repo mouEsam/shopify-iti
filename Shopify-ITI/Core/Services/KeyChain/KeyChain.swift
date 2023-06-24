@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct KeyChain: AnyKeyChain {
+struct KeyChain: AnyKeyChain, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyKeyChain).self) { resolver in
             KeyChain()

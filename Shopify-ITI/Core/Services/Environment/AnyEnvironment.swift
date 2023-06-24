@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AnyEnvironmentProvider: AnyInjectable {
+protocol AnyEnvironmentProvider {
     var shopifyAccessToken: String { get }
     var shopifyAccessTokenHeader: String { get }
     var shopifyBaseUrl: String { get }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LocaleProvider: AnyLocaleProvider {
+class LocaleProvider: AnyLocaleProvider, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: LocaleProvider.self) { resolver in
             LocaleProvider(languageStore: resolver.require((any AnyLanguageLocalStore).self),
@@ -36,7 +36,7 @@ class LocaleProvider: AnyLocaleProvider {
     }
     
     var language: String {
-        get { languageStore.read()?.uppercased() ?? "EN" }
+        get { languageStore.read()?.split(separator: "-").first?.uppercased() ?? "EN" }
         set { languageStore.write(language: newValue.lowercased()) }
     }
 }

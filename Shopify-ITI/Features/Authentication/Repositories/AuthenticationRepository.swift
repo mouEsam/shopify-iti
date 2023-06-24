@@ -8,22 +8,22 @@
 import Foundation
 import Shopify_ITI_SDK
 
-struct AuthenticationRepository: AnyAuthenticationRepository {
+struct AuthenticationRepository: AnyAuthenticationRepository, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyAuthenticationRepository).self) { resolver in
-            AuthenticationRepository(profileService: resolver.require(ProfileRemoteService.self),
-                                     authService: resolver.require(AuthenticationRemoteService.self),
-                                     authManager: resolver.require(AuthenticationManager.self))
+            AuthenticationRepository(profileService: resolver.require((any AnyProfileRemoteService).self),
+                                     authService: resolver.require((any AnyAuthenticationRemoteService).self),
+                                     authManager: resolver.require((any AnyAuthenticationManager).self))
         }
     }
     
-    private let profileService: ProfileRemoteService
-    private let authService: AuthenticationRemoteService
-    private let authManager: AuthenticationManager
+    private let profileService: any AnyProfileRemoteService
+    private let authService: any AnyAuthenticationRemoteService
+    private let authManager: any AnyAuthenticationManager
     
-    init(profileService: ProfileRemoteService,
-         authService: AuthenticationRemoteService,
-         authManager: AuthenticationManager) {
+    init(profileService: some AnyProfileRemoteService,
+         authService: some AnyAuthenticationRemoteService,
+         authManager: some AnyAuthenticationManager) {
         self.profileService = profileService
         self.authService = authService
         self.authManager = authManager
@@ -42,7 +42,7 @@ struct AuthenticationRepository: AnyAuthenticationRepository {
         if case .failure(let error) = userResult { return .failure(error) }
         guard case .success(let user) = userResult else { return .failure(LocalErrors.Unknown) }
         
-        return await authManager.setUser(user: user, token: token).mapError { $0 as Error }
+        return await authManager.setUser(user: user, token: token, persist: true).mapError { $0 as Error }
     }
     
     func recover(email: String) async -> Result<Void, ShopifyErrors<ShopifyAPI.CustomerErrorCode>> {

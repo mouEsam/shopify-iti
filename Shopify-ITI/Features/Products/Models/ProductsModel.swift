@@ -15,15 +15,15 @@ protocol AnyProductsModel {
 struct ProductsModel: AnyProductsModel, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyProductsModel).self, scope: .transient) { resolver in
-            ProductsModel(productsService: resolver.require(ProductsRemoteService.self),
+            ProductsModel(productsService: resolver.require((any AnyProductsRemoteService).self),
                           configsProvider: resolver.require((any AnyConfigsProvider).self))
         }
     }
     
-    private let productsService: ProductsRemoteService
+    private let productsService: any AnyProductsRemoteService
     private let configsProvider: any AnyConfigsProvider
     
-    init(productsService: ProductsRemoteService,
+    init(productsService: some AnyProductsRemoteService,
          configsProvider: some AnyConfigsProvider) {
         self.productsService = productsService
         self.configsProvider = configsProvider
@@ -34,6 +34,6 @@ struct ProductsModel: AnyProductsModel, AnyInjectable {
         let result = await productsService.fetch(withCriterion: criteria,
                                                  count: configsProvider.productsCountPerPage,
                                                  with: paginationInfo)
-        return result.map { .remote($0) }
+        return result.map { SourcedData.remote($0) }
     }
 }

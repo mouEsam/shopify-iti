@@ -10,13 +10,13 @@ import Shopify_ITI_SDK
 struct CartModel:AnyCartModel{
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyCartModel).self) { resolver in
-            CartModel(cartRemoteService: resolver.require(CartRemoteService.self)
+            CartModel(cartRemoteService: resolver.require((any AnyCartRemoteService).self)
                       ,cartIdStore: resolver.require ((any AnyCartIdStore).self))
         }
     }
     
     
-    let cartRemoteService:CartRemoteService
+    let cartRemoteService: AnyCartRemoteService
     let cartIdStore:AnyCartIdStore
     
     func getCart() async -> Result<Cart, Error> {

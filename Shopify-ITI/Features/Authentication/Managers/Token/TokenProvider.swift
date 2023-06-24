@@ -11,7 +11,7 @@ protocol AnyAccessTokenHolder: AnyObject, AnyAccessTokenProvider {
     var accessToken: String? { get set }
 }
 
-class AccessTokenHolder: AnyAccessTokenHolder {
+class AccessTokenHolder: AnyAccessTokenHolder, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: AccessTokenHolder.self) { resolver in
             AccessTokenHolder()

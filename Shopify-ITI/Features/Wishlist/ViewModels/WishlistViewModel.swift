@@ -16,7 +16,7 @@ class WishlistViewModel: ObservableObject {
     }
     
     private let model: any AnyWishlistModel
-    private let wishlistManager: WishlistManager
+    private let wishlistManager: any AnyWishlistManager
     private let notificationCenter: any AnyNotificationCenter
     private let queue: DispatchQueue = DispatchQueue(label: "WishlistViewModel")
     
@@ -28,7 +28,7 @@ class WishlistViewModel: ObservableObject {
     private var fetchTask: Task<Any, Error>? = nil
     
     init(model: some AnyWishlistModel,
-         wishlistManager: WishlistManager,
+         wishlistManager: some AnyWishlistManager,
          notificationCenter: some AnyNotificationCenter) {
         self.model = model
         self.wishlistManager = wishlistManager

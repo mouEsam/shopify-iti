@@ -59,6 +59,14 @@ class SettingViewModel: ObservableObject {
                     break
                 }
             }.store(in: &cancellables)
+        
+        $country.removeDuplicates().sink { country in
+            self.change(country: country)
+        }.store(in: &cancellables)
+        
+        $langauge.removeDuplicates().sink { language in
+            self.change(language: language)
+        }.store(in: &cancellables)
     }
     
     private func update() {

@@ -7,12 +7,20 @@
 
 import Foundation
 import Shopify_ITI_SDK
-struct CartRemoteService:AnyInjectable {
+protocol AnyCartRemoteService {
+    func fetch(byId id: String) async -> Result<Cart?, Error>
+    func createCart(with cartInput: ShopifyAPI.CartInput) async -> Result<Cart?, Error>
+    func upDate(card id: String,with lineInput: ShopifyAPI.CartLineInput) async -> Result<Cart?, Error>
+    func upDateLineFor( card id: String,with lineInput: ShopifyAPI.CartLineUpdateInput) async -> Result<Cart?, Error>
+    func removeLine(withLineID lineId: String,forCart cartId: String) async -> Result<Cart?, Error>
+    func upDataBuyerIdentity(withUserID userId: String?,forCart cartId: String) async -> Result<Cart?, Error>
+}
+struct CartRemoteService:AnyInjectable,AnyCartRemoteService {
     static func register(_ container: AppContainer) {
         container.register(type: (CartRemoteService).self) { resolver in
             CartRemoteService(remoteClient:resolver.require((any GraphQLClient).self),
                               localeProvider: resolver.require((any AnyLocaleProvider).self))
-        }
+        }.implements(AnyCartRemoteService.self)
     }
     
     private let remoteClient: any GraphQLClient

@@ -8,16 +8,31 @@
 import Foundation
 import Shopify_ITI_SDK
 
-struct AuthenticationRemoteService: AnyInjectable {
+protocol AnyAuthenticationRemoteService {
+    typealias AuthError = ShopifyErrors<ShopifyAPI.CustomerErrorCode>
+    
+    func signup(with credentials: SignupCredentials) async -> Result<User, AuthError>
+    
+    func login(with credentials: SigninCredentials) async -> Result<AccessToken, AuthError>
+    
+    func profile() async -> Result<User, AuthError>
+    
+    func renew() async -> Result<AccessToken, AuthError>
+    
+    func recover(email: String) async -> Result<Void, AuthError>
+    
+    func signout() async -> Result<Void, AuthError>
+}
+
+
+struct AuthenticationRemoteService: AnyAuthenticationRemoteService, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: AuthenticationRemoteService.self) { resolver in
             AuthenticationRemoteService(client: resolver.require((any GraphQLClient).self),
                                         localeProvider: resolver.require((any AnyLocaleProvider).self),
                                         tokenProvider: resolver.require((any AnyAccessTokenProvider).self))
-        }
+        }.implements(AnyAuthenticationRemoteService.self)
     }
-    
-    typealias AuthError = ShopifyErrors<ShopifyAPI.CustomerErrorCode>
     
     private let client: any GraphQLClient
     private let localeProvider: any AnyLocaleProvider

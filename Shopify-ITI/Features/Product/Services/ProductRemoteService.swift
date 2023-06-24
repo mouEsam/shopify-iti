@@ -10,15 +10,23 @@ import Shopify_ITI_SDK
 
 // Id eg.: gid://shopify/Product/8341864055063
 
-struct ProductRemoteService: AnyInjectable {
+protocol AnyProductRemoteService {
+    typealias ProductError = ShopifyErrors<Any>
+    
+    func fetch(byId id: String,
+               collectionsCount: Int,
+               imagesCount: Int,
+               variantsCount: Int) async -> Result<DetailedProduct, ProductError>
+}
+
+
+struct ProductRemoteService: AnyProductRemoteService, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: ProductRemoteService.self) { resolver in
             ProductRemoteService(remoteClient: resolver.require((any GraphQLClient).self),
                                 localeProvider: resolver.require((any AnyLocaleProvider).self))
-        }
+        }.implements(AnyProductRemoteService.self)
     }
-    
-    typealias ProductError = ShopifyErrors<Any>
     
     private let remoteClient: any GraphQLClient
     private let localeProvider: any AnyLocaleProvider
