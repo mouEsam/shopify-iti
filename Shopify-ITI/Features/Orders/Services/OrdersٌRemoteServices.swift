@@ -7,17 +7,19 @@
 
 import Foundation
 import Shopify_ITI_SDK
-
-struct OrdersRemoteService : AnyInjectable{
+protocol AnyOrdersRemoteService{
+    typealias OrdersError = ShopifyErrors<Any>
+    func fetch(customerAccessToken token : String) async -> Result<[Order], Error>
+}
+struct OrdersRemoteService : AnyInjectable,AnyOrdersRemoteService{
     
     static func register(_ container: AppContainer) {
         container.register(type: OrdersRemoteService.self) { resolver in
             OrdersRemoteService(remoteClient: resolver.require((any GraphQLClient).self),
                                  localeProvider: resolver.require((any AnyLocaleProvider).self))
-        }
+        }.implements(AnyOrdersRemoteService.self)
     }
     
-    typealias OrdersError = ShopifyErrors<Any>
 
     private let remoteClient: any GraphQLClient
     private let localeProvider: any AnyLocaleProvider

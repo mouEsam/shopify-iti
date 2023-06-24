@@ -80,7 +80,6 @@ struct SectionOrder : View {
             }) {
                 ForEach(order.lineItems,id:\.id){
                     CardOrder(lineItem: $0,strings: strings)
-                    CardOrder(lineItem: $0,strings: strings)
                 }.background(Color.white)
                     .cornerRadius(10)
                     .shadow(radius: 2).padding(4)
