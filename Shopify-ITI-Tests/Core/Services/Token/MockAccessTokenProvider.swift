@@ -8,7 +8,7 @@
 import Foundation
 @testable import Shopify_ITI
 
-class AccessTokenProvider: AnyAccessTokenProvider {
+class MockAccessTokenProvider: AnyAccessTokenProvider {
     
     var provider: AnyAccessTokenProvider? = nil
     var accessTokenResult: String! = nil

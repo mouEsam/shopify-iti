@@ -16,6 +16,47 @@ final class ProductsRemoteServiceTests: XCTestCase {
     private var localeProvider: MockLocaleProvider!
     private var remoteService: ProductsRemoteService!
     
+    private let errorResult = MockGraphQLResult.ResultType.clientError(error: MockError())
+    
+    private let productsWithoutCollectionSuccessResult = MockGraphQLResult.ResultType.found(data: JSONObject([
+        ("products", JSONObject([
+            ("__typename", JSONValue("Product")),
+            ("edges", [JSONObject]()),
+            ("pageInfo", JSONObject([
+                ("__typename", JSONValue("PageInfo")),
+                ("hasPreviousPage", JSONValue(true)),
+                ("hasNextPage", JSONValue(true))
+            ]))
+        ]))
+    ]))
+    
+    private let productsWithCollectionSuccessResult = MockGraphQLResult.ResultType.found(data: JSONObject([
+        ("collection", JSONObject([
+            ("__typename", JSONValue("Collection")),
+            ("products", JSONObject([
+                ("__typename", JSONValue("Product")),
+                ("edges", [JSONObject]()),
+                ("pageInfo", JSONObject([
+                    ("__typename", JSONValue("PageInfo")),
+                    ("hasPreviousPage", JSONValue(true)),
+                    ("hasNextPage", JSONValue(true))
+                ]))
+            ]))
+        ]))
+    ]))
+    
+    private let productsWithQuerySuccessResult = MockGraphQLResult.ResultType.found(data: JSONObject([
+        ("search", JSONObject([
+            ("__typename", JSONValue("Search")),
+            ("edges", [JSONObject]()),
+            ("pageInfo", JSONObject([
+                ("__typename", JSONValue("PageInfo")),
+                ("hasPreviousPage", JSONValue(true)),
+                ("hasNextPage", JSONValue(true))
+            ]))
+        ]))
+    ]))
+    
     override func setUp() {
         client = MockRemoteClient()
         localeProvider = MockLocaleProvider()
@@ -23,37 +64,8 @@ final class ProductsRemoteServiceTests: XCTestCase {
                               localeProvider: localeProvider)
     }
     
-    struct ProductsWithoutCollection: MockGraphQLResultFactory {
-        
-        var returnSuccess: Bool?
-        
-        func get<Query: GraphQLOperation>(_ type: Query.Type) -> Result<GraphQLResult<Query.Data>, Error> {
-            if returnSuccess != false {
-                let data = returnSuccess == true ?
-                JSONObject([
-                    ("products", JSONObject([
-                        ("__typename", JSONValue("Product")),
-                        ("edges", [JSONObject]()),
-                        ("pageInfo", JSONObject([
-                            ("__typename", JSONValue("PageInfo")),
-                            ("hasPreviousPage", JSONValue(true)),
-                            ("hasNextPage", JSONValue(true))
-                        ]))
-                    ]))
-                ]) : nil
-                return .success(.init(data: data.map { try! .init(data: $0, variables:[:]) },
-                                      extensions: nil,
-                                      errors: nil,
-                                      source: .cache,
-                                      dependentKeys: nil))
-            } else {
-                return .failure(MockError())
-            }
-        }
-    }
-    
     func testFetchWithoutCollectionSuccess() async {
-        client.fetchResult = ProductsWithoutCollection(returnSuccess: true)
+        client.fetchResult = MockGraphQLResult(result: productsWithoutCollectionSuccessResult)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         
@@ -64,7 +76,7 @@ final class ProductsRemoteServiceTests: XCTestCase {
     }
     
     func testFetchWithoutCollectionFailure() async {
-        client.fetchResult = ProductsWithoutCollection(returnSuccess: false)
+        client.fetchResult = MockGraphQLResult(result: errorResult)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         
@@ -75,7 +87,7 @@ final class ProductsRemoteServiceTests: XCTestCase {
     }
     
     func testFetchWithoutCollectionClientFailure() async {
-        client.fetchResult = ProductsWithoutCollection(returnSuccess: false)
+        client.fetchResult = MockGraphQLResult(result: .error)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         
@@ -96,40 +108,8 @@ final class ProductsRemoteServiceTests: XCTestCase {
         }
     }
     
-    struct ProductsWithCollection: MockGraphQLResultFactory {
-        
-        var returnSuccess: Bool?
-        
-        func get<Query: GraphQLOperation>(_ type: Query.Type) -> Result<GraphQLResult<Query.Data>, Error> {
-            if returnSuccess != false {
-                let data = returnSuccess == true ?
-                JSONObject([
-                    ("collection", JSONObject([
-                        ("__typename", JSONValue("Collection")),
-                        ("products", JSONObject([
-                            ("__typename", JSONValue("Product")),
-                            ("edges", [JSONObject]()),
-                            ("pageInfo", JSONObject([
-                                ("__typename", JSONValue("PageInfo")),
-                                ("hasPreviousPage", JSONValue(true)),
-                                ("hasNextPage", JSONValue(true))
-                            ]))
-                        ]))
-                    ]))
-                ]) : nil
-                return .success(.init(data: data.map { try! .init(data: $0, variables:[:]) },
-                                      extensions: nil,
-                                      errors: nil,
-                                      source: .cache,
-                                      dependentKeys: nil))
-            } else {
-                return .failure(MockError())
-            }
-        }
-    }
-    
     func testFetchWithCollectionSuccess() async {
-        client.fetchResult = ProductsWithCollection(returnSuccess: true)
+        client.fetchResult = MockGraphQLResult(result: productsWithCollectionSuccessResult)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         
@@ -142,7 +122,7 @@ final class ProductsRemoteServiceTests: XCTestCase {
     }
     
     func testFetchWithCollectionFailure() async {
-        client.fetchResult = ProductsWithCollection(returnSuccess: nil)
+        client.fetchResult = MockGraphQLResult(result: errorResult)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         
@@ -155,7 +135,7 @@ final class ProductsRemoteServiceTests: XCTestCase {
     }
     
     func testFetchWithCollectionClientFailure() async {
-        client.fetchResult = ProductsWithCollection(returnSuccess: false)
+        client.fetchResult = MockGraphQLResult(result: .notFound)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         
@@ -180,37 +160,8 @@ final class ProductsRemoteServiceTests: XCTestCase {
         }
     }
     
-    struct ProductsWithQuery: MockGraphQLResultFactory {
-        
-        var returnSuccess: Bool?
-        
-        func get<Query: GraphQLOperation>(_ type: Query.Type) -> Result<GraphQLResult<Query.Data>, Error> {
-            if returnSuccess != false {
-                let data = returnSuccess == true ?
-                JSONObject([
-                    ("search", JSONObject([
-                        ("__typename", JSONValue("Search")),
-                        ("edges", [JSONObject]()),
-                        ("pageInfo", JSONObject([
-                            ("__typename", JSONValue("PageInfo")),
-                            ("hasPreviousPage", JSONValue(true)),
-                            ("hasNextPage", JSONValue(true))
-                        ]))
-                    ]))
-                ]) : nil
-                return .success(.init(data: data.map { try! .init(data: $0, variables:[:]) },
-                                      extensions: nil,
-                                      errors: nil,
-                                      source: .cache,
-                                      dependentKeys: nil))
-            } else {
-                return .failure(MockError())
-            }
-        }
-    }
-    
     func testFetchWithQuerySuccess() async {
-        client.fetchResult = ProductsWithQuery(returnSuccess: true)
+        client.fetchResult = MockGraphQLResult(result: productsWithQuerySuccessResult)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         
@@ -221,7 +172,7 @@ final class ProductsRemoteServiceTests: XCTestCase {
     }
     
     func testFetchWithQueryFailure() async {
-        client.fetchResult = ProductsWithQuery(returnSuccess: nil)
+        client.fetchResult = MockGraphQLResult(result: errorResult)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         
@@ -232,7 +183,7 @@ final class ProductsRemoteServiceTests: XCTestCase {
     }
     
     func testFetchWithQueryClientFailure() async {
-        client.fetchResult = ProductsWithQuery(returnSuccess: false)
+        client.fetchResult = MockGraphQLResult(result: .error)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         
@@ -254,7 +205,7 @@ final class ProductsRemoteServiceTests: XCTestCase {
     }
     
     func testFetchQuery() async {
-        client.fetchResult = ProductsWithQuery(returnSuccess: true)
+        client.fetchResult = MockGraphQLResult(result: productsWithQuerySuccessResult)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         
@@ -265,7 +216,7 @@ final class ProductsRemoteServiceTests: XCTestCase {
     }
     
     func testFetchCollection() async {
-        client.fetchResult = ProductsWithCollection(returnSuccess: true)
+        client.fetchResult = MockGraphQLResult(result: productsWithCollectionSuccessResult)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         
@@ -276,7 +227,7 @@ final class ProductsRemoteServiceTests: XCTestCase {
     }
     
     func testFetchQueryWithCriterion() async {
-        client.fetchResult = ProductsWithoutCollection(returnSuccess: true)
+        client.fetchResult = MockGraphQLResult(result: productsWithoutCollectionSuccessResult)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         
@@ -287,7 +238,7 @@ final class ProductsRemoteServiceTests: XCTestCase {
     }
     
     func testFetchCollectionWithCriterion() async {
-        client.fetchResult = ProductsWithCollection(returnSuccess: true)
+        client.fetchResult = MockGraphQLResult(result: productsWithCollectionSuccessResult)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         

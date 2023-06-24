@@ -32,23 +32,19 @@ struct WishlistRemoteService: AnyInjectable, AnyWishlistRemoteService {
             WishlistRemoteService(remoteClient: resolver.require((any GraphQLClient).self,
                                                                  name: AdminEnvironmentProvider.diName),
                                 localeProvider: resolver.require((any AnyLocaleProvider).self),
-                                 configsProvider: resolver.require((any AnyConfigsProvider).self),
                                   userProvider: resolver.require((any AnyUserProvider).self))
         }.implements(AnyWishlistRemoteService.self)
     }
     
     private let remoteClient: any GraphQLClient
     private let localeProvider: any AnyLocaleProvider
-    private let configsProvider: any AnyConfigsProvider
     private let userProvider: any AnyUserProvider
     
     init(remoteClient: some GraphQLClient,
          localeProvider: some AnyLocaleProvider,
-         configsProvider: some AnyConfigsProvider,
          userProvider: some AnyUserProvider) {
         self.remoteClient = remoteClient
         self.localeProvider = localeProvider
-        self.configsProvider = configsProvider
         self.userProvider = userProvider
     }
     

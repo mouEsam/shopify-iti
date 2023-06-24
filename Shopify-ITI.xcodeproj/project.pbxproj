@@ -252,6 +252,12 @@
 		04E956252A43B3B30090E447 /* CartIdStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E956182A43B3B30090E447 /* CartIdStore.swift */; };
 		04E956262A43B3B30090E447 /* AnyCartIdStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E956192A43B3B30090E447 /* AnyCartIdStore.swift */; };
 		334029F07C9A89D6CEF9AB9D /* Pods_Shopify_ITI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */; };
+		D44CF5332A474EEB00E8C9C6 /* MockAuthenticationRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44CF5322A474EEB00E8C9C6 /* MockAuthenticationRemoteService.swift */; };
+		D44CF5352A474FE100E8C9C6 /* AuthenticationRemoteServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44CF5342A474FE100E8C9C6 /* AuthenticationRemoteServiceTests.swift */; };
+		D44CF5382A47551A00E8C9C6 /* MockAuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44CF5372A47551A00E8C9C6 /* MockAuthenticationRepository.swift */; };
+		D44CF53A2A4755D300E8C9C6 /* AuthenticationRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44CF5392A4755D300E8C9C6 /* AuthenticationRepositoryTests.swift */; };
+		D44CF5402A47565D00E8C9C6 /* MockAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44CF53F2A47565D00E8C9C6 /* MockAuthenticationManager.swift */; };
+		D44CF5422A4757CC00E8C9C6 /* MockProfileRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44CF5412A4757CC00E8C9C6 /* MockProfileRemoteService.swift */; };
 		D44F05312A44748A0093956F /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F05302A44748A0093956F /* NavigationBar.swift */; };
 		D4596D892A33595100BD9E26 /* Shopify_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */; };
 		D4596D8A2A33595100BD9E26 /* Shopify_ITI_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -289,6 +295,11 @@
 		D4FC46E82A47291E00A87E08 /* ProductModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46E72A47291E00A87E08 /* ProductModelTests.swift */; };
 		D4FC46EB2A472BED00A87E08 /* MockProductsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46EA2A472BED00A87E08 /* MockProductsModel.swift */; };
 		D4FC46ED2A472C5400A87E08 /* ProductsModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46EC2A472C5400A87E08 /* ProductsModelTests.swift */; };
+		D4FC46F12A47354200A87E08 /* MockWishlistIdLocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46F02A47354200A87E08 /* MockWishlistIdLocalStore.swift */; };
+		D4FC46F42A47366000A87E08 /* WishlistModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46F32A47366000A87E08 /* WishlistModelTests.swift */; };
+		D4FC46F72A47368F00A87E08 /* WishlistRemoteServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46F62A47368F00A87E08 /* WishlistRemoteServiceTests.swift */; };
+		D4FC46F92A4736B300A87E08 /* MockWishlistRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46F82A4736B300A87E08 /* MockWishlistRemoteService.swift */; };
+		D4FC46FB2A4739D600A87E08 /* MockGraphQLResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46FA2A4739D600A87E08 /* MockGraphQLResult.swift */; };
 		F9DAA344FDED43A0FCFB1386 /* Pods_Shopify_ITI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3320D9D9EB592C16B8F39BC9 /* Pods_Shopify_ITI_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -571,6 +582,12 @@
 		7435DD34A15418A65319A2C9 /* Pods-Shopify-ITI-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI-Tests.debug.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI-Tests/Pods-Shopify-ITI-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9286320BBD2664520DE1BD34 /* Pods-Shopify-ITI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.debug.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.debug.xcconfig"; sourceTree = "<group>"; };
 		D41F627C2A2C921C00780814 /* Shopify-ITI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopify-ITI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D44CF5322A474EEB00E8C9C6 /* MockAuthenticationRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationRemoteService.swift; sourceTree = "<group>"; };
+		D44CF5342A474FE100E8C9C6 /* AuthenticationRemoteServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRemoteServiceTests.swift; sourceTree = "<group>"; };
+		D44CF5372A47551A00E8C9C6 /* MockAuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationRepository.swift; sourceTree = "<group>"; };
+		D44CF5392A4755D300E8C9C6 /* AuthenticationRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepositoryTests.swift; sourceTree = "<group>"; };
+		D44CF53F2A47565D00E8C9C6 /* MockAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationManager.swift; sourceTree = "<group>"; };
+		D44CF5412A4757CC00E8C9C6 /* MockProfileRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProfileRemoteService.swift; sourceTree = "<group>"; };
 		D44F05302A44748A0093956F /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_Admin_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -605,6 +622,11 @@
 		D4FC46E72A47291E00A87E08 /* ProductModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModelTests.swift; sourceTree = "<group>"; };
 		D4FC46EA2A472BED00A87E08 /* MockProductsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductsModel.swift; sourceTree = "<group>"; };
 		D4FC46EC2A472C5400A87E08 /* ProductsModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsModelTests.swift; sourceTree = "<group>"; };
+		D4FC46F02A47354200A87E08 /* MockWishlistIdLocalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWishlistIdLocalStore.swift; sourceTree = "<group>"; };
+		D4FC46F32A47366000A87E08 /* WishlistModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistModelTests.swift; sourceTree = "<group>"; };
+		D4FC46F62A47368F00A87E08 /* WishlistRemoteServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistRemoteServiceTests.swift; sourceTree = "<group>"; };
+		D4FC46F82A4736B300A87E08 /* MockWishlistRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWishlistRemoteService.swift; sourceTree = "<group>"; };
+		D4FC46FA2A4739D600A87E08 /* MockGraphQLResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGraphQLResult.swift; sourceTree = "<group>"; };
 		E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0A81DAC848D79B6DAFA2A4 /* Pods-Shopify-ITI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2180,6 +2202,66 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D44CF5302A474ED000E8C9C6 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				D44CF53D2A47563A00E8C9C6 /* Managers */,
+				D44CF5362A47550400E8C9C6 /* Repositories */,
+				D44CF5312A474EDA00E8C9C6 /* Services */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		D44CF5312A474EDA00E8C9C6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D44CF5322A474EEB00E8C9C6 /* MockAuthenticationRemoteService.swift */,
+				D44CF5342A474FE100E8C9C6 /* AuthenticationRemoteServiceTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D44CF5362A47550400E8C9C6 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				D44CF5372A47551A00E8C9C6 /* MockAuthenticationRepository.swift */,
+				D44CF5392A4755D300E8C9C6 /* AuthenticationRepositoryTests.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		D44CF53B2A47562200E8C9C6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D44CF53C2A47562F00E8C9C6 /* Services */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D44CF53C2A47562F00E8C9C6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D44CF5412A4757CC00E8C9C6 /* MockProfileRemoteService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D44CF53D2A47563A00E8C9C6 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D44CF53E2A47564600E8C9C6 /* Auth */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		D44CF53E2A47564600E8C9C6 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D44CF53F2A47565D00E8C9C6 /* MockAuthenticationManager.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		D4CB07592A439E330014231B /* Stores */ = {
 			isa = PBXGroup;
 			children = (
@@ -2257,6 +2339,7 @@
 			isa = PBXGroup;
 			children = (
 				D4FC46CB2A46FBE700A87E08 /* MockGraphQLClient.swift */,
+				D4FC46FA2A4739D600A87E08 /* MockGraphQLResult.swift */,
 			);
 			path = RemoteClient;
 			sourceTree = "<group>";
@@ -2280,6 +2363,9 @@
 		D4FC46D32A47060300A87E08 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D44CF53B2A47562200E8C9C6 /* Profile */,
+				D44CF5302A474ED000E8C9C6 /* Authentication */,
+				D4FC46EE2A47350A00A87E08 /* Wishlist */,
 				D4FC46DE2A47171800A87E08 /* Product */,
 				D4FC46D52A47062C00A87E08 /* Products */,
 			);
@@ -2346,6 +2432,41 @@
 				D4FC46EC2A472C5400A87E08 /* ProductsModelTests.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D4FC46EE2A47350A00A87E08 /* Wishlist */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC46F52A47367E00A87E08 /* Services */,
+				D4FC46F22A47365000A87E08 /* Models */,
+				D4FC46EF2A47351600A87E08 /* Stores */,
+			);
+			path = Wishlist;
+			sourceTree = "<group>";
+		};
+		D4FC46EF2A47351600A87E08 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC46F02A47354200A87E08 /* MockWishlistIdLocalStore.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		D4FC46F22A47365000A87E08 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC46F32A47366000A87E08 /* WishlistModelTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D4FC46F52A47367E00A87E08 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC46F62A47368F00A87E08 /* WishlistRemoteServiceTests.swift */,
+				D4FC46F82A4736B300A87E08 /* MockWishlistRemoteService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		F7B4E07DB0B124A6BC44E75B /* Frameworks */ = {
@@ -2800,20 +2921,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4FC46F42A47366000A87E08 /* WishlistModelTests.swift in Sources */,
 				D4FC46D22A47037C00A87E08 /* MockKeyChain.swift in Sources */,
 				D4FC46C62A46FAEE00A87E08 /* MockLocaleProvider.swift in Sources */,
 				D4FC46EB2A472BED00A87E08 /* MockProductsModel.swift in Sources */,
+				D4FC46F92A4736B300A87E08 /* MockWishlistRemoteService.swift in Sources */,
 				D4FC46CF2A46FDAD00A87E08 /* MockNotificationCenter.swift in Sources */,
+				D44CF53A2A4755D300E8C9C6 /* AuthenticationRepositoryTests.swift in Sources */,
 				D4FC46C92A46FB8400A87E08 /* MockUserProvider.swift in Sources */,
+				D44CF5332A474EEB00E8C9C6 /* MockAuthenticationRemoteService.swift in Sources */,
+				D4FC46F12A47354200A87E08 /* MockWishlistIdLocalStore.swift in Sources */,
+				D44CF5422A4757CC00E8C9C6 /* MockProfileRemoteService.swift in Sources */,
 				D4FC46C32A46FA4600A87E08 /* MockAccessTokenProvider.swift in Sources */,
+				D4FC46F72A47368F00A87E08 /* WishlistRemoteServiceTests.swift in Sources */,
+				D44CF5382A47551A00E8C9C6 /* MockAuthenticationRepository.swift in Sources */,
 				D4FC46E82A47291E00A87E08 /* ProductModelTests.swift in Sources */,
 				D4FC46D82A47070000A87E08 /* MockProductsRemoteService.swift in Sources */,
+				D44CF5352A474FE100E8C9C6 /* AuthenticationRemoteServiceTests.swift in Sources */,
 				D4FC46E62A4728B400A87E08 /* MockProductModel.swift in Sources */,
 				D4FC46DD2A4710D400A87E08 /* MockError.swift in Sources */,
 				D4FC46E32A4718C700A87E08 /* ProductRemoteServiceTests.swift in Sources */,
+				D44CF5402A47565D00E8C9C6 /* MockAuthenticationManager.swift in Sources */,
 				D4FC46ED2A472C5400A87E08 /* ProductsModelTests.swift in Sources */,
 				D4FC46DA2A47071700A87E08 /* ProductsRemoteServiceTests.swift in Sources */,
 				D4FC46CC2A46FBE700A87E08 /* MockGraphQLClient.swift in Sources */,
+				D4FC46FB2A4739D600A87E08 /* MockGraphQLResult.swift in Sources */,
 				D4FC46E12A47172F00A87E08 /* MockProductRemoteService.swift in Sources */,
 				D4FC46B92A46F9FA00A87E08 /* Shopify_ITI_Tests.swift in Sources */,
 			);

@@ -13,12 +13,14 @@ import Apollo
 final class ProductModelTests: XCTestCase {
     
     private var configsProvider: ConfigsProvider!
+    private var localeProvider: MockLocaleProvider!
     private var remoteService: MockProductRemoteService!
     private var model: ProductModel!
     
     override func setUp() {
         configsProvider = ConfigsProvider()
         remoteService = MockProductRemoteService()
+        localeProvider = MockLocaleProvider()
         model = ProductModel(remoteService: remoteService,
                              configsProvider: configsProvider)
     }
@@ -75,17 +77,13 @@ final class ProductModelTests: XCTestCase {
     }
     
     func testFetchActualSuccess() async {
-        var localeProvider = MockLocaleProvider()
-        var client = ApolloGraphQLClient(environment: StorefronEnvironmentProvider())
+        let client = ApolloGraphQLClient(environment: StorefronEnvironmentProvider())
         remoteService.service = ProductRemoteService(remoteClient: client,
                                                      localeProvider: localeProvider)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         
-        let result = await remoteService.fetch(byId: "gid://shopify/Product/8341863858455",
-                                               collectionsCount: 10,
-                                               imagesCount: 10,
-                                               variantsCount: 10)
+        let result = await model.fetch(byId: "gid://shopify/Product/8341863858455")
         if case .failure(_) = result {
             XCTFail()
         }
