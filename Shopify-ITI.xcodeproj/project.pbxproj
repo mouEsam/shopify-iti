@@ -272,6 +272,7 @@
 		D4CB089E2A43BD570014231B /* GenericErrorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB089D2A43BD570014231B /* GenericErrorText.swift */; };
 		D4CB08A12A43C8B50014231B /* LanguageManagerSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D4CB08A02A43C8B50014231B /* LanguageManagerSwiftUI */; };
 		D4FC46AF2A46D96000A87E08 /* CommonStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46AE2A46D96000A87E08 /* CommonStrings.swift */; };
+		D4FC46B12A46DFD000A87E08 /* SearchStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46B02A46DFD000A87E08 /* SearchStrings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -556,6 +557,7 @@
 		D4CB089B2A43BD4A0014231B /* ShopifyErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopifyErrorText.swift; sourceTree = "<group>"; };
 		D4CB089D2A43BD570014231B /* GenericErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericErrorText.swift; sourceTree = "<group>"; };
 		D4FC46AE2A46D96000A87E08 /* CommonStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStrings.swift; sourceTree = "<group>"; };
+		D4FC46B02A46DFD000A87E08 /* SearchStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStrings.swift; sourceTree = "<group>"; };
 		E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0A81DAC848D79B6DAFA2A4 /* Pods-Shopify-ITI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1351,6 +1353,7 @@
 			isa = PBXGroup;
 			children = (
 				044D36A92A4393FF00636AD7 /* AppStorageArray.swift */,
+				D4FC46B02A46DFD000A87E08 /* SearchStrings.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -2512,6 +2515,7 @@
 				044D37CD2A4393FF00636AD7 /* CongratsScreen.swift in Sources */,
 				044D37D52A4393FF00636AD7 /* ProductPage.swift in Sources */,
 				044D384E2A4393FF00636AD7 /* ADSView.swift in Sources */,
+				D4FC46B12A46DFD000A87E08 /* SearchStrings.swift in Sources */,
 				044D37832A4393FF00636AD7 /* Object.swift in Sources */,
 				044D37F32A4393FF00636AD7 /* Pagination.swift in Sources */,
 				044D383E2A4393FF00636AD7 /* AuthNotifications.swift in Sources */,

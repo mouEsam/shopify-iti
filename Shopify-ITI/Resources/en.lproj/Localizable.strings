@@ -116,7 +116,8 @@
 "ProfileStrings.loginAction" = "Login";
 "ProfileStrings.loginMessage" = "Please Login";
 
-
+// Search
+"SearchStrings.searchHint" = "Search for a product";
 
 //order
 "OrdersStrings.orderNumber" = "Order Number";

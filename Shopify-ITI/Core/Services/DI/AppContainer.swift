@@ -179,7 +179,8 @@ extension AppContainer {
             AddressService.self,
             PaymentStrings.self,
             SettingsStrings.self,
-            CommonStrings.self
+            CommonStrings.self,
+            SearchStrings.self
         ])
     }
 }

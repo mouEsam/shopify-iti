@@ -114,7 +114,8 @@
 "ProfileStrings.loginAction" = "تسجيل الدخول";
 "ProfileStrings.loginMessage" = "يرجي تسجيل الدخول";
 
-
+// Search
+"SearchStrings.searchHint" = "قم بالبحث عن منتجات";
 
 //orders
 "OrdersStrings.orderNumber" = "رقم الطلب";
