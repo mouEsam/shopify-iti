@@ -3,6 +3,7 @@
 An e-commerce application developed as a graduation project for ITI MAD 43
 
 ## Team Members:
+
     - Ammar Alaraby
         1. Home
         2. Categories
@@ -23,13 +24,16 @@ An e-commerce application developed as a graduation project for ITI MAD 43
         3. Authentication
 
 ## Links:
+
     [Github](https://github.com/mouEsam/shopify-iti)
     [Trello](https://trello.com/b/f5MPG93Y/ios-graduation-project)
 
 ## Design Pattern:
+
     **MVVM** with a simple *router*
 
 ## Technologies:
+
     - SwiftUI
     - Apollo
     - GraphQL
