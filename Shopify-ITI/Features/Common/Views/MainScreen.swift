@@ -26,12 +26,15 @@ struct MainScreen: View {
     @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
     
+    private var notificationCenter: any AnyNotificationCenter
+    
     @StateObject private var viewModel: MainScreenViewModel
     @State var selection: TabType = .home
     
     private let colors: any AnyAppColors
     
     init(container: AppContainer) {
+        notificationCenter = container.require((any AnyNotificationCenter).self)
         let cartManager = container.require(CartManager.self)
         let wishlistManager = container.require(WishlistManager.self)
         colors = container.require((any AnyAppColors).self)
@@ -99,6 +102,9 @@ struct MainScreen: View {
             }
         }.navigationBarBackButtonHidden(true)
         .tint(colors.black)
+        .onReceive(notificationCenter.publisher(for: PaymentNotification.name)) { _ in
+            selection = .home
+        }
     }
 }
 

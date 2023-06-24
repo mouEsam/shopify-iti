@@ -38,7 +38,8 @@ struct ProfilePage: View {
                                                                    wishlistManager: manager,
                                                                    notificationCenter: notificationCenter))
         let modelOrders = container.require((any AnyOrdersModelFactory).self).create()
-        _ordersViewModel = .init(wrappedValue: OrdersViewModel(model: modelOrders))
+        _ordersViewModel = .init(wrappedValue: OrdersViewModel(model: modelOrders,
+                                                               notificationCenter: notificationCenter))
     }
     
     var body: some View {
@@ -120,9 +121,7 @@ struct ProfilePage: View {
                         }.padding(.horizontal)
                     }.onFirstAppear {
                         wishListViewModel.initialize()
-                        Task{
-                            await ordersViewModel.loadBrand()
-                        }
+                        ordersViewModel.loadOrders()
                     }.padding()
                 }
             } else {

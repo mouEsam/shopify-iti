@@ -279,6 +279,7 @@
 		D44CF5952A476E8500E8C9C6 /* WishlistModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44CF5792A476E8500E8C9C6 /* WishlistModelTests.swift */; };
 		D44CF5962A476E8500E8C9C6 /* WishlistRemoteServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44CF57B2A476E8500E8C9C6 /* WishlistRemoteServiceTests.swift */; };
 		D44CF5972A476E8500E8C9C6 /* MockWishlistRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44CF57C2A476E8500E8C9C6 /* MockWishlistRemoteService.swift */; };
+		D44CF5992A4775AF00E8C9C6 /* PaymentNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44CF5982A4775AF00E8C9C6 /* PaymentNotifications.swift */; };
 		D44F05312A44748A0093956F /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F05302A44748A0093956F /* NavigationBar.swift */; };
 		D4596D892A33595100BD9E26 /* Shopify_ITI_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */; };
 		D4596D8A2A33595100BD9E26 /* Shopify_ITI_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -618,6 +619,7 @@
 		D44CF5792A476E8500E8C9C6 /* WishlistModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistModelTests.swift; sourceTree = "<group>"; };
 		D44CF57B2A476E8500E8C9C6 /* WishlistRemoteServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistRemoteServiceTests.swift; sourceTree = "<group>"; };
 		D44CF57C2A476E8500E8C9C6 /* MockWishlistRemoteService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockWishlistRemoteService.swift; sourceTree = "<group>"; };
+		D44CF5982A4775AF00E8C9C6 /* PaymentNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentNotifications.swift; sourceTree = "<group>"; };
 		D44F05302A44748A0093956F /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		D4596D882A33595100BD9E26 /* Shopify_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AAFA382A38E0BD00A56FAB /* Shopify_Admin_ITI_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shopify_Admin_ITI_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1311,6 +1313,7 @@
 			isa = PBXGroup;
 			children = (
 				044D36882A4393FF00636AD7 /* PaymentHandler.swift */,
+				D44CF5982A4775AF00E8C9C6 /* PaymentNotifications.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -2816,6 +2819,7 @@
 				D44F05312A44748A0093956F /* NavigationBar.swift in Sources */,
 				044D384F2A4393FF00636AD7 /* AD.swift in Sources */,
 				044D38422A4393FF00636AD7 /* AuthenticationRemoteService.swift in Sources */,
+				D44CF5992A4775AF00E8C9C6 /* PaymentNotifications.swift in Sources */,
 				044D37C92A4393FF00636AD7 /* ListableProduct.swift in Sources */,
 				044D378B2A4393FF00636AD7 /* AnyValidator.swift in Sources */,
 				D4CB08942A43B3260014231B /* GenericErrorView.swift in Sources */,
