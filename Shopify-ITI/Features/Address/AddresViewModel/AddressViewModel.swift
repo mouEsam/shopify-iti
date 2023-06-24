@@ -12,6 +12,8 @@ class AddressViewModel: ObservableObject {
     
     let  addressManger:AddressManger
     @Published var addresses: [Address] = []
+    @Published var selectedaddresse: Address? = nil
+
     var isAnyFieldEmpty: Bool {
             newStreet.isEmpty || newCity.isEmpty || newState.isEmpty || newPostalCode.isEmpty
         }
@@ -37,6 +39,26 @@ class AddressViewModel: ObservableObject {
                                 Address.fromString( $0)
                             }
                             .compactMap{$0}
+                        }
+                        
+                    }
+                   
+                case .loading:
+                    break
+                default:
+                    self.addresses = []
+                }
+            }.store(in: &cancellables)
+        addressManger.selectedStatePublisher.prepend(addressManger.selectedState)
+            .receive(on: DispatchQueue.global()).sink { addressState in
+                switch addressState{
+                case .data(data: let addressString):
+                    Task{
+                       await MainActor.run{
+                           if let addressString = Address.fromString( addressString){
+                               self.selectedaddresse = addressString
+
+                           }
                         }
                         
                     }
