@@ -16,11 +16,15 @@ struct PaymantView: View {
             }
         }
     }
-    
+    @EnvironmentObject private var container: AppContainer
     @EnvironmentRouter private var router: AppRouter
     private let localeProvider: AnyLocaleProvider
+    private let strings : AnyPaymentStrings
+    
     
     @State private var coupon: String = ""
+    @State private var couponApplied: Bool = false
+
     @State private var paymentMethod: String = "Cash on delivery"
     @State private var showingPaymentSheet = false
     @State private var showingEditSheet = false
@@ -36,68 +40,102 @@ struct PaymantView: View {
     init(container: AppContainer, cart: Cart) {
         self.localeProvider = container.require((any AnyLocaleProvider).self)
         let  cartManager = container.require((CartManager).self)
+         strings = container.require((PaymentStrings).self)
 
         self.cart = cart
         _viewModel = .init(wrappedValue: PaymantViewModel(draftOrderModel: container.require((any AnyDraftOrderModel).self),
                                                           cart: cart,
-                                                          cartManager: cartManager))
+                                                          cartManager: cartManager, addressManger: container.require((AddressManger).self)))
     }
     
     var body: some View {
         VStack {
             Form {
                 Section(header: HStack {
-                    Text("Shipping Address")
+                    Text(strings.shippingAddressHeader.localized)
                     Spacer()
                     Button(action: {
-                        showingEditSheet = true
+                        
+                            router.push(AppRoute(identifier:  String(describing: LocationView.self)){
+                                LocationView(container: container)
+                                
+                            })
                     }) {
                         Image("edit")
                     }
                 }) {
-                    Text("placeholder Name")
-                    Text(address)
+                    Text(viewModel.address.street)
+                        .font(.headline)
+                    Text("\(viewModel.address.city), \(viewModel.address.state) \(viewModel.address.postalCode)")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
                 }
                 
-                Section(header: Text("Payment Method")) {
-                    Picker(selection: $paymentMethod, label: Text("Payment Method")) {
-                        Text("Cash on delivery").tag("Cash on delivery")
-                        Text("Apple pay").tag("Apple pay")
+                Section(header: Text(strings.paymentMethodLabel.localized)) {
+                    Picker(selection: $paymentMethod, label: Text(strings.paymentMethodLabel.localized)) {
+                        Text(strings.cashOnDelivery.localized).tag("Cash on delivery")
+                        Text(strings.applePay.localized).tag("Apple pay")
                     }
                     .pickerStyle(SegmentedPickerStyle())
                 }
                 
-                Section(header: Text("discount coupon")) {
-                    TextField("add coupon", text: $coupon)
+                Section(header: Text(strings.discountCouponLabel.localized)) {
+                    HStack{
+                        TextField(strings.discountCouponLabel.localized, text: $coupon)
+                        Button(action:{
+                            Task{
+                                await viewModel.updateOrde(address: address, discount: coupon)
+                            }
+                            couponApplied = true
+                        }
+                        ){
+                            Image("arrow").tint(.white)
+                        }.aspectRatio(1, contentMode:.fit)
+                            .frame(height: 50)
+                            .buttonStyle(.borderedProminent)
+                            .tint(.black)
+                    }
                 }
                 
-                Section(header: Text("price")) {
-                    VStack(spacing: 20) {
-                        HStack {
-                            Text("SubTotal:")
-                            Spacer()
-                            PriceView(price: cart.subtotalAmount)
-                        }
-                        if let tax = cart.totalTaxAmount {
+                Section(header: Text(strings.priceLabel.localized)) {
+                    switch viewModel.operationState{
+                    case .loaded(data: let draftOrder):
+                        VStack(spacing: 20) {
                             HStack {
-                                Text("Tax:")
+                                Text(strings.subTotalLabel.localized)
                                 Spacer()
-                                PriceView(price: tax)
+                                PriceView(price: draftOrder.data.subtotalAmount)
                             }
+                                HStack {
+                                    Text(strings.taxLabel.localized)
+                                    Spacer()
+                                    PriceView(price: draftOrder.data.totalTaxAmount)
+                                }
+                            
+                            if let discont = draftOrder.data.discontAmount {
+                                HStack {
+                                    Text(strings.discountLabel.localized)
+                                    Spacer()
+                                    PriceView(price: discont)
+                                }
+                            }
+                            HStack {
+                                Text(strings.totalLabel.localized)
+                                Spacer()
+                                PriceView(price: draftOrder.data.totalAmount)
+                            }
+                            
                         }
-                        HStack {
-                            Text("Total:")
-                            Spacer()
-                            PriceView(price: cart.totalAmount)
-                        }
+                    case .error(error: let error):
+                        Text(error.localizedDescription)
+                    default:
+                        ProgressView()
                     }
                 }
                 
                 Section {
                     Button(action: {
-                        Task{
-                            await viewModel.updateOrde(address: address, discount: coupon)
-                        }
+                        
                         
                         if paymentMethod == "Cash on delivery" {
                             showingPaymentSheet = true
@@ -120,7 +158,7 @@ struct PaymantView: View {
                             }
                         }
                     }) {
-                        Text("Proceed To Payment")
+                        Text(strings.proceedToPaymentButton.localized)
                             .foregroundColor(.white)
                             .padding(.horizontal)
                             .frame(maxWidth: .infinity)
@@ -131,15 +169,20 @@ struct PaymantView: View {
                     .sheet(isPresented: $showingPaymentSheet) {
                         // Content of the bottom sheet for Cash on delivery
                         VStack {
-                            HStack{
-                                Text("Total Amount: ")
-                                Spacer()
-                                PriceView(price: cart.totalAmount) // TODO: use currency
-                            }.padding(.all)
+                            switch viewModel.operationState{
+                            case .loaded(data:let draftOrder):
+                                HStack{
+                                    Text(strings.totalAmountLabel.localized)
+                                    Spacer()
+                                    PriceView(price:draftOrder.data.totalAmount) // TODO: use currency
+                                }.padding(.all)
+                            default:
+                                ProgressView()
+                                
+                            }
                             HStack(){
                                 Button(action: {
                                     Task{
-                                        print("1")
                                         await viewModel.completeOrde(isPaid: false)
                                         
                                     }
@@ -148,7 +191,7 @@ struct PaymantView: View {
                                     })
                                     showingPaymentSheet = false
                                 }) {
-                                    Text("Pay")
+                                    Text(strings.payButton.localized)
                                         .foregroundColor(.white)
                                         .padding(.horizontal)
                                         .frame(maxWidth: .infinity)
@@ -157,7 +200,7 @@ struct PaymantView: View {
                                     // Handle Cash on delivery payment action here
                                     showingPaymentSheet = false
                                 }) {
-                                    Text("cancel")
+                                    Text(strings.cancelButton.localized)
                                         .foregroundColor(.white)
                                         .padding(.horizontal)
                                         .frame(maxWidth: .infinity)
@@ -185,7 +228,7 @@ struct PaymantView: View {
                     
                     // Add more TextEditor views for other address fields if needed
                     
-                    Button("Done") {
+                    Button(strings.doneButton.localized) {
                         // Apply the changes to the cart's shipping address
                         address = createAddressString()
                         showingEditSheet = false

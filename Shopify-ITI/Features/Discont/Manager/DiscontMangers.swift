@@ -32,11 +32,8 @@ struct DiscountManager:AnyInjectable {
 
         }
         return ShopifyAdminAPI.DraftOrderAppliedDiscountInput(
-            amount: nil,
-            description: nil,
-            title: nil,
             value: discount.value,
-            valueType: .init(rawValue: discountType.rawValue)
+            valueType:.init(discountType) 
         )
     }
     

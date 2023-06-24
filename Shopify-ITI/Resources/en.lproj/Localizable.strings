@@ -138,3 +138,25 @@
 "ContactUsView.address" = "Address";
 "ContactUsView.contactUs" = "Contact Us";
 "ContactUsView.navigationTitle" = "Contact Us";
+//PaymentStrings
+
+"PaymentStrings.shippingAddress"= "Shipping Address";
+"PaymentStrings.placeholderName"= "Placeholder Name";
+"PaymentStrings.PaymentMethod"= "Payment Method";
+"PaymentStrings.cashOnDelivery"= "Cash on delivery";
+"PaymentStrings.Applepay"= "Apple pay";
+"PaymentStrings.discountCoupon"= "Discount Coupon";
+"PaymentStrings.addCoupon"= "Add Coupon";
+"PaymentStrings.price"= "Price";
+"PaymentStrings.subTotal"= "SubTotal:";
+"PaymentStrings.tax"= "Tax:";
+"PaymentStrings.discount"= "discount:";
+"PaymentStrings.total"= "Total:";
+"PaymentStrings.proceedToPayment"= "Proceed To Payment";
+"PaymentStrings.totalAmount"= "Total Amount: ";
+"PaymentStrings.pay"= "Pay";
+"PaymentStrings.cancel"= "Cancel";
+"PaymentStrings.done"= "Done";
+
+//CongratsStrings
+"CongratsStrings.goToHome" = "Go To Home";

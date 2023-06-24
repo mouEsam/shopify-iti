@@ -23,7 +23,7 @@ struct CongratsScreen: View {
 
 
             }) {
-                Text("Go To Home")
+                Text("CongratsStrings.goToHome".localized)
                     .foregroundColor(.white)
                     .padding(.all)
                     .frame(maxWidth: .infinity)
@@ -33,7 +33,8 @@ struct CongratsScreen: View {
             .tint(.black)
             .padding(.all)
 
-        }
+        }.toolbar(.hidden)
+
     }
 }
 

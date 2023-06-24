@@ -15,6 +15,8 @@
 		042F40F12A45D747008C5E20 /* AddressManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F40F02A45D747008C5E20 /* AddressManger.swift */; };
 		042F40F42A45FC9B008C5E20 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F40F32A45FC9B008C5E20 /* Address.swift */; };
 		042F40F72A45FF56008C5E20 /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F40F62A45FF56008C5E20 /* AddressViewModel.swift */; };
+		042F40FA2A462727008C5E20 /* PaymentStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F40F92A462727008C5E20 /* PaymentStrings.swift */; };
+		042F40FC2A4642A1008C5E20 /* DraftOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F40FB2A4642A1008C5E20 /* DraftOrder.swift */; };
 		044D37742A4393FF00636AD7 /* AnyRemoteFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D35F62A4393FF00636AD7 /* AnyRemoteFetchStrategy.swift */; };
 		044D37752A4393FF00636AD7 /* RemoteFetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D35F72A4393FF00636AD7 /* RemoteFetchStrategy.swift */; };
 		044D37762A4393FF00636AD7 /* DataFetchCacheStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D35F92A4393FF00636AD7 /* DataFetchCacheStrategy.swift */; };
@@ -294,6 +296,8 @@
 		042F40F02A45D747008C5E20 /* AddressManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressManger.swift; sourceTree = "<group>"; };
 		042F40F32A45FC9B008C5E20 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		042F40F62A45FF56008C5E20 /* AddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
+		042F40F92A462727008C5E20 /* PaymentStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentStrings.swift; sourceTree = "<group>"; };
+		042F40FB2A4642A1008C5E20 /* DraftOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftOrder.swift; sourceTree = "<group>"; };
 		044D35F62A4393FF00636AD7 /* AnyRemoteFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyRemoteFetchStrategy.swift; sourceTree = "<group>"; };
 		044D35F72A4393FF00636AD7 /* RemoteFetchStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteFetchStrategy.swift; sourceTree = "<group>"; };
 		044D35F92A4393FF00636AD7 /* DataFetchCacheStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetchCacheStrategy.swift; sourceTree = "<group>"; };
@@ -635,6 +639,14 @@
 				042F40F62A45FF56008C5E20 /* AddressViewModel.swift */,
 			);
 			path = AddresViewModel;
+			sourceTree = "<group>";
+		};
+		042F40F82A462700008C5E20 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				042F40F92A462727008C5E20 /* PaymentStrings.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		044D35F22A4393FF00636AD7 /* Shopify-ITI */ = {
@@ -1156,6 +1168,7 @@
 		044D367E2A4393FF00636AD7 /* Paymant */ = {
 			isa = PBXGroup;
 			children = (
+				042F40F82A462700008C5E20 /* Helper */,
 				044D367F2A4393FF00636AD7 /* ViewModel */,
 				044D36812A4393FF00636AD7 /* Models */,
 				044D36842A4393FF00636AD7 /* View */,
@@ -1213,6 +1226,7 @@
 			isa = PBXGroup;
 			children = (
 				044D368D2A4393FF00636AD7 /* PaymantError.swift */,
+				042F40FB2A4642A1008C5E20 /* DraftOrder.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -2395,6 +2409,7 @@
 				044D38542A4393FF00636AD7 /* WishlistModel.swift in Sources */,
 				044D379D2A4393FF00636AD7 /* AdminEnvironment.swift in Sources */,
 				044D377C2A4393FF00636AD7 /* GraphQLNullable.swift in Sources */,
+				042F40FA2A462727008C5E20 /* PaymentStrings.swift in Sources */,
 				044D383D2A4393FF00636AD7 /* Session.swift in Sources */,
 				044D37BB2A4393FF00636AD7 /* BrandRemoteService.swift in Sources */,
 				044D37972A4393FF00636AD7 /* KeyChain.swift in Sources */,
@@ -2432,6 +2447,7 @@
 				044D37B32A4393FF00636AD7 /* Localization.swift in Sources */,
 				D4CB07622A43A3590014231B /* MainScreenViewModel.swift in Sources */,
 				044D37DB2A4393FF00636AD7 /* ProductVariant.swift in Sources */,
+				042F40FC2A4642A1008C5E20 /* DraftOrder.swift in Sources */,
 				D4CB075E2A439E330014231B /* AnyPreviousSearchesStore.swift in Sources */,
 				D4CB08922A43B2450014231B /* ShopifyErrorView.swift in Sources */,
 				D4CB08902A43B1AB0014231B /* LocalErrorView.swift in Sources */,

@@ -26,20 +26,22 @@ struct DraftOrderModel:AnyDraftOrderModel {
         self.cartIdStore = cartIdStore
     }
     
-    func createDraftOrder(with items: [CartLine]) async-> Result<String, ShopifyErrors<Any>>{
+    func createDraftOrder(with items: [CartLine]) async-> Result<DraftOrder, ShopifyErrors<Any>>{
         let lineItems = createLineItems(from: items)
         let result =  await draftOrderServices.create(with: lineItems)
         return  result
     }
     
-    func updateDraftOrder(id: String, address: String, discount: String) async-> Result<String, ShopifyErrors<Any>>{
+    func updateDraftOrder(id: String, address: String, discount: String,andLine items: [CartLine]) async-> Result<DraftOrder, ShopifyErrors<Any>>{
+        let lineItems = createLineItems(from: items)
+
         if(discount == "" ){
-            return  await draftOrderServices.update(id: id, withAddress: address, andDiscount: nil)
+            return  await draftOrderServices.update(id: id, withAddress: address, andDiscount: nil, with: lineItems)
 
         }else{
             let orderDiscount = discountManager.createDiscountInput(using: discount)
             if let orderDiscount = orderDiscount{
-                return await draftOrderServices.update(id: id, withAddress: address, andDiscount: orderDiscount)
+                return await draftOrderServices.update(id: id, withAddress: address, andDiscount: orderDiscount, with: lineItems)
             }
             return .failure(ShopifyErrors.NotFound)
 
@@ -47,7 +49,7 @@ struct DraftOrderModel:AnyDraftOrderModel {
         
     }
     
-    func completeDraftOrder(id: String, isPaid: Bool) async-> Result<String, ShopifyErrors<Any>>{
+    func completeDraftOrder(id: String, isPaid: Bool) async-> Result<DraftOrder, ShopifyErrors<Any>>{
         cartIdStore.delete()
 
         let result =  await draftOrderServices.complete(id: id, isPaied: isPaid)
@@ -60,7 +62,7 @@ struct DraftOrderModel:AnyDraftOrderModel {
       }
 }
 protocol AnyDraftOrderModel:AnyInjectable {
-    func createDraftOrder(with items: [CartLine]) async -> Result<String, ShopifyErrors<Any>>
-    func updateDraftOrder(id: String, address: String, discount: String) async -> Result<String, ShopifyErrors<Any>>
-    func completeDraftOrder(id: String, isPaid: Bool) async -> Result<String, ShopifyErrors<Any>>
+    func createDraftOrder(with items: [CartLine]) async -> Result<DraftOrder, ShopifyErrors<Any>>
+    func updateDraftOrder(id: String, address: String, discount: String,andLine items: [CartLine]) async-> Result<DraftOrder, ShopifyErrors<Any>>
+    func completeDraftOrder(id: String, isPaid: Bool) async -> Result<DraftOrder, ShopifyErrors<Any>>
 }

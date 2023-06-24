@@ -1,7 +1,27 @@
 mutation completeDraftOrder($id: ID!,$paymentPending:Boolean) {
   draftOrderComplete(id: $id, paymentPending:$paymentPending) {
     draftOrder {
-        id
+      id
+      appliedDiscount{
+        amountV2{
+          ...moneyInfo
+        }
+      }
+      subtotalPriceSet{
+        presentmentMoney{
+          ...moneyInfo
+        }
+      }
+      totalPriceSet{
+        presentmentMoney{
+          ...moneyInfo
+        }
+      }
+        totalTaxSet{
+        presentmentMoney{
+          ...moneyInfo
+        }
+      }
     }
     userErrors {
       field
@@ -12,9 +32,29 @@ mutation completeDraftOrder($id: ID!,$paymentPending:Boolean) {
 mutation createDraftOrder($input: DraftOrderInput!) {
   draftOrderCreate(input: $input) {
     draftOrder {
-        id
+      id
+      appliedDiscount{
+          amountV2{
+            ...moneyInfo
+          }
+      }
+      subtotalPriceSet{
+        presentmentMoney{
+          ...moneyInfo
+        }
+      }
+      totalPriceSet{
+        presentmentMoney{
+          ...moneyInfo
+        }
+      }
+      totalTaxSet{
+        presentmentMoney{
+          ...moneyInfo
+        }
+      }
         
-}
+    }
     userErrors {
       field
       message
@@ -25,8 +65,27 @@ mutation updateDraftOrder($id: ID!, $input: DraftOrderInput!) {
   draftOrderUpdate(id: $id, input: $input) {
     draftOrder {
         id
-        
-}
+      appliedDiscount{
+          amountV2{
+            ...moneyInfo
+          }
+      }
+      subtotalPriceSet{
+        presentmentMoney{
+          ...moneyInfo
+        }
+      }
+      totalPriceSet{
+        presentmentMoney{
+          ...moneyInfo
+        }
+      }
+      totalTaxSet{
+        presentmentMoney{
+          ...moneyInfo
+        }
+      }
+    }
     userErrors {
       field
       message

@@ -141,3 +141,25 @@
 "ContactStrings.address" = "العنوان";
 "ContactStrings.contactUs" = "اتصل بنا";
 "ContactStrings.navigationTitle" = "اتصل بنا";
+
+//PaymentStrings
+"PaymentStrings.shippingAddress"  = "عنوان الشحن";
+"PaymentStrings.placeHolderName"  = "اسم العنصر النائب";
+"PaymentStrings.paymentMethod"    = "طريقة الدفع";
+"PaymentStrings.cashOnDelivery"   = "الدفع عند الاستلام";
+"PaymentStrings.applepay"         = "Apple Pay";
+"PaymentStrings.discountCoupon"   = "كوبون الخصم";
+"PaymentStrings.addCoupon"        = "إضافة كوبون";
+"PaymentStrings.price"            = "السعر";
+"PaymentStrings.subTotal"         = "المجموع الفرعي:";
+"PaymentStrings.tax"              = "الضريبة:";
+"PaymentStrings.discount"         = "تخفيض:";
+"PaymentStrings.total"            = "الإجمالي:";
+"PaymentStrings.proceedToPayment" = "المتابعة إلى الدفع";
+"PaymentStrings.totalAmount"      = "المبلغ الإجمالي: ";
+"PaymentStrings.pay"              = "دفع";
+"PaymentStrings.cancel"           = "إلغاء";
+"PaymentStrings.done"             = "تم";
+//CongratsStrings
+
+"CongratsStrings.goToHome" = "العودة إلى الصفحة الرئيسية";
