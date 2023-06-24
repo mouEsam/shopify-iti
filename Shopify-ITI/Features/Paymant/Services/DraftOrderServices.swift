@@ -33,7 +33,7 @@ struct DraftOrderServices:AnyInjectable{
     }
     typealias DraftOrderError = ShopifyErrors<Any>
     
-    func create(with lineItems:[ShopifyAdminAPI.DraftOrderLineItemInput]) async -> Result<String, DraftOrderError>{
+    func create(with lineItems:[ShopifyAdminAPI.DraftOrderLineItemInput]) async -> Result<DraftOrder, DraftOrderError>{
         let customerId = userProvider.user?.id
         
         let input = ShopifyAdminAPI.DraftOrderInput(lineItems: .init(nullable: lineItems) ,
@@ -42,8 +42,8 @@ struct DraftOrderServices:AnyInjectable{
         let result = await remoteClient.execute(query: mutation)
         return result.mapError { .Client(error: $0) }.flatMap { result in
             if let data = result.data?.draftOrderCreate {
-                if let id = data.draftOrder?.id {
-                    return .success(id)
+                if let draftOrder = data.draftOrder {
+                    return .success(.init(draftOrder: draftOrder))
                 } else {
                     let errors = data.userErrors.toShopifyErrors()
                     return .failure(DraftOrderError.Generic(errors: errors))
@@ -53,17 +53,21 @@ struct DraftOrderServices:AnyInjectable{
             }
         }
     }
-    func update(id: String, withAddress address: String,andDiscount discount:ShopifyAdminAPI.DraftOrderAppliedDiscountInput?) async -> Result<String, DraftOrderError>{
+    func update(id: String, withAddress address: String,andDiscount discount:ShopifyAdminAPI.DraftOrderAppliedDiscountInput?,with lineItems:[ShopifyAdminAPI.DraftOrderLineItemInput]) async -> Result<DraftOrder, DraftOrderError>{
+        let customerId = userProvider.user?.id
+
         let input = ShopifyAdminAPI.DraftOrderInput(
             appliedDiscount: .init(nullable: discount),
-            shippingAddress:.init(nullable: ShopifyAdminAPI.MailingAddressInput(address1: .init(nullable: address)))
+            lineItems: .init(nullable: lineItems) ,
+            shippingAddress:.init(nullable: ShopifyAdminAPI.MailingAddressInput(address1: .init(nullable: address))),
+            purchasingEntity: .init(nullable: customerId.map { .init(customerId: .some($0)) })
         )
         let mutation = ShopifyAdminAPI.CreateDraftOrderMutation(input: input)
         let result = await remoteClient.execute(query: mutation)
         return result.mapError { .Client(error: $0) }.flatMap { result in
             if let data = result.data?.draftOrderCreate {
-                if let id = data.draftOrder?.id {
-                    return .success(id)
+                if let draftOrder = data.draftOrder {
+                    return .success(.init(draftOrder: draftOrder))
                 } else {
                     let errors = data.userErrors.toShopifyErrors()
                     return .failure(DraftOrderError.Generic(errors: errors))
@@ -73,13 +77,13 @@ struct DraftOrderServices:AnyInjectable{
             }
         }
     }
-    func complete(id: String, isPaied: Bool) async -> Result<String, DraftOrderError>{
+    func complete(id: String, isPaied: Bool) async -> Result<DraftOrder, DraftOrderError>{
         let mutation = ShopifyAdminAPI.CompleteDraftOrderMutation(id: id, paymentPending: .init(nullable: isPaied))
         let result = await remoteClient.execute(query: mutation)
         return result.mapError { .Client(error: $0) }.flatMap { result in
             if let data = result.data?.draftOrderComplete {
-                if let id = data.draftOrder?.id {
-                    return .success(id)
+                if let draftOrder = data.draftOrder {
+                    return .success(.init(draftOrder: draftOrder))
                 } else {
                     let errors = data.userErrors.toShopifyErrors()
                     return .failure(DraftOrderError.Generic(errors: errors))

@@ -177,6 +177,7 @@ extension AppContainer {
             CartStrings.self,
             AddressManger.self,
             AddressService.self,
+            PaymentStrings.self,
             SettingsStrings.self
         ])
     }

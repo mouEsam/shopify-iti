@@ -182,6 +182,9 @@ public extension ShopifyAdminAPI {
       case "UrlRedirectImport": return ShopifyAdminAPI.Objects.UrlRedirectImport
       case "WebPixel": return ShopifyAdminAPI.Objects.WebPixel
       case "Image": return ShopifyAdminAPI.Objects.Image
+      case "DraftOrderAppliedDiscount": return ShopifyAdminAPI.Objects.DraftOrderAppliedDiscount
+      case "MoneyV2": return ShopifyAdminAPI.Objects.MoneyV2
+      case "MoneyBag": return ShopifyAdminAPI.Objects.MoneyBag
       case "UserError": return ShopifyAdminAPI.Objects.UserError
       case "AbandonmentEmailStateUpdateUserError": return ShopifyAdminAPI.Objects.AbandonmentEmailStateUpdateUserError
       case "AppRevenueAttributionRecordCreateUserError": return ShopifyAdminAPI.Objects.AppRevenueAttributionRecordCreateUserError
@@ -272,8 +275,6 @@ public extension ShopifyAdminAPI {
       case "UrlRedirectUserError": return ShopifyAdminAPI.Objects.UrlRedirectUserError
       case "DraftOrderCreatePayload": return ShopifyAdminAPI.Objects.DraftOrderCreatePayload
       case "DraftOrderUpdatePayload": return ShopifyAdminAPI.Objects.DraftOrderUpdatePayload
-      case "MoneyBag": return ShopifyAdminAPI.Objects.MoneyBag
-      case "MoneyV2": return ShopifyAdminAPI.Objects.MoneyV2
       case "DraftOrderLineItemConnection": return ShopifyAdminAPI.Objects.DraftOrderLineItemConnection
       case "PageInfo": return ShopifyAdminAPI.Objects.PageInfo
       case "DraftOrderDeletePayload": return ShopifyAdminAPI.Objects.DraftOrderDeletePayload

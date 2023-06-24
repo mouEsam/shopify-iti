@@ -15,6 +15,34 @@ public extension ShopifyAdminAPI {
             draftOrder {
               __typename
               id
+              appliedDiscount {
+                __typename
+                amountV2 {
+                  __typename
+                  ...moneyInfo
+                }
+              }
+              subtotalPriceSet {
+                __typename
+                presentmentMoney {
+                  __typename
+                  ...moneyInfo
+                }
+              }
+              totalPriceSet {
+                __typename
+                presentmentMoney {
+                  __typename
+                  ...moneyInfo
+                }
+              }
+              totalTaxSet {
+                __typename
+                presentmentMoney {
+                  __typename
+                  ...moneyInfo
+                }
+              }
             }
             userErrors {
               __typename
@@ -23,7 +51,8 @@ public extension ShopifyAdminAPI {
             }
           }
         }
-        """#
+        """#,
+        fragments: [MoneyInfo.self]
       ))
 
     public var input: DraftOrderInput
@@ -77,10 +106,194 @@ public extension ShopifyAdminAPI {
           public static var __selections: [Apollo.Selection] { [
             .field("__typename", String.self),
             .field("id", ShopifyAdminAPI.ID.self),
+            .field("appliedDiscount", AppliedDiscount?.self),
+            .field("subtotalPriceSet", SubtotalPriceSet.self),
+            .field("totalPriceSet", TotalPriceSet.self),
+            .field("totalTaxSet", TotalTaxSet.self),
           ] }
 
           /// A globally-unique ID.
           public var id: ShopifyAdminAPI.ID { __data["id"] }
+          /// The order-level discount applied to the draft order.
+          public var appliedDiscount: AppliedDiscount? { __data["appliedDiscount"] }
+          /// A subtotal of the line items and corresponding discounts. The subtotal doesn't include shipping charges, shipping discounts, or taxes.
+          public var subtotalPriceSet: SubtotalPriceSet { __data["subtotalPriceSet"] }
+          /// The total amount of the draft order including taxes, shipping charges, and discounts.
+          public var totalPriceSet: TotalPriceSet { __data["totalPriceSet"] }
+          /// The total amount of taxes for the draft order.
+          public var totalTaxSet: TotalTaxSet { __data["totalTaxSet"] }
+
+          /// DraftOrderCreate.DraftOrder.AppliedDiscount
+          ///
+          /// Parent Type: `DraftOrderAppliedDiscount`
+          public struct AppliedDiscount: ShopifyAdminAPI.SelectionSet {
+            public let __data: DataDict
+            public init(_dataDict: DataDict) { __data = _dataDict }
+
+            public static var __parentType: Apollo.ParentType { ShopifyAdminAPI.Objects.DraftOrderAppliedDiscount }
+            public static var __selections: [Apollo.Selection] { [
+              .field("__typename", String.self),
+              .field("amountV2", AmountV2.self),
+            ] }
+
+            /// Amount of money discounted.
+            public var amountV2: AmountV2 { __data["amountV2"] }
+
+            /// DraftOrderCreate.DraftOrder.AppliedDiscount.AmountV2
+            ///
+            /// Parent Type: `MoneyV2`
+            public struct AmountV2: ShopifyAdminAPI.SelectionSet {
+              public let __data: DataDict
+              public init(_dataDict: DataDict) { __data = _dataDict }
+
+              public static var __parentType: Apollo.ParentType { ShopifyAdminAPI.Objects.MoneyV2 }
+              public static var __selections: [Apollo.Selection] { [
+                .field("__typename", String.self),
+                .fragment(MoneyInfo.self),
+              ] }
+
+              /// Decimal money amount.
+              public var amount100: ShopifyAdminAPI.Decimal { __data["amount100"] }
+              /// Currency of the money.
+              public var currencyCode: GraphQLEnum<ShopifyAdminAPI.CurrencyCode> { __data["currencyCode"] }
+
+              public struct Fragments: FragmentContainer {
+                public let __data: DataDict
+                public init(_dataDict: DataDict) { __data = _dataDict }
+
+                public var moneyInfo: MoneyInfo { _toFragment() }
+              }
+            }
+          }
+
+          /// DraftOrderCreate.DraftOrder.SubtotalPriceSet
+          ///
+          /// Parent Type: `MoneyBag`
+          public struct SubtotalPriceSet: ShopifyAdminAPI.SelectionSet {
+            public let __data: DataDict
+            public init(_dataDict: DataDict) { __data = _dataDict }
+
+            public static var __parentType: Apollo.ParentType { ShopifyAdminAPI.Objects.MoneyBag }
+            public static var __selections: [Apollo.Selection] { [
+              .field("__typename", String.self),
+              .field("presentmentMoney", PresentmentMoney.self),
+            ] }
+
+            /// Amount in presentment currency.
+            public var presentmentMoney: PresentmentMoney { __data["presentmentMoney"] }
+
+            /// DraftOrderCreate.DraftOrder.SubtotalPriceSet.PresentmentMoney
+            ///
+            /// Parent Type: `MoneyV2`
+            public struct PresentmentMoney: ShopifyAdminAPI.SelectionSet {
+              public let __data: DataDict
+              public init(_dataDict: DataDict) { __data = _dataDict }
+
+              public static var __parentType: Apollo.ParentType { ShopifyAdminAPI.Objects.MoneyV2 }
+              public static var __selections: [Apollo.Selection] { [
+                .field("__typename", String.self),
+                .fragment(MoneyInfo.self),
+              ] }
+
+              /// Decimal money amount.
+              public var amount100: ShopifyAdminAPI.Decimal { __data["amount100"] }
+              /// Currency of the money.
+              public var currencyCode: GraphQLEnum<ShopifyAdminAPI.CurrencyCode> { __data["currencyCode"] }
+
+              public struct Fragments: FragmentContainer {
+                public let __data: DataDict
+                public init(_dataDict: DataDict) { __data = _dataDict }
+
+                public var moneyInfo: MoneyInfo { _toFragment() }
+              }
+            }
+          }
+
+          /// DraftOrderCreate.DraftOrder.TotalPriceSet
+          ///
+          /// Parent Type: `MoneyBag`
+          public struct TotalPriceSet: ShopifyAdminAPI.SelectionSet {
+            public let __data: DataDict
+            public init(_dataDict: DataDict) { __data = _dataDict }
+
+            public static var __parentType: Apollo.ParentType { ShopifyAdminAPI.Objects.MoneyBag }
+            public static var __selections: [Apollo.Selection] { [
+              .field("__typename", String.self),
+              .field("presentmentMoney", PresentmentMoney.self),
+            ] }
+
+            /// Amount in presentment currency.
+            public var presentmentMoney: PresentmentMoney { __data["presentmentMoney"] }
+
+            /// DraftOrderCreate.DraftOrder.TotalPriceSet.PresentmentMoney
+            ///
+            /// Parent Type: `MoneyV2`
+            public struct PresentmentMoney: ShopifyAdminAPI.SelectionSet {
+              public let __data: DataDict
+              public init(_dataDict: DataDict) { __data = _dataDict }
+
+              public static var __parentType: Apollo.ParentType { ShopifyAdminAPI.Objects.MoneyV2 }
+              public static var __selections: [Apollo.Selection] { [
+                .field("__typename", String.self),
+                .fragment(MoneyInfo.self),
+              ] }
+
+              /// Decimal money amount.
+              public var amount100: ShopifyAdminAPI.Decimal { __data["amount100"] }
+              /// Currency of the money.
+              public var currencyCode: GraphQLEnum<ShopifyAdminAPI.CurrencyCode> { __data["currencyCode"] }
+
+              public struct Fragments: FragmentContainer {
+                public let __data: DataDict
+                public init(_dataDict: DataDict) { __data = _dataDict }
+
+                public var moneyInfo: MoneyInfo { _toFragment() }
+              }
+            }
+          }
+
+          /// DraftOrderCreate.DraftOrder.TotalTaxSet
+          ///
+          /// Parent Type: `MoneyBag`
+          public struct TotalTaxSet: ShopifyAdminAPI.SelectionSet {
+            public let __data: DataDict
+            public init(_dataDict: DataDict) { __data = _dataDict }
+
+            public static var __parentType: Apollo.ParentType { ShopifyAdminAPI.Objects.MoneyBag }
+            public static var __selections: [Apollo.Selection] { [
+              .field("__typename", String.self),
+              .field("presentmentMoney", PresentmentMoney.self),
+            ] }
+
+            /// Amount in presentment currency.
+            public var presentmentMoney: PresentmentMoney { __data["presentmentMoney"] }
+
+            /// DraftOrderCreate.DraftOrder.TotalTaxSet.PresentmentMoney
+            ///
+            /// Parent Type: `MoneyV2`
+            public struct PresentmentMoney: ShopifyAdminAPI.SelectionSet {
+              public let __data: DataDict
+              public init(_dataDict: DataDict) { __data = _dataDict }
+
+              public static var __parentType: Apollo.ParentType { ShopifyAdminAPI.Objects.MoneyV2 }
+              public static var __selections: [Apollo.Selection] { [
+                .field("__typename", String.self),
+                .fragment(MoneyInfo.self),
+              ] }
+
+              /// Decimal money amount.
+              public var amount100: ShopifyAdminAPI.Decimal { __data["amount100"] }
+              /// Currency of the money.
+              public var currencyCode: GraphQLEnum<ShopifyAdminAPI.CurrencyCode> { __data["currencyCode"] }
+
+              public struct Fragments: FragmentContainer {
+                public let __data: DataDict
+                public init(_dataDict: DataDict) { __data = _dataDict }
+
+                public var moneyInfo: MoneyInfo { _toFragment() }
+              }
+            }
+          }
         }
 
         /// DraftOrderCreate.UserError
