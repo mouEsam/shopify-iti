@@ -9,60 +9,95 @@ import SwiftUI
 struct LocationView: View {
     @StateObject private var viewModel:AddressViewModel
     @EnvironmentRouter private var router: AppRouter
-
+    
+    @State private var isFormVisible = false
+    private let colors : AnyAppColors
+//    private let strings : AnyAdderssStrings
+    
     init(container: AppContainer) {
         _viewModel = .init(wrappedValue: AddressViewModel(addressManger: container.require((AddressManger).self)))
+        colors = container.require((any AnyAppColors).self)
     }
     var body: some View {
         VStack {
-            LazyVStack(alignment: .leading) {
+            List() {
                 ForEach(viewModel.addresses) { address in
-                    VStack(alignment: .leading) {
-                        Text(address.street)
-                            .font(.headline)
-                        Text("\(address.city), \(address.state) \(address.postalCode)")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                    }.onTapGesture {
-                        viewModel.selectAddress(address: address)
-                        router.pop()
-                    }
+                    Button(action: { viewModel.selectAddress(address: address)
+                        router.pop()}, label: {
+                            cardAddress(address: address,colors: colors)
+                        })
                 }
             }
-            .padding()
-            
-            Group {
-                TextField("Street", text: $viewModel.newStreet)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+
+            HStack {
+                Spacer()
                 
-                TextField("City", text: $viewModel.newCity)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                TextField("State", text: $viewModel.newState)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                TextField("Postal Code", text: $viewModel.newPostalCode)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                Button(action:{
-                    viewModel.addAddress()
-                    router.pop()
-                    
+                Button(action: {
+                    isFormVisible.toggle()
                 }) {
-                    Text("Add to Address")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                }
+                    Image(systemName: isFormVisible ? "minus.circle.fill" : "plus.circle.fill")
+                        .font(.title)
+                        .foregroundColor(.blue)
+                }.foregroundColor(.black)
                 .padding()
-                if viewModel.isAnyFieldEmpty {
-                    Text("Please fill in all fields")
-                        .foregroundColor(.red)
-                        .padding(.top, 10)
-                }
             }
+            if isFormVisible {
+                VStack {
+                    TextField("Street", text: $viewModel.newStreet)
+                    TextField("City", text: $viewModel.newCity)
+                    TextField("State", text: $viewModel.newState)
+                    TextField("Post Code", text: $viewModel.newPostalCode)
+                    
+                    
+                    Button(action:{
+                        viewModel.addAddress()
+                        router.pop()
+                        isFormVisible = false
+                        
+                        
+                    }) {
+                        Text("Add to Address")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                    }
+                    .padding()
+                    
+                    if viewModel.isAnyFieldEmpty {
+                        Text("Please fill in all fields")
+                            .foregroundColor(.red)
+                            .padding(.top, 10)
+                    }
+                }.padding()
+                
+            }
+        }
+    }
+}
+struct cardAddress : View{
+    let address :Address
+//    let strings : AnyAddressStrings
+    let colors : AnyAppColors
+    var body: some View{
+        HStack{
+            VStack{
+                Text(address.street+","+address.city)
+                    .font(.title)
+                Text(address.state)
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                Text(address.postalCode)
+                    .font(.title3)
+                    .foregroundColor(.gray)
+                
+            }.background(.white)
+                .shadow(radius: 2)
+                .cornerRadius(10)
+                .padding(.vertical)
+            Spacer()
+            Image(systemName: "checkmark").padding(.horizontal)
         }
     }
 }
