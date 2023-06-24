@@ -42,16 +42,12 @@ struct SettingsView: View {
                     }
                 }
                 .onChange(of: settingViewModel.langauge) { newLanguage in
+                    let language: Languages = .init(rawValue: newLanguage.rawValue.lowercased()) ?? .deviceLanguage
+                    languageSettings.selectedLanguage = language
                     router.alert(item: newLanguage) { _ in
                         Alert(title: Text(strings.languageLabel.localized),
                               message: Text(strings.languageAlertMessage.localized),
-                              dismissButton: Alert.Button.default(Text(commonStrings.ok.localized), action: {
-                            settingViewModel.change(language: newLanguage)
-                            withAnimation {
-                                let language: Languages = .init(rawValue: newLanguage.rawValue.lowercased()) ?? .deviceLanguage
-                                languageSettings.selectedLanguage = language
-                            }
-                        }))
+                              dismissButton: Alert.Button.default(Text(commonStrings.ok.localized)))
                     }
                 }
             }
@@ -61,9 +57,6 @@ struct SettingsView: View {
                     ForEach(countries) { country in
                         Text(country.localizationKey.localized).tag(country)
                     }
-                }
-                .onChange(of: settingViewModel.country) { newCountry in
-                    settingViewModel.change(country: newCountry)
                 }
             }
             Section(header: Text(strings.helpCenterLabel.localized)) {

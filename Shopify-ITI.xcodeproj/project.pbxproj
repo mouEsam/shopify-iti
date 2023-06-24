@@ -285,6 +285,10 @@
 		D4FC46DD2A4710D400A87E08 /* MockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46DC2A4710D400A87E08 /* MockError.swift */; };
 		D4FC46E12A47172F00A87E08 /* MockProductRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46E02A47172F00A87E08 /* MockProductRemoteService.swift */; };
 		D4FC46E32A4718C700A87E08 /* ProductRemoteServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46E22A4718C700A87E08 /* ProductRemoteServiceTests.swift */; };
+		D4FC46E62A4728B400A87E08 /* MockProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46E52A4728B400A87E08 /* MockProductModel.swift */; };
+		D4FC46E82A47291E00A87E08 /* ProductModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46E72A47291E00A87E08 /* ProductModelTests.swift */; };
+		D4FC46EB2A472BED00A87E08 /* MockProductsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46EA2A472BED00A87E08 /* MockProductsModel.swift */; };
+		D4FC46ED2A472C5400A87E08 /* ProductsModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46EC2A472C5400A87E08 /* ProductsModelTests.swift */; };
 		F9DAA344FDED43A0FCFB1386 /* Pods_Shopify_ITI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3320D9D9EB592C16B8F39BC9 /* Pods_Shopify_ITI_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -597,6 +601,10 @@
 		D4FC46DC2A4710D400A87E08 /* MockError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockError.swift; sourceTree = "<group>"; };
 		D4FC46E02A47172F00A87E08 /* MockProductRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductRemoteService.swift; sourceTree = "<group>"; };
 		D4FC46E22A4718C700A87E08 /* ProductRemoteServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRemoteServiceTests.swift; sourceTree = "<group>"; };
+		D4FC46E52A4728B400A87E08 /* MockProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductModel.swift; sourceTree = "<group>"; };
+		D4FC46E72A47291E00A87E08 /* ProductModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModelTests.swift; sourceTree = "<group>"; };
+		D4FC46EA2A472BED00A87E08 /* MockProductsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductsModel.swift; sourceTree = "<group>"; };
+		D4FC46EC2A472C5400A87E08 /* ProductsModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsModelTests.swift; sourceTree = "<group>"; };
 		E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0A81DAC848D79B6DAFA2A4 /* Pods-Shopify-ITI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2281,6 +2289,7 @@
 		D4FC46D52A47062C00A87E08 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				D4FC46E92A472BDC00A87E08 /* Models */,
 				D4FC46D62A4706EB00A87E08 /* Services */,
 			);
 			path = Products;
@@ -2306,6 +2315,7 @@
 		D4FC46DE2A47171800A87E08 /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				D4FC46E42A47289700A87E08 /* Models */,
 				D4FC46DF2A47171E00A87E08 /* Services */,
 			);
 			path = Product;
@@ -2318,6 +2328,24 @@
 				D4FC46E22A4718C700A87E08 /* ProductRemoteServiceTests.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		D4FC46E42A47289700A87E08 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC46E52A4728B400A87E08 /* MockProductModel.swift */,
+				D4FC46E72A47291E00A87E08 /* ProductModelTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D4FC46E92A472BDC00A87E08 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D4FC46EA2A472BED00A87E08 /* MockProductsModel.swift */,
+				D4FC46EC2A472C5400A87E08 /* ProductsModelTests.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F7B4E07DB0B124A6BC44E75B /* Frameworks */ = {
@@ -2774,12 +2802,16 @@
 			files = (
 				D4FC46D22A47037C00A87E08 /* MockKeyChain.swift in Sources */,
 				D4FC46C62A46FAEE00A87E08 /* MockLocaleProvider.swift in Sources */,
+				D4FC46EB2A472BED00A87E08 /* MockProductsModel.swift in Sources */,
 				D4FC46CF2A46FDAD00A87E08 /* MockNotificationCenter.swift in Sources */,
 				D4FC46C92A46FB8400A87E08 /* MockUserProvider.swift in Sources */,
 				D4FC46C32A46FA4600A87E08 /* MockAccessTokenProvider.swift in Sources */,
+				D4FC46E82A47291E00A87E08 /* ProductModelTests.swift in Sources */,
 				D4FC46D82A47070000A87E08 /* MockProductsRemoteService.swift in Sources */,
+				D4FC46E62A4728B400A87E08 /* MockProductModel.swift in Sources */,
 				D4FC46DD2A4710D400A87E08 /* MockError.swift in Sources */,
 				D4FC46E32A4718C700A87E08 /* ProductRemoteServiceTests.swift in Sources */,
+				D4FC46ED2A472C5400A87E08 /* ProductsModelTests.swift in Sources */,
 				D4FC46DA2A47071700A87E08 /* ProductsRemoteServiceTests.swift in Sources */,
 				D4FC46CC2A46FBE700A87E08 /* MockGraphQLClient.swift in Sources */,
 				D4FC46E12A47172F00A87E08 /* MockProductRemoteService.swift in Sources */,

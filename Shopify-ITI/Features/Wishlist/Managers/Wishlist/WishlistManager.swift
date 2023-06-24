@@ -9,18 +9,36 @@ import Foundation
 import Combine
 import Semaphore
 
-class WishlistManager : AnyInjectable {
+protocol AnyWishlistManager {
+    
+    typealias State = Resource<Wishlist>
+    
+    var statePublisher: PostPublished<State>.Publisher { get }
+    var state: State { get }
+   
+    func refreshState()
+    
+    func toggleItem(_ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>>
+    
+    func addItem(_ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>>
+   
+    func removeItem(_ item: WishListEntry) async -> Result<Void, ShopifyErrors<Any>>
+    
+}
+
+
+class WishlistManager : AnyWishlistManager, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: WishlistManager.self) { resolver in
             WishlistManager(wishlistIdStore: resolver.require((any AnyWishlistIdLocalStore).self),
                             notificationCenter: resolver.require((any AnyNotificationCenter).self),
                             wishlistService: resolver.require(WishlistRemoteService.self),
                             authManager: resolver.require(AuthenticationManager.self))
-        }
+        }.implements(AnyWishlistManager.self)
     }
 
     
-    typealias State = Resource<Wishlist>
+    
     
     private let wishlistIdStore: any AnyWishlistIdLocalStore
     private let notificationCenter: any AnyNotificationCenter

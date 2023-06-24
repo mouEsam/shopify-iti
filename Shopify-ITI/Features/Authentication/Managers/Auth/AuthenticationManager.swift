@@ -8,7 +8,24 @@
 import Foundation
 import Combine
 
-class AuthenticationManager: AnyInjectable {
+protocol AnyAuthenticationManager {
+    
+    var statePublisher: PostPublished<AuthenticationState>.Publisher { get }
+    var state: AuthenticationState { get }
+    
+    func refreshState()
+    
+    func setUser(user: User, token: AccessToken, persist: Bool) async -> Result<Session, LocalErrors>
+    
+    func setGuest(guest: Guest, persist: Bool) async -> Result<Guest, LocalErrors>
+    
+    func logout() -> Task<(), Never>
+    
+    func delete()
+}
+
+
+class AuthenticationManager: AnyAuthenticationManager, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: AuthenticationManager.self) { resolver in
             AuthenticationManager(userManager: resolver.require((any AnyUserManager).self),
@@ -16,7 +33,7 @@ class AuthenticationManager: AnyInjectable {
                                   guestManager: resolver.require((any AnyGuestManager).self),
                                   notificationCenter: resolver.require((any AnyNotificationCenter).self),
                                   authService: resolver.require(AuthenticationRemoteService.self))
-        }
+        }.implements(AnyAuthenticationManager.self)
     }
     
     @globalActor
