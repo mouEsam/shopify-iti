@@ -162,10 +162,10 @@ class ProductViewModel: ObservableObject {
     }
     
     func addToCart() {
-        if let product = uiState.data,
+        if cartTask == nil,
+           let product = uiState.data,
            let variantId = selectedVariantId,
            let variant = product.variants.first(where: { $0.availableForSale && $0.id == variantId }) {
-            cartTask?.cancel()
             cartTask = Task {
                 await MainActor.run {
                     cartState = .loading
@@ -181,6 +181,7 @@ class ProductViewModel: ObservableObject {
                             cartState = .error(error: error)
                     }
                 }
+                cartTask = nil
             }
         }
     }

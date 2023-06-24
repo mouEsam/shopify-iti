@@ -33,8 +33,13 @@ struct WishlistBag: View {
                     .padding(reader.size.width * 0.08)
                 if let onWishlisted = onWishlisted {
                     Button(action: {
-                        task?.cancel()
-                        task = Task { await onWishlisted() }
+                        if task == nil {
+                            task = Task {
+                                await onWishlisted()
+                                task = nil
+                                return
+                            }
+                        }
                     }) {
                         wishlisted
                     }

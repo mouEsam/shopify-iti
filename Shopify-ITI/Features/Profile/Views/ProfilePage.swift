@@ -47,7 +47,6 @@ struct ProfilePage: View {
             if let name = name {
                 Group {
                     Text(strings.welcomeLabel.localized)
-                        
                     + Text(", ")
                     + Text(name)
                 }

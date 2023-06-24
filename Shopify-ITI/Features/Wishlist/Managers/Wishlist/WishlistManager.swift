@@ -274,6 +274,7 @@ class WishlistManager : AnyInjectable {
         
         await MainActor.run {
             if case .success(_) = listResult {
+                wishlistIdStore.delete()
                 self.setList(nil)
             }
         }
