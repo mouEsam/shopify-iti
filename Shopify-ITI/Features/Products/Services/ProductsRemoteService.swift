@@ -11,7 +11,7 @@ import Shopify_ITI_SDK
 protocol AnyProductsRemoteService {
     typealias ProductsError = ShopifyErrors<Any>
     
-   func fetch(withCriterion criterion: [ProductSearchCriteria:String],
+    func fetch(withCriterion criterion: [ProductSearchCriteria:String],
                count: Int,
                with paginationInfo: PageInfo?) async -> Result<PageResult<Product>, ProductsError>
     
