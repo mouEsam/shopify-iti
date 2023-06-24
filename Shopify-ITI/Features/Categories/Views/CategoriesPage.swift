@@ -41,7 +41,6 @@ struct CategoriesPage: View {
                 }
             }
             .pickerStyle(.segmented)
-            
             .padding()
             .onChange(of: collectionTypePicked){newValue in
                 Task{
@@ -49,40 +48,29 @@ struct CategoriesPage: View {
                 }
             }
             
-            
             switch viewModel.operationState {
-                
-            case .loaded(data: let productCollections):
-                LazyVGrid(columns: createGridColumns(), spacing: 16) {
-                    ForEach(productCollections.data,id: \.id) { item in
-                        CardCategory(container: container,
-                                     item: item,
-                                     idOfCollection: itemOfSegmented[collectionTypePicked].apiID)
+                case .loaded(data: let productCollections):
+                    LazyVGrid(columns: createGridColumns(), spacing: 16) {
+                        ForEach(productCollections.data,id: \.id) { item in
+                            CardCategory(container: container,
+                                         item: item,
+                                         idOfCollection: itemOfSegmented[collectionTypePicked].apiID)
+                        }
                     }
-                }
-                .padding()
-                
-            case .error(let error):
-                Text("Error: \(error.localizedDescription)")
-                
-            default :
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
-                    .foregroundColor(.black)
-                    .padding(50)
+                    .padding()
+                    
+                case .error(let error):
+                    ErrorMessageView(error: error)
+                default :
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .foregroundColor(.black)
+                        .padding(50)
             }
-            
-        }.frame(
-            minWidth: 0,
-            maxWidth: .infinity,
-            minHeight: 0,
-            maxHeight: .infinity,
-            alignment: .topLeading
-          )
-        .task{
-            
-            await viewModel.loadCategories(CollectionName: itemOfSegmented[collectionTypePicked].apiHandle)
-        }.onFirstTask {
+        }.frame(maxWidth: .infinity,
+                maxHeight: .infinity,
+                alignment: .topLeading)
+        .onFirstTask {
             await viewModel.loadCategories(CollectionName: itemOfSegmented[collectionTypePicked].apiHandle)
         }
     }
