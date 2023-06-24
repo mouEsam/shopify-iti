@@ -27,7 +27,6 @@ struct PaymantView: View {
 
     @State private var paymentMethod: String = "Cash on delivery"
     @State private var showingPaymentSheet = false
-    @State private var showingEditSheet = false
     @State private var address = "address"
     @State private var editedStreet: String = ""
     @State private var editedCity: String = ""
@@ -89,7 +88,7 @@ struct PaymantView: View {
                             couponApplied = true
                         }
                         ){
-                            Image("arrow").tint(.white)
+                            Image("arrow").tint(.white).flipsForRightToLeftLayoutDirection(true)
                         }.aspectRatio(1, contentMode:.fit)
                             .frame(height: 50)
                             .buttonStyle(.borderedProminent)
@@ -214,34 +213,12 @@ struct PaymantView: View {
                         
                     }
                 }
-            }.sheet(isPresented: $showingEditSheet) {
-                // Content of the edit sheet
-                VStack {
-                    TextEditor(text: $editedStreet)
-                        .padding()
-                    
-                    TextEditor(text: $editedCity)
-                        .padding()
-                    
-                    TextEditor(text: $editedCountry)
-                        .padding()
-                    
-                    // Add more TextEditor views for other address fields if needed
-                    
-                    Button(strings.doneButton.localized) {
-                        // Apply the changes to the cart's shipping address
-                        address = createAddressString()
-                        showingEditSheet = false
-                    }.padding()
-                }
             }
         }.task{
             await viewModel.creatOrde()
         }
     }
-    func createAddressString() -> String {
-        return "Street: \(editedStreet)City: \(editedCity)Country: \(editedCountry)"
-    }
+    
 }
 
 

@@ -13,7 +13,7 @@ struct CongratsScreen: View {
     var body: some View {
         VStack{
             Spacer()
-            Text("Success")
+            Image("suscess")
             Spacer()
             Button(action: {
                 for _ in 1...(router.routesCount-1){
