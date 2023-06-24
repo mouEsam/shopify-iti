@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct KeysProvider: AnyKeysProvider {
+struct KeysProvider: AnyKeysProvider, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyKeysProvider).self) { resolver in
             KeysProvider()

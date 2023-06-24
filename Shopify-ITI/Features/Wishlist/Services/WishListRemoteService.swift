@@ -8,31 +8,43 @@
 import Foundation
 import Shopify_Admin_ITI_SDK
 
-struct WishlistRemoteService: AnyInjectable {
+protocol AnyWishlistRemoteService {
+    typealias WishlistError = ShopifyErrors<Any>
+    
+    func fetch() async -> Result<Wishlist, WishlistError>
+    
+    func fetch(by wishlistId: String) async -> Result<Wishlist, WishlistError>
+
+    func create(with entry: WishListEntry) async -> Result<Wishlist, WishlistError>
+    
+    func delete(wishlist: Wishlist) async -> Result<Void, WishlistError>
+    
+    func update(list wishList: Wishlist) async -> Result<Wishlist, WishlistError>
+    
+    func fetchItems(for wishListId: String,
+                    count: Int,
+                    with paginationInfo: PageInfo?) async -> Result<PageResult<WishlistItem>, WishlistError>
+}
+
+struct WishlistRemoteService: AnyInjectable, AnyWishlistRemoteService {
     static func register(_ container: AppContainer) {
         container.register(type: WishlistRemoteService.self) { resolver in
             WishlistRemoteService(remoteClient: resolver.require((any GraphQLClient).self,
                                                                  name: AdminEnvironmentProvider.diName),
                                 localeProvider: resolver.require((any AnyLocaleProvider).self),
-                                 configsProvider: resolver.require((any AnyConfigsProvider).self),
                                   userProvider: resolver.require((any AnyUserProvider).self))
-        }
+        }.implements(AnyWishlistRemoteService.self)
     }
-    
-    typealias WishlistError = ShopifyErrors<Any>
     
     private let remoteClient: any GraphQLClient
     private let localeProvider: any AnyLocaleProvider
-    private let configsProvider: any AnyConfigsProvider
     private let userProvider: any AnyUserProvider
     
     init(remoteClient: some GraphQLClient,
          localeProvider: some AnyLocaleProvider,
-         configsProvider: some AnyConfigsProvider,
          userProvider: some AnyUserProvider) {
         self.remoteClient = remoteClient
         self.localeProvider = localeProvider
-        self.configsProvider = configsProvider
         self.userProvider = userProvider
     }
     

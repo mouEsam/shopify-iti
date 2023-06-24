@@ -15,9 +15,11 @@ struct SearchView: View {
     @StateObject private var viewModel: SearchViewModel
     
     private var colors: AnyAppColors
+    private var strings: AnySearchStrings
     
     init(container: AppContainer) {
         colors = container.require((any AnyAppColors).self)
+        strings = container.require((any AnySearchStrings).self)
         let model = container.require((any AnySearchModel).self)
         _viewModel = .init(wrappedValue: SearchViewModel(model: model))
     }
@@ -46,7 +48,7 @@ struct SearchView: View {
         .foregroundColor(colors.black)
         .searchable(text: $viewModel.input,
                     placement: .navigationBarDrawer(displayMode: .always),
-                    prompt: "search for product") // TODO: nemoriztion
+                    prompt: strings.searchHint.localized)
         .onSubmit(of: .search)  {
             if !viewModel.input.isEmpty {
                 viewModel.onSearch()

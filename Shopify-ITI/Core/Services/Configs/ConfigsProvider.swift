@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ConfigsProvider: AnyConfigsProvider {
+struct ConfigsProvider: AnyConfigsProvider, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyConfigsProvider).self) { resolver in
             ConfigsProvider()

@@ -9,7 +9,7 @@ import Foundation
 
 // https://18c640d114bd302801f792ba0f7432aa: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@mad43-alex-ios-team1.myshopify.com/admin/api/2023-04/graphql.json
 
-struct AdminEnvironmentProvider: AnyEnvironmentProvider {
+struct AdminEnvironmentProvider: AnyEnvironmentProvider, AnyInjectable {
     static let diName = "AdminDI"
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyEnvironmentProvider).self,

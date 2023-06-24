@@ -16,15 +16,15 @@ protocol AnySearchModel {
 struct SearchModel: AnySearchModel, AnyInjectable {
      static func register(_ container: AppContainer) {
          container.register(type: (any AnySearchModel).self, scope: .transient) { resolver in
-            SearchModel(remoteService: resolver.require(SearchRemoteService.self),
+            SearchModel(remoteService: resolver.require((any AnySearchRemoteService).self),
                         localStore: resolver.require((any AnyPreviousSearchesStore).self))
         }
     }
     
-    private let remoteService: SearchRemoteService
+    private let remoteService: any AnySearchRemoteService
     private let localStore: any AnyPreviousSearchesStore
     
-    init(remoteService: SearchRemoteService,
+    init(remoteService: some AnySearchRemoteService,
          localStore: some AnyPreviousSearchesStore) {
         self.remoteService = remoteService
         self.localStore = localStore

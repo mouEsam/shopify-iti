@@ -21,7 +21,7 @@ struct BrandModelFactory: AnyBrandModelFactory {
     private let resolver: any AppContainer.Resolver
     
     func create() -> AnyBrandModel {
-        BrandModel(remoteService: resolver.require(BrandRemoteService.self))
+        BrandModel(remoteService: resolver.require((any AnyBrandRemoteService).self))
     }
 }
 
@@ -32,9 +32,9 @@ protocol AnyBrandModel {
 
 struct BrandModel: AnyBrandModel{
     
-    private let remoteService:  BrandRemoteService //TODO: Inject
+    private let remoteService:  AnyBrandRemoteService 
     
-    init(remoteService: BrandRemoteService) {
+    init(remoteService: AnyBrandRemoteService) {
         self.remoteService = remoteService
     }
     func fetch(numberOfItem count:Int) async ->Result<[ProductCollection], Error> {
@@ -49,7 +49,7 @@ struct BrandModel: AnyBrandModel{
   
     }
     
-    func removeFirstItme(items arr: inout [ProductCollection]) -> [ProductCollection]{
+    internal func removeFirstItme(items arr: inout [ProductCollection]) -> [ProductCollection]{
         if(!arr.isEmpty){
             arr.remove(at: 0)
         }

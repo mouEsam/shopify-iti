@@ -12,7 +12,11 @@ struct PageResult<T> {
     let pageInfo: PageInfo
 }
 
+extension PageResult: Equatable where T: Equatable {}
+
 struct PageInfo {
     let nextCursor: String?
     let hasNextCursor: Bool
 }
+
+extension PageInfo: Equatable {}

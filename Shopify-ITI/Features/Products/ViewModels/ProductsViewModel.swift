@@ -17,7 +17,7 @@ class ProductsViewModel: ObservableObject {
     }
     
     private let model: any AnyProductsModel
-    private let wishlistManager: WishlistManager
+    private let wishlistManager: any AnyWishlistManager
     private let notificationCenter: any AnyNotificationCenter
     
     @Published private(set) var uiState: UIState<[ListableProduct]> = .initial
@@ -30,7 +30,7 @@ class ProductsViewModel: ObservableObject {
     
     init(criterion: Criterion,
          model: some AnyProductsModel,
-         wishlistManager: WishlistManager,
+         wishlistManager: some AnyWishlistManager,
          notificationCenter: some AnyNotificationCenter) {
         self.criterion = criterion
         self.model = model

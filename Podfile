@@ -19,6 +19,10 @@ target 'Shopify-ITI' do
   
   shared_pods
   pod 'Swinject', '~> 2.8'
+  
+  target 'Shopify-ITI-Tests' do
+      inherit! :search_paths
+    end
 end
 
 target 'Shopify-ITI-SDK' do

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WishlistIdStore: AnyWishlistIdLocalStore {
+struct WishlistIdStore: AnyWishlistIdLocalStore, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyWishlistIdLocalStore).self) { resolver in
             WishlistIdStore(userDefaults: resolver.require(UserDefaults.self),

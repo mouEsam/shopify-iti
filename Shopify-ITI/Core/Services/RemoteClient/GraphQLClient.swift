@@ -17,7 +17,7 @@ enum GraphQLFetchPolicy {
     case noFetch
 }
 
-protocol GraphQLClient: AnyInjectable {
+protocol GraphQLClient {
     func fetch<Query: GraphQLQuery>(query: Query,
                                     cachePolicy: GraphQLFetchPolicy?,
                                     operation: inout GraphQLCancellable?) async -> Result<GraphQLResult<Query.Data>, Error>

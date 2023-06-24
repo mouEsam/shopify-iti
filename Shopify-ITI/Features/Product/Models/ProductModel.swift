@@ -14,15 +14,15 @@ protocol AnyProductModel {
 struct ProductModel: AnyProductModel, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyProductModel).self, scope: .transient) { resolver in
-            ProductModel(remoteService: resolver.require(ProductRemoteService.self),
+            ProductModel(remoteService: resolver.require((any AnyProductRemoteService).self),
                          configsProvider: resolver.require((any AnyConfigsProvider).self))
         }
     }
     
-    private let remoteService: ProductRemoteService
+    private let remoteService: any AnyProductRemoteService
     private let configsProvider: any AnyConfigsProvider
     
-    init(remoteService: ProductRemoteService,
+    init(remoteService: some AnyProductRemoteService,
          configsProvider: some AnyConfigsProvider) {
         self.remoteService = remoteService
         self.configsProvider = configsProvider
