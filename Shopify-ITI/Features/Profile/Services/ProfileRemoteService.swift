@@ -8,16 +8,28 @@
 import Foundation
 import Shopify_ITI_SDK
 
-struct ProfileRemoteService: AnyInjectable {
+protocol AnyProfileRemoteService {
+    
+    typealias ProfileError = ShopifyErrors<ShopifyAPI.CustomerErrorCode>
+    
+    func profile() async -> Result<User, ProfileError>
+    
+    func profile(for accessToken: String) async -> Result<User, ProfileError>
+    
+    func update(with newProfile: ProfileUpdate) async -> Result<Session, ProfileError>
+}
+
+
+struct ProfileRemoteService: AnyProfileRemoteService, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: ProfileRemoteService.self) { resolver in
             ProfileRemoteService(client: resolver.require((any GraphQLClient).self),
                                  localeProvider: resolver.require((any AnyLocaleProvider).self),
                                  tokenProvider: resolver.require((any AnyAccessTokenProvider).self))
-        }
+        }.implements(AnyProfileRemoteService.self)
     }
     
-    typealias ProfileError = ShopifyErrors<ShopifyAPI.CustomerErrorCode>
+    
     
     private let client: any GraphQLClient
     private let localeProvider: any AnyLocaleProvider

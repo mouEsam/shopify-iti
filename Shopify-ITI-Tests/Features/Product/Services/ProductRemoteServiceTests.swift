@@ -16,6 +16,61 @@ final class ProductRemoteServiceTests: XCTestCase {
     private var localeProvider: MockLocaleProvider!
     private var remoteService: ProductRemoteService!
     
+    private let errorResult = MockGraphQLResult.ResultType.clientError(error: MockError())
+    
+    private let productSuccessResult = MockGraphQLResult.ResultType.found(data: JSONObject([
+        ("product", JSONObject([
+            ("__typename", JSONValue("Product")),
+            ("id", JSONValue("id")),
+            ("handle", JSONValue("handle")),
+            ("title", JSONValue("title")),
+            ("description", JSONValue("description")),
+            ("availableForSale", JSONValue(true)),
+            ("compareAtPriceRange", JSONObject([
+                ("__typename", JSONValue("CompareAtPriceRange")),
+                ("maxVariantPrice", JSONObject([
+                    ("__typename", JSONValue("MaxVariantPrice")),
+                    ("amount", JSONValue("00")),
+                    ("currencyCode", JSONValue("EGP")),
+                ])),
+                ("minVariantPrice", JSONObject([
+                    ("__typename", JSONValue("MaxVariantPrice")),
+                    ("amount", JSONValue("00")),
+                    ("currencyCode", JSONValue("EGP")),
+                ]))
+            ])),
+            ("priceRange", JSONObject([
+                ("__typename", JSONValue("PriceRange")),
+                ("maxVariantPrice", JSONObject([
+                    ("__typename", JSONValue("MaxVariantPrice")),
+                    ("amount", JSONValue("00")),
+                    ("currencyCode", JSONValue("EGP")),
+                ])),
+                ("minVariantPrice", JSONObject([
+                    ("__typename", JSONValue("MaxVariantPrice")),
+                    ("amount", JSONValue("00")),
+                    ("currencyCode", JSONValue("EGP")),
+                ]))
+            ])),
+            ("tags", [JSONObject]()),
+            ("vendor", JSONValue("vendor")),
+            ("options", [JSONObject]()),
+            ("metafields", [JSONObject]()),
+            ("collections", JSONObject([
+                ("__typename", JSONValue("Collection")),
+                ("nodes", [JSONObject]())
+            ])),
+            ("images", JSONObject([
+                ("__typename", JSONValue("Image")),
+                ("nodes", [JSONObject]())
+            ])),
+            ("variants", JSONObject([
+                ("__typename", JSONValue("ProductVariant")),
+                ("nodes", [JSONObject]())
+            ]))
+        ]))
+    ]))
+    
     override func setUp() {
         client = MockRemoteClient()
         localeProvider = MockLocaleProvider()
@@ -23,92 +78,10 @@ final class ProductRemoteServiceTests: XCTestCase {
                               localeProvider: localeProvider)
     }
     
-    struct Product: MockGraphQLResultFactory {
-        enum ResultType {
-            case found
-            case notFound
-            case error
-            case clientError
-        }
-        
-        var result: ResultType
-        
-        func get<Query: GraphQLOperation>(_ type: Query.Type) -> Result<GraphQLResult<Query.Data>, Error> {
-            var data: JSONObject?
-            switch result {
-                case .found:
-                    data = JSONObject([
-                        ("product", JSONObject([
-                            ("__typename", JSONValue("Product")),
-                            ("id", JSONValue("id")),
-                            ("handle", JSONValue("handle")),
-                            ("title", JSONValue("title")),
-                            ("description", JSONValue("description")),
-                            ("availableForSale", JSONValue(true)),
-                            ("compareAtPriceRange", JSONObject([
-                                ("__typename", JSONValue("CompareAtPriceRange")),
-                                ("maxVariantPrice", JSONObject([
-                                    ("__typename", JSONValue("MaxVariantPrice")),
-                                    ("amount", JSONValue("00")),
-                                    ("currencyCode", JSONValue("EGP")),
-                                ])),
-                                ("minVariantPrice", JSONObject([
-                                    ("__typename", JSONValue("MaxVariantPrice")),
-                                    ("amount", JSONValue("00")),
-                                    ("currencyCode", JSONValue("EGP")),
-                                ]))
-                            ])),
-                            ("priceRange", JSONObject([
-                                ("__typename", JSONValue("PriceRange")),
-                                ("maxVariantPrice", JSONObject([
-                                    ("__typename", JSONValue("MaxVariantPrice")),
-                                    ("amount", JSONValue("00")),
-                                    ("currencyCode", JSONValue("EGP")),
-                                ])),
-                                ("minVariantPrice", JSONObject([
-                                    ("__typename", JSONValue("MaxVariantPrice")),
-                                    ("amount", JSONValue("00")),
-                                    ("currencyCode", JSONValue("EGP")),
-                                ]))
-                            ])),
-                            ("tags", [JSONObject]()),
-                            ("vendor", JSONValue("vendor")),
-                            ("options", [JSONObject]()),
-                            ("metafields", [JSONObject]()),
-                            ("collections", JSONObject([
-                                ("__typename", JSONValue("Collection")),
-                                ("nodes", [JSONObject]())
-                            ])),
-                            ("images", JSONObject([
-                                ("__typename", JSONValue("Image")),
-                                ("nodes", [JSONObject]())
-                            ])),
-                            ("variants", JSONObject([
-                                ("__typename", JSONValue("ProductVariant")),
-                                ("nodes", [JSONObject]())
-                            ]))
-                        ]))
-                    ])
-                    break
-                case .notFound:
-                    data = JSONObject([])
-                    break
-                case .error:
-                    data = nil
-                    break
-                case .clientError:
-                    return .failure(MockError())
-            }
-            return .success(.init(data: data.map { try! .init(data: $0, variables:[:]) },
-                                  extensions: nil,
-                                  errors: nil,
-                                  source: .cache,
-                                  dependentKeys: nil))
-        }
-    }
+
     
     func testFetchSuccess() async {
-        client.fetchResult = Product(result: .found)
+        client.fetchResult = MockGraphQLResult(result: productSuccessResult)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         
@@ -122,7 +95,7 @@ final class ProductRemoteServiceTests: XCTestCase {
     }
     
     func testFetchFailure() async {
-        client.fetchResult = Product(result: .error)
+        client.fetchResult = MockGraphQLResult(result: .error)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         
@@ -136,7 +109,7 @@ final class ProductRemoteServiceTests: XCTestCase {
     }
     
     func testFetchNotFoundFailure() async {
-        client.fetchResult = Product(result: .notFound)
+        client.fetchResult = MockGraphQLResult(result: .notFound)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         
@@ -150,7 +123,7 @@ final class ProductRemoteServiceTests: XCTestCase {
     }
     
     func testFetchClientFailure() async {
-        client.fetchResult = Product(result: .clientError)
+        client.fetchResult = MockGraphQLResult(result: errorResult)
         localeProvider.countryResult = "EG"
         localeProvider.languageResult = "AR"
         

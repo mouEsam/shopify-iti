@@ -8,20 +8,20 @@
 import Foundation
 import Shopify_ITI_SDK
 
-struct AuthenticationRepository: AnyAuthenticationRepository {
+struct AuthenticationRepository: AnyAuthenticationRepository, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyAuthenticationRepository).self) { resolver in
-            AuthenticationRepository(profileService: resolver.require(ProfileRemoteService.self),
+            AuthenticationRepository(profileService: resolver.require((any AnyProfileRemoteService).self),
                                      authService: resolver.require((any AnyAuthenticationRemoteService).self),
                                      authManager: resolver.require((any AnyAuthenticationManager).self))
         }
     }
     
-    private let profileService: ProfileRemoteService
+    private let profileService: any AnyProfileRemoteService
     private let authService: any AnyAuthenticationRemoteService
     private let authManager: any AnyAuthenticationManager
     
-    init(profileService: ProfileRemoteService,
+    init(profileService: some AnyProfileRemoteService,
          authService: some AnyAuthenticationRemoteService,
          authManager: some AnyAuthenticationManager) {
         self.profileService = profileService
