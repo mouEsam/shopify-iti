@@ -99,13 +99,12 @@ struct LocationView: View {
             
             if isFormVisible {
                 VStack {
-                    
-                    
-                    
+                                        
                     TextField("AddressStrings.street".localized, text:$viewModel.newStreet)
                     TextField("AddressStrings.city".localized, text:$viewModel.newCity)
                     TextField("AddressStrings.state".localized, text: $viewModel.newState)
                     TextField("AddressStrings.country".localized, text: $viewModel.newPostalCode)
+
                     
                     Button("AddressStrings.addAddress".localized) {
                         viewModel.addAddress()
@@ -123,7 +122,7 @@ struct cardAddress : View{
     let address :Address
     var body: some View{
         HStack{
-            VStack{
+            VStack(alignment: .leading){
                 Text(address.street+","+address.city)
                     .font(.title)
                 Text(address.state)

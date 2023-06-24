@@ -150,7 +150,7 @@
 "PaymentStrings.placeholderName"= "Placeholder Name";
 "PaymentStrings.PaymentMethod"= "Payment Method";
 "PaymentStrings.cashOnDelivery"= "Cash on delivery";
-"PaymentStrings.Applepay"= "Apple pay";
+"PaymentStrings.applepay"= "Apple pay";
 "PaymentStrings.discountCoupon"= "Discount Coupon";
 "PaymentStrings.addCoupon"= "Add Coupon";
 "PaymentStrings.price"= "Price";
