@@ -40,6 +40,10 @@
 "validations.invalid_field" = "المدخلات الخاصة بك غير صالحة";
 "validations.invalid_confirm_password" = "كلمات السر الخاصة بك لا تتطابق";
 
+// Common
+"Common.ok" = "حسنا";
+"Common.cancel" = "الغاء";
+
 // ProductStrings
 "ProductsStrings.noProductsLabel" = "لم يتم العثور علي نتائج";
 "ProductsStrings.wishlistErrorLabel" = "خطأ";

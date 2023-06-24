@@ -271,6 +271,7 @@
 		D4CB089C2A43BD4A0014231B /* ShopifyErrorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB089B2A43BD4A0014231B /* ShopifyErrorText.swift */; };
 		D4CB089E2A43BD570014231B /* GenericErrorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB089D2A43BD570014231B /* GenericErrorText.swift */; };
 		D4CB08A12A43C8B50014231B /* LanguageManagerSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = D4CB08A02A43C8B50014231B /* LanguageManagerSwiftUI */; };
+		D4FC46AF2A46D96000A87E08 /* CommonStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC46AE2A46D96000A87E08 /* CommonStrings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -554,6 +555,7 @@
 		D4CB08992A43BD3C0014231B /* LocalErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalErrorText.swift; sourceTree = "<group>"; };
 		D4CB089B2A43BD4A0014231B /* ShopifyErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopifyErrorText.swift; sourceTree = "<group>"; };
 		D4CB089D2A43BD570014231B /* GenericErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericErrorText.swift; sourceTree = "<group>"; };
+		D4FC46AE2A46D96000A87E08 /* CommonStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStrings.swift; sourceTree = "<group>"; };
 		E84F6EFCD1D0BE06B8FC212B /* Pods_Shopify_ITI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_ITI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0A81DAC848D79B6DAFA2A4 /* Pods-Shopify-ITI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-ITI.release.xcconfig"; path = "Target Support Files/Pods-Shopify-ITI/Pods-Shopify-ITI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1442,6 +1444,7 @@
 				D4CB089B2A43BD4A0014231B /* ShopifyErrorText.swift */,
 				D4CB089D2A43BD570014231B /* GenericErrorText.swift */,
 				D44F05302A44748A0093956F /* NavigationBar.swift */,
+				D4FC46AE2A46D96000A87E08 /* CommonStrings.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -2383,6 +2386,7 @@
 				044D385C2A43940000636AD7 /* WishlistItem.swift in Sources */,
 				044D38512A4393FF00636AD7 /* WishlistManager.swift in Sources */,
 				044D37CA2A4393FF00636AD7 /* PaymantViewModel.swift in Sources */,
+				D4FC46AF2A46D96000A87E08 /* CommonStrings.swift in Sources */,
 				044D37892A4393FF00636AD7 /* AnyLocaleProvider.swift in Sources */,
 				D4CB089E2A43BD570014231B /* GenericErrorText.swift in Sources */,
 				044D381A2A4393FF00636AD7 /* lineItems.swift in Sources */,

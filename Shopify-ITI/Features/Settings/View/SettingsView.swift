@@ -18,11 +18,13 @@ struct SettingsView: View {
     
     private let colors: AnyAppColors
     private let strings: AnySettingsStrings
+    private let commonStrings: AnyCommonStrings
     
     init(container: AppContainer) {
         
         colors = container.require((any AnyAppColors).self)
         strings = container.require((any AnySettingsStrings).self)
+        commonStrings = container.require((any AnyCommonStrings).self)
         let authManager = container.require(AuthenticationManager.self)
         _settingViewModel = .init(wrappedValue: SettingViewModel(authManager: authManager,
                                                                  settingModel: container.require(SettingsModel.self),
@@ -43,7 +45,7 @@ struct SettingsView: View {
                     router.alert(item: newLanguage) { _ in
                         Alert(title: Text(strings.languageLabel.localized),
                               message: Text(strings.languageAlertMessage.localized),
-                              dismissButton: Alert.Button.default(Text("OK"), action: {
+                              dismissButton: Alert.Button.default(Text(commonStrings.ok.localized), action: {
                             settingViewModel.change(language: newLanguage)
                             withAnimation {
                                 let language: Languages = .init(rawValue: newLanguage.rawValue.lowercased()) ?? .deviceLanguage
