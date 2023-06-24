@@ -9,7 +9,9 @@ import Foundation
 import SwiftUI
 
 struct RemoteImageView: View {
+    
     private let image: RemoteImage?
+    @State private var currentUrl: URL? = nil
     
     init(image: RemoteImage?) {
         self.image = image
@@ -18,14 +20,23 @@ struct RemoteImageView: View {
     var body: some View {
         Rectangle().fill(.clear).background {
             let placeholder = Image("Logo").resizable()
-            if let image = image {
-                AsyncImage(url: URL(string:  image.url)) { image in
-                    image.resizable().onAppear {
-                        print("ASDASD")
+            if var image = image {
+                AsyncImage(url: currentUrl) { phase in
+                    switch phase {
+                        case .success(let image):
+                            image.resizable()
+                        case .empty:
+                            placeholder
+                        case .failure(_):
+                            placeholder
+                        @unknown default:
+                        placeholder
                     }
-                } placeholder: {
-                    placeholder.onAppear {
-                        print("ETERT")
+                }.task {
+                    if currentUrl == nil {
+                        await MainActor.run {
+                            currentUrl = URL(string: image.url)
+                        }
                     }
                 }
             } else {
