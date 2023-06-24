@@ -21,7 +21,7 @@ struct OrdersModelFactory: AnyOrdersModelFactory {
     private let resolver: any AppContainer.Resolver
     
     func create() -> AnyOrdersModel {
-        OrdersModel(remoteService: resolver.require(OrdersRemoteService.self), token: resolver.require((any AnyAccessTokenProvider).self))
+        OrdersModel(remoteService: resolver.require((any AnyOrdersRemoteService).self), token: resolver.require((any AnyAccessTokenProvider).self))
     }
 }
 
@@ -32,10 +32,10 @@ protocol AnyOrdersModel {
 
 struct OrdersModel: AnyOrdersModel{
     
-    private let remoteService:  OrdersRemoteService
+    private let remoteService:  AnyOrdersRemoteService
     private let token :  AnyAccessTokenProvider
     
-    init(remoteService: OrdersRemoteService,token :  AnyAccessTokenProvider) {
+    init(remoteService: AnyOrdersRemoteService,token :  AnyAccessTokenProvider) {
         self.remoteService = remoteService
         self.token = token
     }

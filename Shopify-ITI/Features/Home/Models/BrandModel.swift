@@ -49,7 +49,7 @@ struct BrandModel: AnyBrandModel{
   
     }
     
-    func removeFirstItme(items arr: inout [ProductCollection]) -> [ProductCollection]{
+    internal func removeFirstItme(items arr: inout [ProductCollection]) -> [ProductCollection]{
         if(!arr.isEmpty){
             arr.remove(at: 0)
         }
