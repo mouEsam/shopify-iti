@@ -103,12 +103,12 @@ struct PaymantView: View {
                             HStack {
                                 Text(strings.subTotalLabel.localized)
                                 Spacer()
-                                PriceView(price: draftOrder.data.subtotalAmount)
+                                PriceView(price: viewModel.supTotal! )
                             }
                                 HStack {
                                     Text(strings.taxLabel.localized)
                                     Spacer()
-                                    PriceView(price: draftOrder.data.totalTaxAmount)
+                                    PriceView(price: viewModel.taxAmont! )
                                 }
                             
                             if let discont = draftOrder.data.discontAmount {
