@@ -36,7 +36,7 @@ class LocaleProvider: AnyLocaleProvider, AnyInjectable {
     }
     
     var language: String {
-        get { languageStore.read()?.uppercased() ?? "EN" }
+        get { languageStore.read()?.split(separator: "-").first?.uppercased() ?? "EN" }
         set { languageStore.write(language: newValue.lowercased()) }
     }
 }
