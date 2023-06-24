@@ -41,7 +41,7 @@
 "validations.invalid_confirm_password" = "Your passwords don't match";
 
 // ProductStrings
-"ProductsStrings.noProductsLabel" = "Empty";
+"ProductsStrings.noProductsLabel" = "No results found";
 "ProductsStrings.wishlistErrorLabel" = "Error";
 
 // ProductsStrings
@@ -86,7 +86,7 @@
 "AuthenticationStrings.confirmPasswordHint" = "Your password";
 
 // WishlistStrings
-"WishlistStrings.noProductsLabel" = "Empty";
+"WishlistStrings.noProductsLabel" = "No results found";
 "WishlistStrings.wishlistErrorLabel" = "Error";
 
 
@@ -96,10 +96,10 @@
 
 
 //categories
-"CategoriesStrings.menLabel" = "men";
-"CategoriesStrings.womenLabel" = "women" ;
-"CategoriesStrings.kidLabel" = "kid";
-"CategoriesStrings.saleLabel" = "sale";
+"CategoriesStrings.menLabel" = "Men";
+"CategoriesStrings.womenLabel" = "Women" ;
+"CategoriesStrings.kidLabel" = "Kids";
+"CategoriesStrings.saleLabel" = "On Sale";
 
 //profile
 
@@ -116,7 +116,7 @@
 
 //order
 "OrdersStrings.orderNumber" = "Order Number";
-"OrdersStrings.emptyList" = "Empty";
+"OrdersStrings.emptyList" = "No results found";
 "OrdersStrings.totalPrice" = "Total Price";
 "OrdersStrings.quantityItem" = "Quantity";
 
@@ -160,7 +160,7 @@
 "PaymentStrings.done"= "Done";
 
 //CongratsStrings
-"CongratsStrings.goToHome" = "Go To Home";
+"CongratsStrings.goToHome" = "Go Home";
 
 //settings
 "SettingsStrings.languageLabel" = "LANGUAGE";
@@ -173,6 +173,6 @@
 "SettingsStrings.contactUsText" = "Contact Us";
 "SettingsStrings.logoutText" = "Log out";
 "SettingsStrings.logoutAlertMessage" = "Are you sure you want to logout ?";
-"SettingsStrings.languageAlertMessage" = "Some aspects of the app might not pick up the new language right away. We recommend you restart the app for a better experience ";
+"SettingsStrings.languageAlertMessage" = "Some aspects of the app might not pick up the new language right away. We recommend you restart the app for a better experience.";
 "SettingsStrings.agreeAlertMessage" = "Yes";
 "SettingsStrings.diagreeAlertMessage" = "No";
