@@ -102,12 +102,12 @@ struct LocationView: View {
                     
                     
                     
-                    TextField("Street", text:$viewModel.newStreet)
-                    TextField("City", text:$viewModel.newCity)
-                    TextField("State", text: $viewModel.newState)
-                    TextField("Country", text: $viewModel.newPostalCode)
+                    TextField("AddressStrings.street".localized, text:$viewModel.newStreet)
+                    TextField("AddressStrings.city".localized, text:$viewModel.newCity)
+                    TextField("AddressStrings.state".localized, text: $viewModel.newState)
+                    TextField("AddressStrings.country".localized, text: $viewModel.newPostalCode)
                     
-                    Button("Add Address") {
+                    Button("AddressStrings.addAddress".localized) {
                         viewModel.addAddress()
                         isFormVisible = false
                     }

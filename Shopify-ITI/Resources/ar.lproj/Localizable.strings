@@ -168,7 +168,7 @@
 //CongratsStrings
 
 "CongratsStrings.goToHome" = "العودة إلى الصفحة الرئيسية";
-//settings
+//settingsStrings
 "SettingsStrings.languageLabel" = "اللغة";
 "SettingsStrings.countryLabel" = "البلد";
 "SettingsStrings.helpCenterLabel" = "المساعده";
@@ -182,3 +182,9 @@
 "SettingsStrings.languageAlertMessage" = "بعض الخدمات قد لا تطبق هذا التغيير تلقائيًا. لذلك نوصي باعادة تشغيل التطبيق لضمان جودة الخدمة" ;
 "SettingsStrings.agreeAlertMessage" = "نعم";
 "SettingsStrings.diagreeAlertMessage" = "لا";
+//AddressStrings
+"AddressStrings.street" = "الشارع";
+"AddressStrings.city" = "المدينة";
+"AddressStrings.state" = "الولاية";
+"AddressStrings.country" = "البلد";
+"AddressStrings.addAddress" = "إضافة العنوان";
