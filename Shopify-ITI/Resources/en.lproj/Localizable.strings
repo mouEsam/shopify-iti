@@ -179,5 +179,12 @@
 "SettingsStrings.logoutText" = "Log out";
 "SettingsStrings.logoutAlertMessage" = "Are you sure you want to logout ?";
 "SettingsStrings.languageAlertMessage" = "Some aspects of the app might not pick up the new language right away. We recommend you restart the app for a better experience.";
+
 "SettingsStrings.agreeAlertMessage" = "Yes";
 "SettingsStrings.diagreeAlertMessage" = "No";
+//AddressStrings
+"AddressStrings.street" = "Street";
+"AddressStrings.city" = "City";
+"AddressStrings.state" = "State";
+"AddressStrings.country" = "Country";
+"AddressStrings.addAddress" = "Add Address";
