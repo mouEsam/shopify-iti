@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol AnyUserProvider: AnyInjectable {
+protocol AnyUserProvider {
     var user: User? { get }
 }

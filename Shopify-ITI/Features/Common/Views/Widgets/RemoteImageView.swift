@@ -19,20 +19,17 @@ struct RemoteImageView: View {
         Rectangle().fill(.clear).background {
             let placeholder = Image("Logo").resizable()
             if let image = image {
-                AsyncImage(url: URL(string:  image.url)) { (phase: AsyncImagePhase) in
-                    switch phase {
-                        case .success(let image):
-                            image.resizable()
-                        case .empty:
-                            placeholder
-                        case .failure(_):
-                            placeholder
-                        @unknown default:
-                            placeholder
+                AsyncImage(url: URL(string:  image.url)) { image in
+                    image.resizable().onAppear {
+                        print("ASDASD")
+                    }
+                } placeholder: {
+                    placeholder.onAppear {
+                        print("ETERT")
                     }
                 }
             } else {
-                Image("Logo").resizable()
+                placeholder
             }
         }
     }

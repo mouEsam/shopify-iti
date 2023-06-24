@@ -11,7 +11,7 @@ protocol AnyUserHolder: AnyObject, AnyUserProvider {
     var user: User? { get set }
 }
 
-class UserHolder: AnyUserHolder {
+class UserHolder: AnyUserHolder, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: UserHolder.self) { resolver in
             UserHolder()

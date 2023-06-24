@@ -23,7 +23,7 @@ extension GraphQLFetchPolicy {
     }
 }
 
-struct ApolloGraphQLClient: GraphQLClient {
+struct ApolloGraphQLClient: GraphQLClient, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: (any GraphQLClient).self) { resolver in
             ApolloGraphQLClient(environment: resolver.require((any AnyEnvironmentProvider).self))

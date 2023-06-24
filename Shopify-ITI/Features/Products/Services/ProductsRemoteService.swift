@@ -8,15 +8,35 @@
 import Foundation
 import Shopify_ITI_SDK
 
-struct ProductsRemoteService: AnyInjectable {
+protocol AnyProductsRemoteService {
+    typealias ProductsError = ShopifyErrors<Any>
+    
+   func fetch(withCriterion criterion: [ProductSearchCriteria:String],
+               count: Int,
+               with paginationInfo: PageInfo?) async -> Result<PageResult<Product>, ProductsError>
+    
+    func fetch(withoutCollectionAndCriterion criterion: [ProductSearchCriteria:String],
+               count: Int,
+               with paginationInfo: PageInfo?) async -> Result<PageResult<Product>, ProductsError>
+    
+    func fetch(withQuery query: String,
+               count: Int,
+               with paginationInfo: PageInfo?) async -> Result<PageResult<Product>, ProductsError>
+    
+    func fetch(withCollection collectionId: String,
+               AndCriterion criterion: [ProductSearchCriteria:String],
+               count: Int,
+               with paginationInfo: PageInfo?) async -> Result<PageResult<Product>, ProductsError>
+}
+
+
+struct ProductsRemoteService: AnyProductsRemoteService, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: ProductsRemoteService.self) { resolver in
             ProductsRemoteService(remoteClient: resolver.require((any GraphQLClient).self),
                                   localeProvider: resolver.require((any AnyLocaleProvider).self))
-        }
+        }.implements(AnyProductsRemoteService.self)
     }
-    
-    typealias ProductsError = ShopifyErrors<Any>
     
     private let remoteClient: any GraphQLClient
     private let localeProvider: any AnyLocaleProvider

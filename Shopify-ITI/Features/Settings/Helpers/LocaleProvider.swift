@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LocaleProvider: AnyLocaleProvider {
+class LocaleProvider: AnyLocaleProvider, AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: LocaleProvider.self) { resolver in
             LocaleProvider(languageStore: resolver.require((any AnyLanguageLocalStore).self),

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AnyKeysProvider: AnyInjectable {
+protocol AnyKeysProvider {
     var userLocalKey: String { get }
     var guestLocalKey: String { get }
     var accessTokenLocalKey: String { get }

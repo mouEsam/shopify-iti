@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol AnyAccessTokenProvider: AnyInjectable {
+protocol AnyAccessTokenProvider {
     var accessToken: String? { get }
 }
