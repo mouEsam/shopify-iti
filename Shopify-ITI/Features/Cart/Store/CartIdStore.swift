@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct CartIdStore:AnyCartIdStore {
+struct CartIdStore:AnyCartIdStore,AnyInjectable {
     static func register(_ container: AppContainer) {
         container.register(type: (any AnyCartIdStore).self) { resolver in
             CartIdStore(userDefaults: resolver.require(UserDefaults.self),
