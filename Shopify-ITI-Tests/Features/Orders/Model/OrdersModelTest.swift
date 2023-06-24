@@ -13,7 +13,7 @@ final class OrdersModelTest: XCTestCase {
 
     override func setUp() {
         remoteService = MockOrdersRemoteService()
-        let token = AccessTokenProvider()
+        let token = MockAccessTokenProvider()
         model = OrdersModel(remoteService: remoteService, token:token)
     }
     func testLoadCategoriesSuccess() async{
