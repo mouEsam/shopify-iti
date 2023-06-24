@@ -36,8 +36,7 @@ struct DraftOrderModel:AnyDraftOrderModel {
         let lineItems = createLineItems(from: items)
 
         if(discount == "" ){
-            return  await draftOrderServices.update(id: id, withAddress: address, andDiscount: nil, with: lineItems)
-
+            return .failure(ShopifyErrors.NotFound)
         }else{
             let orderDiscount = discountManager.createDiscountInput(using: discount)
             if let orderDiscount = orderDiscount{

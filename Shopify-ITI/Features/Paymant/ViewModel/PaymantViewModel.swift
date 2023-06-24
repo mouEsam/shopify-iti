@@ -14,6 +14,7 @@ class PaymantViewModel:ObservableObject{
     private let addressManger:AddressManger
     @Published var address: Address
     private var cancellables: Set<AnyCancellable> = []
+    @Published var showCobonError: Bool = false
     var taxAmont:Price?
     var supTotal:Price?
 
@@ -35,7 +36,7 @@ class PaymantViewModel:ObservableObject{
                 case .data(data: let addressString):
                     Task{
                         await MainActor.run{
-                            self.address = Address.fromString(addressString) ?? Address(street: "", city: "", state: "", postalCode: "")
+                            self.address = Address.fromString(addressString) ?? Address(street:  "Add Adresss", city: "", state: "", postalCode: "")
                         }
                     }
                 case .loading:
@@ -62,15 +63,18 @@ class PaymantViewModel:ObservableObject{
     }
     func updateOrde(address: String, discount: String)async{
         if let orderID = orderID{
-            await MainActor.run{
-                operationState = .loading
-            }
+            
             let result = await draftOrderModel.updateDraftOrder(id: orderID, address: address, discount: discount, andLine: cart.cartLine)
             await MainActor.run{
-                if case .success(let order) = result{
+                switch result{
+                case .success(let order):
                     self.orderID=order.id
+                    showCobonError = false
                     operationState = result.toLocal()
+                case .failure(_):
+                    showCobonError = true
                 }
+               
             }
         }
     }

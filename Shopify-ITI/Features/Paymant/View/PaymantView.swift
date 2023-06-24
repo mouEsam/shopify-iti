@@ -94,7 +94,12 @@ struct PaymantView: View {
                             .buttonStyle(.borderedProminent)
                             .tint(.black)
                     }
+                    if viewModel.showCobonError {
+                        Text("Not valid")
+                            .foregroundColor(.red).font(.subheadline)
+                    }
                 }
+               
                 
                 Section(header: Text(strings.priceLabel.localized)) {
                     switch viewModel.operationState{
