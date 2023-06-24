@@ -50,7 +50,7 @@ class SettingViewModel: ObservableObject {
                 case .data(data: let addressString):
                     Task{
                         await MainActor.run{
-                            self.address = Address.fromString(addressString) ?? Address(street: "", city: "", state: "", postalCode: "")
+                            self.address = Address.fromString(addressString) ?? Address(street: "Add Adresss", city: "", state: "", postalCode: "")
                         }
                     }
                 case .loading:
