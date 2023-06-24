@@ -90,7 +90,7 @@
 "AuthenticationStrings.confirmPasswordHint" = "كلمة السر خاصتك";
 
 // WishlistStrings
-"WishlistStrings.noProductsLabel" = "لم يتم العثور علي نتائج";
+"WishlistStrings.noProductsLabel" = "لم تقم باضافة اي عناصر الى قائمة المفضلة";
 "WishlistStrings.wishlistErrorLabel" = "خطأ";
 
 

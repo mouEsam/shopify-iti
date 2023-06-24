@@ -90,7 +90,7 @@
 "AuthenticationStrings.confirmPasswordHint" = "Your password";
 
 // WishlistStrings
-"WishlistStrings.noProductsLabel" = "No results found";
+"WishlistStrings.noProductsLabel" = "No favourites found";
 "WishlistStrings.wishlistErrorLabel" = "Error";
 
 
