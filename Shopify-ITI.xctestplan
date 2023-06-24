@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "3C69638E-B1D2-4831-B796-D2F73912828E",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Shopify-ITI.xcodeproj",
+      "identifier" : "D41F627B2A2C921C00780814",
+      "name" : "Shopify-ITI"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Shopify-ITI.xcodeproj",
+        "identifier" : "D4FC46B52A46F9FA00A87E08",
+        "name" : "Shopify-ITI-Tests"
+      }
+    }
+  ],
+  "version" : 1
+}
