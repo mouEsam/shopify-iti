@@ -65,7 +65,6 @@ struct SettingsModel: AnyInjectable {
     }
     
     func changelanguage(language: ShopifyAPI.LanguageCode) {
-        print(language)
         localeProvider.language = language.rawValue
         notificationCenter.post(LanguageChangeNotification(language:  language.rawValue))
     }

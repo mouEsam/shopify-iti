@@ -27,12 +27,12 @@ class ProductViewModel: ObservableObject {
     
     private let productId: String
     private let model: any AnyProductModel
-    private let wishlistManager: WishlistManager
+    private let wishlistManager: any AnyWishlistManager
     private let cartManager: CartManager
     
     init(productId: String,
          model: some AnyProductModel,
-         wishlistManager: WishlistManager,
+         wishlistManager: some AnyWishlistManager,
          cartManager: CartManager) {
         self.productId = productId
         self.model = model
