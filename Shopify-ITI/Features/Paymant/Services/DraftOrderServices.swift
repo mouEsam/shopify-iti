@@ -60,7 +60,7 @@ struct DraftOrderServices:AnyInjectable{
             appliedDiscount: .init(nullable: discount),
             lineItems: .init(nullable: lineItems) ,
             shippingAddress:.init(nullable: ShopifyAdminAPI.MailingAddressInput(address1: .init(nullable: address))),
-            purchasingEntity: .init(nullable: customerId.map { .init(customerId: .some($0)) })
+            taxExempt: false, purchasingEntity: .init(nullable: customerId.map { .init(customerId: .some($0)) })
         )
         let mutation = ShopifyAdminAPI.CreateDraftOrderMutation(input: input)
         let result = await remoteClient.execute(query: mutation)
