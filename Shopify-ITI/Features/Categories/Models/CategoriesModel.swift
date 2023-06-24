@@ -21,7 +21,7 @@ struct CategoriesModelFactory: AnyCategoriesModelFactory {
     private let resolver: any AppContainer.Resolver
     
     func create() -> AnyCategoriesModel {
-        CategoriesModel(remoteService: resolver.require(CategoriesRemoteService.self))
+        CategoriesModel(remoteService: resolver.require((any AnyCategoriesRemoteService).self))
     }
 }
 
@@ -32,9 +32,9 @@ protocol AnyCategoriesModel {
 
 struct CategoriesModel : AnyCategoriesModel {
     
-    private let remoteService:  CategoriesRemoteService //TODO: Inject
+    private let remoteService:  AnyCategoriesRemoteService
     
-    init(remoteService:  CategoriesRemoteService) {
+    init(remoteService:  AnyCategoriesRemoteService) {
         self.remoteService = remoteService
     }
     func fetch(CollectionName name:String) async ->Result<[ProductType], Error> {
@@ -49,7 +49,7 @@ struct CategoriesModel : AnyCategoriesModel {
   
     }
     
-    func getTypes(items arr: inout [ProductType]) -> [ProductType]{
+    internal func getTypes(items arr: inout [ProductType]) -> [ProductType]{
         let uniqueArr = arr.reduce(into: [ProductType]()) { result, item in
             let key = item.productType 
             if !result.contains(where: { $0.productType == key }) {

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-protocol AnyCartIdStore:AnyInjectable{
+protocol AnyCartIdStore{
     func exists() -> Bool
     func read() -> Result<String, LocalErrors>
     func write(id: String) -> Result<Void, LocalErrors>
